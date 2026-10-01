@@ -1,0 +1,74 @@
+{ Chromaticity check: DA map (OV 3 2 1) vs finite difference via gamma-shifted 3D maps.
+  Patched at runtime by run_mapping.run_chrom_check. }
+INCLUDE 'magnetic_2';
+
+PROCEDURE MAIN;
+    VARIABLE SGx1 1 ; VARIABLE SGy1 1 ;
+    VARIABLE SGx2 1 ; VARIABLE SGy2 1 ;
+    VARIABLE EB1 1 ;  VARIABLE RF 1 ;
+    VARIABLE MU_C 800 3 ;
+    VARIABLE MU_P 800 3 ; VARIABLE MU_M 800 3 ;
+    VARIABLE GAMMA 1 ; VARIABLE BETA 1 ;
+    VARIABLE DELTA 1 ;
+    VARIABLE GAMMA_P 1 ; VARIABLE GAMMA_M 1 ;
+    VARIABLE CHROM_X_FD 1 ; VARIABLE CHROM_Y_FD 1 ;
+    VARIABLE CHROM_X_DA 1 ; VARIABLE CHROM_Y_DA 1 ;
+    VARIABLE structure 25;
+    VARIABLE NU_XP 1 ; VARIABLE NU_XM 1 ;
+    VARIABLE NU_YP 1 ; VARIABLE NU_YM 1 ;
+    VARIABLE D_EKIN 1 ;
+
+    structure := 'magnetic_2';
+    RF := 1 ;
+    GAMMA := 1.143914;
+    BETA := SQRT(1-1/(GAMMA*GAMMA));
+    DELTA := 1.0E-3 ;
+    EB1 := 0.0 ;
+    SGx1 := 0.0 ; SGy1 := 0.0 ;
+    SGx2 := 0.0 ; SGy2 := 0.0 ;
+
+    { E_kin' = E_kin*(1±DELTA)  =>  gamma' = 1 + (gamma-1)*(1±DELTA) }
+    GAMMA_P := 1 + (GAMMA-1)*(1+DELTA) ;
+    GAMMA_M := 1 + (GAMMA-1)*(1-DELTA) ;
+    D_EKIN := DELTA ;
+
+    OPENF 3630 '../dat/'&structure&'/chrom_check.dat' 'REPLACE';
+    WRITE 3630 ' SGx1 SGx2 SGy1 SGy2 chrom_x_DA chrom_y_DA chrom_x_FD chrom_y_FD delta';
+
+    { --- DA chrom (OV 3 2 1) --- }
+    OV 3 2 1 ;
+    SET_FOR_DEUTERONS_CHROM GAMMA ;
+    UM ; {FR 3 ;} LATTICE SGx1 SGy1 SGx2 SGy2 EB1 RF ; {FR 0 ;}
+    TP MU_C ;
+    CHROM_X_DA := (MU_C(1)|(0&0&0&0&1)) * (1+1/GAMMA) ;
+    CHROM_Y_DA := (MU_C(2)|(0&0&0&0&1)) * (1+1/GAMMA) ;
+
+    { --- FD from full 3D maps at E_kin*(1±DELTA) via gamma shift --- }
+    OV 3 3 0 ;
+    SET_FOR_DEUTERONS GAMMA_P ;
+    UM ; {FR 3 ;} LATTICE SGx1 SGy1 SGx2 SGy2 EB1 RF ; {FR 0 ;}
+    TP MU_P ;
+    NU_XP := CONS(MU_P(1)) ;
+    NU_YP := CONS(MU_P(2)) ;
+
+    SET_FOR_DEUTERONS GAMMA_M ;
+    UM ; {FR 3 ;} LATTICE SGx1 SGy1 SGx2 SGy2 EB1 RF ; {FR 0 ;}
+    TP MU_M ;
+    NU_XM := CONS(MU_M(1)) ;
+    NU_YM := CONS(MU_M(2)) ;
+
+    { d(nu)/d(dE_kin/E_kin) * (1+1/gamma) }
+    CHROM_X_FD := ((NU_XP-NU_XM)/(2*D_EKIN)) * (1+1/GAMMA) ;
+    CHROM_Y_FD := ((NU_YP-NU_YM)/(2*D_EKIN)) * (1+1/GAMMA) ;
+
+    WRITE 3630 ST(SGx1)&' '&ST(SGx2)&' '&ST(SGy1)&' '&ST(SGy2)&' '&ST(CHROM_X_DA)&' '&ST(CHROM_Y_DA)&' '&ST(CHROM_X_FD)&' '&ST(CHROM_Y_FD)&' '&ST(D_EKIN);
+    WRITE 6 'chrom_check DA  x='&ST(CHROM_X_DA)&' y='&ST(CHROM_Y_DA);
+    WRITE 6 'chrom_check FD  x='&ST(CHROM_X_FD)&' y='&ST(CHROM_Y_FD);
+    WRITE 6 'nu+ '&ST(NU_XP)&' '&ST(NU_YP)&' nu- '&ST(NU_XM)&' '&ST(NU_YM);
+    CLOSEF 3630 ;
+ENDPROCEDURE;
+
+PROCEDURE RUN;
+  MAIN;
+ENDPROCEDURE;
+RUN; END;

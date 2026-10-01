@@ -1,0 +1,52 @@
+INCLUDE 'magnetic_2';
+
+PROCEDURE MAIN;
+    VARIABLE CHROM_X 1 ; VARIABLE CHROM_Y 1 ;
+    VARIABLE SGx1 1 ; VARIABLE SGy1 1 ;
+    VARIABLE SGx2 1 ; VARIABLE SGy2 1 ;
+    VARIABLE EB1 1 ;  VARIABLE RF 1 ;
+    VARIABLE MU 800 ; VARIABLE MU0 1 ; VARIABLE NBAR 800 3 ;
+    VARIABLE MU_TP 800 3 ;
+    VARIABLE quad_Kx 1 ; VARIABLE quad_Ky 1 ; VARIABLE quad_Kz 1 ;
+    VARIABLE GAMMA 1 ;
+    VARIABLE structure 10;
+    VARIABLE step 1;
+    VARIABLE I 1; VARIABLE J 1;
+    VARIABLE N1 1; VARIABLE N2 1;
+
+    structure := 'magnetic_2';
+    RF := 1 ; {RF: 0 - off, 1 - on}
+    GAMMA := 1.143914;
+
+    { 1. Начальные значения секступолей и параметров }
+    SGx1 := 0.0 ; SGy1 := 0.0 ; 
+    SGx2 := 0.0 ; SGy2 := 0.0 ;
+    EB1  := 0.0 ;
+
+    step := 1000 ;
+    N1 := 10 ; N2 := 10 ;
+
+    OPENF 3618 '../dat/'&structure&'/spin_quad.dat' 'REPLACE'; 
+    WRITE 3618 ' SGx1 SGx2 SGy1 SGy2 quad_Kx quad_Ky quad_Kz ';
+
+    { --- 2. Начало циклов сканирования --- }
+    LOOP I 1 N1 ;          
+        { --- 4. Спиновая динамика (OV 3 3 0) --- }
+        OV 3 3 0 ; 
+        SET_FOR_DEUTERONS GAMMA ; { Версия без параметров }
+        UM ; LATTICE SGx1 SGy1 SGx2 SGy2 EB1 1 ;
+        TSS MU NBAR 0;
+        MU0 := CONS(MU);
+        DAPEE MU 11 quad_Kx; DAPEE MU 33 quad_Ky; DAPEE MU 66 quad_Kz;
+        
+        WRITE 3618  ST(SGx1)&' '&ST(SGx2)&' '&ST(SGy1)&' '&ST(SGy2)&' '&ST(quad_Kx)&' '&ST(quad_Ky)&' '&ST(quad_Kz);
+        SGx2 := SGx2 + step;
+        
+    ENDLOOP ; { Конец внешнего цикла SGx2 }
+    CLOSEF 3618; 
+    ENDPROCEDURE; {MAIN}
+    
+    PROCEDURE RUN;
+      MAIN;
+    ENDPROCEDURE;
+RUN; END;

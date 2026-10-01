@@ -1,0 +1,248 @@
+#NICA Accelerator Complex
+#=========================================================
+#original lattice of NUCLOTRON RING
+#Ring with eight octant arcs. 
+#Each arc has 12 magnets, Field=1.4895 Tesla
+#Length of magnet L=1.44 m
+#Total number of mahnets=8*12=96
+#Total length of magnets 1.44*96=138.24 m 
+#=========================================================
+#-------MAIN parameters for deutron-----------------------
+#==========================================================
+#Charge and mass of deutron in normalized value------------
+	$Z=1.;  =>           1
+	$A=2.;  =>           2
+
+#proton mass in  [kG] m_p---------------------------------
+	$m_p=1.6726e-27;  => 1.6726e-027
+#deutron mass in  [kG] m_d---------------------------------
+	$m_d=3.34358320e-27;  =>3.3435832e-027
+#el  charge in [C]-----------------------------------------
+	$Qp=1.6022e-19;  => 1.6022e-019
+
+#speed of ligt in [m/sec]-----------------------------------
+	$c_light=$c*0.01;  =>   299792458
+
+
+
+#ENERGY & MASS of deutron in MeV---------------------------
+	$MassD=1875.612793;  =>  1875.61279
+                       #test
+	$MassD_test=$m_d*$c_light*$c_light/$Qp/1.e06;  =>  1875.58527
+
+#ENERGY & MASS of proton in MeV---------------------------
+	$MassP=938.27;  =>      938.27
+                  #-----check-----
+	$MassP_test=$m_p*$c_light*$c_light/$Qp/1.e06;  =>  938.246107
+
+#Unified atomic mass unit [MeM/u]--------------------------
+	$NMASS=938.272;  =>     938.272
+
+
+#Kinetic energy [MeV]--for EDM deutron---------------------
+	$W=270;  =>         270
+
+#===============Calculation of required length of Wien filter===============
+#supposed energy of deuteron for EDM measurements---------------------------
+#Kinetic energy [MeV/u] 135 
+	$Wu=135;  =>         135
+#Total energy Wd of deutron for EDM
+	
+	$Wd=2*$Wu;  =>         270
+#Max electric field in Wien filter ED=13[MV/m]
+	$ED=-13.0;  =>         -13
+
+	$gamD=$Wd/$MassD+1;  =>  1.14395295
+	$BetD=sqrt(1-1/$gamD^2);  => 0.485634745
+#==========================================================================
+#                 Length of Wien filters
+#==========================================================================
+#magnetic anomality of deutron
+                $GD=-0.142;  =>      -0.142
+
+#----------Total length of Wien filter multiplyed by E 
+#----------L_t*E_d=2G/(G+1)?(mc^2)/bet^2 gam^3 for Deutron for whole ring 
+#----------with spin rotation gamG*2pi 
+	$ELwienD=2*$MassD*$GD*$pi*$gamD^3*$BetD^2/($GD+1);  => -688.601721
+#Total length of Wien filter for Deutron $LwienD=L_?
+	$LwienD=$ELwienD/$ED;  =>  52.9693631
+# Required free place for Wien filter $Lfree
+	$Lfree=$LwienD;  =>  52.9693631
+
+
+
+
+#=============================================================================
+#---------------MAIN PARAMETERS of modernized lattice for deutron with 
+#	1)    96
+#-------------- 2)and 48 magnets------------------------------------------------
+#=============================================================================
+
+#max fielf in magnet in Tesla
+	$Bmax=1.8;  =>         1.8
+
+#----------------------------------------------------------------------
+#-----------------First for 96-th option of structure
+#----------------------------------------------------------------------
+#total lenth of 96 magnets for original old Nuclotron at present
+	$L96=1.44*96;  =>      138.24
+# the length of one mgnet 
+	$Lmag96=1.44;  =>        1.44
+# Curvature radius of 96 magnets
+	$R96=$L96/2/$pi;  =>  22.0015793
+
+#Rigidity of 96 magnet with Bmax=1.8 Tesla
+	$BR96=$R96*$Bmax;  =>  39.6028428
+
+# Energy and betta,gamma. It is follows from  BR=m_d*gamma*betta*c/Qe
+	$Betgam96=$BR96*$Qp/$m_d/$c_light;  =>  6.33009535
+
+# Gamm=sqrt(betgam^2+1)
+	$Gamm96=sqrt($Betgam96*$Betgam96+1.0);  =>  6.40859635
+# Betta
+	$Bet96=$Betgam96/$Gamm96;  => 0.987750672
+
+# Final max Energy of deutron in GeV
+	$Energy96=$MassD*($Gamm96-1.0)/1000.;  =>  10.1444325
+# Final max Energy /u in deutron in GeV/u
+	$Energy96=$MassD*($Gamm96-1.0)/1000./2;  =>  5.07221625
+
+#-----------------------------------------------------------------------
+#----------------Second for 48-th option of structure for max energy W=5.68426204
+#-----------------------------------------------------------------------
+
+# total lenth of 48 magnets
+	$L48=$L96-$Lfree;  =>  85.2706369
+
+# Length of one magnet for 48mags option
+	$Lmag48=$L48/48	;  =>   1.7764716
+
+# Curvature radius of 48 magnets
+	$R48=$L48/2/$pi;  =>  13.5712434
+
+#Rigidity of 48 magnet with Bmax=1.8 Tesla
+	$BR48=$R48*$Bmax;  =>   24.428238
+
+# Energy and betta,gamma. It is follows from  BR=m_d*gamma*betta*c/Qe
+	$Betgam48=$BR48*$Qp/$m_d/$c_light;  =>  3.90459536
+
+# Gamm=sqrt(betgam^2+1)
+	$Gamm48=sqrt($Betgam48*$Betgam48+1.0);  =>  4.03061594
+
+# Betta
+	$Bet48=$Betgam48/$Gamm48;  => 0.968734161
+
+# Max final Energy of deutron in GeV
+	$Energy48=$MassD*($Gamm48-1.0)/1000.;  =>  5.68426204
+#Max Final Energy /u in deutron in GeV/u
+	$Energy48=$MassD*($Gamm48-1.0)/1000./2;  =>  2.84213102
+#=======================================================================================
+	
+#-----------------------------------------------------------------------
+#----------------Second for 48-th option of structure for max energy W=270 MeV
+#-----------------------------------------------------------------------
+	$W=135.;  =>         135
+	$GAMMA=($NMASS+$W)/$NMASS;  =>  1.14388152
+
+	$BETA=sqrt(1.-1./$GAMMA^2);  => 0.485536466
+	$GAMBET=$GAMMA*$BETA;  =>  0.55539619
+
+
+#ENERGY & MASS in MeV of deutron----------------------------------------------
+	$Energy=$W*$A/$Z ;  =>         270
+	$Mass=$NMASS*$A/$Z;  =>    1876.544
+
+#Beam particle momentum per nuclon [MeV/u]-----------------------------
+	$P0=$NMASS*$BETA*$GAMMA;  =>  521.112694
+
+#Magnetic rigidity [T*m]---------------------------------
+	$BR=$A/$Z*$P0/$c*1.e+8;  =>  3.47648969
+#Test of magnetic rigidity
+	$BR_test=$m_d*$GAMBET*$c_light/$Z/$Qp;  =>  3.47471354
+
+#Number of all magnets on ring ----------------------------------
+	$Nmag=8*6;  =>          48
+
+#Radius of curvature in m
+	$R270=$R48;  =>  13.5712434
+	$R=$R270;  =>  13.5712434
+	
+	$Lmag=$R*2*$pi/$Nmag;  =>   1.7764716
+#Magnetic field in magnet at 270 MeV
+	$B270=$BR/$R;  => 0.256165894
+	$B=$B270;  => 0.256165894
+#Ratio between fields at max energy and 270 MeV
+	$Bratio=1.8/$B270;  =>  7.02669654
+
+
+#WIEN FILTER in [MV/m]------------
+	$E_max = 13;  =>          13
+	$E = -13;  =>         -13
+	$R_def = - ($m_p*$c_light*$c_light/($Qp*$Z)) * ($BETA*$BETA*$GAMMA) / ($E*1000000);  =>  19.4624795
+	$E_kV_cm = $E*10;  =>        -130
+
+#
+#=========8 ARCs STRUCTURE============================
+#
+#nuclotron:	line:=(8*(arc));
+# 
+# arc=5 cells
+# 
+# number of magnets per arc
+$n_mag=6;  =>           6
+# number of arcs
+$n_arc=8;  =>           8
+# number of magnet on two arcs
+$N_mag=$n_mag*$n_arc        ;  =>          48
+#Lengt of one magnet in [cm]
+# angle of bending per one magnet in [deg]------------
+$ang_B=$Lmag/(2*$pi*$R)*360;  =>         7.5
+
+$ang48_B=$Lmag48/(2*$pi*$R48)*360;  =>         7.5
+# total angle of bending in the ring in [deg]---------
+$ang_ring=$ang_B*$Nmag;  =>         360
+#=====================================================       
+$QUAD =0.1935      
+
+#*******************************************************************************************
+OptiM
+Energy[MeV]=270        Mass[MeV]=1876.544 
+Emittance: ex[cm]=0.002  ey[cm]=0.002  DP/P=0.000 
+Initial:	BetaX[cm]=1936.75 	BetaY[cm]=405.447 
+	AlfaX=-0.000251909 	AlfaY=-0.000188151 
+	DispersX[cm]=0.0	 	DispersY[cm]=0 
+	Dsp_PrimeX=-0.00050616 	DspPrimeY=0 
+	X[cm]=0.950    	Y[cm]=0.000    	Z[cm]=0.000    	S[cm]=0.000    
+	tetaX[deg]=0        	tetaY[deg]=0        
+begin lattice. Number of periods=2 
+
+##################################################################################
+#====================================ARC==========================================
+OS2 QF BM QD OS1 QD BM QF SF2
+    QF BM QD SD  QD BM QF SF1
+    QF BM QD SD  QD BM QF SF2
+    QF BM QD OS1 QD BM QF OS2
+##################################################################################
+
+end lattice
+begin list
+#=================================================================================
+
+#---------------------------BENDING MAGNETS---------------------------------
+BM 	L[cm]=532.94148   	B[kG]=2.5616589   	G[kG/cm]=0        	Tilt[deg]=0
+OBM 	L[cm]=532.94148     
+OS1	L[cm]=12
+OS2	L[cm]=6
+#---------------------------QUADRUPOLES-------------------------------
+QF 	L[cm]=21         	G[kG/cm]=0.18121 		Tilt[deg]=0
+QD 	L[cm]=21         	G[kG/cm]=-0.20184 	Tilt[deg]=0
+
+QF1 	L[cm]=21         	G[kG/cm]=$QUAD 		Tilt[deg]=0
+QD1 	L[cm]=21         	G[kG/cm]=-$QUAD  		Tilt[deg]=0
+
+#----------------------------SEXTUPOLES---------------------------------
+SF1 	L[cm]=12         	S[kG/cm/cm)]=0.0   	Tilt[deg]=0
+SF2 	L[cm]=12         	S[kG/cm/cm)]=0.0   	Tilt[deg]=0
+SD 	L[cm]=12         	S[kG/cm/cm)]=-0.0  	Tilt[deg]=0
+#=======================================================================================
+end list of elements

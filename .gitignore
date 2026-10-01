@@ -1,3 +1,26 @@
+# COSY Infinity: licensed core (MSU, not to be distributed) and binaries
+COSY/src/cosy.fox
+cosy.exe
+*.bin
+
+# COSY Infinity: listings, scratch and runtime output
+*.lis
+fort.*
+RKLOG.DAT
+SYSCA.DAT
+MFFLD.DAT
+COSY/src/tmp/
+COSY/src/BETAX
+COSY/src/BETAY
+COSY/src/DISPX
+COSY/src/DISPY
+COSY/dat/*
+!COSY/dat/.gitkeep
+COSY/structures/*/_generated/
+
+# OptiM logs
+optimx.log
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
