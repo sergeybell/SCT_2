@@ -1,0 +1,1600 @@
+\documentclass[aps,pra,preprint,a4paper,amsmath,amssymb,longbibliography]{revtex4-2}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[main=russian,english]{babel}
+\usepackage{booktabs}
+\usepackage{url}
+% preprint-стиль REVTeX вставляет перед аннотацией склейку с fil и
+% штраф. Вместе с babel эта склейка уносит аннотацию на следующую
+% страницу и оставляет пустой титульный лист. Оставляем аннотацию
+% сразу под заголовком.
+\makeatletter
+\def\frontmatter@abstract@produce{%
+  \par
+  \addvspace{\frontmatter@preabstractspace}%
+  \begingroup
+   \dimen@\baselineskip
+   \setbox\z@\vtop{\unvcopy\absbox}%
+   \advance\dimen@-\ht\z@\advance\dimen@-\prevdepth
+   \@ifdim{\dimen@>\z@}{\vskip\dimen@}{}%
+  \endgroup
+  \begingroup
+   \prep@absbox
+   \unvbox\absbox
+   \post@absbox
+  \endgroup
+  \@ifx{\@empty\mini@notes}{}{\mini@notes\par}%
+  \addvspace\frontmatter@postabstractspace
+}%
+\makeatother
+
+\newcommand{\zamech}[1]{\par\medskip\noindent\textbf{Замечание.} #1\par\medskip}
+
+\begin{document}
+
+\title{Равновесная энергия частицы в накопительном кольце}
+\author{Черновик}
+\affiliation{заметка}
+
+\begin{abstract}
+Равновесный относительный импульс частицы в накопительном кольце определяется тем, что высокочастотное поле видит только опоздание за оборот, а период есть интеграл времени пролёта. Для магнитного кольца без бетатронного движения этот интеграл даёт сдвиг $\delta_{\mathrm{eq}}$, пропорциональный квадрату амплитуды синхротронных колебаний и полному коэффициенту $\eta_1$. Бетатронное удлинение пути входит в тот же период слагаемым $\Lambda$ и сдвигает равновесие наравне с $\eta_1$. В электростатическом кольце скорость зависит от поперечной координаты: меняются линейный и квадратичный коэффициенты периода, а опоздание распадается на геометрическую часть и вклад потенциала. Для симплектического однооборотного отображения бетатронное опоздание выражается хроматичностью по переменной, сопряжённой времени, и равновесный импульс есть центр орбиты повторения отображения с зазором.
+\end{abstract}
+
+\maketitle
+
+\section{Постановка}
+\label{sec:setup}
+
+Относительное отклонение импульса от синхронного значения $p_s$ обозначаем $\delta=\Delta p/p_s$. Координата $s$ идёт вдоль синхронной орбиты, $\rho$ --- локальный радиус изгиба, $D$ --- дисперсия. Действия бетатронных колебаний $J_x$ и $J_y$ входят в отклонение через параметры Твисса $\beta$, $\alpha$ и $\gamma=(1+\alpha^2)/\beta$; эти $\beta$ и $\gamma$ не смешиваются с релятивистскими $\beta_s$ и $\gamma_s$ синхронной частицы. Хроматичность есть $\xi=\mathrm{d}\nu/\mathrm{d}\delta$. Индекс $s$ отмечает синхронную частицу: её период $T_s$, длина орбиты $C_s$ и скорость $v_s$. Фаза $\varphi$ высокочастотного поля растёт, когда частица опаздывает.
+
+Спиновая частота в магнитной структуре близка к $G\gamma$. Разброс равновесного импульса $\delta_{\mathrm{eq}}$ по частицам сгустка даёт разброс этой частоты и декогеренцию спина. В работе~\cite{Senichev2013} линейный по $\delta$ сдвиг снимается высокочастотным полем, и остаётся второй порядок: квадрат амплитуды синхротронных колебаний и бетатронное удлинение орбиты.
+
+Высокочастотное поле видит только опоздание $T-T_s$. Уравнение энергии на зазоре одно для всех колец: за один пролёт полная энергия меняется на $eV\sin\varphi$, а в синхронной точке $\mathrm{d}E=\beta_s^2 E_s\,\mathrm{d}\delta$. Всё отличие колец сидит в периоде $T=\oint\mathrm{d}l/v$. Повод этой заметки --- формулы равновесного сдвига в~\cite{Senichev2013}. Кинематика скорости и синхронные часы взяты из главы 18 книги Нга~\cite{Ng2006}. Удлинение пути бетатронным движением и его связь с хроматичностью выведены Шоджи~\cite{Shoji2005}; для коротких секступолей та же связь записана в неопубликованной заметке~\cite{SenichevNote}. Уравнение для $\delta$ решается методом Боголюбова--Митропольского~\cite{Bogoliubov1961}.
+
+Раздел~\ref{sec:magnetic} получает $\delta_{\mathrm{eq}}$ магнитного кольца без бетатронного движения из ряда $T(\delta)$. Раздел~\ref{sec:ch2} возвращает в тот же интеграл бетатронное удлинение $\Lambda$. Раздел~\ref{sec:electrostatic} переносит вывод на электростатику, где модуль скорости зависит от поперечной координаты. Раздел~\ref{sec:map} собирает те же коэффициенты из однооборотного отображения и связывает бетатронное опоздание с хроматичностью по переменной, сопряжённой времени.
+\section{Магнитное кольцо без бетатронного движения}
+\label{sec:magnetic}
+
+В этой главе замкнутая орбита задаётся одним импульсом. Бетатронного отклонения нет, поэтому длина орбиты есть функция $\delta$. Числа относятся к магнитному кольцу дейтронов с кинетической энергией $270$~МэВ: $\gamma_s=1{,}143914$ и $\alpha_0=0{,}230$.
+
+\subsection{Период обращения}
+\label{sec:period}
+
+Период одного оборота есть время пролёта вдоль замкнутой орбиты,
+\begin{equation}
+\label{eq:mag-T}
+T=\oint\frac{\mathrm{d}l}{v}.
+\end{equation}
+В статическом магнитном поле модуль скорости между зазорами зависит только от полного импульса. На длине оборота, между локализованными пролётами зазора, импульс постоянен, и $v$ выносится из интеграла. Длина этой орбиты $C=\oint\mathrm{d}l$, синхронные величины $C_s$ и $v_s$ дают $T_s=C_s/v_s$, поэтому
+\begin{equation}
+\label{eq:mag-Tratio}
+\frac{T-T_s}{T_s}
+=\frac{v_s}{v}\,\frac{C}{C_s}-1.
+\end{equation}
+Высокочастотное поле этого оборота видит только опоздание $T-T_s$. Уравнение энергии на зазоре одно и то же для любого кольца; кольца различаются тем, как устроен интеграл~\eqref{eq:mag-T}.
+
+\subsection{Длина орбиты}
+\label{sec:length}
+
+Длину дисперсионной орбиты записываем в нормировке Сеничева~\cite{Senichev2013},
+\begin{equation}
+\label{eq:mag-C}
+\frac{C}{C_s}=1+\alpha_0\delta+\alpha_1\delta^2.
+\end{equation}
+В формуле (18.4) книги Нга~\cite{Ng2006} принято
+\begin{equation}
+\label{eq:mag-Cng}
+C(\delta)=C_0\bigl[1+\alpha_0\delta\bigl(1+\alpha_1^{\mathrm{Ng}}\delta+\cdots\bigr)\bigr],
+\end{equation}
+так что коэффициент при $\delta^2$ равен $\alpha_0\alpha_1^{\mathrm{Ng}}$. Сравнение с~\eqref{eq:mag-C} даёт
+\begin{equation}
+\label{eq:mag-alpha-ng}
+\alpha_1=\alpha_0\alpha_1^{\mathrm{Ng}}.
+\end{equation}
+Ниже $\alpha_1$ без пометки --- коэффициент формулы~\eqref{eq:mag-C}. Члены $\delta^3$ в длине в этой главе не удерживаются; к ним относится замечание в конце раздела.
+
+\subsection{Скорость}
+\label{sec:velocity}
+
+Импульс $p=p_s(1+\delta)$ определяет полную энергию и скорость. Удобная запись лоренц-фактора
+\begin{equation}
+\label{eq:mag-gamma-delta}
+\gamma^2(\delta)=1+(\gamma_s^2-1)(1+\delta)^2
+\end{equation}
+следует из $\beta\gamma=\beta_s\gamma_s(1+\delta)$ и $\gamma^2=1+(\beta\gamma)^2$. Отношение скоростей
+\begin{equation}
+\label{eq:mag-beta-exact}
+\frac{\beta(\delta)}{\beta_s}
+=\frac{(1+\delta)\,\gamma_s}{\gamma(\delta)},
+\qquad
+\frac{v_s}{v}
+=\frac{\sqrt{\beta_s^2(1+\delta)^2+\gamma_s^{-2}}}{1+\delta}.
+\end{equation}
+Логарифмическая производная по $\delta$ связана с производной по импульсу правилом $\mathrm{d}\ln p/\mathrm{d}\delta=1/(1+\delta)$ и тождеством $\mathrm{d}\ln\beta/\mathrm{d}\ln p=1/\gamma^2$:
+\begin{equation}
+\label{eq:mag-lambda}
+\lambda\equiv\frac{1}{\beta}\frac{\mathrm{d}\beta}{\mathrm{d}\delta}
+=\frac{1}{\gamma^2(1+\delta)}.
+\end{equation}
+В синхронной точке $\lambda_s=1/\gamma_s^2$. Поскольку $\beta'=\beta\lambda$,
+\begin{equation}
+\label{eq:mag-beta-second-raw}
+\frac{\beta''}{\beta}=\lambda^2+\lambda'.
+\end{equation}
+Дифференцирование $\gamma^{-2}$ при законе~\eqref{eq:mag-gamma-delta} даёт
+\begin{equation}
+\label{eq:mag-dgamma}
+\frac{\mathrm{d}}{\mathrm{d}\delta}\gamma^{-2}
+=-\,2\gamma^{-4}(\gamma_s^2-1)(1+\delta).
+\end{equation}
+В нуле $\gamma_s^2-1=\beta_s^2\gamma_s^2$, поэтому правая часть равна $-2\beta_s^2/\gamma_s^2$. Вместе с производной множителя $(1+\delta)^{-1}$
+\begin{equation}
+\label{eq:mag-lambda-prime}
+\lambda'_s=-\frac{2\beta_s^2}{\gamma_s^2}-\frac{1}{\gamma_s^2}.
+\end{equation}
+Подстановка в~\eqref{eq:mag-beta-second-raw} приводит к
+\begin{equation}
+\label{eq:mag-beta-second-alg}
+\Biggl(\frac{\beta''}{\beta}\Biggr)_s
+=\frac{1}{\gamma_s^4}-\frac{1}{\gamma_s^2}-\frac{2\beta_s^2}{\gamma_s^2}.
+\end{equation}
+Тождество $\beta_s^2=1-1/\gamma_s^2$ переписывает последние два слагаемых:
+\begin{equation}
+\label{eq:mag-beta-second}
+\frac{2\beta_s^2}{\gamma_s^2}=\frac{2}{\gamma_s^2}-\frac{2}{\gamma_s^4},
+\qquad
+\Biggl(\frac{\beta''}{\beta}\Biggr)_s
+=-\frac{3\beta_s^2}{\gamma_s^2}.
+\end{equation}
+Это вторая строка формулы (18.15) в~\cite{Ng2006}. Ряд Тейлора скорости
+\begin{equation}
+\label{eq:mag-beta-series}
+\frac{\beta(\delta)}{\beta_s}
+=1+\frac{\delta}{\gamma_s^2}
+-\frac{3\beta_s^2}{2\gamma_s^2}\,\delta^2+O(\delta^3).
+\end{equation}
+Обращение $v_s/v=(\beta/\beta_s)^{-1}$ при
+$u=\delta/\gamma_s^2-(3\beta_s^2/(2\gamma_s^2))\delta^2$
+использует $1/(1+u)=1-u+u^2+O(\delta^3)$ и $u^2=\delta^2/\gamma_s^4+O(\delta^3)$:
+\begin{equation}
+\label{eq:mag-vsv}
+\frac{v_s}{v}
+=1-\frac{\delta}{\gamma_s^2}
++\Biggl(\frac{1}{\gamma_s^4}+\frac{3\beta_s^2}{2\gamma_s^2}\Biggr)\delta^2
++O(\delta^3).
+\end{equation}
+Член $3\beta_s^2/(2\gamma_s^2)$ есть вторая производная $\beta$. Квадрат одной первой производной даёт только $1/\gamma_s^4$.
+
+Произведение~\eqref{eq:mag-vsv} и~\eqref{eq:mag-C} до порядка $\delta^2$:
+\begin{align}
+\frac{v_s}{v}\,\frac{C}{C_s}
+&=
+\Biggl[1-\frac{\delta}{\gamma_s^2}
++\Biggl(\frac{1}{\gamma_s^4}+\frac{3\beta_s^2}{2\gamma_s^2}\Biggr)\delta^2\Biggr]
+\bigl(1+\alpha_0\delta+\alpha_1\delta^2\bigr)
+\nonumber\\
+&=1+\Biggl(\alpha_0-\frac{1}{\gamma_s^2}\Biggr)\delta
+\nonumber\\
+&\quad+\Biggl(\alpha_1-\frac{\alpha_0}{\gamma_s^2}
++\frac{1}{\gamma_s^4}+\frac{3\beta_s^2}{2\gamma_s^2}\Biggr)\delta^2
++O(\delta^3).
+\label{eq:mag-product}
+\end{align}
+Произведения, дающие $\delta^3$, отброшены. Вычитание единицы в~\eqref{eq:mag-Tratio} даёт
+\begin{equation}
+\label{eq:mag-eta-series}
+\frac{T-T_s}{T_s}=\eta_0\delta+\eta_1\delta^2,
+\end{equation}
+\begin{align}
+\eta_0&=\alpha_0-\frac{1}{\gamma_s^2},
+\label{eq:mag-eta0}\\
+\eta_1&=\alpha_1-\frac{\alpha_0}{\gamma_s^2}
++\frac{1}{\gamma_s^4}+\frac{3\beta_s^2}{2\gamma_s^2}.
+\label{eq:mag-eta1}
+\end{align}
+Формула (18.18) в~\cite{Ng2006} записана как $\eta_1=\alpha_0\alpha_1^{\mathrm{Ng}}+3\beta_0^2/(2\gamma_0^2)-\eta_0/\gamma_0^2$. Подстановка~\eqref{eq:mag-alpha-ng} и $-\eta_0/\gamma_s^2=-\alpha_0/\gamma_s^2+1/\gamma_s^4$ переводит её в~\eqref{eq:mag-eta1}.
+
+В скобке при $\delta^2$ в формулах (5), (6), (9), (10) и (19) работы~\cite{Senichev2013} стоят три члена $\alpha_1-\alpha_0/\gamma_s^2+1/\gamma_s^4$. Вторую производную скорости, $3\beta_s^2/(2\gamma_s^2)$, это разложение не содержит: перед формулой (5) удержано $\Delta v/v=\delta/\gamma^2$, и обращение скорости производит только квадрат первой производной. Рабочий коэффициент периода один --- полное $\eta_1$ формулы~\eqref{eq:mag-eta1}.
+
+Для магнитного кольца $\gamma_s=1{,}143914$ даёт $\beta_s^2=0{,}235789$, $1/\gamma_s^2=0{,}764211$ и
+\begin{equation}
+\label{eq:mag-eta0-num}
+\eta_0=0{,}230-0{,}764211=-0{,}534211.
+\end{equation}
+Коэффициент $\alpha_1$ выбран так, чтобы $\eta_1$ совпало с $\eta_{1,\mathrm{nat}}=1{,}02$:
+\begin{equation}
+\label{eq:mag-alpha1-num}
+\alpha_1
+=\eta_1+\frac{\alpha_0}{\gamma_s^2}-\frac{1}{\gamma_s^4}-\frac{3\beta_s^2}{2\gamma_s^2}
+=0{,}341461.
+\end{equation}
+При этих числах $3\beta_s^2/(2\gamma_s^2)=0{,}270289$, а скобка $\alpha_1-\alpha_0/\gamma_s^2+1/\gamma_s^4$ равна $0{,}749711$.
+
+\subsection{Синхронные часы}
+\label{sec:clocks}
+
+Рабочее определение берём из формулы (18.10) в~\cite{Ng2006}. Приращение периода отнесено к периоду синхронной частицы на этом обороте,
+\begin{equation}
+\label{eq:mag-ng1810}
+\frac{\Delta T}{T_s}=\eta\delta,
+\end{equation}
+и разложение $\eta=\eta_0+\eta_1\delta+\eta_2\delta^2+\cdots$ из (18.16) означает именно ряд~\eqref{eq:mag-eta-series}. Сглаживание разности фаз (18.9)--(18.11) делит набег на тот же синхронный период и даёт уравнение фазы (18.12),
+\begin{equation}
+\label{eq:mag-phase-slip}
+\frac{\mathrm{d}\varphi}{\mathrm{d}t}=h\omega_0\eta\delta
+=\omega_{\mathrm{rf}}(\eta_0\delta+\eta_1\delta^2).
+\end{equation}
+Время здесь --- часы синхронной частицы: $s=v_s t$ есть путь вдоль её орбиты.
+
+Частота обращения самой частицы есть $\omega=2\pi/T$. При $\tau=T/T_s=1+\eta_0\delta+\eta_1\delta^2$ обращение $\omega/\omega_0=1/\tau$ и формула $1/(1+u)=1-u+u^2$ при $u=\eta_0\delta+\eta_1\delta^2$ дают
+\begin{equation}
+\label{eq:mag-omega-particle}
+\frac{\omega}{\omega_0}
+=1-\eta_0\delta+(\eta_0^2-\eta_1)\delta^2+O(\delta^3).
+\end{equation}
+Запись того же ряда в виде $\Delta\omega/\omega_0=-(\eta_0+\eta_1^{(18.20)}\delta)\delta$, как в (18.20), сравнивает коэффициент при $\delta^2$:
+\begin{equation}
+\label{eq:mag-eta1820}
+\eta_1^{(18.20)}=\eta_1-\eta_0^2.
+\end{equation}
+Определение (18.21), $\eta=-(1/\omega_0)\,\mathrm{d}\omega/\mathrm{d}\delta$, действует производной на~\eqref{eq:mag-omega-particle}. Производная удваивает коэффициент при $\delta^2$,
+\begin{equation}
+\label{eq:mag-eta1821}
+\eta_1^{(18.21)}=2(\eta_1-\eta_0^2).
+\end{equation}
+Ряды~\eqref{eq:mag-eta1820} и~\eqref{eq:mag-eta1821} описывают частоту обращения частицы, если набег фазы делить на её собственный период. В уравнение фазы входит ряд~\eqref{eq:mag-eta-series}. Для магнитного кольца $\eta_0^2=0{,}285381$, $\eta_1-\eta_0^2=0{,}734619$, $2(\eta_1-\eta_0^2)=1{,}469237$, тогда как $3\beta_s^2/(2\gamma_s^2)=0{,}270289$: вычитание $\eta_0^2$ и вторая производная скорости --- разные числа.
+
+Определение $\Delta T/T=\eta\delta$ в формуле (4) работы~\cite{Senichev2013} совпадает с~\eqref{eq:mag-ng1810}. Расхождение скобки формул (5) и (9) той работы с $\eta_1$ есть обрезание разложения скорости на первой производной.
+
+\subsection{Уравнения на зазоре}
+\label{sec:gap}
+
+Фаза отсчитывается так, что она растёт, когда частица опаздывает. За один оборот
+\begin{equation}
+\label{eq:mag-phase-map}
+\Delta\varphi=\omega_{\mathrm{rf}}(T-T_s),
+\end{equation}
+и на синхронных часах это уравнение~\eqref{eq:mag-phase-slip}. Приращение энергии за оборот равно $eV_{\mathrm{rf}}\sin\varphi$. Связь энергии с импульсом в синхронной точке, $\mathrm{d}E=\beta_s^2 E_s\,\mathrm{d}\delta$, и деление на синхронный период $T_s=2\pi h/\omega_{\mathrm{rf}}$ дают
+\begin{equation}
+\label{eq:mag-energy}
+\frac{\mathrm{d}\delta}{\mathrm{d}t}=K\sin\varphi,
+\qquad
+K=\frac{eV_{\mathrm{rf}}\,\omega_{\mathrm{rf}}}{2\pi h\beta_s^2 E_s}.
+\end{equation}
+Поле зазора входит только через $\varphi$. Дифференцирование~\eqref{eq:mag-energy} и подстановка~\eqref{eq:mag-phase-slip} производят
+\begin{equation}
+\label{eq:mag-dd-exact}
+\ddot\delta
+=K\omega_{\mathrm{rf}}\cos\varphi\,(\eta_0\delta+\eta_1\delta^2).
+\end{equation}
+В накопителе без ускорения $\sin\varphi_s=0$. Берём $\varphi_s=0$, так что $\cos\varphi_s=1$. Линейная часть $\ddot\delta=K\omega_{\mathrm{rf}}\eta_0\delta$ есть гармоническое движение $\ddot\delta+\omega_s^2\delta=0$ при
+\begin{equation}
+\label{eq:mag-ws2}
+\omega_s^2=-K\omega_{\mathrm{rf}}\eta_0.
+\end{equation}
+Для магнитного кольца $\eta_0<0$, поэтому $\omega_s^2>0$ и точка $\varphi_s=0$ устойчива.
+
+При малом $\varphi$ заменяем $\cos\varphi$ на $1$. Тогда $K\omega_{\mathrm{rf}}=-\omega_s^2/\eta_0$, и~\eqref{eq:mag-dd-exact} принимает вид
+\begin{equation}
+\label{eq:mag-osc}
+\ddot\delta+\omega_s^2\delta
+=-\frac{\omega_s^2}{\eta_0}\,\eta_1\delta^2.
+\end{equation}
+Что меняет удержанный множитель $\varphi^2/2$, сказано в разделе~\ref{sec:phi2}.
+
+\subsection{Равновесный импульс}
+\label{sec:equilibrium}
+
+Правая часть~\eqref{eq:mag-osc} есть $c_2\delta^2$ при $c_2=-(\omega_s^2/\eta_0)\eta_1$. Решение методом Боголюбова--Митропольского~\cite{Bogoliubov1961} выведено в приложении~\ref{app:ch1bm}. До второго порядка по амплитуде
+\begin{equation}
+\label{eq:mag-delta-sol}
+\delta(t)
+=\delta_m\cos\psi
+-\frac{\eta_1\delta_m^2}{2\eta_0}
++\frac{\eta_1\delta_m^2}{6\eta_0}\cos 2\psi,
+\end{equation}
+где $\psi$ --- фаза синхротронного колебания, а $\delta_m$ --- амплитуда первой гармоники. Среднее по $\psi$
+\begin{equation}
+\label{eq:mag-deq}
+\delta_{\mathrm{eq}}
+=\langle\delta\rangle
+=-\frac{\eta_1\delta_m^2}{2\eta_0}.
+\end{equation}
+Тот же результат читается прямо из~\eqref{eq:mag-osc}, без формы второй гармоники. У периодического решения среднее $\ddot\delta$ равно нулю, а $\langle\delta^2\rangle=\delta_m^2/2$ с точностью до $\delta_m^4$, потому что постоянный сдвиг сам имеет порядок $\delta_m^2$. Поэтому
+\begin{equation}
+\label{eq:mag-average-osc}
+\omega_s^2\langle\delta\rangle
+=-\frac{\omega_s^2}{\eta_0}\,\eta_1\,\frac{\delta_m^2}{2},
+\qquad
+\langle\delta\rangle=-\frac{\eta_1\delta_m^2}{2\eta_0}.
+\end{equation}
+Минус стоит в правой части~\eqref{eq:mag-osc} и сохраняется при делении на $\eta_0$.
+
+Проверка синхронизма в том же порядке подставляет~\eqref{eq:mag-deq} в ряд~\eqref{eq:mag-eta-series}:
+\begin{equation}
+\label{eq:mag-sync}
+\Biggl\langle\frac{T-T_s}{T_s}\Biggr\rangle
+=\eta_0\delta_{\mathrm{eq}}+\eta_1\frac{\delta_m^2}{2}
+=\eta_0\Biggl(-\frac{\eta_1\delta_m^2}{2\eta_0}\Biggr)+\eta_1\frac{\delta_m^2}{2}
+=0.
+\end{equation}
+Среднее опоздание за синхротронный период равно нулю. Это и есть условие принципа Векслера--Макмиллана, которым открыта работа~\cite{Senichev2013}. Сдвиг $\delta_{\mathrm{eq}}$ исчезает при любой амплитуде, если
+\begin{equation}
+\label{eq:mag-eta1-zero}
+\eta_1=0,
+\end{equation}
+то есть
+\begin{equation}
+\label{eq:mag-alpha1-comp}
+\alpha_1
+=\frac{\alpha_0}{\gamma_s^2}-\frac{1}{\gamma_s^4}-\frac{3\beta_s^2}{2\gamma_s^2}.
+\end{equation}
+При $\gamma_s$ и $\alpha_0$ магнитного кольца правая часть равна $-0{,}678539$. Условие~\eqref{eq:mag-eta1-zero} прочитано из~\eqref{eq:mag-sync}, после того как период доведён до $\eta_1$. Формула (19) в~\cite{Senichev2013} обнуляет скобку $\alpha_1-\alpha_0/\gamma_s^2+1/\gamma_s^4$ и оставляет в $\eta_1$ член $3\beta_s^2/(2\gamma_s^2)$. Для магнитного кольца этот остаток равен $0{,}270289$.
+
+При $\eta_0=-0{,}534211<0$ и $\eta_1=1{,}02>0$ формула~\eqref{eq:mag-deq} даёт $\delta_{\mathrm{eq}}>0$: положительный сдвиг импульса укорачивает период и компенсирует квадратичное удлинение.
+
+\subsection{Знак в уравнении (8) работы Сеничева}
+\label{sec:sign}
+
+В системе (7) работы~\cite{Senichev2013} фаза определена с противоположным знаком,
+\begin{equation}
+\label{eq:mag-sen7}
+\frac{\mathrm{d}\varphi}{\mathrm{d}t}
+=-\omega_{\mathrm{rf}}
+\Biggl[
+\eta_0\delta
++\Biggl(\alpha_1-\frac{\alpha_0}{\gamma_s^2}+\frac{1}{\gamma_s^4}\Biggr)\delta^2
++\Biggl(\frac{\Delta L}{L}\Biggr)_{\!\beta}
+\Biggr],
+\end{equation}
+а уравнение энергии совпадает с~\eqref{eq:mag-energy}. Величина $(\Delta L/L)_\beta$ есть удлинение орбиты бетатронным движением; в этой главе она равна нулю и удерживается здесь только потому, что входит в печатных (8) и (10). Дифференцирование энергии даёт $\ddot\delta=K\cos\varphi\cdot\dot\varphi$. При $\cos\varphi=1$, как принято при переходе к уравнению (8) в~\cite{Senichev2013},
+\begin{equation}
+\label{eq:mag-sen8}
+\begin{aligned}
+\ddot\delta
+&+\frac{eV_{\mathrm{rf}}\omega_{\mathrm{rf}}^2}{2\pi h\beta_s^2 E_s}\,\eta_0\delta
+\\
+&=
+-\frac{eV_{\mathrm{rf}}\omega_{\mathrm{rf}}^2}{2\pi h\beta_s^2 E_s}
+\Biggl[
+\Biggl(\alpha_1-\frac{\alpha_0}{\gamma_s^2}+\frac{1}{\gamma_s^4}\Biggr)\delta^2
++\Biggl(\frac{\Delta L}{L}\Biggr)_{\!\beta}
+\Biggr].
+\end{aligned}
+\end{equation}
+Минус справа есть минус из~\eqref{eq:mag-sen7}, умноженный на положительный $K$ при $\cos\varphi=1$. У периодического решения среднее $\ddot\delta$ равно нулю, общий положительный множитель сокращается, и
+\begin{equation}
+\label{eq:mag-sen8-avg}
+\eta_0\langle\delta\rangle
+=
+-\Biggl[
+\Biggl(\alpha_1-\frac{\alpha_0}{\gamma_s^2}+\frac{1}{\gamma_s^4}\Biggr)
+\frac{\delta_m^2}{2}
++\Biggl(\frac{\Delta L}{L}\Biggr)_{\!\beta}
+\Biggr].
+\end{equation}
+Отсюда
+\begin{equation}
+\label{eq:mag-sen8-deq}
+\langle\delta\rangle
+=
+-\frac{1}{\eta_0}
+\Biggl[
+\Biggl(\alpha_1-\frac{\alpha_0}{\gamma_s^2}+\frac{1}{\gamma_s^4}\Biggr)
+\frac{\delta_m^2}{2}
++\Biggl(\frac{\Delta L}{L}\Biggr)_{\!\beta}
+\Biggr].
+\end{equation}
+Печатная формула (10) в~\cite{Senichev2013} имеет вид
+\begin{equation}
+\label{eq:mag-sen10}
+\Delta\delta_{\mathrm{eq}}
+=
+\frac{\gamma_s^2}{\gamma_s^2\alpha_0-1}
+\Biggl[
+\Biggl(\alpha_1-\frac{\alpha_0}{\gamma_s^2}+\frac{1}{\gamma_s^4}\Biggr)
+\frac{\delta_m^2}{2}
++\Biggl(\frac{\Delta L}{L}\Biggr)_{\!\beta}
+\Biggr].
+\end{equation}
+Предымножитель есть единица, делённая на $\eta_0$:
+\begin{equation}
+\label{eq:mag-prefactor}
+\frac{\gamma_s^2}{\gamma_s^2\alpha_0-1}
+=\frac{1}{\alpha_0-1/\gamma_s^2}
+=\frac{1}{\eta_0}.
+\end{equation}
+Формула~\eqref{eq:mag-sen10} поэтому равна правой части~\eqref{eq:mag-sen8-deq} с противоположным знаком. Тот же предымножитель $1/\eta_0$ без минуса стоит в формуле (16). Среднее уравнения~\eqref{eq:mag-sen8} этот плюс не производит: минус уже стоит в правой части~\eqref{eq:mag-sen8}.
+
+При $\eta_0<0$ точка $\varphi=0$ в знаке~\eqref{eq:mag-sen7} не колебательна: линейный коэффициент в~\eqref{eq:mag-sen8} равен $K\omega_{\mathrm{rf}}\eta_0<0$. Устойчивая точка той же системы есть $\varphi=\pi$, где $\cos\varphi=-1$. Подстановка в $\ddot\delta=K\cos\varphi\cdot\dot\varphi$ даёт
+\begin{equation}
+\label{eq:mag-sen-stable}
+\ddot\delta
+=K\omega_{\mathrm{rf}}
+\Biggl[
+\eta_0\delta
++\Biggl(\alpha_1-\frac{\alpha_0}{\gamma_s^2}+\frac{1}{\gamma_s^4}\Biggr)\delta^2
++\Biggl(\frac{\Delta L}{L}\Biggr)_{\!\beta}
+\Biggr].
+\end{equation}
+Линейная частота $\omega_s^2=-K\omega_{\mathrm{rf}}\eta_0$ при $\eta_0<0$ положительна. У периодического решения среднее $\ddot\delta$ равно нулю. Деление оставшегося равенства на $K\omega_{\mathrm{rf}}$ даёт
+\begin{equation}
+\label{eq:mag-sen-stable-avg}
+\eta_0\langle\delta\rangle
++\Biggl(\alpha_1-\frac{\alpha_0}{\gamma_s^2}+\frac{1}{\gamma_s^4}\Biggr)\frac{\delta_m^2}{2}
++\Biggl(\frac{\Delta L}{L}\Biggr)_{\!\beta}
+=0,
+\end{equation}
+и это снова~\eqref{eq:mag-sen8-deq}. Замена скобки $\alpha_1-\alpha_0/\gamma_s^2+1/\gamma_s^4$ на полное $\eta_1$ и обнуление $(\Delta L/L)_\beta$ возвращают~\eqref{eq:mag-deq}.
+
+\subsection{Поправка порядка \texorpdfstring{$\varphi^2$}{phi\^2}}
+\label{sec:phi2}
+
+Разложение $\cos\varphi=1-\varphi^2/2+\cdots$ возвращает в~\eqref{eq:mag-dd-exact} множитель, отброшенный при переходе к~\eqref{eq:mag-osc}. На линейной орбите $\delta=\delta_m\cos\psi$, $\psi=\omega_s t$, уравнение~\eqref{eq:mag-phase-slip} интегрируется:
+\begin{equation}
+\label{eq:mag-phi-lin}
+\varphi=\varphi_m\sin\psi,
+\qquad
+\varphi_m=\frac{\omega_{\mathrm{rf}}\eta_0\delta_m}{\omega_s}.
+\end{equation}
+При $\eta_1=0$ уравнение~\eqref{eq:mag-dd-exact} вместе с~\eqref{eq:mag-ws2} есть
+\begin{equation}
+\label{eq:mag-cos-corr}
+\ddot\delta+\omega_s^2\delta
+=\omega_s^2\frac{\varphi^2}{2}\,\delta+O(\varphi^4).
+\end{equation}
+Тождество $\sin^2\psi\cos\psi=(\cos\psi-\cos 3\psi)/4$ даёт
+\begin{equation}
+\label{eq:mag-phi2-fourier}
+\frac{\varphi^2}{2}\,\delta
+=\frac{\varphi_m^2\delta_m}{8}(\cos\psi-\cos 3\psi).
+\end{equation}
+Постоянного члена нет, поэтому эта добавка не сдвигает $\langle\delta\rangle$. Косинус первой гармоники сдвигает частоту. Подстановка $\delta=\delta_m\cos\Omega t$ и $\Omega=\omega_s+\Delta\omega$ сравнивает коэффициенты при $\cos\Omega t$: $\omega_s^2-\Omega^2=-2\omega_s\Delta\omega$ слева и $\omega_s^2\varphi_m^2/8$ справа, откуда
+\begin{equation}
+\label{eq:mag-phi-freq}
+\frac{\Delta\omega}{\omega_s}=-\frac{\varphi_m^2}{16}.
+\end{equation}
+Амплитуда $\varphi_m$ пропорциональна $\delta_m$, так что~\eqref{eq:mag-phi-freq} имеет тот же порядок $\delta_m^2$, что и частотная поправка раздела~\ref{sec:frequency}, и зависит от напряжения через отношение $\omega_{\mathrm{rf}}/\omega_s$. В коэффициент $5/12$ она не входит: тот получен при $\cos\varphi=1$.
+
+Интегрирование системы~\eqref{eq:mag-phase-slip}, \eqref{eq:mag-energy} при $\eta_1=0$ и $|\varphi_m|=0{,}1$ даёт относительный сдвиг частоты $-6{,}255\times 10^{-4}$. Формула~\eqref{eq:mag-phi-freq} даёт $-6{,}250\times 10^{-4}$. Среднее $\langle\delta\rangle$ в этом расчёте остаётся нулём с точностью $10^{-14}$. Остаток частоты имеет порядок $\varphi_m^4$ и при $|\varphi_m|=0{,}2$ вырастает в шестнадцать раз, как и должно у четвёртой степени.
+
+При $\eta_1=1{,}02$, $\delta_m=10^{-3}$ и $|\varphi_m|=0{,}04$ среднее отличается от~\eqref{eq:mag-deq} на $-4{,}6\times 10^{-11}$ при самом $\delta_{\mathrm{eq}}=9{,}55\times 10^{-7}$. Сдвиг среднего начинается со следующего порядка малости. Среднее ряда~\eqref{eq:mag-eta-series} при этом остаётся нулём: у периодического решения $\langle\dot\varphi\rangle=0$, и~\eqref{eq:mag-phase-slip} по-прежнему требует~\eqref{eq:mag-sync}.
+
+\subsection{Частота второго порядка}
+\label{sec:frequency}
+
+При $\cos\varphi=1$ поправка частоты вычислена в приложении~\ref{app:ch1bm}. Для уравнения~\eqref{eq:mag-osc}
+\begin{equation}
+\label{eq:mag-freq}
+\omega
+=\omega_s\Biggl[1-\frac{5}{12}\frac{\eta_1^2\delta_m^2}{\eta_0^2}\Biggr].
+\end{equation}
+Коэффициент $5/12$ складывается из постоянной части решения и гармоники $\cos 2\psi$: вклады $1/2$ и $-1/12$. В~\cite{Senichev2013} этой поправки нет.
+
+Проверка --- интегрирование~\eqref{eq:mag-osc} методом Рунге--Кутты при $\omega_s=1$, $\eta_0=-0{,}534211$, $\eta_1=1{,}02$ и $\delta_m=10^{-3}$. Начальное условие взято из~\eqref{eq:mag-delta-sol} при $\psi=0$:
+\begin{equation}
+\label{eq:mag-ic}
+\delta(0)
+=\delta_m-\frac{\eta_1\delta_m^2}{2\eta_0}+\frac{\eta_1\delta_m^2}{6\eta_0},
+\qquad
+\dot\delta(0)=0.
+\end{equation}
+Формула~\eqref{eq:mag-freq} даёт относительный сдвиг $-1{,}51902\times 10^{-6}$. Интегрирование даёт $-1{,}51912\times 10^{-6}$. Среднее $\delta$ равно $9{,}54681\times 10^{-7}$ против $\delta_{\mathrm{eq}}=9{,}54679\times 10^{-7}$ из~\eqref{eq:mag-deq}, а среднее ряда~\eqref{eq:mag-eta-series} отличается от нуля меньше чем на $10^{-14}$. Разложение пригодно, пока $|\eta_1\delta_m/\eta_0|\ll 1$. При этих числах $|\eta_1/\eta_0|=1{,}909$, и для $\delta_m=10^{-3}$ левая часть равна $1{,}9\times 10^{-3}$.
+
+\zamech{Формула (18.19) в~\cite{Ng2006} для коэффициента $\eta_2$ при $\delta^3$ в~\eqref{eq:mag-ng1810} дальше не используется. Третья производная (18.15), $(\beta'''/\beta)_s=-3\beta_s^2(1-5\beta_s^2)/\gamma_s^2$, совпадает с дифференцированием точной зависимости~\eqref{eq:mag-beta-exact}. Собранное выражение (18.19) с этим рядом не совпадает. При $\alpha_2=0$, $\alpha_0=0{,}2$, $\alpha_1=2$ (то есть $\alpha_0\alpha_1^{\mathrm{Ng}}=2$) и $\gamma_s=1{,}248$, как в примере COSY работы~\cite{Senichev2013}, коэффициент при $\delta^3$ в $(T-T_s)/T_s$, посчитанный по~\eqref{eq:mag-beta-exact} и по $C/C_s=1+\alpha_0\delta+\alpha_1\delta^2$, равен $-1{,}931$. Формула (18.19) при тех же числах даёт $+1{,}006$.}
+\section{Бетатронное движение в магнитном кольце}
+\label{sec:ch2}
+
+В главе~\ref{sec:magnetic} период задан интегралом~\eqref{eq:mag-T}. Скорость вынесена из него, и для одной дисперсионной орбиты ряд доведён до $\eta_1$. Здесь в тот же элемент длины возвращаются бетатронное отклонение и углы. Модуль скорости между зазорами по-прежнему зависит только от полного импульса: это свойство статического магнитного поля. Коэффициент, с которым бетатронное удлинение входит в период, получается из произведения $(v_s/v)(C/C_s)$.
+
+\subsection{Элемент пути}
+\label{sec:ch2-dl}
+
+Элемент пути в криволинейной координате $s$ есть
+\begin{equation}
+\label{eq:beta-dl}
+\mathrm{d}l
+=\sqrt{\Bigl(1+\frac{x}{\rho}\Bigr)^2+x'^2+y'^2}\;\mathrm{d}s.
+\end{equation}
+Здесь $\rho$ --- локальный радиус кривизны опорной орбиты; вне диполей $1/\rho=0$. При $x/\rho>-1$ множитель $1+x/\rho$ выносится точно,
+\begin{equation}
+\label{eq:beta-dl-factor}
+\mathrm{d}l
+=\Bigl(1+\frac{x}{\rho}\Bigr)
+\sqrt{1+\frac{x'^2+y'^2}{(1+x/\rho)^2}}\;\mathrm{d}s.
+\end{equation}
+Квадрат $(x/\rho)^2$ в отдельное слагаемое не выделяется: он уже сидит внутри $1+x/\rho$. Разложение корня по квадрату угла до второго порядка по поперечным амплитудам даёт
+\begin{equation}
+\label{eq:beta-dl-2}
+\mathrm{d}l
+=\Biggl(1+\frac{x}{\rho}+\frac{x'^2+y'^2}{2}\Biggr)\mathrm{d}s.
+\end{equation}
+Произведение $(x/\rho)(x'^2+y'^2)$ имеет третий порядок и отбрасывается.
+
+Отклонение складывается из дисперсионной орбиты, бетатронного колебания и сдвига, квадратичного по бетатронной амплитуде,
+\begin{equation}
+\label{eq:beta-x}
+x=D\delta+x_\beta+x_{\mathrm{nl}},
+\qquad
+x'=D'\delta+x'_\beta+\cdots,
+\qquad
+y'=y'_\beta+\cdots.
+\end{equation}
+Слагаемые, составленные только из $D$, $D'$ и $\delta$, включая $(D'\delta)^2/2$, уже собраны в $\alpha_0$ и $\alpha_1$ формулы~\eqref{eq:mag-C}. Подстановка~\eqref{eq:beta-x} в~\eqref{eq:beta-dl-2} оставляет сверх той длины четыре бетатронных вклада: линейный $x_\beta/\rho$, квадрат угла $(x_\beta'^2+y_\beta'^2)/2$, перекрёстное произведение $D'\delta\,x'_\beta$ и сдвиг $x_{\mathrm{nl}}/\rho$.
+
+\subsection{Среднее по бетатронной фазе}
+\label{sec:ch2-avg}
+
+Бетатронный набег фазы за оборот имеет порядок единицы, синхротронный тюн --- порядок $10^{-3}$. За время, на котором синхротронная фаза ещё почти постоянна, бетатронная фаза успевает много раз обойти окружность. Действие $J$ на этом медленном времени есть адиабатический инвариант. Высокочастотное поле видит опоздание одного оборота, а уравнение фазы усредняет его ещё и по бетатронной фазе. У Шоджи~\cite{Shoji2005} тому же пределу отвечает $n\to\infty$ в формуле (5): среднее удлинение одного оборота извлекается из разности пути за большое число оборотов.
+
+Линейный интеграл $\oint x_\beta/\rho\,\mathrm{d}s$ после такого усреднения равен нулю. Сумма по оборотам остаётся ограниченной. В разделе II.B работы~\cite{Shoji2005} амплитуда продольного смещения есть $\sqrt{2J_x\mathcal{H}}$, где $\mathcal{H}=\gamma_x D^2+2\alpha_x DD'+\beta_x D'^2$, формулы (10)--(12). Постоянной части, растущей вместе с числом оборотов, у этого члена нет. Перекрёстное произведение $D'\delta\,x'_\beta$ линейно по бетатронной амплитуде, и его среднее по фазе тоже равно нулю. Квадрат $(x/\rho)^2$ геометрией~\eqref{eq:beta-dl-factor} не порождается, поэтому произведение $x_\beta D\delta$ в длину на этом порядке не входит.
+
+Квадрат угла остаётся. Решение линейного уравнения с параметрами Твисса имеет вид $x_\beta=\sqrt{2J_x\beta_x}\cos\psi$, $\mathrm{d}\psi/\mathrm{d}s=1/\beta_x$ и $\beta_x'=-2\alpha_x$. Дифференцирование по $s$ даёт
+\begin{equation}
+\label{eq:beta-xp}
+x'_\beta
+=-\sqrt{\frac{2J_x}{\beta_x}}\,(\alpha_x\cos\psi+\sin\psi).
+\end{equation}
+На фиксированном азимуте фаза за много оборотов распределена равномерно, если тюн не целый. Средние $\langle\cos^2\psi\rangle=\langle\sin^2\psi\rangle=1/2$ и $\langle\sin\psi\cos\psi\rangle=0$ превращают квадрат~\eqref{eq:beta-xp} в
+\begin{equation}
+\label{eq:beta-xp2}
+\langle x_\beta'^2\rangle
+=\frac{2J_x}{\beta_x}\Biggl(\frac{\alpha_x^2}{2}+\frac{1}{2}\Biggr)
+=J_x\gamma_x,
+\end{equation}
+где $\gamma_x=(1+\alpha_x^2)/\beta_x$. Локальное $\alpha_x$ в тождестве сохраняется. То же по вертикали, $\langle y_\beta'^2\rangle=J_y\gamma_y$. Среднее углового интеграла за оборот есть
+\begin{equation}
+\label{eq:beta-angle}
+\Biggl\langle\oint\frac{x_\beta'^2+y_\beta'^2}{2}\,\mathrm{d}s\Biggr\rangle
+=\frac{J_x}{2}\int\gamma_x\,\mathrm{d}s
++\frac{J_y}{2}\int\gamma_y\,\mathrm{d}s.
+\end{equation}
+Функция $\alpha=-\beta'/2$ периодична, так что $\int\alpha\,\mathrm{d}s=0$, но в $\langle x'^2\rangle$ стоит $\alpha^2$, и интеграл $\int(\alpha^2/\beta)\,\mathrm{d}s$ остаётся. Замена $\gamma$ на $1/\beta$ этот интеграл выбрасывает.
+
+На кольце из $16$ ячеек FODO с тонкими линзами локальный $\alpha$ отличен от нуля. Дрейф между линзами равен $0{,}8$~м, сила фокусирующей линзы равна $0{,}4$~м$^{-1}$, дефокусирующая имеет обратный знак. На этом кольце $\int\gamma_x\,\mathrm{d}s=10{,}374$ и $2\pi\nu_x=5{,}142$; вертикальная плоскость совпадает с горизонтальной по симметрии ячейки. Сумма $x'^2\,\mathrm{d}s/2+y'^2\,\mathrm{d}s/2$ по $8000$ оборотам при $J_x=10^{-6}$~м и $J_y=0{,}7\times 10^{-6}$~м относится к правой части~\eqref{eq:beta-angle} как $1{,}00000035$. Та же сумма больше величины, в которой $\gamma$ заменено на $1/\beta$, в $2{,}017$ раза.
+
+Сдвиг $x_{\mathrm{nl}}$ квадратичен по бетатронной амплитуде. Его вклад $\oint x_{\mathrm{nl}}/\rho\,\mathrm{d}s$ имеет тот же порядок, что и~\eqref{eq:beta-angle}, и в среднее входит. Для короткого секступоля он сводится к толчку, усреднённому по бетатронной фазе; кривизна и краевое поле дают свои квадратичные члены. Их перечень --- в приложении~\ref{app:ch2path}. Оба вклада, угловой и нелинейный, не зависят от $\delta$ в удерживаемом порядке: хроматическая поправка $\gamma(\delta)=\gamma+\delta\,\partial\gamma/\partial\delta+\cdots$ умножает действие на $\delta$ и отбрасывается вместе с произведениями $\delta\Lambda$.
+
+Одно относительное удлинение собирает всё, что осталось после усреднения,
+\begin{equation}
+\label{eq:beta-Lambda}
+\Lambda
+\equiv
+\frac{1}{C_s}
+\Biggl(
+\frac{J_x}{2}\int\gamma_x\,\mathrm{d}s
++\frac{J_y}{2}\int\gamma_y\,\mathrm{d}s
++\Biggl\langle\oint\frac{x_{\mathrm{nl}}}{\rho}\,\mathrm{d}s\Biggr\rangle
+\Biggr).
+\end{equation}
+Первая группа слагаемых есть прямое содержание квадрата угла. Вторая есть средний сдвиг орбиты. Дальше в период входит именно это $\Lambda$, и второй буквы для того же вклада нет.
+
+\subsection{Множитель скорости}
+\label{sec:ch2-speed}
+
+Длина оборота теперь есть сумма дисперсионной длины и бетатронного удлинения,
+\begin{equation}
+\label{eq:beta-C}
+\frac{C}{C_s}
+=1+\alpha_0\delta+\alpha_1\delta^2+\Lambda.
+\end{equation}
+Слагаемые $\alpha_0\delta$ и $\alpha_1\delta^2$ содержат только $D$ и $D'$. Величина $\Lambda$ прибавлена интегралом~\eqref{eq:beta-dl-2} внутри $C$, до умножения на $v_s/v$. Поскольку $|v|$ между зазорами зависит только от $\delta$, формула~\eqref{eq:mag-Tratio} остаётся точной:
+\begin{equation}
+\label{eq:beta-Tratio}
+\frac{T-T_s}{T_s}
+=\frac{v_s}{v}\,\frac{C}{C_s}-1.
+\end{equation}
+Подстановка ряда~\eqref{eq:mag-vsv} и суммы~\eqref{eq:beta-C} повторяет произведение~\eqref{eq:mag-product} и добавляет к нему $(v_s/v)\Lambda$. При
+\begin{equation}
+\label{eq:beta-vsv-L}
+\frac{v_s}{v}\,\Lambda
+=\Lambda-\frac{\Lambda}{\gamma_s^2}\,\delta+O(\delta^2\Lambda)
+\end{equation}
+удержанный член есть само $\Lambda$. Следующий, $-(\Lambda/\gamma_s^2)\delta$, вместе с прочими произведениями $\delta\Lambda$ отбрасывается. Поэтому
+\begin{equation}
+\label{eq:beta-T}
+\frac{T-T_s}{T_s}
+=\eta_0\delta+\eta_1\delta^2+\Lambda,
+\end{equation}
+с теми же $\eta_0$ и $\eta_1$, что в~\eqref{eq:mag-eta0} и~\eqref{eq:mag-eta1}.
+
+Коэффициент перед $\Lambda$ равен единице, потому что $v_s/v$ при $\delta=0$ равен единице, а $\Lambda$ уже второго порядка малости. Коэффициент $\alpha_0$ стоит при $\delta$ внутри дисперсионной части $C/C_s$ и на $\Lambda$ не умножается: вклады в интеграл~\eqref{eq:beta-dl-2} складываются. Запись удлинения множителем $(1+\lambda)$ при дисперсионной длине, $\lambda=\Delta C_\beta/C_{\mathrm{disp}}$, даёт в произведении $(1+\eta_0\delta)\lambda$ слагаемое $\eta_0\delta\lambda$. Пересчёт $\lambda=\Lambda\,C_s/C_{\mathrm{disp}}=\Lambda(1-\alpha_0\delta+\cdots)$ снимает $\alpha_0\delta\Lambda$, потому что $\eta_0-\alpha_0=-1/\gamma_s^2$, и первая поправка снова равна $-(\delta/\gamma_s^2)\Lambda$. В удержанном порядке перед $\Lambda$ по-прежнему стоит единица. Величина $\eta_0=\alpha_0-1/\gamma_s^2$ есть коэффициент при $\delta$ в~\eqref{eq:beta-T} и знаменатель сдвига импульса; в множитель при $\Lambda$ она на этом порядке не входит.
+
+Порядок отброшенного произведения виден на числах магнитного кольца. Амплитуда синхротронных колебаний $\delta_m$ лежит между $10^{-4}$ и $10^{-3}$. Действие при эмиттансе $\varepsilon=2J=10^{-6}$~м равно $J=5\times 10^{-7}$~м. Ниже, в записи через хроматичность, этому действию в обеих плоскостях отвечает $\Lambda=9{,}875\times 10^{-8}$. Произведение $\delta\Lambda$ тогда лежит между $10^{-11}$ и $10^{-10}$: при $\delta_m=10^{-4}$ член $|\Lambda|\delta_m/\gamma_s^2$ равен $7{,}5\times 10^{-12}$. Рядом с ним удержанные $\Lambda$ и $\eta_1\delta_m^2/2=5{,}1\times 10^{-9}$ больше на три--четыре порядка. Поправка, которую $-(\Lambda/\gamma_s^2)\delta$ вносит в $\eta_0$, имеет величину $\Lambda/\gamma_s^2\sim 8\times 10^{-8}$ и в $\delta_{\mathrm{eq}}$ не входит.
+
+Тот же коэффициент единица стоит в формуле (6) работы~\cite{Senichev2013}, куда $(\Delta L/L)_\beta$ вписано после того, как продольное уравнение уже сокращено с линейной скоростью. Совпадение этого коэффициента с~\eqref{eq:beta-T} следует из интеграла~\eqref{eq:beta-Tratio}. Вклад входит как кусок $T=\oint\mathrm{d}l/v$ после усреднения по быстрому бетатрону, и перед геометрическим удлинением в этом куске стоит единица.
+
+\subsection{Равновесный импульс}
+\label{sec:ch2-eq}
+
+Уравнение фазы есть~\eqref{eq:mag-phase-slip} с рядом~\eqref{eq:beta-T} вместо~\eqref{eq:mag-eta-series}. Уравнение энергии на зазоре остаётся~\eqref{eq:mag-energy}. При $\cos\varphi=1$ и $\omega_s^2=-K\omega_{\mathrm{rf}}\eta_0$ из~\eqref{eq:mag-ws2} получается
+\begin{equation}
+\label{eq:beta-osc}
+\ddot\delta+\omega_s^2\delta
+=-\frac{\omega_s^2}{\eta_0}(\eta_1\delta^2+\Lambda).
+\end{equation}
+На синхротронном времени $\Lambda$ постоянно. У периодического решения среднее $\ddot\delta$ равно нулю, а $\langle\delta^2\rangle=\delta_m^2/2$ с точностью до членов четвёртого порядка: постоянный сдвиг сам имеет порядок $\delta_m^2$ и $\Lambda$. Поэтому
+\begin{equation}
+\label{eq:beta-avg}
+\eta_0\langle\delta\rangle+\eta_1\frac{\delta_m^2}{2}+\Lambda=0,
+\end{equation}
+\begin{equation}
+\label{eq:beta-deq}
+\delta_{\mathrm{eq}}
+=\langle\delta\rangle
+=-\frac{1}{\eta_0}
+\Biggl(\frac{\eta_1\delta_m^2}{2}+\Lambda\Biggr).
+\end{equation}
+Это магнитный аналог формулы (10) в~\cite{Senichev2013} с полным $\eta_1$ и с тем знаком, который уже стоит в среднем уравнения (8) той работы: раздел~\ref{sec:sign} показал, что печатный предымножитель $\gamma_s^2/(\gamma_s^2\alpha_0-1)=1/\eta_0$ этот минус теряет. При $\Lambda=0$ формула~\eqref{eq:beta-deq} возвращается к~\eqref{eq:mag-deq}.
+
+Решение до второй гармоники даёт приложение~\ref{app:ch1bm}. Для~\eqref{eq:beta-osc} постоянная $c_0=-(\omega_s^2/\eta_0)\Lambda$ и $c_2=-(\omega_s^2/\eta_0)\eta_1$, так что
+\begin{equation}
+\label{eq:beta-delta-sol}
+\delta(t)
+=\delta_m\cos\psi
+-\frac{1}{\eta_0}
+\Biggl(\frac{\eta_1\delta_m^2}{2}+\Lambda\Biggr)
++\frac{\eta_1\delta_m^2}{6\eta_0}\cos 2\psi.
+\end{equation}
+Постоянная часть совпадает с~\eqref{eq:beta-deq}. Частота на том же порядке есть формула~\eqref{eq:mag-bm-B2-result},
+\begin{equation}
+\label{eq:beta-freq}
+\frac{\omega}{\omega_s}
+=1-\frac{5}{12}\frac{\eta_1^2\delta_m^2}{\eta_0^2}
+-\frac{\eta_1\Lambda}{\eta_0^2}.
+\end{equation}
+Подстановка~\eqref{eq:beta-deq} в~\eqref{eq:beta-T} обращает среднее опоздание в нуль,
+\begin{equation}
+\label{eq:beta-sync}
+\Biggl\langle\frac{T-T_s}{T_s}\Biggr\rangle
+=\eta_0\delta_{\mathrm{eq}}+\eta_1\frac{\delta_m^2}{2}+\Lambda
+=0.
+\end{equation}
+Сдвиг $\delta_{\mathrm{eq}}$ исчезает при любой амплитуде $\delta_m$ и при любых действиях, когда оба коэффициента обращаются в нуль,
+\begin{equation}
+\label{eq:beta-comp}
+\eta_1=0,
+\qquad
+\Lambda=0.
+\end{equation}
+В записи раздела~\ref{sec:ch2-xi} второе равенство для коротких секступолей есть $\xi_x=\xi_y=0$. Три коэффициента $\eta_1$, $\xi_x$ и $\xi_y$ независимы, и сил секступолей, которые их гасят, нужно три семейства. Этот счёт прочитан из~\eqref{eq:beta-sync}. Интеграл по кольцу собирает только суммы вида $\int\beta DK_2\,\mathrm{d}s$ и не знает порядка расстановки элементов; однооборотное отображение при той же оптике может дать другой сдвиг.
+
+При $\eta_0<0$ и $\Lambda>0$ формула~\eqref{eq:beta-deq} даёт $\delta_{\mathrm{eq}}>0$. Положительный сдвиг импульса укорачивает период и компенсирует бетатронное удлинение так же, как он компенсирует положительное $\eta_1$ в конце раздела~\ref{sec:equilibrium}.
+
+\subsection{Гладкое кольцо и формула (11)}
+\label{sec:ch2-smooth}
+
+В гладком кольце $\alpha=0$, поэтому $\gamma=1/\beta$, и $\int\mathrm{d}s/\beta=2\pi\nu$, поскольку $\mathrm{d}\psi=\mathrm{d}s/\beta$. Угловая часть~\eqref{eq:beta-Lambda} без $x_{\mathrm{nl}}$ принимает вид
+\begin{equation}
+\label{eq:beta-smooth}
+\Lambda
+=\frac{J_x\nu_x+J_y\nu_y}{2R}
+=\frac{\pi(J_x\nu_x+J_y\nu_y)}{C_s},
+\end{equation}
+где $C_s=2\pi R$. Эмиттанс формулы (11) в~\cite{Senichev2013} определён так, что фазовое среднее $x_\beta'^2=\varepsilon_x/(2\beta_x)$. Вместе с $\alpha=0$ это есть $\varepsilon=2J$: из~\eqref{eq:beta-xp2} при $\alpha=0$ следует $\langle x'^2\rangle=J/\beta=\varepsilon/(2\beta)$. Подстановка $J=\varepsilon/2$ в~\eqref{eq:beta-smooth} даёт
+\begin{equation}
+\label{eq:beta-wepea11}
+\Lambda
+=\frac{\pi}{2C_s}(\varepsilon_x\nu_x+\varepsilon_y\nu_y).
+\end{equation}
+Печатная формула (11) той работы есть $(\Delta L/L)_\beta=\pi(\varepsilon_x\nu_x+\varepsilon_y\nu_y)/(2L)$ при $L=C_s$. Промежуточная запись там же есть $(1/L)\int\bigl(x_\beta/\rho+(x_\beta'^2+y_\beta'^2)/2\bigr)\mathrm{d}s$ при $x_\beta'^2=\varepsilon/(2\beta)$ и $1/\beta=\nu/R$. Произведение двух множителей $1/2$, геометрического и того, что сидит в $\varepsilon/(2\beta)$, даёт
+\begin{equation}
+\label{eq:beta-wepea-alg}
+\frac{1}{L}\int\frac{1}{2}\cdot\frac{\varepsilon}{2\beta}\,\mathrm{d}s
+=\frac{\varepsilon}{4L}\int\frac{\mathrm{d}s}{\beta}
+=\frac{\varepsilon}{4L}\cdot 2\pi\nu
+=\frac{\pi\varepsilon\nu}{2L}.
+\end{equation}
+Печатный множитель $\pi/(2L)$ с этим промежуточным счётом совпадает. Расхождения в двойке между формулой (11) и строкой $x'^2=\varepsilon/(2\beta)$ нет. Двойка появилась бы, если выбросить геометрическую половину в~\eqref{eq:beta-dl-2} или подставить в~\eqref{eq:beta-wepea11} эмиттанс $\varepsilon_{\mathrm{rms}}=\langle J\rangle$ вместо $\varepsilon=2J$. В формуле (20) той же работы этот $\varepsilon$ назван среднеквадратичным; при определении $\langle J\rangle=\varepsilon_{\mathrm{rms}}$ такая подстановка занижает $\Lambda$ вдвое. Для пучка среднее~\eqref{eq:beta-Lambda} линейно по $J$, и в него входит $\langle J\rangle=\varepsilon_{\mathrm{rms}}$.
+
+В неопубликованной заметке~\cite{SenichevNote} шаг перед формулой (9) читается так: среднее $\beta'$ по кольцу равно нулю, следовательно $\alpha=0$, и тогда $x'_\beta=-\sqrt{2J/\beta}\,\sin\psi$ совпадает с $-\sqrt{2J\gamma}\,\sin\psi$. Среднее $\int\beta'\,\mathrm{d}s=0$ верно, потому что $\beta$ периодична. Из него не следует $\alpha(s)=0$ на каждом азимуте. Равенство $\sqrt{1/\beta}=\sqrt{\gamma}$ при $\alpha\neq 0$ ложно. Если в интеграл подставить амплитуду $\sqrt{2J/\beta}$ и отбросить $\alpha\cos\psi$, получится $(J/2)\int\mathrm{d}s/\beta$ и пропадёт $(J/2)\int(\alpha^2/\beta)\,\mathrm{d}s$. Формула (11) заметки записана уже через $\gamma$ и равна $(J/2)\int\gamma\,\mathrm{d}s$ на каждую плоскость. Этот интеграл совпадает с~\eqref{eq:beta-angle}: его спасает тождество $\langle x'^2\rangle=J\gamma$, доказанное в~\eqref{eq:beta-xp2} без предположения $\alpha=0$. Ложный шаг --- отождествление двух амплитуд в формуле (9). Конечная формула (11) заметки с~\eqref{eq:beta-angle} согласована.
+
+\subsection{Хроматичность}
+\label{sec:ch2-xi}
+
+Вторая запись того же $\Lambda$ выражает нелинейный сдвиг через хроматичность. В модели второго порядка работы~\cite{Shoji2005}, с секступолем, кривизной и краевым полем, формулы (26) и (30) после интегрирования по частям сокращаются до формулы (31),
+\begin{equation}
+\label{eq:beta-xi}
+\Lambda
+=-\frac{2\pi}{C_s}(J_x\xi_x+J_y\xi_y).
+\end{equation}
+Здесь $\xi=\mathrm{d}\nu/\mathrm{d}\delta$. Абсолютное удлинение Шоджи есть $\Delta C=-2\pi(J_x\xi_x+J_y\xi_y)$, и~\eqref{eq:beta-xi} есть оно же, делённое на $C_s$. Эта запись равна~\eqref{eq:beta-Lambda}, потому что хроматичность собрана из тех же сил, что и путь: квадрат угла даёт интеграл $\gamma$, а секступоль, кривизна и краевое поле дают $\langle\oint x_{\mathrm{nl}}/\rho\,\mathrm{d}s\rangle$.
+
+Интеграл одной $\gamma$ совпадает с~\eqref{eq:beta-xi}, когда среднее $\oint x_{\mathrm{nl}}/\rho\,\mathrm{d}s$ равно нулю. Для этого должны отсутствовать секступольный вклад, вклад кривизны сверх того, что уже сидит в функции $\gamma(s)$ линейной оптики, и вклад краевого поля. Тогда $\xi_x=-(1/(4\pi))\int\gamma_x\,\mathrm{d}s$ и так же по вертикали, с фокусирующим коэффициентом уравнения $z''+Kz=0$, и обе записи сводятся к~\eqref{eq:beta-angle}, делённому на $C_s$. Пока эти вклады есть, основная запись полного $\Lambda$ --- формула~\eqref{eq:beta-xi}. Запись через $\gamma$ остаётся прямой оценкой квадрата угла и становится полным $\Lambda$, когда $x_{\mathrm{nl}}$ в среднем не удлиняет орбиту.
+
+Короткий секступоль --- условие, при котором заметка~\cite{SenichevNote} заменяет $x_{\mathrm{nl}}$ средним толчком и приходит к своей формуле (24), бетатронная часть которой совпадает с~\eqref{eq:beta-xi}. Кривизна и краевое поле в этот вывод не входят. У Шоджи они удерживаются и в пути, и в хроматичности, и равенство (31) при них сохраняется. Обнуление $\Lambda$ вместе с $\xi_x$ и $\xi_y$ в приближении коротких секступолей есть частный случай того же равенства. В модели Шоджи $\Lambda$ обнуляется вместе с полной хроматичностью, уже включающей кривизну и край.
+
+Тождество, которое переводит квадруполь в $\gamma$, относится к коэффициенту $K$ в уравнении $z''+Kz=0$:
+\begin{equation}
+\label{eq:beta-twiss}
+\int K\beta\,\mathrm{d}s=\int\gamma\,\mathrm{d}s,
+\end{equation}
+поскольку $\alpha'=K\beta-\gamma$ и $\int\alpha'\,\mathrm{d}s=0$. В горизонтальной плоскости $K_x=K_1+1/\rho^2$, в вертикальной $K_y=-K_1$, если $K_1$ --- градиент, входящий в $x''+K_1 x$ со знаком плюс. Формула (22) заметки пишет $\int K_1\beta_{x,y}\,\mathrm{d}s=\int\gamma_{x,y}\,\mathrm{d}s$ для обеих плоскостей. По горизонтали в ней нет $1/\rho^2$. По вертикали знак $K_1$ противоположен $K_y$.
+
+Формула (21) заметки имеет вид
+\begin{equation}
+\label{eq:beta-note21}
+\xi_x=-\frac{1}{4\pi}\int(K_1\beta_x+K_2\beta_x D)\,\mathrm{d}s,
+\qquad
+\xi_y=-\frac{1}{4\pi}\int(K_1\beta_y-K_2\beta_y D)\,\mathrm{d}s.
+\end{equation}
+Горизонтальная строка согласована с уравнением $x''+K_1 x=(K_2/2)(x^2-y^2)+\cdots$ и с толчком, который даёт путь; в ней нет дипольного $1/\rho^2$. Вертикальная строка ставит $K_1$ с тем же знаком, что и горизонтальная. Уравнение вертикали есть $y''-K_1 y=-K_2 xy$, поэтому фокусирующий коэффициент есть $-K_1$. В~\eqref{eq:beta-note21} перед $K_1\beta_y$ стоит тот же минус, что и в горизонтальной строке. Знак $K_2$ в вертикальной строке с тем же толчком согласован: обе плоскости дают в длине $(J_x/2)\int K_2\beta_x D\,\mathrm{d}s-(J_y/2)\int K_2\beta_y D\,\mathrm{d}s$.
+
+Подстановка ложного тождества $\int K_1\beta_y=\int\gamma_y$ в ложный знак $K_1$ возвращает $\xi_y=-(1/(4\pi))\int(\gamma_y-K_2\beta_y D)\,\mathrm{d}s$. Это то выражение, которое переводит угловой и секступольный интегралы формулы (20) заметки в $-2\pi J_y\xi_y$. Две ошибки в квадрупольном куске компенсируют друг друга, и бетатронная часть формулы (24) с путём (20) сходится. Дипольный член $1/\rho^2$ отсутствует и в (21), и в (22), поэтому его нет и в (24). Естественная горизонтальная хроматичность этот член содержит.
+
+Формула (32) в~\cite{Shoji2005} закрывает удлинение сдвигом импульса
+\begin{equation}
+\label{eq:beta-shoji32-main}
+\delta=-\frac{1}{\alpha}\frac{\Delta C}{C_0}.
+\end{equation} Делитель $\alpha$ там есть коэффициент уплотнения. Для электронов на $1$~ГэВ величина $1/\gamma^2$ мала рядом с обычным $\alpha$; в квазиизохронной строке таблицы~I той работы $\alpha=2\times 10^{-6}$ уже сравним с $1/\gamma^2$. Для дейтронов магнитного кольца $\alpha_0=0{,}230$ и $\eta_0=-0{,}534211$ различаются и знаком. Подстановка $\alpha_0$ вместо $\eta_0$ в~\eqref{eq:beta-deq} меняет знак $\delta_{\mathrm{eq}}$. Равновесие по-прежнему читается из~\eqref{eq:beta-sync}, и в знаменателе стоит $\eta_0$.
+
+Формула равновесного сдвига в статье об оптимизации спиновой когерентности методом отображения~\cite{KolokolchikovMapping} записана как
+\begin{equation}
+\label{eq:beta-map}
+\Delta\delta_{\mathrm{eq}}
+=\frac{\gamma^2}{\gamma^2\alpha_0-1}
+\Biggl[
+\frac{1}{2}\,\delta_m^2\,\eta_1
+-\frac{\pi}{L}(\varepsilon_x\xi_x+\varepsilon_y\xi_y)
+\Biggr].
+\end{equation}
+Предымножитель равен $1/\eta_0$, как в~\eqref{eq:mag-prefactor}. Коэффициент $\eta_1$ в той формуле совпадает с~\eqref{eq:mag-eta1}, включая $3\beta_s^2/(2\gamma_s^2)$. При $\varepsilon=2J$ и $L=C_s$ бетатронное слагаемое скобки есть
+\begin{equation}
+\label{eq:beta-map-L}
+-\frac{\pi}{L}(\varepsilon_x\xi_x+\varepsilon_y\xi_y)
+=-\frac{2\pi}{C_s}(J_x\xi_x+J_y\xi_y)
+=\Lambda.
+\end{equation}
+Скобка~\eqref{eq:beta-map} совпадает со скобкой~\eqref{eq:beta-deq}. Предымножитель $1/\eta_0$ имеет знак, противоположный~\eqref{eq:beta-deq}: это та же потеря минуса, что в печатных (10) и (16) работы~\cite{Senichev2013}. Относительный знак члена $\eta_1\delta_m^2/2$ и бетатронного члена при этом согласован: оба описывают удлинение пути. Если в~\eqref{eq:beta-map} подставить $\varepsilon_{\mathrm{rms}}=\langle J\rangle$, множитель $\pi/L$ даёт половину $\Lambda$. Среднее по пучку в~\eqref{eq:beta-xi} есть замена $J$ на $\langle J\rangle=\varepsilon_{\mathrm{rms}}$.
+
+\subsection{Числа магнитного кольца}
+\label{sec:ch2-num}
+
+Длина $C_s$ есть сумма элементов решётки \texttt{magnetic\_2.fox}: шестнадцать диполей по $5{,}3294148$~м, четыре прямых промежутка той же длины, квадруполи, секступоли и дрейфы. Сумма равна $117{,}388$~м. Таблица OptiM заканчивается на $11738{,}83$~см. В паспорте кольца $\xi_x=-1{,}84$, $\xi_y=-1{,}85$, $\eta_0=-0{,}534211$, $\eta_1=1{,}02$. В списке OptiM силы секступолей равны нулю, так что это естественная хроматичность, и~\eqref{eq:beta-xi} содержит кривизну и краевое поле наравне с квадратом угла.
+
+Для частицы с $\varepsilon_x=\varepsilon_y=10^{-6}$~м в смысле $\varepsilon=2J$, то есть $J_x=J_y=5\times 10^{-7}$~м,
+\begin{equation}
+\label{eq:beta-num-L}
+\Lambda
+=-\frac{2\pi}{C_s}\bigl(J_x\xi_x+J_y\xi_y\bigr)
+=9{,}875\times 10^{-8}.
+\end{equation}
+При $\delta_m=10^{-4}$ квадратичный член импульса равен $\eta_1\delta_m^2/2=5{,}10\times 10^{-9}$. Бетатронное слагаемое больше этого члена в $19{,}4$ раза. Сдвиг~\eqref{eq:beta-deq} равен $1{,}944\times 10^{-7}$: из него $1{,}849\times 10^{-7}$ даёт $\Lambda$ и $9{,}547\times 10^{-9}$ даёт $\eta_1$. При $\delta_m=10^{-3}$ член $\eta_1\delta_m^2/2=5{,}10\times 10^{-7}$ больше $\Lambda$ в $5{,}16$ раза, и $\delta_{\mathrm{eq}}=1{,}140\times 10^{-6}$.
+
+Если эмиттанс пучка задан как $\varepsilon_{\mathrm{rms}}=\langle J\rangle=10^{-6}$~м в каждой плоскости, действие в~\eqref{eq:beta-num-L} удваивается и $\Lambda=1{,}975\times 10^{-7}$. Гладкая формула~\eqref{eq:beta-smooth} на тюнах таблицы OptiM той же решётки, $\nu_x=2{,}462$ и $\nu_y=2{,}461$, даёт при $J=5\times 10^{-7}$~м значение $6{,}59\times 10^{-8}$. Она заменяет $\gamma$ на $\nu/R$ и не содержит $x_{\mathrm{nl}}$; с~\eqref{eq:beta-num-L} она совпадать не обязана.
+\section{Электростатическое кольцо}
+\label{sec:electrostatic}
+
+В главах~\ref{sec:magnetic} и~\ref{sec:ch2} модуль скорости между зазорами зависит только от полного импульса. Это свойство статического магнитного поля, и из него следует вынос $v$ из интеграла~\eqref{eq:mag-T}. В электростатическом кольце кинетическая энергия вдоль орбиты меняется вместе с потенциалом, и $v$ остаётся под интегралом. Уравнение энергии на зазоре при этом то же, что~\eqref{eq:mag-energy}: высокочастотное поле видит опоздание $T-T_s$ и за один пролёт меняет полную энергию на $eV\sin\varphi$. Отличие электростатики сидит в периоде $T=\oint\mathrm{d}l/v$, а не в приращении энергии.
+
+\subsection{Переменная импульса}
+\label{sec:es-delta}
+
+Между зазорами сохраняется полная энергия
+\begin{equation}
+\label{eq:es-energy}
+E=\gamma mc^2+q\Phi.
+\end{equation}
+Потенциал на проектной дуге выбран так, что на опорном радиусе $\Phi=0$, и в прямой $\Phi=0$. Величина $\delta$ этой главы есть относительный импульс частицы, у которой та же полная энергия и нулевой потенциал: $p=p_s(1+\delta)$ в зазоре и в прямой. На зазоре $\mathrm{d}E=\beta_s^2 E\,\mathrm{d}\delta$, поэтому уравнение~\eqref{eq:mag-energy} переносится сюда без изменения коэффициентов. Локальный импульс внутри дефлектора этим $\delta$ не является: часть полной энергии сидит в $q\Phi$.
+
+В COSY шестая координата устроена иначе. Процедура \texttt{RP} задаёт кинетическую энергию опорной частицы, и
+\begin{equation}
+\label{eq:es-deltak}
+\delta_K=\frac{K-K_0}{K_0}
+\end{equation}
+есть относительная кинетическая энергия в опорной точке, где потенциал равен опорному. В статическом поле эта координата постоянна. На нулевом потенциале она связана с $\delta$ рядом
+\begin{equation}
+\label{eq:es-dk-series}
+\delta_K
+=\frac{\gamma_s+1}{\gamma_s}\,\delta
++\frac{\gamma_s+1}{2\gamma_s^3}\,\delta^2
++O(\delta^3).
+\end{equation}
+Пятая координата $l$ есть не приращение пути. Её производная по дуге в уравнениях COSY пропорциональна отличию локального пролётного множителя от единицы, и на целом обороте
+\begin{equation}
+\label{eq:es-cosy-T}
+\frac{T-T_s}{T_s}
+=-\frac{\gamma_s+1}{\gamma_s}\,\frac{l}{C_s},
+\end{equation}
+пока на опорной орбите $C_s=v_s T_s$. На чистом дрейфе, где $\alpha_0=\alpha_1=0$, подстановка~\eqref{eq:es-dk-series} в~\eqref{eq:es-cosy-T} возвращает магнитный ряд~\eqref{eq:mag-vsv}: коэффициент при $\delta$ равен $-1/\gamma_s^2$, коэффициент при $\delta^2$ равен $1/\gamma_s^4+3\beta_s^2/(2\gamma_s^2)$. Электрический потенциал в эту проверку не входил. В кольце с дефлекторами он уже сидит внутри отображения $l$, потому что локальная кинетическая энергия в уравнениях COSY уменьшается на $q\Phi$. Второй раз применять к $l$ магнитные формулы~\eqref{eq:mag-eta0} и~\eqref{eq:mag-eta1} не нужно.
+
+Коэффициенты Тейлора COSY понимаются как множители мономов: $l\supset(5|6)\,\delta_K+(5|66)\,\delta_K^2$. Вместе с~\eqref{eq:es-dk-series} и~\eqref{eq:es-cosy-T} они дают
+\begin{align}
+\eta_0
+&=
+-\left(\frac{\gamma_s+1}{\gamma_s}\right)^2\frac{(5|6)}{C_s},
+\label{eq:es-eta0-map}\\
+\eta_1
+&=
+-\frac{\gamma_s+1}{\gamma_s C_s}
+\Biggl(
+(5|6)\,\frac{\gamma_s+1}{2\gamma_s^3}
++(5|66)\left(\frac{\gamma_s+1}{\gamma_s}\right)^2
+\Biggr).
+\label{eq:es-eta1-map}
+\end{align}
+Это $\eta_0$ и $\eta_1$ периода, электростатические или магнитные, смотря по тому, какое поле породило отображение. Мономы $(5|6)$ и $(5|66)$ в~\eqref{eq:es-eta0-map} и~\eqref{eq:es-eta1-map} берутся на замкнутой орбите. Их отличие от значений в начале координат записано в разделе~\ref{sec:map-coef}.
+
+\subsection{Линейный слип-фактор}
+\label{sec:es-eta0}
+
+Период по-прежнему есть~\eqref{eq:mag-T}. Опорная скорость $v_s$ отвечает $\gamma_s$ и $\Phi=0$. Относительное опоздание
+\begin{equation}
+\label{eq:es-rel}
+\frac{T-T_s}{T_s}
+=\frac{1}{C_s}\int\Biggl(\frac{v_s}{v}\,\frac{\mathrm{d}l}{\mathrm{d}s}-1\Biggr)\mathrm{d}s.
+\end{equation}
+В прямой $\Phi=0$, локальный лоренц-фактор совпадает с $\gamma(\delta)$ формулы~\eqref{eq:mag-gamma-delta}, и $v_s/v$ есть ряд~\eqref{eq:mag-vsv}. В цилиндрическом дефлекторе с полем, спадающим как $1/r$,
+\begin{equation}
+\label{eq:es-phi}
+\frac{q\Phi}{mc^2}
+=\beta_s^2\gamma_s\ln\Bigl(1+\frac{x}{\rho}\Bigr)
+=\beta_s^2\gamma_s\Biggl(\frac{x}{\rho}-\frac{1}{2}\Biggl(\frac{x}{\rho}\Biggr)^2+\cdots\Biggr).
+\end{equation}
+Коэффициент $\beta_s^2\gamma_s/\rho$ есть электрическое поле, которое держит опорную частицу на радиусе $\rho$. Локальная кинетическая энергия равна $E-q\Phi$.
+
+На дисперсионной орбите $x=D\delta+x_2\delta^2+\cdots$. До первого порядка по $\delta$ избыток кинетического лоренц-фактора в дуге есть $\beta_s^2\gamma_s(\delta-x/\rho)$. Обращение скорости, то же, что приводит к первому члену~\eqref{eq:mag-vsv}, даёт
+\begin{equation}
+\label{eq:es-v-linear}
+\frac{v_s}{v}-1
+=-\frac{\delta}{\gamma_s^2}+\frac{1}{\gamma_s^2}\frac{x}{\rho}.
+\end{equation}
+Элемент пути до того же порядка есть $\mathrm{d}l/\mathrm{d}s=1+x/\rho$. Произведение в~\eqref{eq:es-rel} с точностью до $\delta$ равно
+\begin{equation}
+\label{eq:es-integrand}
+\frac{v_s}{v}\,\frac{\mathrm{d}l}{\mathrm{d}s}-1
+=-\frac{\delta}{\gamma_s^2}
++\Biggl(1+\frac{1}{\gamma_s^2}\Biggr)\frac{x}{\rho}
+=-\frac{\delta}{\gamma_s^2}
++(2-\beta_s^2)\frac{x}{\rho}.
+\end{equation}
+Второе равенство есть $1+1/\gamma_s^2=2-\beta_s^2$. В прямой $x/\rho$ не возникает, и остаётся только $-\delta/\gamma_s^2$. Интеграл геометрического члена по кольцу есть $\alpha_0\delta$, если $x=D\delta$ и весь изгиб электрический, с одним и тем же смыслом $\rho$ в пути и в~\eqref{eq:es-phi}. Поэтому
+\begin{equation}
+\label{eq:es-eta0}
+\eta_0^{\mathrm{es}}
+=(2-\beta_s^2)\alpha_0-\frac{1}{\gamma_s^2}
+=\alpha_0-\frac{1-\alpha_0}{\gamma_s^2}.
+\end{equation}
+Множитель $(2-\beta_s^2)$ стоит перед всем $\alpha_0$, когда каждая дуга электрическая, опорный потенциал на проектном радиусе равен потенциалу прямой и линейная часть потенциала есть именно~\eqref{eq:es-phi}. Добавка к геометрическому $\alpha_0$ равна $\alpha_0/\gamma_s^2$: на смещённой наружу орбите скорость падает, и $1/v$ растёт пропорционально $x/\rho$.
+
+Если часть изгиба магнитная, геометрический $\alpha_0=(1/C_s)\int D/\rho\,\mathrm{d}s$ собирает полную кривизну, а падение скорости даёт только электрическая доля. Пусть $qE=\beta_s^2\gamma_s mc^2/\rho_E$ определяет электрический радиус, и
+\begin{equation}
+\label{eq:es-alphaE}
+\alpha_0^{E}
+=\frac{1}{C_s}\int\frac{D}{\rho_E}\,\mathrm{d}s.
+\end{equation}
+Тогда
+\begin{equation}
+\label{eq:es-eta0-gen}
+\eta_0
+=\alpha_0+\frac{\alpha_0^{E}}{\gamma_s^2}-\frac{1}{\gamma_s^2}.
+\end{equation}
+У чисто магнитного кольца $\alpha_0^{E}=0$, и~\eqref{eq:es-eta0-gen} совпадает с~\eqref{eq:mag-eta0}. У чисто электрического $\alpha_0^{E}=\alpha_0$, и получается~\eqref{eq:es-eta0}. У фильтра Вина суммарная кривизна опорной орбиты равна нулю, но $\rho_E$ конечен, $\alpha_0^{E}\neq 0$, и линейный слип-фактор не сводится к $-1/\gamma_s^2$.
+
+Формула~\eqref{eq:es-eta0} обращается в нуль при
+\begin{equation}
+\label{eq:es-transition}
+(2-\beta_s^2)\alpha_0\gamma_s^2=1,
+\end{equation}
+то есть при $\gamma_s^2=1/\alpha_0-1$. Магнитный переход того же $\alpha_0$ остаётся при $\gamma^2=1/\alpha_0$. Электростатический переход лежит ниже: $\sqrt{1/\alpha_0-1}<1/\sqrt{\alpha_0}$. Кольцо с $\gamma_s$ между этими двумя значениями имеет $\eta_0^{\mathrm{es}}$ и магнитное $\eta_0=\alpha_0-1/\gamma_s^2$ разных знаков.
+
+Гладкий цилиндр без прямых даёт крайний случай. На каждой круговой орбите в поле $1/r$ кинетическая энергия равна опорной, скорость равна $v_s$, и период пропорционален радиусу. При $\alpha_0=1$ формула~\eqref{eq:es-eta0} даёт $\eta_0^{\mathrm{es}}=1$, а магнитная формула дала бы $\beta_s^2$. Разложение радиуса по $\delta$ до второго порядка даёт ещё
+\begin{equation}
+\label{eq:es-smooth-eta1}
+\eta_1=\frac{1}{2}+\frac{1}{2\gamma_s^2}.
+\end{equation}
+То же значение получается и для длины, и для времени: скорость от $\delta$ не зависит.
+
+\subsection{Формула (25) и множитель $F_v$}
+\label{sec:es-fv}
+
+В~\cite{Senichev2013} переход к электростатике записан одним множителем $F_v$ при кинематических членах. Линейная строка формулы (25) той работы есть
+\begin{equation}
+\label{eq:es-sen25}
+\frac{\Delta T}{T}
+=\Biggl(\alpha_0-\frac{1}{F_v\gamma_s^2}\Biggr)\delta.
+\end{equation}
+Сравнение с~\eqref{eq:es-eta0} фиксирует
+\begin{equation}
+\label{eq:es-fv}
+F_v=\frac{1}{1-\alpha_0}.
+\end{equation}
+Это значение не зависит от энергии. Оно воспроизводит линейный слип-фактор целиком, включая сдвиг перехода~\eqref{eq:es-transition}. Условие смены знака $F_v>1/(\alpha_0\gamma_s^2)$, выписанное в той работе, при~\eqref{eq:es-fv} совпадает с $\gamma_s^2>1/\alpha_0-1$. Отдельного механизма смены знака, помимо сдвига критической энергии, линейный член не содержит. Для гладкого цилиндра $\alpha_0=1$ и $F_v$ расходится: скорость на семействе круговых орбит от $\delta$ не зависит, что согласовано с $\eta_0^{\mathrm{es}}=1$.
+
+Тот же $F_v$ не переносит квадратичную скобку формулы (25). В ней по-прежнему нет $3\beta_s^2/(2\gamma_s^2)$, уже отсутствовавшего в магнитной записи, и нет членов от кривизны потенциала $\varphi_2$ и от $\langle(D/\rho)^2\rangle$. Подстановка~\eqref{eq:es-fv} в скобку $\alpha_1-\alpha_0/(F_v\gamma_s^2)+1/(F_v^2\gamma_s^4)$ на модельном кольце раздела~\ref{sec:es-num} даёт $0{,}432$ против измеренного $\eta_1^{\mathrm{es}}=0{,}759$. Если к этой скобке вручную прибавить $3\beta_s^2/(2\gamma_s^2)$, получается $0{,}776$: ближе, но не то же число. Бетатронное слагаемое $(\Delta L/L)_\beta$ в (25) оставлено с коэффициентом $1$. Это коэффициент пути. В период входит время.
+
+\subsection{Второй порядок}
+\label{sec:es-eta1}
+
+Квадратичный коэффициент периода получается тем же произведением $(v_s/v)(\mathrm{d}l/\mathrm{d}s)$, если удержать $\delta^2$ в~\eqref{eq:es-phi}, в $\gamma(\delta)$ и в $x=D\delta+x_2\delta^2$, а в элементе пути ещё $x'^2/2$. Пусть $d_1=D/\rho$, $d_2=x_2/\rho$ и угловые скобки есть $(1/C_s)\int(\cdots)\,\mathrm{d}s$. Геометрические $\alpha_0=\langle d_1\rangle$ и $\alpha_1$ сохраняют смысл главы~\ref{sec:magnetic}: $\alpha_1$ включает и $\langle d_2\rangle$, и $\langle D'^2\rangle/2$. Магнитный коэффициент~\eqref{eq:mag-eta1} на тех же $\alpha_0$ и $\alpha_1$ обозначается $\eta_1^{\mathrm{mag}}$. Прямое разложение даёт
+\begin{equation}
+\label{eq:es-eta1}
+\eta_1^{\mathrm{es}}
+=\eta_1^{\mathrm{mag}}
++\frac{1}{\gamma_s^2}
+\Biggl(
+\langle d_2\rangle
++2\Biggl\langle\Biggl(\frac{D}{\rho}\Biggr)^2\Biggr\rangle
+-3\alpha_0
+\Biggr).
+\end{equation}
+Добавка собрана из потенциала. В неё входят квадрат линейной дисперсии и вторая орбита $x_2$; одного $\alpha_1$ недостаточно, потому что $\langle D'^2\rangle$ и $\langle d_2\rangle$ входят в $\alpha_1$ одной суммой, а в добавку к периоду идёт только $\langle d_2\rangle$. На гладком цилиндре $d_1=1$, $D'=0$ и $\langle d_2\rangle=\eta_1$ формулы~\eqref{eq:es-smooth-eta1}. Подстановка обращает~\eqref{eq:es-eta1} в тождество с этим $\eta_1$.
+
+Секступоль, как и в магните, меняет $\alpha_1$ и вместе с ним $\eta_1^{\mathrm{es}}$. Обнуление магнитной комбинации $\eta_1^{\mathrm{mag}}$ оставляет добавку~\eqref{eq:es-eta1}.
+
+\subsection{Бетатронное опоздание}
+\label{sec:es-lambda}
+
+При $\delta=0$ полная энергия равна $E_s$, а локальная скорость в дуге зависит от $x$. Относительное опоздание одного оборота после среднего по бетатронной фазе записывается суммой
+\begin{equation}
+\label{eq:es-LT}
+\Lambda_T=\Lambda_C+\Lambda_\Phi.
+\end{equation}
+$\Lambda_C$ есть геометрическое удлинение главы~\ref{sec:ch2}: среднее от $x_{\mathrm{nl}}/\rho$ и от $(x_\beta'^2+y_\beta'^2)/2$, делённое на $C_s$. В магните $\Lambda_\Phi=0$, потому что $|v|$ от $x$ не зависит, и $\Lambda_T=\Lambda_C$. В электрической дуге при $\delta=0$ ряд~\eqref{eq:es-phi} даёт
+\begin{equation}
+\label{eq:es-v-beta}
+\frac{v_s}{v}-1
+=\frac{1}{\gamma_s^2}\frac{x}{\rho}
++\frac{1}{\gamma_s^2}\Biggl(\frac{x}{\rho}\Biggr)^2
++O(x^3).
+\end{equation}
+Линейный член после среднего оставляет $\langle x_{\mathrm{nl}}\rangle/(\rho\gamma_s^2)$. Квадрат $x_\beta$ оставляет $\langle x_\beta^2\rangle/(\rho^2\gamma_s^2)$. Произведение линейного падения скорости на линейное удлинение пути даёт ещё один такой же квадрат. Угловой член $x'^2/2$ потенциала не меняет и входит только в $\Lambda_C$. Поэтому на цилиндрических дугах
+\begin{equation}
+\label{eq:es-Lphi}
+\Lambda_\Phi
+=\frac{1}{C_s}
+\int_{E}
+\Biggl(
+\frac{\langle x_{\mathrm{nl}}\rangle}{\rho\gamma_s^2}
++\frac{2\langle x_\beta^2\rangle}{\rho^2\gamma_s^2}
+\Biggr)\mathrm{d}s,
+\end{equation}
+где $\langle x_\beta^2\rangle=J_x\beta_x$ и интеграл идёт по электрическим дугам. Сдвиг средней орбиты входит в время с тем же весом, что $x_{\mathrm{nl}}/\rho$ входит в путь: в $\Lambda_T$ перед $\langle x_{\mathrm{nl}}\rangle/\rho$ стоит $2-\beta_s^2$, перед квадратом угла стоит единица, а член $\langle x_\beta^2\rangle/\rho^2$ есть только у потенциала. В прямой $\Lambda_\Phi$ не возникает.
+
+\subsection{Связь с хроматичностью}
+\label{sec:es-xi}
+
+Каноническая структура однооборотного отображения связывает среднее время с производной тюна. Пусть $s$ --- независимая переменная, $J_{\mathrm{can}}=(1/2\pi)\oint p_x\,\mathrm{d}x$ --- действие при каноническом $p_x$ в единицах $mc$, а полная энергия $E$ в единицах $mc^2$ сопряжена времени так, что импульс времени есть $-E$. Равенство смешанных производных гамильтониана, порождающего сдвиг по $s$, даёт
+\begin{equation}
+\label{eq:es-dTdJ}
+\frac{\partial\langle T\rangle}{\partial J_{\mathrm{can}}}
+=-2\pi\frac{\partial\nu}{\partial E}.
+\end{equation}
+На прямой при $\Phi=0$ и $\delta=0$ канонический импульс и геометрический угол связаны множителем $p_s=\beta_s\gamma_s$, так что $J_{\mathrm{can}}=p_s J$ для твисс-действия $J$ пары $(x,x')$. Энергия в зазоре и переменная $\delta$ связаны $\mathrm{d}E/\mathrm{d}\delta=\beta_s^2 E$. При $\xi=\partial\nu/\partial\delta$ отсюда
+\begin{equation}
+\label{eq:es-sym}
+\frac{1}{T_s}\frac{\partial\langle T\rangle}{\partial J}
+=-\frac{2\pi\xi}{v_s T_s}.
+\end{equation}
+На опорной орбите обеих моделей этого раздела кинетическая энергия всюду равна опорной, $v_s T_s=C_s$, и правая часть равна $-2\pi\xi/C_s$. Хроматичность $\xi$ взята по $\delta$ раздела~\ref{sec:es-delta}: это импульс частицы с той же полной энергией на нулевом потенциале. В магните $|v|$ от $x$ не зависит, поэтому $\Lambda_\Phi=0$, $\Lambda_T=\Lambda_C$, и то же число есть производная пути~\eqref{eq:beta-xi}. В электростатике~\eqref{eq:es-sym} относится ко времени. Разность опоздания и пути есть $\Lambda_\Phi$ формулы~\eqref{eq:es-Lphi}: путь $\Lambda_C$ и опоздание $\Lambda_T$ в электрической дуге различаются уже в интеграле $\oint\mathrm{d}l/v$, до скана секступоля.
+
+Тождество~\eqref{eq:es-sym} есть среднее по инвариантной кривой симплектического отображения. В главе~\ref{sec:map} оно получено как смешанная производная нормальной формы и проверено на тонких гамильтоновых киках: сумма квадратичной формы времени и сдвига центра кривой равна $-2\pi\xi/C_s$, а свободный член равен нулю. Фазовое среднее одного оборота по линейному эллипсу Твисса берётся вокруг начала координат и этого центра не включает. На модельном кольце такое среднее, при действии от $10^{-8}$ до $4\times 10^{-5}\,\text{м}$, ложится на прямую
+\begin{equation}
+\label{eq:es-scan}
+\frac{\Lambda}{J}
+=k_{\xi}\Biggl(-\frac{2\pi\xi}{C_s}\Biggr)+b,
+\end{equation}
+где $\Lambda$ есть $\Lambda_T$ или $\Lambda_C$, а $k_{\xi}$ и $b$ --- наклон и свободный член по скану тонкого секступоля.
+
+В магните время и путь совпадают. Для эллипса $k_{\xi}=1{,}076$ и $b=1{,}00\times 10^{-3}\,\text{м}^{-1}$. При естественной хроматичности $\xi=-0{,}207$ величина $-2\pi\xi/C_s$ равна $6{,}85\times 10^{-3}\,\text{м}^{-1}$, измеренный наклон равен $8{,}36\times 10^{-3}\,\text{м}^{-1}$, и их отношение равно $1{,}22$. Та же прямая при $S=0{,}002$ даёт отношение $0{,}95$, при $S=0{,}004$ --- отношение $1{,}03$. Числа $1{,}076$ и $1{,}22$ описывают эллипс таблицы~\ref{tab:es-scan}. Глава~\ref{sec:map} относит их расхождение с единицей к пропущенному центру: центр линейно зависит от секступоля, и в подгонке одного эллипса это выглядит как $k_{\xi}\neq 1$ и $b\neq 0$. После добавления центра, на расчёте с естественной хроматичностью $-0{,}138$, жёсткая магнитная модель даёт наклон $0{,}990$. Таблица~\ref{tab:es-scan} при этом сохраняет эллипс с $\xi=-0{,}207$.
+
+Угловая часть пути на этой оптике равна $(1/(2C_s))\int\gamma_x\,\mathrm{d}s=2{,}41\times 10^{-2}\,\text{м}^{-1}$. Измеренный путь $8{,}36\times 10^{-3}\,\text{м}^{-1}$ меньше неё втрое: средний сдвиг орбиты снимает большую долю квадрата угла. Определитель линейной матрицы $(x,x')$ равен единице с точностью $10^{-6}$, действие согласовано с Твиссом, и оба наклона эллипса не меняются при увеличении $J$ в четыре тысячи раз. При $S=0{,}001$, где $\xi\approx 0{,}012$ и $-2\pi\xi/C_s$ уже меньше свободного члена эллипса, наклон времени на эллипсе остаётся около $+5\times 10^{-4}\,\text{м}^{-1}$.
+
+В электростатическом кольце время и путь на том же эллипсе расходятся, как того и требует $\Lambda_\Phi$. По времени $k_{\xi,T}=1{,}227$ и $b_T=-9{,}65\times 10^{-3}\,\text{м}^{-1}$. По пути $k_{\xi,C}=0{,}747$ и $b_C=-2{,}05\times 10^{-2}\,\text{м}^{-1}$. Среднеквадратичный остаток прямой на скане $S=0\ldots 0{,}012$ меньше $3\times 10^{-5}\,\text{м}^{-1}$. Разность свободных членов эллипса $b_T-b_C=1{,}09\times 10^{-2}\,\text{м}^{-1}$ имеет порядок $\Lambda_\Phi/J$. Сами $k_{\xi,T}$ и $b_T$ суть подгонка эллипса. После учёта центра, в расчёте главы~\ref{sec:map}, цилиндр даёт наклон $0{,}940$ и свободный член $-2{,}2\times 10^{-3}\,\text{м}^{-1}$. Этот остаток есть свойство жёсткого трекера со скачком потенциала; вопрос о его несимплектичности остаётся открытым, а в $\delta_{\mathrm{eq}}$ входит $\Lambda_T$ симплектического отображения. Для такого отображения опоздание по времени равно~\eqref{eq:es-sym}, поэтому $\xi_x=\xi_y=0$ в переменной $\delta$ обращает $\Lambda_T$ в нуль.
+
+На эллипсе Твисса временная координата отображения даёт
+\begin{equation}
+\label{eq:es-map-L}
+\langle l\rangle
+=\bigl[(5|11)\beta_x-(5|12)\alpha_x+(5|22)\gamma_x\bigr]J_x
++\bigl[(5|33)\beta_y-(5|34)\alpha_y+(5|44)\gamma_y\bigr]J_y,
+\end{equation}
+и переход к периоду есть~\eqref{eq:es-cosy-T}. Это квадратичная форма без центра. Полная сумма формы и центра записана в главе~\ref{sec:map}. Производная тюна процедуры хроматичности есть $\partial\nu/\partial\delta_K$; перевод в $\xi=\partial\nu/\partial\delta$ умножает её на $(\gamma_s+1)/\gamma_s$. В~\eqref{eq:es-sym} стоит хроматичность по $\delta$, а в среднее время --- сумма формы и центра. У симплектической карты эти две записи совпадают.
+
+На гладком цилиндре линейный тюн равен $\sqrt{2-\beta_s^2}$ на круговой орбите любого радиуса: кинетическая энергия на этих орбитах одна и та же, а набег фазы за оборот от радиуса не зависит. Линейная хроматичность равна нулю. Коэффициент при $J$ от линейного по амплитуде колебания периода на коротком слежении не отделён.
+
+\subsection{Равновесие}
+\label{sec:es-eq}
+
+Подстановка периода в уравнение фазы главы~\ref{sec:magnetic} повторяет вывод раздела~\ref{sec:ch2-eq}. На синхротронном времени $\Lambda_T$ постоянно, $\langle\delta^2\rangle=\delta_m^2/2$, и среднее опоздание обращается в нуль при
+\begin{equation}
+\label{eq:es-deq}
+\delta_{\mathrm{eq}}
+=-\frac{1}{\eta_0^{\mathrm{es}}}
+\Biggl(
+\frac{\eta_1^{\mathrm{es}}\,\delta_m^2}{2}
++\Lambda_T
+\Biggr).
+\end{equation}
+Здесь $\eta_0^{\mathrm{es}}$ и $\eta_1^{\mathrm{es}}$ берутся из времени, формулы~\eqref{eq:es-eta0} и~\eqref{eq:es-eta1} или прямо из~\eqref{eq:es-eta0-map} и~\eqref{eq:es-eta1-map}, а $\Lambda_T$ есть опоздание по времени. На отображении его собирают форма~\eqref{eq:es-map-L} и центр раздела~\ref{sec:map-coef}; у симплектической карты $\Lambda_T/J=-2\pi\xi/C_s$. Среднее $\langle(T-T_s)/T_s\rangle=0$ при произвольных амплитуде и действиях требует $\eta_1^{\mathrm{es}}=0$ и $\Lambda_T=0$. На симплектическом отображении второе равенство есть $\xi_x=\xi_y=0$ по переменной $\delta$ раздела~\ref{sec:es-delta}, и условие компенсации принимает вид
+\begin{equation}
+\label{eq:es-comp}
+\eta_1^{\mathrm{es}}=0,
+\qquad
+\xi_x=\xi_y=0.
+\end{equation}
+В~\eqref{eq:es-comp} входит электростатический коэффициент периода. Обнуление магнитного $\eta_1^{\mathrm{mag}}$ оставляет добавку~\eqref{eq:es-eta1}. Три семейства секступолей отвечают трём числам $\eta_1^{\mathrm{es}}$, $\xi_x$ и $\xi_y$. Частота при $\cos\varphi=1$ сохраняет вид~\eqref{eq:beta-freq}, если в неё подставить $\eta_1^{\mathrm{es}}$ и $\Lambda_T$.
+
+В комбинированном кольце линейный знаменатель есть~\eqref{eq:es-eta0-gen}. Квадратичный коэффициент и $\Lambda_T$ по-прежнему читаются из временной координаты; доля электрического изгиба сама по себе их не собирает.
+
+\subsection{Численная проверка}
+\label{sec:es-num}
+
+Модель --- плоское кольцо из восьми ячеек. Протон, кинетическая энергия $233\,\text{МэВ}$, $\gamma_s=1{,}248329$, $\beta_s^2=0{,}358285$. Дуга --- цилиндрический дефлектор радиуса $20\,\text{м}$ на четверть оборота либо однородный магнит того же радиуса и угла; прямые по $8\,\text{м}$; тонкие квадруполи с силой $\pm 0{,}02\,\text{м}^{-1}$ и, в скане, тонкий секступоль на фокусирующих плоскостях. Длина $C_s=189{,}664\,\text{м}$. Потенциал цилиндра равен~\eqref{eq:es-phi} внутри дуги и нулю снаружи; на входе и выходе продольный импульс получает скачок, который сохраняет полную энергию. Магнитное кольцо интегрируется в том же коде с тем же шагом. Подробности и таблица скана --- в приложении~\ref{app:ch3track}.
+
+Линейный коэффициент времени совпадает с формулой с остатком подгонки $10^{-13}$. При $\alpha_0=0{,}637450$
+\begin{equation}
+\label{eq:es-num-eta0}
+\eta_0^{\mathrm{es}}=0{,}404796,
+\qquad
+\eta_0^{\mathrm{mag}}=\alpha_0-\frac{1}{\gamma_s^2}=-0{,}004265.
+\end{equation}
+Кольцо лежит ниже магнитного перехода ($\gamma_{\mathrm{tr}}=1/\sqrt{\alpha_0}=1{,}253$) и выше электростатического ($\gamma_{\mathrm{tr}}=\sqrt{1/\alpha_0-1}=0{,}754$). Знаки $\eta_0$ поэтому различны. Это и есть смена знака слип-фактора при неизменных $\alpha_0$ и $\gamma_s$: критическая энергия сдвинулась, а рабочая точка осталась на месте.
+
+Квадратичный коэффициент при нулевом секступоле равен $0{,}75898$. Магнитная формула на измеренных $\alpha_0$ и $\alpha_1=0{,}52578$ даёт $0{,}87339$. Формула~\eqref{eq:es-eta1}, в которой $\langle(D/\rho)^2\rangle$ и $\langle d_2\rangle$ взяты с замкнутых орбит, после вычитания члена $\delta^4$ в $x_2$ отличается от $0{,}75898$ на $1\times 10^{-4}$.
+
+Для решётки \texttt{electrostatic\_mh} паспортные значения --- протон $233\,\text{МэВ}$, $C=419{,}1\,\text{м}$, пятьдесят дуг по $7{,}2^\circ$ и $4{,}685\,\text{м}$, $\alpha_0=0{,}0964$, естественные хроматичности $\xi_x=-9{,}17$ и $\xi_y=-8{,}82$. При поле $112{,}5\,\text{кВ/см}$ электрическая жёсткость $\beta_s^2\gamma_s mc^2/(qE)$ даёт радиус $37{,}3\,\text{м}$, и длина дуги, делённая на этот радиус, совпадает с $7{,}2^\circ$ в пределах округления поля. На этих $\alpha_0$ и $\gamma_s$
+\begin{equation}
+\label{eq:es-mh}
+\eta_0^{\mathrm{es}}=-0{,}48345,
+\qquad
+\eta_0^{\mathrm{mag}}=-0{,}54531.
+\end{equation}
+Оба значения отрицательны: $\gamma_{\mathrm{tr}}^{\mathrm{es}}=3{,}062$ и $\gamma_{\mathrm{tr}}^{\mathrm{mag}}=3{,}221$ лежат выше $\gamma_s=1{,}248$. Паспортное $\eta_1=1{,}07$ получено магнитной формулой~\eqref{eq:mag-eta1}. Коэффициент периода есть $\eta_1^{\mathrm{es}}$ формулы~\eqref{eq:es-eta1-map}. Бетатронное опоздание симплектического отображения этой решётки равно $-2\pi(J_x\xi_x+J_y\xi_y)/C_s$ с хроматичностью по $\delta$ на нулевом потенциале.
+\section{Однооборотное отображение}
+\label{sec:map}
+
+Главы~\ref{sec:magnetic}--\ref{sec:electrostatic} получают $\delta_{\mathrm{eq}}$ усреднением периода по синхротронной фазе и по бетатронной фазе. То же число есть среднее $\delta$ вдоль орбиты повторения однооборотного отображения с высокочастотным зазором. Ниже это отображение записывается в координатах COSY~Infinity~\cite{Berz1990}, и из него собираются те же $\eta_0$, $\eta_1$ и $\Lambda_T$, что уже стоят в~\eqref{eq:beta-deq} и~\eqref{eq:es-deq}.
+
+\subsection{Равновесие как среднее по орбите отображения}
+\label{sec:map-orbit}
+
+Без зазора шестая координата постоянна, и отображение одного оборота переводит поперечные координаты и время. Зазор делает отображение шестимерным: за один проход он сдвигает энергию на $eV\sin\varphi$, а фаза зазора видит опоздание $T-T_s$. Обозначим это отображение $M$. Захваченная частица есть орбита повторения $M$, то есть последовательность точек $z_{n+1}=M(z_n)$, лежащая на инвариантном торе трёх действий. Равновесный импульс этой главы есть среднее шестой координаты по этому тору. Пока амплитуда синхротронных колебаний мала, среднее совпадает с положением центра тора по переменной, сопряжённой времени.
+
+Линейная часть $M$ этого центра не содержит. Сдвиг $\delta_{\mathrm{eq}}$ квадратичен по амплитудам: он рождается членами $\delta^2$ и $J$ в периоде и становится виден только во втором порядке нормальной формы. Усреднение глав~\ref{sec:magnetic}--\ref{sec:electrostatic} есть вычисление этого центра. Матрица одного оборота задаёт тюны и Твисс и к $\delta_{\mathrm{eq}}$ не приводит.
+
+Координаты COSY выбраны так, что отображение симплектично~\cite{Berz1990}. Пятая координата есть
+\begin{equation}
+\label{eq:map-l}
+l=-(t-t_0)\,v_0\,\frac{\gamma_s}{\gamma_s+1},
+\end{equation}
+шестая есть $\delta_K=(K-K_0)/K_0$, относительная кинетическая энергия в опорной точке. На целом обороте отсюда следует уже записанное~\eqref{eq:es-cosy-T}. Высокочастотное поле видит $T$, а не путь: в период входит $l$, и магнитная пересчётная формула к $l$ второй раз не применяется.
+
+\subsection{Коэффициенты отображения и $\eta$, $\Lambda_T$}
+\label{sec:map-coef}
+
+Без зазора $\delta_K$ постоянно, и время одного оборота есть пятая компонента отображения. Коэффициенты Тейлора COSY суть множители мономов: оператор извлечения уже делит производную на факториалы показателей, так что $l\supset(5|6)\,\delta_K+(5|66)\,\delta_K^2$. Линейные множители совпадают с элементами матрицы, $(5|6)=\mathrm{ME}(5,6)$.
+
+Этот ряд, взятый при $x=a=0$, не есть время замкнутой орбиты. Частица, выпущенная из начала координат с $\delta_K\neq 0$, колеблется вокруг дисперсионной орбиты $x=D\delta_K$. Время оборота, которое входит в $\eta_0$ и $\eta_1$, есть $l$ на самой замкнутой орбите. Пусть при фиксированном $\delta_K$ её начало в точке наблюдения есть $x_*=D_1\delta_K+D_2\delta_K^2$ и $a_*=D_1'\delta_K+D_2'\delta_K^2$. Подстановка в многочлен пятой компоненты даёт мономы замкнутой орбиты
+\begin{align}
+e_1
+&=
+(5|6)+(5|1)D_1+(5|2)D_1',
+\label{eq:map-e1}\\
+e_2
+&=
+(5|66)+(5|1)D_2+(5|2)D_2'
++(5|16)D_1+(5|26)D_1'
+\nonumber\\
+&\quad
++(5|11)D_1^2+(5|12)D_1 D_1'+(5|22)(D_1')^2.
+\label{eq:map-e2}
+\end{align}
+Процедура \texttt{ECM} делает ту же подстановку: она ищет поперечную неподвижную точку и возвращает $l_{\mathrm{out}}-l_{\mathrm{in}}$ как функцию канонического $\delta_K$. Коэффициенты $e_1$ и $e_2$ суть её мономы по $\delta_K$. Именно их надо подставлять в~\eqref{eq:es-eta0-map} и~\eqref{eq:es-eta1-map} на место $(5|6)$ и $(5|66)$. Вместе с рядом~\eqref{eq:es-dk-series} они дают
+\begin{align}
+\eta_0
+&=
+-\left(\frac{\gamma_s+1}{\gamma_s}\right)^2\frac{e_1}{C_s},
+\label{eq:map-eta0}\\
+\eta_1
+&=
+-\frac{\gamma_s+1}{\gamma_s C_s}
+\Biggl(
+e_1\,\frac{\gamma_s+1}{2\gamma_s^3}
++e_2\left(\frac{\gamma_s+1}{\gamma_s}\right)^2
+\Biggr).
+\label{eq:map-eta1}
+\end{align}
+Это $\eta_0$ и $\eta_1$ периода, магнитные или электростатические, смотря по полю, которое породило отображение. На игрушечном симплектическом кольце из тонких гамильтоновых киков производная времени по $\delta$ в начале координат и на замкнутой орбите различаются на $0{,}21$ относительно значения на орбите: поправка~\eqref{eq:map-e1} не является малой высшего порядка.
+
+Бетатронное слагаемое собирается из тех же мономов пятой компоненты. На линейном эллипсе Твисса в точке наблюдения, $\langle x^2\rangle=J\beta$, $\langle xa\rangle=-J\alpha$, $\langle a^2\rangle=J\gamma_T$, среднее квадратичной формы есть
+\begin{equation}
+\label{eq:map-ell}
+\frac{\langle\Delta l\rangle_{\mathrm{ell}}}{J}
+=
+(5|11)\,\beta-(5|12)\,\alpha+(5|22)\,\gamma_T
+\end{equation}
+и так же по вертикали. Один коэффициент $(5|11)$ средним по фазе не является: в него не входят $\langle xa\rangle$ и $\langle a^2\rangle$. Форма~\eqref{eq:map-ell} есть среднее по эллипсу, описанному вокруг начала координат. Инвариантная кривая нелинейного отображения сдвинута. Квадратичный толчок поперечного отображения, усреднённый по тому же эллипсу, даёт за оборот приращение $(\langle\Delta x\rangle,\langle\Delta a\rangle)$, пропорциональное $J$. Центр, который это приращение уравновешивает, есть
+\begin{equation}
+\label{eq:map-centre}
+\begin{pmatrix}x_c\\ a_c\end{pmatrix}
+=
+(I-R)^{-1}
+\begin{pmatrix}\langle\Delta x\rangle\\ \langle\Delta a\rangle\end{pmatrix},
+\end{equation}
+где $R$ --- поперечная матрица одного оборота. Линейная связь времени с координатой добавляет $(5|1)x_c+(5|2)a_c$. Вертикальное действие тем же способом сдвигает и вертикальный, и, через члены $y^2$ горизонтального толчка, горизонтальный центр; в приращение $l$ входят все четыре линейных коэффициента $(5|1),\ldots,(5|4)$. Сумма
+\begin{equation}
+\label{eq:map-LT}
+\frac{\partial\langle\Delta l\rangle}{\partial J}
+=
+\frac{\langle\Delta l\rangle_{\mathrm{ell}}}{J}
++(5|1)\frac{x_c}{J}+(5|2)\frac{a_c}{J}
+\end{equation}
+не зависит от точки наблюдения. По отдельности квадратичная форма от точки зависит: на игрушечном кольце при одном и том же секступоле отношение формы к $2\pi\partial\nu/\partial\delta$ равно $0{,}853$ в фокусе и $0{,}881$ в дефокусе, а сумма~\eqref{eq:map-LT} в обеих точках равна $2\pi\partial\nu/\partial\delta$ с остатком $10^{-5}$. Переход к периоду снова есть~\eqref{eq:es-cosy-T}, и $\Lambda_T$ получается умножением~\eqref{eq:map-LT} на $-(\gamma_s+1)/(\gamma_s C_s)$. Это уточнение~\eqref{eq:es-map-L}: там стоит эллипс, здесь к нему добавлен центр. На кольце без квадратичных поперечных членов центр равен нулю, и две записи совпадают.
+
+Та же сумма есть смешанная производная нормальной формы. Пусть $K(J,\delta)$ --- гамильтониан, чьему сдвигу на один оборот отвечает симплектическое отображение в переменных, где $\mathrm{d}\tau=\partial K/\partial\delta$ и $\mathrm{d}\theta=\partial K/\partial J$, а $J$ --- действие с площадью эллипса $2\pi J$. Тогда $\partial\langle\Delta\tau\rangle/\partial J=\partial\mu/\partial\delta=2\pi\,\partial\nu/\partial\delta$. В координатах COSY $\tau=l$ и $\delta=\delta_K$, поэтому
+\begin{equation}
+\label{eq:map-id}
+\frac{\partial\langle\Delta l\rangle}{\partial J}
+=
+2\pi\frac{\partial\nu}{\partial\delta_K}.
+\end{equation}
+Хроматичность глав~\ref{sec:magnetic}--\ref{sec:electrostatic} есть $\xi=\partial\nu/\partial\delta$ по импульсу на нулевом потенциале. На нуле $\mathrm{d}\delta_K/\mathrm{d}\delta=(\gamma_s+1)/\gamma_s$. Множитель $(\gamma_s+1)/\gamma_s$ в~\eqref{eq:es-cosy-T} и в этой производной сокращается, и
+\begin{equation}
+\label{eq:map-xi}
+\frac{\Lambda_T}{J}
+=
+-\frac{2\pi\xi}{C_s}.
+\end{equation}
+Это тождество~\eqref{eq:es-sym} для той пары переменных, в которой оно выведено. Оно относится к среднему по инвариантной кривой, то есть к сумме~\eqref{eq:map-LT}, а не к одному эллипсу~\eqref{eq:map-ell}.
+
+На игрушечном кольце тождество проверяется прямо. Пока секступоль выключен, центр равен нулю и уже одна форма~\eqref{eq:map-ell} воспроизводит $2\pi\partial\nu/\partial\delta$. Скан силы секступоля по одной квадратичной форме даёт наклон $1{,}296$ и ненулевой свободный член. Та же прямая по сумме~\eqref{eq:map-LT} имеет наклон $0{,}99993$ и свободный член, меньший $10^{-3}$ при наклонах порядка $10$. Если у квадрупольного кика отбросить продольную половину, якобиан на смещённой точке перестаёт быть симплектическим, отношение при нулевом секступоле падает до $1/2$, и свободный член прямой остаётся большим; наклон по секступолю центр по-прежнему возвращает к единице, потому что собственный вклад секступоля в $l$ кубичен по координате и в порядок $J$ не входит. Продольная половина квадрупольного кика сидит в квадратичной форме и остаётся в ней после добавления центра.
+
+Наклоны $k_{\xi}$ раздела~\ref{sec:es-xi} суть подгонка одного оборота по линейному эллипсу, без центра~\eqref{eq:map-centre}. На той же жёсткой модели прямая по эллипсу в магните имеет $k_{\xi}=1{,}065$ и $b=5{,}2\times 10^{-4}\,\text{м}^{-1}$, а сумма с центром имеет $k_{\xi}=0{,}990$ и $b=-4{,}3\times 10^{-4}\,\text{м}^{-1}$. Естественная хроматичность этого расчёта равна $-0{,}138$, тогда как таблица~\ref{tab:es-scan} приводит $\xi=-0{,}207$ и эллиптический наклон $k_{\xi}=1{,}076$. Центрированные числа относятся к расчёту с $\xi=-0{,}138$ и показывают механизм: расхождение эллипса с единицей есть пропущенный центр, зависящий от секступоля. На цилиндре эллипс даёт $k_{\xi}=1{,}154$ и $b=-8{,}8\times 10^{-3}\,\text{м}^{-1}$, центр приводит к $k_{\xi}=0{,}940$ и $b=-2{,}2\times 10^{-3}\,\text{м}^{-1}$. При секступоле с $\xi=0{,}006$ эллипс держит наклон $-5{,}8\times 10^{-3}\,\text{м}^{-1}$, а сумма с центром равна $+3\times 10^{-4}\,\text{м}^{-1}$ рядом с $-2\pi\xi/C_s=-2\times 10^{-4}\,\text{м}^{-1}$. Основная часть остатка при погашенной хроматичности есть пропущенный центр. Остаток цилиндра $k_{\xi}=0{,}940$ после центра есть свойство жёсткого трекера со скачком потенциала. Игрушечное симплектическое отображение такого остатка не имеет. В равновесие входит опоздание $\Lambda_T$. У симплектического отображения оно совпадает с~\eqref{eq:map-xi}, и условия $\xi_x=\xi_y=0$ вместе с обращением в нуль коэффициента $\eta_1$ периода снимают сдвиг. В электростатике этот коэффициент есть $\eta_1^{\mathrm{es}}$.
+
+Надёжная численная реализация суммы есть нормальная форма того же отображения или многооборотное среднее одной орбиты. Оба считают инвариантную кривую, а не эллипс линейной оптики. На игрушке многооборотное среднее сходится к~\eqref{eq:map-id}; одной тысячей оборотов биение тюна ещё не отделено от предела.
+
+\subsection{Паспортные коэффициенты}
+\label{sec:map-not}
+
+Задача \texttt{mapping.fox} подставляет в формулу статьи~\cite{KolokolchikovMapping} паспортные $\alpha_0$, $\alpha_1$ и $\xi$. Формула статьи есть~\eqref{eq:beta-map}: скобка совпадает со скобкой~\eqref{eq:beta-deq}, предымножитель $1/\eta_0$ имеет знак, противоположный~\eqref{eq:beta-deq}. Сравнение с отображением состоит в том, что среднее $\delta$ орбиты повторения $M$ сопоставляется с правой частью~\eqref{eq:beta-deq}. Четыре расхождения этой подстановки с отображением периода независимы.
+
+Первое. Процедура \texttt{MCM} в тексте COSY названа уплотнением $\mathrm{d}L(\mathrm{d}P)/L$. Она переводит каноническое отображение в транспортные координаты, ищет поперечную неподвижную точку и делит приращение пятой транспортной координаты на длину опорной орбиты \texttt{SPOS}. Транспортная шестая координата есть $\delta=\Delta p/p$, не $\delta_K$. Знак транспортной пятой координаты таков, что возвращаемый многочлен есть $-\Delta C/C$. Минус перед коэффициентами в \texttt{mapping.fox} этот знак снимает, и $\alpha_0$, $\alpha_1$ суть коэффициенты пути~\eqref{eq:mag-C} на замкнутой орбите. Извлечённый коэффициент уже является множителем монома, поэтому второй порядок не домножается на $2$. Задачи \texttt{natural.fox} и \texttt{mapping1.fox} домножают на $n!$ и получают производную: их $\alpha_1$ вдвое больше сеничевского коэффициента при $\delta^2$. Паспортное $\eta_1$ собрано без этого множителя. Само по себе $\alpha_1$ есть путь. Высокочастотное поле видит период. Переход от пути к периоду в магните есть~\eqref{eq:mag-eta1}; его и пишет строка \texttt{ETA1} в \texttt{mapping.fox}. Это не чтение $l$.
+
+Второе. Та же магнитная строка применяется к электростатическому и к комбинированному кольцу. Для них $\eta_1$ периода есть~\eqref{eq:es-eta1}, и магнитная комбинация $\alpha_0$, $\alpha_1$ его не даёт. В паспорте электростатического кольца $\eta_1=1{,}07$ есть эта комбинация. Коэффициентом~\eqref{eq:map-eta1} она не является.
+
+Третье. Хроматичность в \texttt{mapping.fox} есть
+\begin{equation}
+\label{eq:map-chrom}
+\xi
+=
+\bigl(\texttt{MU\_TP}(1)|(0\&0\&0\&0\&1)\bigr)
+\left(1+\frac{1}{\gamma_s}\right).
+\end{equation}
+Процедура \texttt{TP} дифференцирует тюн по параметру, а процедура \path{SET_FOR_DEUTERONS_CHROM} заводит этот параметр множителем кинетической энергии опорной частицы. Параметр поэтому есть $\delta_K$. Производная $\mathrm{d}\delta_K/\mathrm{d}\delta_p=(\gamma_s+1)/\gamma_s=1+1/\gamma_s$ переводит $\partial\nu/\partial\delta_K$ в $\partial\nu/\partial\delta_p$. Множитель верен. В электростатике остаётся вопрос, в какой точке потенциала задана опорная кинетическая энергия. Если эта точка лежит при $\Phi=0$, параметр совпадает с $\delta$ главы~\ref{sec:electrostatic}, а потенциал дефлектора уже сидит внутри отображения тюна. Если опорная энергия задана при ненулевом потенциале, тот же множитель переводит локальную кинетическую энергию и перестаёт быть производной по импульсу на зазоре.
+
+Четвёртое относится к спину и разобрано в следующем разделе: коэффициенты \texttt{DAPEE} не являются ни $\Lambda_T$, ни проверкой того, что при $\xi=\eta_1=0$ спиновый тюн перестаёт зависеть от амплитуды.
+
+\subsection{Спиновый тюн}
+\label{sec:map-spin}
+
+В магнитном кольце спиновый тюн вдоль замкнутой орбиты есть $G\gamma$. Сдвиг равновесной энергии меняет его на
+\begin{equation}
+\label{eq:map-spin-eq}
+\Delta\nu_s
+=
+G\beta_s^2\gamma_s\,\delta_{\mathrm{eq}}
++\Delta\nu_s^{\mathrm{direct}},
+\end{equation}
+где $\mathrm{d}\gamma/\mathrm{d}\delta=\beta_s^2\gamma_s$ и $\delta_{\mathrm{eq}}$ берётся из~\eqref{eq:beta-deq}. Первый член есть канал удлинения орбиты. Второй есть набег уравнения Томаса--Баргмана--Мишеля--Телегди по бетатронной траектории: частица в квадруполе видит радиальные и вертикальные поля, которых нет на оси, и этот набег не сводится к $G\gamma$ опорной орбиты.
+
+Процедура \texttt{TSS} при ключе $0$ возвращает спиновый тюн многочленом по исходным орбитальным координатам, без переноса в неподвижную точку. \texttt{DAPEE} с индексами $11$, $33$ и $66$ извлекает множители $x^2$, $y^2$ и $\delta_K^2$ этого многочлена. Это не производные по действиям. В \texttt{mapping.fox} решётка считается при включённом зазоре. Тогда $\delta_K$ не сохраняется, продольным инвариантом является действие сепаратрисы, и сдвиг центра по $\delta$ уже сидит в амплитудном тюне нормальной формы. Коэффициент при $x^2$ содержит и $G\beta_s^2\gamma_s\,\partial\delta_{\mathrm{eq}}/\partial J_x$, и прямой член.
+
+Обращение $\xi$ и $\eta_1$ в нуль обращает в нуль первый член~\eqref{eq:map-spin-eq}, если $\Lambda_T$ связано с $\xi$ тождеством~\eqref{eq:map-xi}. Прямой член при этом остаётся. Статья 2014 года сводит декогеренцию спина к сдвигу средней энергии: мультиполь меняет средний радиус, длина орбиты меняет равновесную энергию, энергия меняет $G\gamma$~\cite{Senichev2014}. Прямого вклада радиального поля квадруполя в том выводе нет. Формула~\eqref{eq:beta-map} есть тот же энергетический канал, с обратным знаком предымножителя. Численная карта спина в статье об отображении~\cite{KolokolchikovMapping} есть полный многочлен \texttt{TSS}, поэтому её нули не обязаны лежать при $\xi_x=\xi_y=\eta_1=0$. Статья это и показывает на всех трёх кольцах. Отдельный вопрос, который здесь не решается: какой вес в $\Delta\nu_s^{\mathrm{direct}}$ имеет сдвиг центра~\eqref{eq:map-centre} относительно члена, квадратичного по бетатронной координате уже на оси квадруполя. Гашение пути эти два вклада не уравнивает, потому что спиновый интеграл поля и интеграл $x/\rho$ суть разные веса одной траектории.
+
+\subsection{Протокол и три кольца}
+\label{sec:map-rings}
+
+Проверка~\eqref{eq:beta-deq} и~\eqref{eq:es-deq} на отображении COSY для \texttt{magnetic\_2}, \texttt{electrostatic\_mh} и \texttt{Nuclotron\_16} состоит из двух проходов.
+
+Статическое отображение считается при выключенном зазоре, \texttt{OV 3 3 0}. Длина $C_s$ есть \texttt{SPOS} после решётки. Время на замкнутой орбите даёт \texttt{ECM}; его мономы $e_1$, $e_2$ подставляются в~\eqref{eq:map-eta0} и~\eqref{eq:map-eta1}. Для контроля рядом печатаются $(5|6)$ и $(5|66)$ в начале координат: расхождение есть~\eqref{eq:map-e1} и~\eqref{eq:map-e2}. Путь даёт \texttt{MCM}. Минус перед мономами по транспортному $\delta$ есть $\alpha_0$ и $\alpha_1$; магнитная комбинация~\eqref{eq:mag-eta1} печатается отдельно и с $\eta_1$ из времени сравнивается, а не подменяет его. Твисс берётся из поперечных блоков $\mathrm{ME}$. Квадратичная форма~\eqref{eq:map-ell} и центр~\eqref{eq:map-centre}, включая горизонтальный центр от вертикального эллипса, дают $\Lambda_T/J_x$ и $\Lambda_T/J_y$. Хроматичность считается вторым проходом, \texttt{OV 3 2 1}, и переводится множителем~\eqref{eq:map-chrom}. Рядом печатается правая часть~\eqref{eq:map-xi}. Тождество требует совпадения двух колонок в порядке разложения; запуск ниже показывает, что для $\eta$ это так, а для $\Lambda_T$ на \texttt{magnetic\_2} нет.
+
+Эталон равновесия есть другой запуск, с зазором. Орбита повторения $M$ усредняется по оборотам, и среднее $\delta$ сравнивается с~\eqref{eq:es-deq}. Однооборотные коэффициенты этого среднего не заменяют: они проверяют $\eta$ и $\Lambda_T$, а не захват. Задача \path{COSY/jobs/equilibrium_check.fox} пишет коэффициенты и обе колонки $\Lambda_T$. Многооборотный эталон в неё не включён. Модуль комбинированного кольца в файле решётки сохранён под именем \path{seq_Nuclotron_16}.
+
+Для решётки \texttt{magnetic\_2} при выключенных секступолях и выключенном зазоре получается следующее. Длина $C_s=117{,}388\,\text{м}$. Уплотнение пути $\alpha_0=0{,}23036$, $\alpha_1=0{,}33953$. Время на замкнутой орбите даёт $\eta_0=-0{,}53385$ и $\eta_1=1{,}01779$. Магнитная формула~\eqref{eq:mag-eta1} на тех же $\alpha_0$ и $\alpha_1$ даёт то же $\eta_1$ во всех напечатанных знаках: для чистого магнита путь и время согласованы пересчётом~\eqref{eq:map-eta0}, \eqref{eq:map-eta1}. Паспортные $0{,}230$ и $1{,}02$ суть эти числа, округлённые. В точке старта дисперсия мала, и $(5|6)$ отличается от $e_1$ в пятом знаке. Хроматичность $\xi_x=-1{,}841$, $\xi_y=-1{,}848$ совпадает с паспортом. Квадратичная форма времени, центр при нулевом секступоле не меняет её и в седьмом знаке, даёт $\Lambda_T/J_x=7{,}882\times 10^{-2}\,\text{м}^{-1}$ и $\Lambda_T/J_y=0{,}1194\,\text{м}^{-1}$. Правая часть~\eqref{eq:map-xi} есть $9{,}853\times 10^{-2}$ и $9{,}890\times 10^{-2}\,\text{м}^{-1}$. Отношения равны $0{,}800$ и $1{,}21$. Тождество на этом отображении третьего порядка плоскость за плоскостью не сходится, хотя на игрушечных гамильтоновых киках сходится. Расхождение остаётся открытым: оно не сводится к пропущенному центру и не является общим множителем двух плоскостей. В таблицу ниже магнитное $\eta$ берётся из этого запуска; бетатронная колонка тождества в равновесие не подставляется, пока расхождение не снято.
+
+Паспортные числа трёх колец собраны в таблице~\ref{tab:map-rings}. Магнитная колонка $\eta$ есть~\eqref{eq:mag-eta0} и~\eqref{eq:mag-eta1} на паспортных $\alpha_0$ и $\eta_{1,\mathrm{nat}}$. Правильная колонка есть период. Для чистого магнита они совпадают. Для двух других колец правильное $\eta_1$ из $l$ не извлекалось: в сохранённых выдачах нет мономов \texttt{ECM}. Знак $\delta_{\mathrm{eq}}$ указан при $\Lambda_T>0$ и $\eta_1>0$ по формуле этой заметки. Знак статьи есть знак предымножителя~\eqref{eq:beta-map} на той же скобке: он противоположен. Подстановка одних и тех же $\eta$ и $\Lambda_T$ даёт значения, равные по модулю; расхождение двух формул равно удвоенному истинному сдвигу. На числах главы~\ref{sec:ch2-num} при $\delta_m=10^{-3}$ истинный сдвиг есть $1{,}140\times 10^{-6}$, формула статьи даёт $-1{,}140\times 10^{-6}$.
+
+\begin{table}[t]
+\centering
+\caption{Линейный и квадратичный коэффициенты периода трёх колец. Для магнита правильная колонка есть запуск \texttt{equilibrium\_check.fox}; паспортное $\eta_1=1{,}02$ есть её округление. Правильное $\eta_1$ электростатики и комбинированного кольца из времени не извлекалось.}
+\label{tab:map-rings}
+\begin{tabular}{lcccccc}
+\hline
+Кольцо & $\eta_0^{\mathrm{mag}}$ & $\eta_0$ & $\eta_1^{\mathrm{mag}}$ & $\eta_1$ & знак $\delta_{\mathrm{eq}}$ & знак статьи \\
+\hline
+\texttt{magnetic\_2} & $-0{,}534$ & $-0{,}5338$ & $1{,}02$ & $1{,}0178$ & $+$ & $-$ \\
+\texttt{electrostatic\_mh} & $-0{,}545$ & $-0{,}483$ & $1{,}07$ & нет & $+$ & $-$ \\
+\texttt{Nuclotron\_16} & $-0{,}758$ & $-0{,}758$ & $0{,}927$ & нет & $+$ & $-$ \\
+\hline
+\end{tabular}
+\end{table}
+
+Дейтрон \texttt{magnetic\_2}, $\gamma_s=1{,}143914$, $\alpha_0=0{,}230$. Оба $\eta_0$ суть $\alpha_0-1/\gamma_s^2=-0{,}534211$. Паспортное $\eta_1=1{,}02$ для магнита и есть~\eqref{eq:mag-eta1}.
+
+Протон \texttt{electrostatic\_mh}, $\gamma_s=1{,}248329$, $\alpha_0=0{,}0964$. Магнитная формула даёт $\eta_0=-0{,}54531$, электростатическая~\eqref{eq:es-eta0} даёт $\eta_0=-0{,}48345$, как в~\eqref{eq:es-mh}. Оба отрицательны. Паспортное $\eta_1=1{,}07$ остаётся магнитной комбинацией.
+
+Комбинированное кольцо, тот же дейтрон, $\alpha_0=0{,}00648$, паспортное $\eta_1=0{,}927$. Магнитный знаменатель $\eta_0=\alpha_0-1/\gamma_s^2=-0{,}757731$ отрицателен и близок к $-1/\gamma_s^2$: кольцо почти изохронно по геометрии дуг. В фильтре Вина опорная частица идёт прямо, электрический и магнитный радиусы процедуры \texttt{WIEN} равны, но частица с $x\neq 0$ имеет потенциал. Линейный коэффициент периода поэтому есть~\eqref{eq:es-eta0-gen} с $\alpha_0^{E}\neq 0$ на фильтрах, хотя геометрическая кривизна опорной орбиты там равна нулю. Четыре фильтра на период и восемь периодов дают $52{,}3\,\text{м}$ при длине $261{,}8\,\text{м}$. При поле $132\,\text{кВ/см}$ электрический радиус жёсткости около $38\,\text{м}$. Поправка $\alpha_0^{E}/\gamma_s^2$ при дисперсии в фильтре порядка нескольких метров есть сотые и знак $\eta_0$ не меняет; это оценка масштаба, не интеграл по таблице Твисса. Квадратичный коэффициент и $\Lambda_T$ внутри фильтра содержат потенциал главы~\ref{sec:electrostatic}: $\eta_1$ получает добавку~\eqref{eq:es-eta1} на длине фильтров, а $\Lambda_T$ расходится с геометрическим удлинением на $\Lambda_\Phi$, потому что скорость при $\delta=0$ зависит от $x$. Дуги остаются магнитными, и на них $\Lambda_T=\Lambda_C$. Паспортное $\eta_1=0{,}927$ этой добавки не видит.
+
+Эмиттанс в~\eqref{eq:beta-map} при $L=C_s$ совпадает с $\Lambda$ главы~\ref{sec:ch2}, если $\varepsilon=2J$. Среднеквадратичный эмиттанс $\varepsilon_{\mathrm{rms}}=\langle J\rangle$, подставленный в тот же множитель $\pi/L$, даёт половину $\Lambda_T$. Среднее по пучку заменяет $J$ на $\langle J\rangle$ в уже собранном $\Lambda_T$, а не в определении $\varepsilon$ формулы статьи.
+
+\section{Итоги}
+\label{sec:summary}
+
+Равновесный импульс читается из обращения в нуль среднего опоздания $\langle(T-T_s)/T_s\rangle$. Уравнение энергии на зазоре одно и то же, и кольца различаются рядом для $T=\oint\mathrm{d}l/v$.
+
+В магнитном кольце без бетатронного движения
+\begin{equation*}
+\frac{T-T_s}{T_s}=\eta_0\delta+\eta_1\delta^2,
+\qquad
+\delta_{\mathrm{eq}}=-\frac{\eta_1\delta_m^2}{2\eta_0},
+\end{equation*}
+\begin{equation*}
+\eta_0=\alpha_0-\frac{1}{\gamma_s^2},
+\qquad
+\eta_1=\alpha_1-\frac{\alpha_0}{\gamma_s^2}+\frac{1}{\gamma_s^4}+\frac{3\beta_s^2}{2\gamma_s^2}.
+\end{equation*}
+Это формулы~\eqref{eq:mag-eta0}, \eqref{eq:mag-eta1} и~\eqref{eq:mag-deq}. Сдвиг исчезает при любой амплитуде, когда $\eta_1=0$: так читается $\langle(T-T_s)/T_s\rangle=0$ после подстановки ряда периода.
+
+В магнитном кольце с бетатронным движением к периоду добавляется относительное удлинение $\Lambda$, и
+\begin{equation*}
+\delta_{\mathrm{eq}}=-\frac{1}{\eta_0}\Biggl(\frac{\eta_1\delta_m^2}{2}+\Lambda\Biggr).
+\end{equation*}
+Это формула~\eqref{eq:beta-deq}. Коэффициент перед $\Lambda$ в $(T-T_s)/T_s$ равен единице, потому что $\Lambda$ входит в $\oint\mathrm{d}l$ до деления на скорость. Когда путь и хроматичность собраны из одних сил,
+\begin{equation*}
+\Lambda=-\frac{2\pi}{C_s}(J_x\xi_x+J_y\xi_y).
+\end{equation*}
+Среднее опоздание обращается в нуль при произвольных $\delta_m$ и $J$, когда $\eta_1=0$ и $\Lambda=0$. Второе равенство в этой модели есть $\xi_x=\xi_y=0$.
+
+В электростатическом кольце скорость зависит от координаты. Для чисто электрического изгиба
+\begin{equation*}
+\eta_0^{\mathrm{es}}=(2-\beta_s^2)\alpha_0-\frac{1}{\gamma_s^2},
+\end{equation*}
+а при смешанном изгибе $\eta_0=\alpha_0+\alpha_0^{E}/\gamma_s^2-1/\gamma_s^2$. Квадратичный коэффициент
+\begin{equation*}
+\eta_1^{\mathrm{es}}
+=\eta_1^{\mathrm{mag}}
++\frac{1}{\gamma_s^2}
+\Biggl(
+\langle d_2\rangle
++2\Biggl\langle\Biggl(\frac{D}{\rho}\Biggr)^2\Biggr\rangle
+-3\alpha_0
+\Biggr)
+\end{equation*}
+содержит добавку потенциала сверх магнитной формулы на тех же $\alpha_0$ и $\alpha_1$. Опоздание распадается на путь и потенциал, $\Lambda_T=\Lambda_C+\Lambda_\Phi$, и
+\begin{equation*}
+\delta_{\mathrm{eq}}
+=-\frac{1}{\eta_0^{\mathrm{es}}}
+\Biggl(
+\frac{\eta_1^{\mathrm{es}}\,\delta_m^2}{2}
++\Lambda_T
+\Biggr).
+\end{equation*}
+Это формула~\eqref{eq:es-deq}. Среднее $\langle(T-T_s)/T_s\rangle=0$ при произвольных $\delta_m$ и $J$ требует $\eta_1^{\mathrm{es}}=0$ и $\Lambda_T=0$. На симплектическом отображении $\Lambda_T/J=-2\pi\xi/C_s$, где $\xi=\partial\nu/\partial\delta$ по импульсу на нулевом потенциале, поэтому условия компенсации суть $\eta_1^{\mathrm{es}}=0$, $\xi_x=0$ и $\xi_y=0$. В них стоит электростатический коэффициент периода: обнуление магнитного $\eta_1^{\mathrm{mag}}$ оставляет добавку потенциала. Путь при этом отличается от опоздания на $\Lambda_\Phi$.
+
+\subsection{Ошибки источников}
+\label{sec:errata}
+
+\begin{itemize}
+\item В формулах (5), (6), (9), (10) и (19) работы~\cite{Senichev2013} скобка при $\delta^2$ равна $\alpha_1-\alpha_0/\gamma_s^2+1/\gamma_s^4$ и не содержит $3\beta_s^2/(2\gamma_s^2)$, потому что перед (5) ряд скорости оборван на $\Delta v/v=\delta/\gamma^2$.
+\item Печатные формулы (10) и (16) той же работы и формула равновесия статьи~\cite{KolokolchikovMapping} ставят предымножитель $1/\eta_0$ без минуса, который даёт среднее уравнения (8).
+\item Условие (19) в~\cite{Senichev2013} обнуляет неполную скобку и оставляет в $\eta_1$ член $3\beta_s^2/(2\gamma_s^2)$.
+\item Формула (6) в~\cite{Senichev2013} вписывает $(\Delta L/L)_\beta$ в уже сокращённое $\Delta T/T$, тогда как $\Lambda$ появляется внутри $T=\oint\mathrm{d}l/v$.
+\item Формула (25) в~\cite{Senichev2013} оставляет $(\Delta L/L)_\beta$ с коэффициентом пути и ставит множитель $F_v$ только у кинематических членов; значение $F_v=1/(1-\alpha_0)$ воспроизводит лишь линейный $\eta_0^{\mathrm{es}}$.
+\item Формула (20) в~\cite{Senichev2013} называет эмиттанс формулы (11) среднеквадратичным, и при $\varepsilon_{\mathrm{rms}}=\langle J\rangle$ такая подстановка занижает $\Lambda$ вдвое; то же чтение $\varepsilon$ в множителе $\pi/L$ статьи~\cite{KolokolchikovMapping} даёт половину $\Lambda$.
+\item Печатная формула (18.19) в~\cite{Ng2006} для коэффициента при $\delta^3$ расходится с прямым рядом $(T-T_s)/T_s$: на примере COSY ряд даёт $-1{,}931$, а формула даёт $+1{,}006$.
+\item Определения (18.20) и (18.21) в~\cite{Ng2006} описывают частоту обращения частицы, $\eta_1^{(18.20)}=\eta_1-\eta_0^2$ и $\eta_1^{(18.21)}=2(\eta_1-\eta_0^2)$, тогда как в уравнение фазы входит ряд (18.10).
+\item Во второй строке формулы (18.14) в~\cite{Ng2006} член $T''/T$ записан через $2(C')^2/C^2$, тогда как дифференцирование $T=C/(\beta c)$ ставит на это место $C''/C$; формулы (18.17) и (18.18) с прямым разложением при этом совпадают.
+\item Формула (32) в~\cite{Shoji2005} делит удлинение на коэффициент уплотнения $\alpha$, тогда как знаменатель $\delta_{\mathrm{eq}}$ есть $\eta_0$.
+\item Заметка~\cite{SenichevNote} перед формулой (9) заключает $\alpha=0$ из $\langle\beta'\rangle=0$ и приравнивает амплитуды $\sqrt{2J/\beta}$ и $\sqrt{2J\gamma}$.
+\item В формулах (21) и (22) той же заметки знак $K_1$ в вертикали противоположен уравнению $y''-K_1 y$, а горизонтальная строка пропускает $1/\rho^2$; два вертикальных знака компенсируются, и бетатронная часть (24) сходится с путём на тех членах, которые в пути удержаны.
+\end{itemize}
+
+\subsection{Открытые вопросы}
+\label{sec:open}
+
+\begin{itemize}
+\item Карта \texttt{magnetic\_2} третьего порядка даёт из квадратичной формы времени $\Lambda_T/J_x=0{,}0788\,\text{м}^{-1}$ и $\Lambda_T/J_y=0{,}1194\,\text{м}^{-1}$ против $-2\pi\xi_x/C_s=0{,}0985\,\text{м}^{-1}$ и $-2\pi\xi_y/C_s=0{,}0989\,\text{м}^{-1}$ (отношения $0{,}80$ и $1{,}21$); коэффициенты $\eta$ этой карты с периодом сходятся, и на игрушечном симплектическом отображении тождество выполняется.
+\item Жёсткий цилиндрический трекер после добавления центра инвариантной кривой оставляет наклон $k_{\xi}=0{,}94$ и свободный член $b\approx -2{,}2\times 10^{-3}\,\text{м}^{-1}$; этот остаток есть вопрос несимплектичности модели, а в формулу равновесия входит $\Lambda_T$ симплектического отображения.
+\item Коэффициент при $J$ на гладком цилиндре из короткого слежения остаётся смешанным с линейным колебанием периода.
+\item Многооборотное среднее $\delta$ вдоль орбиты повторения отображения с включённым зазором остаётся неполученным.
+\item Квадратичные коэффициенты $\eta_1$ электростатического кольца и кольца с фильтрами Вина из мономов \texttt{ECM} остаются неизвлечёнными.
+\item Вес прямого спинового члена $\Delta\nu_s^{\mathrm{direct}}$ относительно $G\beta_s^2\gamma_s\,\delta_{\mathrm{eq}}$ остаётся неразделённым.
+\end{itemize}
+\appendix
+\section{Метод Боголюбова--Митропольского}
+\label{app:ch1bm}
+
+Схема метода --- книга~\cite{Bogoliubov1961}. Формула (10) в~\cite{Senichev2013} ссылается на неё при решении уравнения (8). Ниже та же схема применена к уравнению
+\begin{equation}
+\label{eq:mag-bm-eq}
+\ddot x+\omega^2 x=c_0+c_2 x^2
+\end{equation}
+с малыми $c_0$ и $c_2$. Для уравнения~\eqref{eq:mag-osc} это $c_0=0$ и $c_2=-(\omega_s^2/\eta_0)\eta_1$, амплитуда $a$ равна $\delta_m$, а $\omega=\omega_s$.
+
+Невозмущённое решение --- $x=a\cos\psi$ при $\dot a=0$ и $\dot\psi=\omega$. Ищем
+\begin{align}
+x&=a\cos\psi+u_1(a,\psi)+u_2(a,\psi)+\cdots,
+\label{eq:mag-bm-ansatz}\\
+\dot a&=A_1(a)+A_2(a)+\cdots,
+\label{eq:mag-bm-adot}\\
+\dot\psi&=\omega+B_1(a)+B_2(a)+\cdots.
+\label{eq:mag-bm-psidot}
+\end{align}
+Порядок $u_1$ есть порядок $c_0$ и $c_2$, порядок $u_2$ и $B_2$ --- порядок их произведений. В каждой $u_k$ первой гармоники нет: она отнесена к $a$ и $\psi$.
+
+До первого порядка
+\begin{equation}
+\label{eq:mag-bm-xdot}
+\dot x=-a\omega\sin\psi
++A_1\cos\psi-a B_1\sin\psi+\omega\partial_\psi u_1.
+\end{equation}
+Второе дифференцирование, в котором производная по времени действует на быструю фазу со скоростью $\omega$, даёт
+\begin{equation}
+\label{eq:mag-bm-xddot}
+\ddot x=-a\omega^2\cos\psi
+-2\omega A_1\sin\psi-2a\omega B_1\cos\psi
++\omega^2\partial_{\psi\psi}u_1.
+\end{equation}
+Подстановка в~\eqref{eq:mag-bm-eq} на этом порядке приводит к
+\begin{equation}
+\label{eq:mag-bm-order1}
+\omega^2(\partial_{\psi\psi}u_1+u_1)
+-2\omega A_1\sin\psi-2a\omega B_1\cos\psi
+=f_0(a,\psi),
+\end{equation}
+где $f_0$ --- правая часть на невозмущённой орбите. Её ряд Фурье
+\begin{equation}
+\label{eq:mag-bm-fourier}
+f_0=g_0+\sum_{n\ge 1}(g_n\cos n\psi+h_n\sin n\psi)
+\end{equation}
+имеет коэффициенты $g_0=(1/2\pi)\int_0^{2\pi}f_0\,\mathrm{d}\psi$ и $g_n=(1/\pi)\int_0^{2\pi}f_0\cos n\psi\,\mathrm{d}\psi$, и так же $h_n$ с $\sin n\psi$.
+
+Оператор $\partial_{\psi\psi}+1$ аннулирует $\cos\psi$ и $\sin\psi$. Первая гармоника в $u_1$ этим уравнением не определяется и линейно растёт по времени, если её туда поместить. Её переносят в $A_1$ и $B_1$:
+\begin{equation}
+\label{eq:mag-bm-AB}
+A_1=-\frac{h_1}{2\omega},\qquad
+B_1=-\frac{g_1}{2a\omega}.
+\end{equation}
+Остаток ряда даёт
+\begin{equation}
+\label{eq:mag-bm-u1}
+u_1=\frac{g_0}{\omega^2}
++\sum_{n\ge 2}\frac{g_n\cos n\psi+h_n\sin n\psi}{\omega^2(1-n^2)}.
+\end{equation}
+
+На орбите $x=a\cos\psi$ тождество $\cos^2\psi=(1+\cos 2\psi)/2$ превращает правую часть в
+\begin{equation}
+\label{eq:mag-bm-f0}
+f_0=c_0+\frac{c_2 a^2}{2}+\frac{c_2 a^2}{2}\cos 2\psi.
+\end{equation}
+Ненулевые коэффициенты --- $g_0=c_0+c_2 a^2/2$ и $g_2=c_2 a^2/2$. Значит $A_1=B_1=0$ и
+\begin{equation}
+\label{eq:mag-bm-u1-result}
+u_1
+=\frac{c_0+c_2 a^2/2}{\omega^2}
+-\frac{c_2 a^2}{6\omega^2}\cos 2\psi.
+\end{equation}
+Для~\eqref{eq:mag-osc} постоянная часть равна $-\eta_1 a^2/(2\eta_0)$. Это формула~\eqref{eq:mag-deq}.
+
+Частота появляется на следующем порядке. При $A_1=B_1=0$ амплитуда и фаза меняются начиная с $A_2$ и $B_2$. Раскладываем правую часть на смещённой орбите, $c_0+c_2(a\cos\psi+u_1)^2$. Линейный по $u_1$ кусок есть $f_1=2c_2(a\cos\psi)\,u_1$. Поправка $B_2$ снимает первую косинусную гармонику $f_1$ тем же правилом, что $B_1$:
+\begin{equation}
+\label{eq:mag-bm-B2}
+B_2=-\frac{1}{2\pi a\omega}
+\int_0^{2\pi}2c_2(a\cos\psi)\,u_1\cos\psi\,\mathrm{d}\psi.
+\end{equation}
+Запись $u_1=U_0+U_2\cos 2\psi$ с коэффициентами из~\eqref{eq:mag-bm-u1-result} и тождество $\cos\psi\cos 2\psi=(\cos 3\psi+\cos\psi)/2$ дают
+\begin{equation}
+\label{eq:mag-bm-f1}
+f_1=2c_2 a\Biggl(U_0+\frac{U_2}{2}\Biggr)\cos\psi
++c_2 a U_2\cos 3\psi.
+\end{equation}
+Первая гармоника имеет коэффициент $g_1=2c_2 a(U_0+U_2/2)$, поэтому
+\begin{equation}
+\label{eq:mag-bm-B2-alg}
+B_2=-\frac{c_2}{\omega}\Biggl(U_0+\frac{U_2}{2}\Biggr).
+\end{equation}
+Подстановка $U_0=(c_0+c_2 a^2/2)/\omega^2$ и $U_2=-c_2 a^2/(6\omega^2)$ собирает
+\begin{equation}
+\label{eq:mag-bm-Usum}
+U_0+\frac{U_2}{2}
+=\frac{c_0}{\omega^2}+\frac{c_2 a^2}{\omega^2}\Biggl(\frac{1}{2}-\frac{1}{12}\Biggr)
+=\frac{c_0}{\omega^2}+\frac{5}{12}\frac{c_2 a^2}{\omega^2}.
+\end{equation}
+Слагаемое $1/2$ --- постоянная часть $u_1$, слагаемое $-1/12$ --- гармоника $\cos 2\psi$, потому что $U_2/2=-c_2 a^2/(12\omega^2)$. Следовательно
+\begin{equation}
+\label{eq:mag-bm-B2-result}
+B_2=-\frac{c_2 c_0}{\omega^3}-\frac{5}{12}\frac{c_2^2 a^2}{\omega^3}.
+\end{equation}
+При $c_0=0$, $c_2=-(\omega_s^2/\eta_0)\eta_1$ и $\omega=\omega_s$ отношение $c_2/\omega_s^2=-\eta_1/\eta_0$ превращает $B_2/\omega_s$ в
+\begin{equation}
+\label{eq:mag-bm-rel}
+\frac{B_2}{\omega_s}
+=-\frac{5}{12}\frac{\eta_1^2 a^2}{\eta_0^2}.
+\end{equation}
+Поскольку $\dot\psi=\omega_s+B_2$, это формула~\eqref{eq:mag-freq}. Численная проверка приведена в разделе~\ref{sec:frequency}.
+
+Постоянная $c_0$ в~\eqref{eq:mag-bm-B2-result} даёт перекрёстный сдвиг частоты $-c_2 c_0/\omega^3$. Она понадобится, когда в период войдёт слагаемое, не зависящее от $\delta$. Разложение пригодно, пока $|c_2 a|\ll\omega^2$, то есть
+\begin{equation}
+\label{eq:mag-bm-valid}
+\biggl|\frac{\eta_1 a}{\eta_0}\biggr|\ll 1.
+\end{equation}
+\section{Удлинение пути у Шоджи и в заметке о хроматичности}
+\label{app:ch2path}
+
+Этот разбор относится к $\Lambda$ формулы~\eqref{eq:beta-Lambda}. Период и знак $\delta_{\mathrm{eq}}$ выведены в разделе~\ref{sec:ch2}; здесь сравниваются два способа собрать то же удлинение.
+
+\subsection{Среднее Шоджи}
+\label{sec:ch2-shoji}
+
+Шоджи~\cite{Shoji2005} начинает с разности пути за $n$ оборотов. Точная запись (4a) при обрезке выше второго порядка переходит в
+\begin{equation}
+\label{eq:beta-shoji-4b}
+\Delta L_n
+=\int_{s_0}^{s_0+n C_0}
+\Biggl(hx+\frac{1}{2}x'^2+\frac{1}{2}y'^2\Biggr)\mathrm{d}s,
+\end{equation}
+где $h=1/\rho$. Среднее удлинение одного оборота есть предел (5), $\Delta C=\lim_{n\to\infty}\Delta L_n/n$. Это тот же предел, которым в разделе~\ref{sec:ch2-avg} отделена постоянная часть от колебания с бетатронной частотой.
+
+Линейное $x_\beta=\sqrt{2J_x\beta_x}\sin\psi_x$ после суммирования по оборотам даёт формулы (10)--(12). Продольное смещение ограничено амплитудой $\sqrt{2J_x\mathcal{H}}$ и с числом оборотов не растёт. Постоянной части у линейного члена нет. Функция $\mathcal{H}=\gamma_x D^2+2\alpha_x DD'+\beta_x D'^2$ та же, что в разделе~\ref{sec:ch2-avg}.
+
+Вклад наклонов --- формулы (16) и (17). Производная записана как $y'=\sqrt{2J_y\gamma_y}\sin\psi_y$. Такая одночленная запись есть фазовый сдвиг точной производной: амплитуда $\sqrt{2J\gamma}$ имеет тот же средний квадрат $J\gamma$, что и~\eqref{eq:beta-xp2}, и для неё не требуется $\alpha=0$. После отбрасывания осциллирующей части
+\begin{equation}
+\label{eq:beta-shoji-slope}
+\lim_{n\to\infty}\frac{1}{n}\int\frac{1}{2}y'^2\,\mathrm{d}s
+=\frac{J_y}{2}\int_0^{C_0}\gamma_y\,\mathrm{d}s,
+\end{equation}
+и то же для $x$ с $J_x$ и $\gamma_x$. Деление на $C_s$ даёт угловую часть~\eqref{eq:beta-Lambda}.
+
+Нелинейный сдвиг $x$ собирается из шести квадратичных членов правой части уравнения (2a): секступольного $m$, кривизны $h^3$ и краевого $h'$. Для одного тонкого толчка $\Delta\theta=\Delta\kappa\, y^2$ среднее по оборотам есть формула (24),
+\begin{equation}
+\label{eq:beta-shoji-24}
+\Delta C=\Delta\kappa\, J_y\beta_y D.
+\end{equation}
+Множитель $1/2$ в эту строку не входит, потому что он уже сидит в коэффициенте $\Delta\kappa$, когда толчок берётся из уравнения движения: там $\Delta\kappa=(1/2)(h''-hk-m)\,\mathrm{d}s$. Средний квадрат $\langle y^2\rangle=J_y\beta_y$ тогда даёт в длине $(J_y/2)\int m\beta_y D\,\mathrm{d}s$ с тем знаком, какой у $m$ в уравнении. Остальные пять членов считаются той же подстановкой; их список вынесен в приложение~A статьи. Сумма с угловыми членами (16) и (17) есть полная формула (26).
+
+Хроматичности получаются из тех же уравнений (2) заменой $x\to x+D\delta$. Формулы (29) интегрированием по частям, тождества которого собраны в приложении~B, переписываются как (30). Сравнение (30) с (26) сокращает подынтегральные выражения до
+\begin{equation}
+\label{eq:beta-shoji-31}
+\Delta C=-2\pi(J_x\xi_x+J_y\xi_y).
+\end{equation}
+Деление на $C_s$ есть~\eqref{eq:beta-xi}. Равенство удерживает секступоль, кривизну и краевое поле: они стоят и в пути, и в хроматичности. Короткий секступоль для этого вывода не требуется. Шоджи отмечает, что формула такого вида без вывода была у Эмери, а Форест связал её с симплектичностью. Выше она получена из интеграла пути, и на это замечание вывод не опирается.
+
+Для электронов Шоджи закрывает удлинение сдвигом импульса по формуле (32),
+\begin{equation}
+\label{eq:beta-shoji-32}
+\delta=-\frac{1}{\alpha}\frac{\Delta C}{C_0}.
+\end{equation}
+Делитель $\alpha$ --- коэффициент уплотнения, не $\eta$. Для электронов на $1$~ГэВ величина $1/\gamma^2$ мала рядом с обычным $\alpha$ порядка $10^{-2}$ и меньше; в квазиизохронной строке таблицы~I той работы $\alpha=2\times 10^{-6}$ уже сравним с $1/\gamma^2$. Для дейтронов магнитного кольца знаменатель равновесия есть $\eta_0=-0{,}534211$, тогда как $\alpha_0=0{,}230$. Подстановка $\alpha_0$ в~\eqref{eq:beta-deq} меняет и величину, и знак $\delta_{\mathrm{eq}}$. Формула (32) этот знаменатель не заменяет.
+
+\subsection{Заметка о хроматичности}
+\label{sec:ch2-note}
+
+Заметка~\cite{SenichevNote} идёт от геометрического интеграла (7),
+\begin{equation}
+\label{eq:beta-note-7}
+\Delta C
+=\int\Biggl(\frac{x}{\rho}+\frac{x'^2+y'^2}{2}\Biggr)\mathrm{d}s.
+\end{equation}
+Это та же обрезка, что~\eqref{eq:beta-dl-2} и~\eqref{eq:beta-shoji-4b}. Уравнение движения (1) заметки есть $x''+K_1 x=(1/\rho)\delta+F^x$ и $y''-K_1 y=F^y$, с секступольными силами $F^x=(K_2/2)(x^2-y^2)$ и $F^y=-K_2 xy$.
+
+Формула (8) ещё содержит $\alpha$:
+\begin{equation}
+\label{eq:beta-note-8}
+x'_\beta
+=-\sqrt{\frac{2J_x}{\beta_x}}
+\bigl(\alpha_x\cos\psi_x+\sin\psi_x\bigr).
+\end{equation}
+Следующая фраза считает среднее $\beta'$ по кольцу равным нулю и заключает, что $\alpha=0$. Из периодичности $\beta$ следует только $\int\beta'\,\mathrm{d}s=0$. Локально $\alpha=-\beta'/2$ нулём не является. Формула (9) после этого шага пишет
+\begin{equation}
+\label{eq:beta-note-9}
+x'_\beta
+=-\sqrt{\frac{2J_x}{\beta_x}}\sin\psi_x
+=-\sqrt{2J_x\gamma_x}\,\sin\psi_x.
+\end{equation}
+Равенство двух амплитуд требует $\gamma=1/\beta$, то есть $\alpha=0$ в той же точке. Оно ложно, пока $\alpha\neq 0$. Подстановка первой амплитуды в~\eqref{eq:beta-note-7} дала бы $(J/2)\int\mathrm{d}s/\beta$ и потеряла бы $(J/2)\int(\alpha^2/\beta)\,\mathrm{d}s$. В интеграл заметка подставляет вторую амплитуду. Средний квадрат $\langle x'^2\rangle=J\gamma$ у неё верный, и формула (11) заметки есть
+\begin{equation}
+\label{eq:beta-note-11}
+\Delta C_{x',y'}
+=\frac{J_x}{2}\int\gamma_x\,\mathrm{d}s
++\frac{J_y}{2}\int\gamma_y\,\mathrm{d}s.
+\end{equation}
+Это~\eqref{eq:beta-angle}. Тождество~\eqref{eq:beta-xp2} удерживает $\alpha$ внутри квадрата и к шагу $\alpha=0$ не обращается; конечная формула (11) с ним совпадает. Линейный член $x_\beta/\rho$ в среднем по кольцу равен нулю, как и у Шоджи.
+
+Дисперсионная часть записана как $\delta(\alpha_0+\alpha_1\delta+\cdots)$, формулы (13) и (14). Коэффициент $\alpha$ там есть интеграл $\int D/\rho\,\mathrm{d}s$ и имеет размерность длины. Безразмерные $\alpha_0$ и $\alpha_1$ формулы~\eqref{eq:mag-C} получаются делением на длину орбиты. Постоянный толчок даёт формулу (15), $\Delta C=\sum F_{\mathrm{kick}} L D$. В секступоле квадрат отклонения заменяется средним по бетатронной фазе. Из $\langle x^2\rangle=J_x\beta_x$ и $\langle y^2\rangle=J_y\beta_y$ сила $(K_2/2)(x^2-y^2)$ даёт
+\begin{equation}
+\label{eq:beta-note-kick}
+\langle F^x\rangle L
+=\frac{1}{2}K_2 L(J_x\beta_x-J_y\beta_y).
+\end{equation}
+Множитель $1/2$ здесь стоит в определении силы, а второй $1/2$ возникает из среднего $\cos^2\psi$. Произведение совпадает с упаковкой Шоджи, где та же $1/2$ спрятана в $\Delta\kappa$ формулы~\eqref{eq:beta-shoji-24}, а $\langle y^2\rangle=J\beta$ стоит без дополнительной половины. Сумма углового члена, дисперсии и секступолей есть формула (20) заметки,
+\begin{equation}
+\label{eq:beta-note-20}
+\begin{aligned}
+\Delta C
+&=\frac{J_x}{2}\int(\gamma_x+K_2\beta_x D)\,\mathrm{d}s
++\frac{J_y}{2}\int(\gamma_y-K_2\beta_y D)\,\mathrm{d}s
+\\
+&\quad+\delta(\alpha_0+\alpha_1\delta+\cdots).
+\end{aligned}
+\end{equation}
+Кривизны и краевого поля в этой сумме нет. Короткий секступоль --- условие, при котором нелинейный сдвиг заменён средним толчком~\eqref{eq:beta-note-kick}.
+
+Хроматичность берётся в виде (21),
+\begin{equation}
+\label{eq:beta-note-21}
+\begin{aligned}
+\xi_x
+&=-\frac{1}{4\pi}\int(K_1\beta_x+K_2\beta_x D)\,\mathrm{d}s,
+\\
+\xi_y
+&=-\frac{1}{4\pi}\int(K_1\beta_y-K_2\beta_y D)\,\mathrm{d}s.
+\end{aligned}
+\end{equation}
+Горизонтальная строка следует из уравнения $x''+K_x x=0$ с $K_x=K_1-K_2 D\delta$ и из правила $\mathrm{d}\nu=(1/(4\pi))\int\beta\,\mathrm{d}K$. Масштаб градиента $K_1/(1+\delta)$ даёт $-K_1$, секступольный толчок даёт $-K_2 D$. Дипольного $1/\rho^2$ в строке нет: естественная горизонтальная хроматичность содержит $K_x=K_1+1/\rho^2$. Вертикальное уравнение $y''-K_1 y=-K_2 xy$ имеет фокусирующий коэффициент $K_y=-K_1$. Его производная по $\delta$ равна $K_1+K_2 D$, поэтому
+\begin{equation}
+\label{eq:beta-xi-vert}
+\xi_y
+=\frac{1}{4\pi}\int\beta_y(K_1+K_2 D)\,\mathrm{d}s.
+\end{equation}
+Знак $K_2$ в~\eqref{eq:beta-note-21} с этой формулой совпадает. Знак $K_1$ противоположен: в~\eqref{eq:beta-note-21} перед $K_1\beta_y$ стоит тот же минус, что и в горизонтальной строке.
+
+Тождество Твисса $\alpha'=K\beta-\gamma$ на периодическом кольце даёт $\int K\beta\,\mathrm{d}s=\int\gamma\,\mathrm{d}s$, где $K$ --- коэффициент при $z$ в $z''+Kz=0$. Для горизонтали $K_x=K_1+1/\rho^2$, для вертикали $K_y=-K_1$. Формула (22) заметки пишет
+\begin{equation}
+\label{eq:beta-note-22}
+\int K_1\beta_{x,y}\,\mathrm{d}s=\int\gamma_{x,y}\,\mathrm{d}s
+\end{equation}
+сразу для обеих плоскостей. По горизонтали выпало $\int\beta_x/\rho^2\,\mathrm{d}s$. По вертикали знак $K_1$ противоположен $K_y$, и верное равенство есть $\int(-K_1)\beta_y\,\mathrm{d}s=\int\gamma_y\,\mathrm{d}s$.
+
+Если подставить~\eqref{eq:beta-note-22} в~\eqref{eq:beta-note-21}, квадрупольный кусок становится $\xi=-(1/(4\pi))\int\gamma\,\mathrm{d}s$ в обеих плоскостях. Для вертикали это получается из двух неверных знаков сразу: минус перед $K_1$ в (21) и плюс в $\int K_1\beta_y=\int\gamma_y$. Вместе они дают то $\xi_y$, которое переводит~\eqref{eq:beta-note-20} в
+\begin{equation}
+\label{eq:beta-note-24}
+\Delta C
+=-2\pi(J_x\xi_x+J_y\xi_y)
++\delta(\alpha_0+\alpha_1\delta+\cdots).
+\end{equation}
+Секступольные знаки в (21) с толчком~\eqref{eq:beta-note-kick} согласованы и в этой компенсации не участвуют. Бетатронная часть~\eqref{eq:beta-note-24} поэтому совпадает с путём~\eqref{eq:beta-note-20}. С формулой Шоджи~\eqref{eq:beta-shoji-31} она совпадает на квадрате угла и на коротком секступоле. Кривизна, краевое поле и горизонтальное $1/\rho^2$ в (24) не входят: первые два не удерживались в пути, третье отсутствует в обеих строках (21) и (22).
+
+Вывод заметки состоит в том, что при коротких секступолях нулевая хроматичность обнуляет бетатронное удлинение. В пределах~\eqref{eq:beta-note-20} это верно. Полное $\Lambda$ обнуляется вместе с $\xi_x$ и $\xi_y$ и в модели Шоджи, где кривизна и край уже включены в обе части (31). Условие $\eta_1=0$ к этой заметке не относится: её $\alpha$ есть размерный интеграл длины, а равновесие периода читается из~\eqref{eq:beta-sync}.
+\section{Трекинг модельного кольца}
+\label{app:ch3track}
+
+Кольцо раздела~\ref{sec:es-num} собрано из восьми одинаковых ячеек. Опорная дуга --- четверть окружности радиуса $\rho=20\,\text{м}$. Прямой промежуток ячейки равен $8\,\text{м}$ и делится квадруполем пополам. Знак тонкой линзы чередуется, модуль силы равен $0{,}02\,\text{м}^{-1}$. Секступоль, когда он включён, стоит на фокусирующих плоскостях и даёт толчок $\Delta x'=(S/2)x^2(p_s/p)$. Цилиндрическое поле внутри дуги имеет потенциал~\eqref{eq:es-phi}; на границе дуги продольный импульс меняется так, чтобы полная энергия~\eqref{eq:es-energy} и радиальный импульс сохранились. Магнитный вариант заменяет дугу однородным полем $B=p_s/(q\rho)$ и масштабирует квадруполь как $1/p$, а не как $1/(pv)$. Опорная частица --- протон с кинетической энергией $233\,\text{МэВ}$.
+
+Замкнутая орбита при заданном $\delta$ ищется в плоскости первого квадруполя. Коэффициенты $\alpha_0$, $\alpha_1$ берутся из длины этой орбиты, $\eta_0$ и $\eta_1$ --- из времени. Подгонка кубическим полиномом по набору $|\delta|\le 10^{-3}$ оставляет остаток меньше $10^{-12}$. Хроматичность есть наклон тюна замкнутой орбиты по $\delta$. Бетатронный наклон есть среднее $(T-T_s)/T_s$ и $(C-C_s)/C_s$ по двадцати четырём начальным фазам линейного эллипса Твисса, делённое на действие $J$. При $J=10^{-5}\,\text{м}$ и при $J=4\times 10^{-5}\,\text{м}$ магнитные наклоны времени и пути совпадают до $2\times 10^{-7}\,\text{м}^{-1}$. Расхождение этих двух наклонов в прежней точке $J=10^{-8}\,\text{м}$ было сравнимо с допуском интегратора. Слежение одной частицы на $40$--$80$ оборотах постоянную часть от бетатронного колебания периода не отделяет: амплитуда колебания больше среднего в сотни раз, и среднее по такому отрезку зависит от числа оборотов. В таблицу входит фазовое среднее.
+
+Определитель матрицы $(x,x')$ на опорной орбите отличается от единицы меньше чем на $2\times 10^{-6}$.
+
+\begin{table}[ht]
+\centering
+\caption{Наклоны периода по действию. Предсказание есть $-2\pi\xi/C_s$.}
+\label{tab:es-scan}
+\begin{tabular}{llrrrrr}
+\hline
+кольцо & $S$ & $\xi$ & время & путь & $-2\pi\xi/C_s$ \\
+\hline
+магнит & 0 & $-0{,}20683$ & $8{,}36\times 10^{-3}$ & $8{,}36\times 10^{-3}$ & $6{,}85\times 10^{-3}$ \\
+магнит & 0{,}002 & $+0{,}23242$ & $-7{,}28\times 10^{-3}$ & $-7{,}28\times 10^{-3}$ & $-7{,}70\times 10^{-3}$ \\
+магнит & 0{,}004 & $+0{,}67071$ & $-2{,}29\times 10^{-2}$ & $-2{,}31\times 10^{-2}$ & $-2{,}22\times 10^{-2}$ \\
+цилиндр & 0 & $-0{,}52236$ & $+1{,}16\times 10^{-2}$ & $-7{,}57\times 10^{-3}$ & $+1{,}73\times 10^{-2}$ \\
+цилиндр & 0{,}002 & $-0{,}09641$ & $-5{,}76\times 10^{-3}$ & $-1{,}82\times 10^{-2}$ & $+3{,}19\times 10^{-3}$ \\
+цилиндр & 0{,}0025 & $+0{,}01244$ & $-1{,}01\times 10^{-2}$ & $-2{,}08\times 10^{-2}$ & $-4{,}12\times 10^{-4}$ \\
+цилиндр & 0{,}004 & $+0{,}33193$ & $-2{,}32\times 10^{-2}$ & $-2{,}88\times 10^{-2}$ & $-1{,}10\times 10^{-2}$ \\
+цилиндр & 0{,}008 & $+1{,}18710$ & $-5{,}79\times 10^{-2}$ & $-4{,}99\times 10^{-2}$ & $-3{,}93\times 10^{-2}$ \\
+цилиндр & 0{,}012 & $+2{,}04257$ & $-9{,}27\times 10^{-2}$ & $-7{,}11\times 10^{-2}$ & $-6{,}77\times 10^{-2}$ \\
+\hline
+\end{tabular}
+\end{table}
+
+Наклоны даны в м$^{-1}$. Прямая~\eqref{eq:es-scan} по магнитному скану имеет $k_{\xi}=1{,}076$ и $b=1{,}00\times 10^{-3}\,\text{м}^{-1}$ для времени; остаток точек меньше $6\times 10^{-6}\,\text{м}^{-1}$. По цилиндру для времени $k_{\xi,T}=1{,}227$, $b_T=-9{,}65\times 10^{-3}\,\text{м}^{-1}$; для пути $k_{\xi,C}=0{,}747$, $b_C=-2{,}05\times 10^{-2}\,\text{м}^{-1}$. Эти $k_{\xi}$ относятся к среднему по линейному эллипсу; центр инвариантной кривой учтён в главе~\ref{sec:map}. Точка $S=0{,}0025$ в подгонку времени входит и на прямой лежит.
+
+Угловой интеграл $(1/(2C_s))\int\gamma_x\,\mathrm{d}s$ на магнитной оптике, совпадающей с трекингом по $\nu_x=0{,}286$ и $\beta_x=32{,}4\,\text{м}$ в плоскости квадруполя, равен $2{,}41\times 10^{-2}\,\text{м}^{-1}$.
+
+Квадратичный коэффициент цилиндра при $S=0$ равен $0{,}75898$, магнитная формула даёт $0{,}87339$. Моменты $\langle(D/\rho)^2\rangle=0{,}61516$ и $\langle d_2\rangle$, экстраполированные к $\delta=0$ с орбит $|\delta|=(2\ldots 8)\times 10^{-4}$, подставленные в~\eqref{eq:es-eta1}, оставляют остаток $1\times 10^{-4}$. При $S=0{,}004$ измеренное $\eta_1^{\mathrm{es}}=0{,}31909$, магнитная формула даёт $0{,}60544$, и~\eqref{eq:es-eta1} на тех же моментах без экстраполяции $\delta^4$ отличается на $1\times 10^{-3}$.
+
+Проверочные скрипты модели собраны в каталоге \path{notes/equilibrium-energy/audit}.
+
+\bibliography{references}
+
+\end{document}

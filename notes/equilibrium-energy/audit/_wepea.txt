@@ -1,0 +1,279 @@
+                                          Proceedings of IPAC2013, Shanghai, China                                          WEPEA036
+
+
+             SPIN TUNE DECOHERENCE EFFECTS IN ELECTRO- AND
+                       MAGNETOSTATIC STRUCTURES
+              Yu. Senichev, R. Maier, D. Zyuzin, IKP, Forschungszentrum Juelich, Germany
+                        N. Kulabukhova, St. Petersburg State University, Russia
+                                  on behalf of the JEDI Collaboration
+
+Abstract                                                               Slip factor    0  1 /  2 is introduced by ratio
+   In Electric Dipole Moment search experiments with                 between revolution time and momentum deviations:
+polarized beams the coherence of spin oscillations of                                                  Trev
+particles has a leading role [1]. The decoherent effects                                                               (4)
+arise due to spin tune dependence on particle energy and                                                Trev
+particle trajectory in focusing-bending fields. They are               Obviously, in case of bunched beam the revolution time
+described through the n-th order spin tune aberrations.              deviation averaged over one synchrotron oscillation is
+Since the first order is suppressed by RF field, the second          zero. In first approach it follows from solution of (1).
+order begins to play a crucial role. It depends on the orbit         However using the higher expansion in power of
+lengthening and on the odd order field components. We                momentum compaction factor    0  1   and
+consider the spin decoherence effects and methods of                 velocity ( v s  v ) 1  v s [1  v / v s  ( v / v s ) 2  ...] the
+their compensation in different channels, electrostatic,
+magnetostatic linking the decoherence effects with                   deviation of time revolution deviation can be represented
+common characteristics such as the momentum                          in form:
+                                                                                                                                2
+compaction factor, the chromaticity and others.                                     Trev C v C v  v 
+                                                                                                     
+                                                                                    Trev   C   vs   C vs  vs 
+      SYNCHROTRONOUS PRINCIPLE                                                                                                    (5)
+  The basic “synchrotronous acceleration principle” of                                           1               0 1  2
+                                                                                          0  2      1  2  4   
+Veksler and McMillan is formulated by simple system                                                                 
+equation:                                                              In addition, we must include to the orbit lengthening
+                             d                                      value L / L  due to the betatron motion:
+                                  rf 
+                             dt
+                                                   (1)                Trev          1                    1            L 
+
+
+
+
+                                                                                                                                                          c 2013 by JACoW — cc Creative Commons Attribution 3.0 (CC-BY-3.0)
+                             d eVrf rf                                      0  2      1  20  4    2       (6)
+                                          sin                       Trev                                             L 
+                             dt 2h 2 E                                                         
+          p                                                         Then the longitudinal motion equations can be written as:
+where       is momentum deviation from equilibrium                             
+           ps                                                         d                    1                  1  2  L  
+                                                                           rf   0             1  0               
+                                                                      dt           
+                                                                                          2
+                                                                                                          2
+                                                                                                                   4        L   
+synchronous level of momentum p  p - ps ,  is phase                                                 
+deviation from synchronous phase  s  0 (no                          d eV rf  rf
+                                                                                     sin                                         (7)
+acceleration in storage ring),  is sleep-factor, E is full           dt 2h 2 E
+energy,  is relative velocity, eVrf is energy gain per                Let us assume that   1 , that is cos  1 , and write
+turn with Vrf voltage gap, rf  2hf rev is angular                 the equation for momentum deviation  as:
+frequency of RF field, h is a harmonic number,                                   d 2   eVrf rf2        1 
+                                                                                                            
+                                                                                               2  0
+ f rev  1 / Trev is revolution frequency.                                       dt 2
+                                                                                        2h E           2 
+    The first equation of system (1) comes directly from                                                                          (8)
+“synchrotronous acceleration principle”: particle having                            eVrf rf2         0 1  2  L  
+                                                                                               1  2  4         
+shorter revolution time arrives earlier and gets in an                              2h 2 E                     L   
+earlier phase of the RF field:
+                                               T                    From (6) we see that average value Trev / Trev  0 is
+                                             rev             (2)   not zero, and it is defined by  0 ,1 ,  and L / L  :
+                                                Trev
+    In the first approach change of orbit length C versus                                 Trev             1            L 
+momentum deviation is defined by C / C   0   , and                                          1  20  4    2       (9)
+                                                                                          Trev                          L 
+we can write:
+                                                                        As follows from equation (8) the orbit lengthening
+               Trev (C / v) C v                   1            must be compensated by an equilibrium momentum level
+                                           0  2    (3)
+                Trev     C/v       C     v                        rising to be consistent with the basic “synchronous
+                                                                                                                                                Copyright ○
+
+
+
+
+                                                                     acceleration principle”. Solving (8) using asymptotic
+
+05 Beam Dynamics and Electromagnetic Fields                                                                 ISBN 978-3-95450-122-9
+D02 Non-linear Dynamics - Resonances, Tracking, Higher Order                                                                          2579
+                                                                              WEPEA036                               Proceedings of IPAC2013, Shanghai, China
+
+                                                                              methods [2] we can define an influence of the betatron           parameters      x , x  at a time. Due to a larger
+                                                                              oscillation, the square term of momentum compaction
+                                                                                                                                               radius   x  the orbit is longer by factor (   x  ) / 
+                                                                              factor 1 and the slip factor  onto the equilibrium
+                                                                              level energy shift  eq :                                       and due to x  is longer by factor 1 / cos x  . Together
+                                                                                                                                               with the vertical motion the factor of lengthening is
+                                                                                               2   m2          1   L  
+                                                                                    eq  2 s           1  20  4      (10)         1 / cos  , where       x 2  y 2 .
+                                                                                           s  0  1  2     s  s   L   
+                                                                                 Expression (10) means that the equilibrium momentum
+                                                                              is different for every particle in bunch.
+
+
+
+
+                                                                                             (a)            (b)                                       (a)                 (b)
+                                                                              Figure 1: Phase trajectory in longitudinal plane for initial     Figure 3: Orbit lengthening due to betatron oscillation (a)
+                                                                              coordinates x=0, y=0 (a) and x=3 mm, y=0 (b).                    and momentum spread (b)
+
+                                                                                                                                               Then the orbit lengthening due to betatron oscillation is:
+                                                                                                                                                                               1  x  x   y  
+                                                                                                                                                                                           2      2
+                                                                                                                                                L     1    x      
+                                                                                                                                                                1ds                      ds
+                                                                                                                                                L   L   cos             L           2      
+                                                                                                                                                                                                   
+                                                                                                                                                      x                   1 x             1 y
+                                                                                                                                               Since   0 , x 2              , y 2              and
+                                                                                                                                                                         2 x             2 y
+                                                                                                                                                1 /  x , y   x , y / R the orbit lengthening due to the
+                                                                                                                                               betatron motion is:
+          c 2013 by JACoW — cc Creative Commons Attribution 3.0 (CC-BY-3.0)
+
+
+
+
+                                                                              Figure 2: Phase trajectory in longitudinal plane for
+                                                                              1  0 and 1  0 without betatron oscillation.
+                                                                                                                                                                               L 
+                                                                                                                                                                                   
+                                                                                                                                                                                       
+                                                                                                                                                                                                           
+                                                                                                                                                                                          x x   y y (11)
+                                                                                                                                                                               L  2L
+
+                                                                                 As example Fig. 1 shows the results of COSY Infinity          Momentum Deviation
+                                                                              calculation in electrostatic ring [3] when the equilibrium         Now let us go back to the orbit lengthening due to the
+                                                                              momentum level rises up due to betatron motion. In the           momentum deviation. For that we will appeal to figure
+                                                                              same time due to the non-zero second order momentum              3b. All notations of variables are introduced in
+                                                                              compaction factor 1  0 and              ( v / v s ) 2 phase   accordance with this figure. First of all we define linear
+                                                                              trajectories lose symmetry in the longitudinal plane in          and angular dispersion:
+                                                                              direction of the momentum, and thus lead to a shift of the                                 D( s,  )  D0 ( s )  D1 ( s )  
+                                                                              equilibrium momentum value. Figure 2 shows the cases                                                                             (12)
+                                                                                                                                                                         D( s,  )  D0 ( s)  D1 ( s )  
+                                                                              of an axial particle with zero and non-zero second order
+                                                                                                                                                 In arbitrary point along ds  d :
+                                                                              momentum compaction factor. The effect with 1  0 is
+                                                                              similar to sextupole effect in the transverse plane when
+                                                                              the phase trajectory begins to take a shape of a triangle.
+                                                                                                                                                                                    D                 
+                                                                                                                                                 dl1    D0    D1   2 d  1  0    1   2 ds ,
+                                                                                                                                                                                        
+                                                                                                                                                                                               D
+                                                                                                                                                                                                
+                                                                                                                                                                                                        
+
+                                                                                           ORBIT LENGTHENING                                   dl2  dl1 1  ( D0  ) 2 
+                                                                                                                                                   D          D         1                  (13)
+                                                                              Betatron Motion                                                  1  0    1   2   1  ( D0  ) 2 ds
+                                                                                                                                                                         2            
+                                                                              Now we define parameters  0 ,1 and ( L / L)  on the
+                                                                                                                                                  As a result we have:
+                                                                              basis of simple geometric considerations. Figure 3 shows
+                                                                              the orbit lengthening due to momentum spread  and                                     D           D 1               
+                                                                                                                                                             l2   1  0     1  D02    2  ds (14)
+                                                                              betatron oscillation ( L / L)  . Let us begin from the case                                       2              
+                                                                              when the orbit lengthening arises due to betatron                   Thus, the orbit lengthening due to the momentum
+Copyright ○
+
+
+
+
+                                                                              oscillation (Fig. 3a). Assume that the particle has              deviation is:
+
+                                                                              ISBN 978-3-95450-122-9                                                       05 Beam Dynamics and Electromagnetic Fields
+                                                                              2580                                                  D02 Non-linear Dynamics - Resonances, Tracking, Higher Order
+                                            Proceedings of IPAC2013, Shanghai, China                                                 WEPEA036
+
+                                                   (15)                   factor plays the crucial role in the orbit lengthening due to
+                  C l 2  C                                              momentum and simultaneously it depends on normalized
+                               0  1 2  ...
+                   C      C                                               sextupole strength S sext  1 / 2 B    2 B y / x 2 as
+                         D             D      1                                                                            S sext  D03
+                   0  0 ; 1  1  D02                                                                   1,sext                  .       (21)
+                                            2                                                                                 L
+  In result we have the equilibrium momentum spread                         We can correct 1 up to required value
+due to the betatron motion and non-zero second order                                                                         0           1
+momentum compaction factor:                                                                              1   1, sext                      (22)
+                                                                                                                               s2        s4
+                 s2            1   m2                      
+   eq      2
+                          1  0 
+                                2
+                                        
+                                     4  2
+                                              
+                                                
+                                                    
+                                                    x x   y y        Simultaneously the sextupole affects on the orbit
+             s  0  1     s s           2L                      lengthening directly:
+                                                                   (16)                          L         S sext D0  x , y  x , y
+                                                                                                                                    . (23)
+                                                                                                 L  sext             L
+     ORBIT LENGTHENING AND SPIN                                             Based on (11,23) a simple solution follows:
+            DECOHERENCE                                                                                          x , y
+  As we know the spin tune  s  G . If the equilibrium                                                      S sext      (24)
+                                                                                                               2 D0  x , y
+energy  eq depends on the particle parameters the spin                     Together with 1 correction three families of
+tune spread for N t turns has incoherent spread:                          sextupoles are required, and they should be placed in
+                             2  s  2G  eq N t               (17)   locations with maximum/minimum value of D0 and
+  It reduces spin decoherence time. For example, let us                     x, y functions.
+consider the case with the spin decoherence time limited
+by        1000         seconds        (~ 109 turns)   and                  FEATURES OF ELECTROSTATIC RING
+                                     11
+  eq /   1 rad / 2GN t  7  10 .       Then  using                   In electrostatic deflector due to converting of kinetic
+                                                                          energy to potential the velocity spread v / v reduces by
+expression (10) we can define limit for momentum                          some factor Fv dependent on the optics with almost
+spread:
+
+              m2 
+                     eq   2
+                           2  4s
+                                                
+                                 2   s2 0  1
+                                                  (18)
+                                                                         unchanged trajectory. Then for arbitrary particle we have
+                                                                          additional factor 1 / Fv in expression (6):
+                            s 1   s2 0  1
+
+
+
+
+                                                                                                                                                                 c 2013 by JACoW — cc Creative Commons Attribution 3.0 (CC-BY-3.0)
+                                                                                   Trev          1 1 
+  In COSY ring  0  0.2 ,  s  1.248 , 1  2 taking                                     0           
+                                                                                   Trev           Fv  2 
+zero contribution from betatron motion (  x , y ~ 0 ) RMS                                                                   (25)
+                                                                                                 1     1   1        L 
+momentum spread should not exceed the value                                               1  2 20  2 4     
+                                                                                                                   2
+                                                                                                                           
+                                                                                                Fv    Fv          L 
+  m  8  10 6 . Reducing the second order of MCF up                                    
+                                                                            It means in order to compensate the decoherence effect
+to 1  0.01 we get  m  2  10 5 . In order to exclude
+                                                                          coming from momentum spread we have to adjust  1 by
+completely the momentum spread influence on the orbit
+                                                                          factor Fv smaller. Simultaneously, we take note that the
+lengthening the coefficient in (10) has to be zero
+                           1   0 /  s2  1 /  s4  0 . (19)          slip factor can even change sign when Fv  1 /  0 2 , and
+  Now let us estimate the restriction for the emittance                   behavior of beam will be like at higher critical energy, in
+value:                                                                    particular, the synchronous phase change by  .
+                         eq     1  2  1             L
+               xrms
+                  ,y            2  s 02                 (20)                         ACKNOWLEDGMENT
+                                             s        x , y
+                                                                             The authors express their appreciation to IKP staff for
+  In COSY ring taking              m  10 5 the emittances             fruitful discussions at our scientific seminars.
+should be  xrms
+              , y  1.4 mm mrad. Thus, we can conclude                                          REFERENCES
+that contribution to the spin tune decoherence is the same                [1] F.J.M. Farley, Y.K. Semertzidis, Prog. Part Nucl. Phys. 52,
+for  xyrms  1 mm mrad and  rms  10 5 .                                   1, 2004.
+                                                                          [2] N. Bogolyubov, Yu. Mitropolsky, Asymptotic methods in
+                                                                              the theory of nonlinear oscillations, Hindustan Publishing
+  SEXTUPOLE CORRECTION OF ORBIT                                               Corpn. Delhi, 1961.
+          LENGTHENING                                                     [3] Yu. Senichev , A.Lehrach, R.Maier, D. Zyuzin, The spin
+                                                                              aberration of polarized beam in electrostatic rings,
+  Let us consider single sextupole effecting on the orbit
+                                                                                                                                                       Copyright ○
+
+
+
+
+                                                                              Proceedings of IPAC 2011, p. 2175-2177, San Sebastian,
+lengthening. The second order momentum compaction                             Spain.
+
+05 Beam Dynamics and Electromagnetic Fields                                                                       ISBN 978-3-95450-122-9
+D02 Non-linear Dynamics - Resonances, Tracking, Higher Order                                                                                    2581
+

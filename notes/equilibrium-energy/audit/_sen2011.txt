@@ -1,0 +1,271 @@
+                                                                                       WEPC066                              Proceedings of IPAC2011, San Sebastián, Spain
+
+
+                                                                                              HIGH ORDER NON-LINEAR MOTION IN ELECTROSTATIC RINGS
+                                                                                                             D. Zyuzin, R. Maier, Yu. Senichev, Institute for Nuclear Physics,
+                                                                                                                 Forschungszentrum Juelich, D-52425 Juelich, Germany
+
+                                                                                       Abstract                                                       and the spin oriented in the longitudinal direction rotates
+                                                                                            The advantages of an electrostatic storage ring as        in the horizontal plane with the same frequency as the
+                                                                                       compared to a magnetic ring are obvious from the point         momentum vector, resulting in G  0 [5].
+                                                                                       of view to search for the proton electric dipole moment          In the paper we study the beam dynamics only, and
+                                                                                       (pEDM). However the magnetic and electrostatic fields          everything about the spin will be considered in paper [6]
+                                                                                       have the different nature and, consequently, different         of this proceedings. But all properties of the lattice
+                                                                                       features. In particular, particles moving in electrostatic     considered here must be subjected to the magic condition
+                                                                                       field, can change their own kinetic energy as electrical       (2). All numerical simulations performed in the
+                                                                                       field coincides with the direction of motion, which is not     simulation programs OptiM [7] and COSY Infinity [8].
+                                                                                       so for the magnetic field, where the force is always
+                                                                                       perpendicular to the direction of motion. The electrostatic
+                                                                                       rings found many applications in the atomic physics and                               LATTICE
+                                                                                       partly the beam dynamics has been already investigated.           We have considered three purely electrostatic lattices
+                                                                                       However in EDM ring some additional specific features          (see fig.1) based on electrostatic elements only. The rings
+                                                                                       are added, which are considered in this paper.                 structure are designed for accumulation of polarized
+                                                                                                                                                      protons with magic energy for proton 248 MeV. They all
+                                                                                                                                                      have two arcs and differ in the number of periods and
+                                                                                                        INTRODUCTION                                  total radial tunes.
+                                                                                          The possible experiment to search for the electric
+                                                                                       dipole moment (EDM) using an electrostatic storage ring
+                                                                                       is widely discussed now [1]. It may be a ring either with
+          c 2011 by IPAC’11/EPS-AG — cc Creative Commons Attribution 3.0 (CC BY 3.0)
+
+
+
+
+                                                                                       only electrostatic elements, such as in the case of proton
+                                                                                       EDM search, or with electrostatic and magnetic elements
+                                                                                       for experiment with deuterons.
+                                                                                          Electrostatic elements in accelerators have been used in
+                                                                                       the past. Particularly in BNL laboratory the AGS
+                                                                                       electrostatic analog was first assembled [2]. Much later,
+                                                                                       great interest has arisen for electrostatic storage rings in                               (a)
+                                                                                       atomic physics, biology and chemistry [3]. In paper [4]
+                                                                                       the beam dynamics in an electrostatic ring has been
+                                                                                       studied on the example of the ring ELISA to increase the
+                                                                                       life time, which was mainly determined by the dynamic
+                                                                                       aperture. The most successful experiment to search for the
+                                                                                       EDM could be based on measurement of the spin
+                                                                                       precession dependence on external field strength. In this
+                                                                                       regard, the new requirements for the ring lattice appeared                                 (b)
+                                                                                       to weaken the decoherent effects in polarized beam. Since
+                                                                                       we are interested in the features of storage ring introduced
+                                                                                       namely by the electrostatic elements, we consider a purely
+                                                                                       electrostatic ring, where B  0, E  0 and the spin
+                                                                                       precession frequency G relative to the momentum
+                                                                                       direction is:
+
+                                                                                                             e    1                                                          (c)
+                                                                                                  G            2     G     E
+                                                                                                                              
+                                                                                                                                               (1)    Figure1: Lattices with tunes:  x /  y  7.9/7.8; 1.12/0.42;
+                                                                                                           m0c    1             
+                                                                                                                                                      1.32/0.6
+                                                                                       Where G is the anomalous magnetic moment. The
+                                                                                                                                                        In the first structure (a) we have 32 cells, in the second
+                                                                                       advantages of purely electrostatic rings are especially
+                                                                                                                                                      (b) 16 cells and in the third (c) 8cells per arc. Each cell is
+                                                                                       evident in the so-called magic rings, when
+                                                                                                                                                      a FODO structure having either two, or four, or eight
+                                                                                                                                                      electrostatic deflectors and two electrostatic quadrupoles,
+Copyright ○
+
+
+
+
+                                                                                                                      2
+                                                                                                            G  1 /( mag  1)  0             (2)
+                                                                                                                                                      focusing and defocusing (see fig. 2).
+
+                                                                                                                                                                 05 Beam Dynamics and Electromagnetic Fields
+                                                                                       2172                                                 D02 Non-linear Dynamics - Resonances, Tracking, Higher Order
+                                              Proceedings of IPAC2011, San Sebastián, Spain                                                WEPC066
+
+                                                                               spherical deflector, but it is no focusing in the vertical
+                                                                               plane. Both deflectors have an own sextupolar
+                                                                               component.
+                                                                               Dispersion Equation
+                                                                                 Let us suppose that the particle has a non-zero energy
+                                                                                                                             ~
+                                                                               deviation. Then the new equilibrium radius Req will be
+                                                                               in    an         accordance     with       expression
+                                                                                 1   1          v 
+                                                                                ~       1  2   , and the full system of the
+                                                                                Req Req        v 
+     Figure 2: One FODO cell of electrostatic lattice                          equations in linear approach is
+                                                                                                            1      2 v
+                                                                                                    x       x
+Around each quadrupole, sextupole and BPM are placed.                                                       2     R
+                                                                                                           Req     eq v
+The deflectors in all options are the same and have the                                                                                         (5)
+field strength of 170 MV/m. Thus, the total length of all                                                       1
+                                                                                                      y      2
+                                                                                                                        y0
+deflectors is constant and equals to ~155 m.                                                                   Req
+We analyzed all three structures with different shape of
+deflector plate in terms of the requirements for maximum                       The solution of this system can be represented in the
+spin coherence time [6].                                                       matrix form:
+
+                                                                                           cos            Req sin  
+ OWN NONLINEARITY OF DEFLECTOR
+                                                                                 x                                    x0  
+                                                                                  x     1 sin          cos   x0 
+   Since deflectors provide a main influence on the spin-                           R                                
+                                                                                             eq                                           ,    (6)
+orbital motion, we just focused on the beam dynamics
+                                                                                                               v      R    1  cos  
+study in the deflector. We consider two types of                                                             2   eq                   
+deflectors with spherical and cylindrical shapes of the                                                         v           sin       
+
+
+
+
+                                                                                                                                                                c 2011 by IPAC’11/EPS-AG — cc Creative Commons Attribution 3.0 (CC BY 3.0)
+electrodes.
+                                                                               Where   s / Req , x, x0 , y0 , y0 are the initial meaning of
+                                                                               the coordinates.
+Motion Equation in Deflector
+  In paper [4] the equations of motion up to third order of                           LONGITUDINAL-TRANSVERSE
+non-linearity in approach of not truncated spheres in
+spherical deflector and cylinders in cylindrical deflector
+                                                                                             COUPLING
+with radius R1 and R2 and potential on spheres and                               The spherical and cylindrical deflectors have the central
+cylinders  0 have been obtained for spherical:                                                                        
+                                                                               field symmetry, namely E             . In particular, the case of
+                          1          1    2            3      2                                                   rn
+              x       2
+                               x    3
+                                          x             3
+                                                              y 0             the spherical deflector, when n  2 , accords to the
+                        Req         Req             2  Req
+                                                                     ,   (3)   Keppler problem and it was investigated by Landau in
+                          1          3                                         [9]. The case n  1 accords to the cylindrical deflectors.
+               y       2
+                               y    3
+                                       xy  0
+                         Req        Req                                        It is obviously that for both of them the full energy
+                                                                               conservation is fulfilled:
+                                                      1    R  R1
+with equilibrium radius Req  M 2                         2
+                                                    2em 0 R1R2
+                                                                  and
+                                                                                            W ( r, r,  ) 
+                                                                                                              m 2
+                                                                                                              2
+                                                                                                                               
+                                                                                                                r  r 2 2   r  ,       (7)
+for cylindrical:
+                     2          1                                              If not take into account the fringe fields, the angular
+           x           x         x2  0
+                     2
+                    Req         3
+                               Req              ,                        (4)   momentum M  mv r has to be conserved.
+
+            y   0                                                             In case of the fringe field we have with good
+                                                                               approximation very short “entrance” and “exit” regions,
+with equilibrium radius Req  M [ln R2 / R1 ] / 2em 0  ,                  where the angular momentum increases or decreases, but
+                                                                               in mainly we have the region where M is constant. Due
+where the angular moment mr 2  p  r  M  const in
+                                                                               to this fact the total energy can be represented as the
+absence of fringe fields due to the axial symmetry.                            function of the coordinates r , r :
+From (3) you can see the spherical deflector focuses the
+                                                                                                            m 2 M2
+particle in horizontal and vertical planes with the same                                     W ( r, r)      r          r                (8)
+force and in the cylindrical deflector in the horizontal                                                    2      2mr 2
+                                                                                                                                                      Copyright ○
+
+
+
+
+plane the focusing term is twice as much as in the
+05 Beam Dynamics and Electromagnetic Fields
+D02 Non-linear Dynamics - Resonances, Tracking, Higher Order                                                                                   2173
+                                                                                       WEPC066                                      Proceedings of IPAC2011, San Sebastián, Spain
+
+                                                                                       The last expression shows to us that the radial motion                        with the time of the longitudinal oscillations, and the
+                                                                                       could be considered as one dimensional motion in the                          particles oscillating with respect to time-varying energy
+                                                                                       field with the effective potential consisting of the                          levels have phase trajectories of Lissajous curves.
+                                                                                       centrifugal potential and the electrical potential:                           Actually, the oscillation of the equilibrium energy level
+                                                                                                                               M2                                    means the transformation of potential energy into kinetic
+                                                                                                                 eff r     r        (9)                      and vice versa. The process of the energy conversion each
+                                                                                                                      2mr 2                                          into another has the oscillating character, since the tune of
+                                                                                       Differentiating (9), we are getting the same expressions                      the ring is not integer figure. However, the conversion
+                                                                                       for the equilibrium radius, what we have got in (3) and                       process is suppressed by the fringe field by some factor
+                                                                                       (4), namely, for the spherical deflector:                                      k . This coefficient k depends on the initial co-ordinate
+                                                                                                     Req  M 2 , or Req / Req  2  M / M 0               (10)     and decrease with the growth of the last one. If now we
+                                                                                       and for the cylindrical deflector:                                            substitute k into (12), we get:
+                                                                                                    Req  M , or Req / Req  M / M 0                      (11)             v 1  cos   1                     v
+                                                                                                                                                                                               x0  sin   x0   0     (16)
+                                                                                       Thus, if the matrix of the deflector is described by the                              v k  Req                             v
+                                                                                       equations (6), then
+                                                                                                                                                                     This mechanism of the equilibrium energy change
+                                                                                                                                                                     explains the increase of the spin aberrations in the magic
+                                                                                                     v cos   1                     v
+                                                                                                                    x0  sin   x0  0                  (12)     rings.
+                                                                                                     v     Req                           v                           Each particle oscillating about its own non-magic energy
+                                                                                       -Hereinafter we will omit the index  of v .                                 level violates condition (2) in different degrees, which
+                                                                                                                                                                     leads to the spin aberrations.
+                                                                                       Joining (6) with (12) we have
+                                                                                                                                                                                      CONCLUSION
+                                                                                                                                                  
+                                                                                               cos 
+                                                                                               x                    Req sin     2 Req 1  cos    x               In this paper we studied the effects of own nonlinear
+                                                                                               1                                                     0 
+                                                                                                                                                           (13)
+                                                                                             x       sin       cos            2 sin         x 0 
+                                                                                                                                                                    deflector field on the beam dynamics in electrostatic
+                                                                                             v   Req                                             v 0         rings. The main difference of electrostatic rings is that
+                                                                                             v   cos   1                                        v 
+                                                                                                                     sin              1                           kinetic energy alternately transforms into potential and
+                                                                                                       R                                          
+          c 2011 by IPAC’11/EPS-AG — cc Creative Commons Attribution 3.0 (CC BY 3.0)
+
+
+
+
+                                                                                                         eq                                                        vice versa. This leads to change in time of the energy
+                                                                                       Where        s / Req for      the      spherical    deflector       and     level which causes the spin aberrations.
+                                                                                                                                                                     Authors would like to thank S. Andrianov, M. Berz,
+                                                                                         2 s / Req for the cylindrical deflector. Thus, we can                     A.Ivanov, A. Lehrach and K. Makino for the helpful
+                                                                                       say that a particle with initial deviation from the                           discussion of results.
+                                                                                       equilibrium radius unequal to zero is oscillating around a
+                                                                                       new equilibrium energy level.                                                                    REFERENCES
+                                                                                         Now let us suppose that the matrix of the transport                         [1] Y.K. Semertzidis (Muon g-2 Collaboration), Nucl.
+                                                                                       channel between two deflectors is M tr . Then at the                              Phys. B, Proc. Suppl. 117, 373 (2003)
+                                                                                       entrance of the next deflector:                                               [2] M. Plotkin, The Brookhaven electron analogue 1953-
+                                                                                                                                                                         1957, BNL-45058.
+                                                                                                                                                                     [3] S.P.Moller, NIM, A 394 (1997) 281-286.
+                                                                                                  v                             v 0 
+                                                                                           x, x ,   M tr  M def   xo , x0 ,                        (14)     [4] Yu.Senichev and S.P. Moller, EPAC Proceedings
+                                                                                                  v                               v                                  2000, Vienna, p. 794-796
+                                                                                       and after n turns:                                                            [5] F.J.M. Farley and Y.K. Semertzidis, Prog. Part Nucl.
+                                                                                                                                                                         Phys. 52, 1 (2004)
+                                                                                                                                                                     [6] Yu.Senichev, A.Lehrach, R.Maier, D.Zyuzin, The
+                                                                                                   v 
+                                                                                                    v
+                                                                                                                           n 
+                                                                                                                                    
+                                                                                            x, x ,   M tr  M Def  M tr   xo , x0 ,
+                                                                                                                                            v0 
+                                                                                                                                             v 
+                                                                                                                                                 , (15)                 spin aberration of polarized beam in the electrostatic
+                                                                                                      n                      
+                                                                                                                                                                         ring, this proceedings.
+                                                                                                                                                                     [7] V.Lebedev, http://www-bdnew.fnal.gov/pbar/
+                                                                                       Where M Def is the matrix of the deflector (13).                                  organizationalchart/lebedev/OptiM/optim.htm
+                                                                                       Since the equilibrium energy level in each deflector                          [8] M. Berz, Computational Aspects of Design and
+                                                                                       depends on the entrance coordinates to the deflector, it is                       Simulation: COSY INFINITY NIM A298, p. 473
+                                                                                       obvious that the instantaneous energy level will vary                             (1990).
+                                                                                       according to the phase advance of focusing channel of the                     [9] L.D.Landau, Mechanics, pp.51-57, 1988, Moscow.
+                                                                                       ring. And if the number of transverse oscillations in the
+                                                                                       ring is much greater than unit, we can talk about some
+                                                                                       average energy level with respect to which all particles
+                                                                                       oscillate. It is a completely different situation when the
+Copyright ○
+
+
+
+
+                                                                                       number of oscillations per revolution approaches to unit.
+                                                                                       Then the energy level changes within a time comparable
+                                                                                                                                                                             05 Beam Dynamics and Electromagnetic Fields
+                                                                                       2174                                                             D02 Non-linear Dynamics - Resonances, Tracking, Higher Order
+

@@ -1,0 +1,117 @@
+\section{Метод Боголюбова--Митропольского}
+\label{app:ch1bm}
+
+Схема метода --- книга~\cite{Bogoliubov1961}. Формула (10) в~\cite{Senichev2013} ссылается на неё при решении уравнения (8). Ниже та же схема применена к уравнению
+\begin{equation}
+\label{eq:mag-bm-eq}
+\ddot x+\omega^2 x=c_0+c_2 x^2
+\end{equation}
+с малыми $c_0$ и $c_2$. Для уравнения~\eqref{eq:mag-osc} это $c_0=0$ и $c_2=-(\omega_s^2/\eta_0)\eta_1$, амплитуда $a$ равна $\delta_m$, а $\omega=\omega_s$.
+
+Невозмущённое решение --- $x=a\cos\psi$ при $\dot a=0$ и $\dot\psi=\omega$. Ищем
+\begin{align}
+x&=a\cos\psi+u_1(a,\psi)+u_2(a,\psi)+\cdots,
+\label{eq:mag-bm-ansatz}\\
+\dot a&=A_1(a)+A_2(a)+\cdots,
+\label{eq:mag-bm-adot}\\
+\dot\psi&=\omega+B_1(a)+B_2(a)+\cdots.
+\label{eq:mag-bm-psidot}
+\end{align}
+Порядок $u_1$ есть порядок $c_0$ и $c_2$, порядок $u_2$ и $B_2$ --- порядок их произведений. В каждой $u_k$ первой гармоники нет: она отнесена к $a$ и $\psi$.
+
+До первого порядка
+\begin{equation}
+\label{eq:mag-bm-xdot}
+\dot x=-a\omega\sin\psi
++A_1\cos\psi-a B_1\sin\psi+\omega\partial_\psi u_1.
+\end{equation}
+Второе дифференцирование, в котором производная по времени действует на быструю фазу со скоростью $\omega$, даёт
+\begin{equation}
+\label{eq:mag-bm-xddot}
+\ddot x=-a\omega^2\cos\psi
+-2\omega A_1\sin\psi-2a\omega B_1\cos\psi
++\omega^2\partial_{\psi\psi}u_1.
+\end{equation}
+Подстановка в~\eqref{eq:mag-bm-eq} на этом порядке приводит к
+\begin{equation}
+\label{eq:mag-bm-order1}
+\omega^2(\partial_{\psi\psi}u_1+u_1)
+-2\omega A_1\sin\psi-2a\omega B_1\cos\psi
+=f_0(a,\psi),
+\end{equation}
+где $f_0$ --- правая часть на невозмущённой орбите. Её ряд Фурье
+\begin{equation}
+\label{eq:mag-bm-fourier}
+f_0=g_0+\sum_{n\ge 1}(g_n\cos n\psi+h_n\sin n\psi)
+\end{equation}
+имеет коэффициенты $g_0=(1/2\pi)\int_0^{2\pi}f_0\,\mathrm{d}\psi$ и $g_n=(1/\pi)\int_0^{2\pi}f_0\cos n\psi\,\mathrm{d}\psi$, и так же $h_n$ с $\sin n\psi$.
+
+Оператор $\partial_{\psi\psi}+1$ аннулирует $\cos\psi$ и $\sin\psi$. Первая гармоника в $u_1$ этим уравнением не определяется и линейно растёт по времени, если её туда поместить. Её переносят в $A_1$ и $B_1$:
+\begin{equation}
+\label{eq:mag-bm-AB}
+A_1=-\frac{h_1}{2\omega},\qquad
+B_1=-\frac{g_1}{2a\omega}.
+\end{equation}
+Остаток ряда даёт
+\begin{equation}
+\label{eq:mag-bm-u1}
+u_1=\frac{g_0}{\omega^2}
++\sum_{n\ge 2}\frac{g_n\cos n\psi+h_n\sin n\psi}{\omega^2(1-n^2)}.
+\end{equation}
+
+На орбите $x=a\cos\psi$ тождество $\cos^2\psi=(1+\cos 2\psi)/2$ превращает правую часть в
+\begin{equation}
+\label{eq:mag-bm-f0}
+f_0=c_0+\frac{c_2 a^2}{2}+\frac{c_2 a^2}{2}\cos 2\psi.
+\end{equation}
+Ненулевые коэффициенты --- $g_0=c_0+c_2 a^2/2$ и $g_2=c_2 a^2/2$. Значит $A_1=B_1=0$ и
+\begin{equation}
+\label{eq:mag-bm-u1-result}
+u_1
+=\frac{c_0+c_2 a^2/2}{\omega^2}
+-\frac{c_2 a^2}{6\omega^2}\cos 2\psi.
+\end{equation}
+Для~\eqref{eq:mag-osc} постоянная часть равна $-\eta_1 a^2/(2\eta_0)$. Это формула~\eqref{eq:mag-deq}.
+
+Частота появляется на следующем порядке. При $A_1=B_1=0$ амплитуда и фаза меняются начиная с $A_2$ и $B_2$. Раскладываем правую часть на смещённой орбите, $c_0+c_2(a\cos\psi+u_1)^2$. Линейный по $u_1$ кусок есть $f_1=2c_2(a\cos\psi)\,u_1$. Поправка $B_2$ снимает первую косинусную гармонику $f_1$ тем же правилом, что $B_1$:
+\begin{equation}
+\label{eq:mag-bm-B2}
+B_2=-\frac{1}{2\pi a\omega}
+\int_0^{2\pi}2c_2(a\cos\psi)\,u_1\cos\psi\,\mathrm{d}\psi.
+\end{equation}
+Запись $u_1=U_0+U_2\cos 2\psi$ с коэффициентами из~\eqref{eq:mag-bm-u1-result} и тождество $\cos\psi\cos 2\psi=(\cos 3\psi+\cos\psi)/2$ дают
+\begin{equation}
+\label{eq:mag-bm-f1}
+f_1=2c_2 a\Biggl(U_0+\frac{U_2}{2}\Biggr)\cos\psi
++c_2 a U_2\cos 3\psi.
+\end{equation}
+Первая гармоника имеет коэффициент $g_1=2c_2 a(U_0+U_2/2)$, поэтому
+\begin{equation}
+\label{eq:mag-bm-B2-alg}
+B_2=-\frac{c_2}{\omega}\Biggl(U_0+\frac{U_2}{2}\Biggr).
+\end{equation}
+Подстановка $U_0=(c_0+c_2 a^2/2)/\omega^2$ и $U_2=-c_2 a^2/(6\omega^2)$ собирает
+\begin{equation}
+\label{eq:mag-bm-Usum}
+U_0+\frac{U_2}{2}
+=\frac{c_0}{\omega^2}+\frac{c_2 a^2}{\omega^2}\Biggl(\frac{1}{2}-\frac{1}{12}\Biggr)
+=\frac{c_0}{\omega^2}+\frac{5}{12}\frac{c_2 a^2}{\omega^2}.
+\end{equation}
+Слагаемое $1/2$ --- постоянная часть $u_1$, слагаемое $-1/12$ --- гармоника $\cos 2\psi$, потому что $U_2/2=-c_2 a^2/(12\omega^2)$. Следовательно
+\begin{equation}
+\label{eq:mag-bm-B2-result}
+B_2=-\frac{c_2 c_0}{\omega^3}-\frac{5}{12}\frac{c_2^2 a^2}{\omega^3}.
+\end{equation}
+При $c_0=0$, $c_2=-(\omega_s^2/\eta_0)\eta_1$ и $\omega=\omega_s$ отношение $c_2/\omega_s^2=-\eta_1/\eta_0$ превращает $B_2/\omega_s$ в
+\begin{equation}
+\label{eq:mag-bm-rel}
+\frac{B_2}{\omega_s}
+=-\frac{5}{12}\frac{\eta_1^2 a^2}{\eta_0^2}.
+\end{equation}
+Поскольку $\dot\psi=\omega_s+B_2$, это формула~\eqref{eq:mag-freq}. Численная проверка приведена в разделе~\ref{sec:frequency}.
+
+Постоянная $c_0$ в~\eqref{eq:mag-bm-B2-result} даёт перекрёстный сдвиг частоты $-c_2 c_0/\omega^3$. Она понадобится, когда в период войдёт слагаемое, не зависящее от $\delta$. Разложение пригодно, пока $|c_2 a|\ll\omega^2$, то есть
+\begin{equation}
+\label{eq:mag-bm-valid}
+\biggl|\frac{\eta_1 a}{\eta_0}\biggr|\ll 1.
+\end{equation}

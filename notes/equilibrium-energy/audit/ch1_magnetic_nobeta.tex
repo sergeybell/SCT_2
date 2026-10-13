@@ -1,0 +1,432 @@
+\section{Магнитное кольцо без бетатронного движения}
+\label{sec:magnetic}
+
+В этой главе замкнутая орбита задаётся одним импульсом. Бетатронного отклонения нет, поэтому длина орбиты есть функция $\delta$. Числа относятся к магнитному кольцу дейтронов с кинетической энергией $270$~МэВ: $\gamma_s=1{,}143914$ и $\alpha_0=0{,}230$.
+
+\subsection{Период обращения}
+\label{sec:period}
+
+Период одного оборота есть время пролёта вдоль замкнутой орбиты,
+\begin{equation}
+\label{eq:mag-T}
+T=\oint\frac{\mathrm{d}l}{v}.
+\end{equation}
+В статическом магнитном поле модуль скорости между зазорами зависит только от полного импульса. На длине оборота, между локализованными пролётами зазора, импульс постоянен, и $v$ выносится из интеграла. Длина этой орбиты $C=\oint\mathrm{d}l$, синхронные величины $C_s$ и $v_s$ дают $T_s=C_s/v_s$, поэтому
+\begin{equation}
+\label{eq:mag-Tratio}
+\frac{T-T_s}{T_s}
+=\frac{v_s}{v}\,\frac{C}{C_s}-1.
+\end{equation}
+Высокочастотное поле этого оборота видит только опоздание $T-T_s$. Уравнение энергии на зазоре одно и то же для любого кольца; кольца различаются тем, как устроен интеграл~\eqref{eq:mag-T}.
+
+\subsection{Длина орбиты}
+\label{sec:length}
+
+Длину дисперсионной орбиты записываем в нормировке Сеничева~\cite{Senichev2013},
+\begin{equation}
+\label{eq:mag-C}
+\frac{C}{C_s}=1+\alpha_0\delta+\alpha_1\delta^2.
+\end{equation}
+В формуле (18.4) книги Нга~\cite{Ng2006} принято
+\begin{equation}
+\label{eq:mag-Cng}
+C(\delta)=C_0\bigl[1+\alpha_0\delta\bigl(1+\alpha_1^{\mathrm{Ng}}\delta+\cdots\bigr)\bigr],
+\end{equation}
+так что коэффициент при $\delta^2$ равен $\alpha_0\alpha_1^{\mathrm{Ng}}$. Сравнение с~\eqref{eq:mag-C} даёт
+\begin{equation}
+\label{eq:mag-alpha-ng}
+\alpha_1=\alpha_0\alpha_1^{\mathrm{Ng}}.
+\end{equation}
+Ниже $\alpha_1$ без пометки --- коэффициент формулы~\eqref{eq:mag-C}. Члены $\delta^3$ в длине в этой главе не удерживаются; к ним относится замечание в конце раздела.
+
+\subsection{Скорость}
+\label{sec:velocity}
+
+Импульс $p=p_s(1+\delta)$ определяет полную энергию и скорость. Удобная запись лоренц-фактора
+\begin{equation}
+\label{eq:mag-gamma-delta}
+\gamma^2(\delta)=1+(\gamma_s^2-1)(1+\delta)^2
+\end{equation}
+следует из $\beta\gamma=\beta_s\gamma_s(1+\delta)$ и $\gamma^2=1+(\beta\gamma)^2$. Отношение скоростей
+\begin{equation}
+\label{eq:mag-beta-exact}
+\frac{\beta(\delta)}{\beta_s}
+=\frac{(1+\delta)\,\gamma_s}{\gamma(\delta)},
+\qquad
+\frac{v_s}{v}
+=\frac{\sqrt{\beta_s^2(1+\delta)^2+\gamma_s^{-2}}}{1+\delta}.
+\end{equation}
+Логарифмическая производная по $\delta$ связана с производной по импульсу правилом $\mathrm{d}\ln p/\mathrm{d}\delta=1/(1+\delta)$ и тождеством $\mathrm{d}\ln\beta/\mathrm{d}\ln p=1/\gamma^2$:
+\begin{equation}
+\label{eq:mag-lambda}
+\lambda\equiv\frac{1}{\beta}\frac{\mathrm{d}\beta}{\mathrm{d}\delta}
+=\frac{1}{\gamma^2(1+\delta)}.
+\end{equation}
+В синхронной точке $\lambda_s=1/\gamma_s^2$. Поскольку $\beta'=\beta\lambda$,
+\begin{equation}
+\label{eq:mag-beta-second-raw}
+\frac{\beta''}{\beta}=\lambda^2+\lambda'.
+\end{equation}
+Дифференцирование $\gamma^{-2}$ при законе~\eqref{eq:mag-gamma-delta} даёт
+\begin{equation}
+\label{eq:mag-dgamma}
+\frac{\mathrm{d}}{\mathrm{d}\delta}\gamma^{-2}
+=-\,2\gamma^{-4}(\gamma_s^2-1)(1+\delta).
+\end{equation}
+В нуле $\gamma_s^2-1=\beta_s^2\gamma_s^2$, поэтому правая часть равна $-2\beta_s^2/\gamma_s^2$. Вместе с производной множителя $(1+\delta)^{-1}$
+\begin{equation}
+\label{eq:mag-lambda-prime}
+\lambda'_s=-\frac{2\beta_s^2}{\gamma_s^2}-\frac{1}{\gamma_s^2}.
+\end{equation}
+Подстановка в~\eqref{eq:mag-beta-second-raw} приводит к
+\begin{equation}
+\label{eq:mag-beta-second-alg}
+\Biggl(\frac{\beta''}{\beta}\Biggr)_s
+=\frac{1}{\gamma_s^4}-\frac{1}{\gamma_s^2}-\frac{2\beta_s^2}{\gamma_s^2}.
+\end{equation}
+Тождество $\beta_s^2=1-1/\gamma_s^2$ переписывает последние два слагаемых:
+\begin{equation}
+\label{eq:mag-beta-second}
+\frac{2\beta_s^2}{\gamma_s^2}=\frac{2}{\gamma_s^2}-\frac{2}{\gamma_s^4},
+\qquad
+\Biggl(\frac{\beta''}{\beta}\Biggr)_s
+=-\frac{3\beta_s^2}{\gamma_s^2}.
+\end{equation}
+Это вторая строка формулы (18.15) в~\cite{Ng2006}. Ряд Тейлора скорости
+\begin{equation}
+\label{eq:mag-beta-series}
+\frac{\beta(\delta)}{\beta_s}
+=1+\frac{\delta}{\gamma_s^2}
+-\frac{3\beta_s^2}{2\gamma_s^2}\,\delta^2+O(\delta^3).
+\end{equation}
+Обращение $v_s/v=(\beta/\beta_s)^{-1}$ при
+$u=\delta/\gamma_s^2-(3\beta_s^2/(2\gamma_s^2))\delta^2$
+использует $1/(1+u)=1-u+u^2+O(\delta^3)$ и $u^2=\delta^2/\gamma_s^4+O(\delta^3)$:
+\begin{equation}
+\label{eq:mag-vsv}
+\frac{v_s}{v}
+=1-\frac{\delta}{\gamma_s^2}
++\Biggl(\frac{1}{\gamma_s^4}+\frac{3\beta_s^2}{2\gamma_s^2}\Biggr)\delta^2
++O(\delta^3).
+\end{equation}
+Член $3\beta_s^2/(2\gamma_s^2)$ есть вторая производная $\beta$. Квадрат одной первой производной даёт только $1/\gamma_s^4$.
+
+Произведение~\eqref{eq:mag-vsv} и~\eqref{eq:mag-C} до порядка $\delta^2$:
+\begin{align}
+\frac{v_s}{v}\,\frac{C}{C_s}
+&=
+\Biggl[1-\frac{\delta}{\gamma_s^2}
++\Biggl(\frac{1}{\gamma_s^4}+\frac{3\beta_s^2}{2\gamma_s^2}\Biggr)\delta^2\Biggr]
+\bigl(1+\alpha_0\delta+\alpha_1\delta^2\bigr)
+\nonumber\\
+&=1+\Biggl(\alpha_0-\frac{1}{\gamma_s^2}\Biggr)\delta
+\nonumber\\
+&\quad+\Biggl(\alpha_1-\frac{\alpha_0}{\gamma_s^2}
++\frac{1}{\gamma_s^4}+\frac{3\beta_s^2}{2\gamma_s^2}\Biggr)\delta^2
++O(\delta^3).
+\label{eq:mag-product}
+\end{align}
+Произведения, дающие $\delta^3$, отброшены. Вычитание единицы в~\eqref{eq:mag-Tratio} даёт
+\begin{equation}
+\label{eq:mag-eta-series}
+\frac{T-T_s}{T_s}=\eta_0\delta+\eta_1\delta^2,
+\end{equation}
+\begin{align}
+\eta_0&=\alpha_0-\frac{1}{\gamma_s^2},
+\label{eq:mag-eta0}\\
+\eta_1&=\alpha_1-\frac{\alpha_0}{\gamma_s^2}
++\frac{1}{\gamma_s^4}+\frac{3\beta_s^2}{2\gamma_s^2}.
+\label{eq:mag-eta1}
+\end{align}
+Формула (18.18) в~\cite{Ng2006} записана как $\eta_1=\alpha_0\alpha_1^{\mathrm{Ng}}+3\beta_0^2/(2\gamma_0^2)-\eta_0/\gamma_0^2$. Подстановка~\eqref{eq:mag-alpha-ng} и $-\eta_0/\gamma_s^2=-\alpha_0/\gamma_s^2+1/\gamma_s^4$ переводит её в~\eqref{eq:mag-eta1}.
+
+В скобке при $\delta^2$ в формулах (5), (6), (9), (10) и (19) работы~\cite{Senichev2013} стоят три члена $\alpha_1-\alpha_0/\gamma_s^2+1/\gamma_s^4$. Вторую производную скорости, $3\beta_s^2/(2\gamma_s^2)$, это разложение не содержит: перед формулой (5) удержано $\Delta v/v=\delta/\gamma^2$, и обращение скорости производит только квадрат первой производной. Рабочий коэффициент периода один --- полное $\eta_1$ формулы~\eqref{eq:mag-eta1}.
+
+Для магнитного кольца $\gamma_s=1{,}143914$ даёт $\beta_s^2=0{,}235789$, $1/\gamma_s^2=0{,}764211$ и
+\begin{equation}
+\label{eq:mag-eta0-num}
+\eta_0=0{,}230-0{,}764211=-0{,}534211.
+\end{equation}
+Коэффициент $\alpha_1$ выбран так, чтобы $\eta_1$ совпало с $\eta_{1,\mathrm{nat}}=1{,}02$:
+\begin{equation}
+\label{eq:mag-alpha1-num}
+\alpha_1
+=\eta_1+\frac{\alpha_0}{\gamma_s^2}-\frac{1}{\gamma_s^4}-\frac{3\beta_s^2}{2\gamma_s^2}
+=0{,}341461.
+\end{equation}
+При этих числах $3\beta_s^2/(2\gamma_s^2)=0{,}270289$, а скобка $\alpha_1-\alpha_0/\gamma_s^2+1/\gamma_s^4$ равна $0{,}749711$.
+
+\subsection{Синхронные часы}
+\label{sec:clocks}
+
+Рабочее определение берём из формулы (18.10) в~\cite{Ng2006}. Приращение периода отнесено к периоду синхронной частицы на этом обороте,
+\begin{equation}
+\label{eq:mag-ng1810}
+\frac{\Delta T}{T_s}=\eta\delta,
+\end{equation}
+и разложение $\eta=\eta_0+\eta_1\delta+\eta_2\delta^2+\cdots$ из (18.16) означает именно ряд~\eqref{eq:mag-eta-series}. Сглаживание разности фаз (18.9)--(18.11) делит набег на тот же синхронный период и даёт уравнение фазы (18.12),
+\begin{equation}
+\label{eq:mag-phase-slip}
+\frac{\mathrm{d}\varphi}{\mathrm{d}t}=h\omega_0\eta\delta
+=\omega_{\mathrm{rf}}(\eta_0\delta+\eta_1\delta^2).
+\end{equation}
+Время здесь --- часы синхронной частицы: $s=v_s t$ есть путь вдоль её орбиты.
+
+Частота обращения самой частицы есть $\omega=2\pi/T$. При $\tau=T/T_s=1+\eta_0\delta+\eta_1\delta^2$ обращение $\omega/\omega_0=1/\tau$ и формула $1/(1+u)=1-u+u^2$ при $u=\eta_0\delta+\eta_1\delta^2$ дают
+\begin{equation}
+\label{eq:mag-omega-particle}
+\frac{\omega}{\omega_0}
+=1-\eta_0\delta+(\eta_0^2-\eta_1)\delta^2+O(\delta^3).
+\end{equation}
+Запись того же ряда в виде $\Delta\omega/\omega_0=-(\eta_0+\eta_1^{(18.20)}\delta)\delta$, как в (18.20), сравнивает коэффициент при $\delta^2$:
+\begin{equation}
+\label{eq:mag-eta1820}
+\eta_1^{(18.20)}=\eta_1-\eta_0^2.
+\end{equation}
+Определение (18.21), $\eta=-(1/\omega_0)\,\mathrm{d}\omega/\mathrm{d}\delta$, действует производной на~\eqref{eq:mag-omega-particle}. Производная удваивает коэффициент при $\delta^2$,
+\begin{equation}
+\label{eq:mag-eta1821}
+\eta_1^{(18.21)}=2(\eta_1-\eta_0^2).
+\end{equation}
+Ряды~\eqref{eq:mag-eta1820} и~\eqref{eq:mag-eta1821} описывают частоту обращения частицы, если набег фазы делить на её собственный период. В уравнение фазы входит ряд~\eqref{eq:mag-eta-series}. Для магнитного кольца $\eta_0^2=0{,}285381$, $\eta_1-\eta_0^2=0{,}734619$, $2(\eta_1-\eta_0^2)=1{,}469237$, тогда как $3\beta_s^2/(2\gamma_s^2)=0{,}270289$: вычитание $\eta_0^2$ и вторая производная скорости --- разные числа.
+
+Определение $\Delta T/T=\eta\delta$ в формуле (4) работы~\cite{Senichev2013} совпадает с~\eqref{eq:mag-ng1810}. Расхождение скобки формул (5) и (9) той работы с $\eta_1$ есть обрезание разложения скорости на первой производной.
+
+\subsection{Уравнения на зазоре}
+\label{sec:gap}
+
+Фаза отсчитывается так, что она растёт, когда частица опаздывает. За один оборот
+\begin{equation}
+\label{eq:mag-phase-map}
+\Delta\varphi=\omega_{\mathrm{rf}}(T-T_s),
+\end{equation}
+и на синхронных часах это уравнение~\eqref{eq:mag-phase-slip}. Приращение энергии за оборот равно $eV_{\mathrm{rf}}\sin\varphi$. Связь энергии с импульсом в синхронной точке, $\mathrm{d}E=\beta_s^2 E_s\,\mathrm{d}\delta$, и деление на синхронный период $T_s=2\pi h/\omega_{\mathrm{rf}}$ дают
+\begin{equation}
+\label{eq:mag-energy}
+\frac{\mathrm{d}\delta}{\mathrm{d}t}=K\sin\varphi,
+\qquad
+K=\frac{eV_{\mathrm{rf}}\,\omega_{\mathrm{rf}}}{2\pi h\beta_s^2 E_s}.
+\end{equation}
+Поле зазора входит только через $\varphi$. Дифференцирование~\eqref{eq:mag-energy} и подстановка~\eqref{eq:mag-phase-slip} производят
+\begin{equation}
+\label{eq:mag-dd-exact}
+\ddot\delta
+=K\omega_{\mathrm{rf}}\cos\varphi\,(\eta_0\delta+\eta_1\delta^2).
+\end{equation}
+В накопителе без ускорения $\sin\varphi_s=0$. Берём $\varphi_s=0$, так что $\cos\varphi_s=1$. Линейная часть $\ddot\delta=K\omega_{\mathrm{rf}}\eta_0\delta$ есть гармоническое движение $\ddot\delta+\omega_s^2\delta=0$ при
+\begin{equation}
+\label{eq:mag-ws2}
+\omega_s^2=-K\omega_{\mathrm{rf}}\eta_0.
+\end{equation}
+Для магнитного кольца $\eta_0<0$, поэтому $\omega_s^2>0$ и точка $\varphi_s=0$ устойчива.
+
+При малом $\varphi$ заменяем $\cos\varphi$ на $1$. Тогда $K\omega_{\mathrm{rf}}=-\omega_s^2/\eta_0$, и~\eqref{eq:mag-dd-exact} принимает вид
+\begin{equation}
+\label{eq:mag-osc}
+\ddot\delta+\omega_s^2\delta
+=-\frac{\omega_s^2}{\eta_0}\,\eta_1\delta^2.
+\end{equation}
+Что меняет удержанный множитель $\varphi^2/2$, сказано в разделе~\ref{sec:phi2}.
+
+\subsection{Равновесный импульс}
+\label{sec:equilibrium}
+
+Правая часть~\eqref{eq:mag-osc} есть $c_2\delta^2$ при $c_2=-(\omega_s^2/\eta_0)\eta_1$. Решение методом Боголюбова--Митропольского~\cite{Bogoliubov1961} выведено в приложении~\ref{app:ch1bm}. До второго порядка по амплитуде
+\begin{equation}
+\label{eq:mag-delta-sol}
+\delta(t)
+=\delta_m\cos\psi
+-\frac{\eta_1\delta_m^2}{2\eta_0}
++\frac{\eta_1\delta_m^2}{6\eta_0}\cos 2\psi,
+\end{equation}
+где $\psi$ --- фаза синхротронного колебания, а $\delta_m$ --- амплитуда первой гармоники. Среднее по $\psi$
+\begin{equation}
+\label{eq:mag-deq}
+\delta_{\mathrm{eq}}
+=\langle\delta\rangle
+=-\frac{\eta_1\delta_m^2}{2\eta_0}.
+\end{equation}
+Тот же результат читается прямо из~\eqref{eq:mag-osc}, без формы второй гармоники. У периодического решения среднее $\ddot\delta$ равно нулю, а $\langle\delta^2\rangle=\delta_m^2/2$ с точностью до $\delta_m^4$, потому что постоянный сдвиг сам имеет порядок $\delta_m^2$. Поэтому
+\begin{equation}
+\label{eq:mag-average-osc}
+\omega_s^2\langle\delta\rangle
+=-\frac{\omega_s^2}{\eta_0}\,\eta_1\,\frac{\delta_m^2}{2},
+\qquad
+\langle\delta\rangle=-\frac{\eta_1\delta_m^2}{2\eta_0}.
+\end{equation}
+Минус стоит в правой части~\eqref{eq:mag-osc} и сохраняется при делении на $\eta_0$.
+
+Проверка синхронизма в том же порядке подставляет~\eqref{eq:mag-deq} в ряд~\eqref{eq:mag-eta-series}:
+\begin{equation}
+\label{eq:mag-sync}
+\Biggl\langle\frac{T-T_s}{T_s}\Biggr\rangle
+=\eta_0\delta_{\mathrm{eq}}+\eta_1\frac{\delta_m^2}{2}
+=\eta_0\Biggl(-\frac{\eta_1\delta_m^2}{2\eta_0}\Biggr)+\eta_1\frac{\delta_m^2}{2}
+=0.
+\end{equation}
+Среднее опоздание за синхротронный период равно нулю. Это и есть условие принципа Векслера--Макмиллана, которым открыта работа~\cite{Senichev2013}. Сдвиг $\delta_{\mathrm{eq}}$ исчезает при любой амплитуде, если
+\begin{equation}
+\label{eq:mag-eta1-zero}
+\eta_1=0,
+\end{equation}
+то есть
+\begin{equation}
+\label{eq:mag-alpha1-comp}
+\alpha_1
+=\frac{\alpha_0}{\gamma_s^2}-\frac{1}{\gamma_s^4}-\frac{3\beta_s^2}{2\gamma_s^2}.
+\end{equation}
+При $\gamma_s$ и $\alpha_0$ магнитного кольца правая часть равна $-0{,}678539$. Условие~\eqref{eq:mag-eta1-zero} прочитано из~\eqref{eq:mag-sync}, после того как период доведён до $\eta_1$. Формула (19) в~\cite{Senichev2013} обнуляет скобку $\alpha_1-\alpha_0/\gamma_s^2+1/\gamma_s^4$ и оставляет в $\eta_1$ член $3\beta_s^2/(2\gamma_s^2)$. Для магнитного кольца этот остаток равен $0{,}270289$.
+
+При $\eta_0=-0{,}534211<0$ и $\eta_1=1{,}02>0$ формула~\eqref{eq:mag-deq} даёт $\delta_{\mathrm{eq}}>0$: положительный сдвиг импульса укорачивает период и компенсирует квадратичное удлинение.
+
+\subsection{Знак в уравнении (8) работы Сеничева}
+\label{sec:sign}
+
+В системе (7) работы~\cite{Senichev2013} фаза определена с противоположным знаком,
+\begin{equation}
+\label{eq:mag-sen7}
+\frac{\mathrm{d}\varphi}{\mathrm{d}t}
+=-\omega_{\mathrm{rf}}
+\Biggl[
+\eta_0\delta
++\Biggl(\alpha_1-\frac{\alpha_0}{\gamma_s^2}+\frac{1}{\gamma_s^4}\Biggr)\delta^2
++\Biggl(\frac{\Delta L}{L}\Biggr)_{\!\beta}
+\Biggr],
+\end{equation}
+а уравнение энергии совпадает с~\eqref{eq:mag-energy}. Величина $(\Delta L/L)_\beta$ есть удлинение орбиты бетатронным движением; в этой главе она равна нулю и удерживается здесь только потому, что входит в печатных (8) и (10). Дифференцирование энергии даёт $\ddot\delta=K\cos\varphi\cdot\dot\varphi$. При $\cos\varphi=1$, как принято при переходе к уравнению (8) в~\cite{Senichev2013},
+\begin{equation}
+\label{eq:mag-sen8}
+\begin{aligned}
+\ddot\delta
+&+\frac{eV_{\mathrm{rf}}\omega_{\mathrm{rf}}^2}{2\pi h\beta_s^2 E_s}\,\eta_0\delta
+\\
+&=
+-\frac{eV_{\mathrm{rf}}\omega_{\mathrm{rf}}^2}{2\pi h\beta_s^2 E_s}
+\Biggl[
+\Biggl(\alpha_1-\frac{\alpha_0}{\gamma_s^2}+\frac{1}{\gamma_s^4}\Biggr)\delta^2
++\Biggl(\frac{\Delta L}{L}\Biggr)_{\!\beta}
+\Biggr].
+\end{aligned}
+\end{equation}
+Минус справа есть минус из~\eqref{eq:mag-sen7}, умноженный на положительный $K$ при $\cos\varphi=1$. У периодического решения среднее $\ddot\delta$ равно нулю, общий положительный множитель сокращается, и
+\begin{equation}
+\label{eq:mag-sen8-avg}
+\eta_0\langle\delta\rangle
+=
+-\Biggl[
+\Biggl(\alpha_1-\frac{\alpha_0}{\gamma_s^2}+\frac{1}{\gamma_s^4}\Biggr)
+\frac{\delta_m^2}{2}
++\Biggl(\frac{\Delta L}{L}\Biggr)_{\!\beta}
+\Biggr].
+\end{equation}
+Отсюда
+\begin{equation}
+\label{eq:mag-sen8-deq}
+\langle\delta\rangle
+=
+-\frac{1}{\eta_0}
+\Biggl[
+\Biggl(\alpha_1-\frac{\alpha_0}{\gamma_s^2}+\frac{1}{\gamma_s^4}\Biggr)
+\frac{\delta_m^2}{2}
++\Biggl(\frac{\Delta L}{L}\Biggr)_{\!\beta}
+\Biggr].
+\end{equation}
+Печатная формула (10) в~\cite{Senichev2013} имеет вид
+\begin{equation}
+\label{eq:mag-sen10}
+\Delta\delta_{\mathrm{eq}}
+=
+\frac{\gamma_s^2}{\gamma_s^2\alpha_0-1}
+\Biggl[
+\Biggl(\alpha_1-\frac{\alpha_0}{\gamma_s^2}+\frac{1}{\gamma_s^4}\Biggr)
+\frac{\delta_m^2}{2}
++\Biggl(\frac{\Delta L}{L}\Biggr)_{\!\beta}
+\Biggr].
+\end{equation}
+Предымножитель есть единица, делённая на $\eta_0$:
+\begin{equation}
+\label{eq:mag-prefactor}
+\frac{\gamma_s^2}{\gamma_s^2\alpha_0-1}
+=\frac{1}{\alpha_0-1/\gamma_s^2}
+=\frac{1}{\eta_0}.
+\end{equation}
+Формула~\eqref{eq:mag-sen10} поэтому равна правой части~\eqref{eq:mag-sen8-deq} с противоположным знаком. Тот же предымножитель $1/\eta_0$ без минуса стоит в формуле (16). Среднее уравнения~\eqref{eq:mag-sen8} этот плюс не производит: минус уже стоит в правой части~\eqref{eq:mag-sen8}.
+
+При $\eta_0<0$ точка $\varphi=0$ в знаке~\eqref{eq:mag-sen7} не колебательна: линейный коэффициент в~\eqref{eq:mag-sen8} равен $K\omega_{\mathrm{rf}}\eta_0<0$. Устойчивая точка той же системы есть $\varphi=\pi$, где $\cos\varphi=-1$. Подстановка в $\ddot\delta=K\cos\varphi\cdot\dot\varphi$ даёт
+\begin{equation}
+\label{eq:mag-sen-stable}
+\ddot\delta
+=K\omega_{\mathrm{rf}}
+\Biggl[
+\eta_0\delta
++\Biggl(\alpha_1-\frac{\alpha_0}{\gamma_s^2}+\frac{1}{\gamma_s^4}\Biggr)\delta^2
++\Biggl(\frac{\Delta L}{L}\Biggr)_{\!\beta}
+\Biggr].
+\end{equation}
+Линейная частота $\omega_s^2=-K\omega_{\mathrm{rf}}\eta_0$ при $\eta_0<0$ положительна. У периодического решения среднее $\ddot\delta$ равно нулю. Деление оставшегося равенства на $K\omega_{\mathrm{rf}}$ даёт
+\begin{equation}
+\label{eq:mag-sen-stable-avg}
+\eta_0\langle\delta\rangle
++\Biggl(\alpha_1-\frac{\alpha_0}{\gamma_s^2}+\frac{1}{\gamma_s^4}\Biggr)\frac{\delta_m^2}{2}
++\Biggl(\frac{\Delta L}{L}\Biggr)_{\!\beta}
+=0,
+\end{equation}
+и это снова~\eqref{eq:mag-sen8-deq}. Замена скобки $\alpha_1-\alpha_0/\gamma_s^2+1/\gamma_s^4$ на полное $\eta_1$ и обнуление $(\Delta L/L)_\beta$ возвращают~\eqref{eq:mag-deq}.
+
+\subsection{Поправка порядка \texorpdfstring{$\varphi^2$}{phi\^2}}
+\label{sec:phi2}
+
+Разложение $\cos\varphi=1-\varphi^2/2+\cdots$ возвращает в~\eqref{eq:mag-dd-exact} множитель, отброшенный при переходе к~\eqref{eq:mag-osc}. На линейной орбите $\delta=\delta_m\cos\psi$, $\psi=\omega_s t$, уравнение~\eqref{eq:mag-phase-slip} интегрируется:
+\begin{equation}
+\label{eq:mag-phi-lin}
+\varphi=\varphi_m\sin\psi,
+\qquad
+\varphi_m=\frac{\omega_{\mathrm{rf}}\eta_0\delta_m}{\omega_s}.
+\end{equation}
+При $\eta_1=0$ уравнение~\eqref{eq:mag-dd-exact} вместе с~\eqref{eq:mag-ws2} есть
+\begin{equation}
+\label{eq:mag-cos-corr}
+\ddot\delta+\omega_s^2\delta
+=\omega_s^2\frac{\varphi^2}{2}\,\delta+O(\varphi^4).
+\end{equation}
+Тождество $\sin^2\psi\cos\psi=(\cos\psi-\cos 3\psi)/4$ даёт
+\begin{equation}
+\label{eq:mag-phi2-fourier}
+\frac{\varphi^2}{2}\,\delta
+=\frac{\varphi_m^2\delta_m}{8}(\cos\psi-\cos 3\psi).
+\end{equation}
+Постоянного члена нет, поэтому эта добавка не сдвигает $\langle\delta\rangle$. Косинус первой гармоники сдвигает частоту. Подстановка $\delta=\delta_m\cos\Omega t$ и $\Omega=\omega_s+\Delta\omega$ сравнивает коэффициенты при $\cos\Omega t$: $\omega_s^2-\Omega^2=-2\omega_s\Delta\omega$ слева и $\omega_s^2\varphi_m^2/8$ справа, откуда
+\begin{equation}
+\label{eq:mag-phi-freq}
+\frac{\Delta\omega}{\omega_s}=-\frac{\varphi_m^2}{16}.
+\end{equation}
+Амплитуда $\varphi_m$ пропорциональна $\delta_m$, так что~\eqref{eq:mag-phi-freq} имеет тот же порядок $\delta_m^2$, что и частотная поправка раздела~\ref{sec:frequency}, и зависит от напряжения через отношение $\omega_{\mathrm{rf}}/\omega_s$. В коэффициент $5/12$ она не входит: тот получен при $\cos\varphi=1$.
+
+Интегрирование системы~\eqref{eq:mag-phase-slip}, \eqref{eq:mag-energy} при $\eta_1=0$ и $|\varphi_m|=0{,}1$ даёт относительный сдвиг частоты $-6{,}255\times 10^{-4}$. Формула~\eqref{eq:mag-phi-freq} даёт $-6{,}250\times 10^{-4}$. Среднее $\langle\delta\rangle$ в этом расчёте остаётся нулём с точностью $10^{-14}$. Остаток частоты имеет порядок $\varphi_m^4$ и при $|\varphi_m|=0{,}2$ вырастает в шестнадцать раз, как и должно у четвёртой степени.
+
+При $\eta_1=1{,}02$, $\delta_m=10^{-3}$ и $|\varphi_m|=0{,}04$ среднее отличается от~\eqref{eq:mag-deq} на $-4{,}6\times 10^{-11}$ при самом $\delta_{\mathrm{eq}}=9{,}55\times 10^{-7}$. Сдвиг среднего начинается со следующего порядка малости. Среднее ряда~\eqref{eq:mag-eta-series} при этом остаётся нулём: у периодического решения $\langle\dot\varphi\rangle=0$, и~\eqref{eq:mag-phase-slip} по-прежнему требует~\eqref{eq:mag-sync}.
+
+\subsection{Частота второго порядка}
+\label{sec:frequency}
+
+При $\cos\varphi=1$ поправка частоты вычислена в приложении~\ref{app:ch1bm}. Для уравнения~\eqref{eq:mag-osc}
+\begin{equation}
+\label{eq:mag-freq}
+\omega
+=\omega_s\Biggl[1-\frac{5}{12}\frac{\eta_1^2\delta_m^2}{\eta_0^2}\Biggr].
+\end{equation}
+Коэффициент $5/12$ складывается из постоянной части решения и гармоники $\cos 2\psi$: вклады $1/2$ и $-1/12$. В~\cite{Senichev2013} этой поправки нет.
+
+Проверка --- интегрирование~\eqref{eq:mag-osc} методом Рунге--Кутты при $\omega_s=1$, $\eta_0=-0{,}534211$, $\eta_1=1{,}02$ и $\delta_m=10^{-3}$. Начальное условие взято из~\eqref{eq:mag-delta-sol} при $\psi=0$:
+\begin{equation}
+\label{eq:mag-ic}
+\delta(0)
+=\delta_m-\frac{\eta_1\delta_m^2}{2\eta_0}+\frac{\eta_1\delta_m^2}{6\eta_0},
+\qquad
+\dot\delta(0)=0.
+\end{equation}
+Формула~\eqref{eq:mag-freq} даёт относительный сдвиг $-1{,}51902\times 10^{-6}$. Интегрирование даёт $-1{,}51912\times 10^{-6}$. Среднее $\delta$ равно $9{,}54681\times 10^{-7}$ против $\delta_{\mathrm{eq}}=9{,}54679\times 10^{-7}$ из~\eqref{eq:mag-deq}, а среднее ряда~\eqref{eq:mag-eta-series} отличается от нуля меньше чем на $10^{-14}$. Разложение пригодно, пока $|\eta_1\delta_m/\eta_0|\ll 1$. При этих числах $|\eta_1/\eta_0|=1{,}909$, и для $\delta_m=10^{-3}$ левая часть равна $1{,}9\times 10^{-3}$.
+
+\medskip
+\noindent\textbf{Замечание.}
+Формула (18.19) в~\cite{Ng2006} для коэффициента $\eta_2$ при $\delta^3$ в~\eqref{eq:mag-ng1810} дальше не используется. Третья производная (18.15), $(\beta'''/\beta)_s=-3\beta_s^2(1-5\beta_s^2)/\gamma_s^2$, совпадает с дифференцированием точной зависимости~\eqref{eq:mag-beta-exact}. Собранное выражение (18.19) с этим рядом не совпадает. При $\alpha_2=0$, $\alpha_0=0{,}2$, $\alpha_1=2$ (то есть $\alpha_0\alpha_1^{\mathrm{Ng}}=2$) и $\gamma_s=1{,}248$, как в примере COSY работы~\cite{Senichev2013}, коэффициент при $\delta^3$ в $(T-T_s)/T_s$, посчитанный по~\eqref{eq:mag-beta-exact} и по $C/C_s=1+\alpha_0\delta+\alpha_1\delta^2$, равен $-1{,}931$. Формула (18.19) при тех же числах даёт $+1{,}006$.

@@ -1,0 +1,249 @@
+                      BEAM DYNAMICS IN ELECTROSTATIC RINGS
+
+      Yu. Senichev, FZJ, Juelich, Germany and S.P. Møller, ISA, Aarhus University, Denmark
+
+
+
+Abstract                                                     where ±ϕ 0 is the potential on the spheres. The usual
+                                                             co-ordinate system in accelerator physics is the
+  An electrostatic storage ring for atomic physics,          cylindrical system r , y, ϑ and we also work in the
+ELISA [1], is at present in operation at Aarhus
+                                                             same system: s = Reqϑ , x = r − Req , y = y , where s
+University, and the first results are encouraging. It
+gives us the possibility to investigate in detail the        is the longitudinal co-ordinate along the trajectory and
+features of this new class of machines, and in particular     x is the deviation from the equilibrium radius Req in
+the possibilities for future improvements. The
+                                                             the horizontal plane and y is the deviation of the
+advantages of an electrostatic storage ring at low
+energy as compared to a magnetic ring are obvious,           particle in the vertical direction. The Lagrangian of this
+and one of them is the possibility to store different        system is
+particles without readjustment of the optics. However,
+the magnetic and electrostatic fields are different. In
+                                                                L=
+                                                                     2
+                                                                       (
+                                                                     m 2
+                                                                                         )
+                                                                        r& + r 2ϑ& 2 + y& 2 +
+particular, the particles moving in an electrostatic field       2eϕ 0                           eϕ 0              . (2)
+can change their kinetic and potential energies, since                    R 2 R1 ⋅
+                                                                                       1
+                                                                                              −        (R 2 + R1 )
+                                                                R 2 − R1            r 2 + y 2 R 2 − R1
+the electrical force may coincide with the direction of
+motion. This leads to a coupling between the transverse                                       ∂L
+                                                             Due to the spherical symmetry       = 0 we have
+and longitudinal motion, and this effect may play a                                           ∂ϑ
+very significant role. Additionally, we investigate in
+                                                             m&r& = mrϑ& 2 − eE x
+this paper the influence of space charge and image
+charges. Two different types of optics have been             mr 2ϑ& = p ⋅ r = M = const .
+                                                                           ϑ                                       (3)
+considered. The first was based on spherical deflectors,     m&y& = −eE y
+and recently these were changed to cylindrical. The
+experimental observations are described in [2]. In the       Substituting in the first equation the potential (1), we
+paper, the theory of such machines is developed based        have
+on motion integrals, and the results of numerical                  1 2emϕ 0 R1 R 2              1
+                                                             r ′′ = −                   ⋅                 .       (4)
+simulations are presented.                                         r     M 2   R 2 − R1       y 2 
+                                                                                                     3/ 2
+                                                                                          1 +     
+                                                                                           r2 
+        1 EQUATIONS OF MOTION                                                                     
+                                                             Defining the equilibrium radius from r ′′ = 0 and
+                                                              y = 0 , we have
+  ELISA consists of two arcs and two straight sections.
+                                                                            1     R − R1
+The arc includes two doublets of electrostatic lenses,       Req = M 2 ⋅         ⋅ 2        .                      (5)
+one 160° electrostatic spherical or cylindrical deflector                2emϕ 0 R1 R 2
+and two 10° parallel plate deflectors. The most unusual      Retaining terms of order less than two
+element from the accelerator physics point of view is               1      1           3
+the spherical and cylindrical deflector. It consists of      x ′′ + 2 x − 3 x 2 −           y2 = 0
+                                                                   Req    Req      2 ⋅ R eq
+                                                                                         3
+two segments of two concentric spheres or cylinders                                                .               (6)
+with radius R1 and R2 . The plates are long in the                  1      3
+                                                             y ′′ + 2 y − 3 xy = 0
+longitudinal direction and narrow in the transverse                Req    Req
+direction.                                                   The spherical deflector focuses the particles in the
+                                                             horizontal and vertical planes with the same force.
+1.1 Spherical deflectors                                     Both equations in (6) have a sextupolar component,
+                                                             and therefore third order resonances should be avoided.
+  The expression for the electrical field will be derived
+in the approximation of two not truncated spheres. In
+accordance with Gauss’ law the potential between two         1.2 Cylindrical deflectors
+spheres varies as
+                                                               We consider the cylindrical deflector as a candidate
+             2ϕ 0                ϕ0
+ϕ (r ) = −                             (R2 + R1 ) , (1)
+                            1
+                    R 2 R1 ⋅ +                               to improve the performance of ELISA. In accordance
+           R 2 − R1         r R 2 − R1                       with Gauss’ law the potential from the internal
+
+
+
+794                                                                        Proceedings of EPAC 2000, Vienna, Austria
+electrode with radius R1 to the external electrode with                                               δ 1 h
+                                                                   The force equals zero, when           = ⋅       . Thus,
+radius R2 varies as                                                                                    h 2 ρ+h
+                            2ϕ 0                                   shifting the equilibrium orbit by δ , we can compensate
+         ϕ (r ) = −ϕ 0 +
+                                      r
+                                 ⋅ ln    ,                  (7)    the dipole force and it cannot represent any serious
+                              R       R1
+                           ln 2                                    problem for the current limit.
+                              R1
+where 2ϕ 0 is the potential difference between the                 2.2 Influence from space charge
+electrodes. Using the same technique as in paragraph
+1.1, we have for the cylindrical electrodes                           Knowing how the beam cross section depends on s ,
+              1 em 2ϕ 0                                            σ (s ) = σ av (1 + ε m cos ω ⋅ s ) , where ε m is the
+        r ′′ = − 2 ⋅          r.                  (8)
+              r M         R2                                       modulation amplitude, ω is the modulation frequency
+                       ln                                          and using Courant-Snyder formalism, we can write the
+                          R1
+                                                                   equation of motion in explicit form
+For the stationary case r = Req , when r ′′ = 0
+                                                                    d 2ξ ν 0            δν       δν                  
+                                                                               2
+                                                                          +       1 − 2     +2        ε m cos ω ⋅ s ξ = 0 . (11)
+                                                                               2 
+                                  1/ 2
+                         R                                        ds 2
+                                                                             R          ν0       ν0                  
+                     ln 2 
+                    
+          Req = M ⋅ 
+                          R1 
+                                 .                          (9)    The average space charge tune shift δν determines the
+                       2emϕ 0                                     global current limit, when the particle crosses the half
+                            
+                                                                   integer resonance. In particular, for ELISA we get the
+                              
+                                                                   global current limit I G − max = 6 µA . However, due to
+In cylindrical co-ordinates
+               2        1                                          the envelope modulation the parametric resonance can
+        x ′′ + 2 x − 3 x 2 = 0                                     be excited as well. For the ELISA lattice with the
+              Req      Req       .                         (10)    spherical deflector ( ε m = 65 ) the parametric resonance
+        y ′′ = 0                                                   occurs, when the current is 70 nA. In reality such a
+In the horizontal plane the focusing term is twice as              deep density modulation is not achieved due to space
+large as in the spherical deflector, and there is no               charge itself. We have performed simulations of beam
+focusing in the vertical plane. Besides, in the ideal case         dynamics with space charge by the code TrackFMN
+there is no coupling with the vertical plane.                      [3]. It has been shown that the current limit for ELISA
+                                                                   with the spherical deflector is about half a µA and with
+1.3 Electrostatic quadrupoles                                      the cylindrical deflectors a few µA because of the
+                                                                   smaller envelope modulation.
+  If the electrodes have potentials ± V0 , then the
+                                                                   2.3 Finite electrostatic deflectors
+                                   2V0
+electrical gradient is G E =             and the equation of
+                                   rB2                                In reality the deflector consists of plates, which are
+                                                                   finite segments of spheres or cylinders and the edges
+            d   x  2eV0  x 
+                2
+motion is       ±           = 0 .                            distort the field. We have calculated the 3D field by
+                2  y
+            ds   mvϑ2 rB2  y                                   MAFIA and determined the "good-field" region for the
+                                                                   beam to ±8 mm for the spherical deflector and more for
+2 ORIGIN OF CURRENT LIMITATION                                     the cylindrical.
+
+  Now we will briefly analyse possible reasons to                  2.4 Longitudinal-transverse coupling
+current limitations in electrostatic rings.
+                                                                     The spherical and cylindrical deflectors have a
+2.1 Dipole mode due to image charge                                                                             α
+                                                                   central field symmetry, namely E ∝ n , where
+                                                                                                                r
+  Any charged ion has an image charge due to the                    ∂L
+surrounding metal walls. Due to the different radius of                 = 0 and mvϑ r = const . The angular momentum
+                                                                    ∂ϑ
+the spheres R1 = ρ and R 2 = ρ + 2h and the different
+                                                                   plays a crucial role for the focusing features of both
+signs of the curvature relatively to the beam a dipole             deflectors. In particular, if the kinetic energy
+force arises. It is proportional to the beam current and
+                                                                   T = mvϑ2 / 2 is constant and M varies, then in the
+to the factor
+                   ρ + h +δ                 ρ + h +δ               horizontal plane the spherical deflector de-focuses and
+ ∆Fimage ∝                           −                         ,   the cylindrical deflector is just a drift. But obviously,
+            (h − δ )⋅ (2 ρ + 3h + δ ) (h + δ )⋅ (2 ρ + h + δ )     for both of them energy conservation is fulfilled:
+where δ is the beam displacement from the center.
+
+
+
+Proceedings of EPAC 2000, Vienna, Austria                                                                                      795
+                   M2                                           conversion of the potential energy to kinetic energy
+                        + ϕ (r ) = r& 2 + eϕ eff .
+          m 2                     m
+W (r , r&) = r& +     2
+                                                     (12)       will be continued. It is easy to image the opposite
+           2      2mr             2
+                                                                situation, when the particle will lose kinetic energy and
+The last expression shows that the radial motion could          increase the potential energy. The process of energy
+be considered as one-dimensional motion in the field            conversion has an oscillating character, since the tune
+with the effective potential ϕ eff (r ) consisting of the       of the ring is not an integer.
+centrifugal potential and the electrical potential. But            However, the conversion process is suppressed by
+the centrifugal potential is the kinetic energy along the       the edge field, which changes the angular momentum
+ϑ direction. Therefore such deflectors lead to                  at the entrance and the exit of the deflector and
+exchange of energy between the transverse and                   therefore decreases the equilibrium orbit shift. The
+longitudinal planes.                                            coefficient of suppression k is calculated numerically
+  Actually, from the expression (5) we can see that             and its influence is given from the next expression
+each particle is focused around it’s own equilibrium             ∆v      1 x − x 0 ∆v 0
+                                                                     =− ⋅           +      .   We     have      performed
+radius Req ∝ M 2 dependent on the initial angular                 v      k R eq         v
+momentum, in contrast to the magnetic ring,                     multiplication of a few thousands matrixes and found
+where Req ∝ p = mv . Therefore, the linear equation for         that the momentum spread grows, what obviously
+                                                                causes losses. Due to the different coefficient k the
+particles with non-equilibrium angular momentum in
+                                                                particles increase their amplitude with different
+the horizontal plane is
+                                                                increment.
+                 1      1     ∆M
+          x ′′ + 2 x =     ⋅2    ,            (13)                We believe that this mechanism is the main
+                R0      R0     M                                mechanism of the reduction in stable motion.
+where R0 is the equilibrium radius for ∆M = 0 . The               To reduce the influence of this mechanism we should
+new equilibrium radius is Req = R0 (1 + 2∆M / M ) .
+                                                                decrease the dependence of the equilibrium radius on
+                                                                the initial parameters. In particular, for the cylindrical
+Taking into account ∆M / M = ∆v / v 0 + x 0 / R0 , where        deflector the equilibrium deviation is half that for the
+ ∆v / v 0 is the initial velocity spread and x 0 is the         spherical deflector ∆R eq = R0 ⋅ ∆M / M . Numerical
+initial particle deviation, the maximum deviation of the        simulations of the beam in the real field by the 3D code
+new equilibrium orbit is                                        SIMION have confirmed this result and have shown
+                            ∆v                               the obvious advantages of the cylindrical deflectors.
+                                           εxβx 
+           ∆R max = 2 R0 ⋅          +        ,   (14)
+                            v  max      R0 
+                                                                              3 CONCLUSIONS
+where ε x , β x are the emittance and the β -function at
+                                                                   We have studied the beam dynamics in electrostatic
+the entrance to the deflector. The expression (14)              rings. Potential candidates to limit the beam intensity
+shows how far the potential well is shifted from the            are the parametric resonance due to modulation of the
+deflector centre. Obviously, the particle oscillating           space charge tune shift and coupling between the
+around the new orbit has a higher probability to be lost.       longitudinal and transverse directions. We considered
+In particular, stable motion for a parallel                     two lattices of ELISA and have shown that the lattice
+monochromatic beam, when all particles have                     with cylindrical electrodes is more stable and has a
+ r& = 0 and ∆v / v = 0 , is limited by the radius               higher current limit with respect to both effects.
+ r = 25 ± 0.5 cm in the spherical deflector. For the non-
+parallel and non-monochromatic beam the stable                                  4 REFERENCES
+region even is smaller.
+    We considered the instantaneous stability in one            [1] S.P. Moller, "ELISA, an electrostatic storage ring
+deflector. But what will happen after many turns of the              for atomic physics", NIM, A 394 (1997) 281-286.
+particles? Using the condition mvϑ r = const , we can           [2] S.P. Møller, P. Bowe, J.S. Nielsen, and U.V.
+write the change of velocity after one passage through               Pedersen, "Intensity limitations of the electrostatic
+                 ∆v      x − x 0 ∆v 0                                storage ring ELISA", these proceedings.
+the deflector        =−          +       . Now let us call       [3] V. Balandin and N. Golubeva, TrackFMN code,
+                  v        Req       v
+                                                                     nina@al20.inr.troitsk.ru
+that the matrix of the transport channel between two
+deflectors M tr . Then after n turns
+       ∆v 
+               (                  )
+                                n 
+ x, x′,  = M tr ⋅ M Def ⋅ M tr ⋅  xo , x0′ ,
+                                                ∆v0 
+                                                    .   (15)
+       v n                                    v 
+If the total matrix between two deflectors changes sign
+of the particle deviation sign( x) ⇒ − sign( x) , the
+
+
+
+796                                                                        Proceedings of EPAC 2000, Vienna, Austria
+
