@@ -1,0 +1,79 @@
+\section[Электростатическое кольцо: бетатронное запаздывание]{Электростатическое кольцо:\\ бетатронное запаздывание}
+\label{sec:es-beta}
+
+\subsection{Запаздывание}
+
+$\Lambda$ определяется как в \eqref{eq:Lambda}. В дефлекторе при $w=0$ выполнено $u=-\psi$, и скорость меняется вдоль бетатронной траектории, поэтому запаздывание по времени не сводится к запаздыванию по пути. Подынтегральное выражение \eqref{eq:tau-es} с элементом пути \eqref{eq:dl} и с $v_s/v$ из \eqref{eq:vsv-es} есть
+\[
+\Bigl(1+\frac{x}{\rho}+\frac{x'^2+y'^2}{2}\Bigr)
+\Bigl(1+\frac{\psi}{\gamma_s^2}+\frac{3\psi^2}{2\gamma_s^2}\Bigr),
+\]
+$x=x_\beta+x_{\mathrm{nl}}$, $y=y_\beta$. Квадратичные по $x_\beta$ члены из $(x/\rho)(\psi/\gamma_s^2)$, из $-(n/2)(x/\rho)^2/\gamma_s^2$ и из $3(x/\rho)^2/(2\gamma_s^2)$ в сумме равны $(5-n)x_\beta^2/(2\gamma_s^2\rho^2)$. По $y$ остаётся $(n-1)y^2/(2\gamma_s^2\rho^2)$, линейный по $x_{\mathrm{nl}}$ член равен $(1+1/\gamma_s^2)x_{\mathrm{nl}}/\rho$. Слагаемое $(x'^2+y'^2)/2$ сохраняется. Линейные по $x_\beta$ члены в среднем $\langle\,\rangle_\psi$ равны нулю, поэтому
+\begin{equation}
+\label{eq:Lambda-es}
+\begin{aligned}
+\Lambda=\frac{1}{C_s}\oint\Biggl[&
+\Bigl(1+\frac{1}{\gamma_s^2}\Bigr)\frac{\langle x_{\mathrm{nl}}\rangle_\psi}{\rho}
++\frac{\langle x'^2+y'^2\rangle_\psi}{2}
+\\
+&+\frac{5-n}{2\gamma_s^2}\,\frac{\langle x_\beta^2\rangle_\psi}{\rho^2}
++\frac{n-1}{2\gamma_s^2}\,\frac{\langle y_\beta^2\rangle_\psi}{\rho^2}
+\Biggr]\mathrm{d}s.
+\end{aligned}
+\end{equation}
+Среднее $x_\beta'$ равно нулю, а $x_{\mathrm{nl}}'^2$ имеет более высокий порядок, так что $\langle x'^2+y'^2\rangle_\psi=\langle x_\beta'^2\rangle_\psi+\langle y_\beta'^2\rangle_\psi$. Подстановка $\langle x_\beta'^2\rangle_\psi=J_x\gamma_x$, $\langle y_\beta'^2\rangle_\psi=J_y\gamma_y$, $\langle x_\beta^2\rangle_\psi=J_x\beta_x$, $\langle y_\beta^2\rangle_\psi=J_y\beta_y$ даёт
+\begin{equation}
+\label{eq:Lambda-es-J}
+\begin{aligned}
+\Lambda=\frac{1}{C_s}\Biggl[&
+\frac{J_x}{2}\oint\Biggl(\gamma_x+\frac{(5-n)\beta_x}{\gamma_s^2\rho^2}\Biggr)\mathrm{d}s
+\\
+&+\frac{J_y}{2}\oint\Biggl(\gamma_y+\frac{(n-1)\beta_y}{\gamma_s^2\rho^2}\Biggr)\mathrm{d}s
+\\
+&+\Biggl(1+\frac{1}{\gamma_s^2}\Biggr)\oint\frac{\langle x_{\mathrm{nl}}\rangle_\psi}{\rho}\,\mathrm{d}s
+\Biggr].
+\end{aligned}
+\end{equation}
+Вне дефлекторов $1/\rho=0$. Соотношение \eqref{eq:Lambda-xi} выполняется и здесь, с хроматичностями $\xi_{x,y}=\mathrm{d}\nu_{x,y}/\mathrm{d}\delta$ электростатического кольца.
+
+\subsection{Система и равновесный сдвиг}
+
+$\tau=\eta_0w+\tilde\eta_1w^2+\Lambda$, где $\eta_0$ и $\eta_1$ берутся из \eqref{eq:eta0-es}, \eqref{eq:eta1-es}, $\tilde\eta_1=\eta_1-\eta_0/(2\gamma_s^2)$, а $\Lambda$ --- из \eqref{eq:Lambda-es}. Система \eqref{eq:system-L}, её решение и усреднение главы~\ref{sec:mag-beta} сохраняются:
+\begin{equation}
+\label{eq:deq-es-L}
+\begin{aligned}
+\delta_\eq&=-\frac{1}{\eta_0}\Bigl(\frac{\eta_1A^2}{2}+\Lambda\Bigr),
+\\
+w_\eq&=-\frac{1}{\eta_0}\Bigl(\frac{\tilde\eta_1A^2}{2}+\Lambda\Bigr),
+\\
+\Delta E_\eq&=\beta_s^2E_s\,w_\eq.
+\end{aligned}
+\end{equation}
+Условия применимости --- \eqref{eq:valid-L}. Во втором порядке по фазе выполняется \eqref{eq:deq-ph-L} с этими $\eta$ и $\Lambda$.
+
+\subsection{Кинетическая энергия внутри дефлектора}
+
+Из \eqref{eq:gamma-loc} точно
+\begin{equation}
+\label{eq:kin-loc}
+\frac{\gamma-\gamma_s}{\beta_s^2\gamma_s}=w-\psi.
+\end{equation}
+Усреднение по синхротронным и бетатронным колебаниям в точке $s$ дефлектора даёт $\langle\gamma-\gamma_s\rangle/(\beta_s^2\gamma_s)=w_\eq-\langle\psi\rangle(s)$. При $x=D\delta+D_2\delta^2+x_\beta+x_{\mathrm{nl}}$ и $y=y_\beta$, с $\langle\delta\rangle=\delta_\eq$ и $\langle\delta^2\rangle=A^2/2$, члены $\delta\cdot x_\beta$ в среднем равны нулю, поскольку фазы независимы. Из \eqref{eq:psi}
+\begin{equation}
+\label{eq:psi-avg}
+\begin{aligned}
+\langle\psi\rangle
+&=\frac{D}{\rho}\,\delta_\eq
++\Biggl[\frac{D_2}{\rho}-\frac{n}{2}\Biggl(\frac{D}{\rho}\Biggr)^2\Biggr]\frac{A^2}{2}
++\frac{\langle x_{\mathrm{nl}}\rangle_\psi}{\rho}
+\\
+&\quad-\frac{n}{2}\,\frac{J_x\beta_x}{\rho^2}
++\frac{n-1}{2}\,\frac{J_y\beta_y}{\rho^2}.
+\end{aligned}
+\end{equation}
+Средний сдвиг кинетической энергии в точке $s$
+\begin{equation}
+\label{eq:dK}
+\Delta K_\eq(s)=\beta_s^2E_s\bigl[w_\eq-\langle\psi\rangle(s)\bigr].
+\end{equation}
+Вне дефлекторов $\psi=0$ и $\Delta K_\eq=\Delta E_\eq$.

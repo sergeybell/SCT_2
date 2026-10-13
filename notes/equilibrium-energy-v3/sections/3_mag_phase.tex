@@ -1,0 +1,156 @@
+\section{Магнитное кольцо: второй порядок по фазе}
+\label{sec:mag-phase}
+
+\subsection{Система}
+
+Ряд синуса обрывается на кубическом члене: $\sin\varphi\approx\varphi-\varphi^3/6$. В производной второго уравнения \eqref{eq:smooth} это замена $\cos\varphi\approx 1-\varphi^2/2$. Сначала $\Lambda=0$, и система \eqref{eq:system} принимает вид
+\begin{equation}
+\label{eq:system-phi}
+\frac{\mathrm{d}\varphi}{\mathrm{d}t}=\omega_\rf\bigl(\eta_0 w+\tilde\eta_1 w^2\bigr),
+\qquad
+\frac{\mathrm{d}w}{\mathrm{d}t}=K\cos\varphi_s\Bigl(\varphi-\frac{\varphi^3}{6}\Bigr).
+\end{equation}
+При $\tilde\eta_1=0$ из \eqref{eq:system-phi} исключается $w$. Дифференцирование первого уравнения и подстановка второго с $\omega_\rf\eta_0 K\cos\varphi_s=-\omega_s^2$ из \eqref{eq:ws} дают
+\begin{equation}
+\label{eq:phi-ode}
+\ddot\varphi+\omega_s^2\Bigl(\varphi-\frac{\varphi^3}{6}\Bigr)=0.
+\end{equation}
+Полуразмах фазы --- $\hat\varphi=\max|\varphi|$.
+
+\subsection{Решение}
+
+При $\tilde\eta_1=0$ решение \eqref{eq:phi-ode} получено в приложении~\ref{sec:bm-cubic}. Множитель $\operatorname{sgn}\eta_0$ уравнивает ведущий член с \eqref{eq:phi}:
+\begin{align}
+\varphi(t)
+&=\operatorname{sgn}\eta_0\Biggl[
+\hat\varphi\sin\psi
++\frac{\hat\varphi^3}{192}\bigl(\sin\psi+\sin 3\psi\bigr)
+\Biggr],
+\label{eq:phi-ph}\\
+w(t)
+&=A\Biggl[
+\Bigl(1-\frac{\hat\varphi^2}{64}\Bigr)\cos\psi
++\frac{\hat\varphi^2}{64}\cos 3\psi
+\Biggr],
+\label{eq:w-ph}\\
+\psi&=\Omega t,
+\qquad
+\frac{\Omega}{\omega_s}=1-\frac{\hat\varphi^2}{16}.
+\label{eq:Omega-ph}
+\end{align}
+В ведущем порядке $\hat\varphi=\omega_\rf|\eta_0|A/\omega_s$, и \eqref{eq:phi-ph} совпадает с \eqref{eq:phi}. При $\psi=0$ и $\psi=\pi$ скобка в \eqref{eq:w-ph} равна $\pm1$, так что $A=(w_{\max}-w_{\min})/2$. Этот полуразмах связан с $\hat\varphi$ формулой
+\begin{equation}
+\label{eq:A-ph}
+A=\frac{\omega_s\hat\varphi}{\omega_\rf|\eta_0|}\Bigl(1-\frac{\hat\varphi^2}{24}\Bigr).
+\end{equation}
+Для маятника $\ddot\varphi+\omega_s^2\sin\varphi=0$ интеграл энергии даёт то же соотношение точно:
+\begin{equation}
+\label{eq:A-exact}
+A=\frac{2\omega_s}{\omega_\rf|\eta_0|}\sin\frac{\hat\varphi}{2}.
+\end{equation}
+Разложение \eqref{eq:A-exact} до членов $\hat\varphi^2$ совпадает с \eqref{eq:A-ph}.
+
+При $\tilde\eta_1\neq 0$ в первом порядке по $\tilde\eta_1$ к \eqref{eq:w-ph} добавляются постоянный член и вторая гармоника \eqref{eq:w-sol}. Члены порядка $\tilde\eta_1 A^2\hat\varphi^2$ не удерживаются:
+\begin{align}
+w(t)
+&=w_\eq
++A\Biggl[
+\Bigl(1-\frac{\hat\varphi^2}{64}\Bigr)\cos\psi
++\frac{\hat\varphi^2}{64}\cos 3\psi
+\Biggr]
++\frac{\tilde\eta_1 A^2}{6\eta_0}\cos 2\psi,
+\label{eq:w-ph-eta}\\
+\frac{\Omega}{\omega_s}
+&=1-\frac{\hat\varphi^2}{16}
+-\frac{5}{12}\Bigl(\frac{\tilde\eta_1 A}{\eta_0}\Bigr)^2.
+\label{eq:Omega-ph-eta}
+\end{align}
+Постоянная $w_\eq$ определяется в \eqref{eq:deq-ph}. При $\psi=0$ и $\psi=\pi$ вторая гармоника одинакова, как в \eqref{eq:w-sol}, и $A$ остаётся полуразмахом.
+
+\subsection{Усреднение и равновесный сдвиг}
+
+Равенства \eqref{eq:deq-avg} точны и от второго уравнения системы не зависят: порядок по фазе входит только через $\langle w^2\rangle$. На этом порядке $\langle w^2\rangle=\langle\delta^2\rangle$. В первом порядке по $\tilde\eta_1$ среднее берётся на решении \eqref{eq:w-ph}. Гармоники $\cos\psi$ и $\cos 3\psi$ ортогональны, поэтому
+\begin{equation}
+\label{eq:w2-ph}
+\langle w^2\rangle
+=\frac{A^2}{2}\Biggl[
+\Bigl(1-\frac{\hat\varphi^2}{64}\Bigr)^2
++\Bigl(\frac{\hat\varphi^2}{64}\Bigr)^2
+\Biggr]
+=\frac{A^2}{2}\Bigl(1-\frac{\hat\varphi^2}{32}\Bigr)+O(\hat\varphi^4).
+\end{equation}
+Подстановка в \eqref{eq:deq-avg} даёт
+\begin{equation}
+\label{eq:deq-ph}
+\delta_\eq=-\frac{\eta_1 A^2}{2\eta_0}\Bigl(1-\frac{\hat\varphi^2}{32}\Bigr),
+\qquad
+w_\eq=-\frac{\tilde\eta_1 A^2}{2\eta_0}\Bigl(1-\frac{\hat\varphi^2}{32}\Bigr),
+\qquad
+\Delta E_\eq=\beta_s^2 E_s\,w_\eq .
+\end{equation}
+
+Внутри сепаратрисы для маятника $\ddot\varphi+\omega_s^2\sin\varphi=0$ при любом $\hat\varphi$
+\begin{equation}
+\label{eq:w2-ell}
+\langle w^2\rangle
+=A^2\frac{\mathrm{E}(k)/\mathrm{K}(k)-1+k^2}{k^2},
+\qquad
+k=\sin\frac{\hat\varphi}{2},
+\end{equation}
+где $\mathrm{K}$ и $\mathrm{E}$ --- полные эллиптические интегралы первого и второго рода, $k$ --- модуль. Разложение \eqref{eq:w2-ell} до членов $\hat\varphi^2$ даёт множитель $(1-\hat\varphi^2/32)$ в \eqref{eq:w2-ph}.
+
+Поправка к $\langle w^2\rangle$ возникает потому, что $A$ есть полуразмах: кубический член рождает третью гармонику, и при фиксированном полуразмахе она перераспределяет $\langle w^2\rangle$.
+
+\subsection{С бетатронным запаздыванием}
+
+Первое уравнение содержит $\tau$ из \eqref{eq:tau-L}, второе --- ряд $\sin\varphi\approx\varphi-\varphi^3/6$:
+\begin{equation}
+\label{eq:system-phi-L}
+\frac{\mathrm{d}\varphi}{\mathrm{d}t}
+=\omega_\rf\bigl(\eta_0 w+\tilde\eta_1 w^2+\Lambda\bigr),
+\qquad
+\frac{\mathrm{d}w}{\mathrm{d}t}
+=K\cos\varphi_s\Bigl(\varphi-\frac{\varphi^3}{6}\Bigr).
+\end{equation}
+При $\tilde\eta_1=0$ устойчивая точка лежит в $w=-\Lambda/\eta_0$. Отклонение $u=w+\Lambda/\eta_0$ удовлетворяет \eqref{eq:phi-ode}: движение около этой точки есть тот же маятник, с полуразмахом $A$ относительно смещённой точки и со связью \eqref{eq:A-ph}, \eqref{eq:A-exact}.
+
+В первом порядке по $\tilde\eta_1$ и по $\Lambda$ величина $\langle\delta^2\rangle$ берётся из \eqref{eq:w2-ph}. Подстановка в \eqref{eq:deq-raw-L} и переход к $w$ по \eqref{eq:w-series}, \eqref{eq:tau-w} дают
+\begin{equation}
+\label{eq:deq-ph-L}
+\begin{aligned}
+\delta_\eq
+&=-\frac{1}{\eta_0}\Biggl[
+\frac{\eta_1 A^2}{2}\Bigl(1-\frac{\hat\varphi^2}{32}\Bigr)+\Lambda
+\Biggr],
+\\
+w_\eq
+&=\delta_\eq+\frac{A^2}{4\gamma_s^2}\Bigl(1-\frac{\hat\varphi^2}{32}\Bigr)
+=-\frac{1}{\eta_0}\Biggl[
+\frac{\tilde\eta_1 A^2}{2}\Bigl(1-\frac{\hat\varphi^2}{32}\Bigr)+\Lambda
+\Biggr],
+\\
+\Delta E_\eq
+&=\beta_s^2 E_s\,w_\eq .
+\end{aligned}
+\end{equation}
+При $\Lambda=0$ это \eqref{eq:deq-ph}.
+
+К правой части \eqref{eq:Omega-L} добавляется сдвиг $-\hat\varphi^2/16$ из \eqref{eq:Omega-ph}:
+\begin{equation}
+\label{eq:Omega-ph-L}
+\frac{\Omega}{\omega_s}
+=1-\frac{\tilde\eta_1\Lambda}{\eta_0^2}
+-\frac{5}{12}\Bigl(\frac{\tilde\eta_1 A}{\eta_0}\Bigr)^2
+-\frac{\hat\varphi^2}{16}.
+\end{equation}
+
+Условия применимости ряда:
+\begin{equation}
+\label{eq:valid-ph}
+\Bigl|\frac{\eta_1 A}{\eta_0}\Bigr|\ll 1,
+\qquad
+\Bigl|\frac{\tilde\eta_1\Lambda}{\eta_0^2}\Bigr|\ll 1,
+\qquad
+\hat\varphi^2\ll 1.
+\end{equation}
+Формула \eqref{eq:w2-ell} верна внутри сепаратрисы при любом $\hat\varphi$.

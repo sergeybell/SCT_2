@@ -1,0 +1,106 @@
+\section{Электростатическое кольцо: исходная система}
+\label{sec:es-base}
+
+\subsection{Поле и переменные}
+
+Изгиб создают только электростатические дефлекторы, вне их $1/\rho=0$. Фокусирующие элементы вне дефлекторов магнитные, потенциал вне дефлекторов равен нулю. Показатель поля $n$ во всех дефлекторах один и тот же. ВЧ-зазор расположен вне дефлекторов.
+
+Нормированный потенциал дефлектора
+\begin{equation}
+\label{eq:psi}
+\psi=\frac{q\Phi}{p_sv_s}
+=\frac{x}{\rho}-\frac{n}{2}\frac{x^2}{\rho^2}+\frac{n-1}{2}\frac{y^2}{\rho^2}.
+\end{equation}
+В этой главе $y=0$; член с $y^2$ используется в главе~\ref{sec:es-beta}. Знак в \eqref{eq:psi} фиксируется условием $qE_0=p_sv_s/\rho$ на опорной орбите ($E_0$ --- поле на ней); коэффициенты при $x^2$ и $y^2$ --- уравнением Лапласа в криволинейных координатах.
+
+В \eqref{eq:delta-def} энергия $E$ полная, с $q\Phi$; она меняется только в зазоре, и между прохождениями зазора $w$ постоянно. Импульс в $\delta$ берётся вне дефлекторов, где $\psi=0$, поэтому \eqref{eq:w-series} сохраняется. Поскольку $p_sv_s=\beta_s^2E_s$,
+\begin{equation}
+\label{eq:E-kin}
+E-q\Phi=E_s\bigl[1+\beta_s^2(w-\psi)\bigr].
+\end{equation}
+Слева стоит $\gamma mc^2$, а $E_s=\gamma_smc^2$, поэтому локальный лоренц-фактор точен:
+\begin{equation}
+\label{eq:gamma-loc}
+\gamma=\gamma_s\bigl[1+\beta_s^2(w-\psi)\bigr].
+\end{equation}
+При $u=w-\psi$
+\begin{equation}
+\label{eq:vsv-es}
+\frac{v_s}{v}=1-\frac{u}{\gamma_s^2}+\frac{3u^2}{2\gamma_s^2}+O(u^3).
+\end{equation}
+
+\subsection{Коэффициент скольжения}
+
+Замкнутая орбита
+\begin{equation}
+\label{eq:x-co}
+x=D\delta+D_2\delta^2.
+\end{equation}
+Опорный период $T_s=C_s/v_s$. Период частицы есть $\oint\mathrm{d}l/v$. При $y=0$ до второго порядка $\mathrm{d}l=(1+x/\rho+x'^2/2)\,\mathrm{d}s$, $x'=\mathrm{d}x/\mathrm{d}s$, поэтому
+\begin{equation}
+\label{eq:tau-es}
+1+\tau=\frac{1}{C_s}\oint\Bigl(1+\frac{x}{\rho}+\frac{x'^2}{2}\Bigr)\frac{v_s}{v}\,\mathrm{d}s.
+\end{equation}
+Кольцевое среднее
+\begin{equation}
+\label{eq:avg-C}
+\langle f\rangle_C=\frac{1}{C_s}\oint f\,\mathrm{d}s
+\end{equation}
+берётся вдоль опорной орбиты. Среднее по оборотам $\langle f\rangle$ определено в \eqref{eq:deq-def}. Коэффициент $\alpha_0$ длины орбиты в \eqref{eq:C} равен $\langle D/\rho\rangle_C$.
+
+На орбите \eqref{eq:x-co} при $y=0$ подстановка \eqref{eq:psi}, \eqref{eq:w-series} и \eqref{eq:vsv-es} даёт подынтегральное выражение \eqref{eq:tau-es} до усреднения:
+\begin{equation}
+\label{eq:integrand}
+\begin{aligned}
+&1+\Biggl[\Bigl(1+\frac{1}{\gamma_s^2}\Bigr)\frac{D}{\rho}-\frac{1}{\gamma_s^2}\Biggr]\delta
+\\
+&+\Biggl[
+\frac{D'^2}{2}
++\Bigl(1+\frac{1}{\gamma_s^2}\Bigr)\frac{D_2}{\rho}
++\frac{5-n}{2\gamma_s^2}\Bigl(\frac{D}{\rho}\Bigr)^2
+-\frac{4}{\gamma_s^2}\frac{D}{\rho}
++\frac{3\gamma_s^2-1}{2\gamma_s^4}
+\Biggr]\delta^2
++O(\delta^3).
+\end{aligned}
+\end{equation}
+Усреднение \eqref{eq:avg-C} даёт
+\begin{equation}
+\label{eq:tau-es-d}
+\tau=\eta_0\delta+\eta_1\delta^2,
+\end{equation}
+\begin{align}
+\eta_0
+&=\alpha_0\Bigl(1+\frac{1}{\gamma_s^2}\Bigr)-\frac{1}{\gamma_s^2},
+\qquad
+\alpha_0=\Biggl\langle\frac{D}{\rho}\Biggr\rangle_C,
+\label{eq:eta0-es}\\
+\eta_1
+&=\frac12\langle D'^2\rangle_C
++\Bigl(1+\frac{1}{\gamma_s^2}\Bigr)\Biggl\langle\frac{D_2}{\rho}\Biggr\rangle_C
++\frac{5-n}{2\gamma_s^2}\Biggl\langle\Bigl(\frac{D}{\rho}\Bigr)^2\Biggr\rangle_C
+\nonumber\\
+&\quad-\frac{4\alpha_0}{\gamma_s^2}
++\frac{3\gamma_s^2-1}{2\gamma_s^4}.
+\label{eq:eta1-es}
+\end{align}
+Подстановка \eqref{eq:w-series} переводит \eqref{eq:tau-es-d} в \eqref{eq:tau-w}: $\tilde\eta_1=\eta_1-\eta_0/(2\gamma_s^2)$.
+
+\subsection{Система и равновесный сдвиг}
+
+Зазор стоит вне дефлекторов и меняет полную энергию точно: прирост равен $qV\sin(\varphi_s+\varphi)$. Система есть \eqref{eq:smooth} и \eqref{eq:system} с $\eta_0$ и $\tilde\eta_1$ из \eqref{eq:eta0-es}, \eqref{eq:eta1-es}. Устойчивая фаза --- \eqref{eq:phis}, частота малых колебаний --- \eqref{eq:ws} с этим $\eta_0$.
+
+Решение \eqref{eq:w-sol}, \eqref{eq:phi}, \eqref{eq:Omega} и усреднение \eqref{eq:deq-avg} сохраняются:
+\begin{equation}
+\label{eq:deq-es}
+\delta_\eq=-\frac{\eta_1A^2}{2\eta_0},
+\qquad
+w_\eq=-\frac{\tilde\eta_1A^2}{2\eta_0},
+\qquad
+\Delta E_\eq=\beta_s^2E_s\,w_\eq.
+\end{equation}
+Условия применимости --- \eqref{eq:valid}.
+
+\subsection{Второй порядок по фазе}
+
+Фазовое уравнение совпадает с \eqref{eq:system-phi}, поэтому \eqref{eq:deq-ph} и \eqref{eq:w2-ell} выполняются с $\eta_0$, $\eta_1$, $\tilde\eta_1$ этой главы.

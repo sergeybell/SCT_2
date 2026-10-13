@@ -1,0 +1,134 @@
+\section{Магнитное кольцо: бетатронное запаздывание}
+\label{sec:mag-beta}
+
+\subsection{Запаздывание от бетатронных колебаний}
+
+Бетатронное колебание меняет время оборота. При $w=0$ относительное запаздывание за оборот, усреднённое по быстрым бетатронным фазам,
+\begin{equation}
+\label{eq:Lambda}
+\Lambda=\frac{\langle T-T(J=0)\rangle_\psi}{T_s}.
+\end{equation}
+Синхротронное движение медленное и видит только это среднее. Здесь $J=(J_x,J_y)$ --- действия, $x'=\mathrm{d}x/\mathrm{d}s$, скобки $\langle\,\rangle_\psi$ --- среднее по бетатронным фазам. $\beta_x$, $\alpha_x$, $\gamma_x=(1+\alpha_x^2)/\beta_x$ --- функции Твисса, $\rho$ --- радиус кривизны орбиты.
+
+В магнитном поле скорость вдоль любой траектории постоянна. При $w=0$ она на траектории с данным $J$ и на траектории $J=0$ одна и та же, поэтому запаздывание по времени равно запаздыванию по пути:
+\begin{equation}
+\label{eq:Lambda-path}
+\Lambda=\frac{\langle\Delta L_\beta\rangle_\psi}{C_s}.
+\end{equation}
+Равенство выполняется только потому, что скорость на обеих траекториях одинакова. $\Delta L_\beta$ --- избыток длины траектории над длиной орбиты $J=0$.
+
+Элемент пути до второго порядка. Корень $\sqrt{(1+x/\rho)^2+x'^2+y'^2}$ после сокращения $(x/\rho)^2$ даёт
+\begin{equation}
+\label{eq:dl}
+\mathrm{d}l=\Bigl(1+\frac{x}{\rho}+\frac{x'^2+y'^2}{2}\Bigr)\mathrm{d}s.
+\end{equation}
+Отклонение от орбиты $J=0$
+\begin{equation}
+\label{eq:xbeta}
+x=x_\beta+x_{\mathrm{nl}},
+\qquad
+x_\beta=\sqrt{2J_x\beta_x}\cos\psi_x
+\end{equation}
+(для $y$ --- так же). Слагаемое $x_{\mathrm{nl}}$ --- сдвиг орбиты, квадратичный по амплитуде; его дают секступоли, кривизна и краевые поля. Среднее $\langle x_\beta\rangle_\psi=0$.
+
+Дифференцирование \eqref{eq:xbeta} по $s$ при $\mathrm{d}\psi_x/\mathrm{d}s=1/\beta_x$ и $\alpha_x=-\beta_x'/2$ даёт
+\begin{equation}
+\label{eq:xp}
+x_\beta'
+=\sqrt{2J_x}\Bigl(\frac{\beta_x'}{2\sqrt{\beta_x}}\cos\psi_x-\frac{\sin\psi_x}{\sqrt{\beta_x}}\Bigr)
+=-\sqrt{\frac{2J_x}{\beta_x}}\bigl(\sin\psi_x+\alpha_x\cos\psi_x\bigr).
+\end{equation}
+Усреднение $\langle\sin^2\psi_x\rangle_\psi=\langle\cos^2\psi_x\rangle_\psi=\tfrac12$, $\langle\sin\psi_x\cos\psi_x\rangle_\psi=0$ даёт $\langle x_\beta'^2\rangle_\psi=J_x\gamma_x$, и так же для $y$. В \eqref{eq:dl} среднее $\langle x'^2\rangle_\psi=\langle x_\beta'^2\rangle_\psi$: среднее $x_\beta'$ равно нулю, а $x_{\mathrm{nl}}'^2$ имеет более высокий порядок по амплитуде. Поэтому
+\begin{equation}
+\label{eq:Lambda-g}
+\Lambda=\frac{1}{C_s}\Biggl[
+\frac{J_x}{2}\oint\gamma_x\,\mathrm{d}s
++\frac{J_y}{2}\oint\gamma_y\,\mathrm{d}s
++\oint\frac{\langle x_{\mathrm{nl}}\rangle_\psi}{\rho}\,\mathrm{d}s
+\Biggr].
+\end{equation}
+
+При постоянных бета-функциях $\alpha=0$, $\gamma=1/\beta$ и $\oint\mathrm{d}s/\beta=2\pi\nu$. Без $x_{\mathrm{nl}}$
+\begin{equation}
+\label{eq:Lambda-nu}
+\Lambda=\frac{1}{C_s}\Bigl(\frac{J_x}{2}\cdot2\pi\nu_x+\frac{J_y}{2}\cdot2\pi\nu_y\Bigr)
+=\frac{\pi}{C_s}\bigl(J_x\nu_x+J_y\nu_y\bigr).
+\end{equation}
+
+Та же величина через полные хроматичности $\xi_{x,y}=\mathrm{d}\nu_{x,y}/\mathrm{d}\delta$, включая секступоли; вклад $x_{\mathrm{nl}}$ входит в них автоматически:
+\begin{equation}
+\label{eq:Lambda-xi}
+\Lambda=-\frac{2\pi}{C_s}\bigl(J_x\xi_x+J_y\xi_y\bigr).
+\end{equation}
+Формула следует из симплектичности отображения за оборот и верна в первом порядке по $J$~\cite{Shoji2005}. В чистом фокусирующем канале $\xi=-\nu/2$, и \eqref{eq:Lambda-xi} совпадает с \eqref{eq:Lambda-nu}.
+
+\subsection{Система с бетатронным запаздыванием}
+
+$\Lambda$ входит в запаздывание за оборот, то есть в первое уравнение \eqref{eq:smooth}:
+\begin{equation}
+\label{eq:tau-L}
+\tau=\eta_0w+\tilde\eta_1w^2+\Lambda
+=\eta_0\delta+\eta_1\delta^2+\Lambda.
+\end{equation}
+Второе выражение эквивалентно первому по \eqref{eq:tau} и \eqref{eq:tau-w}. При синхротронном движении $J_x$ и $J_y$ постоянны, поэтому $\Lambda$ постоянна. Зависимость $\Lambda$ от $w$ имеет более высокий порядок и отбрасывается.
+
+В этой главе $\sin\varphi\approx\varphi$, и система \eqref{eq:system} заменяется на
+\begin{equation}
+\label{eq:system-L}
+\frac{\mathrm{d}\varphi}{\mathrm{d}t}=\omega_\rf\bigl(\eta_0w+\tilde\eta_1w^2+\Lambda\bigr),
+\qquad
+\frac{\mathrm{d}w}{\mathrm{d}t}=K\cos\varphi_s\,\varphi.
+\end{equation}
+
+\subsection{Решение и равновесный сдвиг}
+
+Дифференцирование второго уравнения \eqref{eq:system-L}, подстановка первого и \eqref{eq:ws} дают
+\begin{equation}
+\label{eq:ode-L}
+\ddot w+\omega_s^2w=c_0+c_2w^2,
+\qquad
+c_0=-\frac{\omega_s^2\Lambda}{\eta_0},
+\qquad
+c_2=-\frac{\omega_s^2\tilde\eta_1}{\eta_0}.
+\end{equation}
+Решение (приложение~\ref{app:bm}); амплитуда $A$ имеет тот же смысл, что в \eqref{eq:w-sol}:
+\begin{align}
+w(t)&=w_\eq+A\cos\psi+\frac{\tilde\eta_1A^2}{6\eta_0}\cos2\psi,
+\nonumber\\
+w_\eq&=-\frac{1}{\eta_0}\Bigl(\frac{\tilde\eta_1A^2}{2}+\Lambda\Bigr),
+\qquad
+\psi=\Omega t,
+\label{eq:w-sol-L}\\
+\varphi(t)&=\frac{\omega_\rf}{\Omega}\Biggl[
+\eta_0A\Bigl(1-\frac{2\tilde\eta_1\Lambda}{\eta_0^2}\Bigr)\sin\psi
++\frac{\tilde\eta_1A^2}{3}\sin2\psi
+\Biggr],
+\label{eq:phi-L}\\
+\frac{\Omega}{\omega_s}&=1-\frac{\tilde\eta_1\Lambda}{\eta_0^2}-\frac{5}{12}\Bigl(\frac{\tilde\eta_1A}{\eta_0}\Bigr)^2.
+\label{eq:Omega-L}
+\end{align}
+
+Из \eqref{eq:tau-avg} и \eqref{eq:tau-L}
+\begin{equation}
+\label{eq:deq-raw-L}
+\delta_\eq=-\frac{\eta_1\langle\delta^2\rangle+\Lambda}{\eta_0}.
+\end{equation}
+На решении \eqref{eq:w-sol-L} $\langle\delta^2\rangle=A^2/2$, поэтому с \eqref{eq:w-series} и \eqref{eq:tau-w}
+\begin{equation}
+\label{eq:deq-L}
+\delta_\eq=-\frac{1}{\eta_0}\Bigl(\frac{\eta_1A^2}{2}+\Lambda\Bigr),
+\qquad
+w_\eq=\delta_\eq+\frac{A^2}{4\gamma_s^2},
+\qquad
+\Delta E_\eq=\beta_s^2E_s\,w_\eq.
+\end{equation}
+Постоянный член \eqref{eq:w-sol-L} совпадает с этим $w_\eq$.
+
+При $A\to0$ устойчивая точка смещается в $w=-\Lambda/\eta_0$: в удержанном порядке там $\tau=0$, а $\varphi=0$ остаётся центром колебаний фазы.
+
+К условиям \eqref{eq:valid} добавляется
+\begin{equation}
+\label{eq:valid-L}
+\Bigl|\frac{\tilde\eta_1\Lambda}{\eta_0^2}\Bigr|\ll1:
+\end{equation}
+наклон $\tau$ в смещённой устойчивой точке, $\eta_0-2\tilde\eta_1\Lambda/\eta_0$, мало отличается от $\eta_0$.

@@ -1,0 +1,168 @@
+\section{Магнитное кольцо: исходная система}
+\label{sec:mag-base}
+
+\subsection{Обозначения}
+
+Индекс $s$ отмечает синхронную частицу: импульс $p_s$, скорость $v_s=\beta_s c$, лоренц-фактор $\gamma_s$, энергия $E_s=\gamma_s mc^2$, длина орбиты $C_s$, период обращения $T_s=C_s/v_s$.
+
+Отклонения импульса и энергии частицы:
+\begin{equation}
+\label{eq:delta-def}
+\delta=\frac{p-p_s}{p_s},
+\qquad
+w=\frac{E-E_s}{\beta_s^2E_s}.
+\end{equation}
+Из $\mathrm{d}E/\mathrm{d}p=v$ и $\mathrm{d}^2E/\mathrm{d}p^2=c^2/(\gamma^2E)$
+\begin{equation}
+\label{eq:w-series}
+w=\delta+\frac{\delta^2}{2\gamma_s^2}+O(\delta^3),
+\qquad
+\delta=w-\frac{w^2}{2\gamma_s^2}+O(w^3).
+\end{equation}
+
+Фаза $\varphi$ --- фаза ВЧ-поля в момент прохождения частицей зазора, отсчитанная от синхронной частицы; она растёт, когда частица опаздывает. Кратность $h$, частота $\omega_\rf=2\pi h/T_s$, напряжение зазора $V\sin(\varphi_s+\varphi)$, заряд $q$. Номер оборота $k$, время $t=kT_s$. Относительное запаздывание за оборот
+\begin{equation}
+\label{eq:tau-def}
+\tau=\frac{T-T_s}{T_s},
+\end{equation}
+где $T$ --- период обращения частицы. Рассматривается одна частица, её траектория лежит внутри сепаратрисы.
+
+\subsection{Запаздывание за оборот}
+
+В магнитном поле скорость вдоль траектории постоянна, поэтому $T=C/v$ и точно
+\begin{equation}
+\label{eq:T-ratio}
+\frac{T}{T_s}=\frac{C}{C_s}\,\frac{v_s}{v}.
+\end{equation}
+Длина замкнутой орбиты записывается рядом
+\begin{equation}
+\label{eq:C}
+\frac{C}{C_s}=1+\alpha_0\delta+\alpha_1\delta^2+O(\delta^3).
+\end{equation}
+Из $\beta\gamma=\beta_s\gamma_s(1+\delta)$
+\begin{equation}
+\label{eq:vsv}
+\frac{v_s}{v}=\frac{\gamma}{\gamma_s(1+\delta)}
+=1-\frac{\delta}{\gamma_s^2}+\Bigl(1+\frac{\beta_s^2}{2}\Bigr)\frac{\delta^2}{\gamma_s^2}+O(\delta^3).
+\end{equation}
+Произведение \eqref{eq:C} и \eqref{eq:vsv} даёт
+\begin{equation}
+\label{eq:tau}
+\tau=\eta_0\delta+\eta_1\delta^2,
+\qquad
+\eta_0=\alpha_0-\frac{1}{\gamma_s^2},
+\qquad
+\eta_1=\alpha_1-\frac{\alpha_0}{\gamma_s^2}+\Bigl(1+\frac{\beta_s^2}{2}\Bigr)\frac{1}{\gamma_s^2}.
+\end{equation}
+Через $w$ с помощью \eqref{eq:w-series}
+\begin{equation}
+\label{eq:tau-w}
+\tau=\eta_0w+\tilde\eta_1w^2,
+\qquad
+\tilde\eta_1=\eta_1-\frac{\eta_0}{2\gamma_s^2}.
+\end{equation}
+
+\subsection{Система продольных уравнений}
+
+Ускорения нет: $\varphi_s=0$ или $\pi$, и прирост энергии в зазоре $qV\sin(\varphi_s+\varphi)=qV\cos\varphi_s\sin\varphi$. За оборот
+\begin{equation}
+\label{eq:map}
+\varphi_{k+1}-\varphi_k=2\pi h\,\tau_k,
+\qquad
+w_{k+1}-w_k=\frac{qV}{\beta_s^2E_s}\cos\varphi_s\sin\varphi_k .
+\end{equation}
+Оба равенства точные: опоздание на $T-T_s$ сдвигает фазу на $\omega_\rf(T-T_s)=2\pi h\tau$, а зазор меняет энергию, то есть $w$, на заданную величину. Деление на $T_s$ даёт систему
+\begin{equation}
+\label{eq:smooth}
+\frac{\mathrm{d}\varphi}{\mathrm{d}t}=\omega_\rf\,\tau,
+\qquad
+\frac{\mathrm{d}w}{\mathrm{d}t}=K\cos\varphi_s\sin\varphi,
+\qquad
+K=\frac{qV}{\beta_s^2E_sT_s}.
+\end{equation}
+Первое уравнение описывает изменение фазы из-за запаздывания, второе --- изменение энергии в зазоре.
+
+Устойчивой точкой $\varphi=w=0$ является
+\begin{equation}
+\label{eq:phis}
+\cos\varphi_s=-\operatorname{sgn}\eta_0 ,
+\end{equation}
+малые колебания около неё имеют частоту
+\begin{equation}
+\label{eq:ws}
+\omega_s^2=K\omega_\rf|\eta_0|,
+\qquad
+K\omega_\rf\cos\varphi_s=-\frac{\omega_s^2}{\eta_0}.
+\end{equation}
+
+В этой главе $\sin\varphi\approx\varphi$, и с \eqref{eq:tau-w} система принимает вид
+\begin{equation}
+\label{eq:system}
+\frac{\mathrm{d}\varphi}{\mathrm{d}t}=\omega_\rf\bigl(\eta_0w+\tilde\eta_1w^2\bigr),
+\qquad
+\frac{\mathrm{d}w}{\mathrm{d}t}=K\cos\varphi_s\,\varphi.
+\end{equation}
+
+\subsection{Решение}
+\label{sec:solution}
+
+Дифференцирование второго уравнения \eqref{eq:system}, подстановка первого и \eqref{eq:ws} дают
+\begin{equation}
+\label{eq:ode}
+\ddot w+\omega_s^2w=-\frac{\omega_s^2\tilde\eta_1}{\eta_0}\,w^2.
+\end{equation}
+Его решение (приложение~\ref{app:bm}):
+\begin{align}
+w(t)&=w_\eq+A\cos\psi+\frac{\tilde\eta_1A^2}{6\eta_0}\cos2\psi,
+\qquad
+w_\eq=-\frac{\tilde\eta_1A^2}{2\eta_0},
+\qquad
+\psi=\Omega t,
+\label{eq:w-sol}\\
+\varphi(t)&=\frac{\omega_\rf}{\Omega}\Bigl(\eta_0A\sin\psi+\frac{\tilde\eta_1A^2}{3}\sin2\psi\Bigr),
+\label{eq:phi}\\
+\frac{\Omega}{\omega_s}&=1-\frac{5}{12}\Bigl(\frac{\tilde\eta_1A}{\eta_0}\Bigr)^2.
+\label{eq:Omega}
+\end{align}
+Амплитуда $A=(w_{\max}-w_{\min})/2$: при $\psi=0$ и $\psi=\pi$ вторая гармоника равна одной и той же величине и полуразмах не меняет. $\Omega$ --- частота синхротронных колебаний, то есть частота обхода траектории на фазовой плоскости $(\varphi,w)$.
+
+\subsection{Усреднение и равновесный сдвиг}
+
+$\langle f\rangle$ --- среднее по оборотам за один синхротронный период. Равновесные сдвиги энергии и импульса:
+\begin{equation}
+\label{eq:deq-def}
+w_\eq=\langle w\rangle,
+\qquad
+\delta_\eq=\langle\delta\rangle .
+\end{equation}
+На замкнутой траектории фаза возвращается к прежнему значению, поэтому из первого уравнения \eqref{eq:smooth} точно
+\begin{equation}
+\label{eq:tau-avg}
+\langle\tau\rangle=0 :
+\end{equation}
+средний период обращения частицы равен $T_s$. С \eqref{eq:tau} и \eqref{eq:tau-w}
+\begin{equation}
+\label{eq:deq-avg}
+\delta_\eq=-\frac{\eta_1}{\eta_0}\langle\delta^2\rangle,
+\qquad
+w_\eq=-\frac{\tilde\eta_1}{\eta_0}\langle w^2\rangle .
+\end{equation}
+На решении \eqref{eq:w-sol} $\langle w^2\rangle=\langle\delta^2\rangle=A^2/2+O(A^3)$, откуда
+\begin{equation}
+\label{eq:deq}
+\delta_\eq=-\frac{\eta_1A^2}{2\eta_0},
+\qquad
+w_\eq=\delta_\eq+\frac{A^2}{4\gamma_s^2}=-\frac{\tilde\eta_1A^2}{2\eta_0},
+\qquad
+\Delta E_\eq=\beta_s^2E_s\,w_\eq .
+\end{equation}
+Равенство $w_\eq=\delta_\eq+\langle\delta^2\rangle/(2\gamma_s^2)$ следует из \eqref{eq:w-series}.
+
+Условия применимости:
+\begin{equation}
+\label{eq:valid}
+\Bigl|\frac{\eta_1A}{\eta_0}\Bigr|\ll1,
+\qquad
+\hat\varphi=\frac{\omega_\rf|\eta_0|A}{\omega_s}\ll1,
+\end{equation}
+где $\hat\varphi$ --- полуразмах фазы.
