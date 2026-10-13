@@ -9,5 +9,11 @@
 *.toc
 *.synctex.gz
 
+# COSY compiled binaries, listings and local system source
+*.bin
+*.lis
+COSY/src/cosy.fox
+COSY/src/tmp/
+
 # Python
 __pycache__/
