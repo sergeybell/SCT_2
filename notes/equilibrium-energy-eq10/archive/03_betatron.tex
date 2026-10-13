@@ -1,0 +1,226 @@
+\section{Бетатронное удлинение орбиты}
+\label{sec:beta}
+
+В формуле (6) работы~\cite{Senichev2013} к отношению периодов прибавлено отношение длин $(\Delta L/L)_\beta$. В магнитном кольце это законно, и коэффициент при этом отношении равен единице. Статическое магнитное поле не меняет модуль скорости. Время пролёта равно длине траектории, делённой на эту скорость, и при фиксированном импульсе отношение времён совпадает с отношением длин.
+
+\subsection{Период реальной траектории}
+\label{sec:beta-time}
+
+Период обращения есть время пролёта вдоль траектории, по которой частица реально идёт, вместе с бетатронными колебаниями:
+\begin{equation}
+\label{eq:beta-T}
+T=\oint\frac{\mathrm{d}l}{v}.
+\end{equation}
+Магнитная сила перпендикулярна скорости и работы не совершает. Зазор в модели раздела~\ref{sec:setup} тонкий: импульс меняется один раз за оборот, а между зазорами модуль скорости постоянен вдоль всей траектории и задаётся импульсом. Скорость выносится из интеграла,
+\begin{equation}
+\label{eq:beta-Lv}
+T=\frac{L}{v},\qquad L=\oint\mathrm{d}l,
+\end{equation}
+где $L$ --- длина реальной траектории за один оборот. У синхронной частицы $T_s=C_s/v_s$, поэтому
+\begin{equation}
+\label{eq:beta-ratio}
+\frac{T}{T_s}=\frac{v_s}{v}\,\frac{L}{C_s}.
+\end{equation}
+Длина складывается из замкнутой орбиты при том же $\delta$ и добавки бетатронного движения,
+\begin{equation}
+\label{eq:beta-split}
+L=C(\delta)+\Delta L_\beta,
+\end{equation}
+где ряд $C/C_s$ есть \eqref{eq:set-C}. Относительное опоздание распадается на дисперсионную часть и бетатронную добавку:
+\begin{equation}
+\label{eq:beta-tau-raw}
+\tau
+=\frac{v_s}{v}\,\frac{C(\delta)}{C_s}-1
++\frac{v_s}{v}\,\frac{\Delta L_\beta}{C_s}.
+\end{equation}
+Первая группа зависит только от $\delta$. Раздел~\ref{sec:mag} доводит её до второго порядка,
+\begin{equation}
+\label{eq:beta-eta}
+\frac{v_s}{v}\,\frac{C}{C_s}-1=\eta_0\delta+\eta_1\delta^2+O(\delta^3),
+\end{equation}
+\begin{equation}
+\label{eq:beta-etas}
+\eta_0=\alpha_0-\frac{1}{\gamma_s^2},
+\qquad
+\eta_1=\alpha_1-\frac{\alpha_0}{\gamma_s^2}+\frac{1}{\gamma_s^4}+\frac{3\beta_s^2}{2\gamma_s^2}.
+\end{equation}
+
+Множитель при $\Delta L_\beta/C_s$ есть отношение скоростей. Пусть $\gamma$ --- лоренц-фактор частицы на этом обороте, $\beta\gamma=\beta_s\gamma_s(1+\delta)$. Тогда $\gamma^2=1+(\beta\gamma)^2$ даёт $\gamma^2/\gamma_s^2=1+2\beta_s^2\delta+O(\delta^2)$, и поскольку $v_s/v=(\gamma/\gamma_s)/(1+\delta)$, а $1-\beta_s^2=1/\gamma_s^2$,
+\begin{equation}
+\label{eq:beta-v}
+\frac{v_s}{v}=1-\frac{\delta}{\gamma_s^2}+O(\delta^2).
+\end{equation}
+Подстановка в \eqref{eq:beta-tau-raw} оставляет
+\begin{equation}
+\label{eq:beta-tau}
+\tau
+=\eta_0\delta+\eta_1\delta^2+\frac{\Delta L_\beta}{C_s}
++O\Bigl(\delta\cdot\frac{\Delta L_\beta}{C_s}\Bigr)+O(\delta^3).
+\end{equation}
+Коэффициент перед $\Delta L_\beta/C_s$ равен единице, потому что скорость вдоль траектории одна и та же: время есть длина, делённая на эту скорость. При одном импульсе замкнутая орбита и траектория с бетатронными колебаниями проходятся с одной и той же скоростью, поэтому отношение их длин равно отношению времён. Множитель $v_s/v$ отличается от единицы на $O(\delta)$ и даёт остаток $O(\delta\cdot\Delta L_\beta/C_s)$.
+
+Длины в \eqref{eq:beta-split} складываются, поэтому $\alpha_0$ на $\Delta L_\beta$ не умножается. Если отнести добавку к длине замкнутой орбиты, $\Delta L_\beta/C(\delta)=(\Delta L_\beta/C_s)\,(1-\alpha_0\delta+\cdots)$, множитель $(v_s/v)\,C/C_s=1+\eta_0\delta+\cdots$ приносит $\eta_0\delta$. Вместе с $1-\alpha_0\delta$ остаётся $1+(\eta_0-\alpha_0)\delta=1-\delta/\gamma_s^2$. Первая поправка снова равна $-(\delta/\gamma_s^2)\,(\Delta L_\beta/C_s)$, и в удержанном порядке коэффициент по-прежнему единица.
+
+В формуле (6) работы~\cite{Senichev2013} член $(\Delta L/L)_\beta$ стоит с этим коэффициентом и совпадает с \eqref{eq:beta-tau}. Скобка при $\delta^2$ в той формуле равна $\alpha_1-\alpha_0/\gamma_s^2+1/\gamma_s^4$, а полное $\eta_1$ в \eqref{eq:beta-etas} содержит ещё $3\beta_s^2/(2\gamma_s^2)$: так устроен ряд скорости в разделе~\ref{sec:mag}.
+
+\subsection{Среднее по бетатронной фазе}
+\label{sec:beta-avg}
+
+Удлинение одного оборота $\Delta L_\beta$ зависит от бетатронной фазы на входе в оборот. Синхротронная частота много меньше бетатронной, поэтому пока фаза $\varphi$ заметно меняется, бетатронная фаза проходит окружность много раз. В уравнение фазы входит среднее по этой быстрой фазе. Действие $J$ на синхротронном времени постоянно: в линейной оптике оно интеграл движения, а при медленном изменении $\delta$ --- адиабатический инвариант. Это среднее и есть слагаемое ряда \eqref{eq:set-tau},
+\begin{equation}
+\label{eq:beta-Lambda-def}
+\Lambda=\frac{\langle\Delta L_\beta\rangle}{C_s}.
+\end{equation}
+
+Элемент пути в координате $s$, отсчитанной вдоль опорной орбиты локального радиуса $\rho(s)$, равен
+\begin{equation}
+\label{eq:beta-dl}
+\mathrm{d}l
+=\sqrt{\Bigl(1+\frac{x}{\rho}\Bigr)^2+x'^2+y'^2}\;\mathrm{d}s.
+\end{equation}
+Вне диполей $1/\rho=0$. При $h=x/\rho$ и $a^2=x'^2+y'^2$ корень $\sqrt{1+2h+h^2+a^2}$ до второго порядка равен $1+h+a^2/2$: вклад $h^2/2$ из $(1+h)^2$ снимается членом $-(2h)^2/8$ в разложении корня. Произведение $(x/\rho)\,(x'^2+y'^2)$ имеет третий порядок, и
+\begin{equation}
+\label{eq:beta-dl2}
+\mathrm{d}l
+=\Biggl(1+\frac{x}{\rho}+\frac{x'^2+y'^2}{2}\Biggr)\mathrm{d}s.
+\end{equation}
+
+Смещение складывается из дисперсионной орбиты, линейного бетатронного колебания и сдвига замкнутой орбиты, квадратичного по амплитуде,
+\begin{equation}
+\label{eq:beta-x}
+x=D\delta+x_\beta+x_{\mathrm{nl}},
+\end{equation}
+и так же $x'=D'\delta+x'_\beta+\cdots$, $y'=y'_\beta+\cdots$. Члены, собранные только из $D$, $D'$ и $\delta$, уже входят в $\alpha_0$ и $\alpha_1$. Интеграл $\oint (D/\rho)\,\mathrm{d}s$ даёт $\alpha_0$. Квадрат угла дисперсионной орбиты $\oint(D'\delta)^2/2\,\mathrm{d}s$ вместе с квадратичной по $\delta$ поправкой самой замкнутой орбиты даёт $\alpha_1$.
+
+Сверх этой орбиты остаются четыре вклада: $x_\beta/\rho$, $(x_\beta'^2+y_\beta'^2)/2$, перекрёстное произведение $D'\delta\,x'_\beta$ и $x_{\mathrm{nl}}/\rho$. Среднее $\langle x_\beta\rangle$ по бетатронной фазе равно нулю, поэтому $\langle\oint x_\beta/\rho\,\mathrm{d}s\rangle=0$. Произведение $D'\delta\,x'_\beta$ линейно по колебанию, и его среднее по фазе тоже равно нулю. На одном обороте оба вклада осциллируют; от оборота к обороту они не накапливаются. Произведение $x_\beta\,D\delta$ в длину на этом порядке не входит вовсе: в \eqref{eq:beta-dl2} смещение стоит линейно, а квадрат $(x/\rho)^2$ сократился.
+
+Линейное колебание записывается через параметры Твисса,
+\begin{equation}
+\label{eq:beta-xbeta}
+x_\beta=\sqrt{2J_x\beta_x}\,\cos\psi,
+\qquad
+\frac{\mathrm{d}\psi}{\mathrm{d}s}=\frac{1}{\beta_x},
+\qquad
+\alpha_x=-\frac12\beta_x'.
+\end{equation}
+Дифференцирование по $s$ даёт
+\begin{equation}
+\label{eq:beta-xp}
+x'_\beta
+=-\sqrt{\frac{2J_x}{\beta_x}}\,(\alpha_x\cos\psi+\sin\psi).
+\end{equation}
+Если набег бетатронной фазы за оборот не кратен $2\pi$, фаза на фиксированном азимуте за много оборотов распределена равномерно. При $\langle\cos^2\psi\rangle=\langle\sin^2\psi\rangle=1/2$ и $\langle\sin\psi\cos\psi\rangle=0$ квадрат \eqref{eq:beta-xp} равен
+\begin{equation}
+\label{eq:beta-xp2}
+\langle x_\beta'^2\rangle
+=\frac{2J_x}{\beta_x}\Biggl(\frac{\alpha_x^2}{2}+\frac12\Biggr)
+=J_x\gamma_x,
+\qquad
+\gamma_x=\frac{1+\alpha_x^2}{\beta_x}.
+\end{equation}
+В правой части стоит локальный $\alpha_x$. То же по вертикали, $\langle y_\beta'^2\rangle=J_y\gamma_y$. Среднее углового вклада за оборот
+\begin{equation}
+\label{eq:beta-angle}
+\Biggl\langle\oint\frac{x_\beta'^2+y_\beta'^2}{2}\,\mathrm{d}s\Biggr\rangle
+=\frac{J_x}{2}\oint\gamma_x\,\mathrm{d}s
++\frac{J_y}{2}\oint\gamma_y\,\mathrm{d}s.
+\end{equation}
+
+Сдвиг $x_{\mathrm{nl}}$ есть смещение замкнутой орбиты, квадратичное по бетатронной амплитуде. Секступоль даёт толчок, пропорциональный $x^2-y^2$. После усреднения по фазе толчок пропорционален действиям $J_x$ и $J_y$ и на бетатронной частоте не колеблется, а замкнутая орбита под ним сдвигается. Кривизна и краевое поле дают свои квадратичные по амплитуде смещения. Вклад этого сдвига в длину, $\langle\oint x_{\mathrm{nl}}/\rho\,\mathrm{d}s\rangle$, того же порядка, что и \eqref{eq:beta-angle}. Вместе
+\begin{equation}
+\label{eq:beta-Lambda}
+\Lambda
+=\frac{1}{C_s}\Biggl(
+\frac{J_x}{2}\oint\gamma_x\,\mathrm{d}s
++\frac{J_y}{2}\oint\gamma_y\,\mathrm{d}s
++\Biggl\langle\oint\frac{x_{\mathrm{nl}}}{\rho}\,\mathrm{d}s\Biggr\rangle
+\Biggr).
+\end{equation}
+После замены $\Delta L_\beta/C_s$ на $\Lambda$ ряд \eqref{eq:beta-tau} совпадает с \eqref{eq:set-tau}.
+
+\subsection{Гладкий предел и формула (11)}
+\label{sec:beta-smooth}
+
+Набег $\oint\mathrm{d}s/\beta_x=2\pi\nu_x$ верен при любой $\beta_x(s)$. Если $\alpha_x(s)=0$ на всём кольце, то $\beta_x'=-2\alpha_x=0$ и $\beta_x$ постоянна. При $C_s=2\pi R$ она равна $R/\nu_x$, откуда $\gamma_x=1/\beta_x$ и $\oint\gamma_x\,\mathrm{d}s=2\pi\nu_x$. Угловая часть \eqref{eq:beta-Lambda}, без $x_{\mathrm{nl}}$, принимает вид
+\begin{equation}
+\label{eq:beta-smooth}
+\Lambda=\frac{\pi}{C_s}\,(J_x\nu_x+J_y\nu_y).
+\end{equation}
+В формуле (11) работы~\cite{Senichev2013} фазовое среднее задано условием $\langle x_\beta'^2\rangle=\varepsilon_x/(2\beta_x)$. При $\alpha_x=0$ из \eqref{eq:beta-xp2} следует $\langle x'^2\rangle=J_x/\beta_x$, поэтому эмиттанс этой формулы есть $\varepsilon=2J$. Подстановка $J=\varepsilon/2$ переводит \eqref{eq:beta-smooth} в
+\begin{equation}
+\label{eq:beta-11}
+\Lambda=\frac{\pi}{2C_s}\,(\varepsilon_x\nu_x+\varepsilon_y\nu_y),
+\end{equation}
+то есть в печатную формулу (11) при $L=C_s$.
+
+Промежуточные шаги статьи сходятся с этим пределом. Исходный интеграл,
+\begin{equation}
+\label{eq:beta-sen-int}
+\Bigl(\frac{\Delta L}{L}\Bigr)_{\!\beta}
+=\frac{1}{L}\int\Biggl(
+\frac{x_\beta}{\rho}+\frac{x_\beta'^2+y_\beta'^2}{2}
+\Biggr)\mathrm{d}s,
+\end{equation}
+есть \eqref{eq:beta-dl2} после вычитания опорной длины. Геометрическая запись $(\rho+x_\beta)/(\rho\cos\theta)$ при $\theta^2=x'^2+y'^2$ раскладывается в ту же сумму до второго порядка. Среднее $\langle x_\beta/\rho\rangle=0$ совпадает с обнулением линейного члена. Кольцевое среднее $\langle 1/\beta_x\rangle=\nu_x/R$ при $C_s=2\pi R$ есть тождество $\oint\mathrm{d}s/\beta_x=2\pi\nu_x$; оно выполняется при любой $\beta_x(s)$. Равенство $\langle x_\beta'^2\rangle=\varepsilon_x/(2\beta_x)$ требует $\alpha_x=0$. Геометрическая половина из \eqref{eq:beta-dl2} и половина внутри $\varepsilon_x/(2\beta_x)$ дают для одной плоскости
+\begin{equation}
+\label{eq:beta-half}
+\frac{1}{L}\int\frac12\cdot\frac{\varepsilon_x}{2\beta_x}\,\mathrm{d}s
+=\frac{\varepsilon_x}{4L}\oint\frac{\mathrm{d}s}{\beta_x}
+=\frac{\varepsilon_x}{4L}\cdot 2\pi\nu_x
+=\frac{\pi\varepsilon_x\nu_x}{2L}.
+\end{equation}
+Множитель $\pi/(2L)$ с этой цепочкой согласован. В (11) функции $\alpha_{x,y}$ отброшены: $\gamma_{x,y}$ заменены на $1/\beta_{x,y}$, так что вклад $(J/2)\oint(\alpha^2/\beta)\,\mathrm{d}s$ из формулы выпадает. Формула (11) удерживает угловой вклад гладкого кольца, без $x_{\mathrm{nl}}$.
+
+В заметке~\cite{SenichevNote} перед формулой (9) из $\oint\beta_x'\,\mathrm{d}s=0$ выводится $\alpha_x=0$, и амплитуда $\sqrt{2J_x/\beta_x}$ приравнивается к $\sqrt{2J_x\gamma_x}$. Интеграл $\beta_x'$ равен нулю, потому что $\beta_x$ периодична. Локально $\alpha_x(s)=-\beta_x'(s)/2$ может отличаться от нуля, и тогда $\gamma_x=(1+\alpha_x^2)/\beta_x$ больше $1/\beta_x$. Фазовое среднее квадрата у обеих записей равно $J_x\gamma_x$, поэтому конечная формула (11) заметки, $(J_x/2)\oint\gamma_x\,\mathrm{d}s$ и то же по вертикали, совпадает с \eqref{eq:beta-angle}.
+
+\subsection{Хроматичность}
+\label{sec:beta-xi}
+
+Та же $\Lambda$ связана с хроматичностью $\xi=\mathrm{d}\nu/\mathrm{d}\delta$ соотношением
+\begin{equation}
+\label{eq:beta-xi}
+\Lambda=-\frac{2\pi}{C_s}\,(J_x\xi_x+J_y\xi_y).
+\end{equation}
+Оно приведено у Шоджи~\cite{Shoji2005} и, для коротких секступолей, в заметке~\cite{SenichevNote}. Вывод этого тождества здесь не повторяется. В правую часть входят и интеграл $\gamma_{x,y}$, и средний сдвиг $x_{\mathrm{nl}}$.
+
+\subsection{Равновесный сдвиг}
+\label{sec:beta-eq}
+
+У периодического синхротронного движения фаза $\varphi$ возвращается к прежнему значению, поэтому среднее от $\mathrm{d}\varphi/\mathrm{d}t=\omega_\rf\,\tau$ равно нулю и $\langle\tau\rangle=0$. В удержанном ряде условие раздела~\ref{sec:sol} принимает вид
+\begin{equation}
+\label{eq:beta-sync}
+\eta_0\langle\delta\rangle+\eta_1\frac{\delta_m^2}{2}+\Lambda=0.
+\end{equation}
+Среднее $\langle\delta^2\rangle$ равно $\delta_m^2/2$: постоянный сдвиг и вторая гармоника имеют порядок $\delta_m^2$ и $\Lambda$, а их вклад в $\langle\delta^2\rangle$ начинается со следующего порядка. Отсюда
+\begin{equation}
+\label{eq:beta-deq}
+\delta_\eq
+=\langle\delta\rangle
+=-\frac{1}{\eta_0}\Biggl(\frac{\eta_1\delta_m^2}{2}+\Lambda\Biggr).
+\end{equation}
+То же среднее даёт уравнение раздела~\ref{sec:mag},
+\begin{equation}
+\label{eq:beta-osc}
+\ddot\delta+\omega_s^2\delta
+=-\frac{\omega_s^2}{\eta_0}\,(\eta_1\delta^2+\Lambda),
+\end{equation}
+записанное при $\cos\varphi=1$: у периодического решения $\langle\ddot\delta\rangle=0$. Условие $\langle\tau\rangle=0$ следует из периодичности $\varphi$ в системе \eqref{eq:set-system}. Замена $\cos\varphi=1$ нужна для перехода к \eqref{eq:beta-osc}. Порядок \eqref{eq:beta-deq} задаёт разложение $\langle\delta^2\rangle=\delta_m^2/2$.
+
+Скобка \eqref{eq:beta-deq} составлена так же, как скобка формул (10) и (16) работы~\cite{Senichev2013}: в ней стоят $\delta_m^2/2$ и бетатронное удлинение. В (10) второе слагаемое есть $(\Delta L/L)_\beta$, то есть $\Lambda$; в (16) оно заменено гладким выражением \eqref{eq:beta-11}. При $\delta_m^2/2$ в обеих формулах стоит $\alpha_1-\alpha_0/\gamma_s^2+1/\gamma_s^4$; полный коэффициент есть $\eta_1$ из \eqref{eq:beta-etas}. Печатный предымножитель $\gamma_s^2/(\gamma_s^2\alpha_0-1)$ равен $1/\eta_0$. Минус перед скобкой в \eqref{eq:beta-deq} ставит условие $\langle\tau\rangle=0$. С разбором знака предымножителя в разделе~\ref{sec:mag} эта формула сходится.
+
+Перекрёстный сдвиг синхротронной частоты виден из линеаризации \eqref{eq:beta-osc} около $\delta_\eq$. Наклон правой части добавляет к $\omega_s^2$ слагаемое $\omega_s^2\cdot 2(\eta_1/\eta_0)\delta_\eq$, поэтому
+\begin{equation}
+\label{eq:beta-slope}
+\frac{\omega^2}{\omega_s^2}
+=1-\frac{\eta_1^2\delta_m^2}{\eta_0^2}-\frac{2\eta_1\Lambda}{\eta_0^2}.
+\end{equation}
+В формуле для $\omega^2$ вторая гармоника решения, разобранная в разделе~\ref{sec:sol} и приложении~\ref{app:bm}, заменяет коэффициент $1$ при $\eta_1^2\delta_m^2/\eta_0^2$ на $5/6$; коэффициент $2$ при $\eta_1\Lambda/\eta_0^2$ остаётся тем же. Извлечение корня делит оба коэффициента пополам, и до второго порядка
+\begin{equation}
+\label{eq:beta-freq}
+\frac{\omega}{\omega_s}
+=1-\frac{5}{12}\,\frac{\eta_1^2\delta_m^2}{\eta_0^2}
+-\frac{\eta_1\Lambda}{\eta_0^2}.
+\end{equation}
+Последнее слагаемое линейно по $\Lambda$.
+
+Отброшенные члены входят так. Ряд \eqref{eq:beta-v} умножает $\Lambda$ и добавляет в $\tau$ слагаемое $-(\delta/\gamma_s^2)\Lambda$. Хроматическая зависимость $\Lambda(\delta)=\Lambda+(\partial\Lambda/\partial\delta)\,\delta+\cdots$ добавляет $(\partial\Lambda/\partial\delta)\,\delta$ к линейному коэффициенту и поправку порядка $\partial^2\Lambda/\partial\delta^2$ к $\eta_1$. Удержанные вклады в $\delta_\eq$ имеют порядок $\delta_m^2$ и $\Lambda$. Кинематическая поправка меняет $\eta_0$ на величину порядка $\Lambda$, хроматическая --- на $\partial\Lambda/\partial\delta$. В \eqref{eq:beta-sync} такая добавка умножается на $\delta_\eq$ и сдвигает равновесие на $\Lambda\delta_m^2$, $\Lambda^2$ и $(\partial\Lambda/\partial\delta)\,\delta_\eq$. В отношение $\omega/\omega_s$ поправка к $\eta_0$ входит непосредственно, тем же порядком, что и перекрёстный член \eqref{eq:beta-freq}.

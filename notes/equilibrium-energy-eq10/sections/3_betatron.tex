@@ -1,0 +1,28 @@
+\section{Бетатронный вклад}
+\label{sec:beta}
+
+При бетатронных колебаниях частица проходит не замкнутую орбиту, а траекторию длины $L=C(\delta)+\Delta L_\beta$. В магнитном кольце скорость вдоль этой траектории та же, что на замкнутой орбите, поэтому~\eqref{eq:mag-Tratio} сохраняется с заменой $C\to L$:
+\begin{equation}
+\label{eq:beta-tau}
+\tau=\eta_0\delta+\eta_1\delta^2+\frac{\Delta L_\beta}{C_s}\Bigl(1+O(\delta)\Bigr).
+\end{equation}
+Отношение времён равно отношению длин именно потому, что обе длины проходятся с одной скоростью; в электростатическом кольце это не так (раздел~\ref{sec:es}).
+
+Синхротронное движение медленное и видит среднее по бетатронной фазе, $\Lambda=\langle\Delta L_\beta\rangle/C_s$. Элемент пути до второго порядка
+\begin{equation}
+\label{eq:beta-dl}
+\mathrm{d}l=\Biggl(1+\frac{x}{\rho}+\frac{x'^2+y'^2}{2}\Biggr)\mathrm{d}s
+\end{equation}
+($(x/\rho)^2$ сокращается при разложении корня). Смещение $x=D\delta+x_\beta+x_{\mathrm{nl}}$: дисперсионная часть уже учтена в $\alpha_0$, $\alpha_1$; линейное колебание $x_\beta=\sqrt{2J_x\beta_x}\cos\psi_x$ в среднем даёт нуль в $x/\rho$; $x_{\mathrm{nl}}$ --- сдвиг замкнутой орбиты, квадратичный по амплитуде (от секступолей, кривизны, краевых полей). Среднее квадрата угла $\langle x_\beta'^2\rangle=J_x\gamma_x$, и
+\begin{equation}
+\label{eq:beta-Lambda}
+\Lambda=\frac{1}{C_s}\Biggl(\frac{J_x}{2}\oint\gamma_x\,\mathrm{d}s+\frac{J_y}{2}\oint\gamma_y\,\mathrm{d}s+\Biggl\langle\oint\frac{x_{\mathrm{nl}}}{\rho}\,\mathrm{d}s\Biggr\rangle\Biggr).
+\end{equation}
+В гладком приближении ($\alpha_{x,y}=0$, $\gamma_x=1/\beta_x$, $\oint\mathrm{d}s/\beta_x=2\pi\nu_x$) и без $x_{\mathrm{nl}}$
+\begin{equation}
+\label{eq:beta-smooth}
+\Lambda=\frac{\pi}{C_s}\bigl(J_x\nu_x+J_y\nu_y\bigr)=\frac{\pi}{2C_s}\bigl(\varepsilon_x\nu_x+\varepsilon_y\nu_y\bigr),
+\end{equation}
+где $\varepsilon=2J$ --- инвариант Куранта--Снайдера одной частицы.
+
+\zamech{С учётом $x_{\mathrm{nl}}$ та же величина выражается через хроматичности $\xi_{x,y}=\mathrm{d}\nu_{x,y}/\mathrm{d}\delta$: $\Lambda=-(2\pi/C_s)(J_x\xi_x+J_y\xi_y)$~\cite{Shoji2005}.}

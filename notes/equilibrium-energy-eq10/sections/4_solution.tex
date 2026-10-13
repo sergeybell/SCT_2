@@ -1,0 +1,95 @@
+\section{Решение продольных уравнений}
+\label{sec:sol}
+
+Решаем систему~\eqref{eq:set-system} с $\tau=\eta_0\delta+\eta_1\delta^2+\Lambda$, считая $\eta_1\delta$ и $\Lambda$ малыми по сравнению с $\eta_0\delta$.
+
+\subsection{Точное условие на среднее}
+
+На замкнутой синхротронной траектории фаза через период возвращается к прежнему значению, поэтому $\langle\dot\varphi\rangle=0$, и первое уравнение~\eqref{eq:set-system} даёт
+\begin{equation}
+\label{eq:sol-mean}
+\langle\tau\rangle=0
+\quad\Longrightarrow\quad
+\delta_\eq=-\frac{\eta_1\langle\delta^2\rangle+\Lambda}{\eta_0}.
+\end{equation}
+Среднее берётся по времени за синхротронный период. Соотношение точное: оно не зависит ни от формы напряжения, ни от приближений во втором уравнении, ни от знака $\eta_0$. Всё остальное решение нужно лишь для того, чтобы выразить $\langle\delta^2\rangle$ через амплитуду колебаний.
+
+Смысл знака: при $\eta_1>0$ член $\eta_1\delta^2$ удлиняет средний период при любом знаке $\delta$; чтобы среднее опоздание было нулевым, линейный член должен его скомпенсировать, $\eta_0\delta_\eq<0$. Ниже перехода ($\eta_0<0$) равновесный импульс поднимается.
+
+\subsection{Уравнение для $\delta$}
+
+Дифференцирование второго уравнения~\eqref{eq:set-system} даёт $\ddot\delta=K\omega_\rf\cos\varphi_s\cos\varphi\cdot\tau$. С~\eqref{eq:set-phis} и~\eqref{eq:set-ws} $K\omega_\rf\cos\varphi_s=-\omega_s^2/\eta_0$, и
+\begin{equation}
+\label{eq:sol-exact}
+\ddot\delta=-\frac{\omega_s^2}{\eta_0}\cos\varphi\,\bigl(\eta_0\delta+\eta_1\delta^2+\Lambda\bigr).
+\end{equation}
+При малом размахе фазы $\cos\varphi\approx 1$:
+\begin{equation}
+\label{eq:sol-reduced}
+\ddot\delta+\omega_s^2\delta=c_0+c_2\delta^2,
+\qquad
+c_0=-\frac{\omega_s^2\Lambda}{\eta_0},
+\quad
+c_2=-\frac{\omega_s^2\eta_1}{\eta_0}.
+\end{equation}
+
+\subsection{Решение до второго порядка}
+
+Метод Боголюбова--Митропольского (приложение~\ref{app:bm}) для~\eqref{eq:sol-reduced} даёт
+\begin{gather}
+\label{eq:sol-delta}
+\delta=\delta_m\cos\psi+\delta_\eq+\frac{\eta_1\delta_m^2}{6\eta_0}\cos 2\psi,
+\qquad
+\dot\psi=\Omega,
+\\
+\label{eq:sol-deq}
+\delta_\eq=-\frac{1}{\eta_0}\Biggl(\frac{\eta_1\delta_m^2}{2}+\Lambda\Biggr),
+\\
+\label{eq:sol-omega}
+\frac{\Omega}{\omega_s}=1-\frac{\eta_1\Lambda}{\eta_0^2}-\frac{5}{12}\Biggl(\frac{\eta_1\delta_m}{\eta_0}\Biggr)^2.
+\end{gather}
+Здесь $\delta_m$ --- амплитуда первой гармоники. Формула~\eqref{eq:sol-deq} совпадает с~\eqref{eq:sol-mean} при $\langle\delta^2\rangle=\delta_m^2/2$.
+
+\textbf{Вторая гармоника} в $\delta_\eq$ на порядке $\delta_m^2$ не входит. Она и сам сдвиг поправляют $\langle\delta^2\rangle$ на $\delta_\eq^2+\tfrac12(\eta_1\delta_m^2/6\eta_0)^2$, что при $\Lambda=0$ даёт следующий член
+\begin{equation}
+\label{eq:sol-a4}
+\delta_\eq=-\frac{\eta_1\delta_m^2}{2\eta_0}-\frac{19}{72}\,\frac{\eta_1^3\delta_m^4}{\eta_0^3}.
+\end{equation}
+
+\textbf{Сдвиг частоты}~\eqref{eq:sol-omega} состоит из двух частей. Член $-\eta_1\Lambda/\eta_0^2$ виден уже при нулевой амплитуде: рабочая точка сдвинута в $\delta_\eq=-\Lambda/\eta_0$, где наклон $\tau$ равен $\eta_0+2\eta_1\delta_\eq$. Член $-5/12$ --- эффект конечной амплитуды: $1/2$ от постоянного смещения и $-1/12$ от второй гармоники. Он отрицателен при любом знаке $\eta_1/\eta_0$.
+
+\subsection{Поправка конечной фазы}
+
+Удержим в~\eqref{eq:sol-exact} $\cos\varphi\approx 1-\varphi^2/2$. На линейной орбите $\delta=\delta_m\cos\psi$ интегрирование $\dot\varphi=\omega_\rf\eta_0\delta$ даёт $\varphi=\pm\varphi_m\sin\psi$ с
+\begin{equation}
+\label{eq:sol-phim}
+\varphi_m=\frac{\omega_\rf|\eta_0|}{\omega_s}\,\delta_m .
+\end{equation}
+Добавка к правой части $\omega_s^2(\varphi^2/2)\delta=\omega_s^2(\varphi_m^2\delta_m/8)(\cos\psi-\cos 3\psi)$ не имеет постоянной составляющей, поэтому среднее не сдвигает; её первая гармоника сдвигает частоту на
+\begin{equation}
+\label{eq:sol-dphi}
+\frac{\Delta\Omega}{\omega_s}=-\frac{\varphi_m^2}{16}.
+\end{equation}
+При $\eta_1=\Lambda=0$ система~\eqref{eq:set-system} --- маятник $\ddot\varphi+\omega_s^2\sin\varphi=0$, и~\eqref{eq:sol-dphi} --- первый член его известного разложения $\Omega/\omega_s=1-\varphi_m^2/16+\varphi_m^4/3072-\dots$; $\langle\delta\rangle=0$ при любой амплитуде.
+
+В $\delta_\eq$ поправка фазы входит только через $\langle\delta^2\rangle$: третья гармоника амплитуды $\varphi_m^2\delta_m/64$ меняет его на величину порядка $\varphi_m^4\delta_m^2$. Итого:
+\begin{equation}
+\label{eq:sol-omega-sum}
+\frac{\Omega}{\omega_s}=1-\frac{\eta_1\Lambda}{\eta_0^2}-\frac{5}{12}\Biggl(\frac{\eta_1\delta_m}{\eta_0}\Biggr)^2-\frac{\varphi_m^2}{16},
+\end{equation}
+а сдвиг $\delta_\eq$ даётся~\eqref{eq:sol-deq} с поправками порядка $\delta_m^4$ и $\varphi_m^4\delta_m^2$.
+
+\subsection{Применимость}
+
+Разложение требует
+\begin{equation}
+\label{eq:sol-valid}
+\Biggl|\frac{\eta_1\delta_m}{\eta_0}\Biggr|\ll 1,
+\qquad
+\Biggl|\frac{\Lambda}{\eta_0\delta_m}\Biggr|\ll 1,
+\qquad
+\varphi_m\ll 1.
+\end{equation}
+Вблизи перехода $\eta_0\to 0$ первое условие нарушается при любой амплитуде; условие~\eqref{eq:sol-mean} тогда превращается в $\eta_1\langle\delta^2\rangle+\Lambda=0$, и для сдвига нужен следующий член ряда $\tau$.
+
+Численная проверка решения на полной системе~\eqref{eq:set-system} приведена в приложении~\ref{app:num}.

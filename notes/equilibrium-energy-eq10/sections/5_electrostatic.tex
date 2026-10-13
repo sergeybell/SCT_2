@@ -1,0 +1,86 @@
+\section{Электростатическое кольцо}
+\label{sec:es}
+
+Зазоры стоят там, где $\Phi=0$, поэтому зазор меняет полную энергию, то есть $\delta$ из~\eqref{eq:set-delta}, на ту же величину, что в магнитном кольце. Уравнения~\eqref{eq:set-system} и всё решение раздела~\ref{sec:sol} не меняются. Меняется только функция $\tau$: в дефлекторе сила имеет составляющую вдоль скорости, и на смещённой траектории частица движется с другой скоростью. Поэтому опоздание за оборот складывается из удлинения пути и вклада изменённой скорости, а $v$ в $T=\oint\mathrm{d}l/v$ из-под интеграла не выносится.
+
+\subsection{Потенциал и скорость}
+
+Потенциал дефлектора с опорной дугой радиуса $\rho$ до второго порядка, согласованный с уравнением Лапласа и с условием $qE_0=p_sv_s/\rho$:
+\begin{equation}
+\label{eq:es-phi}
+\psi\equiv\frac{q\Phi}{p_sv_s}=\frac{x}{\rho}-\frac{n}{2}\Bigl(\frac{x}{\rho}\Bigr)^2+\frac{n-1}{2}\Bigl(\frac{y}{\rho}\Bigr)^2.
+\end{equation}
+Цилиндрический дефлектор ($E\propto1/r$) соответствует $n=1$, сферический ($E\propto1/R^2$) --- $n=2$. Локальный лоренц-фактор $\gamma=\gamma_E(\delta)-\beta_s^2\gamma_s\psi$, и с $\psi=\psi_1+\psi_2$ (линейная и квадратичная по отклонению части)
+\begin{equation}
+\label{eq:es-speed}
+\frac{v_s}{v}=1-\frac{\delta-\psi}{\gamma_s^2}-\frac{\delta^2}{2\gamma_s^4}+\frac{3}{2\gamma_s^2}(\delta-\psi_1)^2.
+\end{equation}
+При $\psi=0$ это~\eqref{eq:mag-v}. Опоздание
+\begin{equation}
+\label{eq:es-tau}
+\tau=\frac{1}{C_s}\oint\Biggl(\frac{v_s}{v}\,\frac{\mathrm{d}l}{\mathrm{d}s}-1\Biggr)\mathrm{d}s
+\end{equation}
+с элементом пути~\eqref{eq:beta-dl}.
+
+\subsection{Коэффициенты $\eta_0$, $\eta_1$}
+
+На замкнутой орбите $x=D\delta+D_2\delta^2$. В первом порядке подынтегральное выражение~\eqref{eq:es-tau} равно $-\delta/\gamma_s^2+x/\rho+(x/\rho_E)/\gamma_s^2$, где $1/\rho_E$ --- кривизна, создаваемая электрическим полем. Отсюда
+\begin{equation}
+\label{eq:es-eta0}
+\eta_0=\alpha_0+\frac{\alpha_0^E}{\gamma_s^2}-\frac{1}{\gamma_s^2},
+\qquad
+\alpha_0^E=\frac{1}{C_s}\oint\frac{D}{\rho_E}\,\mathrm{d}s .
+\end{equation}
+Смещение наружу и удлиняет путь, и через потенциал уменьшает скорость; второе даёт $\alpha_0^E/\gamma_s^2$. В чисто электрическом кольце $\alpha_0^E=\alpha_0$, $\eta_0=(1+1/\gamma_s^2)\alpha_0-1/\gamma_s^2$, и переход лежит при $\gamma_s^2=1/\alpha_0-1$ (только если $\alpha_0<1$). В фильтре Вина суммарная кривизна орбиты нулевая, но электрическое поле есть: участок не даёт вклада в $\alpha_0$ и даёт вклад в $\alpha_0^E$.
+
+Во втором порядке для кольца с электрическим изгибом ($\rho_E=\rho$)
+\begin{equation}
+\label{eq:es-eta1}
+\eta_1=\eta_1^{\mathrm{mag}}+\frac{1}{\gamma_s^2}\Biggl(\Biggl\langle\frac{D_2}{\rho}\Biggr\rangle+\frac{5-n}{2}\Biggl\langle\Bigl(\frac{D}{\rho}\Bigr)^2\Biggr\rangle-3\alpha_0\Biggr),
+\end{equation}
+где $\eta_1^{\mathrm{mag}}$ --- формула~\eqref{eq:mag-eta} на тех же $\alpha_0$, $\alpha_1$, а $\langle f\rangle=C_s^{-1}\oint f\,\mathrm{d}s$. Добавка не выражается через $\alpha_0$, $\alpha_1$: в неё входит только $D_2$ (а не сумма $D_2/\rho+D'^2/2$, составляющая $\alpha_1$) и второй момент дисперсии. В смешанном кольце добавка интегрируется по электрическим дугам, а $-3\alpha_0$ заменяется на $-3\alpha_0^E$.
+
+\subsection{Бетатронный вклад}
+
+При $\delta=0$ в~\eqref{eq:es-speed} остаётся $\psi$ на бетатронной траектории $x=x_\beta+x_{\mathrm{nl}}$. Среднее по бетатронной фазе даёт
+\begin{equation}
+\label{eq:es-lambda}
+\Lambda=\frac{1}{C_s}\oint\Biggl[\Bigl(1+\frac{1}{\gamma_s^2}\Bigr)\frac{\langle x_{\mathrm{nl}}\rangle}{\rho}+\frac{\langle x'^2+y'^2\rangle}{2}+\frac{5-n}{2\gamma_s^2}\frac{\langle x_\beta^2\rangle}{\rho^2}+\frac{n-1}{2\gamma_s^2}\frac{\langle y^2\rangle}{\rho^2}\Biggr]\mathrm{d}s.
+\end{equation}
+Вне дефлекторов остаётся только угловой член, как в~\eqref{eq:beta-Lambda}. Внутри смещение $x_{\mathrm{nl}}$ входит с весом $1+1/\gamma_s^2$ (путь плюс замедление), а квадраты смещений, которых в длине пути нет, входят через кривизну потенциала. Поэтому $\Lambda$ в электростатике не пропорционально удлинению пути $\Delta L_\beta/C_s$.
+
+\subsection{Гладкие кольца}
+
+Кольцо из одного дефлектора без прямых промежутков позволяет найти всё точно из баланса силы и энергии на круговых орбитах. Результаты (выраженные через $X=\langle(x_\beta/\rho)^2\rangle$):
+
+\begin{table}[htb]
+\caption{Гладкое кольцо из одного дефлектора.}
+\label{tab:es-smooth}
+\begin{ruledtabular}
+\begin{tabular}{lcc}
+& цилиндрический ($n=1$) & сферический ($n=2$) \\
+\hline
+$\alpha_0$ & $1$ & $\gamma_s^2+1$ \\
+$\eta_0$ & $1$ & $\gamma_s^2+2$ \\
+$\eta_1$ & $\dfrac{\gamma_s^2+1}{2\gamma_s^2}$ & $\dfrac{9\gamma_s^4+7\gamma_s^2+2}{2\gamma_s^2}$ \\
+$\nu_x$ & $\sqrt{2-\beta_s^2}$ & $1/\gamma_s$ \\
+$\langle x_{\mathrm{nl}}\rangle/\rho$ & $-\dfrac{\gamma_s^2+5}{2(\gamma_s^2+1)}X$ & $-X$ \\
+$\Lambda$ & $0$ & $-\beta_s^2X$ \\
+$\Delta L_\beta/C_s$ & $\dfrac{1-3\gamma_s^2}{2\gamma_s^2(\gamma_s^2+1)}X$ & $\Bigl(\dfrac{1}{2\gamma_s^2}-1\Bigr)X$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+В цилиндрическом дефлекторе $pv=\mathrm{const}$ на всех круговых орбитах, скорость на них равна $v_s$, и весь избыток энергии уходит в потенциал: $r/\rho=\exp(\delta+\delta^2/2\gamma_s^2+\dots)$, $\tau=r/\rho-1$. Бетатронное колебание удлиняет путь, но в той же мере меняет среднюю скорость, и $\Lambda=0$. В сферическом дефлекторе $\Lambda\neq0$ и отличается от удлинения пути. Вертикальное колебание в нём --- наклон плоскости круговой орбиты, и его вклад в период равен нулю точно.
+
+Подстановка в~\eqref{eq:sol-deq}:
+\begin{equation}
+\label{eq:es-deq}
+\delta_\eq^{\mathrm{cyl}}=-\frac{\gamma_s^2+1}{4\gamma_s^2}\,\delta_m^2,
+\qquad
+\delta_\eq^{\mathrm{sph}}=-\frac{1}{\gamma_s^2+2}\Biggl(\frac{9\gamma_s^4+7\gamma_s^2+2}{4\gamma_s^2}\,\delta_m^2-\beta_s^2X\Biggr).
+\end{equation}
+
+\subsection{Локальная энергия}
+
+Сдвиг $\delta_\eq$ относится к полной энергии. Кинетическая энергия внутри дефлектора, которую видит, например, спин, --- другая величина. На дисперсионной орбите чисто электрического кольца её среднее по обороту в единицах $\delta$ равно $(1-\alpha_0)\delta+O(\delta^2)$: доля $\alpha_0$ отклонения энергии сидит в потенциале. В гладком кольце с цилиндрическим дефлектором $\alpha_0=1$, и кинетическая энергия на круговой орбите не меняется вовсе: синхротронное колебание и сдвиг~\eqref{eq:es-deq} меняют радиус и полную энергию, но не локальный $\gamma$. Бетатронные колебания, напротив, сдвигают среднюю кинетическую энергию и при $\Lambda=0$: в том же кольце $\langle\gamma-\gamma_s\rangle/(\beta_s^2\gamma_s)=X(\gamma_s^2+3)/(\gamma_s^2+1)$.

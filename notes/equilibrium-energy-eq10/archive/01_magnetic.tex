@@ -1,0 +1,318 @@
+\section{Магнитное кольцо без бетатронного движения}
+\label{sec:mag}
+
+В этом разделе замкнутая орбита задаётся импульсом: бетатронного отклонения нет, и длина орбиты есть функция одного $\delta$. Бетатронный вклад $\Lambda$ в ряде~\eqref{eq:set-tau} здесь равен нулю. В уравнении для $\delta$ символ $\Lambda$ оставлен, потому что тем же уравнением пользуется раздел~\ref{sec:beta}. Ниже период раскладывается до $\delta^2$, из ряда получаются продольное уравнение и равновесный сдвиг $\delta_\eq$, и результат сравнивается с формулами (1)--(10) работы~\cite{Senichev2013}.
+
+\subsection{Период обращения}
+
+Период оборота есть время пролёта вдоль замкнутой орбиты,
+\begin{equation}
+\label{eq:mag-T}
+T=\oint\frac{\mathrm{d}l}{v}.
+\end{equation}
+Между зазорами поле статическое и магнитное, так что вдоль дуги нет электрического поля. Сила Лоренца $e\vec{v}\times\vec{B}$ перпендикулярна скорости, её мощность $\vec{v}\cdot(e\vec{v}\times\vec{B})$ равна нулю, и полная энергия на дуге сохраняется. С энергией сохраняется и модуль скорости: $v=\beta c$ и $\beta^2=1-1/\gamma^2$ фиксированы, пока фиксирована энергия. Зазор считаем тонким, поэтому время оборота набирается на дуге, где $v$ постоянно, и скорость выносится из интеграла. При длине орбиты $C=\oint\mathrm{d}l$ получается $T=C/v$. У синхронной частицы $T_s=C_s/v_s$, и отношение периодов точно, без разложения по $\delta$:
+\begin{equation}
+\label{eq:mag-Tratio}
+\frac{T}{T_s}=\frac{C}{C_s}\,\frac{v_s}{v}.
+\end{equation}
+Относительное опоздание~\eqref{eq:set-tau} есть это отношение минус единица. Множители устроены по-разному. Отношение длин --- геометрический ряд~\eqref{eq:set-C}: орбита данного импульса длиннее или короче синхронной. Отношение скоростей --- релятивистская кинематика того же импульса. Пока модуль скорости постоянен вдоль орбиты, произведение точно. Делитель в определении $\tau$ есть $T_s$; почему берут именно его, разобрано в разделе~\ref{sec:ng}.
+
+\subsection{Скорость}
+
+Импульс $p=p_s(1+\delta)$ фиксирует полную энергию. Из $E^2=p^2c^2+m^2c^4$ следует $E\,\mathrm{d}E=pc^2\,\mathrm{d}p$, то есть $\mathrm{d}E=\beta^2 E\,\mathrm{d}p/p$. Логарифм импульса складывается из логарифмов $\beta$ и $\gamma$, а $\mathrm{d}\ln\gamma=\mathrm{d}E/E=\beta^2\,\mathrm{d}\ln p$, поэтому
+\begin{equation}
+\label{eq:mag-dlnbeta}
+\frac{\mathrm{d}\ln\beta}{\mathrm{d}\ln p}=1-\beta^2=\frac{1}{\gamma^2}.
+\end{equation}
+Вместе с $\mathrm{d}\ln p/\mathrm{d}\delta=1/(1+\delta)$ это даёт логарифмическую производную по отклонению импульса,
+\begin{equation}
+\label{eq:mag-lambda}
+\lambda\equiv\frac{1}{\beta}\frac{\mathrm{d}\beta}{\mathrm{d}\delta}=\frac{1}{\gamma^2(1+\delta)}.
+\end{equation}
+Точная зависимость берётся из $\beta\gamma=\beta_s\gamma_s(1+\delta)$ и $\gamma^2=1+(\beta\gamma)^2$:
+\begin{gather}
+\label{eq:mag-gamma}
+\gamma^2(\delta)=1+(\gamma_s^2-1)(1+\delta)^2,\\
+\label{eq:mag-beta}
+\frac{\beta(\delta)}{\beta_s}=\frac{\gamma_s(1+\delta)}{\gamma(\delta)},
+\qquad
+\frac{v_s}{v}=\frac{\gamma(\delta)}{\gamma_s(1+\delta)}.
+\end{gather}
+В синхронной точке $\lambda_s=1/\gamma_s^2$. Это первая производная отношения $\beta/\beta_s$.
+
+Вторая производная получается из $\mathrm{d}\beta/\mathrm{d}\delta=\beta\lambda$: дифференцирование даёт $\beta''/\beta=\lambda^2+\lambda'$. Из~\eqref{eq:mag-gamma} следует $\mathrm{d}(\gamma^2)/\mathrm{d}\delta=2(\gamma_s^2-1)(1+\delta)$, а потому
+\begin{equation}
+\label{eq:mag-dgamma}
+\frac{\mathrm{d}}{\mathrm{d}\delta}\gamma^{-2}
+=-\frac{2(\gamma_s^2-1)(1+\delta)}{\gamma^4}.
+\end{equation}
+Поскольку $\lambda=\gamma^{-2}(1+\delta)^{-1}$,
+\begin{equation}
+\label{eq:mag-lamp}
+\lambda'
+=\frac{1}{1+\delta}\frac{\mathrm{d}}{\mathrm{d}\delta}\gamma^{-2}
+-\frac{1}{\gamma^2(1+\delta)^2}.
+\end{equation}
+В нуле $\gamma_s^2-1=\beta_s^2\gamma_s^2$, первое слагаемое равно $-2\beta_s^2/\gamma_s^2$, второе равно $-1/\gamma_s^2$, и
+\begin{equation}
+\label{eq:mag-lamp-s}
+\lambda'_s=-\frac{2\beta_s^2}{\gamma_s^2}-\frac{1}{\gamma_s^2}.
+\end{equation}
+Квадрат $\lambda_s$ добавляет $1/\gamma_s^4$:
+\begin{equation}
+\label{eq:mag-beta-pp-raw}
+\left(\frac{\beta''}{\beta}\right)_{\!s}
+=\frac{1}{\gamma_s^4}-\frac{2\beta_s^2}{\gamma_s^2}-\frac{1}{\gamma_s^2}.
+\end{equation}
+Тождество $\beta_s^2=1-1/\gamma_s^2$ переписывает среднее слагаемое, $2\beta_s^2/\gamma_s^2=2/\gamma_s^2-2/\gamma_s^4$, после чего
+\begin{equation}
+\label{eq:mag-beta-pp}
+\left(\frac{\beta''}{\beta}\right)_{\!s}
+=\frac{3}{\gamma_s^4}-\frac{3}{\gamma_s^2}
+=-\frac{3(\gamma_s^2-1)}{\gamma_s^4}
+=-\frac{3\beta_s^2}{\gamma_s^2}.
+\end{equation}
+В ряде Тейлора $\beta/\beta_s$ стоит половина второй производной:
+\begin{equation}
+\label{eq:mag-beta-series}
+\frac{\beta}{\beta_s}
+=1+\frac{\delta}{\gamma_s^2}
+-\frac{3\beta_s^2}{2\gamma_s^2}\,\delta^2
++O(\delta^3).
+\end{equation}
+Обращение $v_s/v=(\beta/\beta_s)^{-1}$ запишем через
+$u=\delta/\gamma_s^2-(3\beta_s^2/(2\gamma_s^2))\delta^2$.
+Разложение $1/(1+u)=1-u+u^2+O(\delta^3)$ и равенство $u^2=\delta^2/\gamma_s^4+O(\delta^3)$ дают
+\begin{equation}
+\label{eq:mag-vsv}
+\frac{v_s}{v}
+=1-\frac{\delta}{\gamma_s^2}
++\left(\frac{1}{\gamma_s^4}+\frac{3\beta_s^2}{2\gamma_s^2}\right)\delta^2
++O(\delta^3).
+\end{equation}
+Оба слагаемых при $\delta^2$ одного порядка, и возникают они из разных мест. Квадрат первой производной сидит в $u^2$: линейный кусок $u$ равен $\delta/\gamma_s^2$, и $(\delta/\gamma_s^2)^2$ даёт $\delta^2/\gamma_s^4$. Вторая производная скорости сидит в коэффициенте при $\delta^2$ ряда~\eqref{eq:mag-beta-series}, $b=-3\beta_s^2/(2\gamma_s^2)$. Обращение меняет знак перед $b$, и в $v_s/v$ входит $-b=3\beta_s^2/(2\gamma_s^2)$. Обрыв $\Delta v/v=\delta/\gamma^2$ удерживает $1/\gamma_s^4$ и отбрасывает $3\beta_s^2/(2\gamma_s^2)$.
+
+\subsection{Коэффициенты скольжения}
+
+Подстановка ряда длины~\eqref{eq:set-C} и ряда~\eqref{eq:mag-vsv} в~\eqref{eq:mag-Tratio} до порядка $\delta^2$ даёт
+\begin{align}
+\frac{T}{T_s}
+&=
+\bigl(1+\alpha_0\delta+\alpha_1\delta^2\bigr)
+\left(
+1-\frac{\delta}{\gamma_s^2}
++\Bigl(\frac{1}{\gamma_s^4}+\frac{3\beta_s^2}{2\gamma_s^2}\Bigr)\delta^2
+\right)
++O(\delta^3)
+\nonumber\\
+&=
+1+\Bigl(\alpha_0-\frac{1}{\gamma_s^2}\Bigr)\delta
+\nonumber\\
+&\quad
++\Biggl(
+\alpha_1-\frac{\alpha_0}{\gamma_s^2}
++\frac{1}{\gamma_s^4}
++\frac{3\beta_s^2}{2\gamma_s^2}
+\Biggr)\delta^2
++O(\delta^3).
+\label{eq:mag-product}
+\end{align}
+Произведение $\alpha_0\delta\cdot(-\delta/\gamma_s^2)$ даёт $-\alpha_0\delta^2/\gamma_s^2$. Члены $\alpha_1\delta^2$ и $\delta^2$ из скорости умножаются на единицу. Произведения, дающие $\delta^3$, отброшены. Вычитание единицы приводит~\eqref{eq:set-tau} при $\Lambda=0$ к виду $\tau=\eta_0\delta+\eta_1\delta^2$,
+\begin{align}
+\eta_0&=\alpha_0-\frac{1}{\gamma_s^2},
+\label{eq:mag-eta0}\\
+\eta_1&=
+\alpha_1-\frac{\alpha_0}{\gamma_s^2}
++\frac{1}{\gamma_s^4}
++\frac{3\beta_s^2}{2\gamma_s^2}.
+\label{eq:mag-eta1}
+\end{align}
+Линейный коэффициент есть обычный коэффициент скольжения. В квадратичный входят длина ($\alpha_1$ и перекрёстный член с $\alpha_0$) и обе кинематические добавки из~\eqref{eq:mag-vsv}.
+
+\subsection{Устойчивость и уравнение для импульса}
+
+В системе~\eqref{eq:set-system} подставляем $\tau=\eta_0\delta+\eta_1\delta^2+\Lambda$ и дифференцируем уравнение энергии по времени синхронной частицы. Из $\mathrm{d}\delta/\mathrm{d}t=K\cos\varphi_s\sin\varphi$ следует
+\begin{equation}
+\label{eq:mag-dd}
+\ddot\delta
+=K\omega_\rf\cos\varphi_s\cos\varphi\,
+(\eta_0\delta+\eta_1\delta^2+\Lambda).
+\end{equation}
+Множитель $\cos\varphi$ здесь точный: это косинус отклонения от синхронной фазы. В коэффициенте остаётся $\varphi$, так что уравнение связывает $\delta$ и $\varphi$.
+
+Около равновесия $\varphi=0$, $\delta=0$ при $\Lambda=0$ оставляем линейный член и заменяем $\cos\varphi$ на единицу:
+\begin{equation}
+\label{eq:mag-lin}
+\ddot\delta=K\omega_\rf\cos\varphi_s\,\eta_0\,\delta.
+\end{equation}
+Величины $K$ и $\omega_\rf$ положительны, поэтому знак коэффициента при $\delta$ совпадает со знаком произведения $\cos\varphi_s\,\eta_0$. Коэффициент отрицателен, когда $\cos\varphi_s$ и $\eta_0$ разных знаков, то есть при выборе~\eqref{eq:set-phis}. Тогда $\cos\varphi_s\,\eta_0=-|\eta_0|$, и~\eqref{eq:mag-lin} принимает вид $\ddot\delta+\omega_s^2\delta=0$ с
+\begin{equation}
+\label{eq:mag-ws}
+\omega_s^2=K\omega_\rf\,|\eta_0|.
+\end{equation}
+При $\eta_0<0$ устойчива точка $\varphi_s=0$, при $\eta_0>0$ --- точка $\varphi_s=\pi$. В обоих случаях $\varphi$ отсчитывается от устойчивой точки, и вблизи неё $\cos\varphi\approx 1$.
+
+Тот же выбор связывает коэффициент $K\omega_\rf\cos\varphi_s$ с частотой. Поскольку $\cos\varphi_s=-\eta_0/|\eta_0|$ и $\omega_s^2=K\omega_\rf|\eta_0|$,
+\begin{equation}
+\label{eq:mag-Kcos}
+K\omega_\rf\cos\varphi_s
+=\frac{\omega_s^2}{|\eta_0|}
+\left(-\frac{\eta_0}{|\eta_0|}\right)
+=-\frac{\omega_s^2}{\eta_0}.
+\end{equation}
+Последний шаг использует $|\eta_0|^2=\eta_0^2$. Подстановка в~\eqref{eq:mag-dd} при $\cos\varphi\approx 1$ даёт
+$\ddot\delta=-(\omega_s^2/\eta_0)(\eta_0\delta+\eta_1\delta^2+\Lambda)$, или
+\begin{equation}
+\label{eq:mag-osc}
+\ddot\delta+\omega_s^2\delta
+=-\frac{\omega_s^2}{\eta_0}(\eta_1\delta^2+\Lambda).
+\end{equation}
+В этом разделе $\Lambda=0$. Общий вид оставлен для раздела~\ref{sec:beta}: туда войдёт бетатронное удлинение периода.
+
+\subsection{Равновесный сдвиг}
+
+У периодического синхротронного движения фаза через период колебания возвращается к прежнему значению, поэтому $\langle\mathrm{d}\varphi/\mathrm{d}t\rangle=0$. Первое уравнение системы~\eqref{eq:set-system} тогда даёт $\langle\tau\rangle=0$. Условие следует из периодичности $\varphi$ и из $\mathrm{d}\varphi/\mathrm{d}t=\omega_\rf\tau$; оно сохраняется и при точном множителе $\cos\varphi$ в~\eqref{eq:mag-dd}. При $\Lambda=0$
+\begin{equation}
+\label{eq:mag-mean}
+\eta_0\langle\delta\rangle+\eta_1\langle\delta^2\rangle=0,
+\end{equation}
+и по определению~\eqref{eq:set-deq} сдвиг есть $\delta_\eq=\langle\delta\rangle=-(\eta_1/\eta_0)\langle\delta^2\rangle$.
+
+Амплитуду $\delta_m$ понимаем как амплитуду первой гармоники. Квадрат этой гармоники в правой части~\eqref{eq:mag-osc} порождает постоянный сдвиг и вторую гармонику; оба имеют порядок $\delta_m^2$. Их квадраты и взаимные произведения входят в $\langle\delta^2\rangle$ начиная с $\delta_m^4$, а среднее квадрата первой гармоники равно $\delta_m^2/2$. Поэтому
+\begin{equation}
+\label{eq:mag-d2}
+\langle\delta^2\rangle=\frac{\delta_m^2}{2}+O(\delta_m^4)
+\end{equation}
+и
+\begin{equation}
+\label{eq:mag-deq}
+\delta_\eq=-\frac{\eta_1\delta_m^2}{2\eta_0}.
+\end{equation}
+Остаток имеет порядок $\delta_m^4$. Решение со второй гармоникой и поправки к частоте выводятся в разделе~\ref{sec:sol}. Если $\Lambda$ постоянно на синхротронном периоде, то же условие $\langle\tau\rangle=0$ читается как $\eta_0\langle\delta\rangle+\eta_1\langle\delta^2\rangle+\Lambda=0$; при $\Lambda=0$ оно возвращает~\eqref{eq:mag-deq}.
+
+Знак виден из~\eqref{eq:mag-mean}. При $\eta_1>0$ член $\eta_1\delta^2$ положителен при обоих знаках $\delta$ и удлиняет средний период колебания с центром в нуле. Чтобы среднее опоздание обратилось в нуль, линейный член должен погасить это удлинение, $\eta_0\delta_\eq<0$. Ниже переходной энергии $\eta_0<0$, и тогда $\delta_\eq>0$: равновесный импульс лежит выше синхронного. Рост импульса при $\eta_0<0$ укорачивает период, и это укорочение компенсирует квадратичное удлинение.
+
+\subsection{Сравнение с формулами (1)--(10)}
+
+Формулы (1)--(10) работы~\cite{Senichev2013} сравниваются с~\eqref{eq:mag-eta0}--\eqref{eq:mag-deq}. В (5)--(9) лоренц-фактор записан как $\gamma$ без индекса. Коэффициенты при $\delta$ и $\delta^2$ постоянны, так что это значение в точке разложения, $\gamma_s$. В (10) уже стоит $\gamma_s$.
+
+\textbf{Формула (5).}
+Перед (5) обращение скорости записано как $(v_s+\Delta v)^{-1}=v_s^{-1}\bigl[1-\Delta v/v_s+(\Delta v/v_s)^2-\cdots\bigr]$, а само отклонение скорости взято линейным, $\Delta v/v=\delta/\gamma^2$. Подстановка $\Delta C/C=\alpha_0\delta+\alpha_1\delta^2$, то есть той же записи длины, что~\eqref{eq:set-C}, в
+\begin{equation}
+\label{eq:mag-sen5}
+\frac{\Delta T_{\mathrm{rev}}}{T_{\mathrm{rev}}}
+=\frac{\Delta C}{C}-\frac{\Delta v}{v_s}
+-\frac{\Delta C}{C}\frac{\Delta v}{v_s}
++\left(\frac{\Delta v}{v_s}\right)^2
+\end{equation}
+даёт
+\begin{equation}
+\label{eq:mag-sen5b}
+\frac{\Delta T_{\mathrm{rev}}}{T_{\mathrm{rev}}}
+=\left(\alpha_0-\frac{1}{\gamma^2}\right)\delta
++\left(\alpha_1-\frac{\alpha_0}{\gamma^2}+\frac{1}{\gamma^4}\right)\delta^2.
+\end{equation}
+Собранные коэффициенты совпадают с коэффициентами $\tau=(T-T_s)/T_s$. Этот ряд равен $(C/C_s)(v_s/v)-1$, если в~\eqref{eq:mag-vsv} оставить только вклад $u^2$, то есть $\delta^2/\gamma_s^4$. Удержаны длина до $\delta^2$, перекрёстный член $\alpha_0\delta\cdot(\delta/\gamma^2)$ и квадрат первой производной скорости. Вторая производная скорости в ряд не входит, и в коэффициенте при $\delta^2$ нет слагаемого $3\beta_s^2/(2\gamma_s^2)$. Та же неполная скобка стоит в (6), (8), (9) и (10). Линейные формулы (3) и (4), $\Delta T/T=\eta\delta$ с $\eta=\alpha_0-1/\gamma^2$, воспроизводят $\eta_0$.
+
+Ряд $(T-T_s)/T$ при тех же коэффициентах $\tau$ отличался бы от~\eqref{eq:mag-sen5b} слагаемым $-\eta_0^2$ при $\delta^2$. Собранная (5) этого слагаемого не содержит: по коэффициентам она есть ряд $\tau$ с делителем $T_s$.
+
+Если в $\Delta v/v_s$ вернуть член $-(3\beta_s^2/(2\gamma_s^2))\delta^2$ из~\eqref{eq:mag-beta-series}, слагаемое $-\Delta v/v_s$ добавит к коэффициенту при $\delta^2$ как раз $+3\beta_s^2/(2\gamma_s^2)$. Квадрат $(\Delta v/v_s)^2$ на этом порядке не меняется: произведение второй производной на $\delta/\gamma_s^2$ даёт $\delta^3$.
+
+\textbf{Знак фазы в (1) и (7).}
+В (1) и (7) работы~\cite{Senichev2013}
+\begin{equation}
+\label{eq:mag-sen-phase}
+\frac{\mathrm{d}\varphi}{\mathrm{d}t}=-\omega_\rf\,\tau,
+\end{equation}
+где в (1) вместо $\tau$ стоит $\eta\delta$, а в (7) --- ряд (6), включая $(\Delta L/L)_\beta$. Фаза растёт, когда период короче синхронного: так сказано в тексте перед (2) и в самой (2), $\Delta\varphi/\varphi=-\Delta T_{\mathrm{rev}}/T_{\mathrm{rev}}$. В~\eqref{eq:set-phase-map} фаза растёт при опоздании, так что знаки противоположны. Уравнение энергии в (1) и (7) есть $\mathrm{d}\delta/\mathrm{d}t=K\sin\varphi$ с тем же $K$, что в~\eqref{eq:set-system}; оно записано при $\varphi_s=0$.
+
+Линеаризация (1) около $\varphi=0$, при $\sin\varphi\approx\varphi$, даёт $\ddot\delta=K\cos\varphi\cdot\mathrm{d}\varphi/\mathrm{d}t$. При $\cos\varphi\approx 1$
+\begin{equation}
+\label{eq:mag-sen-lin}
+\ddot\delta=-K\omega_\rf\eta_0\,\delta,
+\end{equation}
+и квадрат собственного значения равен $\lambda^2=-K\omega_\rf\eta_0$. Колебания требуют $\eta_0>0$. При $\eta_0<0$ получается $\lambda^2=K\omega_\rf|\eta_0|>0$: собственные значения вещественны, и точка $\varphi=0$ неустойчива. Устойчивая точка той же системы при $\eta_0<0$ есть $\varphi=\pi$. Там $\sin(\pi+\psi)=-\sin\psi$ и $\cos(\pi+\psi)=-\cos\psi$.
+
+Печатное уравнение (8) получено из (7) при $\cos\varphi\approx 1$, то есть разложением около $\varphi=0$. Линейная часть
+\begin{equation}
+\label{eq:mag-sen8-lin}
+\ddot\delta
++\frac{eV\omega_\rf^2}{2\pi h\beta^2 E}
+\left(\alpha_0-\frac{1}{\gamma^2}\right)\delta
+=\cdots
+\end{equation}
+при $\eta_0<0$ имеет вид $\ddot\delta-|\cdots|\,\delta$ и описывает ту же неустойчивую точку. Множитель $eV\omega_\rf^2/(2\pi h\beta^2 E)$ равен $K\omega_\rf$: в (1) и (7) уравнение энергии уже содержит один $\omega_\rf$, второй приходит из $\mathrm{d}\varphi/\mathrm{d}t$.
+
+\textbf{Среднее уравнения (8).}
+Пусть $C_\rf=eV\omega_\rf^2/(2\pi h\beta^2 E)$ и $\kappa=\alpha_1-\alpha_0/\gamma^2+1/\gamma^4$ --- неполная скобка (5). Полный коэффициент связан с ней равенством $\eta_1=\kappa+3\beta_s^2/(2\gamma_s^2)$. Уравнение (8) есть
+\begin{equation}
+\label{eq:mag-sen8}
+\ddot\delta+C_\rf\eta_0\delta
+=-C_\rf
+\left(
+\kappa\delta^2+\left(\frac{\Delta L}{L}\right)_{\!\beta}
+\right).
+\end{equation}
+Если у этого уравнения есть периодическое решение, среднее $\ddot\delta$ равно нулю, положительный множитель $C_\rf$ сокращается, и
+\begin{equation}
+\label{eq:mag-sen8-avg}
+\langle\delta\rangle
+=-\frac{1}{\eta_0}
+\left(
+\kappa\langle\delta^2\rangle
++\left\langle
+\left(\frac{\Delta L}{L}\right)_{\!\beta}
+\right\rangle
+\right).
+\end{equation}
+При $\eta_0<0$ периодического решения около $\varphi=0$ нет. Та же формула получается около устойчивой точки. При $\varphi=\pi+\psi$ и $\eta_0<0$ имеем $\dot\psi=-\omega_\rf\tau$ и $\dot\delta=-K\sin\psi$, так что при малом $\psi$
+\begin{equation}
+\label{eq:mag-sen-pi}
+\ddot\delta
+=K\omega_\rf\tau
+=K\omega_\rf\eta_0\delta
++K\omega_\rf
+\left(
+\kappa\delta^2+\left(\frac{\Delta L}{L}\right)_{\!\beta}
+\right).
+\end{equation}
+Частота $\omega_s^2=-K\omega_\rf\eta_0$ положительна. Усреднение $\langle\ddot\delta\rangle=0$ снова даёт~\eqref{eq:mag-sen8-avg}: минус уже стоит в правой части (8), и переход в точку $\varphi=\pi$ его сохраняет.
+
+\textbf{Печатная формула (10).}
+Множитель перед скобкой в (10) равен $1/\eta_0$:
+\begin{equation}
+\label{eq:mag-prefactor}
+\frac{\gamma_s^2}{\gamma_s^2\alpha_0-1}
+=\frac{1}{\alpha_0-1/\gamma_s^2}
+=\frac{1}{\eta_0}.
+\end{equation}
+Печатная формула есть
+\begin{equation}
+\label{eq:mag-sen10}
+\Delta\delta_\eq
+=\frac{\gamma_s^2}{\gamma_s^2\alpha_0-1}
+\left[
+\frac{\delta_m^2}{2}
+\left(
+\alpha_1-\frac{\alpha_0}{\gamma_s^2}+\frac{1}{\gamma_s^4}
+\right)
++\left(\frac{\Delta L}{L}\right)_{\!\beta}
+\right].
+\end{equation}
+По~\eqref{eq:mag-prefactor} это $(1/\eta_0)$ на скобку. Условие $\langle\tau\rangle=0$ ставит перед той же скобкой минус. Для полного ряда, при $\Lambda=0$ и $\langle\delta^2\rangle=\delta_m^2/2$, минус записан в~\eqref{eq:mag-deq}. Для неполной скобки $\kappa$ и члена $(\Delta L/L)_\beta$ то же условие есть минус перед правой частью~\eqref{eq:mag-sen10}.
+
+Этот минус не зависит от того, растёт фаза при опоздании или при опережении. В обеих договорённостях $\mathrm{d}\varphi/\mathrm{d}t=\pm\omega_\rf\tau$. Периодичность требует $\langle\mathrm{d}\varphi/\mathrm{d}t\rangle=0$. Поскольку $\omega_\rf\neq 0$, отсюда $\langle\tau\rangle=0$, и связь среднего импульса со средним квадратом одна и та же. Разложение около устойчивой точки воспроизводит её ещё раз: при нашем выборе~\eqref{eq:set-phis} это среднее уравнения~\eqref{eq:mag-osc}, при знаке~\eqref{eq:mag-sen-phase} и $\eta_0<0$ --- среднее уравнения~\eqref{eq:mag-sen-pi}.
+
+Текст сразу после (8) говорит, что удлинение орбиты компенсируется ростом равновесного импульса. Если скобка в~\eqref{eq:mag-sen10} положительна и $\eta_0<0$, рост есть знак $-1/\eta_0$, то есть знак условия $\langle\tau\rangle=0$. Печатный множитель при тех же условиях даёт отрицательный сдвиг.
+
+Слагаемое $(\Delta L/L)_\beta$ в (6)--(10) стоит в том же ряду периода, в каком у нас стоит $\Lambda$. Здесь $\Lambda=0$. Каким коэффициентом бетатронное удлинение входит в $\tau$, устанавливается в разделе~\ref{sec:beta}.
+
+\textbf{Формула (9).}
+В (9) из ряда (6) вычеркнут линейный член $(\alpha_0-1/\gamma^2)\delta$, и оставшееся названо средним $\Delta T_{\mathrm{rev}}/T_{\mathrm{rev}}$:
+\begin{equation}
+\label{eq:mag-sen9}
+\frac{\Delta T_{\mathrm{rev}}}{T_{\mathrm{rev}}}
+=\left(\alpha_1-\frac{\alpha_0}{\gamma^2}+\frac{1}{\gamma^4}\right)\delta^2
++\left(\frac{\Delta L}{L}\right)_{\!\beta}.
+\end{equation}
+Это вклад в период у движения, центр которого ещё лежит в $\delta=0$: линейный член такого движения в среднем пропадает, а $\kappa\delta^2$ и $(\Delta L/L)_\beta$ остаются. В записи (9) стоит $\delta^2$, без замены на $\langle\delta^2\rangle$ и без замены на $\delta_m^2/2$. Формула (9) ещё не есть сдвиг импульса. Она фиксирует ненулевое среднее опоздание при $\langle\delta\rangle=0$; компенсация этого среднего есть условие $\langle\tau\rangle=0$. Замена квадрата на $\delta_m^2/2$ и умножение на $1/\eta_0$ сделаны в (10). Скобка в (9) по-прежнему обрывается на $1/\gamma^4$.

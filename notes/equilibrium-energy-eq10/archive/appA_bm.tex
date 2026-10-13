@@ -1,0 +1,167 @@
+\section{Метод Боголюбова--Митропольского}
+\label{app:bm}
+
+Здесь собрана только та часть метода~\cite{Bogoliubov1961}, которой пользуется раздел~\ref{sec:sol}. Решается
+\begin{equation}
+\label{eq:bm-eq}
+\ddot x+\omega^2 x=\varepsilon f(x,\dot x)
+\end{equation}
+с малым параметром $\varepsilon$. Ищем
+\begin{align}
+x&=a\cos\psi+\varepsilon u_1(a,\psi)+\varepsilon^2 u_2(a,\psi)+\cdots,
+\label{eq:bm-ansatz}\\
+\dot a&=\varepsilon A_1(a)+\varepsilon^2 A_2(a)+\cdots,
+\label{eq:bm-adot}\\
+\dot\psi&=\omega+\varepsilon B_1(a)+\varepsilon^2 B_2(a)+\cdots.
+\label{eq:bm-psidot}
+\end{align}
+Функции $u_k$ периодичны по $\psi$ с периодом $2\pi$ и не содержат первой гармоники: она отнесена к амплитуде $a$ и фазе $\psi$. Если оставить $\cos\psi$ или $\sin\psi$ внутри $u_k$, оператор $\partial_{\psi\psi}+1$ на них обращается в нуль, и поправка растёт линейно по времени.
+
+В применении к продольному движению правая часть уже мала, и $\varepsilon$ служит только меткой порядка. В окончательных формулах $\varepsilon=1$, а малость сидит в коэффициентах $c_0$, $c_2$, $c_3$: поправка первого порядка линейна по ним, второго --- квадратична. Подстановка ряда Линдштедта $x=a\cos\Omega t+\cdots$ даёт те же коэффициенты; это независимая проверка выкладок ниже.
+
+\subsection{Первый порядок}
+\label{sec:bm-first}
+
+На невозмущённой орбите $x=a\cos\psi$, $\dot x=-a\omega\sin\psi$. Подстановка~\eqref{eq:bm-ansatz}--\eqref{eq:bm-psidot} и сбор членов порядка $\varepsilon$ дают
+\begin{equation}
+\label{eq:bm-order1}
+\omega^2(\partial_{\psi\psi}u_1+u_1)
+-2\omega A_1\sin\psi
+-2a\omega B_1\cos\psi
+=f_0(\psi),
+\end{equation}
+где $f_0(\psi)=f(a\cos\psi,-a\omega\sin\psi)$. Множитель $2$ возникает потому, что производная по времени действует и на медленную амплитуду, и на фазу: поправка скорости $A_1\cos\psi-a B_1\sin\psi$ дифференцируется ещё раз со скоростью $\omega$.
+
+Ряд Фурье правой части записываем так:
+\begin{equation}
+\label{eq:bm-fourier}
+f_0=g_0+\sum_{n\ge 1}(g_n\cos n\psi+h_n\sin n\psi),
+\end{equation}
+\begin{equation}
+\label{eq:bm-fourier-coeff}
+\begin{aligned}
+g_0&=\frac{1}{2\pi}\int_0^{2\pi}f_0\,\mathrm{d}\psi,\\
+g_n&=\frac{1}{\pi}\int_0^{2\pi}f_0\cos n\psi\,\mathrm{d}\psi,
+\qquad
+h_n=\frac{1}{\pi}\int_0^{2\pi}f_0\sin n\psi\,\mathrm{d}\psi.
+\end{aligned}
+\end{equation}
+Нормировка $g_0$ отличается от $g_n$ вдвое: в разложении постоянный член стоит без дополнительного множителя $1/2$.
+
+Коэффициент при $\cos\psi$ в~\eqref{eq:bm-order1} не может быть уравновешен функцией $u_1$, и то же верно для $\sin\psi$. Эти два члена переносятся в эволюцию амплитуды и фазы:
+\begin{equation}
+\label{eq:bm-ab}
+A_1=-\frac{h_1}{2\omega},
+\qquad
+B_1=-\frac{g_1}{2a\omega}.
+\end{equation}
+Остаток ряда определяет поправку формы
+\begin{equation}
+\label{eq:bm-u}
+u_1=\frac{g_0}{\omega^2}
++\sum_{n\ge 2}\frac{g_n\cos n\psi+h_n\sin n\psi}{\omega^2(1-n^2)}.
+\end{equation}
+Знаменатель $1-n^2$ есть собственное число $\partial_{\psi\psi}+1$ на гармонике $n$.
+
+\subsection{Квадратичная правая часть}
+\label{sec:bm-quad}
+
+Для
+\begin{equation}
+\label{eq:bm-quad-f}
+f=c_0+c_2 x^2
+\end{equation}
+на орбите $x=a\cos\psi$ тождество $\cos^2\psi=(1+\cos 2\psi)/2$ даёт
+\begin{equation}
+\label{eq:bm-f0}
+f_0=c_0+\frac{c_2 a^2}{2}+\frac{c_2 a^2}{2}\cos 2\psi.
+\end{equation}
+Ненулевые коэффициенты --- $g_0=c_0+c_2 a^2/2$ и $g_2=c_2 a^2/2$. Первой гармоники нет, поэтому
+\begin{equation}
+\label{eq:bm-ab1-zero}
+A_1=0,
+\qquad
+B_1=0,
+\end{equation}
+а~\eqref{eq:bm-u} превращается в
+\begin{equation}
+\label{eq:bm-u1}
+u_1
+=\frac{c_0+c_2 a^2/2}{\omega^2}
+-\frac{c_2 a^2}{6\omega^2}\cos 2\psi.
+\end{equation}
+Второе слагаемое получается так: $(1-4)U_2=g_2/\omega^2$, откуда $U_2=-g_2/(3\omega^2)=-c_2 a^2/(6\omega^2)$. Постоянная часть $u_1$ есть среднее $\langle x\rangle$ на этом порядке. Сдвига частоты на первом порядке нет: квадрат $x^2$ не проецируется на $\cos\psi$.
+
+\subsection{Второй порядок}
+\label{sec:bm-second}
+
+Поскольку $A_1=B_1=0$, амплитуда и фаза начинают меняться с $A_2$ и $B_2$. Подстановка $x=a\cos\psi+u_1+u_2$ в $c_0+c_2 x^2$ добавляет к правой части член $2c_2(a\cos\psi)\,u_1$: произведение $c_2 u_1^2$ имеет следующий порядок малости. Уравнение того же вида, что~\eqref{eq:bm-order1}, читается
+\begin{equation}
+\label{eq:bm-order2}
+\omega^2(\partial_{\psi\psi}u_2+u_2)
+-2\omega A_2\sin\psi
+-2a\omega B_2\cos\psi
+=2c_2 a\cos\psi\cdot u_1.
+\end{equation}
+Запись $u_1=U_0+U_2\cos 2\psi$ и тождество $\cos\psi\cos 2\psi=(\cos 3\psi+\cos\psi)/2$ дают
+\begin{equation}
+\label{eq:bm-f1}
+2c_2 a\cos\psi\cdot u_1
+=2c_2 a\Bigl(U_0+\frac{U_2}{2}\Bigr)\cos\psi
++c_2 a U_2\cos 3\psi.
+\end{equation}
+Синусов нет, поэтому $A_2=0$: первая гармоника решения не затухает и не растёт. Косинус первой гармоники снимается сдвигом частоты по правилу~\eqref{eq:bm-ab},
+\begin{equation}
+\label{eq:bm-b2-step}
+B_2=-\frac{c_2}{\omega}\Bigl(U_0+\frac{U_2}{2}\Bigr).
+\end{equation}
+Подстановка $U_0$ и $U_2$ из~\eqref{eq:bm-u1} собирает
+\begin{equation}
+\label{eq:bm-split}
+\begin{aligned}
+U_0+\frac{U_2}{2}
+&=\frac{c_0}{\omega^2}+\frac{c_2 a^2}{\omega^2}\Bigl(\frac12-\frac{1}{12}\Bigr)
+=\frac{c_0}{\omega^2}+\frac{5}{12}\frac{c_2 a^2}{\omega^2}.
+\end{aligned}
+\end{equation}
+Слагаемое $1/2$ --- постоянное смещение, порождённое средним $x^2$. Слагаемое $-1/12$ --- вторая гармоника: $U_2/2=-c_2 a^2/(12\omega^2)$. Отсюда
+\begin{equation}
+\label{eq:bm-b2}
+B_2=-\frac{c_2 c_0}{\omega^3}-\frac{5}{12}\frac{c_2^2 a^2}{\omega^3},
+\end{equation}
+и частота колебания есть $\dot\psi=\omega+B_2$.
+
+Постоянного члена в~\eqref{eq:bm-f1} нет, поэтому постоянная часть $u_2$ равна нулю. Среднее $\langle x\rangle$ через второй порядок остаётся постоянной частью $u_1$. Третья гармоника из~\eqref{eq:bm-f1} определяет форму, но не частоту и не среднее:
+\begin{equation}
+\label{eq:bm-v3}
+u_2=\frac{c_2^2 a^3}{48\omega^4}\cos 3\psi.
+\end{equation}
+Её квадрат входит в $\langle x^2\rangle$ только на следующем порядке.
+
+Разложение пригодно, пока поправка мала по сравнению с линейной возвращающей силой,
+\begin{equation}
+\label{eq:bm-valid}
+\biggl|\frac{c_2 a}{\omega^2}\biggr|\ll 1,
+\qquad
+\biggl|\frac{c_0}{\omega^2 a}\biggr|\ll 1.
+\end{equation}
+Второе условие относит постоянную силу к масштабу $\omega^2 a$. Если $c_0$ удерживается как величина порядка $c_2 a^2$, достаточно первого неравенства.
+
+\subsection{Кубическая добавка}
+\label{sec:bm-cubic}
+
+Кубический член нужен как образец правила~\eqref{eq:bm-ab} в случае, когда первая гармоника есть уже на первом порядке. Для $f=c_3 x^3$
+\begin{equation}
+\label{eq:bm-cubic-f}
+(a\cos\psi)^3=a^3\frac{3\cos\psi+\cos 3\psi}{4},
+\end{equation}
+так что $g_1=3c_3 a^3/4$, $g_3=c_3 a^3/4$, $g_0=h_1=0$. Следовательно $A_1=0$ и
+\begin{equation}
+\label{eq:bm-cubic-b}
+B_1=-\frac{3c_3 a^2}{8\omega},
+\qquad
+U_3=-\frac{c_3 a^3}{32\omega^2}.
+\end{equation}
+Частота сдвигается уже в первом порядке по $c_3$, потому что $x^3$ проецируется на $\cos\psi$. У жёсткой пружины, $\ddot x+\omega^2 x=-\beta x^3$ с $\beta>0$, получается $c_3=-\beta$ и $B_1>0$: частота растёт.
+
+У поправки $\cos\varphi\approx 1-\varphi^2/2$ из раздела~\ref{sec:sol-phi} проекция на гармоники пропорциональна $\cos\psi-\cos 3\psi$, то есть $g_3/g_1=-1$. У куба $g_3/g_1=1/3$. Правило~\eqref{eq:bm-ab} видит только $g_1$, поэтому сдвиг частоты можно воспроизвести подходящим $c_3$, но третья гармоника орбиты при этом другая. В разделе~\ref{sec:sol-phi} сдвиг $-\varphi_m^2/16$ получен прямо из $g_1$ самой поправки фазы.

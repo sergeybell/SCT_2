@@ -1,0 +1,295 @@
+\section{Решение уравнений продольного движения}
+\label{sec:sol}
+
+Система~\eqref{eq:set-system} связывает фазу с опозданием, а импульс --- с напряжением зазора. В работе~\cite{Senichev2013} от системы (7) переходят к уравнению (8) и решают его асимптотическими методами~\cite{Bogoliubov1961}; итогом объявлена формула (10), то есть сдвиг равновесного импульса. Ниже то же решение собрано из~\eqref{eq:set-system} заново. Схема метода вынесена в приложение~\ref{app:bm}. Среднее на замкнутой траектории фиксируется возвращением фазы и от приближения $\cos\varphi\approx 1$ не зависит. Роль этого приближения и высших гармоник сводится к связи $\langle\delta^2\rangle$ с амплитудой.
+
+\subsection{Уравнение для отклонения импульса}
+\label{sec:sol-ode}
+
+Дифференцирование второго уравнения системы~\eqref{eq:set-system} по времени синхронной частицы даёт
+\begin{equation}
+\label{eq:sol-dd}
+\ddot\delta
+=K\cos\varphi_s\,\omega_\rf\cos\varphi\cdot\tau(\delta).
+\end{equation}
+Множитель $\cos\varphi$ есть производная $\sin\varphi$. Подставить в него мгновенное $\delta$ нельзя: фаза накоплена историей опоздания,
+\begin{equation}
+\label{eq:sol-phi-int}
+\varphi(t)
+=\varphi(t_0)
++\omega_\rf\int_{t_0}^{t}\tau\bigl(\delta(t')\bigr)\,\mathrm{d}t'.
+\end{equation}
+Пока $\cos\varphi$ удержан, пара~\eqref{eq:sol-dd}, \eqref{eq:sol-phi-int} эквивалентна исходной системе. Одно уравнение на $\delta$ появляется после приближения.
+
+При $\cos\varphi=1$ предымножитель сводится к синхротронной частоте. Из $\omega_s^2=K\omega_\rf|\eta_0|$ и $\cos\varphi_s=-\operatorname{sgn}\eta_0$ следует
+\begin{equation}
+\label{eq:sol-pref}
+K\cos\varphi_s\,\omega_\rf
+=K\omega_\rf(-\operatorname{sgn}\eta_0)
+=-\frac{K\omega_\rf|\eta_0|}{\eta_0}
+=-\frac{\omega_s^2}{\eta_0},
+\end{equation}
+где использовано $|\eta_0|=\eta_0\operatorname{sgn}\eta_0$. Равенство верно при обоих знаках: при $\eta_0<0$ устойчива точка $\cos\varphi_s=1$, при $\eta_0>0$ --- точка $\cos\varphi_s=-1$. Вместе с рядом~\eqref{eq:set-tau} получается
+\begin{equation}
+\label{eq:sol-reduced}
+\ddot\delta+\omega_s^2\delta=c_0+c_2\delta^2,
+\end{equation}
+\begin{equation}
+\label{eq:sol-c}
+c_0=-\frac{\omega_s^2}{\eta_0}\Lambda,
+\qquad
+c_2=-\frac{\omega_s^2}{\eta_0}\eta_1.
+\end{equation}
+Линейный кусок $-\omega_s^2\delta$ стоит в левой части. Квадратичный член скольжения и бетатронная добавка остаются в правой части постоянной силой и силой, квадратичной по $\delta$.
+
+\subsection{Среднее на замкнутой траектории}
+\label{sec:sol-mean}
+
+Пусть $(\varphi(t),\delta(t))$ --- периодическое решение с периодом $T$ внутри сепаратрисы, так что фаза возвращается к прежнему значению, $\varphi(T)=\varphi(0)$. Тогда
+\begin{equation}
+\label{eq:sol-dphi-avg}
+\Biggl\langle\frac{\mathrm{d}\varphi}{\mathrm{d}t}\Biggr\rangle
+=\frac{\varphi(T)-\varphi(0)}{T}=0.
+\end{equation}
+Первое уравнение системы даёт $\omega_\rf\langle\tau(\delta)\rangle=0$. При $\omega_\rf\neq 0$
+\begin{equation}
+\label{eq:sol-mean}
+\langle\tau(\delta)\rangle=0,
+\qquad
+\eta_0\langle\delta\rangle+\eta_1\langle\delta^2\rangle+\Lambda=0.
+\end{equation}
+Скобки --- среднее по времени $t$ на одном синхротронном периоде, по тем же часам, по которым записана система~\eqref{eq:set-system}. Мера равномерна по $t$. Бетатронная фаза в это среднее уже не входит: она свёрнута в постоянную $\Lambda$ в разделе~\ref{sec:beta}.
+
+При $\eta_0\neq 0$ отсюда следует точное выражение равновесного сдвига через среднее квадрата,
+\begin{equation}
+\label{eq:sol-deq-exact}
+\delta_\eq
+=\langle\delta\rangle
+=-\frac{\eta_1\langle\delta^2\rangle+\Lambda}{\eta_0}.
+\end{equation}
+
+\zamech{Вывод~\eqref{eq:sol-mean} использует только возвращение фазы и определение $\tau$. Напряжение зазора, множитель $\cos\varphi$ в~\eqref{eq:sol-dd} и высшие гармоники орбиты входят в задачу одним способом: они задают, чему равно $\langle\delta^2\rangle$ при выбранной амплитуде первой гармоники. Соотношение между $\langle\delta\rangle$ и $\langle\delta^2\rangle$ от них не зависит.}
+
+Периодичность $\delta$ даёт соседнее среднее. Левая часть~\eqref{eq:sol-dd} в среднем равна нулю, поэтому $\langle\cos\varphi\cdot\tau\rangle=0$. Вместе с $\langle\tau\rangle=0$ это есть $\langle(\cos\varphi-1)\tau\rangle=0$: на замкнутой орбите $(\cos\varphi-1)$ не коррелирует с $\tau$ и отдельного условия на $\langle\delta\rangle$ не добавляет.
+
+Дальше метод Боголюбова--Митропольского нужен для связи $\langle\delta^2\rangle$ с амплитудой. Именно на этом шаге появляются приближение $\cos\varphi\approx 1$ и высшие гармоники.
+
+\subsection{Решение до второго порядка}
+\label{sec:sol-bm}
+
+К уравнению~\eqref{eq:sol-reduced} применяем приложение~\ref{app:bm} при $\omega=\omega_s$. Амплитуда $\delta_m$ есть коэффициент при $\cos\psi$. Начало фазы выбрано так, что в первой гармонике нет $\sin\psi$: при $\psi=0$ отклонение $\delta$ проходит экстремум. До второго порядка
+\begin{equation}
+\label{eq:sol-delta}
+\delta(t)
+=\delta_m\cos\psi
++\delta_\eq
++\frac{\eta_1\delta_m^2}{6\eta_0}\cos 2\psi,
+\end{equation}
+\begin{equation}
+\label{eq:sol-deq}
+\delta_\eq
+=-\frac{1}{\eta_0}
+\Biggl(
+\frac{\eta_1\delta_m^2}{2}
++\Lambda
+\Biggr).
+\end{equation}
+Постоянный член есть $U_0=(c_0+c_2\delta_m^2/2)/\omega_s^2$ после подстановки~\eqref{eq:sol-c}, вторая гармоника --- $U_2=-c_2\delta_m^2/(6\omega_s^2)$. На этом решении $\dot\psi$ зависит только от амплитуды и вдоль орбиты постоянно, так что среднее по $t$ совпадает со средним по $\psi$. Поэтому $\langle\delta\rangle=\delta_\eq$, а $\langle\delta^2\rangle=\delta_m^2/2$ с точностью до $\delta_m^4$.
+
+Тот же сдвиг получается из~\eqref{eq:sol-deq-exact}, если подставить $\langle\delta^2\rangle=\delta_m^2/2$. Это и есть содержание формулы (10) работы~\cite{Senichev2013}: знак и делитель $\eta_0$ фиксированы тождеством~\eqref{eq:sol-mean}. Как скобка печатной формулы (10) соотносится с полным $\eta_1$ и с $\Lambda$, разобрано в разделах~\ref{sec:mag} и~\ref{sec:beta}.
+
+Квадрат постоянного смещения и квадрат второй гармоники поправляют $\langle\delta^2\rangle$ на порядке $\delta_m^4$. При $\Lambda=0$ и $\cos\varphi=1$ подстановка этих квадратов обратно в~\eqref{eq:sol-deq-exact} даёт следующий член
+\begin{equation}
+\label{eq:sol-a4}
+\delta_\eq
+=-\frac{\eta_1\delta_m^2}{2\eta_0}
+-\frac{19}{72}\frac{\eta_1^3\delta_m^4}{\eta_0^3}
++\cdots.
+\end{equation}
+Слагаемые $1/4$ и $1/72$, в сумме дающие $19/72$, происходят из $\delta_\eq^2$ и из второй гармоники. В сдвиг порядка $\delta_m^2$ ни то, ни другое не входит.
+
+Частота на том же порядке есть $\Omega=\omega_s+B_2$ с $B_2$ из~\eqref{eq:bm-b2}:
+\begin{equation}
+\label{eq:sol-omega}
+\frac{\Omega}{\omega_s}
+=1
+-\frac{\eta_1\Lambda}{\eta_0^2}
+-\frac{5}{12}
+\Biggl(\frac{\eta_1\delta_m}{\eta_0}\Biggr)^2.
+\end{equation}
+Коэффициент $5/12$ собран в~\eqref{eq:bm-split} из $1/2$ и $-1/12$. Он пропорционален $\eta_1^2$, поэтому квадратичный член скольжения на этом порядке понижает частоту при любом знаке $\eta_1/\eta_0$. Постоянное смещение переносит колебание туда, где наклон силы $c_2\delta^2$ мягче линейной пружины; вторая гармоника, биением с первой, частично возмещает это смягчение. В формуле (10) работы~\cite{Senichev2013} частотного члена нет: там удержан постоянный сдвиг~\eqref{eq:sol-deq}.
+
+Перекрёстное слагаемое $-\eta_1\Lambda/\eta_0^2$ видно и при нулевой амплитуде. Неподвижная точка $\tau(\delta_\eq)=0$ лежит в $\delta_\eq=-\Lambda/\eta_0$ с точностью до $\Lambda^2$. Наклон ряда $\tau$ в этой точке равен $\eta_0+2\eta_1\delta_\eq$. Линеаризация системы заменяет $\omega_s^2$ на $\omega_s^2(1+2\eta_1\delta_\eq/\eta_0)$, откуда
+\begin{equation}
+\label{eq:sol-cross}
+\frac{\Omega}{\omega_s}
+=1-\frac{\eta_1\Lambda}{\eta_0^2}+O(\Lambda^2).
+\end{equation}
+Член $5/12$ есть добавка конечной амплитуды поверх этого сдвига рабочей точки. Знак перекрёстного члена может быть любым.
+
+\subsection{Поправка конечной фазы}
+\label{sec:sol-phi}
+
+На линейной орбите $\delta=\delta_m\cos\psi$, $\psi=\omega_s t$ и $\tau=\eta_0\delta$. Интегрирование $\dot\varphi=\omega_\rf\tau$ даёт
+\begin{equation}
+\label{eq:sol-phi}
+\varphi
+=\frac{\omega_\rf\eta_0}{\omega_s}\delta_m\sin\psi
+=\operatorname{sgn}(\eta_0)\,\varphi_m\sin\psi,
+\end{equation}
+\begin{equation}
+\label{eq:sol-phim}
+\varphi_m
+=\frac{\omega_\rf|\eta_0|}{\omega_s}\delta_m.
+\end{equation}
+В поправку входит $\varphi^2=\varphi_m^2\sin^2\psi$, и знак $\eta_0$ из неё выпадает.
+
+Возвращаемся к~\eqref{eq:sol-dd} и удерживаем $\cos\varphi=1-\varphi^2/2$. При $\eta_1=\Lambda=0$, когда $\tau=\eta_0\delta$, множитель $(1-\varphi^2/2)$ оставляет
+\begin{equation}
+\label{eq:sol-phi-ode}
+\ddot\delta+\omega_s^2\delta
+=\omega_s^2\frac{\varphi^2}{2}\,\delta.
+\end{equation}
+Тождество $\sin^2\psi\cos\psi=(\cos\psi-\cos 3\psi)/4$ превращает правую часть в
+\begin{equation}
+\label{eq:sol-phi-fourier}
+\frac{\varphi^2}{2}\,\delta
+=\frac{\varphi_m^2\delta_m}{8}(\cos\psi-\cos 3\psi).
+\end{equation}
+Постоянного члена нет. Коэффициент первой гармоники правой части~\eqref{eq:sol-phi-ode} равен $g_1=\omega_s^2\varphi_m^2\delta_m/8$. Правило~\eqref{eq:bm-ab} даёт $B=-g_1/(2\delta_m\omega_s)$ и
+\begin{equation}
+\label{eq:sol-domega-phi}
+\frac{\Delta\Omega}{\omega_s}=-\frac{\varphi_m^2}{16}.
+\end{equation}
+Третья гармоника решения имеет амплитуду $\varphi_m^2\delta_m/64$. В среднее квадрата она входит своим квадратом, то есть величиной порядка $\varphi_m^4\delta_m^2$.
+
+При $\eta_1=\Lambda=0$ система является маятником. Из $\dot\varphi=\omega_\rf\eta_0\delta$ и второго уравнения~\eqref{eq:set-system} с предымножителем~\eqref{eq:sol-pref} следует
+\begin{equation}
+\label{eq:sol-pendulum}
+\ddot\varphi+\omega_s^2\sin\varphi=0,
+\end{equation}
+и это верно при обоих знаках $\eta_0$. Тождество~\eqref{eq:sol-mean} тогда требует $\langle\delta\rangle=0$ при любой амплитуде внутри сепаратрисы. Частота маятника равна
+\begin{equation}
+\label{eq:sol-pend-exact}
+\frac{\Omega}{\omega_s}
+=\frac{\pi}{2\,\mathrm{K}\bigl(\sin^2(\varphi_{\max}/2)\bigr)},
+\end{equation}
+где $\mathrm{K}$ --- полный эллиптический интеграл первого рода, а $\varphi_{\max}$ --- размах фазы. Разложение по размаху,
+\begin{equation}
+\label{eq:sol-pend-series}
+\frac{\Omega}{\omega_s}
+=1
+-\frac{\varphi_{\max}^2}{16}
++\frac{\varphi_{\max}^4}{3072}
+-\frac{23\varphi_{\max}^6}{737280}
++\cdots,
+\end{equation}
+начинается с того же $-\varphi_m^2/16$.
+
+Множитель $\cos\varphi$ есть наклон напряжения, отсчитанный от устойчивой фазы. При конечном размахе частица проводит время там, где $|\cos\varphi|<1$, средняя возвращающая сила слабее, и частота падает. При $\eta_1=\Lambda=0$ сила нечётна по $\varphi$, орбита симметрична, и постоянной составляющей $\delta$ нет. На линейной орбите произведение $\varphi^2\delta$ тоже не имеет среднего: $\delta$ меняет знак, а $\varphi^2$ за период симметрично.
+
+Если $\eta_1$ или $\Lambda$ отличны от нуля, среднее по-прежнему исчерпывается тождеством~\eqref{eq:sol-mean}. Поправка фазы меняет $\delta_\eq$ только через $\langle\delta^2\rangle$. На порядках $\delta_m^2$ и $\delta_m^4$ этого изменения ещё нет: третья гармоника порядка $\varphi_m^2\delta_m$ даёт в $\langle\delta^2\rangle$ вклад порядка $\varphi_m^4\delta_m^2$. В частоту та же поправка входит сразу, членом~\eqref{eq:sol-domega-phi}. На удержанном порядке она складывается с~\eqref{eq:sol-omega}. Произведения $\varphi_m^2(\eta_1\delta_m/\eta_0)^2$ и $\varphi_m^2(\eta_1\Lambda/\eta_0^2)$ относятся к следующему порядку. Сумма, с которой ниже сравнивается счёт,
+\begin{equation}
+\label{eq:sol-omega-sum}
+\frac{\Omega}{\omega_s}
+=1
+-\frac{\eta_1\Lambda}{\eta_0^2}
+-\frac{5}{12}
+\Biggl(\frac{\eta_1\delta_m}{\eta_0}\Biggr)^2
+-\frac{\varphi_m^2}{16}.
+\end{equation}
+Член $-\varphi_m^2/16$ зависит от напряжения: $\omega_s\propto\sqrt{V}$, так что $\varphi_m$ содержит $\mu=\omega_\rf/\omega_s$. Член $5/12$ от напряжения не зависит.
+
+\subsection{Порядки и граница применимости}
+\label{sec:sol-order}
+
+В $\delta_\eq$ на порядке $\delta_m^2$ входит одно слагаемое, $-\eta_1\delta_m^2/(2\eta_0)$. Слагаемое $-\Lambda/\eta_0$ от амплитуды не зависит. На порядке $\delta_m^4$ при $\Lambda=0$ добавляется второй член~\eqref{eq:sol-a4}. Искажение орбиты множителем $\cos\varphi$ входит в $\delta_\eq$ членом порядка $\varphi_m^4\delta_m^2$.
+
+В частоту на порядке квадратов малых параметров входят все три члена~\eqref{eq:sol-omega-sum}.
+
+Квадратичное решение применимо, пока нелинейность мала рядом с линейной возвращающей силой и пока мал размах фазы,
+\begin{equation}
+\label{eq:sol-valid}
+\Biggl|\frac{\eta_1\delta_m}{\eta_0}\Biggr|\ll 1,
+\qquad
+\varphi_m\ll 1.
+\end{equation}
+При $\eta_0\to 0$ частота $\omega_s\propto\sqrt{|\eta_0|}$ исчезает, знаменатель $\delta_\eq$ расходится, и первое неравенство нарушается при любой фиксированной амплитуде: линейного осциллятора, вокруг которого велось разложение, уже нет. Тождество~\eqref{eq:sol-mean} превращается в $\eta_1\langle\delta^2\rangle+\Lambda=0$ и связывает амплитуду с $\Lambda$. Если $\eta_1$ и $\Lambda$ одного знака, решения нет, и средний синхронизм в оборванном ряде $\tau$ не достигается. Конечный $\langle\delta\rangle$ тогда определяется следующим членом этого ряда, который здесь не удерживается.
+
+\subsection{Численная проверка}
+\label{sec:sol-num}
+
+Время $\theta=\omega_s t$ и отношение $\mu=\omega_\rf/\omega_s$ приводят систему~\eqref{eq:set-system} к безразмерному виду
+\begin{equation}
+\label{eq:sol-dim}
+\frac{\mathrm{d}\varphi}{\mathrm{d}\theta}
+=\mu\,(\eta_0\delta+\eta_1\delta^2+\Lambda),
+\qquad
+\frac{\mathrm{d}\delta}{\mathrm{d}\theta}
+=-\frac{\sin\varphi}{\mu\,\eta_0}.
+\end{equation}
+В этих единицах линейная частота равна единице. Величины $\eta_0$, $\eta_1$, $\Lambda$, $\mu$ и $\delta_m$ условные: они не взяты из конкретного кольца, и среди них есть оба знака $\eta_0$.
+
+Система~\eqref{eq:sol-dim} проинтегрирована методом Дормана--Принса порядка 8 с относительной погрешностью $10^{-12}$, с множителем $\sin\varphi$ и без замены $\cos\varphi\to 1$. Период --- возвращение $\varphi$ к нулю в ту же сторону. Среднее берётся по этому периоду времени $\theta$. В формулы подставлена измеренная амплитуда первой гармоники. Сравнение сделано со сдвигом~\eqref{eq:sol-deq} и с частотой~\eqref{eq:sol-omega-sum}. Результаты собраны в таблице~\ref{tab:sol-num}.
+
+\begin{table}[htb]
+\caption{Полная система~\eqref{eq:sol-dim} и формулы~\eqref{eq:sol-deq}, \eqref{eq:sol-omega-sum}.
+В каждой паре строк верхняя получена интегрированием, нижняя --- из формул.
+Амплитуда $\delta_m$ --- измеренная первая гармоника.
+Время измеряется в $1/\omega_s$, $\mu=\omega_\rf/\omega_s$.}
+\label{tab:sol-num}
+\small
+\begin{ruledtabular}
+\begin{tabular}{rrrrrrrr}
+№ & $\eta_0$ & $\eta_1$ & $\Lambda$ & $\mu$ & $\delta_m$
+& $\langle\delta\rangle$ & $\Omega/\omega_s-1$ \\
+\hline
+1 & $-0.5$ & $0$ & $0$ & $10$ & $9.9996\times 10^{-3}$
+& $<10^{-17}$ & $-1.5628\times 10^{-4}$ \\
+ & & & & &
+& $0$ & $-1.5624\times 10^{-4}$ \\
+2 & $0.4$ & $0$ & $0$ & $10$ & $9.9998\times 10^{-3}$
+& $<10^{-17}$ & $-1.0001\times 10^{-4}$ \\
+ & & & & &
+& $0$ & $-9.9995\times 10^{-5}$ \\
+3 & $-0.5$ & $0.5$ & $0$ & $1$ & $1.0000\times 10^{-2}$
+& $5.0002\times 10^{-5}$ & $-4.3232\times 10^{-5}$ \\
+ & & & & &
+& $5.0000\times 10^{-5}$ & $-4.3229\times 10^{-5}$ \\
+4 & $0.4$ & $-0.8$ & $0$ & $1$ & $9.9999\times 10^{-3}$
+& $1.0002\times 10^{-4}$ & $-1.6771\times 10^{-4}$ \\
+ & & & & &
+& $9.9998\times 10^{-5}$ & $-1.6766\times 10^{-4}$ \\
+5 & $-0.5$ & $0.5$ & $2\times 10^{-5}$ & $1$ & $1.0000\times 10^{-2}$
+& $9.0008\times 10^{-5}$ & $-8.3239\times 10^{-5}$ \\
+ & & & & &
+& $9.0000\times 10^{-5}$ & $-8.3229\times 10^{-5}$ \\
+6 & $0.4$ & $-0.5$ & $2\times 10^{-5}$ & $1$ & $1.0000\times 10^{-2}$
+& $1.2500\times 10^{-5}$ & $-3.6043\times 10^{-6}$ \\
+ & & & & &
+& $1.2500\times 10^{-5}$ & $-3.6037\times 10^{-6}$ \\
+7 & $-0.5$ & $0.5$ & $0$ & $10$ & $9.9996\times 10^{-3}$
+& $4.9999\times 10^{-5}$ & $-1.9793\times 10^{-4}$ \\
+ & & & & &
+& $4.9996\times 10^{-5}$ & $-1.9790\times 10^{-4}$ \\
+8 & $-0.5$ & $0$ & $2\times 10^{-4}$ & $10$ & $9.9996\times 10^{-3}$
+& $4.0000\times 10^{-4}$ & $-1.5628\times 10^{-4}$ \\
+ & & & & &
+& $4.0000\times 10^{-4}$ & $-1.5624\times 10^{-4}$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+Во всех восьми орбитах невязка тождества~\eqref{eq:sol-mean} меньше $10^{-17}$. Это прямая проверка того, что среднее по времени требует $\langle\tau\rangle=0$ и при конечном $\varphi$.
+
+Строки 1 и 2 удерживают только поправку фазы, при $\eta_0<0$ и при $\eta_0>0$. Среднее лежит ниже $10^{-17}$. Частота совпадает с маятниковой формулой~\eqref{eq:sol-pend-exact} до $10^{-15}$. Отличие от $-\varphi_m^2/16$ равно $4.3\times 10^{-8}$ при $\varphi_m=0.050$ и $1.8\times 10^{-8}$ при $\varphi_m=0.040$ и является членом $\varphi_m^4$. При $\varphi_m=0.10$ и $0.20$ тот же остаток равен $-6.8\times 10^{-7}$ и $-1.10\times 10^{-5}$: отношение близко к $16$, как у четвёртой степени.
+
+Строки 3 и 4 удерживают член $5/12$ при малом $\mu$, снова при обоих знаках $\eta_0$. Остаток среднего, $2.6\times 10^{-9}$ и $2.1\times 10^{-8}$, совпадает со вторым членом~\eqref{eq:sol-a4} до $10^{-11}$. В строке 3 вторая гармоника равна $-1.6668\times 10^{-5}$ против $\eta_1\delta_m^2/(6\eta_0)=-1.6667\times 10^{-5}$.
+
+Строка 5 складывает перекрёстный член с членом $5/12$. Строка 6 делает то же при $\eta_0>0$, где перекрёстный член положителен и равен $+6.25\times 10^{-5}$, а член $5/12$ равен $-6.51\times 10^{-5}$. В частоте остаётся $-3.60\times 10^{-6}$, и счёт повторяет эту разность до $5\times 10^{-10}$.
+
+Строка 7 проверяет сумму фазовой поправки и члена $5/12$: $-\varphi_m^2/16=-1.562\times 10^{-4}$ и $-(5/12)(\eta_1\delta_m/\eta_0)^2=-4.167\times 10^{-5}$ дают вместе $-1.979\times 10^{-4}$. Остаток среднего в этой строке по-прежнему равен члену $\delta_m^4$ из~\eqref{eq:sol-a4}, до $10^{-12}$: при $\varphi_m=0.050$ поправка фазы в $\langle\delta\rangle$ ещё не видна.
+
+Строка 8 оставляет $\eta_1=0$ и конечные $\Lambda$ и $\varphi_m=0.050$. Среднее равно $-\Lambda/\eta_0=4\times 10^{-4}$ с невязкой $10^{-18}$. Частота совпадает со строкой 1: перекрёстный член при $\eta_1=0$ выключается, и остаётся маятник, сдвинутый по импульсу на постоянную.
+
+Отдельно, при замене $\cos\varphi\to 1$, то же интегрирование воспроизводит~\eqref{eq:sol-omega} и снимает остаток среднего членом~\eqref{eq:sol-a4}. Полная система таблицы от этого контроля отличается только учтённым $-\varphi_m^2/16$.

@@ -1,0 +1,59 @@
+\section{Определение коэффициента скольжения}
+\label{sec:ng}
+
+Нг строит фазовое уравнение из пролёта зазора~\cite{Ng2006}. На $(n{+}1)$-м проходе частица видит фазу поля на время $\Delta T_{n+1}$ позже синхронной частицы того же оборота. В тексте при (18.6) $T_{n+1}$ --- период синхронной частицы, $\Delta T_{n+1}$ --- лишнее время несинхронной. Фаза синхронной частицы есть $\omega_\rf t_n$, и $t_n$ складывается из синхронных периодов, так что разность фаз за оборот равна $\omega_\rf\Delta T_{n+1}$. Коэффициент скольжения --- это опоздание на тех же часах,
+\begin{equation}
+\label{eq:ng-def}
+\frac{\Delta T_{n+1}}{T_{n+1}}=\eta\,\delta.
+\end{equation}
+Делитель в (18.10) есть $T_s$ из~\eqref{eq:set-tau}, а $\eta=\eta_0+\eta_1\delta+\cdots$ есть ряд $\tau$. Сглаживание делит набег фазы на тот же период и при $\omega_\rf=h\omega_0$, $\omega_0=2\pi/T_s$ даёт (18.12): $\mathrm{d}\varphi/\mathrm{d}t=h\omega_0\eta\delta=\omega_\rf\tau$, первое уравнение~\eqref{eq:set-system}. Время $t$ --- часы синхронной частицы, $s=v_s t$ идёт вдоль её орбиты.
+
+Частота обращения есть $\omega=2\pi/T$. При $\tau=\eta_0\delta+\eta_1\delta^2$ отношение $\omega/\omega_0=T_s/T$ даёт
+\begin{equation}
+\label{eq:ng-omega}
+\frac{\omega}{\omega_0}
+=1-\eta_0\delta+(\eta_0^2-\eta_1)\delta^2+O(\delta^3).
+\end{equation}
+Формула (18.20), $\Delta\omega/\omega_0=-\eta\delta$, сравнивает~\eqref{eq:ng-omega} с $-\eta\delta$: коэффициент при $\delta$ в $\eta$ равен $\eta_1-\eta_0^2$. То же число стоит при $\delta^2$ в $(T-T_s)/T$, то есть знаменатель (18.20) --- период самой частицы. Формула (18.21), $\eta=-(1/\omega_0)\,\mathrm{d}\omega/\mathrm{d}\delta$, дифференцирует~\eqref{eq:ng-omega} и удваивает этот коэффициент: $2(\eta_1-\eta_0^2)$.
+
+Сдвиг раздела~\ref{sec:mag} есть $\delta_\eq=-\eta_1\delta_m^2/(2\eta_0)$ из $\langle\tau\rangle=0$. Подстановка коэффициента (18.20) или (18.21) в то же условие даёт
+\begin{align}
+\label{eq:ng-deq}
+\delta_\eq^{(18.20)}
+&=-\frac{(\eta_1-\eta_0^2)\,\delta_m^2}{2\eta_0}
+=\delta_\eq+\frac{\eta_0\,\delta_m^2}{2},
+\\
+\delta_\eq^{(18.21)}
+&=-\frac{(\eta_1-\eta_0^2)\,\delta_m^2}{\eta_0}
+=2\delta_\eq+\eta_0\,\delta_m^2.
+\end{align}
+В~\eqref{eq:set-system} стоит ряд~\eqref{eq:set-tau}; коэффициенты (18.20) и (18.21) туда не входят.
+
+В (18.4) длина есть $C=C_0\bigl[1+\alpha_0\delta\bigl(1+\alpha_1^{\mathrm{Ng}}\delta+\cdots\bigr)\bigr]$, так что коэффициент~\eqref{eq:set-C} равен $\alpha_1=\alpha_0\alpha_1^{\mathrm{Ng}}$. С этой заменой (18.17) и (18.18) переходят в $\eta_0$ и $\eta_1$ раздела~\ref{sec:mag}:
+\begin{equation}
+\label{eq:ng-eta}
+\eta_0=\alpha_0-\frac{1}{\gamma_s^2},
+\qquad
+\eta_1=\alpha_1-\frac{\alpha_0}{\gamma_s^2}
++\frac{1}{\gamma_s^4}+\frac{3\beta_s^2}{2\gamma_s^2}.
+\end{equation}
+
+Вывод записки делит опоздание на $T_s$. В~\cite{Senichev2013} формула (3), $\Delta T_\mathrm{rev}/T_\mathrm{rev}=\Delta(C/v)/(C/v)$, есть логарифмический дифференциал в синхронной точке. Ряд (5) собран из $T/T_s=(C/C_s)(v_s/v)$: делитель --- синхронный период. Квадратичный коэффициент (5) равен $\alpha_1-\alpha_0/\gamma_s^2+1/\gamma_s^4$. От $\eta_1$ его отделяет обрыв скорости на $\Delta v/v=\delta/\gamma_s^2$, член $3\beta_s^2/(2\gamma_s^2)$ (раздел~\ref{sec:mag}). При знаменателе $T$ коэффициент при $\delta^2$ равен $\eta_1-\eta_0^2$.
+
+В COSY~INFINITY печать карты даёт множители мономов~\cite{COSYmanual}: $(5|66)$ умножает $\delta_K^2$, и $\partial^2 l/\partial\delta_K^2=2\,(5|66)$. Формула (1) руководства,
+\begin{equation}
+\label{eq:ng-cosy}
+l=-(t-t_0)\,v_0\frac{\gamma_s}{1+\gamma_s},
+\qquad
+\delta_K=\frac{K-K_0}{K_0},
+\end{equation}
+пишет опорный лоренц-фактор как $\gamma$; здесь это $\gamma_s$, и $v_0=v_s$. Величина $K$ --- кинетическая энергия. На обороте $t-t_0=T-T_s$ и $C_s=v_s T_s$, поэтому $\tau=-(\gamma_s+1)l/(\gamma_s C_s)$, а
+$\delta_K=(\gamma_s+1)\delta/\gamma_s+(\gamma_s+1)\delta^2/(2\gamma_s^3)+O(\delta^3)$.
+Множитель $\mathrm{d}\delta_K/\mathrm{d}\delta=(\gamma_s+1)/\gamma_s$ переводит линейный моном в $\eta_0$. Квадратичный член $\delta_K(\delta)$ добавляет к $\eta_1$ вклад этого монома, поэтому удвоение одного $(5|66)$ не удваивает всё $\eta_1$. Мономы $l$ суть время: коэффициент пути $\alpha_1$ из них не читается.
+
+В MAD-X переменная TWISS есть $\mathrm{PT}=\Delta E/(p_s c)$~\cite{MADX}. Глава~39 даёт $\mathrm{PT}\approx\beta_s\delta$, $\beta_s=v_s/c$. В \S1.7.3 тот же множитель назван лоренц-фактором; рабочее соотношение --- (39.10). Сводка TWISS содержит линейное \texttt{ALFA} и не содержит $\alpha_1$. В \path{twiss.f90} при однооборотной матрице по $\mathrm{PT}$
+$\alpha_0=1/\gamma_s^2-\beta_s^2(R_{56}+\sum_i R_{5i}D_i)/C_s$,
+где $D_i$ --- дисперсии поперечных координат. Сводка \texttt{PTC\_TWISS} пишет \texttt{ALPHA\_C}, \texttt{ALPHA\_C\_P}, \texttt{ALPHA\_C\_P2}, \texttt{ALPHA\_C\_P3} и \texttt{ETA\_C}. Руководство называет три старших имени производными уплотнения по $\Delta p/p_0$ при \texttt{ICASE=56} и \texttt{time=false}. В \path{madx_ptc_twiss.f90} при \texttt{time=false} величина \texttt{ALPHA\_C\_P} есть удвоенный тейлоровский коэффициент $\delta^2$ в приращении пути, делённый на длину, так что $\alpha_0=\texttt{ALPHA\_C}$, $\alpha_1=\tfrac12\texttt{ALPHA\_C\_P}$ и $\eta_0=\texttt{ETA\_C}=\texttt{ALPHA\_C}-1/\gamma_s^2$.
+\texttt{ETA\_C} --- только линейный коэффициент, и $\eta_1$ из сводки не читается. Подстановка \texttt{ALPHA\_C\_P} вместо $\alpha_1$ сдвигает $\eta_1$ на истинное $\alpha_1$. При \texttt{time=true} внутренняя переменная есть $\mathrm{PT}$; при \texttt{ICASE=56} тот же файл всё равно заполняет производные по $\delta$, пересчётом из~\cite{Schmidt2018}. Фраза руководства про один \texttt{time=false} этого не описывает. В таблице \texttt{NONLIN} лежат коэффициенты многочлена; при \texttt{time=true} они остаются функциями $\Delta E/(p_0 c)$.
+
+Фазовое уравнение записки и формулы (3)--(5) работы~\cite{Senichev2013} делят опоздание на синхронный период, в согласии с (18.10); определения (18.20) и (18.21) в вывод не входят, а обрыв скорости разобран в разделе~\ref{sec:mag}. При чтении кодов коэффициент ряда и производная различаются множителем $2$ у $\alpha_1$, а переход от $\delta$ к $\delta_K$ или к $\mathrm{PT}$ меняет и $\alpha_1$, и $\eta_1$.

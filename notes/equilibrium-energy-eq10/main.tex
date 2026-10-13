@@ -1,0 +1,58 @@
+\documentclass[aps,pra,preprint,a4paper,amsmath,amssymb,longbibliography]{revtex4-2}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[main=russian,english]{babel}
+\usepackage{booktabs}
+\usepackage{url}
+% preprint-стиль REVTeX вставляет перед аннотацией склейку с fil и
+% штраф; вместе с babel она уносит аннотацию на следующую страницу.
+\makeatletter
+\def\frontmatter@abstract@produce{%
+  \par
+  \addvspace{\frontmatter@preabstractspace}%
+  \begingroup
+   \dimen@\baselineskip
+   \setbox\z@\vtop{\unvcopy\absbox}%
+   \advance\dimen@-\ht\z@\advance\dimen@-\prevdepth
+   \@ifdim{\dimen@>\z@}{\vskip\dimen@}{}%
+  \endgroup
+  \begingroup
+   \prep@absbox
+   \unvbox\absbox
+   \post@absbox
+  \endgroup
+  \@ifx{\@empty\mini@notes}{}{\mini@notes\par}%
+  \addvspace\frontmatter@postabstractspace
+}%
+\makeatother
+
+\newcommand{\zamech}[1]{\par\medskip\noindent\textbf{Замечание.} #1\par\medskip}
+\newcommand{\rf}{\mathrm{rf}}
+\newcommand{\eq}{\mathrm{eq}}
+
+\begin{document}
+
+\title{Равновесный сдвиг энергии в накопительном кольце\\ во втором порядке продольного движения}
+\author{Черновик}
+\affiliation{заметка}
+
+\begin{abstract}
+Продольные уравнения движения решаются при квадратичной зависимости периода обращения от отклонения энергии и с учётом бетатронного вклада в период. Из периодичности фазы следует точное условие $\langle\tau\rangle=0$, а метод Боголюбова--Митропольского даёт равновесный сдвиг $\delta_\eq=-(\eta_1\delta_m^2/2+\Lambda)/\eta_0$, вторую гармонику, сдвиг синхротронной частоты и поправку конечной фазы. Для магнитного кольца выведены $\eta_0$, $\eta_1$ и $\Lambda$; для электростатического --- те же коэффициенты с учётом изменения скорости в потенциале дефлектора, с примерами гладких колец с цилиндрическим и сферическим дефлекторами. Решение проверено интегрированием полной системы.
+\end{abstract}
+
+\maketitle
+
+\input{sections/1_setup}
+\input{sections/2_magnetic}
+\input{sections/3_betatron}
+\input{sections/4_solution}
+\input{sections/5_electrostatic}
+
+\appendix
+\input{sections/appA_bm}
+\input{sections/appB_numerics}
+
+\bibliography{references}
+
+\end{document}
