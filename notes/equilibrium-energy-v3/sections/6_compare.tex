@@ -1,24 +1,258 @@
 \section{Сравнение}
 \label{sec:compare}
 
-Во всех случаях равновесный сдвиг имеет вид \eqref{eq:deq-raw-L}, во втором порядке по фазе --- \eqref{eq:deq-ph-L} с тем же множителем $(1-\hat\varphi^2/32)$. Кольца различаются только коэффициентами $\eta_0$, $\eta_1$, $\Lambda$ и связью кинетической энергии с полной. Ниже индекс M отмечает магнитное кольцо, E --- электростатическое; формулы сравниваются при одинаковых $D$, $D_2$, $\rho$ и функциях Твисса.
+Индекс $\mathrm{M}$ отмечает магнитное кольцо глав~\ref{sec:mag-base}--\ref{sec:mag-phase}, индекс $\mathrm{E}$ --- электростатическое кольцо глав~\ref{sec:es-base} и~\ref{sec:es-beta}. В обоих кольцах равновесный сдвиг имеет один вид. Без бетатронного запаздывания и в первом порядке по фазе это \eqref{eq:deq} и \eqref{eq:deq-es}. С бетатронным запаздыванием --- \eqref{eq:deq-L} и \eqref{eq:deq-es-L}. Во втором порядке по фазе без $\Lambda$ результат \eqref{eq:deq-ph} переносится на электростатическое кольцо с заменой $\eta_0$ и $\eta_1$ на $\eta^{\mathrm{E}}$. Этот перенос записан в подразделе второго порядка по фазе главы~\ref{sec:es-base}. С запаздыванием $\Lambda$ магнитный результат --- три строки \eqref{eq:deq-ph-L}. Для электростатического кольца в них стоят $\eta^{\mathrm{E}}$ и $\Lambda^{\mathrm{E}}$. Множитель $(1-\hat\varphi^2/32)$ умножает $\langle\delta^2\rangle$ и не умножает $\Lambda$.
 
-На замкнутой орбите \eqref{eq:x-co} элемент пути \eqref{eq:dl} даёт коэффициенты \eqref{eq:C}
+Кольца различаются функциями $D_1$, $D_2$ и оптикой, по которым считаются $\eta_0$, $\eta_1$ и $\Lambda$. Внутри дефлектора скорость зависит от потенциала. Ниже $\eta_0^{\mathrm{E}}$ и $\eta_1^{\mathrm{E}}$ записаны как выражения \eqref{eq:tau} на орбите электростатического кольца плюс поправка. Поправка собрана из членов, пропорциональных $1/\gamma_s^2$. Их источник --- скорость в потенциале, ряд \eqref{eq:vsv-es}. Сами $D_1$ и функции Твисса у двух колец разные, потому что поперечные уравнения разные.
+
+\subsection{Дисперсия и длина орбиты}
+
+Функции $D_1(s)$ и $D_2(s)$ определены замкнутой орбитой \eqref{eq:xbeta}, \eqref{eq:x-co}: при нулевой бетатронной амплитуде $x=D_1\delta+D_2\delta^2$. Оба коэффициента периодичны с периодом кольца. В электростатическом кольце аргумент $\delta$ --- относительное отклонение модуля импульса вне дефлекторов.
+
+На этой орбите элемент пути \eqref{eq:dl} после интегрирования по кольцу даёт длину \eqref{eq:C}. Подстановка $x=D_1\delta+D_2\delta^2$ и $x'=D_1'\delta+O(\delta^2)$ оставляет при $\delta$ среднее $D_1/\rho$, а при $\delta^2$ --- среднее $D_2/\rho$ и половину среднего $D_1'^2$:
 \begin{equation}
-\label{eq:alpha-D}
-\alpha_0=\Bigl\langle\frac{D}{\rho}\Bigr\rangle_C,
+\label{eq:cmp-alpha}
+\alpha_0=\Biggl\langle\frac{D_1}{\rho}\Biggr\rangle_C,
 \qquad
-\alpha_1=\Bigl\langle\frac{D_2}{\rho}\Bigr\rangle_C+\frac12\langle D'^2\rangle_C .
+\alpha_1=\Biggl\langle\frac{D_2}{\rho}\Biggr\rangle_C+\frac12\langle D_1'^2\rangle_C.
 \end{equation}
-С ними \eqref{eq:tau}, \eqref{eq:eta0-es}, \eqref{eq:eta1-es}, \eqref{eq:Lambda-g} и \eqref{eq:Lambda-es} дают
-\begin{align}
-\eta_0^{\mathrm E}&=\eta_0^{\mathrm M}+\frac{\alpha_0}{\gamma_s^2},
-\label{eq:cmp-eta0}\\
-\eta_1^{\mathrm E}&=\eta_1^{\mathrm M}+\frac{1}{\gamma_s^2}\Biggl[\Bigl\langle\frac{D_2}{\rho}\Bigr\rangle_C+\frac{5-n}{2}\Bigl\langle\Bigl(\frac{D}{\rho}\Bigr)^2\Bigr\rangle_C-3\alpha_0\Biggr],
-\label{eq:cmp-eta1}\\
-\Lambda^{\mathrm E}&=\Lambda^{\mathrm M}+\frac{1}{\gamma_s^2C_s}\oint\Biggl[\frac{\langle x_{\mathrm{nl}}\rangle_\psi}{\rho}+\frac{5-n}{2}\,\frac{\langle x_\beta^2\rangle_\psi}{\rho^2}+\frac{n-1}{2}\,\frac{\langle y_\beta^2\rangle_\psi}{\rho^2}\Biggr]\mathrm{d}s.
-\label{eq:cmp-Lambda}
-\end{align}
-Все добавки пропорциональны $1/\gamma_s^2$: они возникают из изменения скорости в потенциале дефлектора \eqref{eq:vsv-es}. Хроматическая форма \eqref{eq:Lambda-xi} одна и та же в обоих кольцах.
+Среднее $\langle\,\rangle_C$ определено в \eqref{eq:avg-C}. Множитель $1/\rho$ стоит потому, что дуга радиуса $\rho+x$ длиннее опорного элемента $\mathrm{d}s$ в $(\rho+x)/\rho$ раз: относительное удлинение в данной точке есть $x/\rho$. На прямолинейном промежутке $1/\rho=0$, и радиальное смещение длину не меняет. Наклон $D_1'$ удлиняет путь и там, где поворота нет. Та же связь получается из \eqref{eq:dl-es}: квадраты $(x/\rho)^2$ в элементе пути уже сократились в главах~\ref{sec:mag-beta} и~\ref{sec:es-base}.
 
-В магнитном кольце кинетическая энергия отличается от полной на постоянную, и её равновесный сдвиг равен $\Delta E_\eq$ всюду. В электростатическом кольце это верно вне дефлекторов; внутри дефлектора сдвиг кинетической энергии равен \eqref{eq:dK}.
+Формула \eqref{eq:cmp-alpha} геометрическая. Какая орбита отвечает данному $\delta$, определяют уравнения движения. Дальше $\alpha_0^{\mathrm{M}}$, $\alpha_1^{\mathrm{M}}$ --- средние \eqref{eq:cmp-alpha} на дисперсии магнитного кольца, $\alpha_0^{\mathrm{E}}$, $\alpha_1^{\mathrm{E}}$ --- на дисперсии электростатического.
+
+В магнитном кольце $D_1$ --- периодическое решение \eqref{eq:D1}:
+\begin{equation}
+\label{eq:cmp-D-mag}
+D_1''+K_x D_1=\frac{1}{\rho}.
+\end{equation}
+Жёсткость $K_x$ --- коэффициент при $x$ в \eqref{eq:hill}. В секторном диполе $K_x=K_1+1/\rho^2$. На прямолинейном промежутке правая часть равна нулю.
+
+В дефлекторе $D_1$ удовлетворяет уравнению \eqref{eq:cmp-D-es} из раздела~\ref{sec:es-D}. Правая часть там равна $(1+1/\gamma_s^2)/\rho$, коэффициент при $D_1$ равен $(2-n+1/\gamma_s^2)/\rho^2$. Слагаемые $1/\gamma_s^2$ происходят из зависимости $pv$ от потенциала. На внешнем радиусе $\psi>0$, кинетическая энергия ниже, и то же поле поворачивает траекторию сильнее. В \eqref{eq:cmp-D-mag} на этих местах стоят $1/\rho$ и $K_x$. Вне дефлекторов $1/\rho=0$ и $\psi=0$, и \eqref{eq:cmp-D-es} переходит в $D_1''+K_1 D_1=0$.
+
+Коэффициент $D_2$ удовлетворяет тому же линейному оператору, что и $D_1$. Правая часть квадратична по $D_1$ и $D_1'$. Её дают квадрат смещения в геометрии и в поле, а также секступоли. Главы~\ref{sec:mag-base}--\ref{sec:es-beta} это уравнение не выписывают. В $\eta_0$ и $\eta_1$ входят не сами функции, а три средних \eqref{eq:cmp-alpha}.
+
+\subsection{Интеграл бетатронного запаздывания}
+
+Магнитное запаздывание $\Lambda^{\mathrm{M}}$ через наклоны и сдвиг центра есть \eqref{eq:Lambda-slopes}. При тонком повороте та же величина записана в \eqref{eq:Lambda-g}. Она считается по функциям Твисса \eqref{eq:twiss-x} и по $x_{\mathrm{nl}}$. Средние наклонов даны в \eqref{eq:xp2}: $\langle x_\beta'^2\rangle_\psi=J_x\gamma_x$ и $\langle y_\beta'^2\rangle_\psi=J_y\gamma_y$. Здесь $\gamma_x$ и $\gamma_y$ --- функции Твисса, не лоренц-фактор.
+
+Электростатический интеграл \eqref{eq:Lambda-es} использует те же наклоны и тот же $x_{\mathrm{nl}}$. К ним добавляются члены, пропорциональные $1/\gamma_s^2$. Коэффициент при $\langle x_\beta^2\rangle_\psi/\rho^2$ равен $(5-n)/(2\gamma_s^2)$, при $\langle y_\beta^2\rangle_\psi/\rho^2$ --- $(n-1)/(2\gamma_s^2)$, при $x_{\mathrm{nl}}/\rho$ --- $1+1/\gamma_s^2$. Вне дефлекторов $1/\rho=0$, и в интеграле остаётся наклон. Слагаемое $x_{\mathrm{nl}}$ уже есть среднее по бетатронной фазе, как в главе~\ref{sec:mag-beta}. Подстановка $\langle x_\beta^2\rangle_\psi=J_x\beta_x$, $\langle y_\beta^2\rangle_\psi=J_y\beta_y$ и \eqref{eq:xp2} переводит \eqref{eq:Lambda-es} в \eqref{eq:Lambda-es-J}.
+
+Сдвиг $x_{\mathrm{nl}}$ квадратичен по амплитуде. Колебание на бетатронной частоте собрано в $x_\beta$. В магнитном кольце этот сдвиг дают секступоли, кривизна и краевые поля. В электростатическом кольце к ним добавляется зависимость поля от радиуса. При $E_r\propto r^{-n}$ глава~\ref{sec:es-beta} получает $x_{\mathrm{nl}}\neq 0$ при нулевых секступолях. Общей замкнутой формулы для произвольной решётки нет.
+
+Если $\beta_x$ и $\beta_y$ постоянны, то $\alpha_x=\alpha_y=0$ и $\gamma_x=1/\beta_x$. По \eqref{eq:nu-def} выполнено $\oint\gamma_x\,\mathrm{d}s=2\pi\nu_x$. Вклад наклона в \eqref{eq:Lambda-es} равен $\pi J_x\nu_x/C_s$, и так же в вертикальной плоскости. Сумма этих двух вкладов есть \eqref{eq:Lambda-nu}.
+
+Члены с $1/\rho^2$ берутся из \eqref{eq:Lambda-es} с коэффициентами $(5-n)/(2\gamma_s^2)$ и $(n-1)/(2\gamma_s^2)$. При одном и том же $\rho$ во всех дефлекторах и при полном угле поворота $2\pi$ длина дефлекторов равна $2\pi\rho$, поэтому $\oint\mathrm{d}s/\rho^2=2\pi/\rho$. В том же приближении $\beta_x=C_s/(2\pi\nu_x)$ и $\beta_y=C_s/(2\pi\nu_y)$. Подстановка $\langle x_\beta^2\rangle_\psi=J_x\beta_x$ и $\langle y_\beta^2\rangle_\psi=J_y\beta_y$ даёт оценку
+\begin{equation}
+\label{eq:cmp-smooth}
+\begin{aligned}
+\Lambda^{\mathrm{E}}
+&\approx\frac{\pi}{C_s}\bigl(J_x\nu_x+J_y\nu_y\bigr)
++\frac{J_x(5-n)}{2\gamma_s^2\nu_x\rho}
++\frac{J_y(n-1)}{2\gamma_s^2\nu_y\rho}\\
+&\quad+\Biggl(1+\frac{1}{\gamma_s^2}\Biggr)
+\frac{1}{C_s}\oint\frac{x_{\mathrm{nl}}}{\rho}\,\mathrm{d}s.
+\end{aligned}
+\end{equation}
+Первое слагаемое --- вклад наклонов, \eqref{eq:Lambda-nu}. Два следующих --- потенциал при постоянных бета-функциях и при общем радиусе дефлекторов. Слагаемое с $x_{\mathrm{nl}}$ перенесено из \eqref{eq:Lambda-es} вместе с множителем $1+1/\gamma_s^2$: постоянная бета-функция этот сдвиг не задаёт. На общей решётке \eqref{eq:cmp-smooth} --- оценка. Рабочий интеграл --- \eqref{eq:Lambda-es}. Через хроматичность то же запаздывание записано в \eqref{eq:Lambda-es-xi}.
+
+\subsection{Хроматичность}
+
+В обоих кольцах $\Lambda=-2\pi(J_x\xi_x+J_y\xi_y)/C_s$ с полной хроматичностью своего кольца. Для магнитного кольца это \eqref{eq:Lambda-xi}. Для электростатического --- \eqref{eq:Lambda-es-xi}, с $\xi_x^{\mathrm{E}}$ и $\xi_y^{\mathrm{E}}$. Производные берутся при $\delta=0$ и при нулевых действиях. В электростатическом кольце аргумент $\delta$ --- модуль импульса вне дефлекторов, \eqref{eq:delta-def}.
+
+В магнитном кольце \eqref{eq:Lambda-xi} выведено через удлинение пути для тонких поворотов. Сравниваются \eqref{eq:Lambda-g}, \eqref{eq:xi-x} и \eqref{eq:xi-y} при $K_x=K_1$. Для секторных диполей эти явные интегралы нужно дополнить. Само равенство с полными $\xi_x$ и $\xi_y$ проверено численно на ячейке FODO с секторными диполями и тонкими квадруполями. Относительная точность --- $10^{-4}$ в плоскости орбиты и $10^{-8}$ в вертикальной плоскости. Краевое поле в этот счёт не входило.
+
+В электростатическом кольце почленное сравнение \eqref{eq:Lambda-es-J} с \eqref{eq:xi-es} до \eqref{eq:Lambda-es-xi} не доведено. Вертикальная явная часть \eqref{eq:dKy-expl} согласована с наклоном и с членом $(n-1)$. Горизонтальный остаток \eqref{eq:dKx-gap}, члены с наклонами в уравнении для $x$, расхождение $2(n-1)/\rho^3$ и стык дефлектора с прямолинейным промежутком остаются вне этой выкладки. Равенство \eqref{eq:Lambda-es-xi} проверено численно на периодической ячейке главы~\ref{sec:es-beta}. В ячейке секторные дефлекторы, прямолинейные промежутки и тонкие магнитные квадруполи. Отдельный счёт выполнен с тонкими секступолями.
+
+Кольца различаются составом $\xi$. В магнитном кольце градиент делится на $1+\delta$, а секступоль на орбите $x=D_1\delta$ добавляет $K_2 D_1$, как в \eqref{eq:xi-x} и \eqref{eq:xi-y}. В электростатическом кольце на магнитных элементах остаётся \eqref{eq:dK-mag}. Тело дефлектора даёт жёсткости \eqref{eq:Kx-es} и \eqref{eq:Ky-es}. Показатель $n$ переносит фокусировку из плоскости орбиты в вертикальную плоскость: в $K_x$ входит $2-n$, в $K_y$ входит $n-1$. Множитель $1/\gamma_s^2$ в $K_x$ --- замедление на внешнем радиусе, где $pv$ меньше. В магнитном диполе этого вклада нет.
+
+Если $\xi_x=\xi_y=0$, правая часть \eqref{eq:Lambda-xi} равна нулю, и $\Lambda^{\mathrm{M}}=0$. Это относится к тонким секступолям и к первому порядку по действию. В электростатическом кольце обнуление $\xi_x^{\mathrm{E}}$ и $\xi_y^{\mathrm{E}}$ обращает в нуль правую часть \eqref{eq:Lambda-es-xi}, если само равенство выполнено. Явные интегралы главы~\ref{sec:es-beta} такое обнуление не доказывают: горизонтальный остаток в них не вошёл. Натуральную часть поправляют секступоли и нелинейность дефлектора. Вклад дефлектора фиксирован показателем $n$.
+
+В магнитном выводе интеграл одних наклонов $\oint\gamma\,\mathrm{d}s$ при $\xi=0$ в нуль не обращается: его компенсирует сдвиг центра. Секступоль в линейное уравнение для $D_1$ не входит. Сила секступоля квадратична по смещению, и на опорной орбите, проходящей через его центр, линейного члена нет. На орбите $x=D_1\delta$ та же сила пропорциональна $\delta^2$ и стоит в правой части уравнения для $D_2$. Поэтому $\alpha_1$ и $\eta_1$ от этих секступолей зависят. Величина сдвига $\eta_1$ в главах~\ref{sec:mag-base}--\ref{sec:es-beta} не получена. Коэффициенты $\eta_0$ и $\alpha_0$ коррекция не меняет.
+
+После коррекции в \eqref{eq:deq-L} и \eqref{eq:deq-es-L} остаётся продольный член
+\begin{equation}
+\label{eq:cmp-deq-xi0}
+\delta_\eq=-\frac{\eta_1\delta_m^2}{2\eta_0}.
+\end{equation}
+Во втором порядке по фазе при члене с $\eta_1$ стоит множитель $(1-\hat\varphi^2/32)$ из \eqref{eq:deq-ph-L}. На $\Lambda$ этот множитель не действует, поэтому при $\Lambda=0$ он остаётся у члена с $\eta_1$.
+
+Зависимость $\Lambda$ от $\delta$ в продольных уравнениях отброшена как член порядка $\delta J$. Условие $\xi=0$ относится к той же точке $\delta=0$, в которой $\Lambda$ вычислено. Производная тюна второго порядка по $\delta$ в сохранённый $\Lambda$ не входит.
+
+\subsection{Сравнение коэффициентов}
+
+Магнитная форма --- выражение \eqref{eq:tau}, в которое подставлены геометрические $\alpha_0$ и $\alpha_1$ рассматриваемого кольца. Для электростатического кольца это его собственные $\alpha_0^{\mathrm{E}}$ и $\alpha_1^{\mathrm{E}}$.
+
+Линейные коэффициенты
+\begin{equation}
+\label{eq:cmp-eta0}
+\eta_0^{\mathrm{M}}
+=\alpha_0^{\mathrm{M}}-\frac{1}{\gamma_s^2},
+\qquad
+\eta_0^{\mathrm{E}}
+=\Bigl(1+\frac{1}{\gamma_s^2}\Bigr)\alpha_0^{\mathrm{E}}-\frac{1}{\gamma_s^2}.
+\end{equation}
+Первое есть \eqref{eq:tau}, второе --- \eqref{eq:eta0-es}. Разность
+\begin{equation}
+\label{eq:cmp-eta0-diff}
+\eta_0^{\mathrm{E}}-\eta_0^{\mathrm{M}}
+=\bigl(\alpha_0^{\mathrm{E}}-\alpha_0^{\mathrm{M}}\bigr)
++\frac{\alpha_0^{\mathrm{E}}}{\gamma_s^2}.
+\end{equation}
+Первое слагаемое --- разность удлинений орбиты. Функции $D_1^{\mathrm{E}}$ и $D_1^{\mathrm{M}}$ удовлетворяют \eqref{eq:cmp-D-es} и \eqref{eq:cmp-D-mag}. Второе слагаемое пропорционально $1/\gamma_s^2$. Его источник --- скорость в потенциале. На внешней орбите $\psi>0$, кинетическая энергия ниже, частица медленнее. В ряде \eqref{eq:vsv-es} это член $(D_1/\rho)\delta/\gamma_s^2$, и его среднее есть $\alpha_0^{\mathrm{E}}/\gamma_s^2$.
+
+Квадратичный магнитный коэффициент есть \eqref{eq:tau},
+\begin{equation}
+\label{eq:cmp-eta1-mag}
+\eta_1^{\mathrm{M}}
+=\alpha_1^{\mathrm{M}}-\frac{\alpha_0^{\mathrm{M}}}{\gamma_s^2}
++\frac{3\gamma_s^2-1}{2\gamma_s^4}.
+\end{equation}
+Электростатический \eqref{eq:eta1-es} на тех же обозначениях \eqref{eq:cmp-alpha} равен магнитной форме на $\alpha^{\mathrm{E}}$ плюс поправка:
+\begin{equation}
+\label{eq:cmp-eta1}
+\begin{aligned}
+\eta_1^{\mathrm{E}}
+&=\alpha_1^{\mathrm{E}}-\frac{\alpha_0^{\mathrm{E}}}{\gamma_s^2}
++\frac{3\gamma_s^2-1}{2\gamma_s^4}\\
+&\quad+\frac{1}{\gamma_s^2}\Biggl[
+\Biggl\langle\frac{D_2}{\rho}\Biggr\rangle_C
++\frac{5-n}{2}
+\Biggl\langle\Bigl(\frac{D_1}{\rho}\Bigr)^2\Biggr\rangle_C
+-3\alpha_0^{\mathrm{E}}
+\Biggr].
+\end{aligned}
+\end{equation}
+В скобке стоят $D_1$ и $D_2$ электростатического кольца. Наклон $\langle D_1'^2\rangle_C$ в поправку не входит: он уже учтён в $\alpha_1^{\mathrm{E}}$, а произведение наклона с поправкой скорости есть третий порядок, как в выводе \eqref{eq:eta1-es}.
+
+Член $\langle D_2/\rho\rangle_C$ в скобке --- линейный потенциал на смещении $D_2\delta^2$, тот же механизм, что $\alpha_0^{\mathrm{E}}/\gamma_s^2$ в \eqref{eq:cmp-eta0-diff}. Геометрическая часть $D_2$ уже сидит в $\alpha_1^{\mathrm{E}}$. Член $(5-n)/2\,\langle(D_1/\rho)^2\rangle_C$ собран в главе~\ref{sec:es-base} из трёх вкладов: $-n/2$ от квадратичного потенциала, $+1$ от произведения удлинения дуги и линейного замедления, $+3/2$ от квадрата $3(\delta-\psi)^2/(2\gamma_s^2)$. Слагаемое $-3\alpha_0^{\mathrm{E}}$ внутри скобки, то есть $-3\alpha_0^{\mathrm{E}}/\gamma_s^2$ в $\eta_1^{\mathrm{E}}$, --- перекрёстный член того же квадрата. На орбите $\delta-\psi=(1-D_1/\rho)\delta$, и $(1-D_1/\rho)^2$ содержит $-2D_1/\rho$. В магнитном кольце $\psi=0$ вдоль всей орбиты, поэтому такого перекрёстного члена нет. Общий кусок $(3\gamma_s^2-1)/(2\gamma_s^4)$ в разности коэффициентов сокращается.
+
+Разность коэффициентов двух колец поэтому содержит и разные $\alpha$, и потенциал:
+\begin{equation}
+\label{eq:cmp-eta1-diff}
+\begin{aligned}
+\eta_1^{\mathrm{E}}-\eta_1^{\mathrm{M}}
+&=\bigl(\alpha_1^{\mathrm{E}}-\alpha_1^{\mathrm{M}}\bigr)
+-\frac{\alpha_0^{\mathrm{E}}-\alpha_0^{\mathrm{M}}}{\gamma_s^2}\\
+&\quad+\frac{1}{\gamma_s^2}\Biggl[
+\Biggl\langle\frac{D_2}{\rho}\Biggr\rangle_C
++\frac{5-n}{2}
+\Biggl\langle\Bigl(\frac{D_1}{\rho}\Bigr)^2\Biggr\rangle_C
+-3\alpha_0^{\mathrm{E}}
+\Biggr].
+\end{aligned}
+\end{equation}
+Первая строка --- разность геометрических $\alpha_1$. Вторая и третья строки пропорциональны $1/\gamma_s^2$. Вторая --- разность членов $-\alpha_0/\gamma_s^2$ из \eqref{eq:tau} на двух орбитах. Третья --- потенциал электростатического кольца, та же скобка, что в \eqref{eq:cmp-eta1}. В $\alpha_1^{\mathrm{E}}$ входит дисперсия электростатического кольца, поэтому зависимость $D_1$ и $D_2$ от $1/\gamma_s^2$ входит и в первую строку.
+
+Бетатронное запаздывание сравнивается так же. Геометрическая часть --- наклоны и сдвиг орбиты. Это выражение \eqref{eq:Lambda-slopes} на функциях Твисса и на $x_{\mathrm{nl}}$ электростатического кольца. По \eqref{eq:xp2} оно равно
+\begin{equation}
+\label{eq:cmp-geom}
+\begin{aligned}
+&\frac{1}{C_s}\oint\Biggl(
+\frac{x_{\mathrm{nl}}}{\rho}
++\frac{\langle x_\beta'^2\rangle_\psi+\langle y_\beta'^2\rangle_\psi}{2}
+\Biggr)\mathrm{d}s
+\\
+&\qquad=
+\frac{1}{C_s}\Biggl[
+\frac{J_x}{2}\oint\gamma_x\,\mathrm{d}s
++\frac{J_y}{2}\oint\gamma_y\,\mathrm{d}s
++\oint\frac{x_{\mathrm{nl}}}{\rho}\,\mathrm{d}s
+\Biggr].
+\end{aligned}
+\end{equation}
+Магнитное $\Lambda^{\mathrm{M}}$ есть та же геометрическая часть на оптике магнитного кольца. Вычитание правой части \eqref{eq:cmp-geom} из \eqref{eq:Lambda-es-J} оставляет часть \eqref{eq:Lambda-es}, пропорциональную $1/\gamma_s^2$:
+\begin{equation}
+\label{eq:cmp-Lambda}
+\begin{aligned}
+&\Lambda^{\mathrm{E}}
+-\frac{1}{C_s}\Biggl[
+\frac{J_x}{2}\oint\gamma_x\,\mathrm{d}s
++\frac{J_y}{2}\oint\gamma_y\,\mathrm{d}s
++\oint\frac{x_{\mathrm{nl}}}{\rho}\,\mathrm{d}s
+\Biggr]
+\\
+&\quad=\frac{1}{C_s\gamma_s^2}
+\Biggl(
+\frac{J_x}{2}\oint\frac{(5-n)\beta_x}{\rho^2}\,\mathrm{d}s
++\frac{J_y}{2}\oint\frac{(n-1)\beta_y}{\rho^2}\,\mathrm{d}s
++\oint\frac{x_{\mathrm{nl}}}{\rho}\,\mathrm{d}s
+\Biggr).
+\end{aligned}
+\end{equation}
+Первые два интеграла --- те же вклады потенциала, что в \eqref{eq:Lambda-es}, теперь на средних $\langle x_\beta^2\rangle_\psi=J_x\beta_x$ и $\langle y_\beta^2\rangle_\psi=J_y\beta_y$. Коэффициенты при этих средних --- $(5-n)/(2\gamma_s^2)$ и $(n-1)/(2\gamma_s^2)$. Вертикальное отклонение входит в свой член из \eqref{eq:psi}. Третий интеграл --- скорость на сдвиге центра. Удлинение пути от $x_{\mathrm{nl}}$ уже стоит в \eqref{eq:cmp-geom}, а множитель $1/\gamma_s^2$ берётся из \eqref{eq:v-delta0}.
+
+Формула \eqref{eq:cmp-Lambda} --- потенциал на оптике электростатического кольца. В разности $\Lambda^{\mathrm{E}}-\Lambda^{\mathrm{M}}$ к этому потенциалу добавляются разные $\beta_x$, $\gamma_x$ и $x_{\mathrm{nl}}$ двух колец.
+
+\subsection{Эффективный лоренц-фактор}
+
+В главах~\ref{sec:mag-base}, \ref{sec:mag-beta}, \ref{sec:es-base} и~\ref{sec:es-beta} величина $\gamma_{\mathrm{eff}}$ --- среднее лоренц-фактора за синхротронный период там, где потенциал равен нулю. Усреднение ряда \eqref{eq:gamma-delta} оставляет $\gamma_s$, член $\beta_s^2\gamma_s\delta_\eq$ и член $\beta_s^2\langle\delta^2\rangle/(2\gamma_s)$. Множитель $\beta_s^2$ переводит $\delta$ в приращение $\gamma$, остаток есть $O(\delta_m^4)$. В первом порядке по фазе $\langle\delta^2\rangle=\delta_m^2/2$, во втором --- $(\delta_m^2/2)(1-\hat\varphi^2/32)$. Член с $\Lambda$ входит в это среднее только через $\delta_\eq$. Та же запись собрана в \eqref{eq:cmp-master}.
+
+Формула (10) коллег сохраняет свободный член и член с $\delta_\eq$:
+\begin{equation}
+\label{eq:cmp-colleagues}
+\gamma_{\mathrm{eff}}
+=\gamma_s+\beta_s^2\gamma_s\,\delta_\eq.
+\end{equation}
+Разность полного среднего и \eqref{eq:cmp-colleagues} равна $\beta_s^2\langle\delta^2\rangle/(2\gamma_s)$. Оба сдвига второго порядка по $\delta_m$, поскольку само $\delta_\eq$ порядка $\delta_m^2$. Отношение отброшенного члена к модулю сохранённого есть
+\begin{equation}
+\label{eq:cmp-ratio}
+\frac{\langle\delta^2\rangle}{2\gamma_s^2\,|\delta_\eq|}
+=\frac{|\eta_0|\,\delta_m^2}
+{4\gamma_s^2\bigl|\eta_1\delta_m^2/2+\Lambda\bigr|}.
+\end{equation}
+Равенство \eqref{eq:cmp-ratio} записано при $\sin\varphi\approx\varphi$. При $\Lambda=0$ правая часть есть $|\eta_0|/(2|\eta_1|\gamma_s^2)$, как после \eqref{eq:gamma-eff}. Множитель $(1-\hat\varphi^2/32)$ в отношении сокращается, и амплитуда $\delta_m$ в него не входит. Отношение порядка единицы, когда $|\eta_1|$ порядка $|\eta_0|/\gamma_s^2$, и мало, когда $|\eta_1|$ много больше этой величины. Множитель $1/\gamma_s^2$ в \eqref{eq:cmp-ratio} происходит из кинематического члена $\beta_s^2\langle\delta^2\rangle/(2\gamma_s)$, отнесённого к сдвигу $\beta_s^2\gamma_s\delta_\eq$. При $\eta_1=0$ в знаменателе стоит $|\Lambda|$. Условие $|\Lambda/(\eta_0\delta_m)|\ll 1$ само по себе это отношение малым не делает. После коррекции хроматичности сравнение снова идёт через $\eta_1$, уже сдвинутое секступолями. Величина сдвига в записке не вычислена.
+
+В электростатическом кольце среднее \eqref{eq:cmp-master} относится к участкам с $\Phi=0$. Внутри дефлектора в фиксированной точке $s$ среднее по бетатронной фазе и по синхротронному периоду есть \eqref{eq:gamma-loc-avg}. Из $\gamma_{\mathrm{eff}}$ вычитается $\beta_s^2\gamma_s\langle\psi\rangle_s$, а $\langle\psi\rangle_s$ берётся из \eqref{eq:psi-avg-s}. Первое слагаемое \eqref{eq:psi-avg-s} даёт в вычитаемом член $\beta_s^2\gamma_s(D_1/\rho)\delta_\eq$. Множитель $D_1/\rho$ берётся из орбиты в этой точке. Внутри дефлектора $D_1$ задано уравнением \eqref{eq:cmp-D-es}. Одно число $\langle\psi\rangle$ по всему дефлектору из \eqref{eq:psi-avg-s} не получается: для него нужен вес вдоль $s$, а уравнение продольного движения этот вес не фиксирует.
+
+Записка вычисляет эти средние и не выводит частоту прецессии спина. Формула \eqref{eq:cmp-colleagues} совпадает с частью $\langle\gamma\rangle$, линейной по $\delta_\eq$, вне дефлекторов и в магнитном кольце. Внутри дефлектора усредняется локальный кинетический лоренц-фактор \eqref{eq:gamma-loc-avg}.
+
+Сводка собрана в одной записи. Средний квадрат берётся на решении соответствующего порядка: $\langle\delta^2\rangle=\delta_m^2/2$ при $\sin\varphi\approx\varphi$ и $\langle\delta^2\rangle=(\delta_m^2/2)(1-\hat\varphi^2/32)$ при учёте $\varphi^3$. Множитель $(1-\hat\varphi^2/32)$ не умножает $\Lambda$.
+\begin{equation}
+\label{eq:cmp-master}
+\begin{aligned}
+\delta_\eq
+&=-\frac{1}{\eta_0}\bigl(\eta_1\langle\delta^2\rangle+\Lambda\bigr),\\[2pt]
+\gamma_{\mathrm{eff}}
+&=\gamma_s+\beta_s^2\gamma_s\,\delta_\eq
++\frac{\beta_s^2}{2\gamma_s}\langle\delta^2\rangle.
+\end{aligned}
+\end{equation}
+Остаток в $\gamma_{\mathrm{eff}}$ имеет порядок $\delta_m^4$. Какой коэффициент подставить, указано в таблице. Для электростатического кольца при $\Lambda^{\mathrm{E}}=0$ первая строка есть \eqref{eq:deq-ph} с $\eta^{\mathrm{E}}$, как в подразделе второго порядка по фазе главы~\ref{sec:es-base}. Строки $\gamma_{\mathrm{eff}}$ получаются усреднением \eqref{eq:gamma-delta} с тем же $\langle\delta^2\rangle$. При ненулевом $\Lambda^{\mathrm{E}}$ строки $\delta_\eq$ и $\gamma_{\mathrm{eff}}$ имеют вид \eqref{eq:deq-ph-L} с коэффициентами этого кольца. Глава~\ref{sec:es-beta} выводит \eqref{eq:deq-es-L} при $\sin\varphi\approx\varphi$.
+
+\begin{center}
+\begingroup
+\newcommand{\cmpcell}[1]{\parbox[t]{0.36\textwidth}{\raggedright #1\strut}}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}llp{0.28\textwidth}@{}}
+\hline
+случай & $\eta$, $\Lambda$ & формулы \\
+\hline
+\cmpcell{магнитное, без $\Lambda$, $\sin\varphi\approx\varphi$}
+& $\eta^{\mathrm{M}}$, $\Lambda=0$
+& \eqref{eq:deq}, \eqref{eq:gamma-eff} \\
+\cmpcell{магнитное, без $\Lambda$, до $\varphi^3$}
+& $\eta^{\mathrm{M}}$, $\Lambda=0$
+& \eqref{eq:deq-ph}, \eqref{eq:deq-ph-L} \\
+\cmpcell{магнитное, с $\Lambda$, $\sin\varphi\approx\varphi$}
+& $\eta^{\mathrm{M}}$, $\Lambda^{\mathrm{M}}$
+& \eqref{eq:deq-L}, \eqref{eq:gamma-L} \\
+\cmpcell{магнитное, с $\Lambda$, до $\varphi^3$}
+& $\eta^{\mathrm{M}}$, $\Lambda^{\mathrm{M}}$
+& \eqref{eq:deq-ph-L} \\
+\cmpcell{электростатическое, без $\Lambda$, $\sin\varphi\approx\varphi$}
+& $\eta^{\mathrm{E}}$, $\Lambda=0$
+& \eqref{eq:deq-es}, \eqref{eq:gamma-eff-es} \\
+\cmpcell{электростатическое, без $\Lambda$, до $\varphi^3$}
+& $\eta^{\mathrm{E}}$, $\Lambda=0$
+& \eqref{eq:deq-ph}, \eqref{eq:deq-ph-L} \\
+\cmpcell{электростатическое, с $\Lambda$, $\sin\varphi\approx\varphi$}
+& $\eta^{\mathrm{E}}$, $\Lambda^{\mathrm{E}}$
+& \eqref{eq:deq-es-L}, \eqref{eq:gamma-es-L} \\
+\cmpcell{электростатическое, с $\Lambda$, до $\varphi^3$}
+& $\eta^{\mathrm{E}}$, $\Lambda^{\mathrm{E}}$
+& \eqref{eq:deq-ph-L} \\
+\hline
+\end{tabular}
+\endgroup
+\end{center}
+Ссылка на \eqref{eq:deq-ph-L} означает все три строки формулы с коэффициентами данного кольца; при $\Lambda=0$ эта постоянная равна нулю. Внутри дефлектора вместо $\gamma_{\mathrm{eff}}$ стоит \eqref{eq:gamma-loc-avg}.
