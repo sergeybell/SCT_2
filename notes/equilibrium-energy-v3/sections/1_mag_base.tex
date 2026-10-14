@@ -3,24 +3,14 @@
 
 \subsection{Обозначения}
 
-Индекс $s$ отмечает синхронную частицу: импульс $p_s$, скорость $v_s=\beta_s c$, лоренц-фактор $\gamma_s$, энергия $E_s=\gamma_s mc^2$, длина орбиты $C_s$, период обращения $T_s=C_s/v_s$.
+Индекс $s$ отмечает синхронную частицу: импульс $p_s$, скорость $v_s=\beta_s c$, лоренц-фактор $\gamma_s$, энергия $E_s=\gamma_s mc^2$, длина орбиты $C_s$, период обращения $T_s=C_s/v_s$. Здесь $m$ --- масса покоя, $c$ --- скорость света; по определению $\beta_s$ и $\gamma_s$ выполнено $\beta_s^2=1-1/\gamma_s^2$.
 
-Отклонения импульса и энергии частицы:
+Основная переменная --- относительное отклонение импульса
 \begin{equation}
 \label{eq:delta-def}
-\delta=\frac{p-p_s}{p_s},
-\qquad
-w=\frac{E-E_s}{\beta_s^2E_s}.
+\delta=\frac{p-p_s}{p_s}.
 \end{equation}
-Из $\mathrm{d}E/\mathrm{d}p=v$ и $\mathrm{d}^2E/\mathrm{d}p^2=c^2/(\gamma^2E)$
-\begin{equation}
-\label{eq:w-series}
-w=\delta+\frac{\delta^2}{2\gamma_s^2}+O(\delta^3),
-\qquad
-\delta=w-\frac{w^2}{2\gamma_s^2}+O(w^3).
-\end{equation}
-
-Фаза $\varphi$ --- фаза ВЧ-поля в момент прохождения частицей зазора, отсчитанная от синхронной частицы; она растёт, когда частица опаздывает. Кратность $h$, частота $\omega_\rf=2\pi h/T_s$, напряжение зазора $V\sin(\varphi_s+\varphi)$, заряд $q$. Номер оборота $k$, время $t=kT_s$. Относительное запаздывание за оборот
+Фаза $\varphi$ --- фаза ВЧ-поля в момент прохождения частицей ускоряющего резонатора, отсчитанная от синхронной частицы. Она растёт, когда частица опаздывает. В кольце один ускоряющий резонатор, кратность $h$, круговая частота $\omega_\rf=2\pi h/T_s$, напряжение $V\sin(\varphi_s+\varphi)$, заряд частицы $q$. Ускорения нет: синхронная частица за оборот не меняет энергию, $qV\sin\varphi_s=0$. При $qV\neq 0$ отсюда следует $\sin\varphi_s=0$, так что $\varphi_s=0$ или $\pi$. Номер оборота обозначается $k$, время $t=kT_s$. Относительное запаздывание за оборот
 \begin{equation}
 \label{eq:tau-def}
 \tau=\frac{T-T_s}{T_s},
@@ -29,140 +19,346 @@ w=\delta+\frac{\delta^2}{2\gamma_s^2}+O(\delta^3),
 
 \subsection{Запаздывание за оборот}
 
-В магнитном поле скорость вдоль траектории постоянна, поэтому $T=C/v$ и точно
+В магнитном поле модуль скорости вдоль траектории постоянен, поэтому $T=C/v$ и
 \begin{equation}
 \label{eq:T-ratio}
-\frac{T}{T_s}=\frac{C}{C_s}\,\frac{v_s}{v}.
+\frac{T}{T_s}=\frac{C}{C_s}\,\frac{v_s}{v},
+\qquad
+\tau=\frac{C}{C_s}\,\frac{v_s}{v}-1.
 \end{equation}
-Длина замкнутой орбиты записывается рядом
+Длина замкнутой орбиты задана рядом
 \begin{equation}
 \label{eq:C}
-\frac{C}{C_s}=1+\alpha_0\delta+\alpha_1\delta^2+O(\delta^3).
+\frac{C}{C_s}=1+\alpha_0\delta+\alpha_1\delta^2+O(\delta^3),
 \end{equation}
-Из $\beta\gamma=\beta_s\gamma_s(1+\delta)$
+где $\alpha_0$ --- коэффициент уплотнения орбиты, $\alpha_1$ --- коэффициент при $\delta^2$.
+
+Скорость выражается через импульс. Из $E^2=p^2c^2+m^2c^4$ и $v=pc^2/E$ следует $v_s/v=(p_s/p)(E/E_s)$. Подстановка $p/p_s=1+\delta$ и $E/E_s=\gamma/\gamma_s$ даёт точное равенство
+\begin{equation}
+\label{eq:vsv-exact}
+\frac{v_s}{v}=\frac{\gamma}{\gamma_s(1+\delta)}.
+\end{equation}
+Тождество $\gamma^2-1=(p/(mc))^2$ вместе с $p=p_s(1+\delta)$ и $\gamma_s^2-1=(p_s/(mc))^2$ даёт точное соотношение
+\begin{equation}
+\label{eq:gamma-exact}
+\gamma^2=1+(\gamma_s^2-1)(1+\delta)^2.
+\end{equation}
+Деление на $\gamma_s^2$ и раскрытие $(1+\delta)^2=1+2\delta+\delta^2$ приводят к точному ряду
+\begin{equation}
+\label{eq:gamma-sq}
+\frac{\gamma^2}{\gamma_s^2}
+=1+2\Bigl(1-\frac{1}{\gamma_s^2}\Bigr)\delta
++\Bigl(1-\frac{1}{\gamma_s^2}\Bigr)\delta^2.
+\end{equation}
+Обозначим $b=1-1/\gamma_s^2$ и $x=2b\delta+b\delta^2$, так что $\gamma/\gamma_s=(1+x)^{1/2}$. Подстановка ряда $(1+x)^{1/2}=1+x/2-x^2/8+O(x^3)$ и равенства $x^2=4b^2\delta^2+O(\delta^3)$ даёт коэффициент при $\delta^2$, равный $b/2-b^2/2=(b/2)(1-b)$. Поскольку $1-b=1/\gamma_s^2$, этот коэффициент есть $b/(2\gamma_s^2)=(\gamma_s^2-1)/(2\gamma_s^4)$. Значит
+\begin{equation}
+\label{eq:gamma-over}
+\frac{\gamma}{\gamma_s}
+=1+\Bigl(1-\frac{1}{\gamma_s^2}\Bigr)\delta
++\frac{\gamma_s^2-1}{2\gamma_s^4}\delta^2+O(\delta^3).
+\end{equation}
+Деление на $1+\delta$ использует $(1+\delta)^{-1}=1-\delta+\delta^2+O(\delta^3)$. В произведении с \eqref{eq:gamma-over} коэффициент при $\delta$ равен $(1-1/\gamma_s^2)-1=-1/\gamma_s^2$. Коэффициент при $\delta^2$ собирается из трёх вкладов: $1$ от $\delta^2$ в $(1+\delta)^{-1}$, $-(1-1/\gamma_s^2)$ от перекрёстного члена и $(\gamma_s^2-1)/(2\gamma_s^4)$ от \eqref{eq:gamma-over}. Сумма равна $1/\gamma_s^2+(\gamma_s^2-1)/(2\gamma_s^4)=(2\gamma_s^2+\gamma_s^2-1)/(2\gamma_s^4)=(3\gamma_s^2-1)/(2\gamma_s^4)$. Следовательно
 \begin{equation}
 \label{eq:vsv}
-\frac{v_s}{v}=\frac{\gamma}{\gamma_s(1+\delta)}
-=1-\frac{\delta}{\gamma_s^2}+\Bigl(1+\frac{\beta_s^2}{2}\Bigr)\frac{\delta^2}{\gamma_s^2}+O(\delta^3).
+\frac{v_s}{v}
+=1-\frac{\delta}{\gamma_s^2}+\frac{3\gamma_s^2-1}{2\gamma_s^4}\delta^2+O(\delta^3).
 \end{equation}
-Произведение \eqref{eq:C} и \eqref{eq:vsv} даёт
+Перемножение \eqref{eq:C} и \eqref{eq:vsv} до членов $\delta^2$:
+\begin{equation}
+\label{eq:tau-prod}
+\begin{aligned}
+\frac{C}{C_s}\,\frac{v_s}{v}
+&=
+\Biggl(1+\alpha_0\delta+\alpha_1\delta^2\Biggr)
+\Biggl(
+1-\frac{\delta}{\gamma_s^2}+\frac{3\gamma_s^2-1}{2\gamma_s^4}\delta^2
+\Biggr)
++O(\delta^3)\\
+&=
+1+\Biggl(\alpha_0-\frac{1}{\gamma_s^2}\Biggr)\delta
++\Biggl(
+\alpha_1-\frac{\alpha_0}{\gamma_s^2}+\frac{3\gamma_s^2-1}{2\gamma_s^4}
+\Biggr)\delta^2
++O(\delta^3).
+\end{aligned}
+\end{equation}
+Слагаемое $-\alpha_0\delta^2/\gamma_s^2$ происходит из произведения $\alpha_0\delta$ на $-\delta/\gamma_s^2$. Вычитание единицы даёт рабочее запаздывание
 \begin{equation}
 \label{eq:tau}
 \tau=\eta_0\delta+\eta_1\delta^2,
 \qquad
 \eta_0=\alpha_0-\frac{1}{\gamma_s^2},
 \qquad
-\eta_1=\alpha_1-\frac{\alpha_0}{\gamma_s^2}+\Bigl(1+\frac{\beta_s^2}{2}\Bigr)\frac{1}{\gamma_s^2}.
+\eta_1=\alpha_1-\frac{\alpha_0}{\gamma_s^2}+\frac{3\gamma_s^2-1}{2\gamma_s^4}.
 \end{equation}
-Через $w$ с помощью \eqref{eq:w-series}
+Дальше $\eta_0\neq 0$.
+
+\subsection{Отображение за оборот}
+
+Опоздание на время $\tau T_s$ сдвигает фазу ВЧ на $\omega_\rf\tau T_s$. Подстановка $\omega_\rf=2\pi h/T_s$ даёт $2\pi h\tau$. При $\tau>0$ частица приходит позже и $\varphi$ растёт, так что приращение фазы за оборот равно $2\pi h\tau$. Здесь стоит само определение $\tau=(T-T_s)/T_s$, а не его разложение по $\delta$. Дальше $\tau$ берётся из \eqref{eq:tau}.
+
+Резонатор меняет энергию частицы. При $\sin\varphi_s=0$
 \begin{equation}
-\label{eq:tau-w}
-\tau=\eta_0w+\tilde\eta_1w^2,
-\qquad
-\tilde\eta_1=\eta_1-\frac{\eta_0}{2\gamma_s^2}.
+\label{eq:dE-gap}
+E_{k+1}-E_k=qV\sin(\varphi_s+\varphi_k)=qV\cos\varphi_s\sin\varphi_k.
 \end{equation}
 
-\subsection{Система продольных уравнений}
+Из $E^2=p^2c^2+m^2c^4$ следует $\mathrm{d}E=v\,\mathrm{d}p$. Вместе с $\mathrm{d}p=p_s\,\mathrm{d}\delta$ приращение импульса за оборот есть
+\begin{equation}
+\label{eq:ddelta-int}
+\delta_{k+1}-\delta_k=\int_{E_k}^{E_{k+1}}\frac{\mathrm{d}E}{p_sv(E)}.
+\end{equation}
+Прирост энергии за оборот мал, $qV\ll E_s$, поэтому скорость под интегралом можно взять в начале скачка. Относительная поправка порядка $qV/E_s$ на один оборот --- того же сорта, что и переход к непрерывному приближению, и к разложению по амплитуде отношения не имеет. Получается
+\begin{equation}
+\label{eq:ddelta}
+\mathrm{d}\delta=\frac{\mathrm{d}E}{vp_s}=\frac{v_s}{v}\,\frac{\mathrm{d}E}{\beta_s^2E_s},
+\end{equation}
+где $p_sv_s=\beta_s^2E_s$. При одном и том же приросте энергии более быстрая частица получает меньший прирост импульса.
 
-Ускорения нет: $\varphi_s=0$ или $\pi$, и прирост энергии в зазоре $qV\sin(\varphi_s+\varphi)=qV\cos\varphi_s\sin\varphi$. За оборот
+Подстановка ряда \eqref{eq:vsv} и $\sin\varphi=\varphi-\varphi^3/6+\cdots$ даёт произведение
+\begin{equation}
+\label{eq:kick-series}
+\delta_{k+1}-\delta_k
+=\frac{qV\cos\varphi_s}{\beta_s^2E_s}
+\Bigl(\varphi_k-\frac{\varphi_k^3}{6}+\cdots\Bigr)
+\Bigl(1-\frac{\delta_k}{\gamma_s^2}+\frac{3\gamma_s^2-1}{2\gamma_s^4}\delta_k^2+\cdots\Bigr).
+\end{equation}
+
+И $\delta$, и $\varphi$ пропорциональны амплитуде колебания и имеют первый порядок. В произведении $\varphi$ --- первый порядок (линейная теория), $-\varphi\delta/\gamma_s^2$ --- второй, $\varphi\delta^2$ и $\varphi^3$ --- третий; $\varphi^3$ учитывается в главе~\ref{sec:mag-phase}. Граница проходит по второму порядку: запаздывание \eqref{eq:tau} в первом уравнении взято до второго порядка ($\eta_0\delta$ --- первый, $\eta_1\delta^2$ --- второй, $\delta^3$ отброшен). Второе уравнение нужно взять с той же точностью. Если учесть $\eta_1\delta^2$, но отбросить $-\varphi\delta/\gamma_s^2$, член одного и того же порядка будет учтён в одном уравнении и потерян в другом; члены третьего порядка отбрасываются в обоих уравнениях одновременно. Отображение за оборот сохраняет $\sin\varphi$ целиком; приближение $\sin\varphi\approx\varphi$ делается ниже.
+
+Вторая скобка в \eqref{eq:kick-series} --- тот же ряд \eqref{eq:vsv}, из которого собран $\eta_1$. В запаздывании он умножается на длину орбиты, и член $\delta^2$ там второго порядка, поэтому он вошёл в $\eta_1$. Здесь ряд умножается на фазу $\varphi$, так что член с $\delta^2$ становится третьим порядком и отбрасывается. В отображение \eqref{eq:map} из этого ряда переходит только $1-\delta_k/\gamma_s^2$.
 \begin{equation}
 \label{eq:map}
-\varphi_{k+1}-\varphi_k=2\pi h\,\tau_k,
-\qquad
-w_{k+1}-w_k=\frac{qV}{\beta_s^2E_s}\cos\varphi_s\sin\varphi_k .
+\begin{aligned}
+\varphi_{k+1}-\varphi_k&=2\pi h\,\tau(\delta_k),\\
+\delta_{k+1}-\delta_k
+&=\frac{qV}{\beta_s^2E_s}\cos\varphi_s\sin\varphi_k
+\Bigl(1-\frac{\delta_k}{\gamma_s^2}\Bigr).
+\end{aligned}
 \end{equation}
-Оба равенства точные: опоздание на $T-T_s$ сдвигает фазу на $\omega_\rf(T-T_s)=2\pi h\tau$, а зазор меняет энергию, то есть $w$, на заданную величину. Деление на $T_s$ даёт систему
+Деление на $T_s$ заменяет приращение за оборот производной по $t=kT_s$:
 \begin{equation}
 \label{eq:smooth}
 \frac{\mathrm{d}\varphi}{\mathrm{d}t}=\omega_\rf\,\tau,
 \qquad
-\frac{\mathrm{d}w}{\mathrm{d}t}=K\cos\varphi_s\sin\varphi,
+\frac{\mathrm{d}\delta}{\mathrm{d}t}
+=K\cos\varphi_s\sin\varphi\Bigl(1-\frac{\delta}{\gamma_s^2}\Bigr),
 \qquad
 K=\frac{qV}{\beta_s^2E_sT_s}.
 \end{equation}
-Первое уравнение описывает изменение фазы из-за запаздывания, второе --- изменение энергии в зазоре.
+Такая замена требует, чтобы за одно синхротронное колебание частица делала много оборотов: период синхротронных колебаний много больше периода обращения $T_s$. Тогда приращения $\delta$ и $\varphi$ за один оборот малы, и их можно заменить производными по времени. Первое уравнение есть сдвиг фазы из-за запаздывания, второе --- изменение импульса в резонаторе.
 
-Устойчивой точкой $\varphi=w=0$ является
+Второе уравнение \eqref{eq:smooth} можно записать и для энергии. Пусть
+\begin{equation}
+\label{eq:w-def}
+w=\frac{E-E_s}{\beta_s^2E_s}
+\end{equation}
+--- относительное отклонение энергии. Резонатор меняет энергию, поэтому в этой переменной множителя нет:
+\begin{equation}
+\label{eq:dw}
+\frac{\mathrm{d}w}{\mathrm{d}t}=K\cos\varphi_s\sin\varphi.
+\end{equation}
+Множитель $1-\delta/\gamma_s^2$ появляется только при переходе от $w$ к импульсу $\delta$. В линейном приближении он равен единице, и в линейной теории его не видно.
+
+В линейном приближении $\tau=\eta_0\delta$, $\sin\varphi=\varphi$ и множитель скорости равен единице. Дифференцирование $\mathrm{d}\delta/\mathrm{d}t=K\cos\varphi_s\,\varphi$ и подстановка $\mathrm{d}\varphi/\mathrm{d}t=\omega_\rf\eta_0\delta$ дают
+\begin{equation}
+\label{eq:lin-osc}
+\frac{\mathrm{d}^2\delta}{\mathrm{d}t^2}=K\omega_\rf\eta_0\cos\varphi_s\,\delta.
+\end{equation}
+Колебания ограничены, когда коэффициент при $\delta$ отрицателен. Амплитуда $V$ определена так, что $K>0$; вместе с $\omega_\rf>0$ условие устойчивости есть $\eta_0\cos\varphi_s<0$. Из двух значений $\varphi_s=0,\pi$ ему отвечает
 \begin{equation}
 \label{eq:phis}
-\cos\varphi_s=-\operatorname{sgn}\eta_0 ,
+\cos\varphi_s=-\operatorname{sgn}\eta_0.
 \end{equation}
-малые колебания около неё имеют частоту
+Квадрат частоты малых колебаний $\omega_s^2=-K\omega_\rf\eta_0\cos\varphi_s$ тогда равен $K\omega_\rf|\eta_0|$, и
 \begin{equation}
 \label{eq:ws}
 \omega_s^2=K\omega_\rf|\eta_0|,
 \qquad
 K\omega_\rf\cos\varphi_s=-\frac{\omega_s^2}{\eta_0}.
 \end{equation}
+Второе равенство есть подстановка \eqref{eq:phis} в левую часть: $-K\omega_\rf\operatorname{sgn}\eta_0=-\omega_s^2/\eta_0$, поскольку $|\eta_0|/\eta_0=\operatorname{sgn}\eta_0$.
 
-В этой главе $\sin\varphi\approx\varphi$, и с \eqref{eq:tau-w} система принимает вид
+\subsection{Усреднение и равновесный сдвиг}
+
+$\langle f\rangle$ --- среднее значение $f$ по оборотам, которые частица делает за один период синхротронных колебаний. Таких оборотов много: период синхротронных колебаний много больше $T_s$. Ниже то же среднее записывается как среднее по фазе синхротронного колебания $\psi$. Равновесный сдвиг импульса
 \begin{equation}
-\label{eq:system}
-\frac{\mathrm{d}\varphi}{\mathrm{d}t}=\omega_\rf\bigl(\eta_0w+\tilde\eta_1w^2\bigr),
-\qquad
-\frac{\mathrm{d}w}{\mathrm{d}t}=K\cos\varphi_s\,\varphi.
+\label{eq:deq-def}
+\delta_\eq=\langle\delta\rangle.
 \end{equation}
+На замкнутой траектории внутри сепаратрисы фаза через период возвращается к прежнему значению, так что сумма приращений фазы равна нулю. По первой строке \eqref{eq:map} эта сумма равна $2\pi h\sum\tau_k$. Множитель $2\pi h$ отличен от нуля, откуда $\sum\tau_k=0$ и
+\begin{equation}
+\label{eq:tau-avg-exact}
+\langle\tau\rangle=0.
+\end{equation}
+Средний период обращения равен $T_s$. В разложении \eqref{eq:tau} то же условие записывается явно:
+\begin{equation}
+\label{eq:tau-avg}
+\langle\tau\rangle=\eta_0\langle\delta\rangle+\eta_1\langle\delta^2\rangle=0.
+\end{equation}
+Отсюда
+\begin{equation}
+\label{eq:deq-avg}
+\delta_\eq=-\frac{\eta_1}{\eta_0}\langle\delta^2\rangle.
+\end{equation}
+Формула \eqref{eq:deq-avg} уже определяет $\delta_\eq$. Решение уравнений движения нужно только для вычисления $\langle\delta^2\rangle$.
 
 \subsection{Решение}
 \label{sec:solution}
 
-Дифференцирование второго уравнения \eqref{eq:system}, подстановка первого и \eqref{eq:ws} дают
+В этой главе $\sin\varphi\approx\varphi$. Система \eqref{eq:smooth} с запаздыванием \eqref{eq:tau} принимает вид
+\begin{equation}
+\label{eq:system}
+\frac{\mathrm{d}\varphi}{\mathrm{d}t}=\omega_\rf(\eta_0\delta+\eta_1\delta^2),
+\qquad
+\frac{\mathrm{d}\delta}{\mathrm{d}t}
+=K\cos\varphi_s\,\varphi\Bigl(1-\frac{\delta}{\gamma_s^2}\Bigr).
+\end{equation}
+Точка обозначает производную по $t$. Пусть $\kappa=K\cos\varphi_s$, так что по \eqref{eq:ws} выполнено $\kappa\omega_\rf=-\omega_s^2/\eta_0$. Дифференцирование второго уравнения \eqref{eq:system} даёт
+\begin{equation}
+\label{eq:ddelta-dt}
+\ddot\delta
+=\kappa\dot\varphi\Bigl(1-\frac{\delta}{\gamma_s^2}\Bigr)
+-\kappa\varphi\,\frac{\dot\delta}{\gamma_s^2}.
+\end{equation}
+Из того же уравнения $\kappa\varphi=\dot\delta/(1-\delta/\gamma_s^2)$, и второе слагаемое равно $(\dot\delta)^2/[\gamma_s^2(1-\delta/\gamma_s^2)]$. Подстановка $\dot\varphi$ из первого уравнения \eqref{eq:system} приводит к
+\begin{equation}
+\label{eq:ddelta-raw}
+\ddot\delta
+=\kappa\omega_\rf(\eta_0\delta+\eta_1\delta^2)\Bigl(1-\frac{\delta}{\gamma_s^2}\Bigr)
+-\frac{(\dot\delta)^2}{\gamma_s^2(1-\delta/\gamma_s^2)}.
+\end{equation}
+Произведение $(\eta_0\delta+\eta_1\delta^2)(1-\delta/\gamma_s^2)$ равно $\eta_0\delta+(\eta_1-\eta_0/\gamma_s^2)\delta^2+O(\delta^3)$. Во втором слагаемом $1/(1-\delta/\gamma_s^2)=1+O(\delta)$, а $(\dot\delta)^2\cdot O(\delta)$ есть третий порядок по амплитуде. После отбрасывания этого остатка и подстановки $\kappa\omega_\rf=-\omega_s^2/\eta_0$ получается уравнение второго порядка
 \begin{equation}
 \label{eq:ode}
-\ddot w+\omega_s^2w=-\frac{\omega_s^2\tilde\eta_1}{\eta_0}\,w^2.
+\ddot\delta+\omega_s^2\delta
+=-\frac{\omega_s^2}{\eta_0}\Bigl(\eta_1-\frac{\eta_0}{\gamma_s^2}\Bigr)\delta^2
+-\frac{1}{\gamma_s^2}(\dot\delta)^2.
 \end{equation}
-Его решение (приложение~\ref{app:bm}):
-\begin{align}
-w(t)&=w_\eq+A\cos\psi+\frac{\tilde\eta_1A^2}{6\eta_0}\cos2\psi,
-\qquad
-w_\eq=-\frac{\tilde\eta_1A^2}{2\eta_0},
-\qquad
-\psi=\Omega t,
-\label{eq:w-sol}\\
-\varphi(t)&=\frac{\omega_\rf}{\Omega}\Bigl(\eta_0A\sin\psi+\frac{\tilde\eta_1A^2}{3}\sin2\psi\Bigr),
-\label{eq:phi}\\
-\frac{\Omega}{\omega_s}&=1-\frac{5}{12}\Bigl(\frac{\tilde\eta_1A}{\eta_0}\Bigr)^2.
-\label{eq:Omega}
-\end{align}
-Амплитуда $A=(w_{\max}-w_{\min})/2$: при $\psi=0$ и $\psi=\pi$ вторая гармоника равна одной и той же величине и полуразмах не меняет. $\Omega$ --- частота синхротронных колебаний, то есть частота обхода траектории на фазовой плоскости $(\varphi,w)$.
 
-\subsection{Усреднение и равновесный сдвиг}
+Его решение методом Боголюбова--Митропольского приведено в \eqref{eq:bm-sol}. В этой главе постоянная $c_0$ правой части равна нулю, и \eqref{eq:bm-sol} сводится к
+\begin{equation}
+\label{eq:delta-a}
+\delta
+=-\frac{\eta_1 a^2}{2\eta_0}
++a\cos\psi
++\frac{a^2}{6}\Bigl(\frac{\eta_1}{\eta_0}-\frac{2}{\gamma_s^2}\Bigr)\cos 2\psi,
+\qquad
+\psi=\omega_s t.
+\end{equation}
+Член $-(\dot\delta)^2/\gamma_s^2$ из \eqref{eq:ode} в это решение входит: он даёт часть $-2/\gamma_s^2$ коэффициента при $\cos 2\psi$. Часть $\eta_1/\eta_0$ того же коэффициента происходит из $\eta_1\delta^2$. В постоянном члене вклад $(\dot\delta)^2$ сокращается с вкладом $-\eta_0\delta^2/\gamma_s^2$, поэтому в $\delta_\eq$ его нет. Сокращение видно ниже из \eqref{eq:ode-mean}.
 
-$\langle f\rangle$ --- среднее по оборотам за один синхротронный период. Равновесные сдвиги энергии и импульса:
+Начало отсчёта $\psi$ выбрано так, что коэффициент $a$ при $\cos\psi$ положителен. Полуразмах импульса
 \begin{equation}
-\label{eq:deq-def}
-w_\eq=\langle w\rangle,
-\qquad
-\delta_\eq=\langle\delta\rangle .
+\label{eq:dm-def}
+\delta_m=\frac{\delta_{\max}-\delta_{\min}}{2}.
 \end{equation}
-На замкнутой траектории фаза возвращается к прежнему значению, поэтому из первого уравнения \eqref{eq:smooth} точно
+Производная \eqref{eq:delta-a} равна $-\omega_s\sin\psi\,(a+4b_2\cos\psi)$, где $b_2$ --- коэффициент при $\cos 2\psi$. Множитель $4$ стоит потому, что $\mathrm{d}(\cos 2\psi)/\mathrm{d}t=-2\omega_s\sin 2\psi$ и $\sin 2\psi=2\sin\psi\cos\psi$. Производная обращается в нуль при $\sin\psi=0$, то есть при $\psi=0$ и $\psi=\pi$. В обеих точках $\cos 2\psi=1$, постоянный член и вторая гармоника в $\delta(0)$ и $\delta(\pi)$ одинаковы и в разности сокращаются: $\delta(0)-\delta(\pi)=2a$. При $|\eta_1 a/\eta_0|\ll 1$ и $a\ll 1$ скобка $a+4b_2\cos\psi$ в нуль не обращается, других нулей на периоде нет, и $a=\delta_m$.
+
+Среднее по оборотам за синхротронный период совпадает со средним по $\psi$: интеграл $\cos\psi$ и интеграл $\cos 2\psi$ за период равны нулю. В квадрате решения $\langle\cos^2\psi\rangle=1/2$. Средние произведений разных гармоник равны нулю, а квадраты постоянной части и второй гармоники имеют порядок $\delta_m^4$. Значит
 \begin{equation}
-\label{eq:tau-avg}
-\langle\tau\rangle=0 :
+\label{eq:d2-avg}
+\langle\delta^2\rangle=\frac{\delta_m^2}{2}
 \end{equation}
-средний период обращения частицы равен $T_s$. С \eqref{eq:tau} и \eqref{eq:tau-w}
-\begin{equation}
-\label{eq:deq-avg}
-\delta_\eq=-\frac{\eta_1}{\eta_0}\langle\delta^2\rangle,
-\qquad
-w_\eq=-\frac{\tilde\eta_1}{\eta_0}\langle w^2\rangle .
-\end{equation}
-На решении \eqref{eq:w-sol} $\langle w^2\rangle=\langle\delta^2\rangle=A^2/2+O(A^3)$, откуда
+с точностью до $O(\delta_m^4)$.
+При $a=\delta_m$ постоянная часть равна $-\eta_1\delta_m^2/(2\eta_0)$.
+Поскольку $\langle\delta^2\rangle=\delta_m^2/2$, эта часть есть $-(\eta_1/\eta_0)\langle\delta^2\rangle$.
+По \eqref{eq:deq-avg} получается $\delta_\eq$:
 \begin{equation}
 \label{eq:deq}
-\delta_\eq=-\frac{\eta_1A^2}{2\eta_0},
-\qquad
-w_\eq=\delta_\eq+\frac{A^2}{4\gamma_s^2}=-\frac{\tilde\eta_1A^2}{2\eta_0},
-\qquad
-\Delta E_\eq=\beta_s^2E_s\,w_\eq .
+\delta_\eq=-\frac{\eta_1\delta_m^2}{2\eta_0}.
 \end{equation}
-Равенство $w_\eq=\delta_\eq+\langle\delta^2\rangle/(2\gamma_s^2)$ следует из \eqref{eq:w-series}.
+То же равенство получается усреднением \eqref{eq:ode}. Среднее $\ddot\delta$ за период равно нулю, потому что $\dot\delta$ возвращается к прежнему значению и интеграл его производной равен нулю. Усреднение даёт
+\begin{equation}
+\label{eq:ode-mean}
+\omega_s^2\delta_\eq
+=-\frac{\omega_s^2}{\eta_0}\Bigl(\eta_1-\frac{\eta_0}{\gamma_s^2}\Bigr)\langle\delta^2\rangle
+-\frac{1}{\gamma_s^2}\langle(\dot\delta)^2\rangle.
+\end{equation}
+На ведущей гармонике $\delta=\delta_m\cos\psi$ выполнено $\langle(\dot\delta)^2\rangle=\omega_s^2\delta_m^2/2=\omega_s^2\langle\delta^2\rangle$. Слагаемые $\pm\langle\delta^2\rangle/\gamma_s^2$ сокращаются, и остаётся \eqref{eq:deq-avg}. Вклады постоянной части и второй гармоники в это сравнение имеют порядок $\delta_m^4$. То же сокращение в постоянном члене записано в \eqref{eq:c-plus}.
+
+Решение состоит из неколебательной части и гармоник $\cos\psi$, $\cos 2\psi$. Среднее по оборотам снимает гармоники, и неколебательная часть совпадает с $\delta_\eq$ из \eqref{eq:deq-avg}:
+\begin{equation}
+\label{eq:delta-sol}
+\delta(t)
+=\delta_\eq
++\delta_m\cos\psi
++\frac{\delta_m^2}{6}\Bigl(\frac{\eta_1}{\eta_0}-\frac{2}{\gamma_s^2}\Bigr)\cos 2\psi,
+\qquad
+\psi=\omega_s t.
+\end{equation}
+
+Фаза восстанавливается из первого уравнения \eqref{eq:system}. Подстановка \eqref{eq:delta-sol} в \eqref{eq:tau} с отбрасыванием $O(\delta_m^3)$ использует $\delta^2=(\delta_m^2/2)(1+\cos 2\psi)$. Постоянная $\eta_0\delta_\eq+\eta_1\delta_m^2/2$ равна нулю по \eqref{eq:deq}, коэффициент при $\cos\psi$ равен $\eta_0\delta_m$, а коэффициент при $\cos 2\psi$ равен
+\begin{equation}
+\label{eq:tau-cos2}
+\eta_0\cdot\frac{\delta_m^2}{6}\Bigl(\frac{\eta_1}{\eta_0}-\frac{2}{\gamma_s^2}\Bigr)+\frac{\eta_1\delta_m^2}{2}
+=\frac{2\eta_1}{3}\delta_m^2-\frac{\eta_0}{3\gamma_s^2}\delta_m^2.
+\end{equation}
+Первое уравнение \eqref{eq:system} есть $\dot\varphi=\omega_\rf\tau$. Интегрирование по времени при $\psi=\omega_s t$ использует
+\begin{equation}
+\label{eq:int-cos}
+\int\cos\psi\,\mathrm{d}t=\frac{\sin\psi}{\omega_s},
+\qquad
+\int\cos 2\psi\,\mathrm{d}t=\frac{\sin 2\psi}{2\omega_s}.
+\end{equation}
+Член $\eta_0\delta_m\cos\psi$ в $\tau$ даёт в $\varphi$ коэффициент $\omega_\rf\eta_0\delta_m/\omega_s$. Член \eqref{eq:tau-cos2} делится на $2\omega_s$ и умножается на $\omega_\rf$:
+\begin{equation}
+\label{eq:phi-cos2}
+\frac{\omega_\rf}{2\omega_s}
+\Biggl(\frac{2\eta_1}{3}-\frac{\eta_0}{3\gamma_s^2}\Biggr)\delta_m^2
+=\frac{\omega_\rf}{\omega_s}
+\Biggl(\frac{\eta_1}{3}-\frac{\eta_0}{6\gamma_s^2}\Biggr)\delta_m^2.
+\end{equation}
+Постоянная интегрирования равна нулю. Среднее $\tau$ равно нулю, поэтому $\varphi$ за период не нарастает. В точке $\psi=0$ выполнено $\dot\delta=0$: производная \eqref{eq:delta-a} содержит общий множитель $\sin\psi$, а \eqref{eq:delta-sol} есть та же функция при $a=\delta_m$. Из второго уравнения \eqref{eq:system} при $\dot\delta=0$ и при $1-\delta/\gamma_s^2\neq 0$ следует $\varphi=0$. Поэтому
+\begin{equation}
+\label{eq:phi}
+\varphi(t)
+=\frac{\omega_\rf}{\omega_s}
+\Biggl[
+\eta_0\delta_m\sin\psi
++\delta_m^2\Bigl(\frac{\eta_1}{3}-\frac{\eta_0}{6\gamma_s^2}\Bigr)\sin 2\psi
+\Biggr].
+\end{equation}
+
+Частота колебаний отличается от $\omega_s$ на величину порядка $\delta_m^2$. Найти эту поправку из принятого разложения нельзя: такой же вклад дают отброшенный член $\tau$ порядка $\delta^3$ и член $\varphi^3$ в разложении $\sin\varphi$. Поэтому в \eqref{eq:delta-sol} и \eqref{eq:phi} частота оставлена равной $\omega_s$. На $\delta_\eq$ поправка не влияет, потому что сдвиг получается из $\langle\tau\rangle=0$ и частоты не содержит.
+
+\subsection{Сдвиг энергии и эффективный лоренц-фактор}
+
+Умножение \eqref{eq:gamma-over} на $\gamma_s$ даёт лоренц-фактор частицы
+\begin{equation}
+\label{eq:gamma-delta}
+\gamma
+=\gamma_s+\beta_s^2\gamma_s\,\delta
++\frac{\beta_s^2}{2\gamma_s}\delta^2+O(\delta^3).
+\end{equation}
+Линейный коэффициент есть $\gamma_s(1-1/\gamma_s^2)=\beta_s^2\gamma_s$. Квадратичный коэффициент есть $(\gamma_s^2-1)/(2\gamma_s^3)=\beta_s^2/(2\gamma_s)$. Эффективный лоренц-фактор $\gamma_{\mathrm{eff}}$ определяется как среднее $\langle\gamma\rangle$ за синхротронный период; связь с частотой прецессии спина в записке не выводится. Усреднение \eqref{eq:gamma-delta} с $\langle\delta\rangle=\delta_\eq$ и с \eqref{eq:d2-avg} даёт
+\begin{equation}
+\label{eq:gamma-eff}
+\gamma_{\mathrm{eff}}
+:=\langle\gamma\rangle
+=\gamma_s+\beta_s^2\gamma_s\,\delta_\eq
++\frac{\beta_s^2\delta_m^2}{4\gamma_s}
++O(\delta_m^4).
+\end{equation}
+Остаток имеет порядок $\delta_m^4$: на решении \eqref{eq:delta-sol} среднее $\langle\cos^3\psi\rangle=0$, а постоянная часть и вторая гармоника сами порядка $\delta_m^2$, так что их вклад в $\langle\delta^3\rangle$ начинается с $\delta_m^4$. Запись $\gamma_{\mathrm{eff}}=\gamma_s+\beta_s^2\gamma_s\delta_\eq$ воспроизводит в \eqref{eq:gamma-eff} свободный член и член с $\delta_\eq$. Полное среднее содержит ещё $\beta_s^2\delta_m^2/(4\gamma_s)$. Оба слагаемых сдвига имеют второй порядок по $\delta_m$, так как $\delta_\eq$ само порядка $\delta_m^2$. Отношение слагаемого $\beta_s^2\delta_m^2/(4\gamma_s)$ к модулю слагаемого $\beta_s^2\gamma_s\delta_\eq$ равно $|\eta_0|/(2|\eta_1|\gamma_s^2)$.
+
+Энергия равна $\gamma mc^2$, сдвиг средней энергии $\Delta E_\eq=\langle E\rangle-E_s=E_s(\gamma_{\mathrm{eff}}-\gamma_s)/\gamma_s$. Деление \eqref{eq:gamma-eff} на $\gamma_s$ даёт
+\begin{equation}
+\label{eq:dE-eq}
+\Delta E_\eq
+=\beta_s^2E_s\Bigl(\delta_\eq+\frac{\delta_m^2}{4\gamma_s^2}\Bigr)
++O(\delta_m^4 E_s).
+\end{equation}
 
 Условия применимости:
 \begin{equation}
 \label{eq:valid}
-\Bigl|\frac{\eta_1A}{\eta_0}\Bigr|\ll1,
+\Bigl|\frac{\eta_1\delta_m}{\eta_0}\Bigr|\ll 1,
 \qquad
-\hat\varphi=\frac{\omega_\rf|\eta_0|A}{\omega_s}\ll1,
+\frac{\omega_\rf|\eta_0|\delta_m}{\omega_s}\ll 1,
+\qquad
+\delta_m\ll 1,
+\qquad
+\omega_s T_s\ll 1.
 \end{equation}
-где $\hat\varphi$ --- полуразмах фазы.
+Первое означает малость квадратичного запаздывания на размахе $\delta_m$ по сравнению с линейным. Второе есть полуразмах ведущего члена \eqref{eq:phi} и оправдывает $\sin\varphi\approx\varphi$. Третье оправдывает обрыв рядов длины орбиты, скорости и $\gamma$ на $\delta^2$. Четвёртое есть условие перехода от отображения \eqref{eq:map} к системе \eqref{eq:smooth}.
