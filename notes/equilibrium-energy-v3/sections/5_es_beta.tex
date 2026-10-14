@@ -1,79 +1,294 @@
 \section[Электростатическое кольцо: бетатронное запаздывание]{Электростатическое кольцо:\\ бетатронное запаздывание}
 \label{sec:es-beta}
 
-\subsection{Запаздывание}
+Кольцо то же, что в главе~\ref{sec:es-base}. Продольные обозначения сохраняются: $\tau=(T-T_s)/T_s$, коэффициенты $\eta_0^{\mathrm{E}}$ и $\eta_1^{\mathrm{E}}$ взяты из \eqref{eq:eta0-es} и \eqref{eq:eta1-es}. Поперечные обозначения --- из главы~\ref{sec:mag-beta}: положение \eqref{eq:xbeta}, \eqref{eq:ybeta}, функции Твисса \eqref{eq:twiss-x}, действия $J_x$ и $J_y$, среднее по бетатронной фазе $\langle\,\rangle_\psi$.
 
-$\Lambda$ определяется как в \eqref{eq:Lambda}. В дефлекторе при $w=0$ выполнено $u=-\psi$, и скорость меняется вдоль бетатронной траектории, поэтому запаздывание по времени не сводится к запаздыванию по пути. Подынтегральное выражение \eqref{eq:tau-es} с элементом пути \eqref{eq:dl} и с $v_s/v$ из \eqref{eq:vsv-es} есть
-\[
-\Bigl(1+\frac{x}{\rho}+\frac{x'^2+y'^2}{2}\Bigr)
-\Bigl(1+\frac{\psi}{\gamma_s^2}+\frac{3\psi^2}{2\gamma_s^2}\Bigr),
-\]
-$x=x_\beta+x_{\mathrm{nl}}$, $y=y_\beta$. Квадратичные по $x_\beta$ члены из $(x/\rho)(\psi/\gamma_s^2)$, из $-(n/2)(x/\rho)^2/\gamma_s^2$ и из $3(x/\rho)^2/(2\gamma_s^2)$ в сумме равны $(5-n)x_\beta^2/(2\gamma_s^2\rho^2)$. По $y$ остаётся $(n-1)y^2/(2\gamma_s^2\rho^2)$, линейный по $x_{\mathrm{nl}}$ член равен $(1+1/\gamma_s^2)x_{\mathrm{nl}}/\rho$. Слагаемое $(x'^2+y'^2)/2$ сохраняется. Линейные по $x_\beta$ члены в среднем $\langle\,\rangle_\psi$ равны нулю, поэтому
+Порядок отсчёта тот же, что в главе~\ref{sec:mag-beta}. Поперечная амплитуда и $\delta$ --- величины одного порядка. Действие пропорционально квадрату амплитуды. Учитываются $\delta^2$ и члены, линейные по действию. Члены $\delta^3$, произведения действия на $\delta$ и квадраты действия отбрасываются. Функции Твисса и тюны берутся при $\delta=0$: их зависимость от $\delta$, умноженная на действие, имеет третий порядок.
+
+В магнитном кольце при фиксированном $\delta$ скорость от поперечного положения не зависит, и бетатронное запаздывание сводится к удлинению пути. В дефлекторе потенциал \eqref{eq:psi} зависит от точки. На внешнем радиусе $\psi>0$, часть полной энергии сидит в $q\Phi$, и частица медленнее, чем на опорной орбите. Поэтому в $\Lambda^{\mathrm{E}}$ остаются члены с показателем $n$ и с $1/\gamma_s^2$.
+
+При $J_x=J_y=0$ выполнено $x_{\mathrm{nl}}=0$ и $x=x_D$. Период этой замкнутой орбиты уже содержится в \eqref{eq:tau-es-d}. Ниже добавляется вклад $x_\beta$, $y_\beta$ и $x_{\mathrm{nl}}$. Слагаемое $y_{\mathrm{nl}}$ в него не входит. В элементе пути нет члена, линейного по $y$, а в потенциале произведение $y_\beta y_{\mathrm{nl}}$ имеет третий порядок.
+
+\subsection{Запаздывание за оборот}
+
+Период обращения есть время прохода траектории, $T=\oint\mathrm{d}l/v$. Опорный период $T_s=C_s/v_s$. Бетатронное запаздывание --- избыток этого периода над периодом замкнутой орбиты с тем же $\delta$ и с нулевыми действиями, усреднённый по бетатронной фазе:
+\begin{equation}
+\label{eq:Lambda-def-es}
+\Lambda^{\mathrm{E}}
+=\frac{\langle T-T_{J=0}\rangle_\psi}{T_s}.
+\end{equation}
+Зависимость избытка от $\delta$ начинается с произведения действия на $\delta$ и в принятом порядке отбрасывается, так что $\Lambda^{\mathrm{E}}$ достаточно вычислить при $\delta=0$. При $\delta=0$ орбита $J=0$ совпадает с опорной и $T_{J=0}=T_s$. Замкнутая орбита с ненулевым $\delta$ уже вошла в \eqref{eq:tau-es-d}, вместе с зависимостью скорости от потенциала на этой орбите. Перекрёстные члены между ней и бетатронным движением имеют порядок $\delta J$. Поэтому
+\begin{equation}
+\label{eq:tau-es-L}
+\tau=\eta_0^{\mathrm{E}}\delta+\eta_1^{\mathrm{E}}\delta^2+\Lambda^{\mathrm{E}}.
+\end{equation}
+Коэффициент при $\Lambda^{\mathrm{E}}$ равен единице. В магнитном кольце так вышло потому, что $v_s/v$ выносится из интеграла периода и поправка $\Lambda\delta/\gamma_s^2$ имеет третий порядок. Здесь $v_s/v$ из интеграла не выносится: внутри дефлектора скорость зависит от точки. Единица перед $\Lambda^{\mathrm{E}}$ означает другое. $\Lambda^{\mathrm{E}}$ само определено как относительный избыток периода, а член порядка $\delta J$ отброшен.
+
+При $\delta=0$ из \eqref{eq:T-oint} и $T_s=C_s/v_s$
+\begin{equation}
+\label{eq:T-ratio-es}
+\frac{T}{T_s}
+=\frac{1}{C_s}\oint\frac{\mathrm{d}l}{\mathrm{d}s}\,\frac{v_s}{v}\,\mathrm{d}s.
+\end{equation}
+Элемент пути тот же, что в \eqref{eq:dl}. Квадраты $(x/\rho)^2$ под корнем и в следующем члене ряда взаимно уничтожаются, и до второго порядка
+\begin{equation}
+\label{eq:dl-es-L}
+\frac{\mathrm{d}l}{\mathrm{d}s}
+=1+\frac{x}{\rho}+\frac{x'^2+y'^2}{2}.
+\end{equation}
+Геометрического вклада $\langle x_\beta^2\rangle_\psi/\rho^2$ в путь нет: он сократился вместе с $(x/\rho)^2$. Вне дефлекторов $1/\rho=0$.
+
+Скорость при $\delta=0$ берётся из \eqref{eq:vsv-es}:
+\begin{equation}
+\label{eq:v-delta0}
+\frac{v_s}{v}
+=1+\frac{\psi}{\gamma_s^2}+\frac{3\psi^2}{2\gamma_s^2}.
+\end{equation}
+Линейный член --- изменение кинетической энергии на потенциале $q\Phi=\psi\,p_sv_s$. Квадрат --- следующий член того же ряда. Вне дефлекторов $\psi=0$ и $v_s/v=1$.
+
+Положение при $\delta=0$ есть $x=x_\beta+x_{\mathrm{nl}}$, $y=y_\beta$. Потенциал \eqref{eq:psi} на этой траектории, с отброшенными произведениями $x_\beta x_{\mathrm{nl}}$ и $x_{\mathrm{nl}}^2$,
+\begin{equation}
+\label{eq:psi-amp}
+\psi
+=\frac{x_\beta+x_{\mathrm{nl}}}{\rho}
+-\frac{n}{2}\Biggl(\frac{x_\beta}{\rho}\Biggr)^2
++\frac{n-1}{2}\Biggl(\frac{y_\beta}{\rho}\Biggr)^2.
+\end{equation}
+До второго порядка $\psi^2=(x_\beta/\rho)^2$ и $(x/\rho)\psi=(x_\beta/\rho)^2$: квадрат слагаемых порядка $x_\beta^2$ начинается с четвёртого порядка, а их произведение с $x_\beta/\rho$ --- с третьего. Вертикальное отклонение в эти два выражения не входит.
+
+Произведение \eqref{eq:dl-es-L} и \eqref{eq:v-delta0} до второго порядка равно
+\begin{equation}
+\label{eq:I-exp}
+\begin{aligned}
+\frac{\mathrm{d}l}{\mathrm{d}s}\,\frac{v_s}{v}
+&=1+\frac{x}{\rho}+\frac{x'^2+y'^2}{2}
++\frac{\psi}{\gamma_s^2}
++\frac{1}{\gamma_s^2}\frac{x}{\rho}\,\psi
++\frac{3\psi^2}{2\gamma_s^2}.
+\end{aligned}
+\end{equation}
+Произведения наклона на $\psi$ имеют третий порядок и отброшены. На опорной орбите правая часть равна единице. Избыток над единицей после $\langle\,\rangle_\psi$ и есть подынтегральное выражение $\Lambda^{\mathrm{E}}$.
+
+Линейные по $x_\beta$ куски, $x_\beta/\rho$ из пути и $x_\beta/(\rho\gamma_s^2)$ из скорости, после среднего по фазе равны нулю. Остаются четыре вклада.
+
+Сдвиг центра даёт длину дуги и линейное замедление. Дуга радиуса $\rho+x_{\mathrm{nl}}$ длиннее опорной на $x_{\mathrm{nl}}/\rho$. На том же сдвиге $\psi=x_{\mathrm{nl}}/\rho$, и \eqref{eq:v-delta0} даёт множитель скорости $x_{\mathrm{nl}}/(\rho\gamma_s^2)$. Вместе
+\begin{equation}
+\label{eq:term-xnl}
+\Biggl(1+\frac{1}{\gamma_s^2}\Biggr)\frac{x_{\mathrm{nl}}}{\rho}.
+\end{equation}
+В магнитном кольце второго слагаемого нет: потенциал равен нулю, и скорость от $x_{\mathrm{nl}}$ не зависит. Там перед $x_{\mathrm{nl}}/\rho$ стоит единица.
+
+Наклон траектории остаётся из \eqref{eq:dl-es-L}. Производная $x_{\mathrm{nl}}'$ имеет порядок действия, поэтому $x_{\mathrm{nl}}'^2$ отбрасывается. Вклад наклона
+\begin{equation}
+\label{eq:term-slope}
+\frac{\langle x_\beta'^2\rangle_\psi+\langle y_\beta'^2\rangle_\psi}{2}
+\end{equation}
+такой же, как в \eqref{eq:Lambda-slopes}. Это единственный вклад, который есть и вне дефлектора.
+
+Квадрат $x_\beta^2/\rho^2$ собирается из трёх мест, и геометрического $(x/\rho)^2$ среди них нет. Квадратичный член потенциала $-n(x_\beta/\rho)^2/2$ в $\psi/\gamma_s^2$ даёт $-n/(2\gamma_s^2)$. Произведение удлинения дуги и линейного замедления даёт $+1/\gamma_s^2$. Квадрат в ряде скорости даёт $+3/(2\gamma_s^2)$. Сумма коэффициентов
+\begin{equation}
+\label{eq:coeff-x2}
+\frac{1}{\gamma_s^2}\Biggl(-\frac{n}{2}+1+\frac{3}{2}\Biggr)
+=\frac{5-n}{2\gamma_s^2}.
+\end{equation}
+Тот же коэффициент стоит при $(D_1/\rho)^2$ в \eqref{eq:eta1-es}: для времени пролёта $x_\beta$ и дисперсионное смещение входят в $\psi$ одинаково. В магнитном кольце скорости от $x$ нет, и этого члена нет.
+
+Квадрат вертикального отклонения входит только из $\psi/\gamma_s^2$. В \eqref{eq:psi-amp} при $y_\beta^2$ стоит $(n-1)/2$, поэтому вклад равен $(n-1)/(2\gamma_s^2)\,(y_\beta/\rho)^2$. В путь $y^2$ на этом порядке не входит.
+
+Среднее $\langle\,\rangle_\psi$ оставляет
 \begin{equation}
 \label{eq:Lambda-es}
 \begin{aligned}
-\Lambda=\frac{1}{C_s}\oint\Biggl[&
-\Bigl(1+\frac{1}{\gamma_s^2}\Bigr)\frac{\langle x_{\mathrm{nl}}\rangle_\psi}{\rho}
-+\frac{\langle x'^2+y'^2\rangle_\psi}{2}
-\\
+\Lambda^{\mathrm{E}}
+=\frac{1}{C_s}\oint\Biggl[&
+\Biggl(1+\frac{1}{\gamma_s^2}\Biggr)\frac{x_{\mathrm{nl}}}{\rho}
++\frac{\langle x_\beta'^2\rangle_\psi+\langle y_\beta'^2\rangle_\psi}{2}\\
 &+\frac{5-n}{2\gamma_s^2}\,\frac{\langle x_\beta^2\rangle_\psi}{\rho^2}
 +\frac{n-1}{2\gamma_s^2}\,\frac{\langle y_\beta^2\rangle_\psi}{\rho^2}
 \Biggr]\mathrm{d}s.
 \end{aligned}
 \end{equation}
-Среднее $x_\beta'$ равно нулю, а $x_{\mathrm{nl}}'^2$ имеет более высокий порядок, так что $\langle x'^2+y'^2\rangle_\psi=\langle x_\beta'^2\rangle_\psi+\langle y_\beta'^2\rangle_\psi$. Подстановка $\langle x_\beta'^2\rangle_\psi=J_x\gamma_x$, $\langle y_\beta'^2\rangle_\psi=J_y\gamma_y$, $\langle x_\beta^2\rangle_\psi=J_x\beta_x$, $\langle y_\beta^2\rangle_\psi=J_y\beta_y$ даёт
+Вне дефлекторов $1/\rho=0$ и $\psi=0$, так что в интеграле там остаётся только наклон. Показатель $n$ во всех дефлекторах один и тот же; множители $(5-n)$ и $(n-1)$ стоят рядом с $1/\rho^2$ и вне дефлекторов не читаются. Слагаемое $x_{\mathrm{nl}}$ уже есть среднее по фазе, как в главе~\ref{sec:mag-beta}.
+
+Средние $\langle x_\beta^2\rangle_\psi=J_x\beta_x$, $\langle y_\beta^2\rangle_\psi=J_y\beta_y$ и, по \eqref{eq:xp2}, $\langle x_\beta'^2\rangle_\psi=J_x\gamma_x$, $\langle y_\beta'^2\rangle_\psi=J_y\gamma_y$. Здесь $\gamma_x$ и $\gamma_y$ --- функции Твисса, не лоренц-фактор. Подстановка даёт
 \begin{equation}
 \label{eq:Lambda-es-J}
 \begin{aligned}
-\Lambda=\frac{1}{C_s}\Biggl[&
-\frac{J_x}{2}\oint\Biggl(\gamma_x+\frac{(5-n)\beta_x}{\gamma_s^2\rho^2}\Biggr)\mathrm{d}s
-\\
-&+\frac{J_y}{2}\oint\Biggl(\gamma_y+\frac{(n-1)\beta_y}{\gamma_s^2\rho^2}\Biggr)\mathrm{d}s
-\\
-&+\Biggl(1+\frac{1}{\gamma_s^2}\Biggr)\oint\frac{\langle x_{\mathrm{nl}}\rangle_\psi}{\rho}\,\mathrm{d}s
+\Lambda^{\mathrm{E}}
+=\frac{1}{C_s}\Biggl[&
+\frac{J_x}{2}\oint\Biggl(
+\gamma_x+\frac{(5-n)\beta_x}{\gamma_s^2\rho^2}
+\Biggr)\mathrm{d}s
++\frac{J_y}{2}\oint\Biggl(
+\gamma_y+\frac{(n-1)\beta_y}{\gamma_s^2\rho^2}
+\Biggr)\mathrm{d}s\\
+&+\Biggl(1+\frac{1}{\gamma_s^2}\Biggr)
+\oint\frac{x_{\mathrm{nl}}}{\rho}\,\mathrm{d}s
 \Biggr].
 \end{aligned}
 \end{equation}
-Вне дефлекторов $1/\rho=0$. Соотношение \eqref{eq:Lambda-xi} выполняется и здесь, с хроматичностями $\xi_{x,y}=\mathrm{d}\nu_{x,y}/\mathrm{d}\delta$ электростатического кольца.
 
-\subsection{Система и равновесный сдвиг}
+\subsection{Действие и хроматичность}
 
-$\tau=\eta_0w+\tilde\eta_1w^2+\Lambda$, где $\eta_0$ и $\eta_1$ берутся из \eqref{eq:eta0-es}, \eqref{eq:eta1-es}, $\tilde\eta_1=\eta_1-\eta_0/(2\gamma_s^2)$, а $\Lambda$ --- из \eqref{eq:Lambda-es}. Система \eqref{eq:system-L}, её решение и усреднение главы~\ref{sec:mag-beta} сохраняются:
+Хроматичность электростатического кольца есть $\xi_x^{\mathrm{E}}=\mathrm{d}\nu_x/\mathrm{d}\delta$ и $\xi_y^{\mathrm{E}}=\mathrm{d}\nu_y/\mathrm{d}\delta$ при $\delta=0$ и при нулевых действиях. Аргумент $\delta$ --- модуль импульса вне дефлекторов, как в \eqref{eq:delta-def}.
+
+Внутри дефлектора линейное уравнение в плоскости орбиты есть \eqref{eq:cmp-x-es}. Его коэффициент при $x$ и есть жёсткость
+\begin{equation}
+\label{eq:Kx-es}
+K_x=\frac{2-n+1/\gamma_s^2}{\rho^2}.
+\end{equation}
+Четыре вклада в $K_x$ разобраны после \eqref{eq:cmp-x-es}: поворот сопровождающей системы, градиент поля, и множитель $1+1/\gamma_s^2$ от $pv$ на смещённом радиусе, где $\psi=x/\rho>0$ и кинетическая энергия ниже. Правая часть \eqref{eq:cmp-x-es} есть $(1+1/\gamma_s^2)\delta/\rho$.
+
+Вертикальная сила линейна по $y$. Из \eqref{eq:psi} при $x=0$ выполнено $\partial\psi/\partial y=(n-1)y/\rho^2$, поэтому $qE_y=-p_sv_s(n-1)y/\rho^2$. На опорной орбите $pv=p_sv_s$, и уравнение $y''=qE_y/(pv)$ даёт
+\begin{equation}
+\label{eq:Ky-es}
+y''+K_y y=0,
+\qquad
+K_y=\frac{n-1}{\rho^2}.
+\end{equation}
+При $n>1$ дефлектор фокусирует в вертикальной плоскости и тем слабее фокусирует в плоскости орбиты, чем больше $n$. Члена $1/\gamma_s^2$ в $K_y$ нет: вертикальное смещение при $x=0$ в линейном порядке не меняет центробежный член.
+
+Вне дефлекторов $1/\rho=0$ и $\psi=0$. Фокусировка там магнитная. Уравнения при синхронном импульсе те же, что \eqref{eq:hill}, без слагаемого $1/\rho^2$: его уже содержит тело дефлектора. Нелинейная сила секступоля --- \eqref{eq:Fsext}. На импульсе $p_s(1+\delta)$ магнитные $K_1$ и $K_2$ делятся на $1+\delta$, как в \eqref{eq:hill-d} и \eqref{eq:hill-y}. Жёсткость дефлектора так не масштабируется: её зависимость от $\delta$ выводится ниже отдельно.
+
+Дисперсия $D_1$ внутри дефлектора удовлетворяет \eqref{eq:cmp-D-es}, то есть
+\begin{equation}
+\label{eq:D-es-op}
+D_1''+K_x D_1=\frac{1+1/\gamma_s^2}{\rho}.
+\end{equation}
+Вне дефлекторов правая часть равна нулю, и уравнение переходит в $D_1''+K_1 D_1=0$. Функция Грина \eqref{eq:green} строится по оператору $\mathrm{d}^2/\mathrm{d}s^2+K_x$ всего кольца, с жёсткостью \eqref{eq:Kx-es} внутри дефлектора и с $K_1$ вне его. Поскольку правая часть \eqref{eq:D-es-op} есть $(1+1/\gamma_s^2)/\rho$, повторение выкладки \eqref{eq:xnl-id} даёт
+\begin{equation}
+\label{eq:xnl-es}
+\oint\Biggl(1+\frac{1}{\gamma_s^2}\Biggr)\frac{x_{\mathrm{nl}}}{\rho}\,\mathrm{d}s
+=\oint\langle F^x\rangle_\psi\,D_1\,\mathrm{d}s,
+\end{equation}
+если $x_{\mathrm{nl}}$ и $D_1$ порождены одним и тем же $K_x$, а $\langle F^x\rangle_\psi$ --- правая часть уравнения для $x_{\mathrm{nl}}$. Множитель $1+1/\gamma_s^2$ в \eqref{eq:Lambda-es} и в источнике дисперсии --- один и тот же. В магнитном кольце на обоих местах стоит единица.
+
+Связь наклона с жёсткостью та же, что \eqref{eq:Kbeta}: $K_x\beta_x=\gamma_x+\alpha_x'$ и $K_y\beta_y=\gamma_y+\alpha_y'$. Интеграл $\alpha'$ по периоду равен нулю, поэтому $\oint\gamma_x\,\mathrm{d}s=\oint K_x\beta_x\,\mathrm{d}s$ и так же в вертикальной плоскости. Подстановка в \eqref{eq:Lambda-es-J} переписывает наклоны через $K\beta$.
+
+Приращение тюна от добавки $\Delta K$ в уравнении $z''+(K+\Delta K)z=0$ даётся \eqref{eq:dnu}. Хроматичность есть эта добавка, отнесённая к $\delta$, при $\delta\to 0$:
+\begin{equation}
+\label{eq:xi-es}
+\xi_x^{\mathrm{E}}
+=\frac{1}{4\pi}\oint\beta_x\frac{\partial K_x}{\partial\delta}\,\mathrm{d}s,
+\qquad
+\xi_y^{\mathrm{E}}
+=\frac{1}{4\pi}\oint\beta_y\frac{\partial K_y}{\partial\delta}\,\mathrm{d}s.
+\end{equation}
+Производные берутся вдоль замкнутой орбиты $x=D_1\delta$, при нулевых действиях.
+
+Вне дефлекторов
+\begin{equation}
+\label{eq:dK-mag}
+\frac{\partial K_x}{\partial\delta}=-K_1+K_2 D_1,
+\qquad
+\frac{\partial K_y}{\partial\delta}=K_1-K_2 D_1.
+\end{equation}
+Первые слагаемые --- деление магнитного градиента на $1+\delta$. Вторые --- секступоль на орбите $x=D_1\delta$: он добавляет к градиенту $K_2 D_1\delta$, с противоположным знаком в двух плоскостях, как в \eqref{eq:xbeta-chrom} и \eqref{eq:ybeta-chrom}. Подстановка \eqref{eq:dK-mag} в \eqref{eq:xi-es} воспроизводит \eqref{eq:xi-x} и \eqref{eq:xi-y} на магнитных элементах.
+
+Внутри дефлектора производная складывается из двух частей. Первая берётся при $x=0$: меняется $pv$ частицы с данным $\delta$, а орбита ещё не сдвинута. Вторая --- сдвиг орбиты на $D_1\delta$ в поле, которое само зависит от радиуса.
+
+Для вертикальной плоскости первая часть равна
+\begin{equation}
+\label{eq:dKy-expl}
+\Biggl(\frac{\partial K_y}{\partial\delta}\Biggr)_{x=0}
+=-\Biggl(1+\frac{1}{\gamma_s^2}\Biggr)\frac{n-1}{\rho^2}
+=-K_y\Biggl(1+\frac{1}{\gamma_s^2}\Biggr).
+\end{equation}
+Сила $qE_y$ от $\delta$ не зависит, а делится на $pv$. Вне дефлектора при $\psi=0$ произведение $pv$ растёт с $\delta$ как $1+\delta(1+1/\gamma_s^2)$. Отсюда множитель $1+1/\gamma_s^2$, а не единица. Сравнение с рабочим интегралом такое. Наклон даёт $(J_y/2C_s)\oint\gamma_y\,\mathrm{d}s=(J_y/2C_s)\oint K_y\beta_y\,\mathrm{d}s$. Потенциальный член \eqref{eq:Lambda-es-J} есть $(J_y/2C_s)\oint K_y\beta_y/\gamma_s^2\,\mathrm{d}s$, потому что $K_y=(n-1)/\rho^2$. Сумма равна $(J_y/2C_s)\oint K_y(1+1/\gamma_s^2)\beta_y\,\mathrm{d}s$. Хроматичность \eqref{eq:dKy-expl} даёт в $-2\pi\xi_y/C_s$ тот же интеграл. Явная зависимость $K_y$ от $\delta$ воспроизводит и наклон, и член $(n-1)$ в \eqref{eq:Lambda-es}.
+
+Вторая часть --- радиальная зависимость жёсткости на орбите $x=D_1\delta$:
+\begin{equation}
+\label{eq:dKy-x}
+\frac{\partial K_y}{\partial x}
+=\frac{(n-1)\bigl(2-n+1/\gamma_s^2\bigr)}{\rho^3}
+=\frac{K_x(n-1)}{\rho}.
+\end{equation}
+Сдвиг орбиты добавляет к \eqref{eq:dKy-expl} слагаемое \eqref{eq:dKy-x}, умноженное на $D_1$. Это изменение вертикальной жёсткости из-за того, что замкнутая орбита проходит в другом радиусе.
+
+В плоскости орбиты явная производная при $x=0$ не совпадает с суммой $-K_x$ и потенциального коэффициента $(5-n)/(\gamma_s^2\rho^2)$. Их разность
+\begin{equation}
+\label{eq:dKx-gap}
+\Biggl(\frac{\partial K_x}{\partial\delta}\Biggr)_{x=0}
++K_x
++\frac{5-n}{\gamma_s^2\rho^2}
+=-\frac{2}{\rho^2}\Biggl(1+\frac{1}{\gamma_s^2}\Biggr).
+\end{equation}
+Левая часть --- то, что остаётся в $\partial K_x/\partial\delta$, когда из хроматичности уже вычтены наклон $\oint K_x\beta_x$ и член $(5-n)$ рабочего интеграла. Ненулевой остаток \eqref{eq:dKx-gap} означает, что эти два вклада $\Lambda^{\mathrm{E}}$ не исчерпывают горизонтальную хроматичность тела дефлектора.
+
+Сдвиг орбиты добавляет $(\partial K_x/\partial x)\,D_1$. Коэффициент $\partial K_x/\partial x$ есть вторая производная горизонтальной силы по $x$ при $\delta=0$. Та же вторая производная определяет квадратичную силу, которая сдвигает $x_{\mathrm{nl}}$. Для магнитного секступоля эта связь имеет вид $\partial K_x/\partial x=-2A_{xx}$, если $F^x=A_{xx}x^2+\cdots$, и \eqref{eq:xnl-es} воспроизводит секступольный член хроматичности. В дефлекторе так выходит для части силы, посчитанной при нулевых наклонах.
+
+Этого недостаточно, чтобы довести сравнение до \eqref{eq:Lambda-xi}. Не свелось три обстоятельства.
+
+Уравнение для $x$ содержит члены с $x'^2$ и $y'^2$. Их среднее по фазе тоже сдвигает центр орбиты, а сами члены зависят от $\delta$ и входят в $\xi_x^{\mathrm{E}}$. В рабочий интеграл они попадают только через получившийся $x_{\mathrm{nl}}$, и отдельного выражения через $\beta$ для них нет. В магнитном секторе глава~\ref{sec:mag-beta} оставляет ту же геометрию за пределами явных интегралов \eqref{eq:xi-x} и \eqref{eq:xi-y}.
+
+Коэффициент при $y^2$ в горизонтальной силе и производная \eqref{eq:dKy-x} не связаны множителем секступоля. Если квадратичная сила есть $A_{yy}y^2$, секступольная связь была бы $\partial K_y/\partial x=-2A_{yy}$. В дефлекторе разность этих двух величин равна $2(n-1)/\rho^3$. Тождество \eqref{eq:xnl-es} с силой, взятой при нулевых наклонах, поэтому не воспроизводит вертикальную добавку к жёсткости от сдвига орбиты. Множитель $p$, скорость $v$ и $h_s=1+x/\rho$ стоят в горизонтальном и вертикальном уравнениях по-разному.
+
+На стыке дефлектора с прямолинейным промежутком потенциал обрывается. Поперечный импульс при этом непрерывен, а продольный меняется. Линейная часть этого стыка зависит от $x$ и не зависит от $y$ в первом порядке. В интегралы \eqref{eq:xi-es} она не внесена.
+
+В статическом поле время пролёта канонически сопряжено полной энергии, а $\delta$ есть функция этой энергии с $\mathrm{d}E/\mathrm{d}\delta=p_sv_s$. Поэтому у среднего периода и у набега фазы ожидается та же связь, что в магнитном кольце у длины пути и у $\delta$:
+\begin{equation}
+\label{eq:Lambda-es-xi}
+\Lambda^{\mathrm{E}}
+=-\frac{2\pi}{C_s}\bigl(J_x\xi_x^{\mathrm{E}}+J_y\xi_y^{\mathrm{E}}\bigr).
+\end{equation}
+Почленное сравнение \eqref{eq:Lambda-es-J} с \eqref{eq:xi-es} до этого равенства не доведено. Вертикальная явная часть \eqref{eq:dKy-expl} с наклоном и с членом $(n-1)$ согласована. Горизонтальный остаток \eqref{eq:dKx-gap}, члены с наклонами в уравнении для $x$, расхождение $2(n-1)/\rho^3$ и стык дефлектора с прямолинейным промежутком остаются вне этой выкладки.
+
+Равенство \eqref{eq:Lambda-es-xi} проверено численно на периодической ячейке. Период состоит из двух ячеек; в каждой два секторных дефлектора с жёстким краем, четыре прямолинейных промежутка и два тонких магнитных квадруполя. Показатель $n$ принимал значения $1{,}2$ и $1{,}8$; отдельно при $n=1{,}5$ на квадруполи наложены тонкие секступоли. Лоренц-фактор синхронной частицы $\gamma_s=1{,}25$. Внутри дефлектора медианное поле $E_r\propto(\rho/r)^n$, а члены с $y^2$ и $y^4$ взяты из уравнения Лапласа. Край --- радиальная плоскость, без переходного поля. Поперечные импульсы $p_r$ и $p_y$ на краю непрерывны, продольный импульс пересчитывается так, чтобы кинетический импульс отвечал потенциалу: $\Phi=0$ снаружи и $\Phi(r,y)$ внутри. Полная энергия $\gamma mc^2+q\Phi$ между краями сохраняется. Отклонение $\delta$ задано модулем импульса на прямолинейном промежутке.
+
+Считалась одна частица. Время оборота усреднялось по $1200$ оборотам с окном Ханна $\sin^2\bigl(\pi(n+\tfrac12)/N\bigr)$, и линейная по действию часть выделялась по амплитудам $J$ и $J/4$ комбинацией $(16L_2-L_1)/3$. Сравнивались три величины: это среднее, $-2\pi J\xi^{\mathrm{E}}/C_s$ с численной производной тюна по $\delta$, и рабочий интеграл \eqref{eq:Lambda-es}. В вертикальной плоскости время оборота и хроматичность совпадают с относительной невязкой не хуже $10^{-7}$, рабочий интеграл --- не хуже $10^{-5}$. В плоскости орбиты без секступолей время оборота и $-2\pi J\xi_x^{\mathrm{E}}/C_s$ совпадают на уровне $2\cdot 10^{-4}$ при $n=1{,}2$ и $10^{-4}$ при $n=1{,}8$. С секступолями при $n=1{,}5$ горизонтальная невязка около $10^{-3}$, вертикальная по-прежнему не хуже $10^{-7}$. Рабочий интеграл в плоскости орбиты отличается от времени оборота на величину порядка $10^{-3}$: в неё входит шаг, с которым вдоль дефлектора считаются $\beta$ и $\gamma$.
+
+Натуральная хроматичность складывается из квадруполей и из тела дефлектора. Квадруполь даёт $-K_1$ в \eqref{eq:dK-mag}: градиент делится на $1+\delta$. Дефлектор даёт $K_x$ и $K_y$. Показатель $n$ переносит фокусировку из плоскости орбиты в вертикальную плоскость: в $K_x$ входит $2-n$, в $K_y$ входит $n-1$. Множитель $1/\gamma_s^2$ в $K_x$ --- замедление на внешнем радиусе. Там $pv$ меньше, и то же поле поворачивает траекторию сильнее. В магнитном диполе этого вклада нет: скорость от радиуса не зависит, а $1/\rho^2$ не делится на $1+\delta$.
+
+Секступоли и нелинейность самого дефлектора поправляют эту натуральную часть. Секступоль на орбите $x=D_1\delta$ даёт члены $K_2 D_1$ в \eqref{eq:dK-mag}. Нелинейность дефлектора --- радиальная зависимость поля $E_r\propto r^{-n}$. Кубический член потенциала на медианной плоскости равен $n(n+1)/6\,(x/\rho)^3$; его сила на сдвинутой орбите меняет линейный градиент. Этот вклад фиксирован показателем $n$, отдельного секступоля у дефлектора нет. Обнуление $\xi_x^{\mathrm{E}}$ и $\xi_y^{\mathrm{E}}$ обращает в нуль правую часть \eqref{eq:Lambda-es-xi}, если само равенство выполнено. Явные интегралы этого раздела такое обнуление не доказывают: горизонтальный остаток в них не вошёл.
+
+За синхротронный период $J_x$ и $J_y$ постоянны. Зависимость $\Lambda^{\mathrm{E}}$ от $\delta$ в \eqref{eq:tau-es-L} отброшена, так что в продольных уравнениях $\Lambda^{\mathrm{E}}$ --- постоянная.
+
+\subsection{Равновесный сдвиг}
+
+В этой главе $\sin\varphi\approx\varphi$. Равновесный сдвиг выводится так же, как \eqref{eq:deq-L}: запаздывание имеет вид $\eta_0\delta+\eta_1\delta^2+\Lambda$, резонатор стоит вне дефлекторов, и условие $\langle\tau\rangle=0$ не меняется. С заменой $\eta_0$, $\eta_1$ и $\Lambda$ на коэффициенты этого кольца
 \begin{equation}
 \label{eq:deq-es-L}
-\begin{aligned}
-\delta_\eq&=-\frac{1}{\eta_0}\Bigl(\frac{\eta_1A^2}{2}+\Lambda\Bigr),
-\\
-w_\eq&=-\frac{1}{\eta_0}\Bigl(\frac{\tilde\eta_1A^2}{2}+\Lambda\Bigr),
-\\
-\Delta E_\eq&=\beta_s^2E_s\,w_\eq.
-\end{aligned}
+\delta_\eq
+=-\frac{1}{\eta_0^{\mathrm{E}}}
+\Biggl(\frac{\eta_1^{\mathrm{E}}\delta_m^2}{2}+\Lambda^{\mathrm{E}}\Biggr).
 \end{equation}
-Условия применимости --- \eqref{eq:valid-L}. Во втором порядке по фазе выполняется \eqref{eq:deq-ph-L} с этими $\eta$ и $\Lambda$.
 
-\subsection{Кинетическая энергия внутри дефлектора}
+\subsection{Лоренц-фактор внутри дефлектора}
 
-Из \eqref{eq:gamma-loc} точно
+Между прохождениями резонатора полная энергия $\gamma mc^2+q\Phi$ постоянна. Меняет её только резонатор, а он стоит вне дефлекторов, где $\Phi=0$. Поэтому вне дефлекторов полная энергия совпадает с кинетической, и лоренц-фактор даётся рядом \eqref{eq:gamma-delta}. Его среднее за синхротронный период есть $\gamma_{\mathrm{eff}}$. Подстановка $\delta_\eq$ из \eqref{eq:deq-es-L} и $\langle\delta^2\rangle=\delta_m^2/2$ повторяет \eqref{eq:gamma-L}:
 \begin{equation}
-\label{eq:kin-loc}
-\frac{\gamma-\gamma_s}{\beta_s^2\gamma_s}=w-\psi.
+\label{eq:gamma-es-L}
+\gamma_{\mathrm{eff}}
+=\gamma_s+\beta_s^2\gamma_s\,\delta_\eq
++\frac{\beta_s^2\delta_m^2}{4\gamma_s}
++O(\delta_m^4).
 \end{equation}
-Усреднение по синхротронным и бетатронным колебаниям в точке $s$ дефлектора даёт $\langle\gamma-\gamma_s\rangle/(\beta_s^2\gamma_s)=w_\eq-\langle\psi\rangle(s)$. При $x=D\delta+D_2\delta^2+x_\beta+x_{\mathrm{nl}}$ и $y=y_\beta$, с $\langle\delta\rangle=\delta_\eq$ и $\langle\delta^2\rangle=A^2/2$, члены $\delta\cdot x_\beta$ в среднем равны нулю, поскольку фазы независимы. Из \eqref{eq:psi}
+
+Внутри дефлектора та же полная энергия устроена иначе. Часть её равна потенциальной энергии $q\Phi$, остальное --- кинетическая энергия $\gamma mc^2$. Локальный лоренц-фактор относится к кинетической части. Он связан со значением вне дефлектора точной формулой
 \begin{equation}
-\label{eq:psi-avg}
+\label{eq:g-split}
+\gamma=\gamma_{\mathrm{out}}(\delta)-\beta_s^2\gamma_s\,\psi,
+\end{equation}
+где $\gamma_{\mathrm{out}}$ --- правая часть \eqref{eq:gamma-delta}. Средняя кинетическая энергия вдоль кольца отличается от полной на среднее $-q\langle\Phi\rangle$. В единицах \eqref{eq:psi-def} это вычитание $\beta_s^2\gamma_s\langle\psi\rangle$. В фиксированной точке $s$ внутри дефлектора среднее по бетатронной фазе и по синхротронному периоду есть
+\begin{equation}
+\label{eq:gamma-loc-avg}
+\langle\gamma\rangle_s
+=\gamma_{\mathrm{eff}}-\beta_s^2\gamma_s\,\langle\psi\rangle_s.
+\end{equation}
+Вне дефлекторов $\psi=0$, и \eqref{eq:gamma-loc-avg} возвращает $\gamma_{\mathrm{eff}}$.
+
+Величина $\langle\psi\rangle_s$ --- промежуточный перечень вкладов, а не окончательное среднее по кольцу. Потенциал \eqref{eq:psi} на траектории $x=D_1\delta+D_2\delta^2+x_\beta+x_{\mathrm{nl}}$, $y=y_\beta$, после среднего по фазам, до второго порядка даёт
+\begin{equation}
+\label{eq:psi-avg-s}
 \begin{aligned}
-\langle\psi\rangle
-&=\frac{D}{\rho}\,\delta_\eq
-+\Biggl[\frac{D_2}{\rho}-\frac{n}{2}\Biggl(\frac{D}{\rho}\Biggr)^2\Biggr]\frac{A^2}{2}
-+\frac{\langle x_{\mathrm{nl}}\rangle_\psi}{\rho}
-\\
+\langle\psi\rangle_s
+&=\frac{D_1}{\rho}\,\delta_\eq
++\Biggl[\frac{D_2}{\rho}-\frac{n}{2}\Biggl(\frac{D_1}{\rho}\Biggr)^2\Biggr]\frac{\delta_m^2}{2}
++\frac{x_{\mathrm{nl}}}{\rho}\\
 &\quad-\frac{n}{2}\,\frac{J_x\beta_x}{\rho^2}
 +\frac{n-1}{2}\,\frac{J_y\beta_y}{\rho^2}.
 \end{aligned}
 \end{equation}
-Средний сдвиг кинетической энергии в точке $s$
-\begin{equation}
-\label{eq:dK}
-\Delta K_\eq(s)=\beta_s^2E_s\bigl[w_\eq-\langle\psi\rangle(s)\bigr].
-\end{equation}
-Вне дефлекторов $\psi=0$ и $\Delta K_\eq=\Delta E_\eq$.
+Первое слагаемое --- линейный потенциал на дисперсионном смещении при равновесном $\delta_\eq$. Второе --- дисперсия второго порядка и квадратичный потенциал на размахе $\delta_m$. Третье --- потенциал на сдвиге центра бетатронной орбиты. Четвёртое --- среднее горизонтального движения: в \eqref{eq:psi} при $x^2$ стоит $-n/2$. Пятое --- среднее вертикального движения: при $y^2$ стоит $(n-1)/2$.
+
+Продольная система видит частицу в резонаторе, где $\psi=0$, и для неё достаточно \eqref{eq:gamma-es-L}. Одно число $\langle\psi\rangle$ по всему дефлектору из \eqref{eq:psi-avg-s} не получается: для него нужен вес вдоль $s$, по длине опорной орбиты или по времени пролёта, и конкретные $D_1(s)$, $D_2(s)$, $\beta(s)$, $x_{\mathrm{nl}}(s)$. Этот вес уравнением продольного движения не фиксируется.
