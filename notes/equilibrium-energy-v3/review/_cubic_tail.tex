@@ -1,0 +1,109 @@
+\subsection{Кубическая сила}
+\label{sec:bm-cubic}
+
+Уравнение \eqref{eq:phi-ode} имеет вид
+\begin{equation}
+\label{eq:bm-c}
+\ddot x+\omega^2 x=\varepsilon c_3 x^3.
+\end{equation}
+В схеме \eqref{eq:ansatz}, \eqref{eq:ordk} правая часть первого порядка есть
+\begin{equation}
+\label{eq:f1c}
+f_1=c_3 a^3\cos^3\psi
+=c_3 a^3\frac{3\cos\psi+\cos 3\psi}{4}.
+\end{equation}
+Синуса в $f_1$ нет, поэтому $A_1=0$.
+
+Проекция на $\cos\psi$ даёт $-2a\omega B_1=3c_3 a^3/4$,
+\begin{equation}
+\label{eq:B1c}
+B_1=-\frac{3c_3 a^2}{8\omega}.
+\end{equation}
+На гармонике $\cos 3\psi$ оператор $\partial_{\psi\psi}+1$ равен $1-9=-8$, а коэффициент $f_1$ равен $c_3 a^3/4$, поэтому
+\begin{equation}
+\label{eq:u1c}
+u_1=-\frac{c_3 a^3}{32\omega^2}\cos 3\psi.
+\end{equation}
+При $\varepsilon=1$
+\begin{equation}
+\label{eq:xc}
+x=a\cos\psi-\frac{c_3 a^3}{32\omega^2}\cos 3\psi,
+\qquad
+\Omega=\omega-\frac{3c_3 a^2}{8\omega}.
+\end{equation}
+Здесь $a$ --- коэффициент первой гармоники. При $\psi=0$ выполнено $\cos\psi=\cos 3\psi=1$, и максимум есть
+\begin{equation}
+\label{eq:xmax}
+x_{\max}=a-\frac{c_3 a^3}{32\omega^2}.
+\end{equation}
+
+\textbf{Подстановка в \eqref{eq:phi-ode}.}
+Полагается $x=\varphi$, $\omega=\omega_s$, $c_3=\omega_s^2/6$. Тогда
+\begin{equation}
+\label{eq:phi-cos}
+\varphi=a\cos\psi-\frac{a^3}{192}\cos 3\psi,
+\qquad
+\frac{\Omega}{\omega_s}=1-\frac{a^2}{16},
+\qquad
+\varphi_{\max}=a\Bigl(1-\frac{a^2}{192}\Bigr).
+\end{equation}
+Сдвиг начала времени на четверть периода заменяет аргумент $\psi$ на $\psi-\pi/2$; дальше $\psi$ обозначает новую фазу. При этом $\cos(\psi-\pi/2)=\sin\psi$ и
+\begin{equation}
+\label{eq:c3shift}
+\cos 3\bigl(\psi-\pi/2\bigr)
+=\cos\bigl(3\psi-3\pi/2\bigr)
+=-\sin 3\psi,
+\end{equation}
+и знак перед третьей гармоникой меняется:
+\begin{equation}
+\label{eq:phi-sin-a}
+\varphi=a\sin\psi+\frac{a^3}{192}\sin 3\psi.
+\end{equation}
+В точке $\psi=\pi/2$ выполнено $\sin\psi=1$, $\sin 3\psi=-1$, поэтому максимум модуля по-прежнему равен $a(1-a^2/192)$. Это полуразмах $\hat\varphi$:
+\begin{equation}
+\label{eq:phihat-a}
+\hat\varphi=a\Bigl(1-\frac{a^2}{192}\Bigr).
+\end{equation}
+Обращение \eqref{eq:phihat-a}: $a=\hat\varphi+\hat\varphi^3/192+O(\hat\varphi^5)$, поэтому $\Omega/\omega_s=1-\hat\varphi^2/16$ и
+\begin{equation}
+\label{eq:phi-series}
+\varphi
+=\hat\varphi\sin\psi
++\frac{\hat\varphi^3}{192}\bigl(\sin\psi+\sin 3\psi\bigr).
+\end{equation}
+Уравнение \eqref{eq:phi-ode} не меняется при замене $\varphi\to-\varphi$. Множитель $\operatorname{sgn}\eta_0$ делает ведущий член равным ведущему члену \eqref{eq:phi} и приводит к \eqref{eq:phi-ph}.
+
+При $\tilde\eta_1=0$ первое уравнение \eqref{eq:system-phi} есть $\mathrm{d}\varphi/\mathrm{d}t=\omega_\rf\eta_0 w$. Дифференцирование \eqref{eq:phi-ph} при $\psi=\Omega t$ даёт
+\begin{equation}
+\label{eq:w-raw}
+w=\frac{\Omega}{\omega_\rf|\eta_0|}
+\Biggl[
+\Bigl(\hat\varphi+\frac{\hat\varphi^3}{192}\Bigr)\cos\psi
++\frac{\hat\varphi^3}{64}\cos 3\psi
+\Biggr],
+\end{equation}
+множитель $\operatorname{sgn}\eta_0$ сокращается с $\eta_0$, а коэффициент $\hat\varphi^3/64$ есть $3\hat\varphi^3/192$. При $\psi=0$ скобка равна $\hat\varphi(1+\hat\varphi^2/48)$, поэтому
+\begin{equation}
+\label{eq:A-Om}
+A=\frac{\Omega\hat\varphi}{\omega_\rf|\eta_0|}\Bigl(1+\frac{\hat\varphi^2}{48}\Bigr).
+\end{equation}
+Вместе с $\Omega=\omega_s(1-\hat\varphi^2/16)$
+\begin{align}
+A
+&=\frac{\omega_s\hat\varphi}{\omega_\rf|\eta_0|}
+\Bigl(1-\frac{\hat\varphi^2}{16}\Bigr)\Bigl(1+\frac{\hat\varphi^2}{48}\Bigr)
+\nonumber\\
+&=\frac{\omega_s\hat\varphi}{\omega_\rf|\eta_0|}
+\Bigl(1-\frac{\hat\varphi^2}{16}+\frac{\hat\varphi^2}{48}+O(\hat\varphi^4)\Bigr)
+=\frac{\omega_s\hat\varphi}{\omega_\rf|\eta_0|}\Bigl(1-\frac{\hat\varphi^2}{24}\Bigr),
+\label{eq:A-from-bm}
+\end{align}
+что есть \eqref{eq:A-ph}: разность $1/16-1/48=1/24$. Деление \eqref{eq:w-raw} на это $A$ оставляет при $\cos\psi$ множитель
+\begin{equation}
+\label{eq:cos-coeff}
+\frac{1+\hat\varphi^2/192}{1+\hat\varphi^2/48}
+=\Bigl(1+\frac{\hat\varphi^2}{192}\Bigr)\Bigl(1-\frac{\hat\varphi^2}{48}\Bigr)+O(\hat\varphi^4)
+=1-\frac{\hat\varphi^2}{64}+O(\hat\varphi^4),
+\end{equation}
+поскольку $1/48-1/192=1/64$, а при $\cos 3\psi$ --- множитель $\hat\varphi^2/64$. Это \eqref{eq:w-ph}.
+
