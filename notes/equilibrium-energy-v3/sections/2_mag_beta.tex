@@ -1,134 +1,458 @@
 \section{Магнитное кольцо: бетатронное запаздывание}
 \label{sec:mag-beta}
 
-\subsection{Запаздывание от бетатронных колебаний}
+Рассматривается то же магнитное кольцо, что в главе~\ref{sec:mag-base}, и продольные уравнения те же. Новое в этой главе --- бетатронные колебания. Частица по-прежнему имеет отклонение импульса $\delta$. Продольные обозначения главы~\ref{sec:mag-base} сохраняются: $\tau=(T-T_s)/T_s$, коэффициенты $\eta_0$ и $\eta_1$ взяты из \eqref{eq:tau}, частота $\omega_s$ --- из \eqref{eq:ws}. Новые величины определяются ниже в том месте, где входят первый раз.
 
-Бетатронное колебание меняет время оборота. При $w=0$ относительное запаздывание за оборот, усреднённое по быстрым бетатронным фазам,
-\begin{equation}
-\label{eq:Lambda}
-\Lambda=\frac{\langle T-T(J=0)\rangle_\psi}{T_s}.
-\end{equation}
-Синхротронное движение медленное и видит только это среднее. Здесь $J=(J_x,J_y)$ --- действия, $x'=\mathrm{d}x/\mathrm{d}s$, скобки $\langle\,\rangle_\psi$ --- среднее по бетатронным фазам. $\beta_x$, $\alpha_x$, $\gamma_x=(1+\alpha_x^2)/\beta_x$ --- функции Твисса, $\rho$ --- радиус кривизны орбиты.
+Порядок отсчитывается так. Поперечная амплитуда и $\delta$ --- величины одного порядка; это и есть малый параметр разложения. Действие пропорционально квадрату амплитуды. В длине пути учитываются члены второго порядка по амплитуде: $\delta^2$ и члены, линейные по действию. Члены $\delta^3$, произведения действия на $\delta$ и квадраты действия отбрасываются.
 
-В магнитном поле скорость вдоль любой траектории постоянна. При $w=0$ она на траектории с данным $J$ и на траектории $J=0$ одна и та же, поэтому запаздывание по времени равно запаздыванию по пути:
-\begin{equation}
-\label{eq:Lambda-path}
-\Lambda=\frac{\langle\Delta L_\beta\rangle_\psi}{C_s}.
-\end{equation}
-Равенство выполняется только потому, что скорость на обеих траекториях одинакова. $\Delta L_\beta$ --- избыток длины траектории над длиной орбиты $J=0$.
+\subsection{Поперечное положение}
 
-Элемент пути до второго порядка. Корень $\sqrt{(1+x/\rho)^2+x'^2+y'^2}$ после сокращения $(x/\rho)^2$ даёт
-\begin{equation}
-\label{eq:dl}
-\mathrm{d}l=\Bigl(1+\frac{x}{\rho}+\frac{x'^2+y'^2}{2}\Bigr)\mathrm{d}s.
-\end{equation}
-Отклонение от орбиты $J=0$
+Координата $s$ идёт вдоль орбиты синхронной частицы, $\oint\mathrm{d}s=C_s$. Отклонение $x$ отсчитывается от этой орбиты наружу, $y$ --- вертикально вверх. Опорная орбита лежит в горизонтальной плоскости. Радиус кривизны этой орбиты $\rho(s)$ положителен, на прямолинейных промежутках $1/\rho=0$. Горизонтальные и вертикальные колебания не связаны, и их действия сохраняются по отдельности.
+
+Положение в плоскости орбиты
 \begin{equation}
 \label{eq:xbeta}
-x=x_\beta+x_{\mathrm{nl}},
+x=x_D+x_\beta+x_{\mathrm{nl}},
 \qquad
-x_\beta=\sqrt{2J_x\beta_x}\cos\psi_x
+x_D=D_1\delta+D_2\delta^2,
+\qquad
+x_\beta=\sqrt{2J_x\beta_x}\cos\psi_x.
 \end{equation}
-(для $y$ --- так же). Слагаемое $x_{\mathrm{nl}}$ --- сдвиг орбиты, квадратичный по амплитуде; его дают секступоли, кривизна и краевые поля. Среднее $\langle x_\beta\rangle_\psi=0$.
-
-Дифференцирование \eqref{eq:xbeta} по $s$ при $\mathrm{d}\psi_x/\mathrm{d}s=1/\beta_x$ и $\alpha_x=-\beta_x'/2$ даёт
+Здесь $D_1(s)$ --- дисперсия первого порядка, $D_2(s)$ --- дисперсия второго порядка: $x_D$ есть замкнутая орбита частицы с отклонением импульса $\delta$ и с нулевой бетатронной амплитудой. Дальше $J_x$ --- горизонтальное действие, $\beta_x(s)$ --- горизонтальная бета-функция, $\psi_x$ --- бетатронная фаза. Фаза и функция Твисса $\alpha_x$ связаны с бета-функцией равенствами
 \begin{equation}
-\label{eq:xp}
-x_\beta'
-=\sqrt{2J_x}\Bigl(\frac{\beta_x'}{2\sqrt{\beta_x}}\cos\psi_x-\frac{\sin\psi_x}{\sqrt{\beta_x}}\Bigr)
-=-\sqrt{\frac{2J_x}{\beta_x}}\bigl(\sin\psi_x+\alpha_x\cos\psi_x\bigr).
+\label{eq:twiss-x}
+\frac{\mathrm{d}\psi_x}{\mathrm{d}s}=\frac{1}{\beta_x},
+\qquad
+\alpha_x=-\frac{1}{2}\frac{\mathrm{d}\beta_x}{\mathrm{d}s},
+\qquad
+\gamma_x=\frac{1+\alpha_x^2}{\beta_x}.
 \end{equation}
-Усреднение $\langle\sin^2\psi_x\rangle_\psi=\langle\cos^2\psi_x\rangle_\psi=\tfrac12$, $\langle\sin\psi_x\cos\psi_x\rangle_\psi=0$ даёт $\langle x_\beta'^2\rangle_\psi=J_x\gamma_x$, и так же для $y$. В \eqref{eq:dl} среднее $\langle x'^2\rangle_\psi=\langle x_\beta'^2\rangle_\psi$: среднее $x_\beta'$ равно нулю, а $x_{\mathrm{nl}}'^2$ имеет более высокий порядок по амплитуде. Поэтому
+Символ $\gamma_x$ --- функция Твисса, не лоренц-фактор. Набег $\psi_x$ за оборот равен $2\pi\nu_x$, поэтому
 \begin{equation}
-\label{eq:Lambda-g}
-\Lambda=\frac{1}{C_s}\Biggl[
-\frac{J_x}{2}\oint\gamma_x\,\mathrm{d}s
-+\frac{J_y}{2}\oint\gamma_y\,\mathrm{d}s
-+\oint\frac{\langle x_{\mathrm{nl}}\rangle_\psi}{\rho}\,\mathrm{d}s
-\Biggr].
+\label{eq:nu-def}
+\nu_x=\frac{1}{2\pi}\oint\frac{\mathrm{d}s}{\beta_x},
 \end{equation}
+и так же для вертикальной плоскости. Среднее по начальной бетатронной фазе обозначается $\langle\,\rangle_\psi$. Из \eqref{eq:xbeta} и $\langle\cos^2\psi_x\rangle_\psi=1/2$ следует $\langle x_\beta^2\rangle_\psi=J_x\beta_x$.
 
-При постоянных бета-функциях $\alpha=0$, $\gamma=1/\beta$ и $\oint\mathrm{d}s/\beta=2\pi\nu$. Без $x_{\mathrm{nl}}$
+Вертикальное отклонение не имеет дисперсионной части:
 \begin{equation}
-\label{eq:Lambda-nu}
-\Lambda=\frac{1}{C_s}\Bigl(\frac{J_x}{2}\cdot2\pi\nu_x+\frac{J_y}{2}\cdot2\pi\nu_y\Bigr)
-=\frac{\pi}{C_s}\bigl(J_x\nu_x+J_y\nu_y\bigr).
+\label{eq:ybeta}
+y=y_\beta+y_{\mathrm{nl}},
+\qquad
+y_\beta=\sqrt{2J_y\beta_y}\cos\psi_y.
 \end{equation}
+Функции $\beta_y$, $\alpha_y$, $\gamma_y$ и фаза $\psi_y$ определены так же, как в \eqref{eq:twiss-x}, вертикальное действие есть $J_y$, тюн --- $\nu_y$.
 
-Та же величина через полные хроматичности $\xi_{x,y}=\mathrm{d}\nu_{x,y}/\mathrm{d}\delta$, включая секступоли; вклад $x_{\mathrm{nl}}$ входит в них автоматически:
+Слагаемое $x_{\mathrm{nl}}$ --- сдвиг центра орбиты, квадратичный по амплитуде. Его дают секступоли, кривизна и краевые поля. По построению это уже среднее по бетатронной фазе: колебание на бетатронной частоте собрано в $x_\beta$. Такой же порядок имеет $y_{\mathrm{nl}}$. В плоском кольце элемент пути не содержит члена, линейного по $y$, а квадрат производной $y_{\mathrm{nl}}$ имеет четвёртый порядок по амплитуде. Поэтому $y_{\mathrm{nl}}$ в запаздывание этой главы не входит.
+
+При $J_x=J_y=0$ выполнено $x_{\mathrm{nl}}=0$ и $x=x_D$. Длина этой замкнутой орбиты есть $C(\delta)$ из \eqref{eq:C}, а запаздывание за оборот есть \eqref{eq:tau}. Тем самым часть траектории $x_D$ в продольное движение уже вошла, через коэффициенты $\alpha_0$ и $\alpha_1$. Ниже к \eqref{eq:tau} добавляется только вклад $x_\beta$ и $x_{\mathrm{nl}}$.
+
+Функции Твисса и тюны ниже берутся при $\delta=0$. Их зависимость от $\delta$, умноженная на действие, даёт третий порядок по амплитуде и отбрасывается. По той же причине отбрасывается произведение $x_D$ на $x_{\mathrm{nl}}$: первое линейно по $\delta$, второе квадратично по амплитуде.
+
+\subsection{Запаздывание за оборот}
+
+Квадрат элемента пути в плоскости орбиты есть $(1+x/\rho)^2\mathrm{d}s^2+\mathrm{d}x^2+\mathrm{d}y^2$. С производными $x'=\mathrm{d}x/\mathrm{d}s$ и $y'=\mathrm{d}y/\mathrm{d}s$
 \begin{equation}
-\label{eq:Lambda-xi}
-\Lambda=-\frac{2\pi}{C_s}\bigl(J_x\xi_x+J_y\xi_y\bigr).
+\label{eq:dl-exact}
+\frac{\mathrm{d}l}{\mathrm{d}s}
+=\sqrt{\Bigl(1+\frac{x}{\rho}\Bigr)^2+x'^2+y'^2}.
 \end{equation}
-Формула следует из симплектичности отображения за оборот и верна в первом порядке по $J$~\cite{Shoji2005}. В чистом фокусирующем канале $\xi=-\nu/2$, и \eqref{eq:Lambda-xi} совпадает с \eqref{eq:Lambda-nu}.
+Пусть $u=2x/\rho+(x/\rho)^2+x'^2+y'^2$. Тогда $\mathrm{d}l/\mathrm{d}s=(1+u)^{1/2}$. Ряд $(1+u)^{1/2}=1+u/2-u^2/8+O(u^3)$ содержит в $u/2$ член $(x/\rho)^2/2$, а в $u^2/8$ ведущий кусок $(2x/\rho)^2/8=x^2/(2\rho^2)$. Эти два вклада взаимно уничтожаются. Произведение $(x/\rho)(x'^2+y'^2)$ имеет третий порядок по амплитуде. До второго порядка остаётся
+\begin{equation}
+\label{eq:dl}
+\mathrm{d}l
+=\Bigl(1+\frac{x}{\rho}+\frac{x'^2+y'^2}{2}\Bigr)\mathrm{d}s.
+\end{equation}
+Члена $\langle x_\beta^2\rangle_\psi/\rho^2$ в \eqref{eq:dl} нет: он сократился вместе с $(x/\rho)^2$.
 
-\subsection{Система с бетатронным запаздыванием}
+Длина одного оборота складывается из длины замкнутой орбиты и бетатронного удлинения. Замкнутая орбита $x=x_D$ имеет длину $C(\delta)$ из \eqref{eq:C}. Коэффициенты $\alpha_0$ и $\alpha_1$ определяются дисперсией $D_1$, $D_2$ и наклоном $D_1'$ и не содержат бетатронной амплитуды. Пусть $L=\oint\mathrm{d}l$ --- длина траектории с бетатронным движением. Бетатронное удлинение есть избыток этой длины над $C(\delta)$, усреднённый по бетатронной фазе и отнесённый к $C_s$:
+\begin{equation}
+\label{eq:Lambda}
+\Lambda
+=\frac{\langle L-C(\delta)\rangle_\psi}{C_s}.
+\end{equation}
+Средняя длина оборота поэтому равна
+\begin{equation}
+\frac{\langle L\rangle_\psi}{C_s}
+=1+\alpha_0\delta+\alpha_1\delta^2+\Lambda.
+\end{equation}
+Величина $\Lambda$ вычисляется ниже, в разделе о хроматичности. Её зависимость от $\delta$ начинается с произведения действия на $\delta$ и в этом порядке отбрасывается, так что в длине $\Lambda$ --- постоянная.
 
-$\Lambda$ входит в запаздывание за оборот, то есть в первое уравнение \eqref{eq:smooth}:
+Магнитная сила работы не совершает. Между прохождениями резонатора модуль скорости зависит только от $\delta$ и одинаков вдоль траектории. Период обращения равен длине оборота, делённой на эту скорость: $T=\langle L\rangle_\psi/v$. Вместе с $T_s=C_s/v_s$ это то же соотношение, что в \eqref{eq:T-ratio},
+\begin{equation}
+\tau
+=\frac{T-T_s}{T_s}
+=\frac{v_s}{v}\,\frac{\langle L\rangle_\psi}{C_s}-1.
+\end{equation}
+Подстановка \eqref{eq:vsv} повторяет произведение \eqref{eq:tau-prod} и добавляет множитель при $\Lambda$:
+\begin{equation}
+\begin{aligned}
+\tau
+&=
+\Biggl(
+1-\frac{\delta}{\gamma_s^2}
++\frac{3\gamma_s^2-1}{2\gamma_s^4}\delta^2
+\Biggr)
+\bigl(1+\alpha_0\delta+\alpha_1\delta^2+\Lambda\bigr)
+-1
++O(\delta^3)\\
+&=
+\eta_0\delta+\eta_1\delta^2
++\Lambda
+-\frac{\Lambda}{\gamma_s^2}\delta
++\cdots.
+\end{aligned}
+\end{equation}
+Коэффициенты $\eta_0$ и $\eta_1$ те же, что в \eqref{eq:tau}. Бетатронный множитель равен
+\begin{equation}
+\frac{v_s}{v}\Lambda
+=\Lambda-\frac{\Lambda}{\gamma_s^2}\delta+\cdots.
+\end{equation}
+$\Lambda$ имеет порядок действия. Произведение $\Lambda\delta$ --- третий порядок по амплитуде и отбрасывается. Остаётся
 \begin{equation}
 \label{eq:tau-L}
-\tau=\eta_0w+\tilde\eta_1w^2+\Lambda
-=\eta_0\delta+\eta_1\delta^2+\Lambda.
+\tau=\eta_0\delta+\eta_1\delta^2+\Lambda.
 \end{equation}
-Второе выражение эквивалентно первому по \eqref{eq:tau} и \eqref{eq:tau-w}. При синхротронном движении $J_x$ и $J_y$ постоянны, поэтому $\Lambda$ постоянна. Зависимость $\Lambda$ от $w$ имеет более высокий порядок и отбрасывается.
+Относительная добавка к периоду равна относительной добавке к длине: до второго порядка коэффициент при $\Lambda$ равен единице.
 
-В этой главе $\sin\varphi\approx\varphi$, и система \eqref{eq:system} заменяется на
+В электростатическом дефлекторе так сделать нельзя. Скорость внутри дефлектора зависит от точки траектории, и $v_s/v$ нельзя вынести из интеграла периода. Это сделано отдельно в главе~\ref{sec:es-base}.
+
+\subsection{Действие и хроматичность}
+
+Поле на медианной плоскости разлагается по смещению от опорной орбиты. Жёсткость $B\rho=p_s/q$. Нормированные градиенты
+\begin{equation}
+K_1=\frac{1}{B\rho}\frac{\partial B_y}{\partial x},
+\qquad
+K_2=\frac{1}{B\rho}\frac{\partial^2 B_y}{\partial x^2}.
+\end{equation}
+При $K_1>0$ квадруполь фокусирует в плоскости орбиты и дефокусирует в вертикальной плоскости. Уравнения движения при синхронном импульсе
+\begin{equation}
+\label{eq:hill}
+x''+\Biggl(K_1+\frac{1}{\rho^2}\Biggr)x
+=\frac{\delta}{\rho}+F^x,
+\qquad
+y''-K_1 y=F^y.
+\end{equation}
+Слагаемое $1/\rho^2$ --- слабая фокусировка секторного диполя. На прямолинейном промежутке и у тонкого поворота его нет. В вертикальной плоскости тело диполя этого слагаемого не содержит. Краевое поле в \eqref{eq:hill} не включено: у секторного магнита с торцом, перпендикулярным орбите, линейной краевой фокусировки нет.
+
+Нелинейная сила нормального секступоля
+\begin{equation}
+\label{eq:Fsext}
+F^x=-\frac{K_2}{2}(x^2-y^2),
+\qquad
+F^y=K_2 xy.
+\end{equation}
+Знак следует из $\mathbf{F}=q\mathbf{v}\times\mathbf{B}$ при
+$B_y=(B\rho)\bigl(1/\rho+K_1 x+K_2 x^2/2\bigr)$ и
+$B_x=(B\rho)\bigl(K_1 y+K_2 xy\bigr)$.
+Дальше $K_x=K_1+1/\rho^2$ --- коэффициент при $x$ в левой части \eqref{eq:hill}, а $K_y=-K_1$ --- коэффициент в уравнении $y''+K_y y=0$.
+
+Положение в плоскости орбиты берётся из \eqref{eq:xbeta}: $x=x_\beta+D_1\delta+D_2\delta^2+x_{\mathrm{nl}}$. Слагаемое $D_2\delta^2$ остаётся в замкнутой орбите $x_D$ и в коэффициенте $\alpha_1$. В длину $\Lambda$ оно не входит. Вертикальная координата в этом разделе --- $y_\beta$ из \eqref{eq:ybeta}. Слагаемое $y_{\mathrm{nl}}$ на этом порядке в длину не входит: в элементе пути нет члена, линейного по $y$, а $y_{\mathrm{nl}}'^2$ имеет четвёртый порядок.
+
+$D_1$ --- периодическое решение
+\begin{equation}
+\label{eq:D1}
+D_1''+K_x D_1=\frac{1}{\rho}.
+\end{equation}
+Если слабой фокусировки нет, $K_x=K_1$, и \eqref{eq:D1} есть $D_1''+K_1 D_1=1/\rho$. Решение записывается через функцию Грина того же оператора $\mathrm{d}^2/\mathrm{d}s^2+K_x$. Бета-функция и набег фазы --- от этого оператора:
+\begin{equation}
+\label{eq:green}
+G(s,s_1)
+=\frac{\sqrt{\beta_x(s)\beta_x(s_1)}}{2\sin\pi\nu_x}
+\cos\bigl(\pi\nu_x-\bigl|\psi_x(s)-\psi_x(s_1)\bigr|\bigr).
+\end{equation}
+Косинус чётен по разности фаз, поэтому ядро симметрично, $G(s,s_1)=G(s_1,s)$. Дисперсия есть свёртка ядра с $1/\rho$:
+\begin{equation}
+\label{eq:D1-green}
+D_1(s)
+=\oint G(s,s_1)\frac{1}{\rho(s_1)}\,\mathrm{d}s_1.
+\end{equation}
+
+$x_{\mathrm{nl}}$ --- периодическое решение с правой частью, уже усреднённой по бетатронной фазе:
+\begin{equation}
+\label{eq:xnl-eq}
+x_{\mathrm{nl}}''+K_x x_{\mathrm{nl}}
+=\langle F^x\rangle_\psi,
+\qquad
+x_{\mathrm{nl}}(s)
+=\oint G(s,s_1)\langle F^x(s_1)\rangle_\psi\,\mathrm{d}s_1.
+\end{equation}
+Подстановка в интеграл удлинения и симметрия ядра дают
+\begin{equation}
+\label{eq:xnl-id}
+\begin{aligned}
+\oint\frac{x_{\mathrm{nl}}}{\rho}\,\mathrm{d}s
+&=\oint\oint G(s,s_1)\,
+\langle F^x(s_1)\rangle_\psi\,
+\frac{1}{\rho(s)}\,\mathrm{d}s_1\,\mathrm{d}s\\
+&=\oint\langle F^x(s_1)\rangle_\psi
+\Biggl(\oint G(s_1,s)\frac{1}{\rho(s)}\,\mathrm{d}s\Biggr)
+\mathrm{d}s_1\\
+&=\oint\langle F^x\rangle_\psi\,D_1\,\mathrm{d}s.
+\end{aligned}
+\end{equation}
+Вторая строка --- перестановка интегралов и равенство $G(s,s_1)=G(s_1,s)$. Третья --- формула \eqref{eq:D1-green}. Тождество верно, когда $D_1$ и $x_{\mathrm{nl}}$ порождены одним и тем же $K_x$, включая $1/\rho^2$, если оно есть в \eqref{eq:hill}.
+
+Для секступоля \eqref{eq:Fsext} среднее по фазе берётся при $\delta=0$: члены с $\delta$ дают поправку порядка $\delta J$ и отбрасываются. Из \eqref{eq:xbeta} и $\langle\cos^2\psi_x\rangle_\psi=1/2$ следует $\langle x_\beta^2\rangle_\psi=J_x\beta_x$, и так же $\langle y_\beta^2\rangle_\psi=J_y\beta_y$. Поэтому
+\begin{equation}
+\label{eq:Favg}
+\langle F^x\rangle_\psi
+=-\frac{K_2}{2}\bigl(J_x\beta_x-J_y\beta_y\bigr).
+\end{equation}
+
+Удлинение читается из \eqref{eq:dl}:
+\begin{equation}
+\label{eq:DeltaC}
+L-C_s
+=\oint\frac{x}{\rho}\,\mathrm{d}s
++\oint\frac{x'^2+y'^2}{2}\,\mathrm{d}s.
+\end{equation}
+Подстановка $x=x_D+x_\beta+x_{\mathrm{nl}}$ отделяет замкнутую орбиту. Её вклад
+\begin{equation}
+\oint\frac{x_D}{\rho}\,\mathrm{d}s
++\oint\frac{x_D'^2}{2}\,\mathrm{d}s
+=C_s\bigl(\alpha_0\delta+\alpha_1\delta^2\bigr)+O(\delta^3)
+\end{equation}
+есть $C(\delta)-C_s$ и в $\Lambda$ не входит. Среднее $\langle x_\beta\rangle_\psi=0$, поэтому вклад $x_\beta/\rho$ после $\langle\,\rangle_\psi$ равен нулю. Перекрёстный член $x_D'x_\beta'$ имеет второй порядок, но $x_D'$ от фазы не зависит и $\langle x_\beta'\rangle_\psi=0$, так что его среднее равно нулю. Произведение $x_D'x_{\mathrm{nl}}'$ есть порядок $\delta J$ и отбрасывается. В \eqref{eq:Lambda} остаётся
+\begin{equation}
+\label{eq:Lambda-slopes}
+\Lambda
+=\frac{1}{C_s}\oint\Biggl(
+\frac{x_{\mathrm{nl}}}{\rho}
++\frac{\langle x_\beta'^2\rangle_\psi}{2}
++\frac{\langle y_\beta'^2\rangle_\psi}{2}
+\Biggr)\mathrm{d}s.
+\end{equation}
+
+Дифференцирование \eqref{eq:xbeta} по $s$ при \eqref{eq:twiss-x} даёт
+\begin{equation}
+\label{eq:xp}
+\begin{aligned}
+x_\beta'
+&=\sqrt{2J_x}
+\Biggl(
+\frac{1}{2\sqrt{\beta_x}}\frac{\mathrm{d}\beta_x}{\mathrm{d}s}\cos\psi_x
+-\frac{\sin\psi_x}{\sqrt{\beta_x}}
+\Biggr)\\
+&=-\sqrt{\frac{2J_x}{\beta_x}}\,(\sin\psi_x+\alpha_x\cos\psi_x).
+\end{aligned}
+\end{equation}
+Квадрат равен
+\begin{equation*}
+x_\beta'^2
+=\frac{2J_x}{\beta_x}(\sin\psi_x+\alpha_x\cos\psi_x)^2.
+\end{equation*}
+Средние $\langle\sin^2\psi_x\rangle_\psi=\langle\cos^2\psi_x\rangle_\psi=1/2$ и $\langle\sin\psi_x\cos\psi_x\rangle_\psi=0$ оставляют $(J_x/\beta_x)(1+\alpha_x^2)$. По определению $\gamma_x$ это есть $J_x\gamma_x$. То же в вертикальной плоскости:
+\begin{equation}
+\label{eq:xp2}
+\langle x_\beta'^2\rangle_\psi=J_x\gamma_x,
+\qquad
+\langle y_\beta'^2\rangle_\psi=J_y\gamma_y.
+\end{equation}
+Вместе с \eqref{eq:xnl-id} и \eqref{eq:Favg} интеграл \eqref{eq:Lambda-slopes} принимает вид
+\begin{equation}
+\label{eq:Lambda-g}
+\Lambda
+=\frac{1}{C_s}\Biggl[
+\frac{J_x}{2}\oint\bigl(\gamma_x-K_2\beta_x D_1\bigr)\,\mathrm{d}s
++\frac{J_y}{2}\oint\bigl(\gamma_y+K_2\beta_y D_1\bigr)\,\mathrm{d}s
+\Biggr].
+\end{equation}
+Горизонтальный секступольный член отрицателен при $K_2 D_1>0$: средняя сила $\langle F^x\rangle_\psi$ от $x_\beta^2$ сдвигает орбиту так, что $\oint x_{\mathrm{nl}}/\rho\,\mathrm{d}s$ уменьшает путь. Вертикальный член $J_y$ входит с плюсом, потому что $-y^2$ в $F^x$ имеет другой знак.
+
+Хроматичность $\xi_x=\mathrm{d}\nu_x/\mathrm{d}\delta$ и $\xi_y=\mathrm{d}\nu_y/\mathrm{d}\delta$ берётся при $\delta=0$ и при нулевых действиях. На импульсе $p_s(1+\delta)$ магнитные градиенты делятся на $1+\delta$, поскольку $B\rho\propto p$. Слагаемое $1/\rho^2$ так не масштабируется; в формулах этого абзаца его нет, оговорка собрана в конце раздела. Уравнение в плоскости орбиты
+\begin{equation}
+\label{eq:hill-d}
+x''+\frac{K_1}{1+\delta}x
+=-\frac{K_2}{2(1+\delta)}(x^2-y^2)+\frac{\delta}{\rho}.
+\end{equation}
+Подстановка $x=D_1\delta+x_\beta$ и ряд $1/(1+\delta)=1-\delta+O(\delta^2)$ оставляют при $x_\beta$ коэффициент $K_1+(-K_1+K_2 D_1)\delta$. Уравнение колебания
+\begin{equation}
+\label{eq:xbeta-chrom}
+x_\beta''+\Bigl(K_1+(-K_1+K_2 D_1)\delta\Bigr)x_\beta=0.
+\end{equation}
+На орбите $x=D_1\delta$ секступоль добавляет к коэффициенту при $x_\beta$ слагаемое $K_2 D_1\delta$. Множитель $1/(1+\delta)$ добавляет $-K_1\delta$. Знаки этих двух добавок противоположны.
+
+Приращение тюна от добавки $\Delta K_x$ в уравнении $x''+(K_x+\Delta K_x)x=0$ считается по тонкой линзе $\Delta x'=-qx$. След матрицы оборота в переменных Твисса равен $2\cos\Phi-q\beta_x\sin\Phi$, где $\Phi=2\pi\nu_x$. Сравнение с $2\cos(\Phi+\Delta\Phi)$ даёт $\Delta\Phi=q\beta_x/2$, то есть
+\begin{equation}
+\label{eq:dnu-thin}
+\Delta\nu_x=\frac{\beta_x q}{4\pi}.
+\end{equation}
+Для распределённой добавки $q=\oint\Delta K_x\,\mathrm{d}s$ то же самое есть
+\begin{equation}
+\label{eq:dnu}
+\Delta\nu_x=\frac{1}{4\pi}\oint\beta_x\Delta K_x\,\mathrm{d}s.
+\end{equation}
+Из \eqref{eq:xbeta-chrom} следует $\Delta K_x=(-K_1+K_2 D_1)\delta$, и
+\begin{equation}
+\label{eq:xi-x}
+\xi_x
+=-\frac{1}{4\pi}\oint(K_1-K_2 D_1)\beta_x\,\mathrm{d}s.
+\end{equation}
+В вертикальной плоскости секступоль на орбите $x=D_1\delta$ даёт тот же добавочный градиент $K_2 D_1\delta$, но знак фокусировки другой. Уравнение
+\begin{equation}
+\label{eq:hill-y}
+y''-\frac{K_1}{1+\delta}y
+=\frac{K_2}{1+\delta}xy
+\end{equation}
+после подстановки $x=D_1\delta$ и $y=y_\beta$ даёт
+\begin{equation}
+\label{eq:ybeta-chrom}
+y_\beta''+\Bigl(-K_1+(K_1-K_2 D_1)\delta\Bigr)y_\beta=0.
+\end{equation}
+Добавка к $K_y$ равна $(K_1-K_2 D_1)\delta$. Формула \eqref{eq:dnu} с $\beta_y$ приводит к
+\begin{equation}
+\label{eq:xi-y}
+\xi_y
+=+\frac{1}{4\pi}\oint(K_1-K_2 D_1)\beta_y\,\mathrm{d}s.
+\end{equation}
+
+Сравнение \eqref{eq:Lambda-g} с \eqref{eq:xi-x} и \eqref{eq:xi-y} использует уравнение для $\beta$. Дифференцирование \eqref{eq:xp} даёт
+\begin{equation}
+\label{eq:xpp}
+x_\beta''
+=-\sqrt{\frac{2J_x}{\beta_x}}\,(\gamma_x+\alpha_x')\cos\psi_x.
+\end{equation}
+Подстановка в $x_\beta''+K_x x_\beta=0$ вместе с $x_\beta=\sqrt{2J_x\beta_x}\cos\psi_x$ сокращает общий множитель и оставляет
+\begin{equation}
+\label{eq:Kbeta}
+K_x\beta_x=\gamma_x+\alpha_x'.
+\end{equation}
+Интеграл $\alpha_x'$ по периоду равен нулю, потому что $\alpha_x$ периодична. Поэтому
+\begin{equation}
+\label{eq:gamma-K}
+\oint\gamma_x\,\mathrm{d}s=\oint K_x\beta_x\,\mathrm{d}s.
+\end{equation}
+В вертикальной плоскости то же уравнение с $K_y=-K_1$ даёт $K_y\beta_y=\gamma_y+\alpha_y'$ и
+\begin{equation}
+\label{eq:gamma-Ky}
+\oint\gamma_y\,\mathrm{d}s
+=\oint K_y\beta_y\,\mathrm{d}s
+=-\oint K_1\beta_y\,\mathrm{d}s.
+\end{equation}
+
+Дальше $1/\rho^2$ в $K_x$ нет, так что $K_x=K_1$ и $\oint\gamma_x\,\mathrm{d}s=\oint K_1\beta_x\,\mathrm{d}s$. Тогда горизонтальная скобка \eqref{eq:Lambda-g} равна
+\begin{equation}
+\begin{aligned}
+\frac{J_x}{2}\oint\bigl(\gamma_x-K_2\beta_x D_1\bigr)\,\mathrm{d}s
+&=\frac{J_x}{2}\oint(K_1-K_2 D_1)\beta_x\,\mathrm{d}s\\
+&=-2\pi\xi_x J_x,
+\end{aligned}
+\end{equation}
+где второе равенство есть \eqref{eq:xi-x}, умноженное на $-2\pi J_x$. Вертикальная скобка с \eqref{eq:gamma-Ky} равна
+\begin{equation}
+\begin{aligned}
+\frac{J_y}{2}\oint\bigl(\gamma_y+K_2\beta_y D_1\bigr)\,\mathrm{d}s
+&=-\frac{J_y}{2}\oint(K_1-K_2 D_1)\beta_y\,\mathrm{d}s\\
+&=-2\pi\xi_y J_y.
+\end{aligned}
+\end{equation}
+Деление суммы на $C_s$ даёт
+\begin{equation}
+\label{eq:Lambda-xi}
+\Lambda
+=-\frac{2\pi}{C_s}\bigl(J_x\xi_x+J_y\xi_y\bigr).
+\end{equation}
+Интеграл $\oint\gamma\,\mathrm{d}s$ --- вклад линейной решётки. Секступоли компенсируют его членами $K_2 D_1$. Если $\xi_x=\xi_y=0$, правая часть \eqref{eq:Lambda-xi} равна нулю и $\Lambda=0$. Это относится к тонким секступолям и к первому порядку по действию. Секступоли меняют ещё $D_2$, а с ним $\alpha_1$ и $\eta_1$. Этот сдвиг здесь не вычисляется.
+
+Если $\beta_x$ и $\beta_y$ постоянны, секступолей нет и слагаемого $1/\rho^2$ нет, то $\alpha_x=\alpha_y=0$, $\gamma_x=1/\beta_x$ и по \eqref{eq:nu-def} выполнено $\oint\mathrm{d}s/\beta_x=2\pi\nu_x$. Формула \eqref{eq:Lambda-g} сводится к
+\begin{equation}
+\label{eq:Lambda-nu}
+\Lambda
+=\frac{\pi}{C_s}\bigl(J_x\nu_x+J_y\nu_y\bigr).
+\end{equation}
+При переменной $\beta$ выполнено $\gamma=(1+\alpha^2)/\beta\ge 1/\beta$, поэтому $\oint\gamma\,\mathrm{d}s\ge 2\pi\nu$. Замена интеграла $\gamma$ на $2\pi\nu$ занижает вклад наклонов. В этом смысле \eqref{eq:Lambda-nu} --- оценка.
+
+Вывод \eqref{eq:Lambda-g}--\eqref{eq:Lambda-xi} выполнен при $K_x=K_1$: поворот задан тонким диполем, который даёт $\delta/\rho$ в уравнении и $x/\rho$ в длине и не добавляет $1/\rho^2$ к жёсткости. Квадруполь и секступоль масштабируются как $1/(1+\delta)$.
+
+В секторном диполе слагаемое $1/\rho^2$ входит в $K_x$ и в $\gamma_x$, но на $1+\delta$ не делится. Кроме того, уравнение движения в секторе содержит квадратичные геометрические члены вида $x^2/\rho^3$ и $x'^2/\rho$ и член $\delta x/\rho^2$. Первые дают дополнительный сдвиг $x_{\mathrm{nl}}$, последний --- дополнительную хроматичность. Явная форма \eqref{eq:Lambda-g} и интегралы \eqref{eq:xi-x}, \eqref{eq:xi-y} этих членов не содержат, и для решётки с секторными диполями их нужно дополнить.
+
+Равенство \eqref{eq:Lambda-xi} при этом сохраняется, если $\xi_x$ и $\xi_y$ --- полные производные тюнов по $\delta$: дополнительные вклады в $\Lambda$ и в $-2\pi J\xi/C_s$ совпадают. Причина общая. В магнитном кольце длина пути и $\delta$ образуют канонически сопряжённую пару, поэтому производная средней длины оборота по действию равна производной набега фазы по $\delta$ с обратным знаком. Само это свойство здесь не выводится. Равенство проверено численно на ячейке FODO с секторными диполями и тонкими квадруполями: удлинение, усреднённое по многим оборотам одной частицы, совпадает с $-2\pi J\xi/C_s$ с относительной точностью $10^{-4}$ в плоскости орбиты и $10^{-8}$ в вертикальной плоскости. Краевое поле в этот счёт не входило.
+
+За синхротронный период $J_x$ и $J_y$ постоянны. Зависимость $\Lambda$ от $\delta$ начинается с произведения действия на $\delta$ и в \eqref{eq:tau-L} отброшена, так что в продольных уравнениях $\Lambda$ --- постоянная.
+
+
+\subsection{Равновесный сдвиг}
+
+В этой главе $\sin\varphi\approx\varphi$. Система \eqref{eq:smooth} с запаздыванием \eqref{eq:tau-L} и с тем же множителем приращения импульса, что в \eqref{eq:system}, есть
 \begin{equation}
 \label{eq:system-L}
-\frac{\mathrm{d}\varphi}{\mathrm{d}t}=\omega_\rf\bigl(\eta_0w+\tilde\eta_1w^2+\Lambda\bigr),
-\qquad
-\frac{\mathrm{d}w}{\mathrm{d}t}=K\cos\varphi_s\,\varphi.
+\begin{aligned}
+\frac{\mathrm{d}\varphi}{\mathrm{d}t}
+&=\omega_\rf(\eta_0\delta+\eta_1\delta^2+\Lambda),\\
+\frac{\mathrm{d}\delta}{\mathrm{d}t}
+&=K\cos\varphi_s\,\varphi\Bigl(1-\frac{\delta}{\gamma_s^2}\Bigr).
+\end{aligned}
 \end{equation}
-
-\subsection{Решение и равновесный сдвиг}
-
-Дифференцирование второго уравнения \eqref{eq:system-L}, подстановка первого и \eqref{eq:ws} дают
-\begin{equation}
-\label{eq:ode-L}
-\ddot w+\omega_s^2w=c_0+c_2w^2,
-\qquad
-c_0=-\frac{\omega_s^2\Lambda}{\eta_0},
-\qquad
-c_2=-\frac{\omega_s^2\tilde\eta_1}{\eta_0}.
-\end{equation}
-Решение (приложение~\ref{app:bm}); амплитуда $A$ имеет тот же смысл, что в \eqref{eq:w-sol}:
-\begin{align}
-w(t)&=w_\eq+A\cos\psi+\frac{\tilde\eta_1A^2}{6\eta_0}\cos2\psi,
-\nonumber\\
-w_\eq&=-\frac{1}{\eta_0}\Bigl(\frac{\tilde\eta_1A^2}{2}+\Lambda\Bigr),
-\qquad
-\psi=\Omega t,
-\label{eq:w-sol-L}\\
-\varphi(t)&=\frac{\omega_\rf}{\Omega}\Biggl[
-\eta_0A\Bigl(1-\frac{2\tilde\eta_1\Lambda}{\eta_0^2}\Bigr)\sin\psi
-+\frac{\tilde\eta_1A^2}{3}\sin2\psi
-\Biggr],
-\label{eq:phi-L}\\
-\frac{\Omega}{\omega_s}&=1-\frac{\tilde\eta_1\Lambda}{\eta_0^2}-\frac{5}{12}\Bigl(\frac{\tilde\eta_1A}{\eta_0}\Bigr)^2.
-\label{eq:Omega-L}
-\end{align}
-
-Из \eqref{eq:tau-avg} и \eqref{eq:tau-L}
+Постоянная $\Lambda$ имеет порядок $\delta_m^2$. Поперечная амплитуда в счёте этой главы того же порядка, что и полуразмах $\delta_m$, а действие и $\Lambda$ квадратичны по амплитуде, как и член $\eta_1\delta^2$. Равенство $\langle\tau\rangle=0$ по-прежнему точно: оно получено в \eqref{eq:tau-avg-exact} из возвращения фазы и от вида $\tau$ не зависит. Подстановка \eqref{eq:tau-L} даёт
 \begin{equation}
 \label{eq:deq-raw-L}
-\delta_\eq=-\frac{\eta_1\langle\delta^2\rangle+\Lambda}{\eta_0}.
+\delta_\eq
+=-\frac{\eta_1\langle\delta^2\rangle+\Lambda}{\eta_0}.
 \end{equation}
-На решении \eqref{eq:w-sol-L} $\langle\delta^2\rangle=A^2/2$, поэтому с \eqref{eq:w-series} и \eqref{eq:tau-w}
+
+Уравнение для $\delta$ выводится так же, как \eqref{eq:ode}; постоянная $\Lambda$ в первом уравнении \eqref{eq:system-L} даёт в правой части постоянную \eqref{eq:c0-L}, а перекрёстный член $\Lambda\delta$ имеет третий порядок:
+\begin{equation}
+\label{eq:ode-L}
+\ddot\delta+\omega_s^2\delta
+=-\frac{\omega_s^2}{\eta_0}\Bigl(\eta_1-\frac{\eta_0}{\gamma_s^2}\Bigr)\delta^2
+-\frac{1}{\gamma_s^2}(\dot\delta)^2
+-\frac{\omega_s^2\Lambda}{\eta_0}.
+\end{equation}
+Это \eqref{eq:bm} с $c_0=-\omega_s^2\Lambda/\eta_0$. По \eqref{eq:bm-sol} постоянная $c_0$ входит только в неколебательную часть, вторая гармоника та же, что в \eqref{eq:delta-sol}, и полуразмах по-прежнему равен $a=\delta_m$. Квадрат постоянной части имеет четвёртый порядок, поэтому $\langle\delta^2\rangle=\delta_m^2/2$, и \eqref{eq:deq-raw-L} даёт
 \begin{equation}
 \label{eq:deq-L}
-\delta_\eq=-\frac{1}{\eta_0}\Bigl(\frac{\eta_1A^2}{2}+\Lambda\Bigr),
-\qquad
-w_\eq=\delta_\eq+\frac{A^2}{4\gamma_s^2},
-\qquad
-\Delta E_\eq=\beta_s^2E_s\,w_\eq.
+\delta_\eq
+=-\frac{1}{\eta_0}\Biggl(\frac{\eta_1\delta_m^2}{2}+\Lambda\Biggr).
 \end{equation}
-Постоянный член \eqref{eq:w-sol-L} совпадает с этим $w_\eq$.
+Неколебательная часть решения совпадает с \eqref{eq:deq-L}:
+\begin{equation}
+\label{eq:delta-L}
+\delta(t)
+=\delta_\eq
++\delta_m\cos\psi
++\frac{\delta_m^2}{6}\Bigl(\frac{\eta_1}{\eta_0}-\frac{2}{\gamma_s^2}\Bigr)\cos 2\psi,
+\qquad
+\psi=\omega_s t.
+\end{equation}
 
-При $A\to0$ устойчивая точка смещается в $w=-\Lambda/\eta_0$: в удержанном порядке там $\tau=0$, а $\varphi=0$ остаётся центром колебаний фазы.
+Поскольку $\Lambda$ порядка $\delta_m^2$, она сдвигает только постоянную часть $\delta$, на величину того же порядка, что и член с $\eta_1$. Во вторую гармонику и в $\langle\delta^2\rangle$ в принятом порядке она не входит. Относительная поправка к частоте порядка $\delta_m^2$ по-прежнему не фиксируется: такой же вклад дают член $\tau$ порядка $\delta^3$ и член $\varphi^3$ в $\sin\varphi$, как в главе~\ref{sec:mag-base}. Сдвиг частоты, линейный по $\Lambda$, имеет тот же порядок. В \eqref{eq:delta-L} частота оставлена равной $\omega_s$.
 
-К условиям \eqref{eq:valid} добавляется
+При $|\Lambda|$ порядка $|\eta_0|\delta_m$ постоянный сдвиг $-\Lambda/\eta_0$ сравним с полуразмахом. Тогда $\langle\delta^2\rangle$ содержит $\delta_\eq^2$, и ряд $\tau$ строится около этой смещённой точки. Условие \eqref{eq:valid-L} требует $|\delta_\eq|\ll\delta_m$.
+
+Фаза восстанавливается из первого уравнения \eqref{eq:system-L}. Подстановка \eqref{eq:delta-L} в \eqref{eq:tau-L} устроена так же, как вывод \eqref{eq:phi}. Постоянная часть $\eta_0\delta_\eq+\eta_1\delta_m^2/2+\Lambda$ равна нулю по \eqref{eq:deq-L}. Перекрёстные члены $\Lambda$ с гармоникой $\delta$ имеют порядок $\delta_m^3$ и отбрасываются. Колебательная часть $\varphi$ совпадает с \eqref{eq:phi}.
+
+Лоренц-фактор по-прежнему зависит только от $\delta$: в \eqref{eq:delta-def} импульс $p$ есть модуль полного импульса, и поперечный угол отдельного слагаемого в $\gamma$ не даёт. Определение $\gamma_{\mathrm{eff}}=\langle\gamma\rangle$ есть \eqref{eq:gamma-eff}. Усреднение \eqref{eq:gamma-delta} с $\langle\delta\rangle=\delta_\eq$ из \eqref{eq:deq-L} и с $\langle\delta^2\rangle=\delta_m^2/2$ даёт
+\begin{equation}
+\label{eq:gamma-L}
+\gamma_{\mathrm{eff}}
+=\gamma_s+\beta_s^2\gamma_s\,\delta_\eq
++\frac{\beta_s^2\delta_m^2}{4\gamma_s}
++O(\delta_m^4).
+\end{equation}
+Остаток имеет порядок $\delta_m^4$ по той же причине, что в \eqref{eq:gamma-eff}: при $\Lambda$ порядка $\delta_m^2$ квадрат постоянной части и её вклад в $\langle\delta^3\rangle$ начинаются с $\delta_m^4$. Сдвиг средней энергии $\Delta E_\eq=E_s(\gamma_{\mathrm{eff}}-\gamma_s)/\gamma_s$ равен
+\begin{equation}
+\label{eq:dE-L}
+\Delta E_\eq
+=\beta_s^2E_s\Biggl(\delta_\eq+\frac{\delta_m^2}{4\gamma_s^2}\Biggr)
++O(\delta_m^4 E_s).
+\end{equation}
+Подстановка \eqref{eq:deq-L} выделяет в обоих сдвигах слагаемое, пропорциональное $\Lambda$: в $\gamma_{\mathrm{eff}}$ это $-\beta_s^2\gamma_s\Lambda/\eta_0$, в энергии это $-\beta_s^2E_s\Lambda/\eta_0$.
+
+Условия применимости:
 \begin{equation}
 \label{eq:valid-L}
-\Bigl|\frac{\tilde\eta_1\Lambda}{\eta_0^2}\Bigr|\ll1:
+\begin{aligned}
+&\Bigl|\frac{\eta_1\delta_m}{\eta_0}\Bigr|\ll 1,
+\qquad
+\Bigl|\frac{\Lambda}{\eta_0\delta_m}\Bigr|\ll 1,
+\qquad
+\frac{\omega_\rf|\eta_0|\delta_m}{\omega_s}\ll 1,\\
+&\delta_m\ll 1,
+\qquad
+\omega_s T_s\ll 1,
+\qquad
+\omega_s T_s\ll 2\pi\nu_{x,y}.
+\end{aligned}
 \end{equation}
-наклон $\tau$ в смещённой устойчивой точке, $\eta_0-2\tilde\eta_1\Lambda/\eta_0$, мало отличается от $\eta_0$.
+Первое, третье, четвёртое и пятое имеют тот же смысл, что в \eqref{eq:valid}. Второе означает, что бетатронное запаздывание на фоне линейного члена $\eta_0\delta_m$ мало, так что $|\delta_\eq|\ll\delta_m$ и замена $\langle\delta^2\rangle=\delta_m^2/2$ законна. Шестое означает, что за синхротронный период бетатронная фаза проходит много оборотов и продольные уравнения видят среднее \eqref{eq:Lambda}. Отброшенные в пути члены порядка $\delta J$ и $J^2$ малы вместе с амплитудным счётом начала главы и с $\delta_m\ll 1$.
