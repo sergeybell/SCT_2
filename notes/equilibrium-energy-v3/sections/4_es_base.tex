@@ -1,106 +1,432 @@
 \section{Электростатическое кольцо: исходная система}
 \label{sec:es-base}
 
-\subsection{Поле и переменные}
+Поворот пучка создают только электростатические дефлекторы; несколько дефлекторов подряд образуют поворотную арку. Вне дефлекторов кривизна опорной орбиты равна нулю, $1/\rho=0$. Фокусирующие элементы вне дефлекторов магнитные, и электрический потенциал там равен нулю. Во всех дефлекторах один и тот же показатель поля $n$. На медианной плоскости радиальное поле есть
+\begin{equation}
+\label{eq:Ex}
+E_x=E_0\Bigl(1-n\frac{x}{\rho}+O(x^2)\Bigr),
+\end{equation}
+где $E_0$ --- значение $E_x$ на опорной орбите. Ускоряющий резонатор расположен вне дефлекторов. В этой главе рассматривается продольное движение: частица остаётся в медианной плоскости, $y=0$, и отклоняется от опорной орбиты только вместе с $\delta$.
 
-Изгиб создают только электростатические дефлекторы, вне их $1/\rho=0$. Фокусирующие элементы вне дефлекторов магнитные, потенциал вне дефлекторов равен нулю. Показатель поля $n$ во всех дефлекторах один и тот же. ВЧ-зазор расположен вне дефлекторов.
+Ось $s$ направлена вдоль опорной орбиты, ось $x$ --- от центра кривизны, ось $y$ --- по вертикали. Элемент опорной дуги есть $\mathrm{d}s$. В дефлекторе продольный масштабный множитель равен $h_s=1+x/\rho$: дуга радиуса $\rho+x$ длиннее опорной в $(\rho+x)/\rho$ раз. Множители по $x$ и по $y$ равны единице. Вне дефлекторов $h_s=1$.
 
-Нормированный потенциал дефлектора
+\subsection{Потенциал дефлектора}
+
+Внутри дефлектора электрический потенциал $\Phi$ равен нулю на опорной орбите. Безразмерный потенциал
+\begin{equation}
+\label{eq:psi-def}
+\psi=\frac{q\Phi}{p_sv_s}
+\end{equation}
+измеряет $q\Phi$ в единицах $p_sv_s$. Такое деление выбрано потому, что $p_sv_s=\beta_s^2E_s$: в этих же единицах энергия входит в приращение импульса \eqref{eq:ddelta}.
+
+Знак линейного члена фиксируется центростремительной силой, под действием которой синхронная частица движется по окружности радиуса $\rho$. Импульс на этой окружности азимутальный. Радиальная проекция $\mathrm{d}\mathbf{p}/\mathrm{d}t=q\mathbf{E}$ содержит центростремительное слагаемое $p_sv_s/\rho$, направленное к центру, то есть против оси $x$. Поэтому
+\begin{equation}
+\label{eq:E0}
+qE_0=-\frac{p_sv_s}{\rho}.
+\end{equation}
+Поле связано с потенциалом равенством $\mathbf{E}=-\nabla\Phi$, так что $E_x=-\partial\Phi/\partial x$. На медианной плоскости из \eqref{eq:Ex} и \eqref{eq:E0}
+\begin{equation}
+\label{eq:dPhi}
+\frac{\partial\Phi}{\partial x}
+=\frac{p_sv_s}{q\rho}\Bigl(1-n\frac{x}{\rho}+O(x^2)\Bigr).
+\end{equation}
+Интегрирование от опорной орбиты, где $\Phi=0$, даёт
+\begin{equation}
+\label{eq:Phi-x}
+\Phi(x,0)
+=\frac{p_sv_s}{q}
+\Biggl(\frac{x}{\rho}-\frac{n}{2}\frac{x^2}{\rho^2}\Biggr)+O(x^3).
+\end{equation}
+Коэффициент при $x^2$ в \eqref{eq:Phi-x} получается интегрированием члена $-nx/\rho$ из \eqref{eq:Ex}. Остаток $O(x^2)$ в поле порождает в $\Phi$ члены третьего порядка; дальше они отбрасываются. Линейный член положителен. При $x>0$ потенциальная энергия $q\Phi$ положительна, кинетическая энергия меньше полной, и сила $qE_x$ направлена к центру.
+
+Член с $y^2$ чётен по $y$, и его вклад в $\partial\Phi/\partial x$ на медианной плоскости равен нулю. Коэффициент при $y^2$ фиксирует уравнение Лапласа. Внутри дефлектора поле поворота однородно вдоль дуги, поэтому $\Phi$ не зависит от $s$, и производные по $s$ равны нулю. Дивергенция в ортогональных координатах с масштабными множителями $h_x=h_y=1$ и $h_s=1+x/\rho$ тогда сводится к
+\begin{equation}
+\label{eq:div-hs}
+\frac{\partial}{\partial x}\Bigl(h_s\frac{\partial\Phi}{\partial x}\Bigr)
++\frac{\partial}{\partial y}\Bigl(h_s\frac{\partial\Phi}{\partial y}\Bigr)=0.
+\end{equation}
+Производная $h_s$ по $x$ равна $1/\rho$, а от $y$ множитель $h_s$ не зависит, поэтому
+\begin{equation}
+\label{eq:lap-hs}
+h_s\Biggl(\frac{\partial^2\Phi}{\partial x^2}+\frac{\partial^2\Phi}{\partial y^2}\Biggr)
++\frac{1}{\rho}\frac{\partial\Phi}{\partial x}=0.
+\end{equation}
+Деление на $h_s=(\rho+x)/\rho$ даёт уравнение Лапласа
+\begin{equation}
+\label{eq:laplace}
+\frac{\partial^2\Phi}{\partial x^2}
++\frac{\partial^2\Phi}{\partial y^2}
++\frac{1}{\rho+x}\frac{\partial\Phi}{\partial x}=0.
+\end{equation}
+Уравнению \eqref{eq:laplace} удовлетворяет и $\psi$: множитель $p_sv_s/q$ постоянен. Ряд до второго порядка, согласованный с уже найденными членами по $x$ и с симметрией медианной плоскости, есть
+\begin{equation}
+\label{eq:psi-b}
+\psi
+=\frac{x}{\rho}-\frac{n}{2}\frac{x^2}{\rho^2}+b\frac{y^2}{\rho^2}
++O\bigl((x/\rho)^3,(y/\rho)^3\bigr).
+\end{equation}
+Вторые производные и первая производная уже записанного ряда \eqref{eq:psi-b} в точке $x=y=0$ равны
+\begin{equation}
+\label{eq:psi-der}
+\frac{\partial^2\psi}{\partial x^2}=-\frac{n}{\rho^2},
+\qquad
+\frac{\partial^2\psi}{\partial y^2}=\frac{2b}{\rho^2},
+\qquad
+\frac{\partial\psi}{\partial x}=\frac{1}{\rho}.
+\end{equation}
+Их подстановка в \eqref{eq:laplace} при $x=y=0$ даёт $(-n+2b+1)/\rho^2=0$ и фиксирует коэффициент $b=(n-1)/2$. Поэтому
 \begin{equation}
 \label{eq:psi}
-\psi=\frac{q\Phi}{p_sv_s}
-=\frac{x}{\rho}-\frac{n}{2}\frac{x^2}{\rho^2}+\frac{n-1}{2}\frac{y^2}{\rho^2}.
+\psi
+=\frac{x}{\rho}
+-\frac{n}{2}\frac{x^2}{\rho^2}
++\frac{n-1}{2}\frac{y^2}{\rho^2}
++O\bigl((x/\rho)^3,(y/\rho)^3\bigr).
 \end{equation}
-В этой главе $y=0$; член с $y^2$ используется в главе~\ref{sec:es-beta}. Знак в \eqref{eq:psi} фиксируется условием $qE_0=p_sv_s/\rho$ на опорной орбите ($E_0$ --- поле на ней); коэффициенты при $x^2$ и $y^2$ --- уравнением Лапласа в криволинейных координатах.
+В этой главе $y=0$, поэтому последний член в запаздывание не входит. Он оставлен в \eqref{eq:psi}, потому что уравнение Лапласа связывает его с показателем $n$. Вне дефлекторов $\Phi=0$, то есть $\psi=0$.
 
-В \eqref{eq:delta-def} энергия $E$ полная, с $q\Phi$; она меняется только в зазоре, и между прохождениями зазора $w$ постоянно. Импульс в $\delta$ берётся вне дефлекторов, где $\psi=0$, поэтому \eqref{eq:w-series} сохраняется. Поскольку $p_sv_s=\beta_s^2E_s$,
+\subsection{Импульс, лоренц-фактор и скорость}
+
+Дефлектор статический. Полную энергию $\gamma mc^2+q\Phi$ он не меняет. Меняет её только резонатор. Резонатор стоит вне дефлекторов, и прирост за прохождение равен $qV\sin(\varphi_s+\varphi)$. Вне дефлекторов $\Phi=0$, поэтому там полная энергия совпадает с кинетической $\gamma mc^2$.
+
+Отклонение $\delta$ определено формулой \eqref{eq:delta-def} по модулю импульса вне дефлекторов. За оборот, между прохождениями резонатора, это одно число: полная энергия постоянна, а при $\Phi=0$ она задаёт модуль импульса. В магнитном элементе тот же модуль не меняется. Внутри дефлектора $\delta$ постоянно. Меняется только локальный кинетический импульс. Часть полной энергии находится в $q\Phi$, поэтому локальный кинетический лоренц-фактор меньше, чем вне дефлекторов. На выходе потенциал снова равен нулю, и модуль импульса возвращается к $p_s(1+\delta)$.
+
+Вне дефлекторов $E^2=p^2c^2+m^2c^4$, так что $\mathrm{d}E=v\,\mathrm{d}p$. Перевод прироста в резонаторе в $\delta$ есть \eqref{eq:ddelta}. Там $\psi=0$, и до порядка, принятого в \eqref{eq:map}, множитель $v_s/v$ равен $1-\delta/\gamma_s^2$. Вторая строка \eqref{eq:map} сохраняется. Первая строка есть сдвиг фазы на $2\pi h\tau$ и точна по определению $\tau$. После деления на $T_s$ система \eqref{eq:smooth} сохраняется. От устройства дефлекторов в ней зависит функция $\tau(\delta)$. Она выводится ниже.
+
+Локальный лоренц-фактор $\gamma$ относится к кинетической энергии $\gamma mc^2$. Пусть $\gamma_{\mathrm{out}}$ --- лоренц-фактор вне дефлекторов на том же обороте. Сохранение полной энергии даёт
 \begin{equation}
-\label{eq:E-kin}
-E-q\Phi=E_s\bigl[1+\beta_s^2(w-\psi)\bigr].
+\gamma mc^2+q\Phi=\gamma_{\mathrm{out}}mc^2.
 \end{equation}
-Слева стоит $\gamma mc^2$, а $E_s=\gamma_smc^2$, поэтому локальный лоренц-фактор точен:
+Деление на $mc^2$ даёт $\gamma+q\Phi/(mc^2)=\gamma_{\mathrm{out}}$. По определению \eqref{eq:psi-def}
+\begin{equation}
+\frac{q\Phi}{mc^2}=\psi\frac{p_sv_s}{mc^2}.
+\end{equation}
+Равенство $p_sv_s=\beta_s^2E_s$ и $E_s=\gamma_smc^2$ дают $p_sv_s/(mc^2)=\beta_s^2\gamma_s$. Поэтому $q\Phi/(mc^2)=\beta_s^2\gamma_s\psi$ и
+\begin{equation}
+\gamma=\gamma_{\mathrm{out}}-\beta_s^2\gamma_s\psi.
+\end{equation}
+Ряд \eqref{eq:gamma-delta} есть разложение $\gamma_{\mathrm{out}}$. Вычитание $\beta_s^2\gamma_s\psi$ заменяет в нём $\beta_s^2\gamma_s\delta$ на $\beta_s^2\gamma_s(\delta-\psi)$. Квадратичный член $\beta_s^2\delta^2/(2\gamma_s)$ от $\psi$ не зависит. Получается
 \begin{equation}
 \label{eq:gamma-loc}
-\gamma=\gamma_s\bigl[1+\beta_s^2(w-\psi)\bigr].
+\gamma
+=\gamma_s+\beta_s^2\gamma_s(\delta-\psi)
++\frac{\beta_s^2}{2\gamma_s}\delta^2
++O(\delta^3).
 \end{equation}
-При $u=w-\psi$
+Слагаемое $-\beta_s^2\gamma_s\psi$ точное: потенциал входит в полную энергию линейно. Остаток $O(\delta^3)$ есть остаток \eqref{eq:gamma-delta} и от $\psi$ не зависит. При $\psi=0$ формула \eqref{eq:gamma-loc} совпадает с \eqref{eq:gamma-delta}.
+
+Скорость нужна до второй степени по $\delta$ и по $\psi$. На замкнутой орбите $\psi$ имеет порядок $\delta$, поэтому оба аргумента малы одновременно. Запись $O(3)$ означает члены суммарной степени три по $\delta$ и $\psi$. Локальная скорость есть $v=\beta c$ при $\beta^2=1-1/\gamma^2$, так что $v_s/v=\beta_s/\beta$. Отклонение $\gamma/\gamma_s$ от единицы в \eqref{eq:gamma-loc} обозначим
+\begin{equation}
+\chi=\beta_s^2(\delta-\psi)+\frac{\beta_s^2}{2\gamma_s^2}\delta^2.
+\end{equation}
+Тогда $\chi^2=\beta_s^4(\delta-\psi)^2+O(3)$. Ряд $(1+\chi)^{-2}=1-2\chi+3\chi^2+O(3)$ даёт $1/\gamma^2=(1-2\chi+3\chi^2)/\gamma_s^2+O(3)$. Разность $\beta^2-\beta_s^2$ равна $(2\chi-3\chi^2)/\gamma_s^2$. Деление на $\beta_s^2$ и подстановка $\chi$ приводят к
+\begin{equation}
+\frac{\beta^2}{\beta_s^2}
+=1+\frac{2}{\gamma_s^2}(\delta-\psi)
++\frac{\delta^2}{\gamma_s^4}
+-\frac{3\beta_s^2}{\gamma_s^2}(\delta-\psi)^2
++O(3).
+\end{equation}
+
+Отношение скоростей есть $v_s/v=(\beta^2/\beta_s^2)^{-1/2}$. В ряде $(1+u)^{-1/2}=1-u/2+3u^2/8+O(u^3)$ величина $u$ есть отклонение правой части от единицы, и $u^2=4(\delta-\psi)^2/\gamma_s^4+O(3)$. Коэффициент при $(\delta-\psi)^2$ собирается из $3\beta_s^2/(2\gamma_s^2)$ и из $3/(2\gamma_s^4)$. Подстановка $\beta_s^2=1-1/\gamma_s^2$ сокращает два слагаемых $3/(2\gamma_s^4)$ и оставляет $3/(2\gamma_s^2)$. Член $-\delta^2/(2\gamma_s^4)$ есть взятая с минусом половина слагаемого $\delta^2/\gamma_s^4$. В $(\delta-\psi)^2$ его нет: он пришёл из квадратичной части \eqref{eq:gamma-delta}. Поэтому
 \begin{equation}
 \label{eq:vsv-es}
-\frac{v_s}{v}=1-\frac{u}{\gamma_s^2}+\frac{3u^2}{2\gamma_s^2}+O(u^3).
+\frac{v_s}{v}
+=1-\frac{\delta-\psi}{\gamma_s^2}
++\frac{3(\delta-\psi)^2}{2\gamma_s^2}
+-\frac{\delta^2}{2\gamma_s^4}
++O(3).
 \end{equation}
+При $\psi=0$ коэффициент при $\delta^2$ равен $3/(2\gamma_s^2)-1/(2\gamma_s^4)=(3\gamma_s^2-1)/(2\gamma_s^4)$, и \eqref{eq:vsv-es} совпадает с \eqref{eq:vsv}. Внутри дефлектора скорость зависит от точки через $\psi(x,y)$. Вне дефлекторов $\psi=0$, и скорость зависит только от $\delta$.
 
-\subsection{Коэффициент скольжения}
+\subsection{Запаздывание за оборот}
 
-Замкнутая орбита
+Замкнутая орбита при данном $\delta$ лежит в медианной плоскости. Её разложение
 \begin{equation}
 \label{eq:x-co}
-x=D\delta+D_2\delta^2.
+x=D_1\delta+D_2\delta^2
 \end{equation}
-Опорный период $T_s=C_s/v_s$. Период частицы есть $\oint\mathrm{d}l/v$. При $y=0$ до второго порядка $\mathrm{d}l=(1+x/\rho+x'^2/2)\,\mathrm{d}s$, $x'=\mathrm{d}x/\mathrm{d}s$, поэтому
+не содержит постоянного члена: при $\delta=0$ орбита совпадает с опорной. Коэффициент $D_1=D_1(s)$ --- линейная дисперсия, $D_2=D_2(s)$ --- коэффициент при $\delta^2$. Оба периодичны с периодом кольца и определены по импульсу \eqref{eq:delta-def}, то есть по модулю импульса вне дефлекторов. Производная по длине опорной орбиты обозначается штрихом, $D_1'=\mathrm{d}D_1/\mathrm{d}s$. Из \eqref{eq:x-co}
+\begin{equation}
+\label{eq:xp-co}
+x'=D_1'\delta+D_2'\delta^2+O(\delta^3),
+\end{equation}
+и $x'^2=D_1'^2\delta^2+O(\delta^3)$: произведение $D_1'D_2'$ имеет порядок $\delta^3$.
+
+Период обращения есть время прохода замкнутой траектории, $T=\oint\mathrm{d}l/v$. Опорный период $T_s=C_s/v_s$, поэтому
+\begin{equation}
+\label{eq:T-oint}
+1+\tau=\frac{v_s}{C_s}\oint\frac{\mathrm{d}l}{v}.
+\end{equation}
+При $y=0$ элемент траектории в сопровождающих координатах равен
+\begin{equation}
+\label{eq:dl-sqrt}
+\mathrm{d}l=\sqrt{\Bigl(1+\frac{x}{\rho}\Bigr)^2+x'^2}\,\mathrm{d}s.
+\end{equation}
+Подкоренное выражение есть $1+z$ с
+\begin{equation}
+\label{eq:z-path}
+z=2\frac{x}{\rho}+\Bigl(\frac{x}{\rho}\Bigr)^2+x'^2.
+\end{equation}
+Ряд $\sqrt{1+z}=1+z/2-z^2/8+O(z^3)$ даёт
+\begin{equation}
+\label{eq:z-exp}
+\frac{z}{2}=\frac{x}{\rho}+\frac12\Bigl(\frac{x}{\rho}\Bigr)^2+\frac{x'^2}{2},
+\qquad
+\frac{z^2}{8}=\frac12\Bigl(\frac{x}{\rho}\Bigr)^2+O(x^3).
+\end{equation}
+Остаток $O(x^3)$ здесь и в следующей строке собирает произведения трёх малых множителей $x/\rho$ и $x'$. Квадраты $(x/\rho)^2$ уничтожаются, и
+\begin{equation}
+\label{eq:dl-es}
+\frac{\mathrm{d}l}{\mathrm{d}s}
+=1+\frac{x}{\rho}+\frac{x'^2}{2}+O(x^3).
+\end{equation}
+Первое слагаемое после единицы есть удлинение дуги на радиусе $\rho+x$. Второе есть удлинение из-за наклона орбиты к оси $s$. Вне дефлекторов $1/\rho=0$, и остаётся $1+x'^2/2$. Подстановка в период даёт
 \begin{equation}
 \label{eq:tau-es}
-1+\tau=\frac{1}{C_s}\oint\Bigl(1+\frac{x}{\rho}+\frac{x'^2}{2}\Bigr)\frac{v_s}{v}\,\mathrm{d}s.
+1+\tau
+=\frac{1}{C_s}\oint
+\Bigl(1+\frac{x}{\rho}+\frac{x'^2}{2}\Bigr)\frac{v_s}{v}\,\mathrm{d}s.
 \end{equation}
-Кольцевое среднее
+Произведение $(\mathrm{d}l/\mathrm{d}s)(v_s/v)$ есть отношение времени прохода элемента $\mathrm{d}s$ к опорному времени $\mathrm{d}s/v_s$.
+
+Среднее по кольцу
 \begin{equation}
 \label{eq:avg-C}
 \langle f\rangle_C=\frac{1}{C_s}\oint f\,\mathrm{d}s
 \end{equation}
-берётся вдоль опорной орбиты. Среднее по оборотам $\langle f\rangle$ определено в \eqref{eq:deq-def}. Коэффициент $\alpha_0$ длины орбиты в \eqref{eq:C} равен $\langle D/\rho\rangle_C$.
+берётся вдоль опорной орбиты. Среднее $\langle f\rangle$ без индекса определено в \eqref{eq:deq-def} и берётся по оборотам за синхротронный период.
 
-На орбите \eqref{eq:x-co} при $y=0$ подстановка \eqref{eq:psi}, \eqref{eq:w-series} и \eqref{eq:vsv-es} даёт подынтегральное выражение \eqref{eq:tau-es} до усреднения:
+На орбите \eqref{eq:x-co} при $y=0$ потенциал \eqref{eq:psi} равен
+\begin{equation}
+\label{eq:psi-co}
+\psi
+=\frac{D_1}{\rho}\,\delta
++\Biggl[\frac{D_2}{\rho}-\frac{n}{2}\Bigl(\frac{D_1}{\rho}\Bigr)^2\Biggr]\delta^2
++O(\delta^3).
+\end{equation}
+Квадрат $(x/\rho)^2$ начинается с $\delta^2$, а $(x/\rho)^3$ имеет порядок $\delta^3$ и в \eqref{eq:psi-co} отброшен. Вне дефлекторов $1/\rho=0$, поэтому $D_1/\rho=0$ и $\psi=0$. Из \eqref{eq:psi-co} следует
+\begin{equation}
+\delta-\psi
+=\Bigl(1-\frac{D_1}{\rho}\Bigr)\delta
+-\Biggl[
+\frac{D_2}{\rho}-\frac{n}{2}\Bigl(\frac{D_1}{\rho}\Bigr)^2
+\Biggr]\delta^2
++O(\delta^3).
+\end{equation}
+До порядка $\delta^2$ выполнено $(\delta-\psi)^2=(1-D_1/\rho)^2\delta^2$. Подстановка в \eqref{eq:vsv-es} даёт скорость на орбите
+\begin{equation}
+\label{eq:v-co}
+\begin{aligned}
+\frac{v_s}{v}
+&=1+\frac{1}{\gamma_s^2}\Bigl(\frac{D_1}{\rho}-1\Bigr)\delta
+\\
+&\quad+\Biggl[
+\frac{1}{\gamma_s^2}\Biggl(
+\frac{D_2}{\rho}-\frac{n}{2}\Bigl(\frac{D_1}{\rho}\Bigr)^2
+\Biggr)
++\frac{3}{2\gamma_s^2}\Bigl(1-\frac{D_1}{\rho}\Bigr)^2
+-\frac{1}{2\gamma_s^4}
+\Biggr]\delta^2
++O(\delta^3).
+\end{aligned}
+\end{equation}
+Элемент пути на той же орбите есть
+\begin{equation}
+\label{eq:path-d}
+\frac{\mathrm{d}l}{\mathrm{d}s}
+=1+\frac{D_1}{\rho}\,\delta
++\Biggl(\frac{D_2}{\rho}+\frac{D_1'^2}{2}\Biggr)\delta^2
++O(\delta^3).
+\end{equation}
+Произведение \eqref{eq:path-d} и \eqref{eq:v-co} до порядка $\delta^2$ равно
+\begin{equation}
+\begin{aligned}
+\frac{\mathrm{d}l}{\mathrm{d}s}\frac{v_s}{v}
+&=1+\Biggl[
+\frac{D_1}{\rho}+\frac{1}{\gamma_s^2}\Bigl(\frac{D_1}{\rho}-1\Bigr)
+\Biggr]\delta
+\\
+&\quad+\Biggl[
+\frac{D_1'^2}{2}
++\frac{D_2}{\rho}
++\frac{1}{\gamma_s^2}\Biggl(
+\frac{D_2}{\rho}-\frac{n}{2}\Bigl(\frac{D_1}{\rho}\Bigr)^2
+\Biggr)
++\frac{3}{2\gamma_s^2}\Bigl(1-\frac{D_1}{\rho}\Bigr)^2
+\\
+&\qquad
+-\frac{1}{2\gamma_s^4}
++\frac{D_1}{\rho\gamma_s^2}\Bigl(\frac{D_1}{\rho}-1\Bigr)
+\Biggr]\delta^2
++O(\delta^3).
+\end{aligned}
+\end{equation}
+В коэффициенте при $\delta^2$ первые два слагаемых взяты из пути, три следующих --- из скорости \eqref{eq:v-co}, последнее есть произведение линейных коэффициентов. Приведение подобных оставляет при $D_1'^2$ множитель $1/2$, а при $D_2/\rho$ --- множитель $1+1/\gamma_s^2$. Коэффициент при $(D_1/\rho)^2$ собирается из $-n/(2\gamma_s^2)$, из $3/(2\gamma_s^2)$ и из $1/\gamma_s^2$ и равен $(5-n)/(2\gamma_s^2)$. Коэффициент при $D_1/\rho$ собирается из $-3/\gamma_s^2$ и из $-1/\gamma_s^2$ и равен $-4/\gamma_s^2$. Свободный член $3/(2\gamma_s^2)-1/(2\gamma_s^4)$ равен $(3\gamma_s^2-1)/(2\gamma_s^4)$. Линейный коэффициент равен $(1+1/\gamma_s^2)D_1/\rho-1/\gamma_s^2$.
+
+Это произведение есть подынтегральное выражение в \eqref{eq:tau-es}. По определению среднего \eqref{eq:avg-C} выполнено $1+\tau=\langle(\mathrm{d}l/\mathrm{d}s)(v_s/v)\rangle_C$. После приведения подобных
 \begin{equation}
 \label{eq:integrand}
 \begin{aligned}
-&1+\Biggl[\Bigl(1+\frac{1}{\gamma_s^2}\Bigr)\frac{D}{\rho}-\frac{1}{\gamma_s^2}\Biggr]\delta
+&1+\Biggl[
+\Bigl(1+\frac{1}{\gamma_s^2}\Bigr)\frac{D_1}{\rho}
+-\frac{1}{\gamma_s^2}
+\Biggr]\delta
 \\
 &+\Biggl[
-\frac{D'^2}{2}
+\frac{D_1'^2}{2}
 +\Bigl(1+\frac{1}{\gamma_s^2}\Bigr)\frac{D_2}{\rho}
-+\frac{5-n}{2\gamma_s^2}\Bigl(\frac{D}{\rho}\Bigr)^2
--\frac{4}{\gamma_s^2}\frac{D}{\rho}
++\frac{5-n}{2\gamma_s^2}\Bigl(\frac{D_1}{\rho}\Bigr)^2
+-\frac{4}{\gamma_s^2}\frac{D_1}{\rho}
 +\frac{3\gamma_s^2-1}{2\gamma_s^4}
 \Biggr]\delta^2
 +O(\delta^3).
 \end{aligned}
 \end{equation}
-Усреднение \eqref{eq:avg-C} даёт
+Вне дефлекторов $D_1/\rho=0$ и $D_2/\rho=0$, и \eqref{eq:integrand} воспроизводит $1+x'^2/2$, умноженное на \eqref{eq:vsv}.
+
+Усреднение \eqref{eq:avg-C} снимает единицу и остаток $O(\delta^3)$. Величины $1/\gamma_s^2$ и $(3\gamma_s^2-1)/(2\gamma_s^4)$ от $s$ не зависят, и их среднее равно им самим. Линейный коэффициент длины орбиты
+\begin{equation}
+\label{eq:alpha0-es}
+\alpha_0=\Biggl\langle\frac{D_1}{\rho}\Biggr\rangle_C
+\end{equation}
+есть коэффициент при $\delta$ в $C/C_s$, тот же по смыслу, что $\alpha_0$ в \eqref{eq:C}; здесь $D_1$ --- дисперсия электростатического кольца. Показатель $n$ во всех дефлекторах один и тот же, а вне дефлекторов $D_1/\rho=0$, поэтому $n$ выносится из среднего $\langle(D_1/\rho)^2\rangle_C$. Рабочее запаздывание
 \begin{equation}
 \label{eq:tau-es-d}
-\tau=\eta_0\delta+\eta_1\delta^2,
+\tau=\eta_0^{\mathrm{E}}\delta+\eta_1^{\mathrm{E}}\delta^2,
 \end{equation}
 \begin{align}
-\eta_0
-&=\alpha_0\Bigl(1+\frac{1}{\gamma_s^2}\Bigr)-\frac{1}{\gamma_s^2},
-\qquad
-\alpha_0=\Biggl\langle\frac{D}{\rho}\Biggr\rangle_C,
+\eta_0^{\mathrm{E}}
+&=\Bigl(1+\frac{1}{\gamma_s^2}\Bigr)\alpha_0-\frac{1}{\gamma_s^2},
 \label{eq:eta0-es}\\
-\eta_1
-&=\frac12\langle D'^2\rangle_C
-+\Bigl(1+\frac{1}{\gamma_s^2}\Bigr)\Biggl\langle\frac{D_2}{\rho}\Biggr\rangle_C
-+\frac{5-n}{2\gamma_s^2}\Biggl\langle\Bigl(\frac{D}{\rho}\Bigr)^2\Biggr\rangle_C
+\eta_1^{\mathrm{E}}
+&=\frac12\langle D_1'^2\rangle_C
++\Bigl(1+\frac{1}{\gamma_s^2}\Bigr)
+\Biggl\langle\frac{D_2}{\rho}\Biggr\rangle_C
++\frac{5-n}{2\gamma_s^2}
+\Biggl\langle\Bigl(\frac{D_1}{\rho}\Bigr)^2\Biggr\rangle_C
 \nonumber\\
 &\quad-\frac{4\alpha_0}{\gamma_s^2}
 +\frac{3\gamma_s^2-1}{2\gamma_s^4}.
 \label{eq:eta1-es}
 \end{align}
-Подстановка \eqref{eq:w-series} переводит \eqref{eq:tau-es-d} в \eqref{eq:tau-w}: $\tilde\eta_1=\eta_1-\eta_0/(2\gamma_s^2)$.
+Индекс $\mathrm{E}$ отмечает коэффициенты этого кольца. Дальше $\eta_0^{\mathrm{E}}\neq 0$.
+
+\subsection{Дисперсия в дефлекторе}
+\label{sec:es-D}
+
+На дуге дефлектора замкнутая орбита в линейном порядке есть $x=D_1\delta$. Ниже выводится локальное уравнение для $D_1(s)$. Члены второго порядка в него не входят.
+
+Поперечная сила задаёт кривизну траектории: $pv/R=-qE_x$, то есть $1/R=-qE_x/(pv)$. Для опорной частицы из \eqref{eq:E0} следует $1/\rho=-qE_0/(p_sv_s)$. До первого порядка $E_x=E_0(1-nx/\rho)$.
+
+Член $1/\rho$ в радиальном уравнении --- центробежный. Сопровождающая система отсчёта поворачивается при движении по дуге радиуса $\rho+x$. Окружность этого радиуса при постоянном $x$ имеет $x''=0$ и кривизну $1/(\rho+x)$. Линеаризация $1/(\rho+x)=1/\rho-x/\rho^2$ есть тождество $x/\rho^2=1/\rho-1/(\rho+x)$. У траектории с кривизной $1/R$ та же линейная связь записывается так:
+\begin{equation}
+\label{eq:cmp-curv}
+x''+\frac{x}{\rho^2}=\frac{1}{\rho}-\frac{1}{R}.
+\end{equation}
+
+Локальный лоренц-фактор берётся из \eqref{eq:gamma-loc} при $\psi=x/\rho$. В линейном порядке $\gamma=\gamma_s+\beta_s^2\gamma_s(\delta-x/\rho)$. Произведение $pv=mc^2(\gamma-1/\gamma)$, потому что $\gamma\beta^2=\gamma-1/\gamma$, а $p_sv_s=mc^2(\gamma_s-1/\gamma_s)$. Производная $\gamma-1/\gamma$ по $\gamma$ равна $1+1/\gamma^2$. Приращение $\gamma-1/\gamma$ равно $(1+1/\gamma_s^2)\beta_s^2\gamma_s(\delta-x/\rho)$. Множитель $(1+1/\gamma_s^2)\beta_s^2\gamma_s$ совпадает с $\beta_s^2(\gamma_s+1/\gamma_s)$, поэтому
+\begin{equation}
+\label{eq:cmp-pv-diff}
+\gamma-\frac{1}{\gamma}
+=\Bigl(\gamma_s-\frac{1}{\gamma_s}\Bigr)
++\beta_s^2\Bigl(\gamma_s+\frac{1}{\gamma_s}\Bigr)
+\Bigl(\delta-\frac{x}{\rho}\Bigr).
+\end{equation}
+Деление на $\gamma_s-1/\gamma_s=\beta_s^2\gamma_s$ даёт
+\begin{equation}
+\label{eq:cmp-pv}
+\frac{pv}{p_sv_s}
+=1+\Bigl(1+\frac{1}{\gamma_s^2}\Bigr)
+\Bigl(\delta-\frac{x}{\rho}\Bigr).
+\end{equation}
+На смещённой орбите потенциал отличен от нуля, $\psi=x/\rho$. Поэтому в скобке стоит $\delta-x/\rho$, а не одно $\delta$.
+
+Подстановка поля и \eqref{eq:cmp-pv} в $1/R=-qE_x/(pv)$ приводит к
+\begin{equation}
+\label{eq:cmp-invR}
+\frac{1}{R}
+=\frac{1}{\rho}
+\Biggl[
+1-\Bigl(1+\frac{1}{\gamma_s^2}\Bigr)
+\Bigl(\delta-\frac{x}{\rho}\Bigr)
+\Biggr]
+\Biggl(1-n\frac{x}{\rho}\Biggr).
+\end{equation}
+Подстановка \eqref{eq:cmp-invR} в \eqref{eq:cmp-curv} и отбрасывание членов второго порядка дают уравнение внутри дефлектора
+\begin{equation}
+\label{eq:cmp-x-es}
+x''+\frac{2-n+1/\gamma_s^2}{\rho^2}\,x
+=\frac{1+1/\gamma_s^2}{\rho}\,\delta.
+\end{equation}
+Коэффициент при $x$ складывается из четырёх вкладов. Первая единица --- центробежный член $x/\rho^2$ в \eqref{eq:cmp-curv}, поворот системы отсчёта на дуге радиуса $\rho+x$. Слагаемое $-n$ есть градиент поля \eqref{eq:Ex}. Вторая единица и член $1/\gamma_s^2$ вместе есть множитель $1+1/\gamma_s^2$ при $-x/\rho$ в \eqref{eq:cmp-pv}: на внешнем радиусе $\psi>0$, кинетическая энергия и $pv$ ниже, и поле поворачивает траекторию сильнее. Правая часть есть изменение $pv$ с $\delta$. Её множитель равен $1+1/\gamma_s^2$. В магнитном уравнении \eqref{eq:D1} на этом месте стоит $1$: там кривизну задаёт импульс $p_s(1+\delta)$, а потенциал равен нулю. Здесь дефлектор поворачивает по $pv$. Потенциал смещённой орбиты уже стоит в \eqref{eq:cmp-pv} как $-x/\rho$ и тем же множителем $1+1/\gamma_s^2$ входит в жёсткость.
+
+Орбита $x=D_1\delta$ удовлетворяет
+\begin{equation}
+\label{eq:cmp-D-es}
+D_1''+\frac{2-n+1/\gamma_s^2}{\rho^2}\,D_1
+=\frac{1+1/\gamma_s^2}{\rho}.
+\end{equation}
+Уравнение написано внутри дефлектора. Вне дефлекторов $1/\rho=0$ и $\psi=0$, и оно переходит в уравнение $D_1''+K_1D_1=0$ с градиентом магнитного квадруполя $K_1$ из \eqref{eq:hill}. На краю дефлектора $D_1$ и $D_1'$ сшиваются.
 
 \subsection{Система и равновесный сдвиг}
 
-Зазор стоит вне дефлекторов и меняет полную энергию точно: прирост равен $qV\sin(\varphi_s+\varphi)$. Система есть \eqref{eq:smooth} и \eqref{eq:system} с $\eta_0$ и $\tilde\eta_1$ из \eqref{eq:eta0-es}, \eqref{eq:eta1-es}. Устойчивая фаза --- \eqref{eq:phis}, частота малых колебаний --- \eqref{eq:ws} с этим $\eta_0$.
+Отображение за оборот есть \eqref{eq:map} с запаздыванием \eqref{eq:tau-es-d}. Система в непрерывном приближении есть \eqref{eq:smooth} с тем же запаздыванием. Линейная часть совпадает с линейной частью системы главы~\ref{sec:mag-base}, поэтому устойчивая фаза и частота малых колебаний даются \eqref{eq:phis} и \eqref{eq:ws} при замене $\eta_0$ на $\eta_0^{\mathrm{E}}$. При $\sin\varphi\approx\varphi$
+\begin{equation}
+\label{eq:system-es}
+\frac{\mathrm{d}\varphi}{\mathrm{d}t}
+=\omega_\rf\bigl(\eta_0^{\mathrm{E}}\delta+\eta_1^{\mathrm{E}}\delta^2\bigr),
+\qquad
+\frac{\mathrm{d}\delta}{\mathrm{d}t}
+=K\cos\varphi_s\,\varphi\Bigl(1-\frac{\delta}{\gamma_s^2}\Bigr).
+\end{equation}
+Постоянного слагаемого в $\tau$ нет, поэтому в \eqref{eq:bm} выполнено $c_0=0$. Вывод уравнения \eqref{eq:ode} из раздела~\ref{sec:solution} переносится без изменения: приращение импульса по-прежнему содержит множитель $1-\delta/\gamma_s^2$, а запаздывание по-прежнему есть линейный член плюс квадрат $\delta$. Коэффициенты \eqref{eq:bm-coeff} сохраняют свой вид с $\eta_0^{\mathrm{E}}$ и $\eta_1^{\mathrm{E}}$. Решение \eqref{eq:bm-sol} и формулы \eqref{eq:delta-sol}, \eqref{eq:phi} записываются с этими коэффициентами. Сокращение $\pm 1/\gamma_s^2$ в постоянном члене, показанное в \eqref{eq:c-plus}, происходит по той же причине.
 
-Решение \eqref{eq:w-sol}, \eqref{eq:phi}, \eqref{eq:Omega} и усреднение \eqref{eq:deq-avg} сохраняются:
+Условие \eqref{eq:tau-avg-exact} получено из возвращения фазы. В электростатическом кольце оно выполнено по той же причине: сумма приращений фазы на замкнутой траектории равна нулю. Вместе с \eqref{eq:tau-es-d} оно даёт
+\begin{equation}
+\label{eq:tau-mean-es}
+\eta_0^{\mathrm{E}}\delta_\eq+\eta_1^{\mathrm{E}}\langle\delta^2\rangle=0.
+\end{equation}
+На решении среднее $\langle\delta^2\rangle$ равно $\delta_m^2/2$, как в \eqref{eq:d2-avg}: полуразмах $\delta_m$ определён в \eqref{eq:dm-def} и совпадает с коэффициентом при $\cos\psi$. Поэтому
 \begin{equation}
 \label{eq:deq-es}
-\delta_\eq=-\frac{\eta_1A^2}{2\eta_0},
-\qquad
-w_\eq=-\frac{\tilde\eta_1A^2}{2\eta_0},
-\qquad
-\Delta E_\eq=\beta_s^2E_s\,w_\eq.
+\delta_\eq=-\frac{\eta_1^{\mathrm{E}}\delta_m^2}{2\eta_0^{\mathrm{E}}}.
 \end{equation}
-Условия применимости --- \eqref{eq:valid}.
+
+Вне дефлекторов $\psi=0$, и лоренц-фактор связан с $\delta$ рядом \eqref{eq:gamma-delta}. Эффективный лоренц-фактор есть его среднее за синхротронный период. Подстановка $\langle\delta\rangle=\delta_\eq$ и \eqref{eq:d2-avg} даёт тот же вид, что \eqref{eq:gamma-eff}:
+\begin{equation}
+\label{eq:gamma-eff-es}
+\gamma_{\mathrm{eff}}
+=\gamma_s+\beta_s^2\gamma_s\,\delta_\eq
++\frac{\beta_s^2\delta_m^2}{4\gamma_s}
++O(\delta_m^4).
+\end{equation}
+Остаток имеет порядок $\delta_m^4$ по той же причине, что и после \eqref{eq:gamma-eff}. Оба слагаемых сдвига второго порядка по $\delta_m$. Их отношение равно $|\eta_0^{\mathrm{E}}|/(2|\eta_1^{\mathrm{E}}|\gamma_s^2)$.
+
+Полная энергия вне дефлекторов равна $\gamma mc^2$. Её средний сдвиг $\Delta E_\eq=E_s(\gamma_{\mathrm{eff}}-\gamma_s)/\gamma_s$ есть
+\begin{equation}
+\label{eq:dE-es}
+\Delta E_\eq
+=\beta_s^2E_s\Bigl(
+\delta_\eq+\frac{\delta_m^2}{4\gamma_s^2}
+\Bigr)
++O(\delta_m^4 E_s).
+\end{equation}
+Между прохождениями резонатора полная энергия постоянна вдоль кольца, поэтому \eqref{eq:dE-es} есть сдвиг средней полной энергии на всей траектории. Он же равен сдвигу средней кинетической энергии вне дефлекторов.
+
+Условия применимости те же, что в \eqref{eq:valid}, с коэффициентами этого кольца:
+\begin{equation}
+\label{eq:valid-es}
+\Bigl|\frac{\eta_1^{\mathrm{E}}\delta_m}{\eta_0^{\mathrm{E}}}\Bigr|\ll 1,
+\qquad
+\frac{\omega_\rf|\eta_0^{\mathrm{E}}|\delta_m}{\omega_s}\ll 1,
+\qquad
+\delta_m\ll 1,
+\qquad
+\omega_s T_s\ll 1.
+\end{equation}
+Первое есть малость квадратичного запаздывания на размахе $\delta_m$ по сравнению с линейным. Второе есть полуразмах ведущего члена фазы и оправдывает $\sin\varphi\approx\varphi$. Третье оправдывает обрыв рядов потенциала, орбиты, скорости и $\gamma$ на второй степени. Четвёртое есть условие перехода от \eqref{eq:map} к \eqref{eq:smooth}.
 
 \subsection{Второй порядок по фазе}
 
-Фазовое уравнение совпадает с \eqref{eq:system-phi}, поэтому \eqref{eq:deq-ph} и \eqref{eq:w2-ell} выполняются с $\eta_0$, $\eta_1$, $\tilde\eta_1$ этой главы.
+Во втором порядке по фазе в приращении энергии в резонаторе учитывается член $-\varphi^3/6$, как в главе~\ref{sec:mag-phase}. Условие $\langle\tau\rangle=0$ следует из возвращения фазы и сохраняется при этой замене синуса. Оно даёт $\delta_\eq=-(\eta_1^{\mathrm{E}}/\eta_0^{\mathrm{E}})\langle\delta^2\rangle$. Множитель $(1-\hat\varphi^2/32)$ в \eqref{eq:deq-ph} получен из вида колебания при запаздывании $\eta_0\delta+\eta_1\delta^2$ и при приращении импульса из \eqref{eq:map}. Здесь запаздывание имеет тот же вид с коэффициентами $\eta_0^{\mathrm{E}}$ и $\eta_1^{\mathrm{E}}$, а резонатор стоит при нулевом потенциале. Поэтому результат \eqref{eq:deq-ph} переносится с заменой $\eta_0$ и $\eta_1$ на $\eta_0^{\mathrm{E}}$ и $\eta_1^{\mathrm{E}}$.
