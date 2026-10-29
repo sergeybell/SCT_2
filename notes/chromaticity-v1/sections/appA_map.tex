@@ -1,0 +1,50 @@
+\section{Хроматичность через коэффициенты отображения}
+\label{app:map}
+
+Запишем формулу \eqref{eq:xi-trace} явно через коэффициенты одно-оборотного отображения, как это сделано в~\cite{ValetovPhD,ValetovChrom2026}, но в переменных этой заметки $(x,a,y,b,\delta)$, $a=p_x$, $b=p_y$, $\delta=\delta_p$. Коэффициент $(x|x^ia^j\delta^k)$ --- множитель при $x^ia^j\delta^k$ в разложении конечного $x$ по начальным переменным, и так же для остальных. Кольцо плоское: коэффициенты, нечётные по $(y,b)$, в уравнениях для $x$, $a$ равны нулю.
+
+\paragraph{Неподвижная точка.}
+В первом порядке по $\delta$ неподвижная точка $(x,a)=(D,D')\delta$ удовлетворяет
+\begin{equation}
+\label{eq:app-fp}
+\begin{pmatrix}1-(x|x)&-(x|a)\\-(a|x)&1-(a|a)\end{pmatrix}
+\begin{pmatrix}D\\D'\end{pmatrix}
+=\begin{pmatrix}(x|\delta)\\(a|\delta)\end{pmatrix},
+\end{equation}
+откуда, с учётом $(x|x)(a|a)-(x|a)(a|x)=1$,
+\begin{equation}
+\label{eq:app-D}
+D=\frac{\bigl(1-(a|a)\bigr)(x|\delta)+(x|a)(a|\delta)}{2-2\cos\mu_x},
+\qquad
+D'=\frac{(a|x)(x|\delta)+\bigl(1-(x|x)\bigr)(a|\delta)}{2-2\cos\mu_x}.
+\end{equation}
+Это значения $D_1$, $D_1'$ в точке наблюдения.
+
+\paragraph{Матрица на смещённой орбите.}
+Диагональные элементы якобиана в точке $(D,D')\delta$ в первом порядке по $\delta$:
+\begin{align}
+\tilde M_{11}&=(x|x)+\delta\bigl[2(x|xx)D+(x|xa)D'+(x|x\delta)\bigr],\\
+\tilde M_{22}&=(a|a)+\delta\bigl[(a|xa)D+2(a|aa)D'+(a|a\delta)\bigr],\\
+\tilde M_{33}&=(y|y)+\delta\bigl[(y|xy)D+(y|ay)D'+(y|y\delta)\bigr],\\
+\tilde M_{44}&=(b|b)+\delta\bigl[(b|xb)D+(b|ab)D'+(b|b\delta)\bigr].
+\end{align}
+Внедиагональные элементы в след не входят.
+
+\paragraph{Хроматичность.}
+По \eqref{eq:xi-trace}
+\begin{equation}
+\label{eq:app-xix}
+\xi_x=-\frac{
+2(x|xx)D+(x|xa)D'+(x|x\delta)+(a|xa)D+2(a|aa)D'+(a|a\delta)
+}{4\pi\sin\mu_x},
+\end{equation}
+\begin{equation}
+\label{eq:app-xiy}
+\xi_y=-\frac{
+(y|xy)D+(y|ay)D'+(y|y\delta)+(b|xb)D+(b|ab)D'+(b|b\delta)
+}{4\pi\sin\mu_y},
+\end{equation}
+где $\cos\mu=\tfrac12\operatorname{tr}M$, а знак $\sin\mu$ совпадает со знаком $(x|a)$ (соответственно $(y|b)$). Подстановка \eqref{eq:app-D} даёт формулу, содержащую только коэффициенты первого и второго порядков; это та же структура, что в~\cite{ValetovPhD} (там $\delta_K$ и обозначения $M^j_{i_1\dots i_6}$).
+
+\paragraph{Где здесь члены A--F.}
+Коэффициенты $(x|x\delta)$, $(a|a\delta)$, $(y|y\delta)$, $(b|b\delta)$ --- прямая зависимость от $\delta$ (член A и та часть C, E, что не требует сдвига орбиты), а произведения квадратичных коэффициентов на $D$, $D'$ --- второе слагаемое \eqref{eq:dM}, т.\,е. секступоли и геометрическая нелинейность тела диполя. Краевой удар \eqref{eq:kick} на входе добавляет к карте торца коэффициент $(b|ay)=-1/\rho$, на выходе $+1/\rho$. На смещённой орбите $a=D_1'\delta$ он даёт элемент $\partial b/\partial y=\mp D_1'\delta/\rho$ карты торца; после композиции с остальным кольцом он переходит в коэффициенты $(y|ay)$, $(b|ab)$, $(y|y\delta)$, $(b|b\delta)$ одно-оборотного отображения и даёт член F. В модели <<только тело>> этого коэффициента в картах торцов нет.

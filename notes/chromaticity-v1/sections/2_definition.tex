@@ -1,0 +1,116 @@
+\section{Что такое хроматичность}
+\label{sec:def}
+
+Хроматичность --- производная числа бетатронных колебаний по $\delta$. Числа колебаний частицы с $\delta\neq0$ считаются около её собственной замкнутой орбиты, которая сдвинута на дисперсию. В этой главе дано два определения: через одно-оборотное отображение (след матрицы в неподвижной точке) и через гамильтониан, усреднённый по бетатронной фазе. Показано, что они совпадают. В конце введена нелинейная хроматичность.
+
+\subsection{Дисперсионная замкнутая орбита}
+
+При $\delta\neq0$ замкнутая орбита частицы
+\begin{equation}
+\label{eq:co}
+x_{\mathrm{co}}(s;\delta)=D_1(s)\,\delta+D_2(s)\,\delta^2+O(\delta^3),
+\qquad
+p_{x,\mathrm{co}}=D_1'\,\delta+O(\delta^2),
+\end{equation}
+где $D_1$ --- периодическое решение уравнения \eqref{eq:hill} в первом порядке:
+\begin{equation}
+\label{eq:D1}
+D_1''+K_x D_1=\frac{1}{\rho}.
+\end{equation}
+Бетатронное движение отсчитывается от этой орбиты: $x=x_{\mathrm{co}}+X$, $p_x=p_{x,\mathrm{co}}+P_x$, $y=Y$, $p_y=P_y$ (вертикальной дисперсии в плоском кольце нет).
+
+\subsection{Определение через одно-оборотное отображение}
+
+Пусть $\mathcal{M}_\delta$ --- одно-оборотное отображение поперечных переменных $z=(x,p_x,y,p_y)$ при фиксированном $\delta$. Замкнутая орбита есть неподвижная точка
+\begin{equation}
+\label{eq:fixed}
+\mathcal{M}_\delta(\mathring z)=\mathring z,
+\qquad
+\mathring z(\delta)=\bigl(D_1,D_1',0,0\bigr)\delta+O(\delta^2).
+\end{equation}
+Линеаризация около неё --- матрица $\tilde M(\delta)=\partial\mathcal{M}_\delta/\partial z\,|_{\mathring z}$. Для плоского несвязанного кольца она блочно-диагональна, и
+\begin{equation}
+\label{eq:nu-trace}
+\cos\mu_{x,y}(\delta)=\tfrac12\operatorname{tr}\tilde M_{x,y}(\delta),
+\qquad
+\nu=\frac{\mu}{2\pi},
+\end{equation}
+причём ветвь $\arccos$ выбирается по знаку элемента $\tilde M_{12}$. Отсюда
+\begin{equation}
+\label{eq:xi-trace}
+\xi_{x,y}=-\frac{1}{4\pi\sin\mu_{x,y}}\,
+\frac{\mathrm{d}}{\mathrm{d}\delta}\operatorname{tr}\tilde M_{x,y}\Big|_{\delta=0}.
+\end{equation}
+Производная следа складывается из двух частей: прямой зависимости отображения от $\delta$ и сдвига точки линеаризации:
+\begin{equation}
+\label{eq:dM}
+\frac{\mathrm{d}\tilde M}{\mathrm{d}\delta}
+=\frac{\partial^2\mathcal{M}}{\partial z\,\partial\delta}
++\frac{\partial^2\mathcal{M}}{\partial z^2}\cdot\frac{\partial\mathring z}{\partial\delta}.
+\end{equation}
+Второе слагаемое --- квадратичные коэффициенты отображения, умноженные на дисперсию. Если его опустить (линеаризовать около референсной орбиты), секступоли и геометрическая нелинейность диполя из хроматичности выпадут. Явная запись \eqref{eq:xi-trace} через коэффициенты отображения дана в приложении~\ref{app:map}. Именно так хроматичность получают из карт Тейлора~\cite{ValetovPhD,ValetovChrom2026}.
+
+\subsection{Определение через усреднённый гамильтониан}
+
+Подставим $x=D_1\delta+X$, $p_x=D_1'\delta+P_x$ в \eqref{eq:H} и разложим до первого порядка по $\delta$. Часть, квадратичная по бетатронным переменным, имеет вид
+\begin{equation}
+\label{eq:H2}
+\mathcal{H}_2=\mathcal{H}_2^{(0)}+\delta\,\mathcal{H}_2^{(1)}+O(\delta^2),
+\qquad
+\mathcal{H}_2^{(1)}=\tfrac12\,Z^{\mathsf T}G(s)\,Z,
+\quad Z=(X,P_x)\ \text{или}\ (Y,P_y).
+\end{equation}
+Члены, линейные по $Z$, с $\delta$ уничтожаются выбором $D_1$ \eqref{eq:D1}. Хроматичность есть сдвиг набега фазы под действием $\delta\,\mathcal{H}_2^{(1)}$:
+\begin{equation}
+\label{eq:xi-ham}
+\xi=\frac{1}{2\pi}\oint\frac{\partial\langle\mathcal{H}_2^{(1)}\rangle_\psi}{\partial J}\,\mathrm{d}s
+\equiv\frac{1}{4\pi}\oint I\,\mathrm{d}s,
+\end{equation}
+со средними по фазе
+\begin{equation}
+\label{eq:avg}
+\langle X^2\rangle_\psi=J\beta,
+\qquad
+\langle XP\rangle_\psi=-J\alpha,
+\qquad
+\langle P^2\rangle_\psi=J\gamma.
+\end{equation}
+Множитель в определении $I$ выбран так, что добавка $\Delta K\,X^2/2$ даёт привычное $\Delta\nu=(1/4\pi)\oint\beta\,\Delta K\,\mathrm{d}s$. Формула \eqref{eq:xi-ham} --- то же определение, что в~\cite{EqNote}, \S\,2.3.
+
+\subsection{Эквивалентность}
+
+Покажем, что \eqref{eq:xi-ham} совпадает с \eqref{eq:xi-trace}. Обозначим $A(s)=\begin{pmatrix}\beta&-\alpha\\-\alpha&\gamma\end{pmatrix}$ и $\mathcal{J}=\begin{pmatrix}0&1\\-1&0\end{pmatrix}$. Тогда $\langle ZZ^{\mathsf T}\rangle_\psi=JA$ по \eqref{eq:avg}, а одно-оборотная матрица от точки $s$ есть
+\begin{equation}
+\label{eq:Ms}
+M_s=I\cos\mu+A\mathcal{J}\sin\mu.
+\end{equation}
+Возмущение $\delta\,\mathcal{H}_2^{(1)}$ на отрезке $\mathrm{d}s$ меняет движение как $Z'=\mathcal{J}\,\partial\mathcal{H}/\partial Z$, т.\,е. добавляет к матрице отрезка $\delta\,\mathcal{J}G\,\mathrm{d}s$. В первом порядке
+\begin{equation}
+\label{eq:dtr}
+\begin{aligned}
+\mathrm{d}\operatorname{tr}\tilde M
+&=\delta\oint\operatorname{tr}\bigl(M_s\,\mathcal{J}G\bigr)\,\mathrm{d}s
+=\delta\oint\Bigl[\cos\mu\operatorname{tr}(\mathcal{J}G)+\sin\mu\operatorname{tr}(A\mathcal{J}\mathcal{J}G)\Bigr]\mathrm{d}s\\
+&=-\delta\sin\mu\oint\operatorname{tr}(AG)\,\mathrm{d}s,
+\end{aligned}
+\end{equation}
+так как $\operatorname{tr}(\mathcal{J}G)=0$ для симметричной $G$ и $\mathcal{J}^2=-I$. С другой стороны $\mathrm{d}\operatorname{tr}\tilde M=-2\sin\mu\,\mathrm{d}\mu$ и $\langle\mathcal{H}_2^{(1)}\rangle_\psi=\tfrac12\operatorname{tr}(G\langle ZZ^{\mathsf T}\rangle)=\tfrac{J}{2}\operatorname{tr}(AG)$. Значит,
+\begin{equation}
+\label{eq:equiv}
+\mathrm{d}\mu=\frac{\delta}{2}\oint\operatorname{tr}(AG)\,\mathrm{d}s
+=\delta\oint\frac{\partial\langle\mathcal{H}_2^{(1)}\rangle_\psi}{\partial J}\,\mathrm{d}s,
+\end{equation}
+что и есть \eqref{eq:xi-ham}. Неподвижная точка \eqref{eq:fixed} в гамильтоновом языке --- это подстановка дисперсионной орбиты, а производная следа --- среднее по фазе. Оба определения используют один и тот же гамильтониан; если в нём есть краевые члены (глава~\ref{sec:edge}), они войдут в обе формулы одинаково, через тонкую <<линзу>> $G\propto\delta_D(s-s_0)$.
+
+\subsection{Нелинейная хроматичность}
+
+Зависимость $\nu(\delta)$ при конечном $\delta$ записывается рядом
+\begin{equation}
+\label{eq:nu-series}
+\nu(\delta)=\sum_{j\ge0}\frac{\nu^{(j)}}{j!}\,\delta^j,
+\qquad
+\xi=\nu^{(1)},
+\qquad
+\xi^{(j)}=\nu^{(j+1)},
+\end{equation}
+как в~\cite{ValetovChrom2026}. Определение \eqref{eq:nu-trace} остаётся в силе при любом $\delta$; гамильтонов путь для $\nu^{(2)}$ требует дисперсии второго порядка $D_2$, членов $\mathcal{H}_4$ и второго порядка теории возмущений. На практике высшие $\nu^{(j)}$ берут из карт высокого порядка (глава~\ref{sec:codes}).
