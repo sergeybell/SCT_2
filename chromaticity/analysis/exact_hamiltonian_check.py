@@ -18,8 +18,15 @@ def elem(z,e,d):
         k1=rhs(z,hh,K,d);k2=rhs(z+s/2*k1,hh,K,d);k3=rhs(z+s/2*k2,hh,K,d);k4=rhs(z+s*k3,hh,K,d)
         z=z+s/6*(k1+2*k2+2*k3+k4)
     return z
+EDGE=0
+def edge(z,d,sgn):
+    x,px,y,py=z; ps=np.sqrt((1+d)**2-px**2-py**2)
+    return np.array([x,px,y,py-sgn*h*(px/ps)*y])
 def turn(z,d):
-    for e in seq: z=elem(z,e,d)
+    for e in seq:
+        if e=="BM" and EDGE: z=edge(z,d,+EDGE)
+        z=elem(z,e,d)
+        if e=="BM" and EDGE: z=edge(z,d,-EDGE)
     return z
 def jac(z,d,eps=1e-7):
     f0=turn(z,d); J=np.zeros((4,4))
@@ -35,6 +42,10 @@ def tunes(d):
     for i in (0,2):
         m=J[i:i+2,i:i+2]; c=(m[0,0]+m[1,1])/2; s=np.sign(m[0,1])*np.sqrt(1-c*c); q.append(np.mod(np.arctan2(s,c),2*np.pi)/2/np.pi)
     return np.array(q)
+import sys
 dd=1e-4
-qp,q0,qm=tunes(dd),tunes(0),tunes(-dd)
-print("Q0",q0); print("xi (dQ/d(dp/p))",(qp-qm)/2/dd)
+for EDGE in [0]+([int(a) for a in sys.argv[1:]]):
+    qp,q0,qm=tunes(dd),tunes(0),tunes(-dd)
+    if EDGE==0: print("Q0",q0); print("xi (dQ/d(dp/p))",(qp-qm)/2/dd)
+    else: print(f"EDGE sign {EDGE:+d}: Q0",q0,"xi",(qp-qm)/2/dd)
+

@@ -1,0 +1,4 @@
+T1 MAD-X TWISS thick SBEND (E1=E2=0)           DQ2_dp = -1.817060
+T2 PTC exact model2 fringe=false                 DQ2_dp = -1.817063
+T3 MAD-X TWISS after MAKETHIN (thin bends)       Q2 = 2.461337 DQ2_dp = -2.932272
+                                                 DQ1_dp = -2.813470

@@ -8,3 +8,6 @@
 * `make_notebook.py` генерирует ноутбук; `run_analysis.bat` — всё заново.
 
 Итог: Qx, Qy, alpha_c, eta, ξx совпадают везде. ξy: OptiM / MAD-X / PTC = −1.8171; BELL / COSY / Python (только тело магнита) = −2.2255.
+
+Итог по ξy: −1.817 (OptiM/MAD-X/PTC) отличается от −2.2255 (BELL/COSY FR 0) на краевой член жёсткого края
+(+0.408, Δp_y = ∓h x' y), см. раздел «Почему ξy» в `analysis.ipynb` и `chrom_terms.py`.
