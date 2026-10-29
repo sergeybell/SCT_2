@@ -1,13 +1,9 @@
-# COSY OV 3 2 1, order 3: energy as DA parameter, RP EK*PARA(1) => parameter = delta_K = dK/K
-# xi_p = dQ/d(dp/p) = (1+1/gamma0) * dQ/d delta_K
+length =  117.3882959999999
 gamma0 =  1.143952941207707
 factor_1p1g =  1.874161833042073
-length =  117.3882959999999
 Qx_frac = 0.4617201483757378
 Qy_frac = 0.4613373212771295
 dQx_ddK_raw = -.7798343176488987
 dQy_ddK_raw = -1.187456115456067
 xi_x_p = -1.461535714233974
 xi_y_p = -2.225484930000162
-coef2_x_ddK_raw =  1.376724421094581
-coef2_y_ddK_raw =  1.395653239235842

@@ -1,90 +1,198 @@
-import nbformat as nbf
+# make_notebook.py - generates analysis.ipynb (then: jupyter nbconvert --execute --inplace analysis.ipynb)
+import nbformat as nbf, pathlib
 nb = nbf.v4.new_notebook(); c = []
 md = lambda s: c.append(nbf.v4.new_markdown_cell(s)); code = lambda s: c.append(nbf.v4.new_code_cell(s))
-md("""# Хроматичность magnetic_2_md: OptiM, BELL, COSY, MAD-X
-Общее определение: **ξ = dQ/dδ, δ = dp/p**, натуральная (секступоли = 0), первый порядок.
-Пересчёты: COSY δ_K = ΔK/K = (1+1/γ)δ ⇒ ξ = (1+1/γ)·dQ/dδ_K; MAD-X TWISS PT = β0δ ⇒ ξ = β0·DQ.
-eta = ΔT/T/δ = alpha_c − 1/γ².""")
-code(r'''import re, pathlib, pandas as pd
+
+md(r"""# Хроматичность и Twiss-функции magnetic_2_md: OptiM, BELL, COSY, MAD-X
+Решётка `C:\GIT_REPOS\SCT_2\lattice\magnetic_2_md.opt`, дейтрон m = 1875.612945 МэВ, W = 270 МэВ,
+γ0 = 1.143952941, β0 = 0.485634729, Bρ = 3.47568504 Т·м.
+
+**Общее определение:** ξ = dQ/dδ, δ = dp/p, натуральная (секступоли = 0), первый порядок; eta = ΔT/T/δ = alpha_c − 1/γ².
+Пересчёты: COSY δ_K = ΔK/K = (1+1/γ)δ ⇒ ξ = (1+1/γ)·dQ/dδ_K = 1.874162·raw; MAD-X TWISS: PT = β0·δ ⇒ ξ = β0·DQ = 0.485635·DQ.
+
+Структура: (1) каждый запуск отдельно — команда, сырой вывод, что берём, пересчёт; (2) сводная таблица;
+(3) Twiss-функции всех программ; (4) почему ξy различается.""")
+
+code(r'''import re, json, pathlib, subprocess, sys
+import numpy as np, pandas as pd, matplotlib.pyplot as plt
 R = pathlib.Path(r"C:\GIT_REPOS\SCT_2\chromaticity")
-def kv(p):
+G0 = 1 + 270/1875.612945; B0 = np.sqrt(1 - 1/G0**2); F = 1 + 1/G0
+pd.set_option("display.precision", 6); pd.set_option("display.width", 220); pd.set_option("display.max_colwidth", 70)
+def show(path, pat=None, first=None):
+    """print raw lines of an output file (optionally only lines matching regex pat)"""
+    p = R/path; print(f"----- {p} -----")
+    lines = p.read_text(encoding="utf-8", errors="replace").splitlines()
+    if pat: lines = [l for l in lines if re.search(pat, l)]
+    for l in lines[:first]: print(l)
+def kv(path):
     d = {}
-    for l in open(p, encoding="utf-8-sig"):
-        m = re.match(r"\s*([\w]+)\s*=\s*([-+0-9.Ee]+)\s*$", l)
+    for l in (R/path).read_text(encoding="utf-8-sig").splitlines():
+        m = re.match(r"\s*(\w+)\s*=\s*([-+0-9.Ee]+)\s*$", l)
         if m: d[m[1]] = float(m[2])
     return d
-def tfs(p):
-    lines = open(p).read().splitlines()
+def tfs(path):
+    lines = (R/path).read_text().splitlines()
     hdr = next(l for l in lines if l.startswith("*")).split()[1:]
-    rows = [l.split() for l in lines if not l.startswith(("@","*","$"))]
-    return hdr, rows
-opt = open(R/"OptiM/output/optim_reference.txt", encoding="utf-8-sig").read()
-f = lambda pat: float(re.search(pat, opt)[1])
-optim = dict(Qx=f(r"Qx =\s*([-\d.]+)"), Qy=f(r"Qy =\s*([-\d.]+)"), ac=f(r"compaction :\s*([-\d.]+)"),
-             eta=f(r"Slip Factor :\s*([-\d.]+)"), xx=f(r"Chromaticities :\s*([-\d.]+)"), xy=f(r"\(hor\)\s*([-\d.]+)"))
-bell = kv(R/"BELL/output/bell_results.txt"); c1 = kv(R/"COSY/output/cosy_ov321.txt"); c3 = kv(R/"COSY/output/cosy_ov330.txt")
-mp = kv(R/"MADX/output/madx_plain_results.txt")
-import json; oa = json.load(open(R/"COSY/output/ov330_map_analysis.json")); F = c3["factor_1p1g"]
-h, r = tfs(R/"MADX/output/ptc_twiss_summary.tfs"); ps = dict(zip(h, map(float, r[0])))
-h, r = tfs(R/"MADX/output/ptc_normal.tfs"); pn = {(x[0].strip('"'), int(x[1])): float(x[-1]) for x in r}
-ex = open(R/"analysis/exact_hamiltonian_check.out").read()
-exq = [float(v) for v in re.findall(r"[-\d.]+", ex.splitlines()[0].split("[")[1])]
-NaN = float("nan")
-rows = [
- ("OptiM", "GUI Twiss, linear formulas", optim["Qx"], optim["Qy"], optim["ac"], optim["eta"], optim["xx"], optim["xy"]),
- ("BELL", "one-turn matrix (linear)", bell["linear_Qx"], bell["linear_Qy"], bell["linear_alpha_c"], bell["linear_eta"], NaN, NaN),
- ("BELL", "Taylor map o3, Q(δ) central diff", 2+bell["taylor_Qx_frac"], 2+bell["taylor_Qy_frac"], bell["taylor_alpha0"], bell["taylor_eta0"], bell["taylor_xi_x"], bell["taylor_xi_y"]),
- ("BELL", "Lie factor map, Q(δ) central diff", 2+bell["lie_Qx"], 2+bell["lie_Qy"], bell["lie_alpha0"], bell["lie_eta0"], bell["lie_xi_x"], bell["lie_xi_y"]),
- ("COSY", "OV 3 2 1, TP, ×(1+1/γ)", 2+c1["Qx_frac"], 2+c1["Qy_frac"], NaN, NaN, c1["xi_x_p"], c1["xi_y_p"]),
- ("COSY", "OV 3 3 0, dTr/dδK from ME on closed orbit (in .fox), ×(1+1/γ)", 2+c3["Qx_frac"], 2+c3["Qy_frac"], c3["alpha_c"], c3["eta"], c3["xi_x_p"], c3["xi_y_p"]),
- ("COSY", "OV 3 3 0 map dump → closed orbit(δK) + 2x2 Jacobian tunes, FD ±1e-4, ×(1+1/γ)", 2+c3["Qx_frac"], 2+c3["Qy_frac"], c3["alpha_c"], c3["eta"], oa["closed_orbit_FD"][0]*F, oa["closed_orbit_FD"][1]*F),
- ("COSY", "OV 3 3 0 map dump → 4D map, δK as parameter (drop l), ×(1+1/γ)", 2+c3["Qx_frac"], 2+c3["Qy_frac"], c3["alpha_c"], c3["eta"], oa["param4D_x"]*F, oa["param4D_y"]*F),
- ("Python", "exact H, RK4, body + hard-edge kick Δp_y=∓h x' y, FD", 2+exq[0], 2+exq[1], NaN, NaN, *[float(v) for v in re.findall(r"[-\d.]+", ex.splitlines()[2].split("xi")[1].strip(" []"))]),
- ("MAD-X", "TWISS, β0·DQ(PT)", mp["Q1"], mp["Q2"], mp["alfa"], mp["eta"], mp["DQ1_dp"], mp["DQ2_dp"]),
- ("MAD-X", "TWISS CHROM, β0·DQ(PT)", mp["Q1"], mp["Q2"], mp["alfa"], mp["eta"], mp["DQ1_chrom_dp"], mp["DQ2_chrom_dp"]),
- ("MAD-X", "TWISS DELTAP=±1e-4 (dp/p) FD", mp["Q1"], mp["Q2"], mp["alfa"], mp["eta"], mp["DQ1_fd_dp"], mp["DQ2_fd_dp"]),
- ("MAD-X PTC", "ptc_twiss icase=56 no=5 exact", 2+ps["Q1"], 2+ps["Q2"], ps["ALPHA_C"], ps["ETA_C"], ps["DQ1"], ps["DQ2"]),
- ("MAD-X PTC", "ptc_normal icase=5 no=5", 2+pn[("Q1",0)], 2+pn[("Q2",0)], NaN, NaN, pn[("DQ1",1)], pn[("DQ2",1)]),
- ("Python", "exact H, RK4, body only (no edge kick), FD", 2+exq[0], 2+exq[1], NaN, NaN, *[float(v) for v in re.findall(r"[-\d.]+", ex.splitlines()[1].split("[")[1])]),
-]
-df = pd.DataFrame(rows, columns=["program", "model / method", "Qx", "Qy", "alpha_c", "eta", "xi_x (dQ/dδp)", "xi_y (dQ/dδp)"])
-pd.set_option("display.precision", 6); pd.set_option("display.width", 200)
+    rows = [l.split() for l in lines if not l.startswith(("@", "*", "$"))]
+    return pd.DataFrame(rows, columns=hdr)
+ROWS = []   # (program, method, Qx, Qy, alpha_c, eta, xi_x, xi_y)
+def add(*r):
+    ROWS.append(r); print("-> row:", r)
+print(f"gamma0={G0:.9f} beta0={B0:.9f} 1+1/gamma0={F:.9f}")''')
+
+# ---------------- OptiM
+md(r"""## 1. OptiM (эталон, GUI)
+**Запуск:** `OptiM\run_optim.bat` открывает `magnetic_2_md.opt` в OptiMX (только GUI, без пакетного режима), Twiss — вручную.
+**Вывод:** окно OptiM, переписано пользователем в `OptiM/output/optim_reference.txt`.
+**Берём:** Tunes, Momentum compaction, Phase Slip Factor, Chromaticities. OptiM уже даёт ξ = dQ/d(dp/p) — пересчёт не нужен.""")
+code(r'''show("OptiM/output/optim_reference.txt")
+t = (R/"OptiM/output/optim_reference.txt").read_text(encoding="utf-8-sig")
+g = lambda p: float(re.search(p, t)[1])
+add("OptiM", "GUI Twiss (linear formulas, hard-edge bends)", g(r"Qx =\s*([-\d.]+)"), g(r"Qy =\s*([-\d.]+)"),
+    g(r"compaction :\s*([-\d.]+)"), g(r"Slip Factor :\s*([-\d.]+)"), g(r"Chromaticities :\s*([-\d.]+)"), g(r"\(hor\)\s*([-\d.]+)"))''')
+
+# ---------------- BELL
+md(r"""## 2. BELL (Julia)
+**Запуск:** `BELL\run_bell.bat` = `julia --project=C:\GIT_REPOS\BELL\Julia chrom_bell.jl` (BELL v0.10.0 как есть).
+Читает .opt через `convert_optim` → `magnetic_2_md.bell`. Вывод: `BELL/output/bell_results.txt`, `bell_twiss.csv`.
+δ в BELL = dp/p (канонический), поэтому ξ берётся без пересчёта. Модель диполя: только тело, без краевого члена.""")
+code(r'''show("BELL/output/bell_results.txt")
+bell = kv("BELL/output/bell_results.txt")''')
+md(r"""### 2a. BELL, одно-оборотная матрица (линейно)
+Строки `linear_Qx/Qy` (целая часть из набега фазы), `linear_alpha_c`, `linear_eta`. Хроматичность этим методом не считается.""")
+code(r'''add("BELL", "one-turn matrix (linear)", bell["linear_Qx"], bell["linear_Qy"], bell["linear_alpha_c"], bell["linear_eta"], np.nan, np.nan)''')
+md(r"""### 2b. BELL, отображение Тейлора 3-го порядка (`ring_taylor_map`)
+`taylor_Qx_frac` — дробный тюн (+2 целая часть), `taylor_alpha0`, `taylor_eta0` — из `path_expansion`,
+`taylor_xi_x/y` — `chromaticity_orders`: центральная разность ±1e-4 тюнов якобиана на замкнутой орбите при δ.""")
+code(r'''add("BELL", "Taylor map o3, Q(δ) central diff", 2+bell["taylor_Qx_frac"], 2+bell["taylor_Qy_frac"], bell["taylor_alpha0"], bell["taylor_eta0"], bell["taylor_xi_x"], bell["taylor_xi_y"])''')
+md(r"""### 2c. BELL, Ли-фактор (`observables`: `ring_lie_factor` → `factor_to_map`)
+Те же читалки, другое построение одно-оборотного отображения. Строки `lie_*`.""")
+code(r'''add("BELL", "Lie factor map, Q(δ) central diff", 2+bell["lie_Qx"], 2+bell["lie_Qy"], bell["lie_alpha0"], bell["lie_eta0"], bell["lie_xi_x"], bell["lie_xi_y"])''')
+
+# ---------------- COSY
+md(r"""## 3. COSY INFINITY 10.2
+**Запуск:** `COSY\run_cosy.bat`: `lattice_md.fox` (решётка, один раз → `lattice_md.bin`), `ov321.fox`, `ov330.fox`, `twiss.fox`,
+(`rf_test.fox` по аргументу), затем `python ov330_map_analysis.py`. Элементы: `DL`, `MS` (секторный, 22.5°, без краевых углов),
+`MQ`, `MH` (0), `FR 0` (жёсткий край без fringe). Переменная энергии COSY: δ_K = ΔK/K.""")
+code(r'''print((R/"COSY/lattice_md.fox").read_text())''')
+md(r"""### 3a. COSY OV 3 2 1, TP
+`ov321.fox`: `OV 3 2 1`, `PART 270*PARA(1)` (энергия — DA-параметр), `TP MU`. Берём `CONS(MU)` = дробный тюн и
+`MU|(0,0,0,0,1)` = dQ/dδ_K (сырое), ξ = (1+1/γ)·raw.""")
+code(r'''print((R/"COSY/ov321.fox").read_text()); show("COSY/output/cosy_ov321.txt")
+c1 = kv("COSY/output/cosy_ov321.txt")
+print(f"xi_x = {c1['factor_1p1g']:.9f} * {c1['dQx_ddK_raw']:.9f} = {c1['xi_x_p']:.9f};  xi_y = {c1['factor_1p1g']:.9f} * {c1['dQy_ddK_raw']:.9f} = {c1['xi_y_p']:.9f}")
+add("COSY", "OV 3 2 1, TP, ×(1+1/γ)", 2+c1["Qx_frac"], 2+c1["Qy_frac"], np.nan, np.nan, c1["xi_x_p"], c1["xi_y_p"])''')
+md(r"""### 3b. COSY OV 3 3 0: дамп 6D-отображения и коэффициенты
+`ov330.fox`: `OV 3 3 0`, `PART 270`, `PM` → `map_ov330.txt`, коэффициенты MAP(1..6) полной точности → `map_ov330_full.txt`.
+`ov330_map_analysis.py` строит из них: линейный блок, хроматические члены 2-го порядка, (i) замкнутую орбиту при δ_K и тюны якобиана,
+(ii) 4D-отображение с δ_K как параметром, собственные числа 6×6, eta и alpha_c из (l|δ_K) на замкнутой орбите.
+TP здесь не работает: продольный блок [[1, 17.836],[0,1]] — жорданова клетка (собственные числа 1,1), 6D нормальной формы нет.""")
+code(r'''print((R/"COSY/ov330.fox").read_text()); show("COSY/output/map_ov330.txt", first=24)''')
+code(r'''show("COSY/output/ov330_map_analysis.txt")
+oa = json.load(open(R/"COSY/output/ov330_map_analysis.json"))
+add("COSY", "OV 3 3 0 map → closed orbit(δK) + 2×2 Jacobian tunes, FD, ×(1+1/γ)", 2+oa["Qx_frac"], 2+oa["Qy_frac"], oa["alpha_c"], oa["eta"], oa["closed_orbit_FD"][0]*F, oa["closed_orbit_FD"][1]*F)
+add("COSY", "OV 3 3 0 map → 4D map, δK as parameter, dTr/dδK, ×(1+1/γ)", 2+oa["Qx_frac"], 2+oa["Qy_frac"], oa["alpha_c"], oa["eta"], oa["param4D_x"]*F, oa["param4D_y"]*F)''')
+md(r"""### 3c. COSY OV 3 3 0 + тонкий ВЧ (`rf_test.fox`)
+h = 1, фаза 0 (устойчива; ниже критической). TP работает: Q1 = Qx, Q2 = Qs ∝ √V, Q3 = Qy. Линейной хроматичности в TP нет:
+δ — координата синхротронного движения, а не параметр. Для таблицы не используется.""")
+code(r'''show("COSY/output/rf_tp_ov330.txt")''')
+
+# ---------------- MAD-X
+md(r"""## 4. MAD-X 5.09.01
+**Запуск:** `MADX\run_madx.bat`: `chrom_plain.madx` и `chrom_ptc.madx` (madx.exe из `C:\GIT_REPOS\NICA\MADX\2.Programms\Twiss`).
+Решётка `magnetic_2_md.seq`: SBEND angle=22.5°, E1=E2=0; K1 = G/Bρ. В MAD-X TWISS DQ = dQ/dPT (PT = β0δ) ⇒ ξ = β0·DQ; DELTAP — это dp/p.""")
+code(r'''print((R/"MADX/magnetic_2_md.seq").read_text()); show("MADX/output/madx_plain_results.txt")
+mp = kv("MADX/output/madx_plain_results.txt")''')
+md(r"""### 4a. TWISS (без CHROM): Q1, Q2, ALFA из SUMM; DQ1, DQ2 сырые (по PT) ⇒ ×β0""")
+code(r'''print(f"xi = beta0*DQ: {B0:.9f}*{mp['DQ1_pt']:.6f} = {B0*mp['DQ1_pt']:.6f};  {B0:.9f}*{mp['DQ2_pt']:.6f} = {B0*mp['DQ2_pt']:.6f}")
+add("MAD-X", "TWISS, β0·DQ(PT)", mp["Q1"], mp["Q2"], mp["alfa"], mp["eta"], mp["DQ1_dp"], mp["DQ2_dp"])''')
+md(r"""### 4b. TWISS, CHROM (DQ конечной разностью внутри MAD-X) ⇒ ×β0""")
+code(r'''add("MAD-X", "TWISS CHROM, β0·DQ(PT)", mp["Q1"], mp["Q2"], mp["alfa"], mp["eta"], mp["DQ1_chrom_dp"], mp["DQ2_chrom_dp"])''')
+md(r"""### 4c. TWISS при DELTAP = ±1e-4 (dp/p): ξ = (Q(+) − Q(−))/2e-4 — без пересчёта""")
+code(r'''add("MAD-X", "TWISS DELTAP=±1e-4 (dp/p) FD", mp["Q1"], mp["Q2"], mp["alfa"], mp["eta"], mp["DQ1_fd_dp"], mp["DQ2_fd_dp"])''')
+md(r"""### 4d. PTC_TWISS (метод `Compaction.madx`: model=2 method=6 nst=20 exact, time=false ⇒ δ = dp/p), icase=56 no=5
+Берём из `ptc_twiss_summary.tfs`: Q1, Q2 (дробные), ALPHA_C, ETA_C, DQ1, DQ2.""")
+code(r'''print((R/"MADX/chrom_ptc.madx").read_text())
+ps = tfs("MADX/output/ptc_twiss_summary.tfs").iloc[0]
+print(ps[["LENGTH","ALPHA_C","ALPHA_C_P","ALPHA_C_P2","ETA_C","GAMMA_TR","Q1","Q2","DQ1","DQ2"]].to_string())
+ps = ps.apply(pd.to_numeric, errors="ignore")
+add("MAD-X PTC", "ptc_twiss icase=56 no=5 exact", 2+float(ps["Q1"]), 2+float(ps["Q2"]), float(ps["ALPHA_C"]), float(ps["ETA_C"]), float(ps["DQ1"]), float(ps["DQ2"]))''')
+md(r"""### 4e. PTC_NORMAL icase=5 no=5: DQ порядков 1–3 (n-е производные по dp/p), ANHX/ANHY""")
+code(r'''show("MADX/output/ptc_normal.tfs", pat=r'^ "')
+pn = {(x[0].strip('"'), int(x[1])): float(x[-1]) for x in tfs("MADX/output/ptc_normal.tfs").values.tolist()}
+add("MAD-X PTC", "ptc_normal icase=5 no=5", 2+pn[("Q1",0)], 2+pn[("Q2",0)], np.nan, np.nan, pn[("DQ1",1)], pn[("DQ2",1)])''')
+
+# ---------------- Python exact
+md(r"""## 5. Python: точный гамильтониан, RK4 (`analysis/exact_hamiltonian_check.py`)
+Секторный диполь с фиксированным полем, квадруполи, дрейфы; замкнутая орбита Ньютоном при δ = ±1e-4, тюны якобиана.
+Вариант 1 — только тело; вариант 2 — плюс краевые удары жёсткого края Δp_y = ∓h·x'·y (вход/выход).""")
+code(r'''show("analysis/exact_hamiltonian_check.out")
+ex = (R/"analysis/exact_hamiltonian_check.out").read_text().splitlines()
+nums = lambda s: [float(v) for v in re.findall(r"-?\d+\.\d+", s)]
+q0 = nums(ex[0]); xb = nums(ex[1]); xe = nums(ex[2])[-2:]
+add("Python", "exact H, RK4, body only (no edge kick), FD", 2+q0[0], 2+q0[1], np.nan, np.nan, *xb)
+add("Python", "exact H, RK4, body + hard-edge kick Δp_y=∓h x' y, FD", 2+q0[0], 2+q0[1], np.nan, np.nan, *xe)''')
+
+# ---------------- summary
+md(r"""## 6. Сводная таблица (ξ по dp/p)""")
+code(r'''df = pd.DataFrame(ROWS, columns=["program", "model / method", "Qx", "Qy", "alpha_c", "eta", "xi_x", "xi_y"])
 df''')
-md("## Сырые величины до пересчёта")
-code(r'''pd.DataFrame([
- ("COSY OV321 dQ/dδ_K", c1["dQx_ddK_raw"], c1["dQy_ddK_raw"], c1["factor_1p1g"]),
- ("COSY OV330 dQ/dδ_K", c3["dQx_ddK_raw"], c3["dQy_ddK_raw"], c3["factor_1p1g"]),
- ("MAD-X DQ (dQ/dPT)", mp["DQ1_pt"], mp["DQ2_pt"], mp["beta0"]),
-], columns=["quantity", "x", "y", "factor -> dp/p"])''')
-md("## Высшие порядки (δ = dp/p)")
-code(r'''pd.DataFrame([
- ("BELL Taylor d2Q/dδ2", bell["taylor_xi2_x"], bell["taylor_xi2_y"]),
- ("PTC normal DQ order 2", pn[("DQ1",2)], pn[("DQ2",2)]),
- ("PTC normal DQ order 3", pn[("DQ1",3)], pn[("DQ2",3)]),
- ("BELL alpha1 (dC/C=a0δ+a1δ²)", bell["taylor_alpha1"], float("nan")),
- ("PTC ALPHA_C_P (=dα_c/dδ=2α1)", ps["ALPHA_C_P"], float("nan")),
-], columns=["quantity", "x", "y"])''')
-md("""## Выводы
-* **Qx, Qy, alpha_c, eta, ξx** совпадают во всех программах (ξx = −1.46154 ± 2e-6) после приведения к δ = dp/p.
-  Это подтверждает пересчёты: COSY ×(1+1/γ)=1.874162, MAD-X TWISS ×β0=0.485635.
-* **ξy расходится на две группы:**
-  * OptiM, MAD-X TWISS (все 3 способа), PTC exact (twiss и normal): **ξy = −1.8171**;
-  * BELL (Taylor и Ли), COSY (OV 3 2 1 и OV 3 3 0) и независимый Python-интегратор точного гамильтониана
-    секторного магнита (фиксированное поле, жёсткий край, без fringe): **ξy = −2.2255**.
-  * Разница +0.408 — краевой член жёсткого края (Δp_y = ∓h x' y на входе/выходе), который есть в OptiM/MAD-X/PTC и отсутствует в моделях «только тело» (BELL, COSY FR 0). Вывод и проверка — в разделе «Почему ξy…» ниже.
-* COSY OV 3 3 0: TP не работает, т.к. без ВЧ продольный блок [[1,(l|δK)],[0,1]] — жорданова клетка с двойным собственным числом 1 (не вращение); нормальная форма 6D невозможна. Из дампа 6D-отображения все способы (замкнутая орбита + след, 4D с δK как параметром) дают тот же ξ, что OV 3 2 1 TP. С тонким ВЧ (фаза 0) TP работает и даёт Qx, Qy, Qs∝√V, но линейной хроматичности в нём нет: δ не инвариант, ξ1 усредняется синхротронными колебаниями.
-* Определение δ (dp/p vs ΔK/K vs PT) даёт множители 1.87 и 0.486 — это основная ловушка при сравнении «сырых» чисел.
-* Порядок: всё — первый порядок ξ = dQ/dδ; ξ2 горизонтальный совпадает у BELL и PTC (8.555), вертикальный — нет (8.10 vs 7.37).""")
-md(r"""## COSY OV 3 3 0: коэффициенты отображения и почему TP не работает
-Файл `../COSY/output/ov330_map_analysis.txt` (скрипт `../COSY/ov330_map_analysis.py`, дамп `map_ov330_full.txt`).
-Методы (все ×(1+1/γ) к dp/p): (1) замкнутая орбита поперечного отображения при фиксированном δK + якобиан 2×2,
-Q = acos(Tr/2)/2π, центральная разность; (2) 4D-отображение с δK как параметром: dTr/dδK = Σ(i|iδK) + подача с орбиты,
-dQ/dδK = −dTr/(4π sin μ). Оба = OV 3 2 1 TP. TP в OV 3 3 0 падает: продольный блок [[1,(l|δK)=17.836 м],[0,1]] —
-жорданова клетка, собственные числа 1,1, нет третьей пары e^{±iμ} ⇒ нет 6D нормальной формы. С тонким ВЧ (фаза 0)
-TP работает (Qs ∝ √V), но линейной хроматичности в TP/TS нет: δ уже не параметр, а координата синхротронных колебаний.""")
-code(r'''print(open(R/"COSY/output/ov330_map_analysis.txt", encoding="utf-8").read())
-print("\n".join(l for l in open(R/"COSY/output/rf_tp_ov330.txt") if l.startswith(("CASE","TP_Q"))))''')
-md(r"""## Почему ξy: OptiM/MAD-X = −1.817, а BELL/COSY = −2.2255
+md(r"""**Итог:** Qx, Qy, alpha_c, eta, ξx совпадают везде. ξy: −1.8171 у моделей с жёстким краем (OptiM, MAD-X, PTC, Python + край)
+и −2.2255 у моделей «только тело» (BELL, COSY FR 0, Python без края). Разница +0.408 — краевой член (раздел 8).""")
+
+# ---------------- Twiss
+md(r"""## 7. Twiss-функции: то же ли это кольцо?
+Источники (D всюду приведена к dp/p):
+* **BELL** `BELL/output/bell_twiss.csv` — `optics_along`, шаг 2 см, D на dp/p.
+* **COSY** `COSY/output/cosy_twiss.txt` — `twiss.fox`: периодические β, α, D из одно-оборотной матрицы, затем после каждого элемента
+  β(s) = M11²β0 − 2M11M12α0 + M12²γ0, D(s) = M11D0 + M12D0' + M16; D на δ_K ⇒ ×(1+1/γ).
+* **MAD-X TWISS** `MADX/output/twiss_plain.tfs` — концы элементов; DX по PT ⇒ ×β0.
+* **PTC_TWISS** `MADX/output/ptc_twiss.tfs` — BETA11, BETA22, DISP1 (time=false ⇒ по dp/p).
+* **OptiM** — таблицы Twiss вдоль кольца нет: OptiM только GUI, экспорта в репозитории нет. Есть лишь начальные значения из .opt
+  (βx0 = 19.3675 м, βy0 = 4.05447 м, Dx0 = 0 — это начальное условие из файла, а не периодическое решение; периодическое D(0) = 0.0111 м).
+  Чтобы добавить OptiM: в GUI вывести Twiss-таблицу (окно Twiss → сохранить в файл) в `OptiM/output/optim_twiss.txt`.""")
+code(r'''bt = pd.read_csv(R/"BELL/output/bell_twiss.csv")
+ct = pd.read_csv(R/"COSY/output/cosy_twiss.txt", sep=r"\s+", comment="#", header=None, names=["name","s","betx","bety","dx"]); ct["dx"] *= F
+mt = tfs("MADX/output/twiss_plain.tfs"); mt[["S","BETX","BETY","DX"]] = mt[["S","BETX","BETY","DX"]].astype(float); mt["DXp"] = mt["DX"]*B0
+pt = tfs("MADX/output/ptc_twiss.tfs"); pt[["S","BETA11","BETA22","DISP1"]] = pt[["S","BETA11","BETA22","DISP1"]].astype(float)
+print("raw first rows:"); print(bt.head(3).to_string()); print(ct.head(3).to_string()); print(mt[["NAME","S","BETX","BETY","DX"]].head(3).to_string()); print(pt[["NAME","S","BETA11","BETA22","DISP1"]].head(3).to_string())
+print(f"MAD-X DX(0)={mt.DX[0]:.6e} (per PT) * beta0 = {mt.DXp[0]:.6e};  PTC DISP1(0)={pt.DISP1[0]:.6e};  BELL D(0)={bt.Dx_m[0]:.6e};  COSY D(0)={ct.dx[0]:.6e}")''')
+md(r"""### Рис. 1. β_x, β_y, D_x вдоль кольца (все программы)
+Линии — BELL (мелкий шаг), маркеры — COSY / MAD-X / PTC в концах элементов; × — начальные значения OptiM из .opt.
+Оси в метрах. Если кольцо одно и то же, все маркеры лежат на линиях BELL.""")
+code(r'''fig, ax = plt.subplots(3, 1, figsize=(13, 10), sharex=True)
+for a, (col_b, col_c, col_m, col_p, lab) in zip(ax, [("betx_m","betx","BETX","BETA11","β_x [m]"), ("bety_m","bety","BETY","BETA22","β_y [m]"), ("Dx_m","dx","DXp","DISP1","D_x [m] (per dp/p)")]):
+    a.plot(bt.s_m, bt[col_b], "k-", lw=1, label="BELL")
+    a.plot(ct.s, ct[col_c], "o", ms=5, mfc="none", label="COSY")
+    a.plot(mt.S, mt[col_m], "s", ms=3, label="MAD-X TWISS")
+    a.plot(pt.S, pt[col_p], "+", ms=6, label="PTC_TWISS")
+    a.set_ylabel(lab); a.grid(alpha=.3)
+ax[0].plot([0], [19.3675], "rx", ms=10, label="OptiM initial (.opt)"); ax[1].plot([0], [4.05447], "rx", ms=10); ax[2].plot([0], [0.0], "rx", ms=10)
+ax[0].legend(ncol=5); ax[2].set_xlabel("s [m]"); ax[0].set_title("magnetic_2_md: Twiss functions, all programs"); plt.tight_layout(); plt.show()''')
+md(r"""### Рис. 2. Разности относительно MAD-X TWISS (в точках MAD-X, концы элементов)
+BELL интерполирован линейно на s MAD-X (точки MAD-X совпадают с границами элементов BELL); COSY и PTC также интерполированы по s (их точки — те же концы элементов, поэтому интерполяция фактически не нужна, кроме совпадающих s у маркеров).""")
+code(r'''s = mt.S.values
+def at(sx, y): return np.interp(s, sx, y)
+cmp = {
+ "BELL": (at(bt.s_m, bt.betx_m), at(bt.s_m, bt.bety_m), at(bt.s_m, bt.Dx_m)),
+ "COSY": (at(ct.s, ct.betx), at(ct.s, ct.bety), at(ct.s, ct.dx)),
+ "PTC":  (at(pt.S, pt.BETA11), at(pt.S, pt.BETA22), at(pt.S, pt.DISP1)),
+}
+ref = (mt.BETX.values, mt.BETY.values, mt.DXp.values)
+print("lengths: MAD-X", len(s), "COSY", len(ct), "PTC", len(pt))
+fig, ax = plt.subplots(3, 1, figsize=(13, 8), sharex=True); stat = []
+for k, (bx, by, dx) in cmp.items():
+    d = (bx-ref[0], by-ref[1], dx-ref[2])
+    for a, dd, lab in zip(ax, d, ["Δβ_x [m]", "Δβ_y [m]", "ΔD_x [m]"]): a.plot(s, dd, ".-", ms=3, label=k); a.set_ylabel(lab); a.grid(alpha=.3)
+    stat.append((k, *[np.max(np.abs(x)) for x in d], np.max(np.abs(d[0]/ref[0])), np.max(np.abs(d[1]/ref[1]))))
+ax[0].legend(); ax[2].set_xlabel("s [m]"); ax[0].set_title("difference vs MAD-X TWISS"); plt.tight_layout(); plt.show()
+pd.DataFrame(stat, columns=["program", "max|Δβx| [m]", "max|Δβy| [m]", "max|ΔDx| [m]", "max rel Δβx", "max rel Δβy"])''')
+md(r"""**Что следует:** если максимальные разности на уровне ~1e-6 м и меньше (округление вывода/шаг), то BELL, COSY, MAD-X и PTC
+считают одно и то же кольцо с одной и той же линейной оптикой; расхождение ξy не связано с геометрией или фокусировкой,
+а только с моделью края диполя. OptiM: совпадение βx0 = 19.3675 м, βy0 = 4.05447 м с периодическими значениями (19.36752, 4.05447) подтверждает ту же
+оптику в начале кольца; полной таблицы OptiM нет (см. выше).""")
+
+md(r"""## 8. Почему ξy: OptiM/MAD-X = −1.817, а BELL/COSY = −2.2255
 
 ### Гамильтониан секторного магнита (поле B0 однородно, h = 1/ρ0, δ = dp/p, канонические x, p_x, y, p_y)
 $$H = -(1+hx)\sqrt{(1+\delta)^2-p_x^2-p_y^2} + hx + \tfrac12 h^2x^2 .$$
@@ -132,5 +240,6 @@ md(r"""### Вывод
 * **Не проверено:** реализация полной матрицы TRANSPORT 2-го порядка (Brown) не делалась — член F проверен прямым выводом и RK4;
   BELL с добавленным краевым отображением не запускался (ядро BELL не меняли); COSY FR 1/2 не запускается (нет SYSCA.DAT),
   поэтому что именно COSY включает в FR 1–3 — не проверено. С конечным fringe (FINT, HGAP ≠ 0) добавятся ещё члены.""")
+
 nb["cells"] = c; nb.metadata["kernelspec"] = {"name": "python3", "display_name": "Python 3", "language": "python"}
-nbf.write(nb, "analysis.ipynb")
+nbf.write(nb, str(pathlib.Path(__file__).parent/"analysis.ipynb"))

@@ -1,0 +1,14 @@
+{ ov330.fox - full 6D one-turn map (x,a,y,b,l,delta_K), dumped for ov330_map_analysis.py }
+INCLUDE 'lattice_md';
+PROCEDURE RUN;
+  OV 3 3 0;                                  { order 3, 3 phase-space planes, no parameters }
+  FR 0;
+  PART 270;
+  RING 0 0 0 0 0 0 0 0;
+  OPENF 30 'output/map_ov330.txt' 'UNKNOWN'; PM 30; CLOSEF 30;          { COSY map listing }
+  OPENF 31 'output/map_ov330_full.txt' 'UNKNOWN';                       { full-precision coefficients }
+  WRITE 31 'GAMMA0 '&ST(1+270/1875.612945); WRITE 31 'LENGTH '&ST(SPOS);
+  WRITE 31 MAP(1) MAP(2) MAP(3) MAP(4) MAP(5) MAP(6);
+  CLOSEF 31;
+ENDPROCEDURE;
+RUN; END;

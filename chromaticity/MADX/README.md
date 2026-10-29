@@ -15,3 +15,8 @@ DELTAP в MAD-X — это dp/p, конечная разность даёт `DQ*
 PTC: `ptc_create_layout model=2 method=6 nst=20 exact time=false` (time=false ⇒ δ = dp/p),
 `ptc_twiss icase=56 no=5` → `output/ptc_twiss_summary.tfs` (ALPHA_C, ALPHA_C_P…, ETA_C, Q1, Q2, DQ1, DQ2),
 `ptc_normal icase=5 no=5` → `output/ptc_normal.tfs` (DQ порядков 1–3: производные dⁿQ/dδⁿ, ANHX/ANHY).
+
+## Twiss-функции
+* `output/twiss_plain.tfs` — TWISS: BETX, BETY, DX (DX по PT; ×β0 для dp/p), концы элементов.
+* `output/ptc_twiss.tfs` — PTC_TWISS: BETA11, BETA22, DISP1 (по dp/p).
+* `edge_tests.madx` — проверки модели края диполя (см. analysis, раздел 8).

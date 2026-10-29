@@ -1,0 +1,21 @@
+{ twiss.fox - periodic Twiss from the linear one-turn map, then beta_x, beta_y, D_x after each element }
+INCLUDE 'lattice_md';
+PROCEDURE RUN;
+  VARIABLE CX 1; VARIABLE SX 1; VARIABLE CY 1; VARIABLE SY 1;
+  VARIABLE BX 1; VARIABLE AX 1; VARIABLE BY 1; VARIABLE AY 1; VARIABLE D 1; VARIABLE DP 1; VARIABLE DET 1;
+  OV 1 3 0; FR 0; PART 270;
+  RING 0 0 0 0 0 0 0 0;                                    { one-turn linear map }
+  CX := (ME(1,1)+ME(2,2))/2; SX := SQRT(1-CX*CX); IF ME(1,2)<0; SX := -SX; ENDIF;
+  CY := (ME(3,3)+ME(4,4))/2; SY := SQRT(1-CY*CY); IF ME(3,4)<0; SY := -SY; ENDIF;
+  BX := ME(1,2)/SX; AX := (ME(1,1)-ME(2,2))/(2*SX);        { periodic beta, alpha }
+  BY := ME(3,4)/SY; AY := (ME(3,3)-ME(4,4))/(2*SY);
+  DET := (1-ME(1,1))*(1-ME(2,2))-ME(1,2)*ME(2,1);          { periodic dispersion per delta_K }
+  D  := ((1-ME(2,2))*ME(1,6) + ME(1,2)*ME(2,6))/DET;
+  DP := (ME(2,1)*ME(1,6) + (1-ME(1,1))*ME(2,6))/DET;
+  OPENF 40 'output/cosy_twiss.txt' 'UNKNOWN';
+  WRITE 40 '# name s[m] betx[m] bety[m] Dx[m per dK]   (multiply Dx by 1+1/gamma for dp/p)';
+  WRITE 40 'START 0 '&ST(BX)&' '&ST(BY)&' '&ST(D);
+  RING 1 40 BX AX BY AY D DP;                              { second pass writes Twiss after each element }
+  CLOSEF 40;
+ENDPROCEDURE;
+RUN; END;

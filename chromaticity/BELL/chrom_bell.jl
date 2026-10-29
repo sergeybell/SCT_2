@@ -1,4 +1,4 @@
-﻿# chrom_bell.jl -- tunes, alpha_c, eta, chromaticity of magnetic_2_md via BELL (as-is)
+# chrom_bell.jl -- tunes, alpha_c, eta, chromaticity of magnetic_2_md via BELL (as-is)
 #   julia --project=C:\GIT_REPOS\BELL\Julia chrom_bell.jl
 using Bell, Printf, LinearAlgebra, TaylorSeries
 
@@ -43,4 +43,10 @@ for s in (stdout, io)
   @printf(s, "# taylor map built in %.1f s\n", tM)
 end
 close(io)
+open(joinpath(@__DIR__, "output", "bell_twiss.csv"), "w") do f
+  println(f, "s_m,betx_m,bety_m,Dx_m")           # D per dp/p, at element boundaries (optics_along)
+  for k in eachindex(opt.data.s)
+    @printf(f, "%.9f,%.9f,%.9f,%.9e\n", opt.data.s[k], opt.data.betx[k], opt.data.bety[k], opt.data.D[k])
+  end
+end
 println("written ", OUT)

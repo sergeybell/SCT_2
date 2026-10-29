@@ -1,0 +1,23 @@
+{ ov321.fox - chromaticity by TP, energy as DA parameter }
+INCLUDE 'lattice_md';
+PROCEDURE RUN;
+  VARIABLE MU 1000 2; VARIABLE G 1; VARIABLE F 1;
+  OV 3 2 1;                                  { order 3, 2 phase-space planes, 1 parameter }
+  FR 0;                                      { hard edge, no fringe }
+  PART 270*PARA(1);                          { EK = 270 MeV * (1 + delta_K) }
+  RING 0 0 0 0 0 0 0 0;
+  TP MU;                                     { tunes as functions of delta_K }
+  G := 1+270/1875.612945; F := 1+1/G;        { delta_K = (1+1/gamma) delta_p }
+  OPENF 20 'output/cosy_ov321.txt' 'UNKNOWN';
+  WRITE 20 'length = '&ST(SPOS);
+  WRITE 20 'gamma0 = '&ST(G);
+  WRITE 20 'factor_1p1g = '&ST(F);
+  WRITE 20 'Qx_frac = '&ST(CONS(MU(1)));
+  WRITE 20 'Qy_frac = '&ST(CONS(MU(2)));
+  WRITE 20 'dQx_ddK_raw = '&ST(MU(1)|(0&0&0&0&1));
+  WRITE 20 'dQy_ddK_raw = '&ST(MU(2)|(0&0&0&0&1));
+  WRITE 20 'xi_x_p = '&ST(F*(MU(1)|(0&0&0&0&1)));
+  WRITE 20 'xi_y_p = '&ST(F*(MU(2)|(0&0&0&0&1)));
+  CLOSEF 20;
+ENDPROCEDURE;
+RUN; END;

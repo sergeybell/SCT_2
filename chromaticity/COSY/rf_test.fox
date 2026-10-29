@@ -1,0 +1,18 @@
+{ rf_test.fox - OV 3 3 0 with a thin RF cavity (h=1, phase 0): TP now works, gives Qx, Qs, Qy }
+INCLUDE 'lattice_md';
+PROCEDURE RUN;
+  VARIABLE MU 1000 3; VARIABLE VRF 1 1 1; VARIABLE FREQ 1; VARIABLE I 1; VARIABLE V 1 6;
+  OV 3 3 0; FR 0;
+  V(1) := 100; V(2) := 10; V(3) := 1; V(4) := 0.1; V(5) := 0.01; V(6) := 0.001;   { voltages [kV] }
+  FREQ := SQRT(1-1/SQR(1+270/1875.612945))*CLIGHT/117.388296;                   { h=1: f = beta c / C }
+  OPENF 32 'output/rf_tp_ov330.txt' 'UNKNOWN';
+  LOOP I 1 6;
+    VRF(1,1) := V(I);
+    PART 270; RING 0 0 0 0 0 0 0 0;
+    RF VRF 0 FREQ 0 0.05;                    { thin cavity at the end of the ring, phase 0 (stable, eta<0) }
+    TP MU;                                   { 6D normal form exists now }
+    WRITE 32 'V_kV '&ST(V(I))&' Q1 '&ST(CONS(MU(1)))&' Q2 '&ST(CONS(MU(2)))&' Q3 '&ST(CONS(MU(3)));
+  ENDLOOP;
+  CLOSEF 32;
+ENDPROCEDURE;
+RUN; END;

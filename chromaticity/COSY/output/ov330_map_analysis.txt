@@ -76,3 +76,5 @@ y: dM/ddK (incl. closed-orbit feed-down) = [[1.859810492, 30.001360771], [-1.747
    1.000000000000 +0.000000000000i   |lambda|=1.000000000000  arg/2pi= 0.000000000
 longitudinal block [[ (l|l),(l|dK) ],[ (dK|l),(dK|dK) ]] = [[1.000000, 17.836046145], [0.000000, 1.000000]]
 (l|dK)_closed = (l|x)D+(l|a)D'+(l|dK) = 17.836045377 m (Jordan block, eigenvalue 1 double, not diagonalisable)
+
+eta = -(l|dK)_closed/C*(1+1/g)^2 = -0.533688628, alpha_c = eta + 1/g^2 = 0.230470282

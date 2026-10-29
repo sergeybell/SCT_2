@@ -1,0 +1,38 @@
+{ lattice_md.fox - magnetic_2_md ring (lattice/magnetic_2_md.opt), compiled once -> lattice_md.bin }
+INCLUDE 'C:/GIT_REPOS/SCT_2/COSY/src/COSY';            { COSY 10.2 system (compiled cosy.bin) }
+
+PROCEDURE PART EK;                                     { reference deuteron, EK = kinetic energy [MeV] (may be DA) }
+  RP EK 1875.612945/AMUMEV 1;                          { mass CODATA 2022 in amu, charge 1 }
+ENDPROCEDURE;
+
+PROCEDURE RING TW U B0X A0X B0Y A0Y D0 DP0;            { one turn; TW=1: write Twiss after each element to unit U }
+  VARIABLE AP 1; VARIABLE LB 1; VARIABLE RB 1; VARIABLE S 1;
+  PROCEDURE WR NAME;                                   { Twiss at element exit from the accumulated map }
+    VARIABLE BX 1; VARIABLE BY 1; VARIABLE DX 1;
+    IF TW=1;
+      BX := (ME(1,1)*ME(1,1)*B0X - 2*ME(1,1)*ME(1,2)*A0X + ME(1,2)*ME(1,2)*(1+A0X*A0X)/B0X);
+      BY := (ME(3,3)*ME(3,3)*B0Y - 2*ME(3,3)*ME(3,4)*A0Y + ME(3,4)*ME(3,4)*(1+A0Y*A0Y)/B0Y);
+      DX := ME(1,1)*D0 + ME(1,2)*DP0 + ME(1,6);        { per delta_K }
+      WRITE U NAME&' '&ST(SPOS)&' '&ST(BX)&' '&ST(BY)&' '&ST(DX);
+    ENDIF;
+  ENDPROCEDURE;
+  PROCEDURE BM;  MS RB 22.5 AP 0 0 0 0 0; WR 'BM';  ENDPROCEDURE;  { sector bend 22.5 deg, no edge angles }
+  PROCEDURE OBM; DL LB;   WR 'OBM'; ENDPROCEDURE;      { drift of dipole length }
+  PROCEDURE OS1; DL 0.12; WR 'OS1'; ENDPROCEDURE;
+  PROCEDURE OS2; DL 0.06; WR 'OS2'; ENDPROCEDURE;
+  PROCEDURE SX N; MH 0.12 0 AP; WR N; ENDPROCEDURE;    { SF1/SF2/SD, strength 0 }
+  PROCEDURE QF;  MQ 0.21  1.81168058*AP AP; WR 'QF';  ENDPROCEDURE;  { pole field = G[T/m]*aperture }
+  PROCEDURE QD;  MQ 0.21 -2.01793283*AP AP; WR 'QD';  ENDPROCEDURE;
+  PROCEDURE QF1; MQ 0.21  1.93455213*AP AP; WR 'QF1'; ENDPROCEDURE;
+  PROCEDURE QD1; MQ 0.21 -1.93455213*AP AP; WR 'QD1'; ENDPROCEDURE;
+  PROCEDURE ARC;
+    OS2; QF; BM; QD; OS1; QD; BM; QF; SX 'SF2';
+    QF; BM; QD; SX 'SD'; QD; BM; QF; SX 'SF1';
+    QF; BM; QD; SX 'SD'; QD; BM; QF; SX 'SF2';
+    QF; BM; QD; OS1; QD; BM; QF; OS2;
+  ENDPROCEDURE;
+  PROCEDURE STR; OS2; QF1; OBM; QD1; OS1; QD1; OBM; QF1; OS2; ENDPROCEDURE;
+  AP := 0.05; LB := 5.3294148; RB := LB/(22.5*PI/180);
+  UM; ARC; STR; ARC; STR;                              { full ring, 1 period }
+ENDPROCEDURE;
+SAVE 'lattice_md';
