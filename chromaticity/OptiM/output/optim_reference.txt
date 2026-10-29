@@ -1,0 +1,10 @@
+﻿# OptiM reference output (GUI, entered by user Bell from OptiM window)
+# file: magnetic_2_md.opt ; OptiM: C:\Program Files\OptiMX-x86-64\optimx64.exe
+# chromaticity = dQ/d(dp/p), natural (sextupoles = 0), linear (1st order)
+Total Length : 	    11738.8 cm
+Tunes : 	Qx =    2.46172,  Qy =    2.46134
+Momentum compaction : 	   0.23047
+Phase Slip Factor : 	 -0.533689
+Chromaticities : 	  -1.46153 (hor) 	  -1.81705 (ver)
+Initial Energy : 	       270 MeV
+Final Energy : 	       270 MeV

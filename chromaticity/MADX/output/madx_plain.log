@@ -1,0 +1,152 @@
+
+  ++++++++++++++++++++++++++++++++++++++++++++
+  +     MAD-X 5.09.01  (64 bit, Windows)     +
+  + Support: mad@cern.ch, http://cern.ch/mad +
+  + Release   date: 2023.12.04               +
+  + Execution date: 2026.10.29 14:01:54      +
+  ++++++++++++++++++++++++++++++++++++++++++++
+! (a) plain MAD-X TWISS. Deuteron, m=1.875612945 GeV, Ekin=0.270 GeV.
+
+OPTION, -ECHO, -INFO;
+
+enter Twiss module
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+            length             orbit5               alfa            gammatr 
+        117.388296                 -0       0.2304702825         2.08301565 
+
+                q1                dq1            betxmax              dxmax 
+       2.461720148       -3.009537062        19.36773852         24.0954974 
+
+             dxrms             xcomax             xcorms                 q2 
+       10.01524351                  0                  0        2.461337321 
+
+               dq2            betymax              dymax              dyrms 
+      -3.741625515        19.36464099                 -0                  0 
+
+            ycomax             ycorms             deltap            synch_1 
+                 0                  0                  0                  0 
+
+           synch_2            synch_3            synch_4            synch_5 
+                 0                  0                  0                  0 
+
+           synch_6            synch_8             nflips              dqmin 
+                 0                  0                  0                  0 
+
+       dqmin_phase 
+                 0 
+beam->brho         =        3.475685036 ;
+beam->gamma        =        1.143952941 ;
+beam->beta         =       0.4856347286 ;
+beam->pc           =         1.04198416 ;
+enter Twiss module
+  
+iteration:   1 error:   2.418282E-08 deltap:   1.000000E-06
+orbit:   1.108404E-08 -5.057059E-10  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+            length             orbit5               alfa            gammatr 
+        117.388296                 -0       0.2304702825         2.08301565 
+
+                q1                dq1            betxmax              dxmax 
+       2.461720148       -3.009531836        19.36773852         24.0954974 
+
+             dxrms             xcomax             xcorms                 q2 
+       10.01524351                  0                  0        2.461337321 
+
+               dq2            betymax              dymax              dyrms 
+      -3.741619598        19.36464099                 -0                  0 
+
+            ycomax             ycorms             deltap            synch_1 
+                 0                  0                  0        27.05451374 
+
+           synch_2            synch_3            synch_4            synch_5 
+      0.4629778677      0.03411462427       0.1468927822       0.1357048859 
+
+           synch_6            synch_8             nflips              dqmin 
+       26.47295546        60.84524753                  0                  0 
+
+       dqmin_phase 
+                 0 
+++++++ warning: missing value=: 
+enter Twiss module
+  
+iteration:   1 error:   2.201583E-06 deltap:   1.000000E-04
+orbit:   1.008840E-06 -4.602078E-08  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+  
+iteration:   2 error:   1.267099E-14 deltap:   1.000000E-04
+orbit:   1.008840E-06 -4.602078E-08  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+                length                 orbit5                   alfa                gammatr 
+            117.388296                     -0          0.23054352709          2.08268473277 
+
+                    q1                    dq1                betxmax                  dxmax 
+         2.46157402019         -3.00836766095          19.3694637742          24.1020003372 
+
+                 dxrms                 xcomax                 xcorms                     q2 
+         10.0174489056       0.00117030513104      0.000486422819533          2.46115564368 
+
+                   dq2                betymax                  dymax                  dyrms 
+        -3.74045331247          19.3650877118                     -0                      0 
+
+                ycomax                 ycorms                 deltap                synch_1 
+                     0                      0                 0.0001                      0 
+
+               synch_2                synch_3                synch_4                synch_5 
+                     0                      0                      0                      0 
+
+               synch_6                synch_8                 nflips                  dqmin 
+                     0                      0                      0                      0 
+
+           dqmin_phase 
+                     0 
+enter Twiss module
+  
+iteration:   1 error:   2.639162E-06 deltap:  -1.000000E-04
+orbit:  -1.209939E-06  5.521222E-08  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+  
+iteration:   2 error:   1.408519E-14 deltap:  -1.000000E-04
+orbit:  -1.209939E-06  5.521222E-08  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+                length                 orbit5                   alfa                gammatr 
+            117.388296                     -0         0.230397053134           2.0833466566 
+
+                    q1                    dq1                betxmax                  dxmax 
+         2.46186632734          -3.0107067809           19.368005703          24.0889969063 
+
+                 dxrms                 xcomax                 xcorms                     q2 
+         10.0130387781       0.00117001698236      0.000486327204701          2.46151905635 
+
+                   dq2                betymax                  dymax                  dyrms 
+         -3.7427963771          19.3641947713                     -0                      0 
+
+                ycomax                 ycorms                 deltap                synch_1 
+                     0                      0                -0.0001                      0 
+
+               synch_2                synch_3                synch_4                synch_5 
+                     0                      0                      0                      0 
+
+               synch_6                synch_8                 nflips                  dqmin 
+                     0                      0                      0                      0 
+
+           dqmin_phase 
+                     0 
+
+  Number of warnings: 1
+1 in C and 0 in Fortran
+
+  ++++++++++++++++++++++++++++++++++++++++++++
+  +          MAD-X finished normally         +
+  ++++++++++++++++++++++++++++++++++++++++++++

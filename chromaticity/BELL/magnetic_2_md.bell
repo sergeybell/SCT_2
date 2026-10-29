@@ -1,0 +1,35 @@
+# Bell structure file
+# Author: Kolokolchikov Sergey Dmitrievich <sergey.bell13@gmail.com>
+# converted from C:\GIT_REPOS\SCT_2\lattice\magnetic_2_md.opt
+# OptiM header Mass = 1875.612945 MeV (not used; CODATA particle mass)
+
+reference
+  particle deuteron
+  kinetic_MeV 270.0
+  harmonic 1
+
+elements
+  OS2      drift        L = 0.06                
+  QF       quadrupole   L = 0.21                 k1 = 0.5212441755015996
+  BM       sbend        L = 5.329414799999999    angle = 0.3926990753258494   k1 = 0
+  QD       quadrupole   L = 0.21                 k1 = -0.5805856428570646
+  OS1      drift        L = 0.12                
+  SF2      sextupole    L = 0.12                 k2 = 0
+  SD       sextupole    L = 0.12                 k2 = 0
+  SF1      sextupole    L = 0.12                 k2 = 0
+  QF1      quadrupole   L = 0.21                 k1 = 0.5565959259588208
+  OBM      drift        L = 5.329414799999999   
+  QD1      quadrupole   L = 0.21                 k1 = -0.5565959259588208
+
+sequence
+  OS2 QF BM QD OS1 QD BM QF
+  SF2 QF BM QD SD QD BM QF
+  SF1 QF BM QD SD QD BM QF
+  SF2 QF BM QD OS1 QD BM QF
+  OS2 OS2 QF1 OBM QD1 OS1 QD1 OBM
+  QF1 OS2 OS2 QF BM QD OS1 QD
+  BM QF SF2 QF BM QD SD QD
+  BM QF SF1 QF BM QD SD QD
+  BM QF SF2 QF BM QD OS1 QD
+  BM QF OS2 OS2 QF1 OBM QD1 OS1
+  QD1 OBM QF1 OS2

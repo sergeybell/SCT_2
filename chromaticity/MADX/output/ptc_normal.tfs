@@ -1,0 +1,18 @@
+@ NAME             %14s "NORMAL_RESULTS"
+@ TYPE             %10s "NORMAL_RES"
+@ TITLE            %08s "no-title"
+@ ORIGIN           %18s "5.09.01 Windows 64"
+@ DATE             %08s "29/10/26"
+@ TIME             %08s "14.02.43"
+* NAME                   ORDER1     ORDER2     ORDER3     ORDER4              VALUE 
+$ %s                         %d         %d         %d         %d                %le 
+ "Q1"                         0          0          0          0       0.4617201484
+ "Q2"                         0          0          0          0       0.4613373213
+ "DQ1"                        1          0          0          0       -1.461535714
+ "DQ2"                        1          0          0          0       -1.817063292
+ "DQ1"                        2          0          0          0        8.554595485
+ "DQ2"                        2          0          0          0        7.369466474
+ "DQ1"                        3          0          0          0        -26.8798183
+ "DQ2"                        3          0          0          0       -33.69723793
+ "ANHX"                       1          0          0          0       0.2627027098
+ "ANHY"                       0          1          0          0       0.1672764276
