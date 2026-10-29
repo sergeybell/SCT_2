@@ -24,6 +24,7 @@ optim = dict(Qx=f(r"Qx =\s*([-\d.]+)"), Qy=f(r"Qy =\s*([-\d.]+)"), ac=f(r"compac
              eta=f(r"Slip Factor :\s*([-\d.]+)"), xx=f(r"Chromaticities :\s*([-\d.]+)"), xy=f(r"\(hor\)\s*([-\d.]+)"))
 bell = kv(R/"BELL/output/bell_results.txt"); c1 = kv(R/"COSY/output/cosy_ov321.txt"); c3 = kv(R/"COSY/output/cosy_ov330.txt")
 mp = kv(R/"MADX/output/madx_plain_results.txt")
+import json; oa = json.load(open(R/"COSY/output/ov330_map_analysis.json")); F = c3["factor_1p1g"]
 h, r = tfs(R/"MADX/output/ptc_twiss_summary.tfs"); ps = dict(zip(h, map(float, r[0])))
 h, r = tfs(R/"MADX/output/ptc_normal.tfs"); pn = {(x[0].strip('"'), int(x[1])): float(x[-1]) for x in r}
 ex = open(R/"analysis/exact_hamiltonian_check.out").read()
@@ -35,7 +36,9 @@ rows = [
  ("BELL", "Taylor map o3, Q(δ) central diff", 2+bell["taylor_Qx_frac"], 2+bell["taylor_Qy_frac"], bell["taylor_alpha0"], bell["taylor_eta0"], bell["taylor_xi_x"], bell["taylor_xi_y"]),
  ("BELL", "Lie factor map, Q(δ) central diff", 2+bell["lie_Qx"], 2+bell["lie_Qy"], bell["lie_alpha0"], bell["lie_eta0"], bell["lie_xi_x"], bell["lie_xi_y"]),
  ("COSY", "OV 3 2 1, TP, ×(1+1/γ)", 2+c1["Qx_frac"], 2+c1["Qy_frac"], NaN, NaN, c1["xi_x_p"], c1["xi_y_p"]),
- ("COSY", "OV 3 3 0, map coeffs on closed orbit, ×(1+1/γ)", 2+c3["Qx_frac"], 2+c3["Qy_frac"], c3["alpha_c"], c3["eta"], c3["xi_x_p"], c3["xi_y_p"]),
+ ("COSY", "OV 3 3 0, dTr/dδK from ME on closed orbit (in .fox), ×(1+1/γ)", 2+c3["Qx_frac"], 2+c3["Qy_frac"], c3["alpha_c"], c3["eta"], c3["xi_x_p"], c3["xi_y_p"]),
+ ("COSY", "OV 3 3 0 map dump → closed orbit(δK) + 2x2 Jacobian tunes, FD ±1e-4, ×(1+1/γ)", 2+c3["Qx_frac"], 2+c3["Qy_frac"], c3["alpha_c"], c3["eta"], oa["closed_orbit_FD"][0]*F, oa["closed_orbit_FD"][1]*F),
+ ("COSY", "OV 3 3 0 map dump → 4D map, δK as parameter (drop l), ×(1+1/γ)", 2+c3["Qx_frac"], 2+c3["Qy_frac"], c3["alpha_c"], c3["eta"], oa["param4D_x"]*F, oa["param4D_y"]*F),
  ("MAD-X", "TWISS, β0·DQ(PT)", mp["Q1"], mp["Q2"], mp["alfa"], mp["eta"], mp["DQ1_dp"], mp["DQ2_dp"]),
  ("MAD-X", "TWISS CHROM, β0·DQ(PT)", mp["Q1"], mp["Q2"], mp["alfa"], mp["eta"], mp["DQ1_chrom_dp"], mp["DQ2_chrom_dp"]),
  ("MAD-X", "TWISS DELTAP=±1e-4 (dp/p) FD", mp["Q1"], mp["Q2"], mp["alfa"], mp["eta"], mp["DQ1_fd_dp"], mp["DQ2_fd_dp"]),
@@ -71,6 +74,7 @@ md("""## Выводы
     орбите, (1/4π)∮hDγ_y ds = +0.707, объясняет −2.932 → −2.2255. Остаток 0.408 у MAD-X/OptiM, вероятно,
     — вклад краёв диполя (кинематика/fringe жёсткого края при нулевом угле), которого нет в моделях «только тело»
     (COSY FR 0, BELL, Python). Проверить fringe в COSY (FR 1/2) не удалось — нет SYSCA.DAT.
+* COSY OV 3 3 0: TP не работает, т.к. без ВЧ продольный блок [[1,(l|δK)],[0,1]] — жорданова клетка с двойным собственным числом 1 (не вращение); нормальная форма 6D невозможна. Из дампа 6D-отображения все способы (замкнутая орбита + след, 4D с δK как параметром) дают тот же ξ, что OV 3 2 1 TP. С тонким ВЧ (фаза 0) TP работает и даёт Qx, Qy, Qs∝√V, но линейной хроматичности в нём нет: δ не инвариант, ξ1 усредняется синхротронными колебаниями.
 * Определение δ (dp/p vs ΔK/K vs PT) даёт множители 1.87 и 0.486 — это основная ловушка при сравнении «сырых» чисел.
 * Порядок: всё — первый порядок ξ = dQ/dδ; ξ2 горизонтальный совпадает у BELL и PTC (8.555), вертикальный — нет (8.10 vs 7.37).""")
 nb["cells"] = c; nb.metadata["kernelspec"] = {"name": "python3", "display_name": "Python 3", "language": "python"}
