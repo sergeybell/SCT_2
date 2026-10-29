@@ -1,0 +1,7 @@
+INCLUDE 'magnetic_2_notilt';
+PROCEDURE RUN; VARIABLE G 1; VARIABLE MU 800 3;
+  G := 1.143914; OV 3 2 1; SET_FOR_DEUTERONS_CHROM G;
+  UM; LATTICE 0 0 0 0 0 0;
+  WRITE 6 'RES M13 '&ST(ME(1,3))&' M14 '&ST(ME(1,4))&' cosx '&ST((ME(1,1)+ME(2,2))/2);
+  TP MU; WRITE 6 'RES Q '&ST(CONS(MU(1)))&' '&ST(CONS(MU(2)))&' xi '&ST((MU(1)|(0&0&0&0&1))*(1+1/G))&' '&ST((MU(2)|(0&0&0&0&1))*(1+1/G));
+ENDPROCEDURE; RUN; END;

@@ -1,0 +1,29 @@
+                        
+                        
+                        
+                        
+                       ************************************
+                       *                                  *
+                       *    C O S Y    I N F I N I T Y    *
+                       *                                  *
+                       *       FOXY LANGUAGE SYSTEM       *
+                       *                                  *
+                       *           VERSION  10.2          *
+                       *                                  *
+                       *           (C) MSU 2022           *
+                       *                                  *
+                       ************************************
+                        
+                        
+                        
+                        
+ ov321_user_lattice_notilt                                                      
+ --- BEGINNING COMPILATION 
+ --- BIN FILE READ: magnetic_2_notilt
+ --- BEGINNING EXECUTION
+++++++++++ SETTING UP FOR DEUTERONS:
+EKIN [MeV]          GAMMA          BETA
+    270.0002349      1.1439140      0.4855812
++++++++++++++++++++++++++++++++++++
+RES M13  0.000000000000000 M14  0.000000000000000 cosx -.9712143671959816
+RES Q 0.4617201392964563 0.4613373250144723 xi -1.461535736549266 -2.225484946570115

@@ -38,7 +38,14 @@ def tfs(path):
 ROWS = []   # (program, method, Qx, Qy, alpha_c, eta, xi_x, xi_y)
 def add(*r):
     ROWS.append(r); print("-> row:", r)
-print(f"gamma0={G0:.9f} beta0={B0:.9f} 1+1/gamma0={F:.9f}")''')
+print(f"gamma0={G0:.9f} beta0={B0:.9f} 1+1/gamma0={F:.9f}")
+from IPython.display import Code, display
+def src(path, lang, a=None, b=None):
+    """show source file (lines a..b, 1-based) with syntax highlighting"""
+    p = pathlib.Path(path); p = p if p.is_absolute() else R/p
+    L = p.read_text(encoding="utf-8", errors="replace").splitlines()
+    print(f"{p}  (lines {a or 1}-{b or len(L)})")
+    display(Code("\n".join(L[(a or 1)-1:b]), language=lang))''')
 
 # ---------------- OptiM
 md(r"""## 1. OptiM (эталон, GUI)
@@ -58,6 +65,11 @@ md(r"""## 2. BELL (Julia)
 δ в BELL = dp/p (канонический), поэтому ξ берётся без пересчёта. Модель диполя: только тело, без краевого члена.""")
 code(r'''show("BELL/output/bell_results.txt")
 bell = kv("BELL/output/bell_results.txt")''')
+md(r"""**Код BELL.** Скрипт запуска `chrom_bell.jl` и функции ядра BELL, которые реально считают хроматичность
+(`C:\GIT_REPOS\BELL\Julia\src\higher_order.jl`: `closed_orbit`, `_frac_tune`, `tunes_at_delta`, `path_expansion`, `chromaticity_orders`; только чтение).""")
+code(r'''src("BELL/chrom_bell.jl", "julia")
+src(r"C:\GIT_REPOS\BELL\Julia\src\higher_order.jl", "julia", 34, 106)''')
+
 md(r"""### 2a. BELL, одно-оборотная матрица (линейно)
 Строки `linear_Qx/Qy` (целая часть из набега фазы), `linear_alpha_c`, `linear_eta`. Хроматичность этим методом не считается.""")
 code(r'''add("BELL", "one-turn matrix (linear)", bell["linear_Qx"], bell["linear_Qy"], bell["linear_alpha_c"], bell["linear_eta"], np.nan, np.nan)''')
@@ -74,11 +86,13 @@ md(r"""## 3. COSY INFINITY 10.2
 **Запуск:** `COSY\run_cosy.bat`: `lattice_md.fox` (решётка, один раз → `lattice_md.bin`), `ov321.fox`, `ov330.fox`, `twiss.fox`,
 (`rf_test.fox` по аргументу), затем `python ov330_map_analysis.py`. Элементы: `DL`, `MS` (секторный, 22.5°, без краевых углов),
 `MQ`, `MH` (0), `FR 0` (жёсткий край без fringe). Переменная энергии COSY: δ_K = ΔK/K.""")
-code(r'''print((R/"COSY/lattice_md.fox").read_text())''')
+code(r'''src("COSY/lattice_md.fox", "pascal")''')
+code(r'''src("COSY/run_cosy.bat", "bat")''')
+
 md(r"""### 3a. COSY OV 3 2 1, TP
 `ov321.fox`: `OV 3 2 1`, `PART 270*PARA(1)` (энергия — DA-параметр), `TP MU`. Берём `CONS(MU)` = дробный тюн и
 `MU|(0,0,0,0,1)` = dQ/dδ_K (сырое), ξ = (1+1/γ)·raw.""")
-code(r'''print((R/"COSY/ov321.fox").read_text()); show("COSY/output/cosy_ov321.txt")
+code(r'''src("COSY/ov321.fox", "pascal"); show("COSY/output/cosy_ov321.txt")
 c1 = kv("COSY/output/cosy_ov321.txt")
 print(f"xi_x = {c1['factor_1p1g']:.9f} * {c1['dQx_ddK_raw']:.9f} = {c1['xi_x_p']:.9f};  xi_y = {c1['factor_1p1g']:.9f} * {c1['dQy_ddK_raw']:.9f} = {c1['xi_y_p']:.9f}")
 add("COSY", "OV 3 2 1, TP, ×(1+1/γ)", 2+c1["Qx_frac"], 2+c1["Qy_frac"], np.nan, np.nan, c1["xi_x_p"], c1["xi_y_p"])''')
@@ -87,7 +101,7 @@ md(r"""### 3b. COSY OV 3 3 0: дамп 6D-отображения и коэффи
 `ov330_map_analysis.py` строит из них: линейный блок, хроматические члены 2-го порядка, (i) замкнутую орбиту при δ_K и тюны якобиана,
 (ii) 4D-отображение с δ_K как параметром, собственные числа 6×6, eta и alpha_c из (l|δ_K) на замкнутой орбите.
 TP здесь не работает: продольный блок [[1, 17.836],[0,1]] — жорданова клетка (собственные числа 1,1), 6D нормальной формы нет.""")
-code(r'''print((R/"COSY/ov330.fox").read_text()); show("COSY/output/map_ov330.txt", first=24)''')
+code(r'''src("COSY/ov330.fox", "pascal"); src("COSY/ov330_map_analysis.py", "python"); show("COSY/output/map_ov330.txt", first=24)''')
 code(r'''show("COSY/output/ov330_map_analysis.txt")
 oa = json.load(open(R/"COSY/output/ov330_map_analysis.json"))
 add("COSY", "OV 3 3 0 map → closed orbit(δK) + 2×2 Jacobian tunes, FD, ×(1+1/γ)", 2+oa["Qx_frac"], 2+oa["Qy_frac"], oa["alpha_c"], oa["eta"], oa["closed_orbit_FD"][0]*F, oa["closed_orbit_FD"][1]*F)
@@ -95,13 +109,13 @@ add("COSY", "OV 3 3 0 map → 4D map, δK as parameter, dTr/dδK, ×(1+1/γ)", 2
 md(r"""### 3c. COSY OV 3 3 0 + тонкий ВЧ (`rf_test.fox`)
 h = 1, фаза 0 (устойчива; ниже критической). TP работает: Q1 = Qx, Q2 = Qs ∝ √V, Q3 = Qy. Линейной хроматичности в TP нет:
 δ — координата синхротронного движения, а не параметр. Для таблицы не используется.""")
-code(r'''show("COSY/output/rf_tp_ov330.txt")''')
+code(r'''src("COSY/rf_test.fox", "pascal"); show("COSY/output/rf_tp_ov330.txt")''')
 
 # ---------------- MAD-X
 md(r"""## 4. MAD-X 5.09.01
 **Запуск:** `MADX\run_madx.bat`: `chrom_plain.madx` и `chrom_ptc.madx` (madx.exe из `C:\GIT_REPOS\NICA\MADX\2.Programms\Twiss`).
 Решётка `magnetic_2_md.seq`: SBEND angle=22.5°, E1=E2=0; K1 = G/Bρ. В MAD-X TWISS DQ = dQ/dPT (PT = β0δ) ⇒ ξ = β0·DQ; DELTAP — это dp/p.""")
-code(r'''print((R/"MADX/magnetic_2_md.seq").read_text()); show("MADX/output/madx_plain_results.txt")
+code(r'''src("MADX/magnetic_2_md.seq", "text"); src("MADX/chrom_plain.madx", "text"); show("MADX/output/madx_plain_results.txt")
 mp = kv("MADX/output/madx_plain_results.txt")''')
 md(r"""### 4a. TWISS (без CHROM): Q1, Q2, ALFA из SUMM; DQ1, DQ2 сырые (по PT) ⇒ ×β0""")
 code(r'''print(f"xi = beta0*DQ: {B0:.9f}*{mp['DQ1_pt']:.6f} = {B0*mp['DQ1_pt']:.6f};  {B0:.9f}*{mp['DQ2_pt']:.6f} = {B0*mp['DQ2_pt']:.6f}")
@@ -112,7 +126,7 @@ md(r"""### 4c. TWISS при DELTAP = ±1e-4 (dp/p): ξ = (Q(+) − Q(−))/2e-4 
 code(r'''add("MAD-X", "TWISS DELTAP=±1e-4 (dp/p) FD", mp["Q1"], mp["Q2"], mp["alfa"], mp["eta"], mp["DQ1_fd_dp"], mp["DQ2_fd_dp"])''')
 md(r"""### 4d. PTC_TWISS (метод `Compaction.madx`: model=2 method=6 nst=20 exact, time=false ⇒ δ = dp/p), icase=56 no=5
 Берём из `ptc_twiss_summary.tfs`: Q1, Q2 (дробные), ALPHA_C, ETA_C, DQ1, DQ2.""")
-code(r'''print((R/"MADX/chrom_ptc.madx").read_text())
+code(r'''src("MADX/chrom_ptc.madx", "text")
 ps = tfs("MADX/output/ptc_twiss_summary.tfs").iloc[0]
 print(ps[["LENGTH","ALPHA_C","ALPHA_C_P","ALPHA_C_P2","ETA_C","GAMMA_TR","Q1","Q2","DQ1","DQ2"]].to_string())
 ps = ps.apply(pd.to_numeric, errors="ignore")
@@ -126,7 +140,8 @@ add("MAD-X PTC", "ptc_normal icase=5 no=5", 2+pn[("Q1",0)], 2+pn[("Q2",0)], np.n
 md(r"""## 5. Python: точный гамильтониан, RK4 (`analysis/exact_hamiltonian_check.py`)
 Секторный диполь с фиксированным полем, квадруполи, дрейфы; замкнутая орбита Ньютоном при δ = ±1e-4, тюны якобиана.
 Вариант 1 — только тело; вариант 2 — плюс краевые удары жёсткого края Δp_y = ∓h·x'·y (вход/выход).""")
-code(r'''show("analysis/exact_hamiltonian_check.out")
+code(r'''src("analysis/exact_hamiltonian_check.py", "python")
+show("analysis/exact_hamiltonian_check.out")
 ex = (R/"analysis/exact_hamiltonian_check.out").read_text().splitlines()
 nums = lambda s: [float(v) for v in re.findall(r"-?\d+\.\d+", s)]
 q0 = nums(ex[0]); xb = nums(ex[1]); xe = nums(ex[2])[-2:]
@@ -134,6 +149,41 @@ add("Python", "exact H, RK4, body only (no edge kick), FD", 2+q0[0], 2+q0[1], np
 add("Python", "exact H, RK4, body + hard-edge kick Δp_y=∓h x' y, FD", 2+q0[0], 2+q0[1], np.nan, np.nan, *xe)''')
 
 # ---------------- summary
+md(r"""## 5b. Метод пользователя (`COSY\jobs\delta_eq.fox`, ноутбук `COSY\notebooks\delta_eq.ipynb`) против нашего
+
+**Как получается «ξ процедура TP» = −1.8408 / −1.8477.** `delta_eq.fox` (только чтение): `OV 3 2 1` → `SET_FOR_DEUTERONS_CHROM GAMMA`
+(`header.fox`: масса 2.01410 а.е.м. — масса *атома* дейтерия, γ = 1.143914, `RP EKIN*PARA(1)`) → `LATTICE` (`structures/magnetic_2.fox`,
+конвертер OptiM→COSY) → `TP MU_TP` → ξ = (MU_TP|5-я переменная)·(1+1/γ). Пересчёт (1+1/γ) верный (5-я переменная в OV 3 2 1 — параметр δK).
+FR не задаётся (по умолчанию = `FR 0`, проверено: тот же результат). ВЧ в этом шаге нет (RF = 0; полость добавляется позже только для
+трекинга и DANF — отсюда Qs).
+
+**Причина:** в `magnetic_2.fox` квадруполи вызываются `QUAD L_QF A QF`, а `elements.fox` объявляет `PROCEDURE QUAD L TILT K1`.
+Апертура A = 0.05 попадает в TILT ⇒ **все квадруполи повёрнуты на 0.05 рад (2.86°)**. Отображение связано (M13 = 0.052, M14 = 1.004,
+det 2×2 = 0.991). TP даёт собственные тюны связанного движения 0.44628 / 0.47668, а хроматичности двух нормальных мод почти равны
+(−1.84 / −1.85) — смесь ξx и ξy при близких тюнах. «Линейные Qx, Qy» (0.45992 / 0.45741) взяты из следов 2×2 блоков связанного
+отображения, поэтому тоже не совпадают с Julia; «ξ из MAP(5) на эллипсе» (−1.4726 / −2.2303) близки к правильным, но тоже сдвинуты связью.
+
+**Проверка** (`COSY/user_lattice_check/`, его bin-файлы только читаются): его расчёт на его решётке −1.840801 / −1.847679 (воспроизведено);
+та же решётка с `QUAD L 0 K1` (копия `magnetic_2_notilt.fox`) → Q = 0.461720 / 0.461337, ξ = **−1.461536 / −2.225485** — ровно наш результат.
+`COSY/ov321_user_method.fox` — его процедура на нашей `lattice_md` → ξ = −1.460889 / −2.224733; отличие от −1.461536 / −2.225485 только из-за
+массы атома (1876.12 вместо 1875.61 МэВ ⇒ другой импульс при 270 МэВ).
+
+**Наш `ov321.fox`:** `OV 3 2 1; FR 0; PART 270*PARA(1)` (масса 1875.612945/AMUMEV) → `RING` → `TP MU` → ξ = (1+1/γ)·(MU|(0,0,0,0,1)) — тот же метод,
+но решётка без поворота квадруполей и точная масса дейтрона.""")
+code(r'''src(r"C:\GIT_REPOS\SCT_2\COSY\jobs\delta_eq.fox", "pascal", 187, 196)
+src(r"C:\GIT_REPOS\SCT_2\COSY\src\header.fox", "pascal", 53, 67)
+src(r"C:\GIT_REPOS\SCT_2\COSY\src\elements.fox", "pascal", 61, 76)
+print([l.strip() for l in open(r"C:\GIT_REPOS\SCT_2\COSY\structures\magnetic_2\magnetic_2.fox") if "QUAD L_QF " in l][:1])
+src("COSY/user_lattice_check/ov321_user_lattice.fox", "pascal")
+show("COSY/user_lattice_check/user_lattice.out", pat="RES"); show("COSY/user_lattice_check/user_lattice_notilt.out", pat="RES")
+src("COSY/ov321_user_method.fox", "pascal"); show("COSY/output/cosy_ov321_user_method.txt")
+um = kv("COSY/output/cosy_ov321_user_method.txt")
+add("COSY", "user method (mass 2.01410 amu, EKIN*PARA(1), TP) on lattice_md", 2+um["Qx_frac"], 2+um["Qy_frac"], np.nan, np.nan, um["xi_x_p"], um["xi_y_p"])
+pd.DataFrame([("user table: TP on his magnetic_2 (quads tilted 0.05 rad)", -1.8408, -1.84768),
+  ("his magnetic_2, tilt removed, same TP", -1.461536, -2.225485),
+  ("user method on our lattice_md", um["xi_x_p"], um["xi_y_p"]), ("our ov321.fox", -1.461536, -2.225485),
+  ("user table: MAP(5) on ellipse (his lattice)", -1.47261, -2.23029), ("user table: Julia/BELL", -1.4624, -2.2267)], columns=["case", "xi_x", "xi_y"])''')
+
 md(r"""## 6. Сводная таблица (ξ по dp/p)""")
 code(r'''df = pd.DataFrame(ROWS, columns=["program", "model / method", "Qx", "Qy", "alpha_c", "eta", "xi_x", "xi_y"])
 df''')
@@ -216,6 +266,7 @@ $$H \approx -(1+\delta)(1+hx) + \frac{(1+hx)(p_x^2+p_y^2)}{2(1+\delta)} + hx + \
 
 ### Численно (оптика из линейных матриц, 400 срезов на диполь; D — на dp/p)""")
 code(r'''import subprocess, sys
+src("analysis/chrom_terms.py", "python")
 print(subprocess.run([sys.executable, str(R/"analysis/chrom_terms.py")], capture_output=True, text=True, encoding="utf-8").stdout)''')
 md(r"""### Численные проверки гипотез
 * Python RK4 точного гамильтониана (`exact_hamiltonian_check.py`): только тело → ξy = −2.225485; + краевые удары $\Delta p_y=\mp h x' y$ → **−1.817063** (= MAD-X до 6 знаков). С обратным знаком ударов −2.634 (не совпадает).

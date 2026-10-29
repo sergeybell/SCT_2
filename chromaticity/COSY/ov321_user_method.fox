@@ -1,0 +1,23 @@
+{ ov321_user_method.fox - the user's method (COSY\jobs\delta_eq.fox / Chrom.fox) applied to lattice_md:
+  OV 3 2 1, particle as in COSY\src\header.fox SET_FOR_DEUTERONS_CHROM (mass 2.01410 amu, gamma 1.143914,
+  RP EKIN*PARA(1)), TP, xi = (MU|5th variable)*(1+1/GAMMA). Only the lattice is ours. }
+INCLUDE 'lattice_md';
+PROCEDURE RUN;
+  VARIABLE MU_TP 800 3; VARIABLE GAMMA 1; VARIABLE EKIN 1; VARIABLE XIX 1; VARIABLE XIY 1;
+  OV 3 2 1;                                          { as delta_eq.fox }
+  GAMMA := 1.143914;                                 { as delta_eq.fox }
+  EKIN := (GAMMA-1)*2.01410*AMUMEV;                  { header.fox: RESTMASSAMU = 2.01410 }
+  RP EKIN*PARA(1) 2.01410 1;                         { header.fox SET_FOR_DEUTERONS_CHROM }
+  UM; RING 0 0 0 0 0 0 0 0;                          { our lattice_md (MS, MQ, FR default) }
+  TP MU_TP;
+  XIX := (MU_TP(1)|(0&0&0&0&1))*(1+1/GAMMA);         { as delta_eq.fox }
+  XIY := (MU_TP(2)|(0&0&0&0&1))*(1+1/GAMMA);
+  OPENF 20 'output/cosy_ov321_user_method.txt' 'UNKNOWN';
+  WRITE 20 'EKIN_MeV = '&ST(EKIN);
+  WRITE 20 'Qx_frac = '&ST(CONS(MU_TP(1)));
+  WRITE 20 'Qy_frac = '&ST(CONS(MU_TP(2)));
+  WRITE 20 'xi_x_p = '&ST(XIX);
+  WRITE 20 'xi_y_p = '&ST(XIY);
+  CLOSEF 20;
+ENDPROCEDURE;
+RUN; END;
