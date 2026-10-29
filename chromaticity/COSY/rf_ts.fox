@@ -1,0 +1,29 @@
+{ rf_ts.fox - 6D map with thin RF: can linear xi be recovered? (a) OV 3 3 0 + TP/TS, (b) OV 3 3 1 with energy parameter + TP/TS }
+INCLUDE 'lattice_md';
+PROCEDURE RUN;
+  VARIABLE MU 1000 3; VARIABLE VRF 1 1 1; VARIABLE FREQ 1; VARIABLE I 1; VARIABLE V 1 6; VARIABLE F 1;
+  V(1) := 100; V(2) := 10; V(3) := 1; V(4) := 0.1; V(5) := 0.01; V(6) := 0.001;   { kV }
+  OV 3 3 0;                                                                     { OV initialises CLIGHT etc. }
+  FREQ := SQRT(1-1/SQR(1+270/1875.612945))*CLIGHT/117.388296;                   { h=1 }
+  F := 1+1/(1+270/1875.612945);
+  OPENF 33 'output/rf_ts_ov330.txt' 'UNKNOWN';
+  FR 0;
+  LOOP I 1 6;
+    VRF(1,1) := V(I); PART 270; RING 0 0 0 0 0 0 0 0; RF VRF 0 FREQ 0 0.05;
+    WRITE 33 '##### V_kV '&ST(V(I));
+    TP MU; WRITE 33 '# TP' MU(1) MU(2) MU(3);
+    TS MU; WRITE 33 '# TS' MU(1) MU(2) MU(3);
+  ENDLOOP;
+  CLOSEF 33;
+  OPENF 34 'output/rf_ts_ov331.txt' 'UNKNOWN';
+  OV 3 3 1; FR 0; FREQ := SQRT(1-1/SQR(1+270/1875.612945))*CLIGHT/117.388296;
+  LOOP I 1 6;
+    VRF(1,1) := V(I); PART 270*PARA(1); RING 0 0 0 0 0 0 0 0; RF VRF 0 FREQ 0 0.05;
+    TP MU;
+    WRITE 34 'TP V_kV '&ST(V(I))&' Qx '&ST(CONS(MU(1)))&' Qy '&ST(CONS(MU(2)))&' Qs '&ST(CONS(MU(3))) 'xi_x '&ST(F*(MU(1)|(0&0&0&0&0&0&1)))&' xi_y '&ST(F*(MU(2)|(0&0&0&0&0&0&1)));
+    TS MU;
+    WRITE 34 'TS V_kV '&ST(V(I))&' Qx '&ST(CONS(MU(1)))&' Qy '&ST(CONS(MU(2)))&' Qs '&ST(CONS(MU(3))) 'xi_x '&ST(F*(MU(1)|(0&0&0&0&0&0&1)))&' xi_y '&ST(F*(MU(2)|(0&0&0&0&0&0&1)));
+  ENDLOOP;
+  CLOSEF 34;
+ENDPROCEDURE;
+RUN; END;

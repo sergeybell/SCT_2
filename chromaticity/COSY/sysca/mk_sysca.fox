@@ -1,0 +1,4 @@
+{ mk_sysca.fox - generate SYSCA.DAT with COSY's own documented procedure CRSYSCA (Beam Physics Manual 10.2, sec. 3.3.7) }
+INCLUDE 'C:/GIT_REPOS/SCT_2/COSY/src/COSY';
+PROCEDURE RUN; CRSYSCA; ENDPROCEDURE;
+RUN; END;

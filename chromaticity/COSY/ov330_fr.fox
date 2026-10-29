@@ -1,0 +1,19 @@
+{ ov330_fr.fox - full 6D map (OV 3 3 0) with fringe fields, dumped per case for fr_analysis.py (closed-orbit method) }
+INCLUDE 'lattice_md_fr';
+PROCEDURE RUN;
+  VARIABLE I 1; VARIABLE KD 1 12; VARIABLE KQ 1 12; VARIABLE KG 1 12;
+  OV 3 3 0;
+  KD(1):=0; KQ(1):=0; KG(1):=0.05;   KD(2):=3; KQ(2):=0; KG(2):=0.05;   KD(3):=3; KQ(3):=3; KG(3):=0.05;
+  KD(4):=0; KQ(4):=3; KG(4):=0.05;   KD(5):=3; KQ(5):=0; KG(5):=0.025;  KD(6):=3; KQ(6):=0; KG(6):=0.0125;
+  KD(7):=3; KQ(7):=0; KG(7):=0.00625;  { FR 1 / FR 2 need SYSCA.DAT in the working dir: made by sysca\mk_sysca.fox (CRSYSCA) }
+  KD(8):=1; KQ(8):=0; KG(8):=0.05;   KD(9):=1; KQ(9):=1; KG(9):=0.05;   KD(10):=2; KQ(10):=0; KG(10):=0.05;  KD(11):=2; KQ(11):=2; KG(11):=0.05;
+  OPENF 31 'output/map_ov330_fr.txt' 'UNKNOWN';
+  LOOP I 1 11;
+    PART 270; RINGFR KD(I) KQ(I) KG(I);
+    WRITE 31 'CASE '&ST(KD(I))&' '&ST(KQ(I))&' '&ST(KG(I));
+    WRITE 31 'GAMMA0 '&ST(1+270/1875.612945); WRITE 31 'LENGTH '&ST(SPOS);
+    WRITE 31 MAP(1) MAP(2) MAP(3) MAP(4) MAP(5) MAP(6);
+  ENDLOOP;
+  CLOSEF 31;
+ENDPROCEDURE;
+RUN; END;

@@ -1,0 +1,18 @@
+{ ov321_fr.fox - xi by OV 3 2 1 + TP with fringe fields. Usage: cases chosen by CASE list below }
+INCLUDE 'lattice_md_fr';
+PROCEDURE RUN;
+  VARIABLE MU 1000 2; VARIABLE G 1; VARIABLE F 1; VARIABLE I 1; VARIABLE KD 1 12; VARIABLE KQ 1 12; VARIABLE KG 1 12;
+  OV 3 2 1;
+  KD(1):=0; KQ(1):=0; KG(1):=0.05;   KD(2):=3; KQ(2):=0; KG(2):=0.05;   KD(3):=3; KQ(3):=3; KG(3):=0.05;
+  KD(4):=0; KQ(4):=3; KG(4):=0.05;   KD(5):=3; KQ(5):=0; KG(5):=0.025;  KD(6):=3; KQ(6):=0; KG(6):=0.0125;
+  KD(7):=3; KQ(7):=0; KG(7):=0.00625;  { FR 1 / FR 2 need SYSCA.DAT in the working dir: made by sysca\mk_sysca.fox (CRSYSCA) }
+  KD(8):=1; KQ(8):=0; KG(8):=0.05;   KD(9):=1; KQ(9):=1; KG(9):=0.05;   KD(10):=2; KQ(10):=0; KG(10):=0.05;  KD(11):=2; KQ(11):=2; KG(11):=0.05;
+  G := 1+270/1875.612945; F := 1+1/G;
+  OPENF 20 'output/cosy_ov321_fr.txt' 'UNKNOWN';
+  LOOP I 1 11;
+    PART 270*PARA(1); RINGFR KD(I) KQ(I) KG(I); TP MU;
+    WRITE 20 'FD '&ST(KD(I))&' FQ '&ST(KQ(I))&' GAP '&ST(KG(I)) 'Qx '&ST(CONS(MU(1)))&' Qy '&ST(CONS(MU(2))) 'xi_x '&ST(F*(MU(1)|(0&0&0&0&1)))&' xi_y '&ST(F*(MU(2)|(0&0&0&0&1)));
+  ENDLOOP;
+  CLOSEF 20;
+ENDPROCEDURE;
+RUN; END;

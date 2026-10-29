@@ -292,5 +292,93 @@ md(r"""### Вывод
   BELL с добавленным краевым отображением не запускался (ядро BELL не меняли); COSY FR 1/2 не запускается (нет SYSCA.DAT),
   поэтому что именно COSY включает в FR 1–3 — не проверено. С конечным fringe (FINT, HGAP ≠ 0) добавятся ещё члены.""")
 
+
+md(r"""## 9. Краевые поля в COSY: FR 3 (и FR 1, FR 2) — проверка гипотезы «жёсткого края»
+
+**SYSCA.DAT.** На машине его не было (поиск по всем дискам: только `C:\Program Files\COSY 10.2` без него).
+По Beam Physics Manual 10.2 (разд. 3.3.7) SYSCA.DAT нужен только для FR 2 (FR 3 и FR 2.5 интегрируют напрямую),
+а создаётся штатной процедурой `CRSYSCA` из `cosy.fox` («This procedure produces the file SYSCA.DAT, which is shipped with the code»).
+Запустили её как чёрный ящик: `COSY/sysca/mk_sysca.fox` → `SYSCA.DAT` (295 кБ, ~10 мин; предупреждения RK «minimum stepsize» и POTI error norm 3e-4).
+Практически COSY 10.2 читает SYSCA.DAT и при FR 1 (без файла FR 1 падал), поэтому FR 1 тоже стал доступен только после этого.
+Альтернатива — официальный SYSCA.DAT с сайта загрузки COSY INFINITY (bmtdynamics.org).
+
+**Как устроено.** `lattice_md_fr.fox` — то же кольцо, но `RINGFR FD FQ GD`: `FR FD` перед каждым `MS`, `FR FQ` для квадруполей/секступолей,
+`GD` — апертура диполя (масштаб функции Энге). (a) FR 3 только на диполях; (b) FR 3 на всём кольце; плюс FR 1, FR 2 и FR 3 только на квадруполях.
+Каждый случай считается двумя способами: OV 3 2 1 + TP (`ov321_fr.fox`) и OV 3 3 0 → карта → замкнутая орбита при ±δK → след (`ov330_fr.fox` + `fr_analysis.py`).""")
+code(r'''src("COSY/lattice_md_fr.fox", "pascal"); src("COSY/ov321_fr.fox", "pascal"); src("COSY/ov330_fr.fox", "pascal")
+src("COSY/fr_analysis.py", "python"); src("COSY/sysca/mk_sysca.fox", "pascal")''')
+code(r'''sys.path.insert(0, str(R/"COSY")); import importlib, fr_analysis; importlib.reload(fr_analysis)
+subprocess.run([sys.executable, str(R/"COSY/fr_analysis.py")], check=True, capture_output=True)
+fr = pd.DataFrame(json.load(open(R/"COSY/output/fr_analysis.json")))
+fr["dxi_x(330-321)"] = fr.xi_x_CO330-fr.xi_x_TP321; fr["dxi_y(330-321)"] = fr.xi_y_CO330-fr.xi_y_TP321
+pd.set_option("display.float_format", "{:.6f}".format); pd.set_option("display.width", 250)
+fr[["FR_dip","FR_quad","gap_m","Qx_TP","Qy_TP","xi_x_TP321","xi_x_CO330","xi_y_TP321","xi_y_CO330","dxi_x(330-321)","dxi_y(330-321)"]]''')
+md(r"""### 9a. Сходимость FR 3 (только диполи) к жёсткому краю при апертуре → 0
+Функция Энге масштабируется апертурой D; при D→0 край становится жёстким, и ξy должен стремиться к MAD-X/PTC (−1.817063).""")
+code(r'''g = fr[(fr.FR_dip==3)&(fr.FR_quad==0)].sort_values("gap_m")
+k = np.polyfit(g.gap_m, g.xi_y_TP321, 1); print(f"linear fit xi_y(gap) = {k[1]:.6f} + {k[0]:.4f}*gap  -> extrapolated hard edge xi_y(0) = {k[1]:.6f};  MAD-X = -1.817063;  body only (FR 0) = -2.225485")
+k2 = np.polyfit(g.gap_m, g.Qy_TP, 1); print(f"Qy(gap) -> {k2[1]:.6f} at gap=0;  FR 0: 0.461337;  MAD-X Qy_frac = {mp['Q2']-2:.6f}")
+fig, ax = plt.subplots(1, 2, figsize=(12, 4))
+ax[0].plot(g.gap_m*1e3, g.xi_y_TP321, "o-", label="COSY FR 3 dipoles, OV 3 2 1 TP")
+ax[0].plot(g.gap_m*1e3, g.xi_y_CO330, "x", ms=10, label="COSY FR 3, OV 3 3 0 closed orbit")
+ax[0].axhline(-1.817063, c="r", ls="--", label="MAD-X / PTC hard edge"); ax[0].axhline(-2.225485, c="k", ls=":", label="body only (FR 0)")
+ax[0].set_xlabel("dipole aperture D, mm"); ax[0].set_ylabel("xi_y"); ax[0].legend()
+ax[1].plot(g.gap_m*1e3, g.Qy_TP, "o-"); ax[1].axhline(0.461337, c="k", ls=":"); ax[1].set_xlabel("D, mm"); ax[1].set_ylabel("Qy frac")
+plt.tight_layout(); plt.show()''')
+md(r"""### 9b. Выводы по краевым полям
+* FR 3 на диполях: ξy = −2.2255 → **−1.8077** (D = 50 мм), ξx почти не меняется (−1.46150). При D → 0 ξy → −1.8171 = MAD-X/PTC.
+  Гипотеза подтверждена: разница BELL/COSY-FR0 и OptiM/MAD-X — краевой член диполя Δp_y = ∓h x′ y (в FR 0 COSY его нет), а не ошибка программ.
+* Конечный край (D = 50 мм) ещё и уменьшает Qy (0.46134 → 0.45573: вертикальная фокусировка краевого поля ~ D·h²) — у жёсткого края её нет; отсюда же малая разница ξy с MAD-X (0.009 при D=50 мм, линейно по D).
+* FR 3 на квадруполях: Qx,y падают на ~0.003, ξ меняется на ~0.009 (x и y) — эффект размазанного градиента, к гипотезе не относится.
+* FR 1 ≈ FR 2 на диполях (одинаково, т.к. для `MS` FR 2 берёт ту же процедуру) совпадают с FR 3 до 1e-5; FR 1/2 на всём кольце — до 4e-5.
+* **OV 3 3 0 и OV 3 2 1 дают одну и ту же хроматичность** (FR 0 и FR 3): разница ≤ 6e-6 — это ошибка конечной разности ±δK в методе замкнутой орбиты (3-й порядок карты), не физика.
+  OV 3 3 0 сам по себе считается без проблем (и с FR 3); не работает только `TP` на 6D-карте без ВЧ (жорданов блок l–δ, нет продольной нормальной формы).""")
+md(r"""## 10. 6D-карта с ВЧ (OV 3 3 0): можно ли достать линейную ξ? TS и метод неподвижной точки
+1. **COSY `TS`** (нормальная форма) на OV 3 3 0 + тонкий резонатор: сдвиги частот от амплитуд (r_x², r_s², r_y²).
+2. **OV 3 3 1 c `PART 270*PARA(1)`**: в 6D энергия уже переменная, параметр в карту не попадает (все коэффициенты по PARA = 0) → TP/TS дают ξ = 0. Не работает.
+3. **Метод неподвижной точки** (Python, `rf_ts_analysis.py`): кольцевая карта COSY OV 3 3 0 + свой тонкий ВЧ-удар + постоянный сдвиг фазы за оборот Δl
+   (= смещение частоты ВЧ) → неподвижная точка с δ* ≠ 0; Q — собственные частоты 6×6 якобиана; ξ = dQ/dδ*.""")
+code(r'''src("COSY/rf_ts.fox", "pascal"); src("COSY/rf_ts_analysis.py", "python")
+subprocess.run([sys.executable, str(R/"COSY/rf_ts_analysis.py")], check=True, capture_output=True, cwd=R/"COSY")
+rr = json.load(open(R/"COSY/output/rf_ts_analysis.json"))
+print(open(R/"COSY/output/rf_ts_ov331.txt").read()[:600])''')
+code(r'''rows = []
+for nm in ("FR0", "FR3dip"):
+    for r in rr["fixed_point_"+nm]:
+        q, d = r["Q_sorted"], r["dQ_ddelta_p_sorted"]
+        rows.append(dict(lattice=nm, V_kV=r["V_kV"], Qs=q[0], Qy=q[1], Qx=q[2], xi_x_fixedpoint=d[2], xi_y_fixedpoint=d[1]))
+fp = pd.DataFrame(rows)
+ref = fr.set_index(["FR_dip","FR_quad","gap_m"])
+fp["xi_x_OV321"] = np.where(fp.lattice=="FR0", ref.loc[(0,0,0.05),"xi_x_TP321"], ref.loc[(3,0,0.05),"xi_x_TP321"])
+fp["xi_y_OV321"] = np.where(fp.lattice=="FR0", ref.loc[(0,0,0.05),"xi_y_TP321"], ref.loc[(3,0,0.05),"xi_y_TP321"])
+fp["diff_x"] = fp.xi_x_fixedpoint-fp.xi_x_OV321; fp["diff_y"] = fp.xi_y_fixedpoint-fp.xi_y_OV321
+pd.set_option("display.float_format", "{:.9g}".format); fp''')
+code(r'''ts = pd.DataFrame(rr["TS"]); Qs = {100: 0.004097138126850692, 10: 0.001295596640668595, 1: 0.0004097026125950379, 0.1: 0.0001295593139383740, 0.01: 4.097025139526789e-05, 0.001: 1.295593108310074e-05}
+ts["Qs_COSY"] = ts.V_kV.map(Qs)
+# second-order chromaticity d2Qx/ddK2 from the FR0 OV 3 3 0 map (closed orbit, central 2nd difference)
+b = fr_analysis.parse_maps("map_ov330_fr.txt")[0]; F = 1+1/b["g"]
+def Qx_of(d): return fr_analysis.xi_closed_orbit(dict(b), h=1e-9)["Qx"] if d == 0 else None
+maps = b["maps"]
+def T(z, d):
+    v = [z[0], z[1], z[2], z[3], 0.0, d]; return np.array([sum(c*np.prod([v[k]**e[k] for k in range(6)]) for e, c in maps[i].items()) for i in range(4)])
+def Jm(z, d, e=1e-7): return np.array([(T(z+e*np.eye(4)[k], d)-T(z-e*np.eye(4)[k], d))/(2*e) for k in range(4)]).T
+def Qx(d):
+    z = np.zeros(4)
+    for _ in range(40): z = z+np.linalg.solve(np.eye(4)-Jm(z, d), T(z, d)-z)
+    m = Jm(z, d); c = (m[0,0]+m[1,1])/2; return np.arccos(c)/(2*np.pi)
+h = 2e-3; q2 = (Qx(h)-2*Qx(0)+Qx(-h))/h**2
+ts["beta_s=(l|dK)/sin2piQs"] = 17.836/np.sin(2*np.pi*ts.Qs_COSY)
+ts["ratio dQx/dr_s2 : (Q''/2)/beta_s"] = ts.dQx_drs2/(0.5*q2/ts["beta_s=(l|dK)/sin2piQs"])
+print(f"d2Qx/d(dK)^2 = {q2:.6f}  (second-order chromaticity in dK units)"); ts''')
+md(r"""### 10a. Что работает и что нет
+* **TS (нормальная форма 6D с ВЧ) линейную ξ не даёт.** Перекрёстный член dQx/d(r_s²) ∝ Q_s (≈3.07e-4 при 100 кВ → 9.7e-7 при 1 В):
+  отношение к (Q″/2)/β_s постоянно (0.1540) на 5 порядках V, т.е. это **вторая** хроматичность, усреднённая по синхротронному колебанию;
+  линейная ξ·⟨δ⟩ = 0 усредняется и не входит. При V → 0 этот член → 0, а не к ξ. При 10 кВ и 10 В TS вернул только константы (сбой нормальной формы — малые знаменатели).
+  dQx/d(r_x²), dQx/d(r_y²) от V не зависят — обычные амплитудные сдвиги.
+* **OV 3 3 1 с энергией как параметром не работает**: в 6D δ — фазовая переменная, `RP EK*PARA(1)` в карту не проходит (все коэффициенты по PARA = 0, TP → ξ = 0).
+* **Работает метод неподвижной точки**: смещаем неподвижную точку по δ (сдвигом фазы ВЧ за оборот, т.е. частотой), берём тюны 6×6 якобиана.
+  ξ совпадает с OV 3 2 1 до ~1e-8 **при любом V** (от 100 кВ до 1 В) — синхротронная связь линейную ξ не меняет; для FR 3 на диполях тоже (ξy = −1.80767).
+  Q_s у нас = Q_s(COSY)/√(1+1/γ) — другая нормировка амплитуды удара (наш удар по δK = V/K); на ξ не влияет.""")
+
 nb["cells"] = c; nb.metadata["kernelspec"] = {"name": "python3", "display_name": "Python 3", "language": "python"}
 nbf.write(nb, str(pathlib.Path(__file__).parent/"analysis.ipynb"))

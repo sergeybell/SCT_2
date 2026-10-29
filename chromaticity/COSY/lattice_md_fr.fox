@@ -1,0 +1,21 @@
+{ lattice_md_fr.fox - same ring as lattice_md.fox, but fringe mode set per element type -> lattice_md_fr.bin }
+INCLUDE 'lattice_md';                                  { gives PART }
+PROCEDURE RINGFR FD FQ GD;                             { FD/FQ = FR mode for dipoles / quads+sextupoles, GD = dipole aperture [m] (Enge extent) }
+  VARIABLE AP 1; VARIABLE LB 1; VARIABLE RB 1;
+  PROCEDURE BM;  FR FD; MS RB 22.5 GD 0 0 0 0 0; FR FQ; ENDPROCEDURE;
+  PROCEDURE QF;  MQ 0.21  1.81168058*AP AP; ENDPROCEDURE;
+  PROCEDURE QD;  MQ 0.21 -2.01793283*AP AP; ENDPROCEDURE;
+  PROCEDURE QF1; MQ 0.21  1.93455213*AP AP; ENDPROCEDURE;
+  PROCEDURE QD1; MQ 0.21 -1.93455213*AP AP; ENDPROCEDURE;
+  PROCEDURE SX;  MH 0.12 0 AP; ENDPROCEDURE;
+  PROCEDURE ARC;
+    DL 0.06; QF; BM; QD; DL 0.12; QD; BM; QF; SX;
+    QF; BM; QD; SX; QD; BM; QF; SX;
+    QF; BM; QD; SX; QD; BM; QF; SX;
+    QF; BM; QD; DL 0.12; QD; BM; QF; DL 0.06;
+  ENDPROCEDURE;
+  PROCEDURE STR; DL 0.06; QF1; DL LB; QD1; DL 0.12; QD1; DL LB; QF1; DL 0.06; ENDPROCEDURE;
+  AP := 0.05; LB := 5.3294148; RB := LB/(22.5*PI/180);
+  FR FQ; UM; ARC; STR; ARC; STR;
+ENDPROCEDURE;
+SAVE 'lattice_md_fr';
