@@ -1,0 +1,7 @@
+[deps]
+Bell = "15ed3219-68f0-4cc9-8228-483d95d0d998"
+Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
+Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+
+[sources]
+Bell = {path = "C:\\GIT_REPOS\\BELL"}

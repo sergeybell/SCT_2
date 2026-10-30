@@ -1,0 +1,25 @@
+{ lattice_cmp.fox - magnetic_2_md ring, fringe mode set per magnet family -> lattice_cmp.bin
+  PROCEDURE RINGFC FD FQ GD:
+    FD = FR mode for the dipoles BM, FQ = FR mode for the quadrupoles, sextupoles are ALWAYS FR 0;
+    GD = GAP = half-aperture [m]: used as aperture of the dipoles (MS) and of the quadrupoles (MQ).
+    (MQ is given by pole-tip field B = k*AP at aperture AP, so the gradient does not depend on GD.) }
+INCLUDE '../../COSY/lattice_md';                       { gives PART }
+PROCEDURE RINGFC FD FQ GD;
+  VARIABLE AP 1; VARIABLE LB 1; VARIABLE RB 1;
+  PROCEDURE BM;  FR FD; MS RB 22.5 GD 0 0 0 0 0; FR 0; ENDPROCEDURE;
+  PROCEDURE QF;  FR FQ; MQ 0.21  1.81168058*AP AP; FR 0; ENDPROCEDURE;
+  PROCEDURE QD;  FR FQ; MQ 0.21 -2.01793283*AP AP; FR 0; ENDPROCEDURE;
+  PROCEDURE QF1; FR FQ; MQ 0.21  1.93455213*AP AP; FR 0; ENDPROCEDURE;
+  PROCEDURE QD1; FR FQ; MQ 0.21 -1.93455213*AP AP; FR 0; ENDPROCEDURE;
+  PROCEDURE SX;  FR 0; MH 0.12 0 AP; ENDPROCEDURE;
+  PROCEDURE ARC;
+    DL 0.06; QF; BM; QD; DL 0.12; QD; BM; QF; SX;
+    QF; BM; QD; SX; QD; BM; QF; SX;
+    QF; BM; QD; SX; QD; BM; QF; SX;
+    QF; BM; QD; DL 0.12; QD; BM; QF; DL 0.06;
+  ENDPROCEDURE;
+  PROCEDURE STR; DL 0.06; QF1; DL LB; QD1; DL 0.12; QD1; DL LB; QF1; DL 0.06; ENDPROCEDURE;
+  AP := GD; LB := 5.3294148; RB := LB/(22.5*PI/180);
+  FR 0; UM; ARC; STR; ARC; STR;
+ENDPROCEDURE;
+SAVE 'lattice_cmp';

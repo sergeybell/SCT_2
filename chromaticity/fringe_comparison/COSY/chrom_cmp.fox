@@ -1,0 +1,25 @@
+{ chrom_cmp.fox - tunes and their expansion in the energy parameter, OV NO 2 1 + TP MU.
+  Variants: (FD,FQ) = (0,0) FR0 | (3,0) dipoles | (0,3) quads | (3,3) whole ring (sextupoles always FR 0)
+  for GAP = 0.05, 0.025, 0.0125, 0.00625 m (half aperture).
+  Output output/cosy_mu_series.csv : FD,FQ,GAP,k,MUx_k,MUy_k where MU_k = MU|(0&0&0&0&k) is the
+  Taylor coefficient of the fractional tune in COSY's 5th variable dK/K (NOT dp/p, NOT a derivative):
+  MU(dK) = sum_k MU_k dK^k. Conversion to delta = dp/p is done in the notebook. }
+INCLUDE 'lattice_cmp';
+PROCEDURE RUN;
+  VARIABLE MU 1000 2; VARIABLE I 1; VARIABLE J 1; VARIABLE K 1; VARIABLE NO 1;
+  VARIABLE KD 1 4; VARIABLE KQ 1 4; VARIABLE KG 1 4; VARIABLE E 1 5;
+  NO := 7; OV NO 2 1;
+  KD(1):=0; KQ(1):=0;  KD(2):=3; KQ(2):=0;  KD(3):=0; KQ(3):=3;  KD(4):=3; KQ(4):=3;
+  KG(1):=0.05; KG(2):=0.025; KG(3):=0.0125; KG(4):=0.00625;
+  OPENF 20 'output/cosy_mu_series.csv' 'UNKNOWN';
+  WRITE 20 'FD,FQ,GAP,k,MUx_k,MUy_k';
+  LOOP I 1 4; LOOP J 1 4;
+    PART 270*PARA(1); RINGFC KD(I) KQ(I) KG(J); TP MU;
+    LOOP K 0 NO-1;
+      E(1):=0; E(2):=0; E(3):=0; E(4):=0; E(5):=K;
+      WRITE 20 ST(KD(I))&','&ST(KQ(I))&','&ST(KG(J))&','&ST(K)&','&ST(MU(1)|(0&0&0&0&K))&','&ST(MU(2)|(0&0&0&0&K));
+    ENDLOOP;
+  ENDLOOP; ENDLOOP;
+  CLOSEF 20;
+ENDPROCEDURE;
+RUN; END;
