@@ -1,0 +1,75 @@
+ Count  Overhead File                                                            Line Function
+ =====  ======== ====                                                            ==== ========
+    20        11 @Base\range.jl                                                  928 iterate
+    27         0 @Bell\src\da\DiffAlgebra.jl                                     193 +(a::DA{Float64}, x::Float64)
+    27         0 @Base\reduce.jl                                                  56 _foldl_impl(op::Base.FilteringRF{Bell.Integrators.var"#_step##16#_step##17", Base.MappingRF{Bell.Integrators.var"#_step##14#_step##15"{Int64, Vect…
+    27         0 @Base\reduce.jl                                                  98 MappingRF
+    27         0 @Bell\src\integrators\Integrators.jl                            206 _step(::DormandPrince853, f::var"#f#f##0"{DA{Float64}}, z::Vector{DA{Float64}}, s::Float64, h::Float64)
+    29         1 none                                                              ? (::Bell.Integrators.var"#_lin##2#_lin##3"{Int64, Vector{Float64}, Vector{Any}})(j::Int64)
+    32         0 @Base\simdloop.jl                                                77 macro expansion
+    32         0 @Base\broadcast.jl                                             1000 macro expansion
+    33         0 @Base\array.jl                                                  626 zeros
+    36         0 @Base\broadcast.jl                                              952 copyto!
+    36         0 @Base\broadcast.jl                                              999 copyto!
+    37         0 @Bell\src\da\DiffAlgebra.jl                                     218 *(a::DA{Float64}, b::DA{Float64})
+    37         0 @Bell\src\da\DiffAlgebra.jl                                     212 *(a::DA{Float64}, b::DA{Float64})
+    42         0 @Bell\src\da\DiffAlgebra.jl                                     197 *(a::DA{Float64}, x::Float64)
+    43         1 @Bell\src\da\DiffAlgebra.jl                                     198 *(x::Float64, a::DA{Float64})
+    45         0 @Base\array.jl                                                  622 zeros
+    46         0 @Base\array.jl                                                  828 collect(itr::Base.Generator{Base.OneTo{Int64}, Bell.Integrators.var"#_lin##0#_lin##1"{Vector{DA{Float64}}, Float64, SubArray{Float64, 1, Matrix{Fl…
+    52         0 @Bell\src\da\DiffAlgebra.jl                                     270 sqrt
+    52         0 @Bell\src\da\DiffAlgebra.jl                                     268 ^(a::DA{Float64}, p::Float64)
+    60         0 @Base\array.jl                                                 1020 setindex!
+    60        60 @Base\array.jl                                                 1025 _setindex!
+    74         1 @Base\reduce.jl                                                  16 add_sum(x::DA{Float64}, y::DA{Float64})
+    76         2 @Base\reduce.jl                                                  84 BottomRF
+    77         0 @Bell\src\da\DiffAlgebra.jl                                     190 +(a::DA{Float64}, b::DA{Float64})
+    83         0 @Base\array.jl                                                  864 collect_to_with_first!(dest::Vector{DA{Float64}}, v1::DA{Float64}, itr::Base.Generator{Base.OneTo{Int64}, Bell.Integrators.var"#_lin##0#_lin##1"{V…
+    83         0 @Base\array.jl                                                  886 collect_to!(dest::Vector{DA{Float64}}, itr::Base.Generator{Base.OneTo{Int64}, Bell.Integrators.var"#_lin##0#_lin##1"{Vector{DA{Float64}}, Float64,…
+    84         0 @Base\array.jl                                                  838 collect(itr::Base.Generator{Base.OneTo{Int64}, Bell.Integrators.var"#_lin##0#_lin##1"{Vector{DA{Float64}}, Float64, SubArray{Float64, 1, Matrix{Fl…
+    85         0 @Bell\src\da\DiffAlgebra.jl                                     280 inv
+    85         0 @Base\reduce.jl                                                  60 _foldl_impl(op::Base.FilteringRF{Bell.Integrators.var"#_lin##4#_lin##5"{SubArray{Float64, 1, Matrix{Float64}, Tuple{Int64, UnitRange{Int64}}, true…
+    85         0 @Base\reduce.jl                                                  98 (::Base.MappingRF{Bell.Integrators.var"#_lin##2#_lin##3"{Int64, SubArray{Float64, 1, Matrix{Float64}, Tuple{Int64, UnitRange{Int64}}, true}, Vecto…
+    96         0 @Base\broadcast.jl                                              229 similar
+    96         0 @Base\broadcast.jl                                              230 similar
+    96         0 @Base\abstractarray.jl                                          876 similar
+    96         0 @Base\array.jl                                                  409 similar
+    96         0 @Base\abstractarray.jl                                          877 similar
+    96         0 @Base\boot.jl                                                   671 Array
+   112         0 @Base\reduce.jl                                                 564 sum
+   112         0 @Base\reduce.jl                                                 564 #sum#279
+   112         0 @Base\reduce.jl                                                 535 sum
+   112         0 @Base\reduce.jl                                                 535 #sum#278
+   112         0 @Base\reduce.jl                                                 306 mapreduce
+   112         0 @Base\reduce.jl                                                 306 #mapreduce#275
+   112         0 @Base\reduce.jl                                                 173 mapfoldl
+   112         0 @Base\reduce.jl                                                 173 #mapfoldl#271
+   112         0 @Base\reduce.jl                                                  42 mapfoldl_impl
+   112         0 @Base\reduce.jl                                                  46 foldl_impl
+   112         0 @Base\reduce.jl                                                 110 FilteringRF
+   119         0 none                                                              ? (::Bell.Integrators.var"#_lin##0#_lin##1"{Vector{DA{Float64}}, Float64, SubArray{Float64, 1, Matrix{Float64}, Tuple{Int64, UnitRange{Int64}}, true…
+   120         0 @Bell\src\integrators\Integrators.jl                             90 _lin
+   128         0 @Base\boot.jl                                                   648 Array
+   129         0 @Base\boot.jl                                                   661 Array
+   130         0 @Base\generator.jl                                               48 iterate
+   131         0 @Bell\src\da\DiffAlgebra.jl                                     245 _series(a::DA{Float64}, f::Vector{Float64})
+   132         0 @Base\broadcast.jl                                              899 materialize
+   132         0 @Base\broadcast.jl                                              924 copy
+   134       133 @Base\boot.jl                                                   588 GenericMemory
+   166         0 C:\GIT_REPOS\SCT_2\benchmarks\da_integrators\julia\profile.jl    16 (::var"#f#f##0"{DA{Float64}})(z::Vector{DA{Float64}}, s::Float64)
+   242         0 @Bell\src\integrators\Integrators.jl                            203 _step(::DormandPrince853, f::var"#f#f##0"{DA{Float64}}, z::Vector{DA{Float64}}, s::Float64, h::Float64)
+   296         0 @Bell\src\integrators\Integrators.jl                            255 integrate(f::var"#f#f##0"{DA{Float64}}, z0::Vector{DA{Float64}}, s0::Float64, s1::Float64; method::DormandPrince853, tol::Float64, rtol::Float64, …
+   297         0 C:\GIT_REPOS\SCT_2\benchmarks\da_integrators\julia\profile.jl    35 macro expansion
+   297         0 C:\GIT_REPOS\SCT_2\benchmarks\da_integrators\julia\profile.jl    18 (::var"#run#run##0"{Vector{DA{Float64}}, var"#f#f##0"{DA{Float64}}})()
+   297         0 @Bell\src\integrators\Integrators.jl                            238 integrate
+   299         0 @Base\client.jl                                                 577 _start()
+   299         0 @Base\client.jl                                                 344 exec_options(opts::Base.JLOptions)
+   299         0 @Base\Base.jl                                                   309 include(mod::Module, _path::String)
+   299         0 @Base\loading.jl                                               3105 _include(mapexpr::Function, mod::Module, _path::String)
+   299         0 @Base\loading.jl                                               3045 include_string(mapexpr::typeof(identity), mod::Module, code::String, filename::String)
+   299         0 @Base\boot.jl                                                   489 eval(m::Module, e::Any)
+   299         0 C:\GIT_REPOS\SCT_2\benchmarks\da_integrators\julia\profile.jl    35 top-level scope
+   299         2 @Profile\src\Profile.jl                                          60 macro expansion
+   301         0 @Base\task.jl                                                  1196 wait_forever()
+   301       301 @Base\task.jl                                                  1297 wait()
+Total snapshots: 602. Utilization: 50% across all threads and tasks. Use the `groupby` kwarg to break down by thread and/or task.

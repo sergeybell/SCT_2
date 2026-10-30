@@ -1,0 +1,21 @@
+{ elem_template.fox - lone hard-edge elements, map computed by COSY itself (order @NO@ >= 3:
+  COSY integrates the exact equations of motion in DA with its 8th-order Runge-Kutta, FFELE / RK).
+  Reference particle: proton, kinetic energy 200 MeV.  OV @NO@ 3 0 (x a y b l dK).
+    1: MQ 0.5 m, pole field 0.5 T, aperture 0.05 m    2: MS R = 2 m, 30 deg, homogeneous
+  Output: output/elem_o@NO@_<k>.txt (MAP(1..4)), output/elem_time_o@NO@.txt, output/refpart.txt (CHIM ETA) }
+INCLUDE '../../../COSY/src/COSY';
+PROCEDURE RUN;
+  VARIABLE I 1; VARIABLE J 1; VARIABLE NREP 1; VARIABLE T0 1; VARIABLE T1 1; VARIABLE NM 80;
+  PROCEDURE ELEM K; UM; IF K=1; MQ 0.5 0.5 0.05; ELSEIF K=2; MS 2 30 0.05 0 0 0 0 0; ENDIF; ENDPROCEDURE;
+  OV @NO@ 3 0; RPP 200; FR 0;
+  OPENF 32 'output/refpart.txt' 'UNKNOWN'; WRITE 32 S(CONS(CHIM))&' '&S(CONS(ETA)); CLOSEF 32;
+  OPENF 31 'output/elem_time_o@NO@.txt' 'UNKNOWN';
+  LOOP I 1 2; ELEM I;
+    NM := 'output/elem_o@NO@_'&SI(I)&'.txt'; OPENF 30 NM 'UNKNOWN';
+    LOOP J 1 4; WRITE 30 MAP(J); ENDLOOP; CLOSEF 30;
+    NREP := 1; T1 := 0; T0 := 0;
+    WHILE T1-T0<1; NREP := 2*NREP; CPUSEC T0; LOOP J 1 NREP; ELEM I; ENDLOOP; CPUSEC T1; ENDWHILE;
+    WRITE 31 SI(I)&' '&S(NREP)&' '&S(T1-T0); ENDLOOP;
+  CLOSEF 31;
+ENDPROCEDURE;
+RUN; END;

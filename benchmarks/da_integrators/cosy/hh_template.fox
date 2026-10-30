@@ -1,0 +1,31 @@
+{ hh_template.fox - Henon-Heiles with DA initial conditions, nv = 4 (OV @NO@ 2 0).
+  z0 = (0.1, -0.2, 0.25, 0.1) + DA(1..4), T = 1, classical RK4 with fixed steps written in FOX
+  (the same algorithm as Bell.Integrators.RK4), so that the cost of identical DA arithmetic is compared.
+  Output: output/hh_o@NO@_n<NS>.txt (4 DA), output/hh_time_o@NO@.txt : nsteps reps cpu }
+INCLUDE '../../../COSY/src/COSY';
+PROCEDURE RUN;
+  VARIABLE Z 10000 4; VARIABLE Z1 10000 4; VARIABLE K1 10000 4; VARIABLE K2 10000 4; VARIABLE K3 10000 4;
+  VARIABLE K4 10000 4; VARIABLE ZT 10000 4; VARIABLE I 1; VARIABLE J 1; VARIABLE NS 1; VARIABLE IS 1;
+  VARIABLE H 1; VARIABLE NREP 1; VARIABLE T0 1; VARIABLE T1 1; VARIABLE NSV 1 6; VARIABLE NM 80;
+  PROCEDURE RHS Y F; F(1) := Y(3); F(2) := Y(4); F(3) := -Y(1)-2*Y(1)*Y(2);
+    F(4) := -Y(2)-Y(1)*Y(1)+Y(2)*Y(2); ENDPROCEDURE;
+  PROCEDURE INTEG N; H := 1/N;
+    Z(1) := 0.1+DA(1); Z(2) := -0.2+DA(2); Z(3) := 0.25+DA(3); Z(4) := 0.1+DA(4);
+    LOOP IS 1 N;
+      RHS Z K1; LOOP J 1 4; ZT(J) := Z(J)+0.5*H*K1(J); ENDLOOP;
+      RHS ZT K2; LOOP J 1 4; ZT(J) := Z(J)+0.5*H*K2(J); ENDLOOP;
+      RHS ZT K3; LOOP J 1 4; ZT(J) := Z(J)+H*K3(J); ENDLOOP;
+      RHS ZT K4; LOOP J 1 4; Z(J) := Z(J)+H/6*(K1(J)+2*K2(J)+2*K3(J)+K4(J)); ENDLOOP;
+    ENDLOOP; ENDPROCEDURE;
+  OV @NO@ 2 0;
+  NSV(1) := 10; NSV(2) := 20; NSV(3) := 40; NSV(4) := 80; NSV(5) := 160; NSV(6) := 320;
+  OPENF 31 'output/hh_time_o@NO@.txt' 'UNKNOWN';
+  LOOP I 1 6; NS := NSV(I); INTEG NS;
+    NM := 'output/hh_o@NO@_n'&SI(NS)&'.txt'; OPENF 30 NM 'UNKNOWN';
+    LOOP J 1 4; WRITE 30 Z(J); ENDLOOP; CLOSEF 30;
+    NREP := 1; T1 := 0; T0 := 0;
+    WHILE T1-T0<1; NREP := 2*NREP; CPUSEC T0; LOOP J 1 NREP; INTEG NS; ENDLOOP; CPUSEC T1; ENDWHILE;
+    WRITE 31 SI(NS)&' '&S(NREP)&' '&S(T1-T0); ENDLOOP;
+  CLOSEF 31;
+ENDPROCEDURE;
+RUN; END;
