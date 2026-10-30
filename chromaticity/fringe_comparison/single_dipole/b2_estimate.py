@@ -1,4 +1,4 @@
-﻿# b2_estimate.py - thin-sextupole estimate of the xi shift produced by Bell's b2 = h0 F'' theta^2 term
+# b2_estimate.py - thin-sextupole estimate of the xi shift produced by Bell's b2 = h0 F'' theta^2 term
 import numpy as np, pandas as pd
 src = open('compare_single.py', encoding='utf8').read().split('cosy = {')[0]; ns = {}; exec(src, ns)
 b = pd.read_csv('output/bell_bare_bm.csv'); opt = pd.read_csv('output/ring_bm_optics.csv'); k2 = pd.read_csv('output/b2_strength.csv')
@@ -15,5 +15,8 @@ for gap in (0.05, 0.025, 0.0125):
         for MM, DD in [(M, D), (R @ M @ np.linalg.inv(R), R @ D + Dc)]:
             bx = MM[0, 1]/np.sin(2*np.pi*r.Qx); by = MM[2, 3]/np.sin(2*np.pi*r.Qy)
             sx += K*bx*DD[0]; sy += K*by*DD[0]
-    out.append(dict(gap=gap, K2L_edge=K, dxi_x_b2=sx/(4*np.pi), dxi_y_b2=-sy/(4*np.pi)))
+    H1 = float(k2[np.isclose(k2.gap, gap)].H1_hb1.iloc[0])
+    # metric-corrected (COSY-like, (1+hx) factor): x^2 force b2/2 + h b1 -> k2_x = K2L + 2 H1; xy force b2 + h b1 -> k2_y = K2L + H1
+    out.append(dict(gap=gap, K2L_edge=K, H1_edge=H1, dxi_x_b2=sx/(4*np.pi), dxi_y_b2=-sy/(4*np.pi),
+                    dxi_x_metric=sx/(4*np.pi)*(K+2*H1)/K, dxi_y_metric=-sy/(4*np.pi)*(K+H1)/K))
 o = pd.DataFrame(out); o.to_csv('output/b2_estimate.csv', index=False); print(o.to_string())
