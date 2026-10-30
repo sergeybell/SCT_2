@@ -1,5 +1,5 @@
 # chrom_bell.jl -- tunes, alpha_c, eta, chromaticity of magnetic_2_md via BELL (as-is)
-#   julia --project=C:\GIT_REPOS\BELL\Julia chrom_bell.jl
+#   julia --project=C:\GIT_REPOS\BELL chrom_bell.jl
 using Bell, Printf, LinearAlgebra, TaylorSeries
 
 const OPT  = raw"C:\GIT_REPOS\SCT_2\lattice\magnetic_2_md.opt"

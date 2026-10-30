@@ -7,7 +7,7 @@ Current scope: magnetic lattices.
 ## Layout
 
 ```text
-Julia/equilibrium_energy/  Bell application: δ_eq (depends on BELL/Julia)
+Julia/equilibrium_energy/  Bell application: δ_eq (depends on BELL)
 OptiM/magnetic/          OptiM lattice projects (*.opt)
 COSY/structures/<stem>/  COSY lattices: <stem>.fox (LATTICE) and <stem>_maps.fox (LATTICE + segment maps for Twiss)
 COSY/jobs/               runnable .fox: mapping, Twiss, chromaticity, spin tunes

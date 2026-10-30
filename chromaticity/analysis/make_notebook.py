@@ -60,15 +60,15 @@ add("OptiM", "GUI Twiss (linear formulas, hard-edge bends)", g(r"Qx =\s*([-\d.]+
 
 # ---------------- BELL
 md(r"""## 2. BELL (Julia)
-**Запуск:** `BELL\run_bell.bat` = `julia --project=C:\GIT_REPOS\BELL\Julia chrom_bell.jl` (BELL v0.10.0 как есть).
+**Запуск:** `BELL\run_bell.bat` = `julia --project=C:\GIT_REPOS\BELL chrom_bell.jl` (BELL v0.10.0 как есть).
 Читает .opt через `convert_optim` → `magnetic_2_md.bell`. Вывод: `BELL/output/bell_results.txt`, `bell_twiss.csv`.
 δ в BELL = dp/p (канонический), поэтому ξ берётся без пересчёта. Модель диполя: только тело, без краевого члена.""")
 code(r'''show("BELL/output/bell_results.txt")
 bell = kv("BELL/output/bell_results.txt")''')
 md(r"""**Код BELL.** Скрипт запуска `chrom_bell.jl` и функции ядра BELL, которые реально считают хроматичность
-(`C:\GIT_REPOS\BELL\Julia\src\higher_order.jl`: `closed_orbit`, `_frac_tune`, `tunes_at_delta`, `path_expansion`, `chromaticity_orders`; только чтение).""")
+(`C:\GIT_REPOS\BELL\src\higher_order.jl`: `closed_orbit`, `_frac_tune`, `tunes_at_delta`, `path_expansion`, `chromaticity_orders`; только чтение).""")
 code(r'''src("BELL/chrom_bell.jl", "julia")
-src(r"C:\GIT_REPOS\BELL\Julia\src\higher_order.jl", "julia", 34, 106)''')
+src(r"C:\GIT_REPOS\BELL\src\higher_order.jl", "julia", 34, 106)''')
 
 md(r"""### 2a. BELL, одно-оборотная матрица (линейно)
 Строки `linear_Qx/Qy` (целая часть из набега фазы), `linear_alpha_c`, `linear_eta`. Хроматичность этим методом не считается.""")

@@ -1,6 +1,6 @@
 ﻿# BELL (Julia) — хроматичность magnetic_2_md
 
-Запуск: `run_bell.bat` (или `julia --project=C:\GIT_REPOS\BELL\Julia chrom_bell.jl`).
+Запуск: `run_bell.bat` (или `julia --project=C:\GIT_REPOS\BELL chrom_bell.jl`).
 Ядро BELL не менялось, используется как есть (v0.10.0).
 
 * Решётка читается OptiM-ридером BELL `convert_optim` → `magnetic_2_md.bell` → `load_structure`.
