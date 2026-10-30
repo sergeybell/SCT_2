@@ -221,13 +221,14 @@ for gp in GAPS:
 print(); print(qc.to_string(index=False))""")
 md(r"""**Анализ.**
 1. **Жёсткий предел совпадает.** Bell NoEdge = COSY FR0 ($|\Delta\xi_1|\le3\cdot10^{-6}$, $\xi_2$ до $4\cdot10^{-4}$). Bell HardEdge(2/3) по $\xi_{1y}$ = −1.81707 = экстраполяция COSY FR3 (диполи) к GAP→0. HardEdge(1) при $\varepsilon=0$, FINT=0 — тождество (= NoEdge).
-2. **Расхождение по $\xi_1$ — диполи.** В варианте «FR3 только диполи» Bell Soft Enge − COSY: $\Delta\xi_{1y}=+1.0\cdot10^{-3}$, $\Delta\xi_{1x}=-2.9\cdot10^{-3}$ при 5 см, строго $\propto$GAP (половина на каждом шаге). Все 3 метода Bell для гладких профилей (Enge, Tanh, Tabulated) согласуются между собой до $\sim10^{-5}$–$10^{-4}$ — это не ошибка интегратора, а разная постановка мягкого края диполя (как распределены кривизна опорной орбиты/длина пути в краю относительно EFB; в $x$ это член $\propto h\,g$). $Q_y$ при этом совпадает до $10^{-6}$ — линейная вертикальная фокусировка края (FINT) у обеих программ одинакова. LinearRamp+Magnus(40) заметно хуже (разрыв $F'$ трапеции).
+2. **(До исправления Bell, разд. 9–10.) Расхождение по $\xi_1$ — диполи.** В варианте «FR3 только диполи» Bell Soft Enge − COSY: $\Delta\xi_{1y}=+1.0\cdot10^{-3}$, $\Delta\xi_{1x}=-2.9\cdot10^{-3}$ при 5 см, строго $\propto$GAP (половина на каждом шаге). Все 3 метода Bell для гладких профилей (Enge, Tanh, Tabulated) согласуются между собой до $\sim10^{-5}$–$10^{-4}$ — это не ошибка интегратора, а разная постановка мягкого края диполя (как распределены кривизна опорной орбиты/длина пути в краю относительно EFB; в $x$ это член $\propto h\,g$). $Q_y$ при этом совпадает до $10^{-6}$ — линейная вертикальная фокусировка края (FINT) у обеих программ одинакова. LinearRamp+Magnus(40) заметно хуже (разрыв $F'$ трапеции).
 3. **Квадруполи в COSY вносят материальный вклад:** $\Delta Q\approx-3\cdot10^{-3}$ и $\Delta\xi_1\approx+9\cdot10^{-3}$ при 5 см ($\propto\mathrm{GAP}^2$) — **больше**, чем дипольное расхождение; в Bell мягкого края квадруполя нет, поэтому для «всего кольца» разность Bell−COSY по $\xi_{1x}$ = −1.2·10⁻² при 5 см. При GAP ≤ 1 см эффект ≤ 6·10⁻⁴.
 4. **$\xi_2$:** доминирует жёсткий кубический край квадруполей (×15 по $x$, ×10 по $y$), и Bell (Quad HardEdge(2)) воспроизводит предел COSY. Для диполей Bell Soft Enge vs COSY: $\Delta\xi_{2y}=+1\cdot10^{-2}$ (5 см) → $+1.4\cdot10^{-3}$ (6.25 мм); дипольный HardEdge(2) даёт неверную $\xi_{2y}$ (8.19 вместо 7.37), нужен HardEdge(3).
 5. **$\xi_{\ge3}$:** Bell в текущем публичном API не даёт (карта 3‑го порядка: фит даёт $\xi_3\sim-1100$ вместо −27 у COSY — артефакт). У COSY с квадрупольным FR 3 $\xi_4,\xi_5\sim10^6$–$10^8$ и растут как 1/GAP (плюс предупреждения RK «minimum stepsize»): высшие порядки там определяются производными профиля Энге и сильно модельно‑зависимы; без квадрупольного края ряд COSY регулярен ($\xi_3\approx-27/-33$, $\xi_4\approx260/200$, $\xi_5\approx-4\cdot10^3$).""")
 
 # ===================================================================== section 9: single dipole
-md(r"""## 9. Откуда дипольное расхождение: эксперименты с одиночным диполем
+md(r"""## 9. Откуда дипольное расхождение: эксперименты с одиночным диполем (Bell **до** исправления)
+Все таблицы и рисунки этого раздела построены по сохранённым результатам Bell до исправления (`*/output_before_fix/`). Разделы 3–8 выше пересчитаны уже **после** исправления (см. раздел 10).
 Программы в `single_dipole/` (порядок запуска: `cosy single_bm.fox`, `julia --project=../BELL single_bm.jl`, `ring_bm_optics.jl`, `b2_strength.jl`, затем `python compare_single.py`, `perturb_xi.py`, `b2_estimate.py`):
 * `single_bm.fox` — один BM (FR 0 и FR 3 при GAP 0.05/0.025/0.0125), `OV 3 2 1`, карта печатается `PM`: (а) дрейф 0.5 м + BM + дрейф 0.5 м, (б) «голый» BM, как в кольце (BM вплотную к квадруполям).
 * `single_bm.jl` / `ring_bm_optics.jl` — те же карты в Bell (NoEdge, HardEdge3, SoftEdge Enge(2GAP) + TaylorIntegrate) и для каждого из 16 BM кольца — линейная матрица оборота на его входе и вектор дисперсии $D_1$ (кольцо с мягкими краями Bell).
@@ -235,7 +236,7 @@ md(r"""## 9. Откуда дипольное расхождение: экспе�
 
 ### 9.1. Поэлементное сравнение карты (дрейф + BM + дрейф)
 **Таблица.** Коэффициенты, где Bell Soft − COSY FR3 > $10^{-7}$ (GAP 5 см), рядом разность при 2.5 см и их отношение $r$. Обозначение $(p_x|xa)$ = коэффициент при $x\,a$ в $p_x$.""")
-code(r"""sd = pd.read_csv('single_dipole/output/single_bm_compare.csv')
+code(r"""sd = pd.read_csv('single_dipole/output_before_fix/single_bm_compare.csv')
 sd['d_noedge'] = sd.bell_NoEdge - sd.cosy_FR0; sd['r'] = sd['diff_0.05']/sd['diff_0.025'].replace(0, np.nan)
 show = sd[(sd['diff_0.05'].abs() > 1e-7) | (sd.d_noedge.abs() > 1e-7)]
 show[['term','order','cosy_FR0','d_noedge','cosy_FR3_0.05','bell_Soft_0.05','diff_0.05','diff_0.025','r']].reset_index(drop=True)""")
@@ -249,11 +250,11 @@ md(r"""### 9.2. Какие члены карты дают $\Delta\xi$ кольц
 Возмущение первого порядка: на замкнутой орбите $z(\delta)=(D_1\delta,\,\delta)$ производная якобиана элемента $J'_{ij}=\sum_k \partial^2 M_i/\partial z_j\partial z_k\, w_k$, $w=(D,D',0,0,1)$; изменение следа матрицы оборота $\Delta\,\mathrm{tr} = \mathrm{tr}(R_{\rm rest}\,\Delta J')$, $R_{\rm rest}=M_{\rm оборот}R_{BM}^{-1}$; $\Delta\xi = -\Delta\mathrm{tr}/(4\pi\sin2\pi Q)$, сумма по 16 BM. Это разложение даёт вклад каждого коэффициента $(i|z_jz_k)$ голого BM.
 
 **Таблица.** Сумма по членам (`dxi_*_pert`) для трёх пар; для сравнения в кольце: Bell Soft − COSY FR3 = −2.888·10⁻³ / +1.007·10⁻³ (5 см).""")
-code(r"""ps = pd.read_csv('single_dipole/output/perturb_summary.csv'); ps""")
+code(r"""ps = pd.read_csv('single_dipole/output_before_fix/perturb_summary.csv'); ps""")
 md(r"""Формула воспроизводит прямой расчёт кольца с точностью ~1 % (−2.885·10⁻³ / +1.009·10⁻³ против −2.888·10⁻³ / +1.007·10⁻³), т.е. весь эффект — в коэффициентах 2‑го порядка карты диполя. Заметьте: **у COSY мягкий край почти не меняет $\xi_x$** (FR3 − FR0 = +5·10⁻⁵), а у Bell меняет на −2.8·10⁻³.
 
 **Рисунок 7.** Вклады отдельных коэффициентов голого BM в $\Delta\xi_x$ (слева) и $\Delta\xi_y$ (справа) для разности Bell Soft − COSY FR3, GAP = 5 см.""")
-code(r"""pt = pd.read_csv('single_dipole/output/perturb_terms.csv')
+code(r"""pt = pd.read_csv('single_dipole/output_before_fix/perturb_terms.csv')
 t = pt[(pt.gap==0.05)&(pt.pair=='BellSoft-COSYFR3')]
 fig, ax = plt.subplots(1, 2, figsize=(14, 5))
 for i, pl in enumerate(['x','y']):
@@ -267,7 +268,9 @@ md(r"""### 9.3. Гипотеза: «секступольный» член $b_2$ 
 
 **Таблица.** $K_2L$ на один край и вызванный им сдвиг хроматичности в Bell.""")
 code(r"""b2 = pd.read_csv('single_dipole/output/b2_strength.csv').merge(pd.read_csv('single_dipole/output/b2_estimate.csv'), on='gap')
-obs = summ[summ.COSY=='FR3 диполи'][['GAP','dxix','dxiy']].rename(columns={'GAP':'gap','dxix':'dxi_x_ring','dxiy':'dxi_y_ring'})
+bell0 = pd.read_csv('BELL/output_before_fix/bell_models.csv'); bell0['gap'] = bell0.gap.round(6)
+obs = pd.DataFrame([dict(gap=gp, dxi_x_ring=float(bell0[(bell0.variant=='Soft_Enge_Splitting')&np.isclose(bell0.gap,gp)].xi1x.iloc[0])-cpick('FR3 диполи',gp,'x'),
+                         dxi_y_ring=float(bell0[(bell0.variant=='Soft_Enge_Splitting')&np.isclose(bell0.gap,gp)].xi1y.iloc[0])-cpick('FR3 диполи',gp,'y')) for gp in [0.05,0.025,0.0125]])
 b2 = b2.merge(obs, on='gap'); b2['x_ratio'] = b2.dxi_x_ring/b2.dxi_x_b2; b2['y_ratio'] = b2.dxi_y_ring/b2.dxi_y_b2; b2""")
 md(r"""**Рисунок 8.** Наблюдаемая разность Bell − COSY FR3 (кольцо, точки) и оценка от одного члена $b_2$ (линии) в зависимости от GAP.""")
 code(r"""fig, ax = plt.subplots(figsize=(8, 5))
@@ -302,4 +305,45 @@ md(r"""**Таблица.** $H_1/(-K_2L/2)=1.000$ при всех GAP. Прогн
 * **Физически правильна модель COSY** (декартова прямая граница + решение уравнения Лапласа в изогнутых координатах с метрикой $1+hx$). Модель поля Bell по геометрии та же, но гамильтониан мягкого края не учитывает $(1+hx)$ при градиентном и секступольном членах.
 * На вопрос «вертикаль сходится, а горизонталь нет?»: линейная вертикаль (FINT, $Q_y$) совпадает до $10^{-6}$ — её никто не «подгонял», это точный член $b_1$. Нелинейный член неверен в **обеих** плоскостях: в горизонтали Bell даёт лишний секступоль целиком (должен сократиться в ноль), в вертикали — вдвое больший. Поэтому $\Delta\xi_x\approx-2.9\cdot10^{-3}$, $\Delta\xi_y\approx+1.0\cdot10^{-3}$.
 * **Что менять в Bell** (`fringe_hamiltonian`): записать вектор‑потенциал поля в изогнутой системе, $A_s=-\int_0^x(1+hx')B_y\,dx'$ с согласованным по Максвеллу (с метрикой) продолжением по $y$; в младшем порядке — добавить к $H$ член $h\,b_1\,(x^3/3 - x y^2/2)$ (даёт силы $h b_1 x^2$ и $h b_1 xy$), либо, что проще, строить $A_s$ как в COSY `POFF` (итерация $P \leftarrow P_0-\iint\frac{1}{1+hx}[\partial_x(1+hx)\partial_x+\partial_s\frac{1}{1+hx}\partial_s]P\,dy\,dy$). Тест: $(p_x|x^2),(p_x|xa),(x|x^2)$ одиночного BM должны стать нулями, $\Delta\xi$ кольца против COSY FR3 — $\lesssim10^{-4}$.""")
+
+md(r"""## 10. После исправления ядра Bell
+Изменения в `C:\GIT_REPOS\BELL\src\fringe.jl`:
+1. `fringe_hamiltonian`: добавлен член $h\,b_1\,(x^3/3 - x y^2/2)$ — метрический множитель $(1+hx)$ силы для градиентного члена мягкого края (раздел 9.5). Он входит в гамильтониан узла/слоя, поэтому одинаково действует в `Splitting`, `Magnus`, `TaylorIntegrate` и для всех профилей.
+2. Кэш краевых карт: ключ — `repr(model)` плюс содержимое таблицы для `Tabulated` (раньше таблицы одинаковой длины для разных GAP давали один и тот же результат). Обход «403…409 точек» в `BELL/run.jl` убран, снова 401 точка.
+
+Симплектичность после исправления (`BELL/symp_check.jl`, `BELL/output/symp_check.log`): линейная часть карт краёв $\le1.2\cdot10^{-14}$, якобиан в тестовой точке $\approx9\cdot10^{-14}$, кольцо $\le3\cdot10^{-13}$ — на уровне округления/обрезки 3‑го порядка.
+
+**Таблица.** Bell Soft Enge (Splitting) − COSY FR3 (только диполи), до и после; для $\xi_1$ и $\xi_2$.""")
+code(r"""rows = []
+for gp in GAPS:
+    for pl in ['x','y']:
+        b0 = bell0[(bell0.variant=='Soft_Enge_Splitting')&np.isclose(bell0.gap,gp)].iloc[0]
+        b1_ = bell[(bell.variant=='Soft_Enge_Splitting')&np.isclose(bell.gap,gp)].iloc[0]
+        c1 = cpick('FR3 диполи',gp,pl,'xi1'); c2 = cpick('FR3 диполи',gp,pl,'xi2')
+        rows.append(dict(GAP=gp, plane=pl, xi1_COSY=c1, dxi1_before=b0['xi1'+pl]-c1, dxi1_after=b1_['xi1'+pl]-c1,
+                         xi2_COSY=c2, dxi2_before=b0['xi2'+pl]-c2, dxi2_after=b1_['xi2'+pl]-c2))
+ba = pd.DataFrame(rows); ba.to_csv('before_after.csv', index=False); ba""")
+md(r"""**Рисунок 9.** $|\Delta\xi_1|$ = |Bell − COSY FR3 диполи| до (пунктир) и после (сплошные) исправления, для $x$ и $y$, все гладкие профили и методы Bell после исправления — тонкие линии. Лог. шкалы.""")
+code(r"""fig, ax = plt.subplots(1, 2, figsize=(14, 5))
+for i, pl in enumerate(['x','y']):
+    d = ba[ba.plane==pl]
+    ax[i].loglog(d.GAP, d.dxi1_before.abs(), 'k--o', label='Soft Enge Splitting, до')
+    ax[i].loglog(d.GAP, d.dxi1_after.abs(), 'r-s', lw=2, label='Soft Enge Splitting, после')
+    for v, dd in bell[bell.variant.str.startswith('Soft_') & ~bell.variant.str.contains('Quad') & (bell.variant!='Soft_Enge_Splitting')].groupby('variant'):
+        dd = dd.sort_values('gap'); ref = np.array([cpick('FR3 диполи',g,pl) for g in dd.gap])
+        ax[i].loglog(dd.gap, np.abs(dd['xi1'+pl].values-ref)+1e-12, lw=.8, alpha=.7, label=v[5:]+' (после)')
+    ax[i].set_xlabel('GAP [м]'); ax[i].set_ylabel(r'$|\Delta\xi_{1%s}|$' % pl); ax[i].grid(alpha=.3, which='both')
+ax[0].legend(fontsize=7); plt.tight_layout(); plt.savefig('after_fix_dxi.png', dpi=110); plt.show()""")
+md(r"""**Таблица.** Ключевые коэффициенты карты одиночного BM (дрейф 0.5 + BM + дрейф 0.5, GAP 5 см): COSY FR3, Bell до и после.""")
+code(r"""sa = pd.read_csv('single_dipole/output/single_bm_compare.csv'); sb = pd.read_csv('single_dipole/output_before_fix/single_bm_compare.csv')
+terms = ['(px|x^2)','(px|xa)','(x|x^2)','(px|xd)','(x|xa)','(py|xy)','(y|xy)','(py|xb)','(py|yd)','(y|b^3)','(py|y^3)']
+tt = pd.DataFrame([dict(term=t, COSY_FR3=float(sa[sa.term==t]['cosy_FR3_0.05'].iloc[0]), Bell_before=float(sb[sb.term==t]['bell_Soft_0.05'].iloc[0]),
+                        Bell_after=float(sa[sa.term==t]['bell_Soft_0.05'].iloc[0])) for t in terms])
+tt['diff_after'] = tt.Bell_after - tt.COSY_FR3; tt""")
+code(r"""pd.read_csv('single_dipole/output/perturb_summary.csv')""")
+md(r"""**Итог исправления.**
+* Члены 2‑го порядка одиночного BM теперь совпадают с COSY FR3 до $\sim10^{-9}$ ($(p_x|x^2),(p_x|xa),(p_x|x\delta)\to\sim10^{-10}$, как у COSY); возмущённая оценка Bell − COSY для кольца $\lesssim10^{-6}$.
+* В кольце $\Delta\xi_{1x}$: $-2.9\cdot10^{-3}\to\sim-3\cdot10^{-6}$, $\Delta\xi_{1y}$: $+1.0\cdot10^{-3}\to\sim-2\cdot10^{-6}$ при 5 см (таблица выше); $\xi_2$ тоже сблизилась (см. `dxi2_*`).
+* Остаются расхождения 3‑го порядка в $y$ ($(y|b^3)$, $(p_y|y^3)$, ∝1/GAP): у Bell гамильтониан края обрезан на степени 4 и член $b_2$ взят без метрики; на линейную хроматичность не влияют, на $\xi_2$ — слабо. Расхождения LinearRamp/Magnus — эффект разрыва $F'$ (метод), а не модели.
+* Квадрупольный мягкий край в Bell по‑прежнему отсутствует (раздел 6).""")
 nbf.write(nb, 'fringe_comparison.ipynb')

@@ -4,7 +4,7 @@
 # GAP = half-aperture as in COSY; dipole full gap = 2*GAP.  Sextupoles: NoEdge everywhere.
 # Widths of the non-Enge profiles are chosen so that the fringe integral I = int F(1-F) dz
 # equals that of Enge(gap = 2*GAP) (same FINT => same leading-order vertical edge focusing).
-# Tabulated = Enge(gap = 2*GAP) sampled on 403..409 points (checks the interpolation path).
+# Tabulated = Enge(gap = 2*GAP) sampled on 401 points (checks the interpolation path).
 #
 # Map-order limits: Bell's ring map is a Lie factor with H to degree JET_ORDER = 4, i.e. the
 # polynomial map is exact to order MAP_ORDER = 3 in (x,px,y,py,l,delta).  The Jacobian on the
@@ -29,10 +29,7 @@ function profiles(gap)
     lam = match(Tanh, I0, 1e-5, 1.0)
     w = match(LinearRamp, I0, 1e-5, 2.0)
     F, W, _ = profile_function(E)
-    # NB Bell caches edge maps by repr(model) and repr(Tabulated) is only 'Tabulated(N points)':
-    # tables of equal length for different gaps would hit the same cache entry (Bell bug, see README).
-    # Workaround: a different number of points for every gap.
-    z = collect(range(-W, W, length = 401 + 2 * findfirst(==(gap), GAPS)))
+    z = collect(range(-W, W, length = 401))
     T = Tabulated(z, F.(z))
     return [("Enge", E), ("Tanh", Tanh(lam)), ("LinearRamp", LinearRamp(w)), ("Tabulated", T)], I0, lam, w
 end
