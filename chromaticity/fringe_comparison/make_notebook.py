@@ -225,4 +225,58 @@ md(r"""**Анализ.**
 3. **Квадруполи в COSY вносят материальный вклад:** $\Delta Q\approx-3\cdot10^{-3}$ и $\Delta\xi_1\approx+9\cdot10^{-3}$ при 5 см ($\propto\mathrm{GAP}^2$) — **больше**, чем дипольное расхождение; в Bell мягкого края квадруполя нет, поэтому для «всего кольца» разность Bell−COSY по $\xi_{1x}$ = −1.2·10⁻² при 5 см. При GAP ≤ 1 см эффект ≤ 6·10⁻⁴.
 4. **$\xi_2$:** доминирует жёсткий кубический край квадруполей (×15 по $x$, ×10 по $y$), и Bell (Quad HardEdge(2)) воспроизводит предел COSY. Для диполей Bell Soft Enge vs COSY: $\Delta\xi_{2y}=+1\cdot10^{-2}$ (5 см) → $+1.4\cdot10^{-3}$ (6.25 мм); дипольный HardEdge(2) даёт неверную $\xi_{2y}$ (8.19 вместо 7.37), нужен HardEdge(3).
 5. **$\xi_{\ge3}$:** Bell в текущем публичном API не даёт (карта 3‑го порядка: фит даёт $\xi_3\sim-1100$ вместо −27 у COSY — артефакт). У COSY с квадрупольным FR 3 $\xi_4,\xi_5\sim10^6$–$10^8$ и растут как 1/GAP (плюс предупреждения RK «minimum stepsize»): высшие порядки там определяются производными профиля Энге и сильно модельно‑зависимы; без квадрупольного края ряд COSY регулярен ($\xi_3\approx-27/-33$, $\xi_4\approx260/200$, $\xi_5\approx-4\cdot10^3$).""")
+
+# ===================================================================== section 9: single dipole
+md(r"""## 9. Откуда дипольное расхождение: эксперименты с одиночным диполем
+Программы в `single_dipole/` (порядок запуска: `cosy single_bm.fox`, `julia --project=../BELL single_bm.jl`, `ring_bm_optics.jl`, `b2_strength.jl`, затем `python compare_single.py`, `perturb_xi.py`, `b2_estimate.py`):
+* `single_bm.fox` — один BM (FR 0 и FR 3 при GAP 0.05/0.025/0.0125), `OV 3 2 1`, карта печатается `PM`: (а) дрейф 0.5 м + BM + дрейф 0.5 м, (б) «голый» BM, как в кольце (BM вплотную к квадруполям).
+* `single_bm.jl` / `ring_bm_optics.jl` — те же карты в Bell (NoEdge, HardEdge3, SoftEdge Enge(2GAP) + TaylorIntegrate) и для каждого из 16 BM кольца — линейная матрица оборота на его входе и вектор дисперсии $D_1$ (кольцо с мягкими краями Bell).
+* Карты COSY пересчитаны из $\delta_K$ в $\delta=\Delta p/p$ (точная подстановка ряда до 3‑го порядка), координаты $a=p_x/p_0$, $b=p_y/p_0$ совпадают с $p_x,p_y$ Bell.
+
+### 9.1. Поэлементное сравнение карты (дрейф + BM + дрейф)
+**Таблица.** Коэффициенты, где Bell Soft − COSY FR3 > $10^{-7}$ (GAP 5 см), рядом разность при 2.5 см и их отношение $r$. Обозначение $(p_x|xa)$ = коэффициент при $x\,a$ в $p_x$.""")
+code(r"""sd = pd.read_csv('single_dipole/output/single_bm_compare.csv')
+sd['d_noedge'] = sd.bell_NoEdge - sd.cosy_FR0; sd['r'] = sd['diff_0.05']/sd['diff_0.025'].replace(0, np.nan)
+show = sd[(sd['diff_0.05'].abs() > 1e-7) | (sd.d_noedge.abs() > 1e-7)]
+show[['term','order','cosy_FR0','d_noedge','cosy_FR3_0.05','bell_Soft_0.05','diff_0.05','diff_0.025','r']].reset_index(drop=True)""")
+md(r"""**Что видно.**
+* **Линейная матрица** (порядок 1) совпадает до $\sim10^{-7}$, в т.ч. $(y|y)=(p_y|p_y)=1.001270$ (вертикальная фокусировка края), $(x|\delta)$, $(p_x|\delta)$. Значит, масштаб Энге (полный зазор $2\,$GAP), коэффициенты Энге (у Bell `ENGE_DEFAULT` = коэффициенты COSY по умолчанию из руководства), положение эффективной границы (равные площади, спад «оседлывает» край) и угол $e_1=e_2=0$ трактуются одинаково. Отсюда совпадение $Q_y$ кольца до $10^{-6}$.
+* **Хроматические члены** $(x|x\delta)$, $(p_x|x\delta)$, $(y|y\delta)$, $(p_y|y\delta)$, $(y|b\delta)$, … отличаются лишь на $10^{-5}$.
+* **Геометрические члены 2‑го порядка** отличаются на $10^{-5}$–$10^{-4}$, и отличие **строго ∝ GAP** ($r\approx2$): у COSY FR3 горизонтальные $(p_x|x^2)$, $(p_x|xa)$, $(p_x|x\delta)$ остаются **нулевыми** ($\le10^{-9}$, как при FR0), а у Bell они $\approx 2\cdot10^{-5}$, $1.2\cdot10^{-4}$, $2\cdot10^{-5}$. В вертикали $(p_y|xy)$, $(y|xy)$, $(p_y|xb)$ у Bell больше по модулю.
+* Члены 3‑го порядка в $y$ (например $(y|b^3)$, $(p_y|y^3)$) отличаются сильно и с $r\approx0.5$ (∝ 1/GAP) — это октупольноподобные члены края, которые от $\delta$ не зависят и на линейную хроматичность не влияют.""")
+
+md(r"""### 9.2. Какие члены карты дают $\Delta\xi$ кольца
+Возмущение первого порядка: на замкнутой орбите $z(\delta)=(D_1\delta,\,\delta)$ производная якобиана элемента $J'_{ij}=\sum_k \partial^2 M_i/\partial z_j\partial z_k\, w_k$, $w=(D,D',0,0,1)$; изменение следа матрицы оборота $\Delta\,\mathrm{tr} = \mathrm{tr}(R_{\rm rest}\,\Delta J')$, $R_{\rm rest}=M_{\rm оборот}R_{BM}^{-1}$; $\Delta\xi = -\Delta\mathrm{tr}/(4\pi\sin2\pi Q)$, сумма по 16 BM. Это разложение даёт вклад каждого коэффициента $(i|z_jz_k)$ голого BM.
+
+**Таблица.** Сумма по членам (`dxi_*_pert`) для трёх пар; для сравнения в кольце: Bell Soft − COSY FR3 = −2.888·10⁻³ / +1.007·10⁻³ (5 см).""")
+code(r"""ps = pd.read_csv('single_dipole/output/perturb_summary.csv'); ps""")
+md(r"""Формула воспроизводит прямой расчёт кольца с точностью ~1 % (−2.885·10⁻³ / +1.009·10⁻³ против −2.888·10⁻³ / +1.007·10⁻³), т.е. весь эффект — в коэффициентах 2‑го порядка карты диполя. Заметьте: **у COSY мягкий край почти не меняет $\xi_x$** (FR3 − FR0 = +5·10⁻⁵), а у Bell меняет на −2.8·10⁻³.
+
+**Рисунок 7.** Вклады отдельных коэффициентов голого BM в $\Delta\xi_x$ (слева) и $\Delta\xi_y$ (справа) для разности Bell Soft − COSY FR3, GAP = 5 см.""")
+code(r"""pt = pd.read_csv('single_dipole/output/perturb_terms.csv')
+t = pt[(pt.gap==0.05)&(pt.pair=='BellSoft-COSYFR3')]
+fig, ax = plt.subplots(1, 2, figsize=(14, 5))
+for i, pl in enumerate(['x','y']):
+    d = t[t.plane==pl].copy(); d = d.reindex(d.contrib.abs().sort_values(ascending=False).index).head(10)
+    ax[i].barh(d.term, d.contrib, color=['tab:red' if v<0 else 'tab:blue' for v in d.contrib]); ax[i].invert_yaxis()
+    ax[i].set_title(r'вклад в $\Delta\xi_%s$, сумма = %.2e' % (pl, t[t.plane==pl].contrib.sum())); ax[i].grid(alpha=.3, axis='x')
+plt.tight_layout(); plt.savefig('single_dipole_terms.png', dpi=110); plt.show()""")
+
+md(r"""### 9.3. Гипотеза: «секступольный» член $b_2$ прямой границы поля в Bell
+В мягком крае Bell (docstring `fringe.jl`) поле в изогнутой системе берётся как $h_0F(s+x\theta(s))$ — прямая граница поля, видимая с искривлённой орбиты ($\theta$ — угол орбиты к прямой). Разложение по $x$ даёт градиент $b_1=h_0F'\theta$ (он обеспечивает FINT и совпадает с COSY линейно) и **секступольноподобный член** $b_2=h_0F''\theta^2$, $H\ni b_2(x^3-3xy^2)/6$. Его интегральная сила на край $K_2L=\int h_0F''\theta^2ds$ (`b2_strength.jl`) $\propto$ GAP. Оценка тонким секступолем на каждом из 32 краёв: $\Delta\xi_x=\frac1{4\pi}\sum K_2L\,\beta_xD$, $\Delta\xi_y=-\frac1{4\pi}\sum K_2L\,\beta_yD$.
+
+**Таблица.** $K_2L$ на один край и вызванный им сдвиг хроматичности в Bell.""")
+code(r"""b2 = pd.read_csv('single_dipole/output/b2_strength.csv').merge(pd.read_csv('single_dipole/output/b2_estimate.csv'), on='gap')
+obs = summ[summ.COSY=='FR3 диполи'][['GAP','dxix','dxiy']].rename(columns={'GAP':'gap','dxix':'dxi_x_ring','dxiy':'dxi_y_ring'})
+b2 = b2.merge(obs, on='gap'); b2['x_ratio'] = b2.dxi_x_ring/b2.dxi_x_b2; b2['y_ratio'] = b2.dxi_y_ring/b2.dxi_y_b2; b2""")
+md(r"""**Рисунок 8.** Наблюдаемая разность Bell − COSY FR3 (кольцо, точки) и оценка от одного члена $b_2$ (линии) в зависимости от GAP.""")
+code(r"""fig, ax = plt.subplots(figsize=(8, 5))
+ax.plot(b2.gap, b2.dxi_x_ring, 'bo', ms=9, label=r'$\Delta\xi_x$ кольцо (Bell−COSY)'); ax.plot(b2.gap, b2.dxi_x_b2, 'b-', label=r'$\Delta\xi_x$ от $b_2$')
+ax.plot(b2.gap, b2.dxi_y_ring, 'rs', ms=9, label=r'$\Delta\xi_y$ кольцо (Bell−COSY)'); ax.plot(b2.gap, b2.dxi_y_b2, 'r-', label=r'$\Delta\xi_y$ от $b_2$'); ax.plot(b2.gap, b2.dxi_y_b2/2, 'r:', label=r'$\frac{1}{2}\Delta\xi_y$ от $b_2$')
+ax.axhline(0, color='k', lw=.5); ax.set_xlabel('GAP [м]'); ax.set_ylabel(r'$\Delta\xi$'); ax.grid(alpha=.3); ax.legend()
+plt.tight_layout(); plt.savefig('b2_vs_gap.png', dpi=110); plt.show()""")
+md(r"""### 9.4. Вывод по диполям
+* **Горизонталь: расхождение целиком объясняется членом $b_2$.** Оценка $-2.92\cdot10^{-3}$ против наблюдаемых $-2.89\cdot10^{-3}$ (99 %) при всех GAP; у COSY FR3 в карте BM горизонтальные $(p_x|x^2),(p_x|xa),(x|x^2)$ тождественно нулевые, т.е. в модели COSY для секторного магнита с $e=0$ **нет** секступольноподобного члена от прямой границы поля, а у Bell он есть ($K_2L=-2.0\cdot10^{-5}$ м⁻² на край при 5 см).
+* **Вертикаль:** $b_2$ даёт в Bell $+2.0\cdot10^{-3}$, наблюдаемая разность — ровно половина, $+1.0\cdot10^{-3}$. По карте одиночного BM: разность $(p_y|xy)$ Bell − COSY = $-1.96\cdot10^{-5}$, а член $b_2$ даёт $-4.07\cdot10^{-5}$. То есть в COSY есть член $\propto xy$ в вертикальной силе с половинной силой, а горизонтального $x^2$ нет. Поле $b_2(x^3-3xy^2)/6$ в Bell — гармоника прямой системы координат; соотношение «$x^2$‑часть : $xy$‑часть» у COSY другое (вероятно, другая параметризация спада поля вдоль изогнутой орбиты плюс кривизна в уравнениях Максвелла). Без исходного кода COSY это нельзя установить точнее — нужен независимый арбитр (см. README).
+* Хроматические ($\propto\delta$) члены и линейная оптика совпадают; квадруполи и секступоли тут не участвуют.""")
 nbf.write(nb, 'fringe_comparison.ipynb')

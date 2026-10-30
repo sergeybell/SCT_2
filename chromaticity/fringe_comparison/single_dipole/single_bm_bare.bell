@@ -1,0 +1,12 @@
+# bare BM (same element as in magnetic_2_md)
+reference
+  particle deuteron
+  kinetic_MeV 270.0
+  harmonic 1
+
+elements
+  D05      drift        L = 0.5
+  BM       sbend        L = 5.329414799999999    angle = 0.3926990753258494   k1 = 0
+
+sequence
+  BM
