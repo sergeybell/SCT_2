@@ -1,5 +1,5 @@
 { elem6_template.fox - lone hard-edge elements, full 6x6 map by COSY (order @NO@, OV @NO@ 3 0,
-  variables x a y b l dK).  Proton, kinetic 200 MeV.  At order >= 3 COSY computes s-independent
+  variables x a y b l dK).  Proton (Bell mass 938.27208816 MeV), kinetic 200 MeV.  At order >= 3 COSY computes s-independent
   element maps with its DA flow operator (FFELE -> SIELE -> DAFLO).
     1: DL 0.5        2: MQ 0.5 m, pole 0.5 T, aperture 0.05 m
     3: MS R = 2 m, 30 deg, homogeneous      4: MH 0.3 m, pole 0.2 T, aperture 0.05 m
@@ -9,7 +9,7 @@ PROCEDURE RUN;
   VARIABLE I 1; VARIABLE J 1; VARIABLE NREP 1; VARIABLE T0 1; VARIABLE T1 1; VARIABLE NM 80;
   PROCEDURE ELEM K; UM; IF K=1; DL 0.5; ELSEIF K=2; MQ 0.5 0.5 0.05; ELSEIF K=3; MS 2 30 0.05 0 0 0 0 0;
     ELSEIF K=4; MH 0.3 0.2 0.05; ENDIF; ENDPROCEDURE;
-  OV @NO@ 3 0; RPP 200; FR 0;
+  OV @NO@ 3 0; RP 200 938.27208816/AMUMEV 1; FR 0;   { proton, mass = Bell 938.27208816 MeV (CODATA 2018), not RPP (1.00727646688 amu) }
   OPENF 32 'output/refpart.txt' 'UNKNOWN'; WRITE 32 S(CONS(CHIM))&' '&S(CONS(ETA)); CLOSEF 32;
   OPENF 31 'output/elem_time_o@NO@.txt' 'UNKNOWN';
   LOOP I 1 4; ELEM I;

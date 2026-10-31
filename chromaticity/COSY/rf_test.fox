@@ -4,7 +4,7 @@ PROCEDURE RUN;
   VARIABLE MU 1000 3; VARIABLE VRF 1 1 1; VARIABLE FREQ 1; VARIABLE I 1; VARIABLE V 1 6;
   OV 3 3 0; FR 0;
   V(1) := 100; V(2) := 10; V(3) := 1; V(4) := 0.1; V(5) := 0.01; V(6) := 0.001;   { voltages [kV] }
-  FREQ := SQRT(1-1/SQR(1+270/1875.612945))*CLIGHT/117.388296;                   { h=1: f = beta c / C }
+  FREQ := SQRT(1-1/SQR(1+270/1875.61294257))*CLIGHT/117.388296;                   { h=1: f = beta c / C }
   OPENF 32 'output/rf_tp_ov330.txt' 'UNKNOWN';
   LOOP I 1 6;
     VRF(1,1) := V(I);

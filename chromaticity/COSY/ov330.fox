@@ -7,7 +7,7 @@ PROCEDURE RUN;
   RING 0 0 0 0 0 0 0 0;
   OPENF 30 'output/map_ov330.txt' 'UNKNOWN'; PM 30; CLOSEF 30;          { COSY map listing }
   OPENF 31 'output/map_ov330_full.txt' 'UNKNOWN';                       { full-precision coefficients }
-  WRITE 31 'GAMMA0 '&ST(1+270/1875.612945); WRITE 31 'LENGTH '&ST(SPOS);
+  WRITE 31 'GAMMA0 '&ST(1+270/1875.61294257); WRITE 31 'LENGTH '&ST(SPOS);
   WRITE 31 MAP(1) MAP(2) MAP(3) MAP(4) MAP(5) MAP(6);
   CLOSEF 31;
 ENDPROCEDURE;

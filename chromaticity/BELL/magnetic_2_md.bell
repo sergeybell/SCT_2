@@ -11,7 +11,7 @@ reference
 elements
   OS2      drift        L = 0.06                
   QF       quadrupole   L = 0.21                 k1 = 0.5212441755015996
-  BM       sbend        L = 5.329414799999999    angle = 0.3926990753258494   k1 = 0
+  BM       sbend        L = 5.329414799999999    angle = 0.3926990816987243   k1 = 0
   QD       quadrupole   L = 0.21                 k1 = -0.5805856428570646
   OS1      drift        L = 0.12                
   SF2      sextupole    L = 0.12                 k2 = 0

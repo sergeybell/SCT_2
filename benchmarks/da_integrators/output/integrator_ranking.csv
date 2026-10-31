@@ -1,122 +1,122 @@
 problem,order,method,time_s,target
-dipole,3,DA-flow (prototype),9.93e-05,1e-08
-dipole,3,DOP853,0.0004899,1e-08
-dipole,3,DP5,0.0004914,1e-08
-dipole,3,GBS(6),0.0004952,1e-08
-dipole,3,RK4,0.0005032,1e-08
-dipole,5,DA-flow (prototype),0.0005626,1e-08
-dipole,5,DOP853,0.0029643,1e-08
-dipole,5,DP5,0.0029039,1e-08
-dipole,5,GBS(6),0.0043048,1e-08
-dipole,5,RK4,0.0040993,1e-08
-dipole,7,DA-flow (prototype),0.0018706,1e-08
-dipole,7,DOP853,0.018045,1e-08
-dipole,7,DP5,0.020026,1e-08
-dipole,7,GBS(6),0.025333,1e-08
-dipole,7,RK4,0.028685,1e-08
-dipole,10,DA-flow (prototype),0.01606,1e-08
-dipole,10,DOP853,0.22946,1e-08
-dipole,10,DP5,0.43275,1e-08
-dipole,10,GBS(6),0.38503,1e-08
-dipole,10,RK4,0.71285,1e-08
-hh,3,DOP853,0.0004365,1e-08
-hh,3,DP5,0.0005055,1e-08
-hh,3,GBS(6),0.0003152,1e-08
-hh,3,RK4,0.0003255,1e-08
-hh,3,Yoshida6,0.0004096,1e-08
-hh,3,Yoshida8,0.0006213,1e-08
-hh,5,DOP853,0.000932,1e-08
-hh,5,DP5,0.0033723,1e-08
-hh,5,GBS(6),0.0010207,1e-08
-hh,5,RK4,0.0013481,1e-08
-hh,5,Yoshida6,0.0015103,1e-08
-hh,5,Yoshida8,0.0022084,1e-08
-hh,7,DOP853,0.0025985,1e-08
-hh,7,DP5,0.010468,1e-08
-hh,7,GBS(6),0.0035945,1e-08
-hh,7,RK4,0.0055322,1e-08
-hh,7,Yoshida6,0.0062346,1e-08
-hh,7,Yoshida8,0.0090636,1e-08
-hh,10,DOP853,0.010239,1e-08
-hh,10,DP5,0.044327,1e-08
-hh,10,GBS(6),0.019695,1e-08
-hh,10,RK4,0.032059,1e-08
-hh,10,Yoshida6,0.034793,1e-08
-hh,10,Yoshida8,0.053053,1e-08
-quad,3,DA-flow (prototype),0.0001811,1e-08
-quad,3,DOP853,0.0008392,1e-08
-quad,3,DP5,0.0011329,1e-08
-quad,3,GBS(6),0.0007354,1e-08
-quad,3,RK4,0.0016881,1e-08
-quad,3,Yoshida6,0.0016285,1e-08
-quad,3,Yoshida8,0.0024038,1e-08
-quad,5,DA-flow (prototype),0.0016181,1e-08
-quad,5,DOP853,0.0050719,1e-08
-quad,5,DP5,0.012051,1e-08
-quad,5,GBS(6),0.0055146,1e-08
-quad,5,RK4,0.01675,1e-08
-quad,5,Yoshida6,0.030987,1e-08
-quad,5,Yoshida8,0.02491,1e-08
-quad,7,DA-flow (prototype),0.0044734,1e-08
-quad,7,DOP853,0.038401,1e-08
-quad,7,DP5,0.036457,1e-08
-quad,7,GBS(6),0.034819,1e-08
-quad,7,Yoshida6,0.21425,1e-08
-quad,7,Yoshida8,0.35889,1e-08
-quad,10,DA-flow (prototype),0.025928,1e-08
-quad,10,DOP853,0.69914,1e-08
-quad,10,DP5,0.64033,1e-08
-quad,10,GBS(6),0.67945,1e-08
-quad,10,Yoshida6,2.6351,1e-08
-quad,10,Yoshida8,3.9956,1e-08
-dipole,3,DA-flow (prototype),9.93e-05,1e-12
-dipole,3,DOP853,0.0008841,1e-12
-dipole,3,DP5,0.0028677,1e-12
-dipole,3,GBS(6),0.0004952,1e-12
-dipole,5,DA-flow (prototype),0.0005626,1e-12
-dipole,5,DOP853,0.0058772,1e-12
-dipole,5,DP5,0.020282,1e-12
-dipole,5,GBS(6),0.0043048,1e-12
-dipole,7,DA-flow (prototype),0.0018706,1e-12
-dipole,7,DOP853,0.03444,1e-12
-dipole,7,DP5,0.16231,1e-12
-dipole,7,GBS(6),0.038637,1e-12
-dipole,10,DA-flow (prototype),0.01606,1e-12
-dipole,10,DOP853,0.56026,1e-12
-dipole,10,DP5,2.4164,1e-12
-dipole,10,GBS(6),0.51123,1e-12
-hh,3,DOP853,0.0009817,1e-12
-hh,3,DP5,0.0034936,1e-12
-hh,3,GBS(6),0.0004142,1e-12
-hh,3,Yoshida8,0.0025296,1e-12
-hh,5,DOP853,0.0024705,1e-12
-hh,5,DP5,0.0086865,1e-12
-hh,5,GBS(6),0.0013499,1e-12
-hh,5,Yoshida8,0.0098565,1e-12
-hh,7,DOP853,0.0067874,1e-12
-hh,7,DP5,0.026355,1e-12
-hh,7,GBS(6),0.0052346,1e-12
-hh,7,Yoshida8,0.039951,1e-12
-hh,10,DOP853,0.031038,1e-12
-hh,10,DP5,0.11499,1e-12
-hh,10,GBS(6),0.028074,1e-12
-hh,10,Yoshida8,0.21876,1e-12
-quad,3,DA-flow (prototype),0.0001811,1e-12
-quad,3,DOP853,0.0017197,1e-12
-quad,3,DP5,0.0091401,1e-12
-quad,3,GBS(6),0.0009715,1e-12
-quad,3,Yoshida8,0.012624,1e-12
-quad,5,DA-flow (prototype),0.0016181,1e-12
-quad,5,DOP853,0.01268,1e-12
-quad,5,DP5,0.094579,1e-12
-quad,5,GBS(6),0.013803,1e-12
-quad,5,Yoshida8,0.1037,1e-12
-quad,7,DA-flow (prototype),0.0044734,1e-12
-quad,7,DOP853,0.15388,1e-12
-quad,7,DP5,0.25732,1e-12
-quad,7,GBS(6),0.091613,1e-12
-quad,7,Yoshida8,0.68091,1e-12
-quad,10,DA-flow (prototype),0.025928,1e-12
-quad,10,DOP853,1.9966,1e-12
-quad,10,DP5,4.1538,1e-12
-quad,10,GBS(6),1.4022,1e-12
+dipole,3,DA-flow (prototype),0.0001024,1e-08
+dipole,3,DOP853,0.0005076,1e-08
+dipole,3,DP5,0.0005018,1e-08
+dipole,3,GBS(6),0.0004277,1e-08
+dipole,3,RK4,0.0003916,1e-08
+dipole,5,DA-flow (prototype),0.0003781,1e-08
+dipole,5,DOP853,0.0024797,1e-08
+dipole,5,DP5,0.0027382,1e-08
+dipole,5,GBS(6),0.0035153,1e-08
+dipole,5,RK4,0.003361,1e-08
+dipole,7,DA-flow (prototype),0.0017759,1e-08
+dipole,7,DOP853,0.016643,1e-08
+dipole,7,DP5,0.019444,1e-08
+dipole,7,GBS(6),0.023685,1e-08
+dipole,7,RK4,0.022546,1e-08
+dipole,10,DA-flow (prototype),0.012065,1e-08
+dipole,10,DOP853,0.22269,1e-08
+dipole,10,DP5,0.37641,1e-08
+dipole,10,GBS(6),0.28726,1e-08
+dipole,10,RK4,0.61377,1e-08
+hh,3,DOP853,0.0004206,1e-08
+hh,3,DP5,0.0005192,1e-08
+hh,3,GBS(6),0.0003118,1e-08
+hh,3,RK4,0.000328,1e-08
+hh,3,Yoshida6,0.0004029,1e-08
+hh,3,Yoshida8,0.0006082,1e-08
+hh,5,DOP853,0.0008062,1e-08
+hh,5,DP5,0.0032035,1e-08
+hh,5,GBS(6),0.0009064,1e-08
+hh,5,RK4,0.0011826,1e-08
+hh,5,Yoshida6,0.00143,1e-08
+hh,5,Yoshida8,0.0019872,1e-08
+hh,7,DOP853,0.0022593,1e-08
+hh,7,DP5,0.0082133,1e-08
+hh,7,GBS(6),0.0032131,1e-08
+hh,7,RK4,0.0049563,1e-08
+hh,7,Yoshida6,0.0054194,1e-08
+hh,7,Yoshida8,0.0083881,1e-08
+hh,10,DOP853,0.010761,1e-08
+hh,10,DP5,0.03894,1e-08
+hh,10,GBS(6),0.019078,1e-08
+hh,10,RK4,0.029764,1e-08
+hh,10,Yoshida6,0.033297,1e-08
+hh,10,Yoshida8,0.049896,1e-08
+quad,3,DA-flow (prototype),0.0002047,1e-08
+quad,3,DOP853,0.000849,1e-08
+quad,3,DP5,0.0012438,1e-08
+quad,3,GBS(6),0.0007339,1e-08
+quad,3,RK4,0.0018137,1e-08
+quad,3,Yoshida6,0.0013816,1e-08
+quad,3,Yoshida8,0.003271,1e-08
+quad,5,DA-flow (prototype),0.001784,1e-08
+quad,5,DOP853,0.0045431,1e-08
+quad,5,DP5,0.0085346,1e-08
+quad,5,GBS(6),0.0047708,1e-08
+quad,5,RK4,0.013524,1e-08
+quad,5,Yoshida6,0.02739,1e-08
+quad,5,Yoshida8,0.02017,1e-08
+quad,7,DA-flow (prototype),0.0032329,1e-08
+quad,7,DOP853,0.034584,1e-08
+quad,7,DP5,0.029486,1e-08
+quad,7,GBS(6),0.028281,1e-08
+quad,7,Yoshida6,0.22165,1e-08
+quad,7,Yoshida8,0.31799,1e-08
+quad,10,DA-flow (prototype),0.024352,1e-08
+quad,10,DOP853,0.70944,1e-08
+quad,10,DP5,0.57391,1e-08
+quad,10,GBS(6),0.72717,1e-08
+quad,10,Yoshida6,2.3723,1e-08
+quad,10,Yoshida8,3.5625,1e-08
+dipole,3,DA-flow (prototype),0.0001024,1e-12
+dipole,3,DOP853,0.0008555,1e-12
+dipole,3,DP5,0.0027679,1e-12
+dipole,3,GBS(6),0.0004277,1e-12
+dipole,5,DA-flow (prototype),0.0003781,1e-12
+dipole,5,DOP853,0.0049744,1e-12
+dipole,5,DP5,0.016732,1e-12
+dipole,5,GBS(6),0.0035153,1e-12
+dipole,7,DA-flow (prototype),0.0017759,1e-12
+dipole,7,DOP853,0.033687,1e-12
+dipole,7,DP5,0.11824,1e-12
+dipole,7,GBS(6),0.03553,1e-12
+dipole,10,DA-flow (prototype),0.012065,1e-12
+dipole,10,DOP853,0.51756,1e-12
+dipole,10,DP5,2.1591,1e-12
+dipole,10,GBS(6),0.51062,1e-12
+hh,3,DOP853,0.0009504,1e-12
+hh,3,DP5,0.0037348,1e-12
+hh,3,GBS(6),0.0004228,1e-12
+hh,3,Yoshida8,0.0024662,1e-12
+hh,5,DOP853,0.0021508,1e-12
+hh,5,DP5,0.0078399,1e-12
+hh,5,GBS(6),0.0012391,1e-12
+hh,5,Yoshida8,0.010056,1e-12
+hh,7,DOP853,0.0054737,1e-12
+hh,7,DP5,0.021041,1e-12
+hh,7,GBS(6),0.0048062,1e-12
+hh,7,Yoshida8,0.034034,1e-12
+hh,10,DOP853,0.026291,1e-12
+hh,10,DP5,0.095093,1e-12
+hh,10,GBS(6),0.026944,1e-12
+hh,10,Yoshida8,0.20584,1e-12
+quad,3,DA-flow (prototype),0.0002047,1e-12
+quad,3,DOP853,0.0017254,1e-12
+quad,3,DP5,0.0090346,1e-12
+quad,3,GBS(6),0.0010303,1e-12
+quad,3,Yoshida8,0.012295,1e-12
+quad,5,DA-flow (prototype),0.001784,1e-12
+quad,5,DOP853,0.011906,1e-12
+quad,5,DP5,0.076781,1e-12
+quad,5,GBS(6),0.0091166,1e-12
+quad,5,Yoshida8,0.083933,1e-12
+quad,7,DA-flow (prototype),0.0032329,1e-12
+quad,7,DOP853,0.09547,1e-12
+quad,7,DP5,0.22306,1e-12
+quad,7,GBS(6),0.080329,1e-12
+quad,7,Yoshida8,0.66289,1e-12
+quad,10,DA-flow (prototype),0.024352,1e-12
+quad,10,DOP853,2.1337,1e-12
+quad,10,DP5,3.8171,1e-12
+quad,10,GBS(6),1.4889,1e-12

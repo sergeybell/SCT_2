@@ -1,22 +1,23 @@
+WARNING: close_ring: bend angles scaled by 1 + 1.6228392851758144e-8 so that the total is exactly 2 pi
 # BELL (Julia) results for C:\GIT_REPOS\SCT_2\lattice\magnetic_2_md.opt
 # reference: mass=1875.61294257 MeV Ekin=270.0000 MeV gamma=1.143952941 beta=0.485634729 p=1041.984160 MeV/c Brho=3.47568503 T*m
 # delta = dp/p (canonical momentum deviation); xi = dQ/ddelta (central difference of Jacobian tunes on off-momentum closed orbit)
 C_m = 117.3882960
-linear_Qx = 2.46172014
+linear_Qx = 2.46172015
 linear_Qy = 2.46133732
 linear_alpha_c = 0.23047028
 linear_eta = -0.53368863
 taylor_alpha0 = 0.23047028
-taylor_alpha1 = 0.33900771
+taylor_alpha1 = 0.33900770
 taylor_eta0 = -0.53368863
-taylor_eta1 = 1.01716074
-taylor_Qx_frac = 0.46172014
+taylor_eta1 = 1.01716073
+taylor_Qx_frac = 0.46172015
 taylor_xi_x = -1.461538
 taylor_xi2_x = 8.5547
 taylor_Qy_frac = 0.46133732
 taylor_xi_y = -2.225488
 taylor_xi2_y = 8.1041
-lie_Qx = 0.46172014
+lie_Qx = 0.46172015
 lie_Qy = 0.46133732
 lie_alpha0 = 0.23047028
 lie_eta0 = -0.53368863
@@ -24,5 +25,5 @@ lie_xi_x = -1.461538
 lie_xi_y = -2.225488
 lie_xi2_x = 8.5547
 lie_xi2_y = 8.1041
-# taylor map built in 1.5 s
+# taylor map built in 1.9 s
 written C:\GIT_REPOS\SCT_2\chromaticity\BELL\output\bell_results.txt

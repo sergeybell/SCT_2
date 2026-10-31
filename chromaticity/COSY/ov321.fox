@@ -7,7 +7,7 @@ PROCEDURE RUN;
   PART 270*PARA(1);                          { EK = 270 MeV * (1 + delta_K) }
   RING 0 0 0 0 0 0 0 0;
   TP MU;                                     { tunes as functions of delta_K }
-  G := 1+270/1875.612945; F := 1+1/G;        { delta_K = (1+1/gamma) delta_p }
+  G := 1+270/1875.61294257; F := 1+1/G;        { delta_K = (1+1/gamma) delta_p }
   OPENF 20 'output/cosy_ov321.txt' 'UNKNOWN';
   WRITE 20 'length = '&ST(SPOS);
   WRITE 20 'gamma0 = '&ST(G);

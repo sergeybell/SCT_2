@@ -6,7 +6,7 @@ reference
 
 elements
   D05      drift        L = 0.5
-  BM       sbend        L = 5.329414799999999    angle = 0.3926990753258494   k1 = 0
+  BM       sbend        L = 5.329414799999999    angle = 0.3926990816987243   k1 = 0
 
 sequence
   D05 BM D05

@@ -7,7 +7,7 @@
 # Run: julia --project=julia julia/profile.jl  -> output/profile.csv
 using Bell, Bell.DiffAlgebra, Bell.Integrators, BenchmarkTools, Printf, Profile
 const OUT = joinpath(dirname(@__DIR__), "output")
-const ETA = 0.2131578052277212; const KQ = 10 / 2.149635688032703
+const ETA = 0.2131577849578903; const KQ = 10 / 2.149635780396420   # COSY refpart.txt, proton 938.27208816 MeV (= Bell), 200 MeV
 io = open(joinpath(OUT, "profile.csv"), "w")
 println(io, "order,total_s,gc_frac,bytes_per_rhs,nfev,t_rhs_s,t_mul_s,t_sqrt_s,t_inv_s,t_axpy_s,rhs_model_s,frac_rhs_in_total,frac_lincomb_in_total")
 for no in (5, 7, 10)

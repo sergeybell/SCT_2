@@ -1,7 +1,7 @@
 # compare_single.py - COSY vs Bell maps of a lone BM; writes output/single_bm_compare.csv
 import numpy as np, pandas as pd, itertools
 from math import sqrt
-M0 = 1875.612945; g = 1 + 270/M0; bg = sqrt(g*g-1)
+M0 = 1875.61294257; g = 1 + 270/M0; bg = sqrt(g*g-1)
 def dK_series(N=3):
     a, b, c = 1+bg**2, 2*bg**2, bg**2; P = [a, b, c]+[0]*N; s = [sqrt(a)]+[0]*N
     for n in range(1, N+1): s[n] = (P[n]-sum(s[i]*s[n-i] for i in range(1, n)))/(2*s[0])

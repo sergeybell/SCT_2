@@ -8,7 +8,7 @@
 |---|---|
 | `cosy/da_ops_template.fox`, `cosy/run_cosy_da.ps1` | DA-задачи nv = 6, N = 3/5/7/10: коэффициенты (`acc_o<N>.txt`) и время операций (`time_o<N>.txt`) |
 | `cosy/hh_template.fox` | Хенона–Хейлеса, RK4 на FOX (тот же алгоритм, что в Bell), карты и время |
-| `cosy/elem_template.fox`, `cosy/run_cosy_ode.ps1` | одиночные MQ / MS (протон 200 МэВ), карты COSY и время |
+| `cosy/elem_template.fox`, `cosy/run_cosy_ode.ps1` | одиночные MQ / MS (протон 200 МэВ, масса 938.27208816 МэВ как в Bell; COSY `RP 200 938.27208816/AMUMEV 1` вместо `RPP`), карты COSY и время |
 | `julia/setup.jl` | однократная настройка окружения (Bell dev, BenchmarkTools) |
 | `julia/cosy_io.jl` | чтение DA из вывода COSY `WRITE` |
 | `julia/da_compare.jl` | (1) совпадение коэффициентов, (2) скорость DA-операций → `output/da_accuracy.csv`, `da_timing.csv`, `da_compile.csv` |

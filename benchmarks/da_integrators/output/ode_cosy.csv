@@ -1,41 +1,41 @@
 problem,order,what,time_s,err_vs_ref
-hh,3,COSY FOX RK4 n=10,1.6212e-04,5.631e-06
-hh,3,COSY FOX RK4 n=20,3.5858e-04,3.760e-07
-hh,3,COSY FOX RK4 n=40,7.1716e-04,2.438e-08
+hh,3,COSY FOX RK4 n=10,1.6022e-04,5.631e-06
+hh,3,COSY FOX RK4 n=20,3.6240e-04,3.760e-07
+hh,3,COSY FOX RK4 n=40,7.5531e-04,2.438e-08
 hh,3,COSY FOX RK4 n=80,1.4648e-03,1.550e-09
-hh,3,COSY FOX RK4 n=160,2.8992e-03,9.771e-11
-hh,3,COSY FOX RK4 n=320,5.6152e-03,6.133e-12
-quad,3,COSY element map,1.0777e-04,2.376e-16
-quad,3,Bell DA-flow prototype,1.8110e-04,0.000e+00
-dipole,3,COSY element map,1.6594e-04,4.241e-16
-dipole,3,Bell DA-flow prototype,9.9300e-05,0.000e+00
-hh,5,COSY FOX RK4 n=10,5.7220e-04,5.631e-06
-hh,5,COSY FOX RK4 n=20,1.2665e-03,3.760e-07
-hh,5,COSY FOX RK4 n=40,2.5940e-03,2.438e-08
-hh,5,COSY FOX RK4 n=80,5.2490e-03,1.550e-09
-hh,5,COSY FOX RK4 n=160,1.0376e-02,9.771e-11
-hh,5,COSY FOX RK4 n=320,2.0752e-02,6.133e-12
-quad,5,COSY element map,5.6458e-04,4.307e-16
-quad,5,Bell DA-flow prototype,1.6181e-03,0.000e+00
-dipole,5,COSY element map,7.1716e-04,1.034e-15
-dipole,5,Bell DA-flow prototype,5.6260e-04,0.000e+00
-hh,7,COSY FOX RK4 n=10,1.8463e-03,5.631e-06
-hh,7,COSY FOX RK4 n=20,4.0283e-03,3.760e-07
-hh,7,COSY FOX RK4 n=40,8.1787e-03,2.438e-08
-hh,7,COSY FOX RK4 n=80,1.6357e-02,1.550e-09
+hh,3,COSY FOX RK4 n=160,2.8687e-03,9.771e-11
+hh,3,COSY FOX RK4 n=320,5.9204e-03,6.133e-12
+quad,3,COSY element map,1.1063e-04,1.109e-15
+quad,3,Bell DA-flow prototype,2.0470e-04,0.000e+00
+dipole,3,COSY element map,1.8501e-04,4.241e-16
+dipole,3,Bell DA-flow prototype,1.0240e-04,0.000e+00
+hh,5,COSY FOX RK4 n=10,5.8746e-04,5.631e-06
+hh,5,COSY FOX RK4 n=20,1.3580e-03,3.760e-07
+hh,5,COSY FOX RK4 n=40,2.9602e-03,2.438e-08
+hh,5,COSY FOX RK4 n=80,6.2256e-03,1.550e-09
+hh,5,COSY FOX RK4 n=160,1.2207e-02,9.771e-11
+hh,5,COSY FOX RK4 n=320,2.1240e-02,6.133e-12
+quad,5,COSY element map,6.3324e-04,1.636e-15
+quad,5,Bell DA-flow prototype,1.7840e-03,0.000e+00
+dipole,5,COSY element map,9.1553e-04,7.241e-16
+dipole,5,Bell DA-flow prototype,3.7810e-04,0.000e+00
+hh,7,COSY FOX RK4 n=10,1.9073e-03,5.631e-06
+hh,7,COSY FOX RK4 n=20,3.9673e-03,3.760e-07
+hh,7,COSY FOX RK4 n=40,8.5449e-03,2.438e-08
+hh,7,COSY FOX RK4 n=80,1.6846e-02,1.550e-09
 hh,7,COSY FOX RK4 n=160,3.2227e-02,9.771e-11
 hh,7,COSY FOX RK4 n=320,6.4453e-02,6.133e-12
-quad,7,COSY element map,2.7466e-03,4.971e-16
-quad,7,Bell DA-flow prototype,4.4734e-03,0.000e+00
-dipole,7,COSY element map,2.9297e-03,9.653e-16
-dipole,7,Bell DA-flow prototype,1.8706e-03,0.000e+00
-hh,10,COSY FOX RK4 n=10,7.6904e-03,5.631e-06
-hh,10,COSY FOX RK4 n=20,1.6602e-02,3.760e-07
-hh,10,COSY FOX RK4 n=40,3.3203e-02,2.438e-08
+quad,7,COSY element map,2.8076e-03,2.610e-15
+quad,7,Bell DA-flow prototype,3.2329e-03,0.000e+00
+dipole,7,COSY element map,2.7161e-03,1.158e-15
+dipole,7,Bell DA-flow prototype,1.7759e-03,0.000e+00
+hh,10,COSY FOX RK4 n=10,7.6294e-03,5.631e-06
+hh,10,COSY FOX RK4 n=20,1.5869e-02,3.760e-07
+hh,10,COSY FOX RK4 n=40,3.2227e-02,2.438e-08
 hh,10,COSY FOX RK4 n=80,6.5430e-02,1.550e-09
-hh,10,COSY FOX RK4 n=160,1.2891e-01,9.771e-11
-hh,10,COSY FOX RK4 n=320,2.5781e-01,6.133e-12
-quad,10,COSY element map,2.3682e-02,3.912e-16
-quad,10,Bell DA-flow prototype,2.5928e-02,0.000e+00
-dipole,10,COSY element map,2.0752e-02,2.587e-15
-dipole,10,Bell DA-flow prototype,1.6060e-02,0.000e+00
+hh,10,COSY FOX RK4 n=160,1.3281e-01,9.771e-11
+hh,10,COSY FOX RK4 n=320,2.6562e-01,6.133e-12
+quad,10,COSY element map,2.5146e-02,3.716e-15
+quad,10,Bell DA-flow prototype,2.4352e-02,0.000e+00
+dipole,10,COSY element map,2.0020e-02,2.858e-15
+dipole,10,Bell DA-flow prototype,1.2065e-02,0.000e+00

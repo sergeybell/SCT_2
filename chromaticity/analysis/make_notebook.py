@@ -4,7 +4,7 @@ nb = nbf.v4.new_notebook(); c = []
 md = lambda s: c.append(nbf.v4.new_markdown_cell(s)); code = lambda s: c.append(nbf.v4.new_code_cell(s))
 
 md(r"""# Хроматичность и Twiss-функции magnetic_2_md: OptiM, BELL, COSY, MAD-X
-Решётка `C:\GIT_REPOS\SCT_2\lattice\magnetic_2_md.opt`, дейтрон m = 1875.612945 МэВ, W = 270 МэВ,
+Решётка `C:\GIT_REPOS\SCT_2\lattice\magnetic_2_md.opt`, дейтрон m = 1875.61294257 МэВ, W = 270 МэВ,
 γ0 = 1.143952941, β0 = 0.485634729, Bρ = 3.47568504 Т·м.
 
 **Общее определение:** ξ = dQ/dδ, δ = dp/p, натуральная (секступоли = 0), первый порядок; eta = ΔT/T/δ = alpha_c − 1/γ².
@@ -16,7 +16,7 @@ md(r"""# Хроматичность и Twiss-функции magnetic_2_md: OptiM
 code(r'''import re, json, pathlib, subprocess, sys
 import numpy as np, pandas as pd, matplotlib.pyplot as plt
 R = pathlib.Path(r"C:\GIT_REPOS\SCT_2\chromaticity")
-G0 = 1 + 270/1875.612945; B0 = np.sqrt(1 - 1/G0**2); F = 1 + 1/G0
+G0 = 1 + 270/1875.61294257; B0 = np.sqrt(1 - 1/G0**2); F = 1 + 1/G0
 pd.set_option("display.precision", 6); pd.set_option("display.width", 220); pd.set_option("display.max_colwidth", 70)
 def show(path, pat=None, first=None):
     """print raw lines of an output file (optionally only lines matching regex pat)"""
@@ -168,7 +168,7 @@ det 2×2 = 0.991). TP даёт собственные тюны связанно�
 `COSY/ov321_user_method.fox` — его процедура на нашей `lattice_md` → ξ = −1.460889 / −2.224733; отличие от −1.461536 / −2.225485 только из-за
 массы атома (1876.12 вместо 1875.61 МэВ ⇒ другой импульс при 270 МэВ).
 
-**Наш `ov321.fox`:** `OV 3 2 1; FR 0; PART 270*PARA(1)` (масса 1875.612945/AMUMEV) → `RING` → `TP MU` → ξ = (1+1/γ)·(MU|(0,0,0,0,1)) — тот же метод,
+**Наш `ov321.fox`:** `OV 3 2 1; FR 0; PART 270*PARA(1)` (масса 1875.61294257/AMUMEV) → `RING` → `TP MU` → ξ = (1+1/γ)·(MU|(0,0,0,0,1)) — тот же метод,
 но решётка без поворота квадруполей и точная масса дейтрона.""")
 code(r'''src(r"C:\GIT_REPOS\SCT_2\COSY\jobs\delta_eq.fox", "pascal", 187, 196)
 src(r"C:\GIT_REPOS\SCT_2\COSY\src\header.fox", "pascal", 53, 67)

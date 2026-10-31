@@ -4,7 +4,7 @@
 Ядро BELL не менялось, используется как есть (v0.10.0).
 
 * Решётка читается OptiM-ридером BELL `convert_optim` → `magnetic_2_md.bell` → `load_structure`.
-* Частица: `DEUTERON` из BELL (m = 1875.61294257 МэВ, CODATA 2018; отличие от 1875.612945 ~1e-9, пренебрежимо),
+* Частица: `DEUTERON` из BELL (m = 1875.61294257 МэВ, CODATA 2018; та же масса задана и в COSY `PART`; заголовок OptiM 1875.612945 не используется), угол BM ровно π/8 (`convert_optim(...; close_ring = true)`: поле B из .opt даёт угол на 1.6e-8 меньше),
   W = 270 МэВ (из заголовка .opt).
 * Что считается (`output/bell_results.txt`):
   * `linear_*` — одно-оборотная матрица (`ring_matrix`, `periodic_optics`, `optics_along`): Qx, Qy, alpha_c, eta.

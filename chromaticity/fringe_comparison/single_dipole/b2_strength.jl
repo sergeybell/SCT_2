@@ -1,7 +1,7 @@
 # b2_strength.jl - integrated "sextupole-like" term of Bell's soft edge: K2L = int h0 F'' theta^2 ds per edge,
 # and the gradient-like term int h0 F' theta ds (= h0^2 I), for Enge(2*GAP).   julia --project=../BELL b2_strength.jl
 using Bell, Printf
-h0 = 0.3926990753258494 / 5.329414799999999
+h0 = 0.3926990816987243 / 5.329414799999999
 open(joinpath(@__DIR__, "output", "b2_strength.csv"), "w") do io
     println(io, "gap,I,K1L_b1,K2L_b2,W,H1_hb1")
     for gap in (0.05, 0.025, 0.0125)

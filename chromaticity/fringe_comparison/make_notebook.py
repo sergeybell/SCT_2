@@ -35,7 +35,7 @@ md(r"""## 1. Что такое каждая модель
 code(r"""import numpy as np, pandas as pd, matplotlib.pyplot as plt
 from math import factorial, sqrt
 pd.set_option('display.width', 200); pd.set_option('display.max_rows', 200)
-M = 1875.612945; T = 270.0; g = 1 + T/M; bg = sqrt(g*g - 1)
+M = 1875.61294257; T = 270.0; g = 1 + T/M; bg = sqrt(g*g - 1)
 cosy = pd.read_csv('COSY/output/cosy_mu_series.csv', skipinitialspace=True)
 for c in ['FD','FQ','k']: cosy[c] = cosy[c].round().astype(int)
 cosy['GAP'] = cosy['GAP'].round(6)
@@ -353,7 +353,7 @@ md(r"""## 11. Хроматичность высших порядков из ка
 3. $\cos\mu(\delta)=\tfrac12\operatorname{tr}R$ решается ньютоном в DA от ветви $\mu_0\in(0,\pi)$ ($R_{12}>0$), $Q=\mu/2\pi$; $\xi_n=n!\,q_n$, $n\le N-1$.
 
 $\delta=\Delta p/p$, COSY пересчитан из $\delta_K$ как и выше (столбцы `xi*` в `cosy_q_delta.csv`). **Краевые поля в пути потока не реализованы** - сравнение только NoEdge с COSY FR0; углы входа диполей $e_1=e_2=0$ (проверено: 16 BM, ненулевых углов нет), RF-резонатора в структуре нет. Связи $x$-$y$ нет ($R_{1:2,3:4}=0$).
-Два варианта решётки Bell: **file** - `magnetic_2_md.bell` как есть (то же, что NoEdge в разд. 2-4); **matched** - те же элементы с точными входными данными COSY: угол BM $=\pi/8$ (в файле 0.3926990753, 8 знаков, $-6.4\cdot10^{-9}$ рад), масса дейтрона 1875.612945 МэВ (COSY `PART`; в Bell 1875.61294257), $k_1=G/B\rho$ с этим $B\rho$.
+Решётка Bell - `magnetic_2_md.bell` (то же, что NoEdge в разд. 2-4). Входные данные Bell и COSY теперь одинаковы: угол BM ровно $\pi/8$ (`convert_optim(...; close_ring = true)`, отличие от `pi/8` $1.7\cdot10^{-16}$; COSY `MS ... 22.5`), масса дейтрона 1875.61294257 МэВ (Bell `DEUTERON`, CODATA 2018; COSY `RP EK 1875.61294257/AMUMEV 1` в `PART`), $W=270$ МэВ. Прежняя копия *matched* (подстановка массы COSY 1875.612945 МэВ в Bell) больше не нужна.
 Программа: `BELL/flow_chrom.jl` → `BELL/output/flow_xi.csv`, `flow_chrom.log` (~25 с).""")
 code(r"""fx = pd.read_csv('BELL/output/flow_xi.csv')
 cq = pd.read_csv('cosy_q_delta.csv'); cf0 = cq[(cq.variant=='FR0')].drop_duplicates('plane').set_index('plane')
@@ -364,22 +364,20 @@ for pl in ['x','y']:
         k = 'q0' if n == 0 else 'xi%d' % n
         c = cf0.loc[pl, k]
         f = fx[(fx.lattice=='file')&(fx.source=='flow')&(fx.N==NB)&(fx.plane==pl)].iloc[0][k]
-        m = fx[(fx.lattice=='matched')&(fx.source=='flow')&(fx.N==NB)&(fx.plane==pl)].iloc[0][k]
-        T.append(dict(plane=pl, n=n, COSY_FR0=c, Bell_file=f, Bell_matched=m, d_file=f-c, d_matched=m-c, rel_matched=(m-c)/abs(c)))
+        T.append(dict(plane=pl, n=n, COSY_FR0=c, Bell=f, d=f-c, rel=(f-c)/abs(c)))
 xt = pd.DataFrame(T); xt.to_csv('flow_xi_vs_cosy.csv', index=False)
 pd.set_option('display.float_format', lambda v: '%.10g' % v); xt""")
-md(r"""**Таблица 11.1.** $Q_0$ ($n=0$) и $\xi_n=d^nQ/d\delta^n$, $n=1..6$: COSY FR0 (OV 7) против Bell `chromaticity_series(lat, 8)` (точно до $\xi_7$) для решётки *file* и *matched*; `d_*` = Bell − COSY, `rel_matched` = относительная разность. $\xi_6$ у COSY не надёжен (OV 7: старший коэффициент, см. разд. 2).""")
+md(r"""**Таблица 11.1.** $Q_0$ ($n=0$) и $\xi_n=d^nQ/d\delta^n$, $n=1..6$: COSY FR0 (OV 7) против Bell `chromaticity_series(lat, 8)` (точно до $\xi_7$) ; `d` = Bell − COSY, `rel` = относительная разность. $\xi_6$ у COSY не надёжен (OV 7: старший коэффициент, см. разд. 2).""")
 code(r"""conv = []
-for lt in ['file','matched']:
+for lt in ['file']:
     for pl in ['x','y']:
         d = fx[(fx.lattice==lt)&(fx.source=='flow')&(fx.plane==pl)].sort_values('N')
-        ref = d[d.N==9].iloc[0] if lt=='file' else d[d.N==8].iloc[0]
         for _, r in d.iterrows():
             conv.append(dict(lattice=lt, plane=pl, N=r.N, n_max=r.N-1, xi1=r.xi1, xi3=r.xi3, xi5=r.xi5, seconds=r.seconds))
 cv = pd.DataFrame(conv); cv[cv.plane=='x'][['lattice','N','n_max','xi1','xi3','xi5','seconds']]""")
 md(r"""**Таблица 11.2.** Независимость от порядка карты: $\xi_1,\xi_3,\xi_5$ ($x$) при $N=3..9$ (пустые - $n>N-1$) и время `one_turn_map_flow` + `chromaticity_series` [с] (Windows, 1 поток). Коэффициенты, доступные при данном $N$, не меняются с ростом $N$ (до $10^{-13}$ отн.) - ряд точен, а не подогнан.""")
 code(r"""old = []
-for lt in ['file','matched']:
+for lt in ['file']:
     for pl in ['x','y']:
         c = cf0.loc[pl, 'xi1']
         g = lambda s: fx[(fx.lattice==lt)&(fx.source==s)&(fx.plane==pl)].iloc[0]
@@ -390,13 +388,12 @@ for lt in ['file','matched']:
 ot = pd.DataFrame(old); ot""")
 md(r"""**Таблица 11.3.** Происхождение остатка $\xi_1$ Bell NoEdge − COSY FR0 ($\approx -1.8\cdot10^{-6}$ по $x$, $-3.0\cdot10^{-6}$ по $y$ в разд. 2). Столбцы: старый путь Драгт-Финна, карта порядка 3 + `chromaticity_orders` (центральная разность, шаг $10^{-4}$, как в `run.jl`); та же карта Драгт-Финна, но ряд `chromaticity_series` (точно); путь потока $N=8$. То же для $\xi_2$.""")
 code(r"""fig, ax = plt.subplots(1, 2, figsize=(14, 5))
-for lt, mk in [('file','o--'), ('matched','s-')]:
+for lt, mk in [('file','o-')]:
     for pl, c in [('x','tab:blue'), ('y','tab:red')]:
-        d = xt[(xt.plane==pl)&(xt.n>=1)&(xt.n<=5)] if lt=='matched' else None
         r = [abs((fx[(fx.lattice==lt)&(fx.source=='flow')&(fx.N==8)&(fx.plane==pl)].iloc[0]['xi%d'%n] - cf0.loc[pl,'xi%d'%n]) / cf0.loc[pl,'xi%d'%n]) for n in range(1,6)]
         ax[0].semilogy(range(1,6), np.maximum(r, 1e-16), mk, color=c, label='%s, %s' % (lt, pl))
 ax[0].set_xlabel('n'); ax[0].set_ylabel(r'$|\xi_n^{\rm Bell}-\xi_n^{\rm COSY}|/|\xi_n^{\rm COSY}|$'); ax[0].grid(alpha=.3, which='both'); ax[0].legend()
-for lt, mk in [('file','o--'), ('matched','s-')]:
+for lt, mk in [('file','o-')]:
     for pl, c in [('x','tab:blue'), ('y','tab:red')]:
         ex = fx[(fx.lattice==lt)&(fx.source=='DF_exact_series')&(fx.plane==pl)].iloc[0].xi1
         dds = [1e-5, 1e-4, 1e-3]; e = [abs(fx[(fx.lattice==lt)&(fx.source=='DF_findiff_dd%s' % ('1.0e-5' if dd==1e-5 else dd))&(fx.plane==pl)].iloc[0].xi1 - ex) for dd in dds]
@@ -404,10 +401,10 @@ for lt, mk in [('file','o--'), ('matched','s-')]:
 dd = np.array([1e-5, 1e-3]); ax[1].loglog(dd, 180*dd**2, 'k:', label=r'$180\,dd^2$')
 ax[1].set_xlabel('шаг dd'); ax[1].set_ylabel(r'$|\xi_1^{\rm FD}-\xi_1^{\rm exact}|$ (карта Драгт-Финна)'); ax[1].grid(alpha=.3, which='both'); ax[1].legend(fontsize=8)
 plt.tight_layout(); plt.savefig('flow_xi_vs_cosy.png', dpi=110); plt.show()""")
-md(r"""**Рисунок 11.** Слева: относительная разность $\xi_n$ Bell (поток Ли, $N=8$) и COSY FR0, $n=1..5$; кружки - решётка *file*, квадраты - *matched* (точные угол, масса, $B\rho$ как в COSY); синий $x$, красный $y$. Справа: ошибка старого чтения `chromaticity_orders` (центральная разность по карте Драгт-Финна порядка 3) относительно точного ряда той же карты в зависимости от шага dd; пунктир $180\,dd^2$ - $q_3^{\rm trunc}dd^2$ с недостоверным кубическим коэффициентом усечённой карты ($\xi_3^{\rm trunc}\approx-1116$ из табл. разд. 4, $q_3\approx-186$).""")
+md(r"""**Рисунок 11.** Слева: относительная разность $\xi_n$ Bell (поток Ли, $N=8$) и COSY FR0, $n=1..5$, одинаковые масса, энергия и угол $\pi/8$ в обоих кодах; синий $x$, красный $y$. Уровень $10^{-16}$ - машинная точность. Справа: ошибка старого чтения `chromaticity_orders` (центральная разность по карте Драгт-Финна порядка 3) относительно точного ряда той же карты в зависимости от шага dd; пунктир $180\,dd^2$ - $q_3^{\rm trunc}dd^2$ с недостоверным кубическим коэффициентом усечённой карты ($\xi_3^{\rm trunc}\approx-1116$ из табл. разд. 4, $q_3\approx-186$).""")
 md(r"""**Итог разд. 11.**
 * **Остаток $\xi_1\sim10^{-6}$ полностью объяснён и исчезает.** Это артефакт конечной разности в `chromaticity_orders`: карта порядка 3 точна только до $\delta^2$ в $Q$, её $q_3$ - мусор усечения ($\approx-186$ против истинного $-4.48$), и центральная разность даёт ошибку $q_3 dd^2\approx1.8\cdot10^{-6}$ при $dd=10^{-4}$ (масштабируется как $dd^2$, рис. 11 справа). Сама карта Драгт-Финна верна: её точный ряд даёт $\xi_1,\xi_2$, совпадающие с путём потока до $10^{-14}$.
-* Оставшиеся $\sim2\cdot10^{-8}$ (решётка *file*) - это входные данные: угол BM в `.bell` округлён до 8 знаков и масса дейтрона на $2.4\cdot10^{-6}$ МэВ отличается от COSY. С точными данными (*matched*) $Q_0$ и $\xi_1$ совпадают с COSY до $10^{-13}$-$10^{-14}$, $\xi_2$ до $2\cdot10^{-12}$, $\xi_3$ до $10^{-10}$, $\xi_4$ до $3\cdot10^{-9}$, $\xi_5$ до $4\cdot10^{-8}$ (отн.).
+* Прежние $\sim2\cdot10^{-8}$ были входными данными (угол BM в `.bell` округлён до 8 знаков, масса дейтрона в COSY 1875.612945 вместо 1875.61294257 МэВ). Теперь оба кода считают с массой 1875.61294257 МэВ, $W=270$ МэВ и углом ровно $\pi/8$: $Q_0$ совпадает с COSY до $3\cdot10^{-15}$ (машинная точность), $\xi_1$ до $1\cdot10^{-13}$ ($x$) / $3\cdot10^{-14}$ ($y$), $\xi_2$ до $1.5\cdot10^{-12}$, $\xi_3$ до $6\cdot10^{-11}$, $\xi_4$ до $1.4\cdot10^{-9}$, $\xi_5$ до $2.4\cdot10^{-8}$ (отн.).
 * Рост разности с $n$ при неизменности ряда Bell по $N$ (табл. 11.2) указывает на сторону COSY (пересчёт $\delta_K\to\delta$ и чтение `TP MU` при OV 7); $\xi_6$ COSY ненадёжен.
 * Старое $\xi_2$ (вторая разность) отличалось на $1.4\cdot10^{-4}$ (x) и $3\cdot10^{-4}$ (y) по той же причине (через $q_4^{\rm trunc}dd^2$); точный ряд убирает и это.
 * Время: $N=8$ (до $\xi_7$) ~2 с, $N=6$ ~0.3 с; старый путь Драгт-Финна (порядок 3, только $\xi_1,\xi_2$) ~0.2 с после компиляции.

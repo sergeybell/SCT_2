@@ -1,6 +1,6 @@
 route,time_s,max_abs_diff_vs_DF_order3,symp_err,max_abs_coef_DF
-flow N=3,2.9741e-01,1.114e-11,1.990e-12,9.0461e+02
-flow N=5 (truncated to 3),1.1518e-01,1.114e-11,2.183e-10,9.0461e+02
-flow N=7 (truncated to 3),5.5096e-01,1.114e-11,5.402e-08,9.0461e+02
-Lie maps composed (compose_maps),3.6303e-02,6.139e-12,2.501e-12,9.0461e+02
-Dragt-Finn factor_to_map(ring_lie_factor),3.8367e+00,0,1.182e-11,9.0461e+02
+flow N=3,2.4148e-01,2.842e-12,9.322e-12,9.0461e+02
+flow N=5 (truncated to 3),9.4999e-02,2.842e-12,6.548e-10,9.0461e+02
+flow N=7 (truncated to 3),5.1856e-01,2.842e-12,3.912e-08,9.0461e+02
+Lie maps composed (compose_maps),3.6556e-02,5.002e-12,5.684e-12,9.0461e+02
+Dragt-Finn factor_to_map(ring_lie_factor),4.3404e+00,0,9.322e-12,9.0461e+02

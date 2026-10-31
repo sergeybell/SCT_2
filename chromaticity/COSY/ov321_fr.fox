@@ -7,7 +7,7 @@ PROCEDURE RUN;
   KD(4):=0; KQ(4):=3; KG(4):=0.05;   KD(5):=3; KQ(5):=0; KG(5):=0.025;  KD(6):=3; KQ(6):=0; KG(6):=0.0125;
   KD(7):=3; KQ(7):=0; KG(7):=0.00625;  { FR 1 / FR 2 need SYSCA.DAT in the working dir: made by sysca\mk_sysca.fox (CRSYSCA) }
   KD(8):=1; KQ(8):=0; KG(8):=0.05;   KD(9):=1; KQ(9):=1; KG(9):=0.05;   KD(10):=2; KQ(10):=0; KG(10):=0.05;  KD(11):=2; KQ(11):=2; KG(11):=0.05;
-  G := 1+270/1875.612945; F := 1+1/G;
+  G := 1+270/1875.61294257; F := 1+1/G;
   OPENF 20 'output/cosy_ov321_fr.txt' 'UNKNOWN';
   LOOP I 1 11;
     PART 270*PARA(1); RINGFR KD(I) KQ(I) KG(I); TP MU;

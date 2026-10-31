@@ -28,7 +28,7 @@ function step853_fast(f, z::Vector{DA{Float64}}, s, h)
     e3 = lin_into!(newbuf(), [DA(sp, zeros(nmonomials(sp))) for _ in 1:nz], h, BI.D8_E3, ks)
     zn, (e5, e3)
 end
-const ETA = 0.2131578052277212; const KQ = 10 / 2.149635688032703
+const ETA = 0.2131577849578903; const KQ = 10 / 2.149635780396420   # COSY refpart.txt, proton 938.27208816 MeV (= Bell), 200 MeV
 io = open(joinpath(dirname(@__DIR__), "output", "rk_fast.csv"), "w")
 println(io, "order,bell_step_s,fast_step_s,speedup,rhs13_s,max_abs_diff")
 for no in (3, 5, 7, 10)

@@ -6,7 +6,7 @@ DOP853/GBS из `../da_integrators`), симплектичность (Bell и э
 
 | файл | что делает |
 |---|---|
-| `cosy/elem6_template.fox`, `cosy/run_cosy.ps1` | `DL`, `MQ`, `MS`, `MH` (протон 200 МэВ), все 6 строк карты и время, N = 3, 5, 7, 10 |
+| `cosy/elem6_template.fox`, `cosy/run_cosy.ps1` | `DL`, `MQ`, `MS`, `MH` (протон 200 МэВ, масса 938.27208816 МэВ как в Bell; COSY `RP 200 938.27208816/AMUMEV 1` вместо `RPP`), все 6 строк карты и время, N = 3, 5, 7, 10 |
 | `julia/lie_flow_bench.jl` | всё сравнение → `output/flow_vs_cosy.csv`, `flow_speed.csv`, `flow_symp.csv`, `flow_symp_L.csv`, `ring_df_vs_flow.csv` |
 | `make_notebook.py` → `lie_flow.ipynb` | блокнот (русский, выполнен), рисунки `fig_*.png` |
 

@@ -9,7 +9,7 @@ md(r"""# Отображения элементов оператором пото
 $$\mathcal M = e^{-L{:}H{:}}z=\sum_n \frac{(-L)^n}{n!}{:}H{:}^n z=\sum_n\frac{L^n}{n!}(F\cdot\nabla)^n z,\qquad F=S\nabla H,$$
 до машинной точности (`lie_flow_map(e, ref, N)`, кольцо — `one_turn_map_flow(lat, N)`). Старый маршрут Драгта–Финна (H до степени 4, карты порядка 3) не тронут.
 
-Элементы (протон 200 МэВ, $\eta=K/mc^2$ и $B\rho$ из COSY): дрейф 0.5 м (`DL`), квадруполь 0.5 м, 0.5 Тл/0.05 м (`MQ`), секторный диполь
+Элементы (протон 200 МэВ, масса 938.27208816 МэВ как в Bell; COSY `RP 200 938.27208816/AMUMEV 1` вместо `RPP`; $\eta=K/mc^2$ и $B\rho$ из COSY `refpart.txt`): дрейф 0.5 м (`DL`), квадруполь 0.5 м, 0.5 Тл/0.05 м (`MQ`), секторный диполь
 $R=2$ м, 30° (`MS`), секступоль 0.3 м, 0.2 Тл/0.05 м (`MH`); порядки 3, 5, 7, 10. COSY: `cosy/elem6_template.fox` (все 6 строк карты),
 Bell: `julia/lie_flow_bench.jl`. В Bell $\delta=\Delta p/p_0$, в COSY $\delta_K$; карта Bell подставляется в $\delta(\delta_K)$ композицией, сравниваются строки $x,a,y,b$.""")
 code(r"""import pandas as pd, numpy as np, matplotlib.pyplot as plt

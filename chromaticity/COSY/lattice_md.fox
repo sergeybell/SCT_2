@@ -2,7 +2,7 @@
 INCLUDE 'C:/GIT_REPOS/SCT_2/COSY/src/COSY';            { COSY 10.2 system (compiled cosy.bin) }
 
 PROCEDURE PART EK;                                     { reference deuteron, EK = kinetic energy [MeV] (may be DA) }
-  RP EK 1875.612945/AMUMEV 1;                          { mass CODATA 2022 in amu, charge 1 }
+  RP EK 1875.61294257/AMUMEV 1;                          { mass = Bell DEUTERON 1875.61294257 MeV (CODATA 2018), charge 1 }
 ENDPROCEDURE;
 
 PROCEDURE RING TW U B0X A0X B0Y A0Y D0 DP0;            { one turn; TW=1: write Twiss after each element to unit U }

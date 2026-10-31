@@ -9,8 +9,9 @@ const ROOT = dirname(@__DIR__); const OUT = joinpath(ROOT, "output"); const CO =
 const DAI = joinpath(dirname(ROOT), "da_integrators", "julia")
 include(joinpath(DAI, "cosy_io.jl")); include(joinpath(DAI, "da_fast.jl"))
 const CHIM, ETA = parse.(Float64, split(read(joinpath(CO, "refpart.txt"), String)))
-# reference particle with exactly COSY's K/mc^2 (proton, 200 MeV)
-const REF = reference_from_kinetic(Particle("proton (COSY mass)", 200.0 / ETA, 1.0, 0.0), 200.0)
+# reference particle: Bell proton mass 938.27208816 MeV, 200 MeV; COSY uses the same mass (RP 200 938.27208816/AMUMEV 1)
+const REF = reference_from_kinetic(Particle("proton", 938.27208816, 1.0, 0.0), 200.0)
+abs(ETA - 200.0 / 938.27208816) < 1e-14 || @warn "COSY K/mc^2 differs from Bell" ETA 200.0 / 938.27208816
 const ELS = [("drift", Drift("D", 0.5)), ("quad", Quadrupole("Q", 0.5, (0.5 / 0.05) / CHIM)),
              ("dipole", SBend("B", 2pi / 6, pi / 6)), ("sext", Sextupole("S", 0.3, 2 * 0.2 / 0.05^2 / CHIM))]
 const ORDERS = [3, 5, 7, 10]

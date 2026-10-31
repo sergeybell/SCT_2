@@ -4,8 +4,8 @@ PROCEDURE RUN;
   VARIABLE MU 1000 3; VARIABLE VRF 1 1 1; VARIABLE FREQ 1; VARIABLE I 1; VARIABLE V 1 6; VARIABLE F 1;
   V(1) := 100; V(2) := 10; V(3) := 1; V(4) := 0.1; V(5) := 0.01; V(6) := 0.001;   { kV }
   OV 3 3 0;                                                                     { OV initialises CLIGHT etc. }
-  FREQ := SQRT(1-1/SQR(1+270/1875.612945))*CLIGHT/117.388296;                   { h=1 }
-  F := 1+1/(1+270/1875.612945);
+  FREQ := SQRT(1-1/SQR(1+270/1875.61294257))*CLIGHT/117.388296;                   { h=1 }
+  F := 1+1/(1+270/1875.61294257);
   OPENF 33 'output/rf_ts_ov330.txt' 'UNKNOWN';
   FR 0;
   LOOP I 1 6;
@@ -16,7 +16,7 @@ PROCEDURE RUN;
   ENDLOOP;
   CLOSEF 33;
   OPENF 34 'output/rf_ts_ov331.txt' 'UNKNOWN';
-  OV 3 3 1; FR 0; FREQ := SQRT(1-1/SQR(1+270/1875.612945))*CLIGHT/117.388296;
+  OV 3 3 1; FR 0; FREQ := SQRT(1-1/SQR(1+270/1875.61294257))*CLIGHT/117.388296;
   LOOP I 1 6;
     VRF(1,1) := V(I); PART 270*PARA(1); RING 0 0 0 0 0 0 0 0; RF VRF 0 FREQ 0 0.05;
     TP MU;
