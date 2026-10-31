@@ -1,37 +1,26 @@
-# EquilibriumEnergy — study of δ_eq
+# EquilibriumEnergy — δ_eq по шагам
 
-Depends on Bell in `C:\GIT_REPOS\BELL\Julia`. Physics is in
-`note/main.tex` (thin RF, Lie product of the ring, torus average of δ).
-The OptiM file `C:\GIT_REPOS\SCT_2\OptiM\magnetic\magnetic_2.opt` is
-converted on each run to `lattices/magnetic_2.bell` and loaded with
-`load_structure`.
+Зависит от Bell в `C:\GIT_REPOS\BELL`. Физика — в `note/main.tex`.
+OptiM-файл `C:\GIT_REPOS\SCT_2\OptiM\magnetic\magnetic_2.opt` при загрузке
+переписывается в `lattices/magnetic_2.bell`.
 
-In this app the RF phase is reported with the opposite sign to Bell:
-`φ_note > 0` means the particle is late.
+Тонкая полость — элемент кольца (`RFCavity` в `lat.elements`), напряжение
+включено с первого шага. Фаза в отчёте: `φ_note > 0` значит частица опаздывает.
 
 ```
 julia --project=. setup.jl
-julia --project=. scripts/run_v08.jl     # numbers and figures for the note
+julia --project=. scripts/run_v08.jl     # девять шагов, рисунки и gen/*.tex
 cd note; latexmk -xelatex main.tex
 ```
 
-Notebook `notebooks/delta_eq.ipynb`: in Cursor pick the kernel
-**Julia EquilibriumEnergy 1.13** (not Python). From a Julia REPL:
+Тетрадь одна: `notebooks/delta_eq.ipynb`. Ядро **Julia EquilibriumEnergy**.
+Короткие прогоны считает сама; полные рисунки на 12 000 оборотов лежат в `note/figs`.
 
-```julia
-using IJulia
-notebook(dir = "notebooks")
-```
+Четыре модели, полость в списке элементов:
 
-The notebook `notebooks/delta_eq.ipynb` walks the same calculation from one particle
-to the four models. Markdown cells explain what the next code cell is about to show.
-Short live tracking is in the notebook; the full $N=12000$ figures stay in `note/figs`.
+- M1 — формула из времени пролёта
+- M2 — среднее по тору нормальной формы произведения Ли (`build_factors`, `dragt_finn_nf6d`)
+- M3 — итерация полинома степени 3 того же произведения (`factor_to_map`, `evaluate_map`)
+- M4 — точный интегратор (`exact_track_element` + `rf_kick` на полости)
 
-Four models, all with a thin energy kick at the end of the turn:
-
-- M1 analytic formula from time of flight
-- M2 torus average of the Lie normal form (`one_turn_factor_rf`, `dragt_finn_nf6d`)
-- M3 symplectic tracking of the unexpanded Hamiltonian
-- M4 iteration of the degree-3 polynomial expansion of the same Lie product
-
-Numbers in the note come from `note/gen/*.tex`, written by `run_v08.jl`.
+Числа в заметке пишет `scripts/run_v08.jl` в `note/gen/`.

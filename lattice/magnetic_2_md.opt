@@ -1,0 +1,51 @@
+#=====================================================================
+# magnetic_2_md.opt  -  magnetic EDM ring for deuterons (SCT_2)
+#
+# Ring: arc - straight - arc - straight, total length 117.388 m.
+#   Arc: 8 dipoles BM (L=5.329 m, 22.5 deg each, R=13.5712 m),
+#        cells QF-BM-QD, sextupole slots SF1, SF2, SD (strengths 0).
+#   Straight: OBM drifts of dipole length (place for Wien filters),
+#        quads QF1/QD1.
+# Beam: deuteron, kinetic energy W = 270 MeV (135 MeV/u).
+#   m_d c^2 = 1875.612945 MeV (CODATA 2022)
+#   gamma = 1.14395294,  beta = 0.485634729
+#   p = 1041.98416 MeV/c,  B*rho = 3.47568504 T*m
+#=====================================================================
+OptiM
+Energy[MeV]=270        Mass[MeV]=1875.612945
+Emittance: ex[cm]=0.002  ey[cm]=0.002  DP/P=0.000
+Initial:	BetaX[cm]=1936.75 	BetaY[cm]=405.447
+	AlfaX=-0.000251909 	AlfaY=-0.000188151
+	DispersX[cm]=0.0	 	DispersY[cm]=0
+	Dsp_PrimeX=-0.00050616 	DspPrimeY=0
+	X[cm]=0.950    	Y[cm]=0.000    	Z[cm]=0.000    	S[cm]=0.000
+	tetaX[deg]=0        	tetaY[deg]=0
+begin lattice. Number of periods=1
+#---ARC 1---
+OS2 QF BM QD OS1 QD BM QF SF2
+    QF BM QD SD  QD BM QF SF1
+    QF BM QD SD  QD BM QF SF2
+    QF BM QD OS1 QD BM QF OS2
+#---STRAIGHT 1---
+OS2 QF1 OBM QD1 OS1 QD1 OBM QF1 OS2
+#---ARC 2---
+OS2 QF BM QD OS1 QD BM QF SF2
+    QF BM QD SD  QD BM QF SF1
+    QF BM QD SD  QD BM QF SF2
+    QF BM QD OS1 QD BM QF OS2
+#---STRAIGHT 2---
+OS2 QF1 OBM QD1 OS1 QD1 OBM QF1 OS2
+end lattice
+begin list
+BM 	L[cm]=532.94148   	B[kG]=2.56106599   	G[kG/cm]=0        	Tilt[deg]=0
+OBM 	L[cm]=532.94148
+OS1	L[cm]=12
+OS2	L[cm]=6
+QF 	L[cm]=21         	G[kG/cm]=0.181168058 		Tilt[deg]=0
+QD 	L[cm]=21         	G[kG/cm]=-0.201793283 	Tilt[deg]=0
+QF1 	L[cm]=21         	G[kG/cm]=0.193455213 		Tilt[deg]=0
+QD1 	L[cm]=21         	G[kG/cm]=-0.193455213  		Tilt[deg]=0
+SF1 	L[cm]=12         	S[kG/cm/cm)]=0.0   	Tilt[deg]=0
+SF2 	L[cm]=12         	S[kG/cm/cm)]=0.0   	Tilt[deg]=0
+SD 	L[cm]=12         	S[kG/cm/cm)]=0.0  	Tilt[deg]=0
+end list of elements

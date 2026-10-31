@@ -1,0 +1,344 @@
+{ Equilibrium delta of magnetic_2 from the one-turn map, then TR.
+  Sextupoles off. Lattice RF flag stays 0; the cavity is applied after the turn.
+  OV 3 3 0 -> alpha, eta, path lengthening. OV 3 2 1 -> chromaticity.
+  TR TY=-21: truncated map, no generating function.
+  TR TY=0:   same map, COSY symplecticification (generating function).
+  Output: ../dat/magnetic_2/delta_eq_map.dat
+          ../dat/magnetic_2/delta_eq_turns.dat
+          ../dat/magnetic_2/delta_eq_turns_symp.dat }
+INCLUDE 'magnetic_2';
+
+PROCEDURE INJECT_DEQ D0 AMPX AMPY AMP20;
+    CR;
+    SR 0 0 0 0 0 0 0 0 1;
+    SR 0 0 0 0 0 D0 0 0 1;
+    SR AMPX 0 0 0 0 D0 0 0 1;
+    SR 0 0 AMPY 0 0 D0 0 0 1;
+    SR AMP20 0 0 0 0 D0 0 0 1;
+    SR 0 0 AMP20 0 0 D0 0 0 1;
+ENDPROCEDURE;
+
+PROCEDURE MAIN;
+    VARIABLE SGx1 1; VARIABLE SGy1 1; VARIABLE SGx2 1; VARIABLE SGy2 1;
+    VARIABLE EB1 1; VARIABLE RF 1;
+    VARIABLE GAMMA 1; VARIABLE BETA2 1; VARIABLE KG 1; VARIABLE CS 1;
+    VARIABLE structure 25;
+    VARIABLE L6 1; VARIABLE L66 1;
+    VARIABLE E1 1; VARIABLE E2 1;
+    VARIABLE A0 1; VARIABLE A1 1;
+    VARIABLE ETA0 1; VARIABLE ETA1 1;
+    VARIABLE T1 1; VARIABLE T2 1; VARIABLE T3 1; VARIABLE T4 1;
+    VARIABLE T11 1; VARIABLE T12 1; VARIABLE T22 1;
+    VARIABLE T33 1; VARIABLE T34 1; VARIABLE T44 1;
+    VARIABLE X11 1; VARIABLE X12 1; VARIABLE X22 1;
+    VARIABLE P11 1; VARIABLE P12 1; VARIABLE P22 1;
+    VARIABLE X33 1; VARIABLE X34 1; VARIABLE X44 1;
+    VARIABLE P33 1; VARIABLE P34 1; VARIABLE P44 1;
+    VARIABLE Y33 1; VARIABLE Y34 1; VARIABLE Y44 1;
+    VARIABLE B33 1; VARIABLE B34 1; VARIABLE B44 1;
+    VARIABLE R11 1; VARIABLE R12 1; VARIABLE R21 1; VARIABLE R22 1;
+    VARIABLE S11 1; VARIABLE S12 1; VARIABLE S21 1; VARIABLE S22 1;
+    VARIABLE CX 1; VARIABLE SX 1; VARIABLE AX 1; VARIABLE BX 1; VARIABLE GX 1;
+    VARIABLE CY 1; VARIABLE SY 1; VARIABLE AY 1; VARIABLE BY 1; VARIABLE GY 1;
+    VARIABLE DETX 1; VARIABLE DETY 1;
+    VARIABLE KX 1; VARIABLE KP 1; VARIABLE XC 1; VARIABLE PC 1;
+    VARIABLE KYX 1; VARIABLE KYP 1; VARIABLE XCY 1; VARIABLE PCY 1;
+    VARIABLE KY 1; VARIABLE KB 1; VARIABLE YC 1; VARIABLE BC 1;
+    VARIABLE DLX 1; VARIABLE DLY 1; VARIABLE LTX 1; VARIABLE LTY 1;
+    VARIABLE LTX_ELL 1; VARIABLE LTY_ELL 1;
+    VARIABLE XIX 1; VARIABLE XIY 1;
+    VARIABLE LTX_XI 1; VARIABLE LTY_XI 1;
+    VARIABLE LAMX_XI 1; VARIABLE LAMY_XI 1;
+    VARIABLE DEQX_XI 1; VARIABLE DEQY_XI 1;
+    VARIABLE PI 1; VARIABLE G2 1; VARIABLE G4 1; VARIABLE TERM 1;
+    VARIABLE TL 800; VARIABLE TA 800;
+    VARIABLE MU_TP 800 3; VARIABLE MU_TS 800 3;
+    VARIABLE MN 800 6; VARIABLE MA 800 6; VARIABLE RES 800;
+    VARIABLE QX 1; VARIABLE QY 1; VARIABLE QS 1;
+    VARIABLE DM 1; VARIABLE AMPX 1; VARIABLE AMPY 1; VARIABLE AMP20 1;
+    VARIABLE JX 1; VARIABLE JY 1; VARIABLE JX20 1; VARIABLE JY20 1;
+    VARIABLE LAMX 1; VARIABLE LAMY 1; VARIABLE LAMX20 1; VARIABLE LAMY20 1;
+    VARIABLE DEQ0 1; VARIABLE DEQX 1; VARIABLE DEQY 1;
+    VARIABLE VRF 1 1 1; VARIABLE FREQ 1; VARIABLE HNUM 1; VARIABLE VKV 1;
+    VARIABLE SAVEM 800 6;
+    VARIABLE NTURN 1; VARIABLE NSYMP 1; VARIABLE I 1; VARIABLE D0 1;
+    VARIABLE DXJ 1; VARIABLE DYJ 1; VARIABLE SYMPE 1;
+
+    structure := 'magnetic_2';
+    GAMMA := 1.143914;
+    PI := 4*ATAN(1);
+    BETA2 := 1-1/(GAMMA*GAMMA);
+    KG := (GAMMA+1)/GAMMA;
+    SGx1 := 0; SGy1 := 0; SGx2 := 0; SGy2 := 0; EB1 := 0;
+    RF := 0;
+    DM := 1.0E-3;
+    AMPX := 0.01;
+    AMPY := 0.01;
+    AMP20 := 0.02;
+    VKV := 200;
+    HNUM := 5;
+    NTURN := 4000;
+    NSYMP := 2000;
+
+    { --- static 6D map, no cavity: alpha, eta, lengthening --- }
+    OV 3 3 0;
+    SET_FOR_DEUTERONS GAMMA;
+    UM; LATTICE SGx1 SGy1 SGx2 SGy2 EB1 RF;
+    CS := SPOS;
+
+    L6 := MAP(5)|(0&0&0&0&0&1);
+    L66 := MAP(5)|(0&0&0&0&0&2);
+    T1 := MAP(5)|(1&0&0&0&0&0);
+    T2 := MAP(5)|(0&1&0&0&0&0);
+    T3 := MAP(5)|(0&0&1&0&0&0);
+    T4 := MAP(5)|(0&0&0&1&0&0);
+    T11 := MAP(5)|(2&0&0&0&0&0);
+    T12 := MAP(5)|(1&1&0&0&0&0);
+    T22 := MAP(5)|(0&2&0&0&0&0);
+    T33 := MAP(5)|(0&0&2&0&0&0);
+    T34 := MAP(5)|(0&0&1&1&0&0);
+    T44 := MAP(5)|(0&0&0&2&0&0);
+
+    X11 := MAP(1)|(2&0&0&0&0&0);
+    X12 := MAP(1)|(1&1&0&0&0&0);
+    X22 := MAP(1)|(0&2&0&0&0&0);
+    P11 := MAP(2)|(2&0&0&0&0&0);
+    P12 := MAP(2)|(1&1&0&0&0&0);
+    P22 := MAP(2)|(0&2&0&0&0&0);
+    X33 := MAP(1)|(0&0&2&0&0&0);
+    X34 := MAP(1)|(0&0&1&1&0&0);
+    X44 := MAP(1)|(0&0&0&2&0&0);
+    P33 := MAP(2)|(0&0&2&0&0&0);
+    P34 := MAP(2)|(0&0&1&1&0&0);
+    P44 := MAP(2)|(0&0&0&2&0&0);
+    Y33 := MAP(3)|(0&0&2&0&0&0);
+    Y34 := MAP(3)|(0&0&1&1&0&0);
+    Y44 := MAP(3)|(0&0&0&2&0&0);
+    B33 := MAP(4)|(0&0&2&0&0&0);
+    B34 := MAP(4)|(0&0&1&1&0&0);
+    B44 := MAP(4)|(0&0&0&2&0&0);
+
+    R11 := ME(1,1); R12 := ME(1,2); R21 := ME(2,1); R22 := ME(2,2);
+    S11 := ME(3,3); S12 := ME(3,4); S21 := ME(4,3); S22 := ME(4,4);
+
+    CX := (R11+R22)/2;
+    SX := SQRT(1-CX*CX);
+    IF R12<0; SX := -SX; ENDIF;
+    BX := R12/SX;
+    AX := (R11-R22)/(2*SX);
+    GX := (1+AX*AX)/BX;
+    QX := ACOS(CX)/(2*PI);
+    IF R12<0; QX := 1-QX; ENDIF;
+
+    CY := (S11+S22)/2;
+    SY := SQRT(1-CY*CY);
+    IF S12<0; SY := -SY; ENDIF;
+    BY := S12/SY;
+    AY := (S11-S22)/(2*SY);
+    GY := (1+AY*AY)/BY;
+    QY := ACOS(CY)/(2*PI);
+    IF S12<0; QY := 1-QY; ENDIF;
+
+    KX := X11*BX - X12*AX + X22*GX;
+    KP := P11*BX - P12*AX + P22*GX;
+    DETX := (1-R11)*(1-R22) - R12*R21;
+    XC := ((1-R22)*KX + R12*KP)/DETX;
+    PC := (R21*KX + (1-R11)*KP)/DETX;
+    LTX_ELL := T11*BX - T12*AX + T22*GX;
+    DLX := LTX_ELL + T1*XC + T2*PC;
+
+    KY := Y33*BY - Y34*AY + Y44*GY;
+    KB := B33*BY - B34*AY + B44*GY;
+    DETY := (1-S11)*(1-S22) - S12*S21;
+    YC := ((1-S22)*KY + S12*KB)/DETY;
+    BC := (S21*KY + (1-S11)*KB)/DETY;
+    KYX := X33*BY - X34*AY + X44*GY;
+    KYP := P33*BY - P34*AY + P44*GY;
+    XCY := ((1-R22)*KYX + R12*KYP)/DETX;
+    PCY := (R21*KYX + (1-R11)*KYP)/DETX;
+    LTY_ELL := T33*BY - T34*AY + T44*GY;
+    DLY := LTY_ELL + T3*YC + T4*BC + T1*XCY + T2*PCY;
+
+    LTX := -KG*DLX/CS;
+    LTY := -KG*DLY/CS;
+    LTX_ELL := -KG*LTX_ELL/CS;
+    LTY_ELL := -KG*LTY_ELL/CS;
+
+    ECM MAP SPOS TL;
+    E1 := TL|(0&0&0&0&0&1);
+    E2 := TL|(0&0&0&0&0&2);
+    MCM MAP SPOS TA;
+    A0 := -TA|(0&0&0&0&0&1);
+    A1 := -TA|(0&0&0&0&0&2);
+
+    G2 := GAMMA*GAMMA;
+    G4 := G2*G2;
+    ETA0 := -(KG*KG)*E1/CS;
+    TERM := E1*KG/(2*G2) + E2*KG*KG;
+    ETA1 := -(KG/CS)*TERM;
+
+    JX := AMPX*AMPX/(2*BX);
+    JY := AMPY*AMPY/(2*BY);
+    LAMX := LTX*JX;
+    LAMY := LTY*JY;
+    DEQ0 := -(ETA1*DM*DM/2)/ETA0;
+    DEQX := -(ETA1*DM*DM/2 + LAMX)/ETA0;
+    DEQY := -(ETA1*DM*DM/2 + LAMY)/ETA0;
+
+    { --- chromaticity: energy is a parameter, lattice rebuilt --- }
+    OV 3 2 1;
+    SET_FOR_DEUTERONS_CHROM GAMMA;
+    UM; LATTICE SGx1 SGy1 SGx2 SGy2 EB1 RF;
+    TP MU_TP;
+    XIX := (MU_TP(1)|(0&0&0&0&1))*(1+1/GAMMA);
+    XIY := (MU_TP(2)|(0&0&0&0&1))*(1+1/GAMMA);
+    LTX_XI := -2*PI*XIX/CS;
+    LTY_XI := -2*PI*XIY/CS;
+    LAMX_XI := LTX_XI*JX;
+    LAMY_XI := LTY_XI*JY;
+    DEQX_XI := -(ETA1*DM*DM/2 + LAMX_XI)/ETA0;
+    DEQY_XI := -(ETA1*DM*DM/2 + LAMY_XI)/ETA0;
+    DXJ := 2*PI*XIX/(CS*ETA0);
+    DYJ := 2*PI*XIY/(CS*ETA0);
+    JX20 := AMP20*AMP20/(2*BX);
+    JY20 := AMP20*AMP20/(2*BY);
+    LAMX20 := LTX*JX20;
+    LAMY20 := LTY*JY20;
+
+    OPENF 3633 '../dat/'&structure&'/delta_eq_map.dat' 'REPLACE';
+    WRITE 3633 'key value';
+    WRITE 3633 'gamma '&ST(GAMMA);
+    WRITE 3633 'Cs '&ST(CS);
+    WRITE 3633 'alpha0 '&ST(A0);
+    WRITE 3633 'alpha1 '&ST(A1);
+    WRITE 3633 'eta0 '&ST(ETA0);
+    WRITE 3633 'eta1 '&ST(ETA1);
+    WRITE 3633 'beta_x '&ST(BX);
+    WRITE 3633 'alpha_x '&ST(AX);
+    WRITE 3633 'beta_y '&ST(BY);
+    WRITE 3633 'alpha_y '&ST(AY);
+    WRITE 3633 'Qx '&ST(QX);
+    WRITE 3633 'Qy '&ST(QY);
+    WRITE 3633 'MAP5_d '&ST(L6);
+    WRITE 3633 'MAP5_dd '&ST(L66);
+    WRITE 3633 'MAP5_xx '&ST(T11);
+    WRITE 3633 'MAP5_xa '&ST(T12);
+    WRITE 3633 'MAP5_aa '&ST(T22);
+    WRITE 3633 'MAP5_yy '&ST(T33);
+    WRITE 3633 'MAP5_yb '&ST(T34);
+    WRITE 3633 'MAP5_bb '&ST(T44);
+    WRITE 3633 'xi_path_x '&ST(-LTX*CS/(2*PI));
+    WRITE 3633 'xi_path_y '&ST(-LTY*CS/(2*PI));
+    WRITE 3633 'LT_Jx '&ST(LTX);
+    WRITE 3633 'LT_Jy '&ST(LTY);
+    WRITE 3633 'LT_ell_Jx '&ST(LTX_ELL);
+    WRITE 3633 'LT_ell_Jy '&ST(LTY_ELL);
+    WRITE 3633 'LT_xi_x '&ST(LTX_XI);
+    WRITE 3633 'LT_xi_y '&ST(LTY_XI);
+    WRITE 3633 'xi_x '&ST(XIX);
+    WRITE 3633 'xi_y '&ST(XIY);
+    WRITE 3633 'd_deq_dJx '&ST(DXJ);
+    WRITE 3633 'd_deq_dJy '&ST(DYJ);
+    WRITE 3633 'dm '&ST(DM);
+    WRITE 3633 'Ax '&ST(AMPX);
+    WRITE 3633 'Ay '&ST(AMPY);
+    WRITE 3633 'Jx '&ST(JX);
+    WRITE 3633 'Jy '&ST(JY);
+    WRITE 3633 'Lambda_x '&ST(LAMX);
+    WRITE 3633 'Lambda_y '&ST(LAMY);
+    WRITE 3633 'Lambda_x_xi '&ST(LAMX_XI);
+    WRITE 3633 'Lambda_y_xi '&ST(LAMY_XI);
+    WRITE 3633 'Lambda_x_20 '&ST(LAMX20);
+    WRITE 3633 'Lambda_y_20 '&ST(LAMY20);
+    WRITE 3633 'Ax20 '&ST(AMP20);
+    WRITE 3633 'Jx20 '&ST(JX20);
+    WRITE 3633 'Jy20 '&ST(JY20);
+    WRITE 3633 'deq0 '&ST(DEQ0);
+    WRITE 3633 'deq_x '&ST(DEQX);
+    WRITE 3633 'deq_y '&ST(DEQY);
+    WRITE 3633 'deq_x_xi '&ST(DEQX_XI);
+    WRITE 3633 'deq_y_xi '&ST(DEQY_XI);
+    WRITE 3633 'V_kV '&ST(VKV);
+    WRITE 3633 'h '&ST(HNUM);
+    WRITE 3633 'Nturn '&ST(NTURN);
+    WRITE 3633 'Nsymp '&ST(NSYMP);
+    CLOSEF 3633;
+
+    WRITE 6 'delta_eq map Cs eta0 eta1 LTx LTy deq0 deq_x deq_y';
+    WRITE 6 CS; WRITE 6 ETA0; WRITE 6 ETA1;
+    WRITE 6 LTX; WRITE 6 LTY;
+    WRITE 6 DEQ0; WRITE 6 DEQX; WRITE 6 DEQY;
+    WRITE 6 'xi_x xi_y Qx Qy beta_x beta_y';
+    WRITE 6 XIX; WRITE 6 XIY; WRITE 6 QX; WRITE 6 QY;
+    WRITE 6 BX; WRITE 6 BY;
+
+    { --- one-turn map with a cavity on this circumference --- }
+    OV 3 3 0;
+    SET_FOR_DEUTERONS GAMMA;
+    UM; LATTICE SGx1 SGy1 SGx2 SGy2 EB1 RF;
+    CS := SPOS;
+    FREQ := HNUM*REVFREQ(CS);
+    VRF(1,1) := VKV;
+    RF VRF 0 FREQ 0 0.05;
+    LOOP I 1 6;
+        SAVEM(I) := MAP(I);
+    ENDLOOP;
+    WRITE 6 'RF h='&ST(HNUM)&' V_kV='&ST(VKV)&' freq='&ST(FREQ)&' Cs='&ST(CS);
+
+    { DANF/TS: same map, now a 6D rotation. Analog of the Lie normal form. }
+    TS MU_TS;
+    QS := CONS(MU_TS(3));
+    DANF MAP MN MA 1 RES 1E-7;
+    OPENF 3636 '../dat/'&structure&'/delta_eq_nf.dat' 'REPLACE';
+    WRITE 3636 'key value';
+    WRITE 3636 'Qs_nf '&ST(QS);
+    WRITE 3636 'Qx_nf '&ST(CONS(MU_TS(1)));
+    WRITE 3636 'Qy_nf '&ST(CONS(MU_TS(2)));
+    WRITE 3636 'MA1 '&ST(CONS(MA(1)));
+    WRITE 3636 'MA2 '&ST(CONS(MA(2)));
+    WRITE 3636 'MA3 '&ST(CONS(MA(3)));
+    WRITE 3636 'MA4 '&ST(CONS(MA(4)));
+    WRITE 3636 'MA5 '&ST(CONS(MA(5)));
+    WRITE 3636 'MA6 '&ST(CONS(MA(6)));
+    WRITE 3636 'MN6 '&ST(CONS(MN(6)));
+    WRITE 3636 'MA6_x2 '&ST(MA(6)|(2&0&0&0&0&0));
+    WRITE 3636 'MA6_a2 '&ST(MA(6)|(0&2&0&0&0&0));
+    WRITE 3636 'MA6_xa '&ST(MA(6)|(1&1&0&0&0&0));
+    WRITE 3636 'MA6_y2 '&ST(MA(6)|(0&0&2&0&0&0));
+    WRITE 3636 'MA6_b2 '&ST(MA(6)|(0&0&0&2&0&0));
+    WRITE 3636 'MA6_yb '&ST(MA(6)|(0&0&1&1&0&0));
+    WRITE 3636 'MA6_t2 '&ST(MA(6)|(0&0&0&0&2&0));
+    WRITE 3636 'MA6_d2 '&ST(MA(6)|(0&0&0&0&0&2));
+    WRITE 3636 'MA6_d '&ST(MA(6)|(0&0&0&0&0&1));
+    CLOSEF 3636;
+    WRITE 6 'NF Qs Qx Qy MA6';
+    WRITE 6 QS; WRITE 6 CONS(MU_TS(1)); WRITE 6 CONS(MU_TS(2)); WRITE 6 CONS(MA(6));
+
+    LOOP I 1 6; MAP(I) := SAVEM(I); ENDLOOP;
+    D0 := DM*KG;
+
+    { TR TY=-21: truncated one-turn map, no generating function }
+    INJECT_DEQ D0 AMPX AMPY AMP20;
+    WRITE 6 'TR map NRAY='&ST(NRAY);
+    OPENF 3634 '../dat/'&structure&'/delta_eq_turns.dat' 'REPLACE';
+    TRPRAY 3634;
+    TR NTURN 1 1 6 0.05 0.01 -21 0 -12;
+    CLOSEF 3634;
+    TRSC SYMPE;
+    WRITE 6 'TR TY=-21 symplectification error '&ST(SYMPE);
+
+    { TR TY=0: same map, COSY generating-function symplecticification }
+    INJECT_DEQ D0 AMPX AMPY AMP20;
+    OPENF 3635 '../dat/'&structure&'/delta_eq_turns_symp.dat' 'REPLACE';
+    TRPRAY 3635;
+    TR NSYMP 1 1 6 0.05 0.01 0 0 -12;
+    CLOSEF 3635;
+    TRSC SYMPE;
+    WRITE 6 'TR TY=0 symplectification error '&ST(SYMPE);
+    WRITE 6 'delta_eq wrote TR turns and symplectic TR';
+ENDPROCEDURE;
+
+PROCEDURE RUN;
+    MAIN;
+ENDPROCEDURE;
+RUN; END;

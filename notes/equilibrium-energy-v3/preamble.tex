@@ -1,0 +1,36 @@
+% Shared preamble for main.tex and the standalone chapter wrappers.
+% Hyperref is loaded last. A wrapper defines \chapterbuild before
+% \input{preamble}; xr-hyper then runs before hyperref and imports
+% labels from the full document (default: build/main.aux).
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\numberwithin{equation}{section}
+
+\newcommand{\rf}{\mathrm{rf}}
+\newcommand{\eq}{\mathrm{eq}}
+
+\ifdefined\chapterbuild
+  \usepackage{xr-hyper}
+  \providecommand{\MainDoc}{build/main}
+  \makeatletter
+  \newcommand{\EE@useexternal}[1]{\externaldocument[][nocite]{#1}}
+  \expandafter\EE@useexternal\expandafter{\MainDoc}
+  \makeatother
+\fi
+\usepackage[hidelinks]{hyperref}
+\ifdefined\chapterbuild
+  \makeatletter
+  % Aux is read after this hook. Own labels replace the imported ones
+  % silently; labels from other chapters stay as in the full document.
+  \let\EE@orig@newl@bel\@newl@bel
+  \def\EE@silent@newl@bel#1#2#3{{%
+    \global\@namedef{#1@#2}{#3}%
+  }}
+  \AddToHook{begindocument/before}{\let\@newl@bel\EE@silent@newl@bel}
+  \AddToHook{begindocument}{\let\@newl@bel\EE@orig@newl@bel}
+  \makeatother
+\fi

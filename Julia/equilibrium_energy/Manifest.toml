@@ -2,7 +2,7 @@
 
 julia_version = "1.13.2"
 manifest_format = "2.1"
-project_hash = "cdbb0ca979907a1c32f2a73179d222af2d34259b"
+project_hash = "1219a0dda895330574c22046fae6b2b8f665e5eb"
 
 [[deps.AliasTables]]
 deps = ["PtrArrays", "Random"]
@@ -25,7 +25,7 @@ version = "1.11.0"
 
 [[deps.Bell]]
 deps = ["LinearAlgebra", "Plots", "Printf", "TaylorSeries"]
-path = "C:\\GIT_REPOS\\BELL\\Julia"
+path = "C:\\GIT_REPOS\\BELL"
 uuid = "15ed3219-68f0-4cc9-8228-483d95d0d998"
 version = "0.10.0"
 
@@ -162,7 +162,7 @@ uuid = "2702e6a9-849d-5ed8-8c21-79e8b8f9ee43"
 version = "0.0.20230411+1"
 
 [[deps.EquilibriumEnergy]]
-deps = ["Bell", "IJulia", "LinearAlgebra", "Plots", "Printf", "Random", "Statistics"]
+deps = ["Bell", "IJulia", "LinearAlgebra", "Plots", "Printf", "Random", "Statistics", "TaylorSeries"]
 path = "."
 uuid = "c450b4b6-7aea-4cf1-a195-21dea6cb36ef"
 version = "0.1.0"

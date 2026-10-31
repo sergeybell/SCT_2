@@ -1,92 +1,81 @@
-\section{Магнитное кольцо: второй порядок по фазе}
+\section[Магнитное кольцо: учёт кубического члена фазы]{Магнитное кольцо:\\ учёт кубического члена фазы}
 \label{sec:mag-phase}
 
-В главах~\ref{sec:mag-base} и~\ref{sec:mag-beta} приращение энергии в резонаторе линейно по $\varphi$. Здесь учитывается следующий член, $\varphi^3/6$. Сам по себе он равновесного сдвига не даёт: сдвиг по-прежнему определяется условием $\langle\tau\rangle=0$. Новое --- то, как $\varphi^3$ меняет форму колебания и через неё среднее $\langle\delta^2\rangle$. Сначала, при $\eta_1=0$ и $\Lambda=0$, решается уравнение фазы и считается $\langle\delta^2\rangle=(\delta_m^2/2)(1-\hat\varphi^2/32)$. Затем возвращается квадратичное запаздывание $\eta_1\delta^2$, а в конце --- бетатронное $\Lambda$. Итоговая формула \eqref{eq:deq-ph-L} собирает все три вклада: множитель $(1-\hat\varphi^2/32)$ стоит при $\langle\delta^2\rangle$ и не стоит при $\Lambda$.
+В главах~\ref{sec:mag-base} и~\ref{sec:mag-beta} приращение энергии в резонаторе линейно по фазе. Здесь учитывается следующий член разложения, $\sin\varphi\approx\varphi-\varphi^3/6$. Найдено, как он меняет форму синхротронного колебания и средний сдвиг импульса, в том числе с учётом квадратичного и бетатронного запаздывания.
 
-\subsection{Система}
+\subsection{Система уравнений}
 
-В главе~\ref{sec:mag-base} во втором уравнении \eqref{eq:smooth} синус заменён на $\varphi$. Здесь учитывается следующий член: $\sin\varphi=\varphi-\varphi^3/6$, а остаток $O(\varphi^5)$ отбрасывается. Производная этого многочлена по $\varphi$ равна $1-\varphi^2/2$. То же выражение есть начало ряда $\cos\varphi$. Замена синуса на $\varphi-\varphi^3/6$ и замена косинуса на $1-\varphi^2/2$ в производной второго уравнения суть одно приближение.
-
-Множитель скорости $1-\delta/\gamma_s^2$ сохранён, как в \eqref{eq:system}. Без бетатронного запаздывания система принимает вид
+С кубическим членом и множителем скорости из \eqref{eq:system}
 \begin{equation}
 \label{eq:system-phi}
+\left\{
 \begin{aligned}
-\frac{\mathrm{d}\varphi}{\mathrm{d}t}
+\dot\varphi
 &=\omega_\rf(\eta_0\delta+\eta_1\delta^2),\\
-\frac{\mathrm{d}\delta}{\mathrm{d}t}
+\dot\delta
 &=K\cos\varphi_s\Bigl(\varphi-\frac{\varphi^3}{6}\Bigr)
 \Bigl(1-\frac{\delta}{\gamma_s^2}\Bigr).
 \end{aligned}
+\right.
 \end{equation}
+Остаток $O(\varphi^5)$ отброшен.
 
-\subsection{Нулевые $\eta_1$ и $\Lambda$}
+\subsection{Постоянная часть импульса}
 
-Сначала $\eta_1=0$ и $\Lambda=0$. Тогда $\tau=\eta_0\delta$. Условие \eqref{eq:tau-avg-exact} даёт $\eta_0\langle\delta\rangle=0$. Поскольку $\eta_0\neq 0$,
+При $\eta_1=0$ условие $\langle\tau\rangle=0$ даёт $\eta_0\langle\delta\rangle=0$, т.\,е.
 \begin{equation}
 \label{eq:deq-zero}
-\delta_\eq=0.
+\delta_\eq=0
 \end{equation}
-Второе уравнение в этот вывод не входит. Кубический член и множитель $1-\delta/\gamma_s^2$ равновесный сдвиг не создают.
+независимо от вида второго уравнения. Это видно и из симметрии: при $\eta_1=0$ и единичном множителе скорости система инвариантна относительно $(\varphi,\delta)\to(-\varphi,-\delta)$, и нечётная сила $\varphi-\varphi^3/6$ порождает на нечётном колебании только нечётные гармоники. Множитель $1-\delta/\gamma_s^2$ эту симметрию нарушает, но его вклад в постоянный член сокращается (см.~\eqref{eq:c-plus}), а в $\langle\delta^2\rangle$ при фиксированном $\delta_m$ он даёт $O(\delta_m^4)$. Поэтому при построении решения с кубическим членом множитель скорости заменяется единицей, а вторая гармоника главы~\ref{sec:mag-base} добавляется в конце.
 
-Симметрия объясняет, почему у самого решения нет постоянной части. При $\eta_1=0$ и при множителе скорости, заменённом единицей, правая часть первого уравнения нечётна по $\delta$, правая часть второго нечётна по $\varphi$: куб $\varphi^3$ есть нечётная функция. Замена $(\varphi,\delta)\to(-\varphi,-\delta)$ переводит уравнения в себя. Замкнутая траектория маятника единственна при данной энергии и переходит сама в себя, а скорость в противоположных точках одинакова. Время, проведённое при $+\delta$ и при $-\delta$, совпадает, поэтому среднее $\delta$ равно нулю. Нечётная сила на нечётном колебании порождает только нечётные гармоники: тождество $\cos^3\psi=(3\cos\psi+\cos 3\psi)/4$ не содержит постоянной и чётных кратностей. Постоянного смещения центра такая сила дать не может.
+Кубический член уменьшает частоту колебаний и добавляет третью гармонику. Частота на $\delta_\eq$ не влияет: $\delta_\eq$ выражается через $\langle\delta^2\rangle$ \eqref{eq:deq-avg}, а отношение $\langle\delta^2\rangle/\delta_m^2$ от постоянной частоты не зависит. Следовательно, кубический член влияет на $\delta_\eq$ только через форму колебания и только при $\eta_1\neq 0$.
 
-Множитель $1-\delta/\gamma_s^2$ эту замену знака нарушает. Он уже разобран в главе~\ref{sec:mag-base}: он порождает вторую гармонику \eqref{eq:delta-sol}, но в постоянном члене его вклад уничтожается вкладом $(\dot\delta)^2$, см. \eqref{eq:c-plus}. При $\eta_1=0$ отсюда снова $\delta_\eq=0$. Вклад множителя в $\langle\delta^2\rangle$ при фиксированном полуразмахе начинается с $O(\delta_m^4)$, как записано после \eqref{eq:d2-avg}. Поправка, которую даёт кубический член, имеет порядок $\hat\varphi^2\delta_m^2$. Перекрёстный член этих двух поправок отбрасывается, и ниже, пока строится решение с кубическим членом, множитель заменён единицей. Вторая гармоника главы~\ref{sec:mag-base} возвращается в конце, при сборке полного решения.
+\subsection{Решение системы}
 
-Кубический член меняет две вещи. Сила $\varphi-\varphi^3/6$ при том же $|\varphi|$ слабее линейной, поэтому частота становится меньше $\omega_s$, а в фазе и в импульсе появляется третья гармоника. Явные выражения суть \eqref{eq:phi-ph}, \eqref{eq:Omega-ph} и \eqref{eq:delta-ph}. Чётных гармоник и постоянной части он не даёт. Среднее $\langle\delta\rangle$ остаётся нулём.
-
-Сдвиг частоты на $\delta_\eq$ не влияет. Равенство \eqref{eq:deq-avg} выражает $\delta_\eq$ через $\langle\delta^2\rangle$ и не содержит частоты. Среднее по периоду есть среднее по углу $\psi$: замена $\omega_s$ на другую постоянную частоту не меняет $\langle\cos^2\psi\rangle$. В связи $\delta=\dot\varphi/(\omega_\rf\eta_0)$ частота стоит общим множителем всех гармоник. При фиксированном полуразмахе $\delta_m$ этот множитель сокращается и в отношение $\langle\delta^2\rangle/\delta_m^2$ не входит. При $\eta_1=0$ выполнено $\delta_\eq=0$ при любой частоте. При $\eta_1\neq 0$ частоту по-прежнему можно изменить, не трогая $\delta_\eq$, если форма $\delta(\psi)$ и полуразмах $\delta_m$ сохранены. Кубический член меняет $\delta_\eq$ только тем, что меняет форму, то есть $\langle\delta^2\rangle$ при фиксированном $\delta_m$, и только через множитель $\eta_1$ в \eqref{eq:deq-avg}.
-
-Уравнение фазы получается так. При $\eta_1=0$ и единичном множителе скорости первое уравнение есть $\mathrm{d}\varphi/\mathrm{d}t=\omega_\rf\eta_0\delta$. Дифференцирование и подстановка второго дают
-\begin{equation}
-\label{eq:phi-ddot}
-\ddot\varphi=\omega_\rf\eta_0 K\cos\varphi_s\Bigl(\varphi-\frac{\varphi^3}{6}\Bigr).
-\end{equation}
-Из \eqref{eq:ws} выполнено $K\omega_\rf\cos\varphi_s=-\omega_s^2/\eta_0$. Умножение на $\eta_0$ даёт $\omega_\rf\eta_0 K\cos\varphi_s=-\omega_s^2$ при обоих знаках $\eta_0$. Поэтому
+При $\eta_1=0$ и единичном множителе скорости исключение $\delta$ с учётом \eqref{eq:ws} даёт
 \begin{equation}
 \label{eq:phi-ode}
-\ddot\varphi+\omega_s^2\Bigl(\varphi-\frac{\varphi^3}{6}\Bigr)=0.
+\ddot\varphi+\omega_s^2\Bigl(\varphi-\frac{\varphi^3}{6}\Bigr)=0
 \end{equation}
-Если синус во втором уравнении не обрывать, то же исключение $\delta$ даёт маятник
+--- маятник
 \begin{equation}
 \label{eq:pendulum}
-\ddot\varphi+\omega_s^2\sin\varphi=0.
+\ddot\varphi+\omega_s^2\sin\varphi=0
 \end{equation}
-Уравнение \eqref{eq:phi-ode} есть \eqref{eq:pendulum} с синусом, оборванным на кубическом члене. Полуразмах фазы определяется так же, как \eqref{eq:dm-def}:
+в котором синус заменён двумя первыми членами ряда. Полуразмах фазы определяется аналогично \eqref{eq:dm-def}:
 \begin{equation}
 \label{eq:phihat-def}
 \hat\varphi=\frac{\varphi_{\max}-\varphi_{\min}}{2}.
 \end{equation}
-У решения \eqref{eq:phi-ode} минимум противоположен максимуму, так что $\hat\varphi=\varphi_{\max}$ при выборе знака, принятом ниже.
-
-\subsection{Решение уравнения фазы}
-
-Решение \eqref{eq:phi-ode} получено в приложении~\ref{sec:bm-cubic}. Метод даёт коэффициент первой гармоники; в ответе приложения он уже заменён полуразмахом $\hat\varphi$. Решение записано через $\cos\psi$. Для согласия с \eqref{eq:phi} начало отсчёта сдвигается на четверть периода: аргумент $\psi$ заменяется на $\psi-\pi/2$. Тогда $\cos(\psi-\pi/2)=\sin\psi$. Для третьей гармоники $\cos 3(\psi-\pi/2)=\cos(3\psi-3\pi/2)$. Равенство $\cos(\beta-\pi/2)=\sin\beta$ при $\beta=3\psi-\pi$ даёт $\sin(3\psi-\pi)=-\sin 3\psi$, поэтому косинус третьей гармоники переходит в $-\sin 3\psi$, и знак перед ней меняется. Множитель $\operatorname{sgn}\eta_0$ ставится так, чтобы при $\hat\varphi\to 0$ ведущий член совпал с \eqref{eq:phi}. Линейная связь есть $\varphi=(\omega_\rf\eta_0/\omega_s)\delta_m\sin\psi$, а $\eta_0=|\eta_0|\operatorname{sgn}\eta_0$, и в этом пределе $\hat\varphi=\omega_\rf|\eta_0|\delta_m/\omega_s$, $\Omega=\omega_s$. Получается
-\begin{align}
+Решение \eqref{eq:phi-ode} получено в приложении~\ref{sec:bm-cubic}, формула \eqref{eq:phi-hat-cos}. После сдвига начала отсчёта на четверть периода (чтобы ведущий член совпал с \eqref{eq:phi})
+\begin{equation}
+\label{eq:phi-ph}
 \varphi(t)
-&=\operatorname{sgn}\eta_0\Biggl[
+=\operatorname{sgn}\eta_0\Bigl[
 \hat\varphi\sin\psi
 +\frac{\hat\varphi^3}{192}\bigl(\sin\psi+\sin 3\psi\bigr)
-\Biggr],
-\label{eq:phi-ph}\\
-\frac{\Omega}{\omega_s}
-&=1-\frac{\hat\varphi^2}{16},
+\Bigr],
 \qquad
-\psi=\Omega t.
+\psi=\Omega t,
+\end{equation}
+\begin{equation}
 \label{eq:Omega-ph}
-\end{align}
-Остаток в $\varphi$ имеет порядок $\hat\varphi^5$. В частоте замена коэффициента первой гармоники на $\hat\varphi$ меняет $a^2$ на величину $O(\hat\varphi^4)$, поэтому член $\hat\varphi^2/16$ от этой замены не меняется. Сдвиг \eqref{eq:Omega-ph} есть вклад кубического члена в \eqref{eq:phi-ode}. Вклад члена $\tau$ порядка $\delta^3$ имеет тот же формальный порядок по амплитуде и при обрыве \eqref{eq:tau} на $\delta^2$ не определён; на $\delta_\eq$ не влияет ни он, ни \eqref{eq:Omega-ph}. В точках максимума новой фазы, $\psi=\pi/2$, выполнено $\sin\psi=1$ и $\sin 3\psi=-1$, так что два слагаемых $\hat\varphi^3/192$ вычитаются и $\varphi$ равна $\operatorname{sgn}\eta_0\,\hat\varphi$. Коэффициент первой гармоники больше полуразмаха именно на эту величину.
+\frac{\Omega}{\omega_s}=1-\frac{\hat\varphi^2}{16}.
+\end{equation}
+Для полного маятника \eqref{eq:pendulum} отношение частот без разложения по амплитуде равно $\pi/(2\mathrm{K}(k))$, где $k=\sin(\hat\varphi/2)$; формула \eqref{eq:Omega-ph} --- начало его разложения.
 
-Импульс восстанавливается из первого уравнения: $\delta=\dot\varphi/(\omega_\rf\eta_0)$. Дифференцирование \eqref{eq:phi-ph} по $\psi$ оставляет при $\cos\psi$ множитель $\hat\varphi+\hat\varphi^3/192$, а при $\cos 3\psi$ множитель $3\hat\varphi^3/192=\hat\varphi^3/64$. Отношение $\operatorname{sgn}\eta_0/\eta_0$ равно $1/|\eta_0|$, потому что $\eta_0=|\eta_0|\operatorname{sgn}\eta_0$. Умножение на $\Omega=\mathrm{d}\psi/\mathrm{d}t$ даёт
+Импульс находится из $\delta=\dot\varphi/(\omega_\rf\eta_0)$:
 \begin{equation}
 \label{eq:delta-raw-ph}
 \delta
 =\frac{\Omega}{\omega_\rf|\eta_0|}
-\Biggl[
+\Bigl[
 \Bigl(\hat\varphi+\frac{\hat\varphi^3}{192}\Bigr)\cos\psi
 +\frac{\hat\varphi^3}{64}\cos 3\psi
-\Biggr].
+\Bigr].
 \end{equation}
-Ряд $\delta$ содержит только косинусы. Производная каждого есть синус целой кратности и равна нулю при $\psi=0$ и при $\psi=\pi$. В этих точках оба косинуса равны $\pm 1$ и складываются, а значения $\delta$ противоположны. При $\hat\varphi^2\ll 1$ других нулей производной на периоде нет: после выноса $\sin\psi$ остаётся множитель, близкий к единице, поскольку $\sin 3\psi/\sin\psi=3-4\sin^2\psi$ ограничен. Полуразмах равен $\delta(0)$. Сумма коэффициентов скобки, делённая на $\hat\varphi$, есть $1+\hat\varphi^2/192+\hat\varphi^2/64$. Здесь $1/64=3/192$, поэтому сумма равна $1+\hat\varphi^2/48$. Вместе с $\Omega/\omega_s=1-\hat\varphi^2/16$
+Экстремумы находятся при $\psi=0,\pi$, где обе гармоники складываются, поэтому
 \begin{equation}
 \label{eq:dm-phi}
 \delta_m
@@ -96,92 +85,56 @@
 =\frac{\omega_s\hat\varphi}{\omega_\rf|\eta_0|}
 \Bigl(1-\frac{\hat\varphi^2}{24}\Bigr).
 \end{equation}
-Разность $1/16-1/48=2/48=1/24$. Первая скобка есть вклад частоты, вторая --- вклад формы $\mathrm{d}\varphi/\mathrm{d}\psi$.
-
-Деление \eqref{eq:delta-raw-ph} на $\delta_m$ сокращает общий множитель, включая $\Omega$. Коэффициент при $\cos\psi$, делённый на сумму $1+\hat\varphi^2/48$, равен
-\begin{equation}
-\label{eq:cos-ratio}
-\Bigl(1+\frac{\hat\varphi^2}{192}\Bigr)\Bigl(1-\frac{\hat\varphi^2}{48}\Bigr)
-=1-\frac{\hat\varphi^2}{64}
-\end{equation}
-с отброшенным $O(\hat\varphi^4)$, потому что $1/48-1/192=3/192=1/64$. Коэффициент при $\cos 3\psi$, делённый на ту же сумму, равен $\hat\varphi^2/64$ с тем же остатком. Поэтому
+Первая скобка --- вклад частоты, вторая --- вклад третьей гармоники. Нормировка на $\delta_m$ даёт
 \begin{equation}
 \label{eq:delta-ph}
 \delta(t)
-=\delta_m\Biggl[
+=\delta_m\Bigl[
 \Bigl(1-\frac{\hat\varphi^2}{64}\Bigr)\cos\psi
 +\frac{\hat\varphi^2}{64}\cos 3\psi
-\Biggr].
+\Bigr].
 \end{equation}
-Третья гармоника импульса положительна в точке максимума и увеличивает полуразмах. При фиксированном $\delta_m$ коэффициент первой гармоники меньше $\delta_m$.
 
-Точное соотношение полуразмахов для маятника \eqref{eq:pendulum} следует из интеграла энергии и не использует разложение частоты. Умножение \eqref{eq:pendulum} на $\dot\varphi$ даёт
-\begin{equation}
-\label{eq:energy}
-\frac{\mathrm{d}}{\mathrm{d}t}
-\Biggl(\frac{\dot\varphi^2}{2}-\omega_s^2\cos\varphi\Biggr)=0,
-\end{equation}
-поскольку производная $\cos\varphi$ равна $-\sin\varphi\,\dot\varphi$. В точке поворота $\varphi=\hat\varphi$ скорость равна нулю, постоянная равна $-\omega_s^2\cos\hat\varphi$, и
-\begin{equation}
-\label{eq:phidot-cos}
-\dot\varphi^2=2\omega_s^2(\cos\varphi-\cos\hat\varphi).
-\end{equation}
-Тождество $\cos\varphi-\cos\hat\varphi=2\bigl(\sin^2(\hat\varphi/2)-\sin^2(\varphi/2)\bigr)$ переписывает \eqref{eq:phidot-cos}:
+Для полного маятника связь полуразмахов следует из сохранения энергии:
 \begin{equation}
 \label{eq:phidot-exact}
 \dot\varphi^2
 =4\omega_s^2
-\Biggl(
+\Bigl(
 \sin^2\frac{\hat\varphi}{2}-\sin^2\frac{\varphi}{2}
-\Biggr).
+\Bigr),
 \end{equation}
-Модуль скорости максимален при $\varphi=0$ и равен $2\omega_s\bigl|\sin(\hat\varphi/2)\bigr|$. Из $\delta=\dot\varphi/(\omega_\rf\eta_0)$ и из симметрии $\delta_{\min}=-\delta_{\max}$ полуразмах есть этот максимум, делённый на $\omega_\rf|\eta_0|$:
 \begin{equation}
 \label{eq:dm-exact}
 \delta_m
 =\frac{2\omega_s}{\omega_\rf|\eta_0|}
 \sin\frac{\hat\varphi}{2}.
 \end{equation}
-Ряд $\sin x=x-x^3/6+O(x^5)$ при $x=\hat\varphi/2$ даёт $2\sin(\hat\varphi/2)=\hat\varphi-\hat\varphi^3/24+O(\hat\varphi^5)$, то есть множитель $1-\hat\varphi^2/24$. Разложение \eqref{eq:dm-exact} совпадает с \eqref{eq:dm-phi}. Формула \eqref{eq:dm-exact} точна для \eqref{eq:pendulum} при любом размахе внутри сепаратрисы; \eqref{eq:dm-phi} есть и её разложение, и результат обрыва синуса на члене $\varphi^3$.
+Разложение \eqref{eq:dm-exact} воспроизводит \eqref{eq:dm-phi}.
 
-\subsection{Средний квадрат и сдвиг $\delta_\eq$}
+\subsection{Равновесный сдвиг и средний квадрат импульса}
 
-Формула \eqref{eq:deq-avg} уже связывает $\delta_\eq$ с $\langle\delta^2\rangle$. Кубический член её не меняет. Единственная новая величина есть $\langle\delta^2\rangle$ на решении \eqref{eq:delta-ph} при фиксированном полуразмахе $\delta_m$.
-
-Среднее $\cos\psi\cos 3\psi$ за период равно нулю, среднее квадрата каждого косинуса равно $1/2$. Квадрат коэффициента $\hat\varphi^2/64$ имеет порядок $\hat\varphi^4$ и отбрасывается. Квадрат первого коэффициента равен $(1-\hat\varphi^2/64)^2=1-\hat\varphi^2/32+O(\hat\varphi^4)$, потому что удвоенное $\hat\varphi^2/64$ есть $\hat\varphi^2/32$. Поэтому
+На решении \eqref{eq:delta-ph}, с отбрасыванием $O(\hat\varphi^4)$,
 \begin{equation}
 \label{eq:d2-ph}
 \langle\delta^2\rangle
-=\frac{\delta_m^2}{2}\Bigl(1-\frac{\hat\varphi^2}{32}\Bigr)
+=\frac{\delta_m^2}{2}\Bigl(1-\frac{\hat\varphi^2}{32}\Bigr).
 \end{equation}
-с остатком $O(\hat\varphi^4\delta_m^2)$.
-
-Поправка обязана определению \eqref{eq:dm-def}. В максимуме $\cos\psi=\cos 3\psi=1$, и третья гармоника входит в полуразмах с тем же знаком, что и первая. При фиксированной сумме $\delta_m$ первая гармоника меньше $\delta_m$ на долю $\hat\varphi^2/64$. Средний квадрат несёт первая гармоника. Уменьшение её коэффициента на $\hat\varphi^2/64$ уменьшает квадрат на $2\cdot\hat\varphi^2/64=\hat\varphi^2/32$. Если бы $\delta_m$ было коэффициентом первой гармоники, поправка порядка $\hat\varphi^2$ отсутствовала бы: среднее квадрата равнялось бы половине квадрата этого коэффициента, а третья гармоника добавила бы только $O(\hat\varphi^4)$. Частота в \eqref{eq:d2-ph} не входит: она сократилась при переходе от \eqref{eq:delta-raw-ph} к \eqref{eq:delta-ph}.
-
-Подстановка \eqref{eq:d2-ph} в \eqref{eq:deq-avg} даёт
+Поправка возникает из-за того, что амплитуда задана полуразмахом: в максимуме третья гармоника складывается с первой, поэтому при фиксированном $\delta_m$ первая гармоника, несущая средний квадрат, меньше $\delta_m$ на долю $\hat\varphi^2/64$. Подстановка в \eqref{eq:deq-avg} даёт
 \begin{equation}
 \label{eq:deq-ph}
 \delta_\eq
 =-\frac{\eta_1\delta_m^2}{2\eta_0}
 \Bigl(1-\frac{\hat\varphi^2}{32}\Bigr).
 \end{equation}
-При $\hat\varphi\to 0$ это \eqref{eq:deq}. При $\eta_1=0$ правая часть равна нулю: изменение $\langle\delta^2\rangle$ доходит до $\delta_\eq$ только умноженным на $\eta_1$.
 
-Для маятника \eqref{eq:pendulum} то же среднее считается точно при любом размахе внутри сепаратрисы. Неустойчивая точка есть $\varphi=\pi$. Подстановка $\varphi=\pi+\varepsilon$ в \eqref{eq:pendulum} даёт $\ddot\varepsilon-\omega_s^2\varepsilon=0$, потому что $\sin(\pi+\varepsilon)=-\sin\varepsilon$. Сепаратриса проходит через эту точку, внутри неё $0\le\hat\varphi<\pi$.
-
-Обозначим $k=\sin(\hat\varphi/2)$. Из \eqref{eq:phidot-exact} и \eqref{eq:dm-exact} отношение квадратов есть $(\,k^2-\sin^2(\varphi/2)\,)/k^2$. Подстановка $\sin(\varphi/2)=k\sin\theta$ переводит $\varphi=0$ в $\theta=0$ и $\varphi=\hat\varphi$ в $\theta=\pi/2$. Дифференцирование даёт $\cos(\varphi/2)\,\mathrm{d}\varphi/2=k\cos\theta\,\mathrm{d}\theta$. Поскольку $\cos(\varphi/2)=\sqrt{1-k^2\sin^2\theta}$,
-\begin{equation}
-\label{eq:dphi-sub}
-\mathrm{d}\varphi
-=\frac{2k\cos\theta\,\mathrm{d}\theta}{\sqrt{1-k^2\sin^2\theta}}.
-\end{equation}
-На четверти периода, где $\varphi$ растёт, \eqref{eq:phidot-exact} даёт $\dot\varphi=2\omega_s k\cos\theta$: под корнем стоит $k^2\cos^2\theta$, а $\cos\theta\ge 0$ при $\theta$ от $0$ до $\pi/2$. Деление \eqref{eq:dphi-sub} на эту скорость сокращает $2k\cos\theta$:
-\begin{equation}
-\label{eq:dt-sub}
-\frac{\mathrm{d}\varphi}{\dot\varphi}
-=\frac{\mathrm{d}\theta}{\omega_s\sqrt{1-k^2\sin^2\theta}}.
-\end{equation}
-Интеграл от $0$ до $\pi/2$ есть четверть периода $T/4=\mathrm{K}(k)/\omega_s$. Полные эллиптические интегралы первого и второго рода
+Для полного маятника \eqref{eq:pendulum} среднее вычисляется без разложения при любой амплитуде внутри сепаратрисы ($0\le\hat\varphi<\pi$). Подстановка $\sin(\varphi/2)=k\sin\theta$, $k=\sin(\hat\varphi/2)$, переводит \eqref{eq:phidot-exact} в
+\begin{equation*}
+\frac{\delta^2}{\delta_m^2}=\cos^2\theta,
+\qquad
+\mathrm{d}t=\frac{\mathrm{d}\theta}{\omega_s\sqrt{1-k^2\sin^2\theta}}.
+\end{equation*}
+С полными эллиптическими интегралами
 \begin{equation}
 \label{eq:ell-def}
 \mathrm{K}(k)
@@ -190,97 +143,58 @@
 \mathrm{E}(k)
 =\int_0^{\pi/2}\sqrt{1-k^2\sin^2\theta}\,\mathrm{d}\theta
 \end{equation}
-не следует смешивать с коэффициентом $K$ из \eqref{eq:smooth}. На той же подстановке $k^2-\sin^2(\varphi/2)=k^2\cos^2\theta$, поэтому $\delta^2/\delta_m^2=\cos^2\theta$. Четыре четверти периода дают одно и то же среднее. Интеграл $\mathrm{d}t=\mathrm{d}\varphi/\dot\varphi$ содержит $\omega_s$ и в числителе, и в знаменателе среднего, так что частота сокращается:
-\begin{equation}
-\label{eq:d2-theta}
-\langle\delta^2\rangle
-=\frac{\delta_m^2}{\mathrm{K}(k)}
-\int_0^{\pi/2}
-\frac{\cos^2\theta\,\mathrm{d}\theta}{\sqrt{1-k^2\sin^2\theta}}.
-\end{equation}
-При $k\neq 0$ тождество $\sin^2\theta=\bigl(1-(1-k^2\sin^2\theta)\bigr)/k^2$ даёт
-\begin{equation}
-\label{eq:cos2-id}
-\cos^2\theta
-=1-\frac{1}{k^2}+\frac{1-k^2\sin^2\theta}{k^2}.
-\end{equation}
-Деление \eqref{eq:cos2-id} на корень разделяет подынтегральное выражение на член с $\mathrm{K}$ и член с $\mathrm{E}$:
-\begin{equation}
-\label{eq:ell-int}
-\int_0^{\pi/2}
-\frac{\cos^2\theta\,\mathrm{d}\theta}{\sqrt{1-k^2\sin^2\theta}}
-=\Bigl(1-\frac{1}{k^2}\Bigr)\mathrm{K}(k)+\frac{1}{k^2}\mathrm{E}(k)
-=\frac{\mathrm{E}(k)-(1-k^2)\mathrm{K}(k)}{k^2}.
-\end{equation}
-Вторая форма следует из $1-1/k^2=-(1-k^2)/k^2$. Деление \eqref{eq:ell-int} на $\mathrm{K}(k)$ и подстановка в \eqref{eq:d2-theta} приводят к
+(не путать с коэффициентом $K$ из \eqref{eq:smooth}) получается
 \begin{equation}
 \label{eq:d2-ell}
 \langle\delta^2\rangle
+=\frac{\delta_m^2}{\mathrm{K}(k)}
+\int_0^{\pi/2}
+\frac{\cos^2\theta\,\mathrm{d}\theta}{\sqrt{1-k^2\sin^2\theta}}
 =\delta_m^2\,
-\frac{\mathrm{E}(k)/\mathrm{K}(k)-1+k^2}{k^2},
-\qquad
-k=\sin\frac{\hat\varphi}{2}.
+\frac{\mathrm{E}(k)/\mathrm{K}(k)-1+k^2}{k^2}.
 \end{equation}
-Формула \eqref{eq:d2-ell} есть точное $\langle\delta^2\rangle$ для маятника \eqref{eq:pendulum} при любой амплитуде внутри сепаратрисы. Ряд \eqref{eq:d2-ph} есть начало её разложения по $\hat\varphi^2$.
+Разложение $\mathrm{E}/\mathrm{K}=1-k^2/2-k^4/16+O(k^6)$ с $k^2\approx\hat\varphi^2/4$ воспроизводит \eqref{eq:d2-ph}.
 
-Разложение полных эллиптических интегралов, $\mathrm{K}(k)=\tfrac{\pi}{2}\bigl(1+k^2/4+9k^4/64+\dots\bigr)$ и $\mathrm{E}(k)=\tfrac{\pi}{2}\bigl(1-k^2/4-3k^4/64-\dots\bigr)$, даёт $\mathrm{E}/\mathrm{K}=1-k^2/2-k^4/16+O(k^6)$, так что дробь в \eqref{eq:d2-ell} равна $1/2-k^2/16+O(k^4)$. С $k^2=\hat\varphi^2/4+O(\hat\varphi^4)$ это $1/2-\hat\varphi^2/64$, то есть \eqref{eq:d2-ph}.
+\subsection{Учёт квадратичного запаздывания}
 
-\subsection{Квадратичное запаздывание}
-
-Член $\eta_1\delta^2$ возвращается в первое уравнение \eqref{eq:system-phi}. Он чётен по $\delta$. На ведущей гармонике $\delta_m\cos\psi$ его переменная часть есть вторая гармоника, а постоянная часть по-прежнему снимается условием $\langle\tau\rangle=0$.
-
-В первом порядке по $\eta_1$ среднее $\langle\delta^2\rangle$ берётся на решении \eqref{eq:delta-ph}, найденном при $\eta_1=0$. Добавка, линейная по $\eta_1$, есть постоянная и вторая гармоника порядка $\eta_1\delta_m^2$. Квадрат этой добавки имеет второй порядок по $\eta_1$. Произведение чётной гармоники с $\cos\psi$ или с $\cos 3\psi$ в среднем за период равно нулю. Линейной по $\eta_1$ поправки к \eqref{eq:d2-ph} нет, и \eqref{eq:deq-ph} уже есть этот первый порядок.
-
-Та же добавка накладывается на форму маятника, не перестраивая её нечётные гармоники. Вторая гармоника вычислена в \eqref{eq:delta-sol} на ведущем члене $\delta_m\cos\psi$. Её коэффициент
-\begin{equation}
-\label{eq:b2-keep}
-\frac{\delta_m^2}{6}\Bigl(\frac{\eta_1}{\eta_0}-\frac{2}{\gamma_s^2}\Bigr)
-\end{equation}
-сохраняется. Слагаемое $\eta_1/\eta_0$ порождено квадратичным запаздыванием, слагаемое $-2/\gamma_s^2$ --- множителем $1-\delta/\gamma_s^2$. Замена ведущего члена на \eqref{eq:delta-ph} меняет коэффициент на долю порядка $\hat\varphi^2$. Произведение этой доли и $\delta_m^2$ отбрасывается. Постоянный член из \eqref{eq:delta-sol} не копируется: там $\langle\delta^2\rangle=\delta_m^2/2$. Здесь постоянная равна $\delta_\eq$ из \eqref{eq:deq-ph}, потому что среднее по-прежнему связано с постоянной равенством \eqref{eq:deq-avg}.
-
-Все оставленные гармоники $\delta$ суть косинусы. Их производные равны нулю при $\psi=0$ и при $\psi=\pi$, значения постоянной и второй гармоники в этих точках одинаковы и из разности $\delta_{\max}-\delta_{\min}$ выпадают. Полуразмах остаётся суммой коэффициентов первой и третьей гармоник, то есть $\delta_m$ из \eqref{eq:delta-ph}. Добавка второй гармоники к полуразмаху фазы имеет второй порядок по $\eta_1\delta_m/\eta_0$: в точке, где производная ведущего синуса равна нулю, $\sin 2\psi=0$, а сдвиг этой точки пропорционален малой второй гармонике и входит в значение $\varphi$ своим квадратом. В множителе $1-\hat\varphi^2/32$ такой сдвиг не учитывается. Итог:
+Член $\eta_1\delta^2$ добавляет к решению постоянную и вторую гармонику порядка $\eta_1\delta_m^2$. Их произведения с нечётными гармониками $\cos\psi$, $\cos3\psi$ в среднем равны нулю, а квадраты имеют второй порядок по $\eta_1$. Поэтому в первом порядке по $\eta_1$ формула \eqref{eq:d2-ph} не меняется, и \eqref{eq:deq-ph} уже учитывает $\eta_1$. Вторая гармоника берётся из \eqref{eq:delta-sol}; её изменение от кубического члена --- поправка порядка $\hat\varphi^2\delta_m^2$ и отбрасывается. Полуразмах по-прежнему определяется первой и третьей гармониками. Решение имеет вид
 \begin{equation}
 \label{eq:delta-ph-eta}
-\begin{aligned}
 \delta(t)
-&=\delta_\eq
-+\delta_m\Biggl[
+=\delta_\eq
++\delta_m\Bigl[
 \Bigl(1-\frac{\hat\varphi^2}{64}\Bigr)\cos\psi
 +\frac{\hat\varphi^2}{64}\cos 3\psi
-\Biggr]\\
-&\quad
+\Bigr]
 +\frac{\delta_m^2}{6}
 \Bigl(\frac{\eta_1}{\eta_0}-\frac{2}{\gamma_s^2}\Bigr)\cos 2\psi,
-\end{aligned}
 \end{equation}
-где $\delta_\eq$ взято из \eqref{eq:deq-ph}, а $\psi=\Omega t$ с частотой \eqref{eq:Omega-ph}. Поправка к частоте порядка $(\eta_1\delta_m/\eta_0)^2$ этим разложением не фиксируется, как уже сказано после \eqref{eq:phi}. На $\delta_\eq$ она не влияет. Сохранённый сдвиг частоты есть только \eqref{eq:Omega-ph}.
+где $\delta_\eq$ дано \eqref{eq:deq-ph}, а $\psi=\Omega t$ с частотой \eqref{eq:Omega-ph}.
 
-\subsection{Бетатронное запаздывание}
+\subsection{Учёт бетатронного запаздывания}
 
-Постоянная $\Lambda$ определена в главе~\ref{sec:mag-beta}. Запаздывание берётся из \eqref{eq:tau-L}:
+С постоянной $\Lambda$ из главы~\ref{sec:mag-beta}
 \begin{equation}
 \label{eq:system-phi-L}
+\left\{
 \begin{aligned}
-\frac{\mathrm{d}\varphi}{\mathrm{d}t}
+\dot\varphi
 &=\omega_\rf(\eta_0\delta+\eta_1\delta^2+\Lambda),\\
-\frac{\mathrm{d}\delta}{\mathrm{d}t}
+\dot\delta
 &=K\cos\varphi_s\Bigl(\varphi-\frac{\varphi^3}{6}\Bigr)
 \Bigl(1-\frac{\delta}{\gamma_s^2}\Bigr).
 \end{aligned}
+\right.
 \end{equation}
-Условие $\langle\tau\rangle=0$ с этим $\tau$ есть \eqref{eq:deq-raw-L}. При $\eta_1=0$ замена $u=\delta+\Lambda/\eta_0$ убирает $\Lambda$ из первого уравнения: $\mathrm{d}\varphi/\mathrm{d}t=\omega_\rf\eta_0 u$. Отличие множителя $1-\delta/\gamma_s^2$ от $1-u/\gamma_s^2$ есть постоянная $\Lambda/(\eta_0\gamma_s^2)$. Она умножает всю силу и меняет частоту на относительную величину порядка $\Lambda$, не меняя формы колебания при фиксированном полуразмахе. В принятом порядке $u$ есть маятник предыдущих подразделов, полуразмах $u$ равен $\delta_m$, и связи \eqref{eq:dm-phi}, \eqref{eq:dm-exact} сохраняются. Среднее $\langle u\rangle$ равно нулю, поэтому при $\eta_1=0$ выполнено $\delta_\eq=-\Lambda/\eta_0$, а $\langle u^2\rangle$ даётся \eqref{eq:d2-ph}.
-
-Величина $\Lambda$ одного порядка с $\eta_1\delta^2$, как в главе~\ref{sec:mag-beta}. Квадрат постоянной $\delta_\eq$ есть произведение двух таких величин и в $\langle\delta^2\rangle$ отбрасывается: то же условие записано в \eqref{eq:valid-L} как $|\Lambda/(\eta_0\delta_m)|\ll 1$. Переменную часть по-прежнему описывает \eqref{eq:d2-ph}: поправки порядка $\eta_1\hat\varphi^2$ и $\Lambda\hat\varphi^2$ суть произведения малых параметров. Подстановка \eqref{eq:d2-ph} в \eqref{eq:deq-raw-L} даёт первую строку \eqref{eq:deq-ph-L}.
-
-Лоренц-фактор \eqref{eq:gamma-delta} усредняется по определению \eqref{eq:gamma-eff}. У маятника $\delta(\psi+\pi)=-\delta(\psi)$, и среднее куба равно нулю. Постоянная и вторая гармоника умножают $\langle\delta^2\rangle$ и дают в $\langle\delta^3\rangle$ член порядка $\delta_m^2\delta_\eq$. При $\Lambda$ одного порядка с $\delta_m^2$ это $O(\delta_m^4)$, тот же остаток, что в \eqref{eq:gamma-eff}. В $\langle\delta^2\rangle$ кинематического члена подставляется \eqref{eq:d2-ph}, а в член с $\delta_\eq$ --- первая строка. Множитель $1-\hat\varphi^2/32$ стоит при каждом вхождении $\langle\delta^2\rangle$; слагаемое $\Lambda$ этого множителя не содержит, потому что в \eqref{eq:deq-raw-L} оно не умножено на $\langle\delta^2\rangle$. Энергия есть $\gamma mc^2$, сдвиг средней энергии $\Delta E_\eq=E_s(\gamma_{\mathrm{eff}}-\gamma_s)/\gamma_s$. Деление на $\gamma_s$ переводит $\beta_s^2\gamma_s\delta_\eq$ в $\beta_s^2\delta_\eq$, а $\beta_s^2\langle\delta^2\rangle/(2\gamma_s)$ в $\beta_s^2\langle\delta^2\rangle/(2\gamma_s^2)$. Поскольку $\langle\delta^2\rangle=\delta_m^2(1-\hat\varphi^2/32)/2$, второй вклад есть $\beta_s^2\delta_m^2(1-\hat\varphi^2/32)/(4\gamma_s^2)$. Итог:
+При $\eta_1=0$ замена $u=\delta+\Lambda/\eta_0$ убирает $\Lambda$ из первого уравнения; во втором она меняет лишь силу на относительную величину порядка $\Lambda$, т.\,е. частоту, но не форму колебания. Поэтому $u$ колеблется как маятник предыдущих разделов с $\langle u\rangle=0$ и $\langle u^2\rangle$ из \eqref{eq:d2-ph}, а $\delta_\eq=-\Lambda/\eta_0$. При $\eta_1\neq 0$ поправки порядка $\eta_1\hat\varphi^2$ и $\Lambda\hat\varphi^2$ к форме --- произведения малых параметров, а $\delta_\eq^2$ в $\langle\delta^2\rangle$ отбрасывается по условию $|\Lambda/(\eta_0\delta_m)|\ll1$. Подстановка \eqref{eq:d2-ph} в \eqref{eq:deq-raw-L} и в среднее от \eqref{eq:gamma-delta} даёт
 \begin{equation}
 \label{eq:deq-ph-L}
 \begin{aligned}
 \delta_\eq
-&=-\frac{1}{\eta_0}\Biggl[
+&=-\frac{1}{\eta_0}\Bigl[
 \frac{\eta_1\delta_m^2}{2}\Bigl(1-\frac{\hat\varphi^2}{32}\Bigr)
 +\Lambda
-\Biggr],
+\Bigr],
 \\[4pt]
 \gamma_{\mathrm{eff}}
 &=\gamma_s+\beta_s^2\gamma_s\,\delta_\eq
@@ -288,22 +202,20 @@ k=\sin\frac{\hat\varphi}{2}.
 \Bigl(1-\frac{\hat\varphi^2}{32}\Bigr),
 \\[4pt]
 \Delta E_\eq
-&=\beta_s^2 E_s\Biggl[
+&=\beta_s^2 E_s\Bigl[
 \delta_\eq
 +\frac{\delta_m^2}{4\gamma_s^2}
 \Bigl(1-\frac{\hat\varphi^2}{32}\Bigr)
-\Biggr].
+\Bigr].
 \end{aligned}
 \end{equation}
-При $\Lambda=0$ первая строка совпадает с \eqref{eq:deq-ph}. При $\hat\varphi\to 0$ первая строка совпадает с \eqref{eq:deq-L}, а две другие --- с \eqref{eq:gamma-L} и \eqref{eq:dE-L}.
+Множитель $1-\hat\varphi^2/32$ стоит при каждом вхождении $\langle\delta^2\rangle$; слагаемое $\Lambda$ его не содержит.
 
 \subsection{Условия применимости}
 
-В \eqref{eq:valid-L} требуется $\omega_\rf|\eta_0|\delta_m/\omega_s\ll 1$: это оправдывает замену $\sin\varphi$ на $\varphi$. Здесь кубический член оставлен, а отброшен $\varphi^5/120$. Отношение этого члена к оставленному $\varphi^3/6$ имеет порядок $\hat\varphi^2$, поэтому вместо той малости фазы ставится
+Отброшенный член $\varphi^5/120$ мал по сравнению с $\varphi^3/6$ при
 \begin{equation}
 \label{eq:valid-ph}
 \hat\varphi^2\ll 1.
 \end{equation}
-Остальные требования \eqref{eq:valid-L} сохраняются. Условие $|\Lambda/(\eta_0\delta_m)|\ll 1$ даёт $|\delta_\eq|\ll\delta_m$, поэтому квадрат постоянной в $\langle\delta^2\rangle$ много меньше $\delta_m^2$. Произведение левых частей этого условия и условия $|\eta_1\delta_m/\eta_0|\ll 1$ равно $|\eta_1\Lambda/\eta_0^2|$: наклон $\tau$ в смещённой точке, $\eta_0+2\eta_1\delta$ при $\delta\sim-\Lambda/\eta_0$, мало отличается от $\eta_0$.
-
-Равенства \eqref{eq:dm-exact} и \eqref{eq:d2-ell} условия $\hat\varphi^2\ll 1$ не требуют. Они верны для маятника \eqref{eq:pendulum} при $\eta_1=0$ и внутри сепаратрисы, $0\le\hat\varphi<\pi$. Ряд \eqref{eq:d2-ph} есть их разложение при $\hat\varphi^2\ll 1$.
+Это условие заменяет малость фазы в \eqref{eq:valid-L}; остальные условия \eqref{eq:valid-L} сохраняются.

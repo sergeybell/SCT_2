@@ -1,0 +1,231 @@
+{ magnetic_2 mapping, one DA setting only: OV 3 3 0, RF on.
+  Chromaticity is the particle-path one from MAP(5) on the Twiss ellipse,
+  not Berz TP (energy as parameter, OV 3 2 1).
+  Lattice RFFLAG stays 0: magnetic_2.fox sets FREQ from header fACCLEN=141 m,
+  not from this ring (SPOS=117.39 m), and 5 kV / h=1 makes Qs too small
+  for COSY GT/TSS (cos mu ~ 1, unrepresentable map).
+  Cavity is the delta_eq one: h=5, 200 kV, FREQ=h*REVFREQ(SPOS), after the turn.
+  PATHXI (MAP(5) ellipse, eta) before the cavity; TSS and spin probes after. }
+INCLUDE 'magnetic_2';
+
+PROCEDURE PATHXI GAMMA XIX XIY XIXE XIYE ETA0 ETA1 ALPHA0 ALPHA1 CS LTX LTY;
+    VARIABLE KG 1; VARIABLE PI 1; VARIABLE G2 1; VARIABLE TERM 1;
+    VARIABLE T1 1; VARIABLE T2 1; VARIABLE T3 1; VARIABLE T4 1;
+    VARIABLE T11 1; VARIABLE T12 1; VARIABLE T22 1;
+    VARIABLE T33 1; VARIABLE T34 1; VARIABLE T44 1;
+    VARIABLE X11 1; VARIABLE X12 1; VARIABLE X22 1;
+    VARIABLE P11 1; VARIABLE P12 1; VARIABLE P22 1;
+    VARIABLE X33 1; VARIABLE X34 1; VARIABLE X44 1;
+    VARIABLE P33 1; VARIABLE P34 1; VARIABLE P44 1;
+    VARIABLE Y33 1; VARIABLE Y34 1; VARIABLE Y44 1;
+    VARIABLE B33 1; VARIABLE B34 1; VARIABLE B44 1;
+    VARIABLE R11 1; VARIABLE R12 1; VARIABLE R21 1; VARIABLE R22 1;
+    VARIABLE S11 1; VARIABLE S12 1; VARIABLE S21 1; VARIABLE S22 1;
+    VARIABLE CX 1; VARIABLE SX 1; VARIABLE AX 1; VARIABLE BX 1; VARIABLE GX 1;
+    VARIABLE CY 1; VARIABLE SY 1; VARIABLE AY 1; VARIABLE BY 1; VARIABLE GY 1;
+    VARIABLE DETX 1; VARIABLE DETY 1;
+    VARIABLE KX 1; VARIABLE KP 1; VARIABLE XC 1; VARIABLE PC 1;
+    VARIABLE KYX 1; VARIABLE KYP 1; VARIABLE XCY 1; VARIABLE PCY 1;
+    VARIABLE KY 1; VARIABLE KB 1; VARIABLE YC 1; VARIABLE BC 1;
+    VARIABLE DLX 1; VARIABLE DLY 1;
+    VARIABLE LTX_ELL 1; VARIABLE LTY_ELL 1;
+    VARIABLE TL 800; VARIABLE TA 800;
+    VARIABLE E1 1; VARIABLE E2 1;
+
+    PI := 4*ATAN(1);
+    KG := (GAMMA+1)/GAMMA;
+    CS := SPOS;
+
+    T1 := MAP(5)|(1&0&0&0&0&0);
+    T2 := MAP(5)|(0&1&0&0&0&0);
+    T3 := MAP(5)|(0&0&1&0&0&0);
+    T4 := MAP(5)|(0&0&0&1&0&0);
+    T11 := MAP(5)|(2&0&0&0&0&0);
+    T12 := MAP(5)|(1&1&0&0&0&0);
+    T22 := MAP(5)|(0&2&0&0&0&0);
+    T33 := MAP(5)|(0&0&2&0&0&0);
+    T34 := MAP(5)|(0&0&1&1&0&0);
+    T44 := MAP(5)|(0&0&0&2&0&0);
+
+    X11 := MAP(1)|(2&0&0&0&0&0);
+    X12 := MAP(1)|(1&1&0&0&0&0);
+    X22 := MAP(1)|(0&2&0&0&0&0);
+    P11 := MAP(2)|(2&0&0&0&0&0);
+    P12 := MAP(2)|(1&1&0&0&0&0);
+    P22 := MAP(2)|(0&2&0&0&0&0);
+    X33 := MAP(1)|(0&0&2&0&0&0);
+    X34 := MAP(1)|(0&0&1&1&0&0);
+    X44 := MAP(1)|(0&0&0&2&0&0);
+    P33 := MAP(2)|(0&0&2&0&0&0);
+    P34 := MAP(2)|(0&0&1&1&0&0);
+    P44 := MAP(2)|(0&0&0&2&0&0);
+    Y33 := MAP(3)|(0&0&2&0&0&0);
+    Y34 := MAP(3)|(0&0&1&1&0&0);
+    Y44 := MAP(3)|(0&0&0&2&0&0);
+    B33 := MAP(4)|(0&0&2&0&0&0);
+    B34 := MAP(4)|(0&0&1&1&0&0);
+    B44 := MAP(4)|(0&0&0&2&0&0);
+
+    R11 := ME(1,1); R12 := ME(1,2); R21 := ME(2,1); R22 := ME(2,2);
+    S11 := ME(3,3); S12 := ME(3,4); S21 := ME(4,3); S22 := ME(4,4);
+
+    CX := (R11+R22)/2;
+    SX := SQRT(1-CX*CX);
+    IF R12<0; SX := -SX; ENDIF;
+    BX := R12/SX;
+    AX := (R11-R22)/(2*SX);
+    GX := (1+AX*AX)/BX;
+
+    CY := (S11+S22)/2;
+    SY := SQRT(1-CY*CY);
+    IF S12<0; SY := -SY; ENDIF;
+    BY := S12/SY;
+    AY := (S11-S22)/(2*SY);
+    GY := (1+AY*AY)/BY;
+
+    KX := X11*BX - X12*AX + X22*GX;
+    KP := P11*BX - P12*AX + P22*GX;
+    DETX := (1-R11)*(1-R22) - R12*R21;
+    XC := ((1-R22)*KX + R12*KP)/DETX;
+    PC := (R21*KX + (1-R11)*KP)/DETX;
+    LTX_ELL := T11*BX - T12*AX + T22*GX;
+    DLX := LTX_ELL + T1*XC + T2*PC;
+
+    KY := Y33*BY - Y34*AY + Y44*GY;
+    KB := B33*BY - B34*AY + B44*GY;
+    DETY := (1-S11)*(1-S22) - S12*S21;
+    YC := ((1-S22)*KY + S12*KB)/DETY;
+    BC := (S21*KY + (1-S11)*KB)/DETY;
+    KYX := X33*BY - X34*AY + X44*GY;
+    KYP := P33*BY - P34*AY + P44*GY;
+    XCY := ((1-R22)*KYX + R12*KYP)/DETX;
+    PCY := (R21*KYX + (1-R11)*KYP)/DETX;
+    LTY_ELL := T33*BY - T34*AY + T44*GY;
+    DLY := LTY_ELL + T3*YC + T4*BC;
+    DLY := DLY + T1*XCY + T2*PCY;
+
+    LTX := -KG*DLX/CS;
+    LTY := -KG*DLY/CS;
+    XIXE := KG*LTX_ELL/(2*PI);
+    XIYE := KG*LTY_ELL/(2*PI);
+    XIX := -LTX*CS/(2*PI);
+    XIY := -LTY*CS/(2*PI);
+
+    ECM MAP SPOS TL;
+    E1 := TL|(0&0&0&0&0&1);
+    E2 := TL|(0&0&0&0&0&2);
+    MCM MAP SPOS TA;
+    ALPHA0 := -TA|(0&0&0&0&0&1);
+    ALPHA1 := -TA|(0&0&0&0&0&2);
+
+    G2 := GAMMA*GAMMA;
+    ETA0 := -(KG*KG)*E1/CS;
+    TERM := E1*KG/(2*G2) + E2*KG*KG;
+    ETA1 := -(KG/CS)*TERM;
+ENDPROCEDURE;
+
+PROCEDURE MAIN;
+    VARIABLE CHROM_X 1; VARIABLE CHROM_Y 1;
+    VARIABLE SGx1 1; VARIABLE SGy1 1;
+    VARIABLE SGx2 1; VARIABLE SGy2 1;
+    VARIABLE SGx1_0 1; VARIABLE SGy1_0 1;
+    VARIABLE SGx2_0 1; VARIABLE SGy2_0 1;
+    VARIABLE EB1 1; VARIABLE RF 1;
+    VARIABLE MU 800; VARIABLE MU0 1; VARIABLE NBAR 800 3;
+    VARIABLE MU_N_ARR 5000 1000;
+    VARIABLE quad_Kx 1; VARIABLE quad_Ky 1; VARIABLE quad_Kz 1;
+    VARIABLE GAMMA 1; VARIABLE BETA 1;
+    VARIABLE structure 25;
+    VARIABLE step_x 1; VARIABLE step_y 1;
+    VARIABLE step_x1 1; VARIABLE step_x2 1; VARIABLE step_y1 1;
+    VARIABLE I 1; VARIABLE J 1; VARIABLE K 1;
+    VARIABLE N0 1; VARIABLE N1 1; VARIABLE N2 1;
+    VARIABLE ALPHA0 1; VARIABLE ALPHA1 1;
+    VARIABLE ETA0 1; VARIABLE ETA1 1;
+    VARIABLE CS 1; VARIABLE LTX 1; VARIABLE LTY 1;
+    VARIABLE LIN 500;
+    VARIABLE CHROM_XE 1; VARIABLE CHROM_YE 1;
+    VARIABLE VRF 1 1 1; VARIABLE FREQ 1; VARIABLE HNUM 1; VARIABLE VKV 1;
+
+    structure := 'magnetic_2';
+    GAMMA := 1.143914;
+    BETA := SQRT(1-1/(GAMMA*GAMMA));
+    EB1 := 0.0;
+    SGx1_0 := 0.0; SGy1_0 := 0.0;
+    SGx2_0 := 0.0; SGy2_0 := 0.0;
+    SGx1 := SGx1_0; SGy1 := SGy1_0; SGx2 := SGx2_0; SGy2 := SGy2_0;
+
+    { same family steps as SCT mapping.fox; 3^3 grid is the test scan }
+    step_x := 0.02; step_y := -0.03;
+    step_x1 := step_x; step_x2 := step_x; step_y1 := step_y;
+    N0 := 3; N1 := 3; N2 := 3;
+
+    OPENF 3618 '../dat/'&structure&'/integrals_ov330.dat' 'REPLACE';
+    OPENF 3620 '../dat/'&structure&'/particle_spin_tune_ov330.dat' 'REPLACE';
+    OPENF 3621 '../dat/'&structure&'/particle_spin_tune_1_ov330.dat' 'REPLACE';
+    WRITE 3618 'SGx1 SGx2 SGy1 SGy2 chrom_x chrom_y chrom_ell_x chrom_ell_y eta0 eta1 MU_ref quad_Kx quad_Ky quad_Kz alpha_0 alpha_1 Cs LTx LTy';
+    WRITE 3620 ' SGx1 SGx2 SGy1 SGy2 spin_ref spin_x spin_y spin_z';
+    WRITE 3621 ' SGx1 SGx2 SGy1 SGy2 spin_ref spin_x spin_y spin_z';
+
+    RF := 0;
+    VKV := 200;
+    HNUM := 5;
+    OV 3 3 0;
+    SET_FOR_DEUTERONS GAMMA;
+
+    LOOP K 1 N0;
+        SGx1 := SGx1_0;
+        LOOP I 1 N1;
+            SGx2 := SGx2_0;
+            LOOP J 1 N2;
+                UM; LATTICE SGx1 SGy1 SGx2 SGy2 EB1 RF;
+                PATHXI GAMMA CHROM_X CHROM_Y CHROM_XE CHROM_YE ETA0 ETA1 ALPHA0 ALPHA1 CS LTX LTY;
+                FREQ := HNUM*REVFREQ(CS);
+                VRF(1,1) := VKV;
+                RF VRF 0 FREQ 0 0.05;
+                TSS MU NBAR 0;
+                SR 0 0 0 0 0 0 0 0 1; SSR 0 0 1;
+                SR 1*1E-3 0 0 0 0 0 0 0 1; SSR 0 0 1;
+                SR 0 0 1*1E-3 0 0 0 0 0 1; SSR 0 0 1;
+                SR 0 0 0 0 0 1*1E-4 0 0 1; SSR 0 0 1;
+                SR 2*1E-3 0 0 0 0 0 0 0 1; SSR 0 0 1;
+                SR 0 0 2*1E-3 0 0 0 0 0 1; SSR 0 0 1;
+                SR 0 0 0 0 0 5*1E-4 0 0 1; SSR 0 0 1;
+                GET_TUNE_ENSEMBLE MU_N_ARR;
+                MU0 := CONS(MU);
+                DAPEE MU 11 quad_Kx; DAPEE MU 33 quad_Ky; DAPEE MU 66 quad_Kz;
+
+                LIN := ST(SGx1)&' '&ST(SGx2)&' '&ST(SGy1)&' '&ST(SGy2);
+                LIN := LIN&' '&ST(CHROM_X)&' '&ST(CHROM_Y);
+                LIN := LIN&' '&ST(CHROM_XE)&' '&ST(CHROM_YE);
+                LIN := LIN&' '&ST(ETA0)&' '&ST(ETA1)&' '&ST(MU0);
+                LIN := LIN&' '&ST(quad_Kx)&' '&ST(quad_Ky)&' '&ST(quad_Kz);
+                LIN := LIN&' '&ST(ALPHA0)&' '&ST(ALPHA1);
+                LIN := LIN&' '&ST(CS)&' '&ST(LTX)&' '&ST(LTY);
+                WRITE 3618 LIN;
+                LIN := ST(SGx1)&' '&ST(SGx2)&' '&ST(SGy1)&' '&ST(SGy2);
+                LIN := LIN&' '&ST(MU_N_ARR(1)|2-MU0);
+                LIN := LIN&' '&ST(MU_N_ARR(1)|3-MU0);
+                LIN := LIN&' '&ST(MU_N_ARR(1)|4-MU0);
+                LIN := LIN&' '&ST(MU_N_ARR(1)|5-MU0);
+                WRITE 3620 LIN;
+                LIN := ST(SGx1)&' '&ST(SGx2)&' '&ST(SGy1)&' '&ST(SGy2);
+                LIN := LIN&' '&ST(MU_N_ARR(1)|2-MU0);
+                LIN := LIN&' '&ST(MU_N_ARR(1)|6-MU0);
+                LIN := LIN&' '&ST(MU_N_ARR(1)|7-MU0);
+                LIN := LIN&' '&ST(MU_N_ARR(1)|8-MU0);
+                WRITE 3621 LIN;
+
+                SGx2 := SGx2 + step_x2;
+            ENDLOOP;
+            SGx1 := SGx1 + step_x1;
+        ENDLOOP;
+        SGy1 := SGy1 + step_y1;
+    ENDLOOP;
+    CLOSEF 3618; CLOSEF 3620; CLOSEF 3621;
+ENDPROCEDURE;
+
+PROCEDURE RUN;
+    MAIN;
+ENDPROCEDURE;
+RUN; END;

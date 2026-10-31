@@ -1,18 +1,39 @@
 \section{Метод Боголюбова--Митропольского}
 \label{app:bm}
 
+\subsection{Схема метода}
+
+Рассматривается уравнение $\ddot u+\omega^2u=\varepsilon f(u,\dot u)$, где $\varepsilon$ отмечает порядок малости и в ответе полагается равным единице~\cite{Bogoliubov1961}. Решение ищется в виде
+\begin{equation}
+\label{eq:ansatz}
+\begin{gathered}
+u=a\cos\psi+\varepsilon u_1(a,\psi)+\varepsilon^2 u_2(a,\psi)+\dots,
+\\
+\dot a=\varepsilon A_1+\varepsilon^2 A_2+\dots,
+\qquad
+\dot\psi=\omega+\varepsilon B_1+\varepsilon^2 B_2+\dots,
+\end{gathered}
+\end{equation}
+где $u_k$ периодичны по $\psi$ и не содержат первой гармоники; вся первая гармоника собрана в $a\cos\psi$. Подстановка в левую часть даёт на порядке $\varepsilon^k$
+\begin{equation}
+\label{eq:ordk}
+\omega^2(\partial_{\psi\psi}u_k+u_k)-2\omega A_k\sin\psi-2a\omega B_k\cos\psi=f_k,
+\end{equation}
+где $f_k$ --- коэффициент при $\varepsilon^k$ правой части вместе с произведениями уже найденных младших поправок. Поскольку
+\begin{equation}
+\label{eq:harm-rule}
+(\partial_{\psi\psi}+1)\cos(m\psi)=(1-m^2)\cos(m\psi),
+\end{equation}
+гармоника $F_m\cos m\psi$ в $f_k$ при $m\neq1$ даёт в $u_k$ коэффициент $F_m/[\omega^2(1-m^2)]$, а первые гармоники $f_k$ определяют $A_k$ и $B_k$.
+
 \subsection{Уравнение с квадратичной нелинейностью}
 \label{sec:bm-quad}
 
-Уравнение \eqref{eq:ode} с произвольной постоянной $c_0$ того же порядка, что и квадратичные члены, записывается так:
+Уравнения \eqref{eq:ode} и \eqref{eq:ode-L} имеют вид
 \begin{equation}
 \label{eq:bm}
 \ddot\delta+\omega^2\delta
-=\varepsilon\Biggl(
-c_0
-+c_2\delta^2
-+c_d(\dot\delta)^2
-\Biggr),
+=\varepsilon\bigl(c_0+c_2\delta^2+c_d\dot\delta^2\bigr),
 \qquad
 \omega=\omega_s,
 \end{equation}
@@ -20,140 +41,52 @@ c_0
 \label{eq:bm-coeff}
 c_2=-\frac{\omega^2}{\eta_0}\Bigl(\eta_1-\frac{\eta_0}{\gamma_s^2}\Bigr),
 \qquad
-c_d=-\frac{1}{\gamma_s^2}.
+c_d=-\frac{1}{\gamma_s^2},
 \end{equation}
-В главе~\ref{sec:mag-base} выполнено $c_0=0$. Если к $\tau$ добавляется постоянная $\Lambda$ одного порядка с $\delta^2$, в скобке \eqref{eq:ddelta-raw} появляется слагаемое $\Lambda$. Здесь $\kappa=K\cos\varphi_s$, и по \eqref{eq:ws} выполнено $\kappa\omega_\rf=-\omega^2/\eta_0$. Умножение на этот множитель даёт на правой части \eqref{eq:ode} постоянную $-\omega^2\Lambda/\eta_0$. Перекрёстный член $\Lambda\delta$ имеет третий порядок по амплитуде и отбрасывается, откуда
+где $c_0=0$ в главе~\ref{sec:mag-base} и
 \begin{equation}
 \label{eq:c0-L}
-c_0=-\frac{\omega^2\Lambda}{\eta_0}.
+c_0=-\frac{\omega^2\Lambda}{\eta_0}
 \end{equation}
-Параметр $\varepsilon$ отмечает порядок малости и в ответе полагается равным единице~\cite{Bogoliubov1961}.
+при постоянной добавке $\Lambda$ к запаздыванию (глава~\ref{sec:mag-beta}).
 
-Решение ищется в виде
-\begin{equation}
-\label{eq:ansatz}
-\begin{aligned}
-\delta&=a\cos\psi+\varepsilon u_1(a,\psi)+\varepsilon^2 u_2(a,\psi),\\
-\dot a&=\varepsilon A_1+\varepsilon^2 A_2,
-\qquad
-\dot\psi&=\omega+\varepsilon B_1+\varepsilon^2 B_2.
-\end{aligned}
-\end{equation}
-Функции $u_k$ периодичны по $\psi$ с периодом $2\pi$ и не содержат первой гармоники: коэффициенты при $\cos\psi$ и $\sin\psi$ равны нулю. Этим фиксирован смысл $a$ и $\psi$: вся первая гармоника собрана в $a\cos\psi$.
-
-Подстановка в левую часть до порядка $\varepsilon$ считается явно. Ведущий член $a\cos\psi$ имеет производную
-\begin{equation}
-\label{eq:v0}
-\frac{\mathrm{d}}{\mathrm{d}t}(a\cos\psi)
-=-a\omega\sin\psi
-+\varepsilon(A_1\cos\psi-a B_1\sin\psi)+O(\varepsilon^2).
-\end{equation}
-Здесь использовано $\dot a=\varepsilon A_1+O(\varepsilon^2)$ и $\dot\psi=\omega+\varepsilon B_1+O(\varepsilon^2)$. Производная поправки $\varepsilon u_1$ на том же порядке равна $\varepsilon\omega\,\partial_\psi u_1$, потому что $\dot a$ уже содержит $\varepsilon$, а $\dot\psi$ заменяется на $\omega$: следующий порядок есть $O(\varepsilon^2)$. Сумма
-\begin{equation}
-\label{eq:v1def}
-\dot\delta
-=-a\omega\sin\psi
-+\varepsilon v_1+O(\varepsilon^2),
-\qquad
-v_1=A_1\cos\psi-a B_1\sin\psi+\omega\,\partial_\psi u_1.
-\end{equation}
-Вторая производная ведущего куска $-a\omega\sin\psi$ равна
-\begin{equation}
-\label{eq:d2v0}
-\frac{\mathrm{d}}{\mathrm{d}t}(-a\omega\sin\psi)
-=-a\omega^2\cos\psi
-+\varepsilon(-A_1\omega\sin\psi-a\omega B_1\cos\psi)+O(\varepsilon^2).
-\end{equation}
-Вторая производная куска $\varepsilon v_1$ равна $\varepsilon\omega\,\partial_\psi v_1+O(\varepsilon^2)$. Раскрытие
-\begin{equation}
-\label{eq:dv1}
-\partial_\psi v_1=-A_1\sin\psi-a B_1\cos\psi+\omega\,\partial_{\psi\psi}u_1
-\end{equation}
-даёт ещё один такой же вклад $-A_1\omega\sin\psi-a\omega B_1\cos\psi$. Два одинаковых вклада складываются, и коэффициент равен двум. Вместе с $\omega^2\cdot\varepsilon u_1$ член порядка $\varepsilon$ в $\ddot\delta+\omega^2\delta$ есть
-\begin{equation}
-\label{eq:lhs1}
-\omega^2(\partial_{\psi\psi}u_1+u_1)-2\omega A_1\sin\psi-2a\omega B_1\cos\psi.
-\end{equation}
-На каждом следующем порядке $\varepsilon^k$ новые неизвестные $A_k$, $B_k$, $u_k$ входят в левую часть так же: $\dot a$ и $\dot\psi$ стоят в производной $a\cos\psi$ линейно, а $u_k$ входит в $\delta$ и во вторую производную линейно. Произведения уже найденных младших поправок переносятся в правую часть. Поэтому на порядке $\varepsilon^k$
-\begin{equation}
-\label{eq:ordk}
-\omega^2(\partial_{\psi\psi}u_k+u_k)-2\omega A_k\sin\psi-2a\omega B_k\cos\psi=f_k,
-\end{equation}
-где $f_k$ --- коэффициент при $\varepsilon^k$ после этого переноса.
-
-Правило гармоник следует из прямой подстановки: $\partial_{\psi\psi}\cos(m\psi)=-m^2\cos(m\psi)$, значит
-\begin{equation}
-\label{eq:harm-rule}
-(\partial_{\psi\psi}+1)\cos(m\psi)=(1-m^2)\cos(m\psi).
-\end{equation}
-При $m\neq 1$ оператор обратим. Если правая часть уравнения $\omega^2(\partial_{\psi\psi}+1)u=F_m\cos(m\psi)$ содержит такую гармонику, коэффициент в $u$ равен $F_m/[\omega^2(1-m^2)]$. При $m=1$ выполнено $1-m^2=0$, оператор аннулирует $\cos\psi$ и $\sin\psi$, и эти члены правой части определяют $A_k$ и $B_k$, а в $u_k$ не входят.
-
-На первом порядке правая часть \eqref{eq:bm} берётся на ведущем решении $\delta=a\cos\psi$, $\dot\delta=-a\omega\sin\psi$. Поправки порядка $\varepsilon$ внутри $\delta^2$ и $(\dot\delta)^2$ попадают в $\varepsilon^2$. Тождества $\cos^2\psi=(1+\cos 2\psi)/2$ и $\sin^2\psi=(1-\cos 2\psi)/2$ дают
+На первом порядке правая часть берётся на $\delta=a\cos\psi$, $\dot\delta=-a\omega\sin\psi$:
 \begin{equation}
 \label{eq:f1}
-\begin{aligned}
 f_1
-&=c_0+c_2 a^2\frac{1+\cos 2\psi}{2}
-+c_d a^2\omega^2\frac{1-\cos 2\psi}{2}\\
-&=c_0+\frac{a^2}{2}(c_2+c_d\omega^2)
+=c_0+\frac{a^2}{2}(c_2+c_d\omega^2)
 +\frac{a^2}{2}(c_2-c_d\omega^2)\cos 2\psi.
-\end{aligned}
 \end{equation}
-Гармоник $\cos\psi$ и $\sin\psi$ в \eqref{eq:f1} нет: их коэффициенты равны нулю. Левая часть \eqref{eq:lhs1} совпадает с $f_1$, поэтому коэффициенты при $\sin\psi$ и $\cos\psi$ слева тоже равны нулю. В \eqref{eq:lhs1} коэффициент при $\sin\psi$ равен $-2\omega A_1$, коэффициент при $\cos\psi$ равен $-2a\omega B_1$. При $\omega\neq 0$ и $a\neq 0$ оба коэффициента обращаются в нуль только при $A_1=0$ и $B_1=0$. Амплитуда на этом порядке постоянна, сдвига частоты нет.
-
-Оставшиеся гармоники определяют $u_1=U_0+U_2\cos 2\psi$. Вторая производная постоянной равна нулю, так что $(\partial_{\psi\psi}+1)U_0=U_0$ и
+Первой гармоники нет, поэтому $A_1=B_1=0$: на этом порядке амплитуда постоянна и сдвига частоты нет. Решение $u_1=U_0+U_2\cos2\psi$ с
 \begin{equation}
 \label{eq:U0}
-\omega^2 U_0=c_0+\frac{a^2}{2}(c_2+c_d\omega^2).
-\end{equation}
-На гармонике $\cos 2\psi$ номер $m=2$. По правилу \eqref{eq:harm-rule} множитель $1-m^2$ равен $1-4=-3$, так что $\omega^2(\partial_{\psi\psi}+1)$ умножает коэффициент $U_2$ на $-3\omega^2$. Это произведение равно коэффициенту при $\cos 2\psi$ в \eqref{eq:f1}, поэтому
-\begin{equation}
-\label{eq:U2}
--3\omega^2 U_2=\frac{a^2}{2}(c_2-c_d\omega^2),
+U_0=\frac{c_0}{\omega^2}+\frac{a^2}{2\omega^2}(c_2+c_d\omega^2),
 \qquad
 U_2=-\frac{a^2(c_2-c_d\omega^2)}{6\omega^2}.
 \end{equation}
-
-Коэффициенты \eqref{eq:bm-coeff} подставляются явно. Сумма
+Для коэффициентов \eqref{eq:bm-coeff}
 \begin{equation}
 \label{eq:c-plus}
-c_2+c_d\omega^2
-=-\frac{\omega^2}{\eta_0}\eta_1+\frac{\omega^2}{\gamma_s^2}-\frac{\omega^2}{\gamma_s^2}
-=-\frac{\omega^2\eta_1}{\eta_0}.
+c_2+c_d\omega^2=-\frac{\omega^2\eta_1}{\eta_0},
+\qquad
+c_2-c_d\omega^2=-\frac{\omega^2\eta_1}{\eta_0}+\frac{2\omega^2}{\gamma_s^2}:
 \end{equation}
-Два слагаемых $\omega^2/\gamma_s^2$ взаимно уничтожаются: первое возникает при раскрытии $(\omega^2/\eta_0)\cdot(\eta_0/\gamma_s^2)$ внутри $c_2$, второе равно $c_d\omega^2$. Деление \eqref{eq:U0} на $\omega^2$ даёт
-\begin{equation}
-\label{eq:U0-simp}
-U_0=\frac{c_0}{\omega^2}-\frac{\eta_1 a^2}{2\eta_0}.
-\end{equation}
-Разность
-\begin{equation}
-\label{eq:c-minus}
-c_2-c_d\omega^2
-=-\frac{\omega^2\eta_1}{\eta_0}+\frac{2\omega^2}{\gamma_s^2},
-\end{equation}
-потому что $-c_d\omega^2=+\omega^2/\gamma_s^2$ добавляется к такому же члену из $(\omega^2/\eta_0)\cdot(\eta_0/\gamma_s^2)$. Подстановка в \eqref{eq:U2} даёт
-\begin{equation}
-\label{eq:U2-simp}
-U_2=\frac{a^2}{6}\Bigl(\frac{\eta_1}{\eta_0}-\frac{2}{\gamma_s^2}\Bigr).
-\end{equation}
-При $\varepsilon=1$, с $A_1=B_1=0$ и с началом отсчёта, убирающим постоянную в $\psi$,
+в сумме вклады множителя скорости и члена $\dot\delta^2$ сокращаются, в разности складываются. При $\varepsilon=1$ решение имеет вид
 \begin{equation}
 \label{eq:bm-sol}
-\begin{aligned}
 \delta
-&=\frac{c_0}{\omega_s^2}-\frac{\eta_1 a^2}{2\eta_0}
+=\frac{c_0}{\omega_s^2}-\frac{\eta_1 a^2}{2\eta_0}
 +a\cos\psi
-+\frac{a^2}{6}\Bigl(\frac{\eta_1}{\eta_0}-\frac{2}{\gamma_s^2}\Bigr)\cos 2\psi,\\
-\psi&=\omega_s t.
-\end{aligned}
++\frac{a^2}{6}\Bigl(\frac{\eta_1}{\eta_0}-\frac{2}{\gamma_s^2}\Bigr)\cos 2\psi,
+\qquad
+\psi=\omega_s t.
 \end{equation}
-Сдвиг частоты появляется на следующем порядке метода из проекции на $\cos\psi$. Поправка этого порядка, пропорциональная $a^2$, в физической задаче требует члена $\delta^3$ в $\tau$ и здесь не выписывается.
+Сдвиг частоты, пропорциональный $a^2$, появляется на втором порядке метода; к нему добавляется вклад отброшенного члена $\delta^3$ в $\tau$ того же порядка, поэтому он здесь не выписывается.
 
 \subsection{Уравнение с кубической нелинейностью}
 \label{sec:bm-cubic}
 
-Уравнение \eqref{eq:phi-ode} записывается так:
+Уравнение \eqref{eq:phi-ode} имеет вид
 \begin{equation}
 \label{eq:bm-c}
 \ddot\varphi+\omega^2\varphi=\varepsilon c_3\varphi^3,
@@ -162,72 +95,42 @@ U_2=\frac{a^2}{6}\Bigl(\frac{\eta_1}{\eta_0}-\frac{2}{\gamma_s^2}\Bigr).
 \qquad
 c_3=\frac{\omega^2}{6}.
 \end{equation}
-Перенос члена $\omega^2\varphi^3/6$ из левой части \eqref{eq:phi-ode} в правую даёт $c_3\varphi^3$ при $\varepsilon=1$. Параметр $\varepsilon$ отмечает порядок малости и в ответе полагается равным единице, как в \S\ref{sec:bm-quad}.
-
-Схема \eqref{eq:ansatz}, \eqref{eq:ordk} применяется к $\varphi$ вместо $\delta$. В этой подстановке $a$ есть коэффициент при $\cos\psi$ в фазе. Функция $u_1$ по условию схемы не содержит $\cos\psi$ и $\sin\psi$.
-
-На первом порядке правая часть берётся на $\varphi=a\cos\psi$. Тождество $\cos 3\psi=4\cos^3\psi-3\cos\psi$ решается относительно куба:
-\begin{equation}
-\label{eq:cos3id}
-\cos^3\psi=\frac{3\cos\psi+\cos 3\psi}{4}.
-\end{equation}
-Подстановка \eqref{eq:cos3id} даёт
+На первом порядке, с $\cos^3\psi=(3\cos\psi+\cos3\psi)/4$,
 \begin{equation}
 \label{eq:f1c}
 f_1
-=c_3 a^3\cos^3\psi
 =\frac{3c_3 a^3}{4}\cos\psi
 +\frac{c_3 a^3}{4}\cos 3\psi.
 \end{equation}
-Коэффициент при $\sin\psi$ в \eqref{eq:f1c} равен нулю: разложение \eqref{eq:cos3id} его не содержит. В левой части \eqref{eq:ordk} коэффициент при $\sin\psi$ равен $-2\omega A_1$. При $\omega\neq 0$ равенство коэффициентов даёт $A_1=0$.
-
-Коэффициент при $\cos\psi$ в \eqref{eq:f1c} равен $3c_3 a^3/4$. В левой части \eqref{eq:ordk} он равен $-2a\omega B_1$: по \eqref{eq:harm-rule} при $m=1$ оператор $\partial_{\psi\psi}+1$ аннулирует $\cos\psi$, а первая гармоника в $u_1$ запрещена анзацем \eqref{eq:ansatz}. При $a\neq 0$ и $\omega\neq 0$
-\begin{equation}
-\label{eq:B1c}
--2a\omega B_1=\frac{3c_3 a^3}{4},
-\qquad
-B_1=-\frac{3c_3 a^2}{8\omega}.
-\end{equation}
-
-На гармонике $\cos 3\psi$ номер $m=3$. Правило \eqref{eq:harm-rule} даёт $1-m^2=1-9=-8$, так что $\omega^2(\partial_{\psi\psi}+1)$ умножает коэффициент $U_3$ на $-8\omega^2$. Это произведение равно коэффициенту $c_3 a^3/4$ в \eqref{eq:f1c}, поэтому
-\begin{equation}
-\label{eq:U3c}
--8\omega^2 U_3=\frac{c_3 a^3}{4},
-\qquad
-U_3=-\frac{c_3 a^3}{32\omega^2},
-\qquad
-u_1=U_3\cos 3\psi.
-\end{equation}
-Подстановка $c_3=\omega^2/6$ сокращает $\omega^2$. В $B_1$ получается $3(\omega^2/6)a^2/(8\omega)=\omega a^2/16$, знак минус сохраняется. В $U_3$ получается $(\omega^2/6)a^3/(32\omega^2)=a^3/192$, знак минус сохраняется:
+Отсюда $A_1=0$,
 \begin{equation}
 \label{eq:B1U3}
-B_1=-\frac{\omega a^2}{16},
+B_1=-\frac{3c_3 a^2}{8\omega}=-\frac{\omega a^2}{16},
 \qquad
-U_3=-\frac{a^3}{192}.
+U_3=-\frac{c_3 a^3}{32\omega^2}=-\frac{a^3}{192},
 \end{equation}
-При $\varepsilon=1$ частота есть $\dot\psi=\omega+B_1$, и
+и при $\varepsilon=1$
 \begin{equation}
 \label{eq:phi-a}
 \varphi
 =a\cos\psi-\frac{a^3}{192}\cos 3\psi,
 \qquad
-\Omega=\omega\Bigl(1-\frac{a^2}{16}\Bigr).
+\Omega=\omega\Bigl(1-\frac{a^2}{16}\Bigr),
 \end{equation}
-Здесь $a$ --- коэффициент первой гармоники, не полуразмах.
-
-В главе~\ref{sec:mag-phase} амплитуда задана полуразмахом; следующие равенства только переводят $a$ в $\hat\varphi$. При $\psi=0$ выполнено $\cos\psi=\cos 3\psi=1$, поэтому значение \eqref{eq:phi-a} равно $a-a^3/192$. При $\psi=\pi$ оно противоположно. Производная по $\psi$ равна $-a\sin\psi+(a^3/64)\sin 3\psi$: множитель $3/192$ равен $1/64$. Вынос $\sin\psi$ оставляет множитель $1-(a^2/64)(\sin 3\psi/\sin\psi)$. Отношение $\sin 3\psi/\sin\psi=3-4\sin^2\psi$ ограничено, и при $a^2\ll 1$ этот множитель в нуль не обращается. Нули производной только при $\sin\psi=0$. Полуразмах равен значению при $\psi=0$:
+где $a$ --- коэффициент первой гармоники. Экстремумы $\varphi$ находятся при $\psi=0,\pi$, так что полуразмах
 \begin{equation}
 \label{eq:phihat-a}
-\hat\varphi=a\Bigl(1-\frac{a^2}{192}\Bigr).
+\hat\varphi=a\Bigl(1-\frac{a^2}{192}\Bigr),
+\qquad
+a=\hat\varphi+\frac{\hat\varphi^3}{192}+O(\hat\varphi^5).
 \end{equation}
-Обращение с отбрасыванием $O(a^5)$ есть $a=\hat\varphi+\hat\varphi^3/192$. Подстановка этой формулы обратно в $a-a^3/192$ возвращает $\hat\varphi$, потому что $a^3=\hat\varphi^3+O(\hat\varphi^5)$. Подстановка того же $a$ в \eqref{eq:phi-a} даёт
+Через полуразмах
 \begin{equation}
 \label{eq:phi-hat-cos}
 \varphi
 =\hat\varphi\cos\psi
 +\frac{\hat\varphi^3}{192}\bigl(\cos\psi-\cos 3\psi\bigr),
 \qquad
-\frac{\Omega}{\omega_s}=1-\frac{\hat\varphi^2}{16}.
+\frac{\Omega}{\omega_s}=1-\frac{\hat\varphi^2}{16},
 \end{equation}
-В частоте $a^2=\hat\varphi^2+2\hat\varphi\cdot(\hat\varphi^3/192)+O(\hat\varphi^6)=\hat\varphi^2+O(\hat\varphi^4)$, поэтому замена $a^2$ на $\hat\varphi^2$ не меняет член $\hat\varphi^2/16$. Остаток в $\varphi$ есть $O(\hat\varphi^5)$.
-
+с остатком $O(\hat\varphi^5)$; замена $a^2$ на $\hat\varphi^2$ в частоте меняет её лишь в порядке $\hat\varphi^4$.
