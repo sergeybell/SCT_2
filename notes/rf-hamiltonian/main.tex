@@ -1,0 +1,188 @@
+\documentclass[a4paper,11pt]{article}
+% Single-file note (conventions as in notes/chromaticity-v1/preamble.tex)
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[hidelinks]{hyperref}
+\numberwithin{equation}{section}
+\setlength{\emergencystretch}{2em}
+\newcommand{\rf}{\mathrm{rf}}
+
+\title{Гамильтониан ВЧ-резонатора в канонических переменных $(x,p_x,y,p_y,l,\delta)$}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Записан $s$-гамильтониан ускоряющего ВЧ-резонатора в переменных, где $\delta=\Delta p/p_0$~--- отклонение импульса,
+а $l=-v\,\Delta t$~--- продольная координата, канонически сопряжённая $\delta$. Выведено поле моды TM$_{010}$,
+усреднение по длине (фактор пролётного времени), тонкий предел с точным переходом энергия$\to\delta$,
+симплектичность, различие накопителя и ускорения (изменение опорного импульса, адиабатическое затухание,
+синхронная фаза), частота синхротронных колебаний $Q_s$, а также пересчёт из переменных Вольского
+(отклонение энергии).
+\end{abstract}
+
+\section{Переменные}
+Опорная частица: импульс $p_0$, скорость $v_0=\beta_0c$, энергия $E_0=\gamma_0mc^2$, $\beta_0\gamma_0=p_0/(mc)$.
+Независимая переменная~--- длина опорной орбиты $s$. Время прибытия относительно опорной частицы
+$\Delta t = t - s/v_0$. Рассмотрим две продольные пары:
+\begin{align}
+(q,P)&=\Big(-c\,\Delta t,\ \frac{E}{p_0c}\Big), \label{eq:qP}\\
+(l,\delta)&=\Big(-v\,\Delta t,\ \frac{p-p_0}{p_0}\Big). \label{eq:ld}
+\end{align}
+Энергетический член $s$-гамильтониана в паре \eqref{eq:qP} (после вычитания константы)
+\begin{equation}
+e(\delta)=\frac{1}{\beta_0}\sqrt{(1+\delta)^2+\frac{1}{\beta_0^2\gamma_0^2}}-\frac{1}{\beta_0^2},\qquad
+\frac{\partial e}{\partial\delta}=\frac{v}{v_0}, \label{eq:e}
+\end{equation}
+так что $dl/ds=v/v_0-(1+\delta)/p_s$ для дрейфа, $p_s=\sqrt{(1+\delta)^2-p_x^2-p_y^2}$.
+Пара \eqref{eq:ld} получается из \eqref{eq:qP} точечным преобразованием $P\mapsto\delta(P)$ с производящей функцией
+$F_2=q\,P(\delta)$:
+\begin{equation}
+l = q\,\frac{dP}{d\delta}=q\,\frac{p\,c}{E}=q\,\beta,\qquad \text{т.е. } l=-\beta c\,\Delta t=-v\,\Delta t . \label{eq:point}
+\end{equation}
+Точечное преобразование не меняет значения гамильтониана: $H(l,\delta)=H\big(q(l,\delta),P(\delta)\big)$, где
+$q=l/\beta(\delta)=l/(\beta_0\,v/v_0)$.
+
+\section{Поле TM$_{010}$ и гамильтониан толстого резонатора}
+В цилиндрическом резонаторе (мода TM$_{010}$, $k=\omega/c$) поле
+\begin{equation}
+E_z=E_s\,J_0(k\rho)\sin(\omega t+\varphi_0),\qquad B_\phi=\frac{E_s}{c}J_1(k\rho)\cos(\omega t+\varphi_0).
+\end{equation}
+В калибровке $\Phi=0$ векторный потенциал $A_z=-(E_s/\omega)J_0(k\rho)\cos(\omega t+\varphi_0)$, и
+$s$-гамильтониан содержит слагаемое $-qA_z/p_0$. В переменных Вольского (\cite{wolski4}, ур.~31--37)
+\begin{equation}
+H_\rf=-\frac{q}{P_0}\frac{E_s}{\omega}J_0(k\rho)\cos\!\Big(\frac{ks}{\beta_0}-kz+\varphi_0\Big),
+\end{equation}
+где $z=s/\beta_0-ct$. Зависимость от $s$ через $ks/\beta_0$ описывает пролёт частицы через
+осциллирующее поле. Усреднение по длине резонатора $L=\pi/k$ (половина длины волны) даёт эффективное
+напряжение $V=E_sLT$ с фактором пролётного времени
+\begin{equation}
+T=\frac{\sin(\omega L/2v_0)}{\omega L/2v_0}
+\end{equation}
+($T=2/\pi$ для $L=\lambda/2$ и $\beta_0=1$). Вблизи оси $J_0(k\rho)\approx 1-k^2\rho^2/4$; поперечный член
+(фокусировка ВЧ) порядка $k^2\rho^2$ и далее опускается.
+
+\paragraph{Модель однородного зазора.}
+Если положить, что набег энергии распределён по длине $L$ равномерно, $dE/ds=ZeV\sin(\varphi_s+kq)/L$
+($V$ уже включает $T$), то в паре \eqref{eq:qP}
+\begin{equation}
+\frac{dP}{ds}=-\frac{\partial H_\rf}{\partial q}=\frac{ZeV}{p_0cL}\sin(\varphi_s+kq),\qquad
+H_\rf=\frac{ZeV}{p_0c\,kL}\cos(\varphi_s+kq),\qquad k=\frac{h\omega_0}{c}=\frac{2\pi h\beta_0}{C}, \label{eq:Hrf}
+\end{equation}
+где $C$~--- длина замкнутой орбиты, $h$~--- кратность. Знак: $kq=-h\omega_0\Delta t$, т.е. частица, пришедшая
+раньше ($\Delta t<0$), имеет $q>0$ и фазу $\varphi_s+kq$. В переменных \eqref{eq:ld}
+\begin{equation}
+\boxed{\ H=e(\delta)-p_s+\frac{ZeV}{p_0c\,kL}\cos\!\Big(\varphi_s+\frac{k\,l}{\beta_0\,v(\delta)/v_0}\Big)\ }
+\qquad \Big(+\ \text{члены поворота/мультиполей}\Big). \label{eq:Hfull}
+\end{equation}
+Фаза ВЧ равна $\varphi=2\pi h\,l/(C\,v/v_0)$; при $\delta$-зависимости $v$ член $H_\rf$ зависит и от $\delta$,
+что даёт поправку к $dl/ds$: она в точности учитывает, что $l=-v\Delta t$ меняется при изменении скорости
+при фиксированном $\Delta t$.
+
+\section{Тонкий предел}
+Положим $G=\int_0^LH_\rf\,ds = \dfrac{ZeV}{p_0ck}\cos(\varphi_s+kq)$ и устремим $L\to0$ при фиксированном $V$.
+Отображение $e^{-L:H:}\to e^{-:G:}$, поскольку дрейф $O(L)$ исчезает. В паре $(q,P)$ функция $G$ зависит только
+от $q$, поэтому поток точный:
+\begin{equation}
+q'=q,\qquad P'=P+\frac{ZeV}{p_0c}\sin(\varphi_s+kq),
+\end{equation}
+т.е. $\Delta t$ сохраняется, а энергия получает толчок $E'=E+ZeV\sin(\varphi_s+\varphi)$. Переход к $(l,\delta)$
+точный, без разложения:
+\begin{equation}
+\delta'=\frac{\sqrt{E'^2-m^2c^4}}{p_0c}-1,\qquad l'=-v(\delta')\,\Delta t = l\,\frac{v(\delta')}{v(\delta)} .
+\end{equation}
+Поперечные переменные не меняются. Толстый резонатор длины $L$ отличается от
+<<дрейф $L/2$ -- толчок -- дрейф $L/2$>> на $O(L^3)$ (формула Бейкера--Кэмпбелла--Хаусдорфа),
+поэтому тонкий предел~--- корректный предел той же гамильтоновой системы.
+
+\section{Симплектичность}
+Отображение $e^{-:G:}$~--- поток гамильтоновой системы, следовательно симплектично в $(q,P)$, а точечное
+преобразование \eqref{eq:point} каноническое; значит, толчок симплектичен и в $(l,\delta)$:
+$J^{\mathsf T}SJ=S$ для якобиана $J$ при любой амплитуде. Это свойство нарушается только при смене
+опорного импульса (см. ниже), когда переменные перенормируются.
+
+\section{Накопитель и ускорение}
+\paragraph{Накопитель.} $\sin\varphi_s=0$: линейного по $l$ члена в $H_\rf$ нет, опорная частица не ускоряется,
+$p_0$ постоянно. Так как $kq$ отсчитывается от синхронной частицы, а $h\omega_0T_0=2\pi h$, гамильтониан не зависит
+от номера оборота, и однооборотное отображение одно и то же на каждом обороте. Устойчивость:
+$\eta_0\cos\varphi_s>0$ ($\varphi_s=0$ выше, $\varphi_s=\pi$ ниже критической энергии в этой записи через $\sin$).
+
+\paragraph{Ускорение.} При $\sin\varphi_s\neq0$ в \eqref{eq:Hfull} есть линейный член
+$-\dfrac{ZeV\sin\varphi_s}{p_0cL}\,q$: опорная орбита $l=\delta=0$ перестаёт быть решением. Естественная запись~---
+переменный опорный импульс $p_0(s)$ с
+\begin{equation}
+\frac{dp_0}{ds}=\frac{ZeV\sin\varphi_s}{v_0L},
+\end{equation}
+т.е. синхронная частица остаётся опорной. Каноническое преобразование к переменным относительно $p_0(s)$~--- производящая функция
+$F_2=p_0(s)\,\big[x\,p_x+y\,p_y+l\,(1+\delta)\big]$ (старые импульсы размерные, новые нормированы на $p_0(s)$);
+после деления на $p_0$ к $H$ добавляется
+\begin{equation}
+\Delta H=\frac{p_0'}{p_0}\Big[x\,p_x+y\,p_y+l\,(1+\delta)\Big]. \label{eq:dH}
+\end{equation}
+Проверка: $-\partial\Delta H/\partial l=-(p_0'/p_0)(1+\delta)$, а линейный член ВЧ даёт
+$-\partial H_\rf/\partial l\big|_0=\dfrac{ZeV\sin\varphi_s}{\beta_0p_0cL}=\dfrac{1}{\beta_0p_0c}\dfrac{dE_0}{ds}=\dfrac{p_0'}{p_0}$
+(так как $dE_0=v_0\,dp_0$), т.е. при $\delta=0$ они сокращаются и $l=\delta=0$ снова решение. Кроме того,
+$\beta_0(s)$, $\gamma_0(s)$ в $e(\delta)$ и $k(s)=2\pi h\beta_0(s)/C$ становятся функциями $s$: гамильтониан явно
+зависит от $s$, и однооборотное отображение меняется от оборота к обороту.
+который даёт адиабатическое затухание $p_x\propto 1/p_0$ (сохраняется $P_x$, а не $p_x$). В дискретной форме это
+перенормировка после резонатора (\cite{xsuite}, \S2.14, \S2.21):
+\begin{equation}
+\delta_{\rm new}=(1+\delta_{\rm old})\frac{p_{0,\rm old}}{p_{0,\rm new}}-1,\qquad
+p_{x,\rm new}=p_{x,\rm old}\frac{p_{0,\rm old}}{p_{0,\rm new}},\qquad
+\zeta_{\rm new}=\zeta_{\rm old}\frac{\beta_{0,\rm new}}{\beta_{0,\rm old}} .
+\end{equation}
+Определитель этой замены $(p_{0,\rm old}/p_{0,\rm new})^3$ в $(x,p_x,y,p_y,\cdot,\delta)$: фазовый объём в
+нормированных переменных сжимается~--- это и есть адиабатическое затухание; в размерных переменных отображение
+по-прежнему симплектично.
+
+\section{Частота синхротронных колебаний}
+Линеаризуя однооборотное отображение (тонкий резонатор + кольцо с $\Delta l=-\eta_0C\,\delta$ за оборот),
+\begin{equation}
+\Delta\delta=\frac{ZeV}{\beta_0^2E_0}\,\cos\varphi_s\,\frac{2\pi h}{C}\,l,\qquad
+\cos 2\pi Q_s=1-\frac{2\pi h\,\eta_0\,ZeV\cos\varphi_s}{2\beta_0^2E_0},
+\end{equation}
+и при малом $Q_s$
+\begin{equation}
+Q_s=\sqrt{\frac{h\,\eta_0\,ZeV\cos\varphi_s}{2\pi\beta_0^2E_0}},\qquad \eta_0=\alpha_0-\frac{1}{\gamma_0^2}.
+\end{equation}
+Совпадение $Q_s$ из следа продольного блока однооборотной матрицы с этой формулой гладкой модели~--- проверка
+знаков и нормировки \eqref{eq:Hrf} (отличие $O(Q_s^2)$).
+
+\section{Пересчёт из переменных Вольского}
+У Вольского \cite{wolski4,wolski7} продольная пара $(z,\delta_W)$: $z=s/\beta_0-ct=-c\,\Delta t$,
+$\delta_W=E/(p_0c)-1/\beta_0$. Сравнение с \eqref{eq:qP}: $z=q$, $\delta_W=P-1/\beta_0$~--- сдвиг импульса на
+константу, т.е. та же каноническая пара. Переход к \eqref{eq:ld}:
+\begin{equation}
+1+\delta=\sqrt{\Big(\delta_W+\tfrac{1}{\beta_0}\Big)^2-\tfrac{1}{\beta_0^2\gamma_0^2}},\qquad l=\beta(\delta)\,z .
+\end{equation}
+Тонкий толчок Вольского $\delta_W'=\delta_W+\dfrac{qV}{P_0c}\sin(\varphi_0-kz)$ есть $P'=P+ZeV\sin(\cdot)/(p_0c)$, т.е.
+формулы раздела~3. Знак фазы: $\varphi_0-kz$ у Вольского и $\varphi_s+kq$ здесь отличаются только знаком отсчёта
+фазы ($\varphi\to-\varphi$, $\varphi_s=\pi-\varphi_0$ для $\sin$); условие устойчивости и $Q_s$ одинаковы.
+Различие $\delta$ (импульс) и $\delta_W$ (энергия) существенно в нелинейных членах: $d\delta_W=\beta\,d\delta$.
+
+\section{Итог}
+\begin{itemize}
+\item Гамильтониан \eqref{eq:Hfull} задаёт ВЧ-резонатор так же, как гамильтонианы магнитных элементов;
+отображения строятся из него (ряды Ли, интегрирование уравнений), тонкий толчок~--- его точный предел.
+\item Накопитель: $\sin\varphi_s=0$, $p_0=\mathrm{const}$, однооборотное отображение не зависит от оборота.
+\item Ускорение: опорный импульс $p_0(s)$, линейный член в $H$ компенсируется изменением опоры; дискретно~---
+перенормировка после резонатора; адиабатическое затухание~--- следствие этой замены.
+\end{itemize}
+
+\begin{thebibliography}{9}
+\bibitem{wolski4} A.~Wolski, \emph{Linear and nonlinear dynamics, Lecture 4: RF cavities and acceleration},
+Cockcroft Institute (2014), \url{https://www.cockcroft.ac.uk/wp-content/uploads/2014/12/wolski-4.pdf}.
+\bibitem{wolski7} A.~Wolski, \emph{Lecture 7: Longitudinal dynamics}, Cockcroft Institute (2014).
+\bibitem{wolskibook} A.~Wolski, \emph{Beam Dynamics in High Energy Particle Accelerators}, Imperial College Press (2014).
+\bibitem{tecker} F.~Tecker, \emph{Longitudinal beam dynamics}, CAS -- CERN Accelerator School:
+Introduction to Accelerator Physics (2020), arXiv:2011.02932.
+\bibitem{xsuite} Xsuite physics manual, \S2.14 (Cavity), \S2.21 (Reference energy increase),
+\url{https://xsuite.readthedocs.io}.
+\bibitem{leduff} J.~Le~Duff, \emph{Longitudinal beam dynamics in circular accelerators}, CAS, CERN 94-01 (1994).
+\end{thebibliography}
+\end{document}
