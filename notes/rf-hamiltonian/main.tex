@@ -5,6 +5,7 @@
 \usepackage[russian]{babel}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{mathrsfs}
 \usepackage[hidelinks]{hyperref}
 \numberwithin{equation}{section}
 \setlength{\emergencystretch}{2em}
@@ -58,15 +59,15 @@ $E=\gamma mc^2=\sqrt{p^2c^2+m^2c^4}$. Определим две продольн
 \paragraph{Вывод гамильтониана.}
 Если независимой переменной служит $s$ (прямой участок), канонические пары~--- $(x,P_x)$, $(y,P_y)$ и $(t,-E)$,
 а роль гамильтониана играет продольный канонический импульс со знаком минус ($\mathbf A$~--- векторный потенциал).
-Этот исходный гамильтониан в переменных $(x,P_x,y,P_y,t,-E)$ обозначим $H_0$:
+Этот исходный гамильтониан в переменных $(x,P_x,y,P_y,t,-E)$ обозначим $\mathscr H$:
 \begin{equation}
-H_0=-\sqrt{\frac{E^2}{c^2}-m^2c^2-(P_x-ZeA_x)^2-(P_y-ZeA_y)^2}\;-\;ZeA_s . \label{eq:H0}
+\mathscr H=-\sqrt{\frac{E^2}{c^2}-m^2c^2-(P_x-ZeA_x)^2-(P_y-ZeA_y)^2}\;-\;ZeA_s . \label{eq:H0}
 \end{equation}
 Перейдём от $(t,-E)$ к паре $(q,P)$, отсчитывая время от опорной частицы и нормируя импульсы на $p_0$.
 Производящая функция второго рода
 $F_2(t,P;s)=-p_0c\,P\,\big(t-t_0(s)\big)$ даёт старый импульс $-E=\partial F_2/\partial t=-p_0cP$, новую координату
 $\partial F_2/\partial P=-p_0c\,\Delta t=p_0\,q$ и добавку к гамильтониану $\partial F_2/\partial s=p_0cP/v_0=p_0P/\beta_0$.
-Новый гамильтониан в переменных $(x,p_x,y,p_y,q,P)$ обозначим $H$: это $(H_0+\partial F_2/\partial s)/p_0$.
+Новый гамильтониан в переменных $(x,p_x,y,p_y,q,P)$ обозначим $H$: это $(\mathscr H+\partial F_2/\partial s)/p_0$.
 Деля всё на $p_0$ (это сохраняет каноничность при одновременной нормировке импульсов), получаем
 \begin{equation}
 \begin{aligned}
@@ -88,9 +89,12 @@ $P=\cE(\delta)$, $q=l/\beta(\delta)$. Поэтому для гамильтони
 это та же функция фазовой точки, лишь записанная в других переменных ($H(l,\delta)$ означает $H(q,P)$ при
 $q=l/\beta(\delta)$, $P=\cE(\delta)$). Поскольку $P^2-1/(\beta_0^2\gamma_0^2)=(1+\delta)^2$,
 \begin{equation}
-\boxed{\ H=\frac{\cE(\delta)}{\beta_0}-p_s-a_s\Big(x,y,\ \frac{l}{\beta(\delta)};s\Big)\ },\qquad
-p_s=\sqrt{(1+\delta)^2-(p_x-a_x)^2-(p_y-a_y)^2} \label{eq:Hld}
+\boxed{\ H=\frac{\cE(\delta)}{\beta_0}-p_s-a_s\Big(x,y,\ \frac{l}{\beta(\delta)};s\Big)\ } \label{eq:Hld}
 \end{equation}
+где
+\begin{equation*}
+p_s=\sqrt{(1+\delta)^2-(p_x-a_x)^2-(p_y-a_y)^2}.
+\end{equation*}
 Константу $\cE(0)/\beta_0=1/\beta_0^2$ можно вычесть. Проверка на дрейфе ($a=0$):
 $dl/ds=\partial H/\partial\delta=\beta/\beta_0-(1+\delta)/p_s$, т.е. $dl/ds=v/v_0-1$ на оси,
 что совпадает с прямым расчётом для $l=-v\Delta t$ при $d\Delta t/ds=1/v-1/v_0$.
@@ -411,8 +415,8 @@ $l=\beta q$ при толчке ($\Delta t$ не меняется). Деля $l_
 
 \medskip\noindent\textbf{Второй порядок.}
 \begin{align}
-(l,\delta):\quad &\delta_{n+1}=\delta_n+\mathcal V\,S_n\Big(1-\frac{\delta_n}{\gamma_0^2}\Big)-\frac{\mathcal V^2S_n^2}{2\gamma_0^2},\qquad
-\varphi_n\simeq\varphi_s+\tfrac{2\pi h}{C_0}\,l_n\Big(1-\frac{\delta_n}{\gamma_0^2}\Big), \notag\\
+(l,\delta):\quad &\delta_{n+1}=\delta_n+\mathcal V\,S_n\Big(1-\frac{\delta_n}{\gamma_0^2}\Big)-\frac{\mathcal V^2S_n^2}{2\gamma_0^2}, \notag\\
+&\varphi_n\simeq\varphi_s+\tfrac{2\pi h}{C_0}\,l_n\Big(1-\frac{\delta_n}{\gamma_0^2}\Big), \notag\\
 &l_{n+1}=\Big(1+\frac{\delta_{n+1}-\delta_n}{\gamma_0^2}\Big)l_n-C_0\Big[\eta_1\delta_{n+1}+\Big(\eta_2+\frac{\eta_1}{\gamma_0^2}\Big)\delta_{n+1}^2\Big],
 \label{eq:map2}\\[4pt]
 (\varphi,\Delta E):\quad &\varepsilon_{n+1}=\varepsilon_n+\mathcal V\,S_n, \notag\\
