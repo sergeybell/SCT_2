@@ -22,7 +22,8 @@
 а $l=-v\,\Delta t$~--- продольная координата, канонически сопряжённая $\delta$. Выведено поле моды TM$_{010}$,
 усреднение по длине (фактор пролётного времени), тонкий предел с точным переходом энергия$\to\delta$,
 симплектичность, различие накопителя и ускорения (изменение опорного импульса, адиабатическое затухание,
-синхронная фаза), частота синхротронных колебаний $Q_s$, а также пересчёт из переменных Вольского
+синхронная фаза), частота синхротронных колебаний $Q_s$, продольные уравнения движения во всех порядках и разложение
+коэффициента проскальзывания до второго порядка ($\eta_1,\eta_2$), а также пересчёт из переменных Вольского
 (отклонение энергии).
 \end{abstract}
 
@@ -152,6 +153,125 @@ Q_s=\sqrt{\frac{h\,\eta_0\,ZeV\cos\varphi_s}{2\pi\beta_0^2E_0}},\qquad \eta_0=\a
 \end{equation}
 Совпадение $Q_s$ из следа продольного блока однооборотной матрицы с этой формулой гладкой модели~--- проверка
 знаков и нормировки \eqref{eq:Hrf} (отличие $O(Q_s^2)$).
+
+\section{Продольные уравнения движения из полного гамильтониана}
+\label{sec:eom}
+\paragraph{Точные уравнения.} Рассмотрим частицу на оси ($x=p_x=y=p_y=0$, $p_s=1+\delta$) и гамильтониан
+\eqref{eq:Hfull} с однородным зазором длины $L$:
+\begin{equation}
+H=e(\delta)-(1+\delta)+\frac{G}{L},\qquad G=\frac{ZeV}{p_0c\,k}\cos(\varphi_s+kq),\qquad
+q=\frac{l}{\beta(\delta)},
+\end{equation}
+где $\beta(\delta)=\beta_0\,v/v_0$, $k=2\pi h\beta_0/C_0$. (Если в фазе заменить $l/\beta(\delta)$ на $l/\beta_0$, то
+отбрасывается член $\propto kl\,\delta/\gamma_0^2$; ниже используется точная форма.) Уравнения Гамильтона
+во всех порядках:
+\begin{align}
+\frac{dl}{ds}&=\frac{\partial H}{\partial\delta}=\frac{v}{v_0}-1
++\frac{ZeV}{p_0c\,L}\,\sin(\varphi_s+kq)\,\frac{l}{\beta^2}\frac{d\beta}{d\delta}\notag\\
+&=\frac{v}{v_0}-1+\frac{ZeV}{p_0c\,L}\,\frac{l\,\sin(\varphi_s+kq)}{\beta\,(1+\delta)\,\gamma^2}, \label{eq:eoml}\\
+\frac{d\delta}{ds}&=-\frac{\partial H}{\partial l}=\frac{ZeV}{p_0c\,L\,\beta(\delta)}\,\sin(\varphi_s+kq), \label{eq:eomd}
+\end{align}
+где использовано $d\beta/d\delta=\beta/[(1+\delta)\gamma^2]$. Уравнение \eqref{eq:eomd} есть
+$dp/ds=(1/v)\,dE/ds$ с $dE/ds=ZeV\sin(\varphi_s+kq)/L$; второй член в \eqref{eq:eoml} есть
+$\dot\beta\,q$, т.е. изменение $l=\beta q$ за счёт изменения скорости при постоянном $\Delta t$.
+
+\paragraph{Точное однооборотное отображение.} Пусть кольцо (без ВЧ) за оборот переводит частицу с отклонением
+$\delta$ по замкнутой орбите длины $C(\delta)$ со скоростью $v(\delta)$, т.е. за время $T(\delta)=C(\delta)/v(\delta)$,
+а $T_0=C_0/v_0$. Фаза прибытия на резонатор $\varphi=\varphi_s+kq=\varphi_s-h\omega_0\Delta t$, $h\omega_0T_0=2\pi h$. Тогда точно
+\begin{align}
+E_{n+1}&=E_n+ZeV\,\big[\sin\varphi_n-\sin\varphi_s\big],\qquad
+\delta_{n+1}=\frac{\sqrt{E_{n+1}^2-m^2c^4}}{p_0c}-1, \label{eq:mapd}\\
+\varphi_{n+1}&=\varphi_n-2\pi h\left(\frac{T(\delta_{n+1})}{T_0}-1\right),\qquad
+\frac{T(\delta)}{T_0}=\frac{C(\delta)}{C_0}\cdot\frac{\beta_0}{\beta(\delta)} . \label{eq:mapphi}
+\end{align}
+Член $-\sin\varphi_s$ описывает либо потери на излучение $U_0=ZeV\sin\varphi_s$ (накопитель), либо, при
+ускорении, переход к опорному импульсу $p_0(s)$ (раздел~5). Знак ``$-$'' в \eqref{eq:mapphi} отвечает выбранной
+фазе $\varphi_s+kq$ с $q=-c\Delta t$: опоздание ($T>T_0$) уменьшает $kq$. В записи с $\varphi=h\omega_0\Delta t$
+получается $\varphi_{n+1}=\varphi_n+2\pi h(T/T_0-1)$.
+Два вклада в $T(\delta)$:
+\begin{itemize}
+\item \emph{длина пути}: $x=D_x\delta+\tfrac12D_x^{(2)}\delta^2+\dots$, $C(\delta)=C_0+\oint x/\rho\,ds+\dots$, т.е.
+$C/C_0=1+\alpha_c\delta+\alpha_1\delta^2+O(\delta^3)$, $\alpha_c=\frac{1}{C_0}\oint\frac{D_x}{\rho}ds$
+(в $\alpha_1$ входят $D_x^{(2)}$ и $D_x'^2$);
+\item \emph{скорость}: $\beta(\delta)/\beta_0=(1+\delta)\big/\sqrt{1+\beta_0^2(2\delta+\delta^2)}$.
+\end{itemize}
+
+\paragraph{Разложение.} Подставляя оба ряда в \eqref{eq:mapphi},
+\begin{equation}
+\frac{T(\delta)}{T_0}-1=\eta_1\delta+\eta_2\delta^2+O(\delta^3),
+\end{equation}
+\begin{equation}
+\boxed{\ \eta_1=\alpha_c-\frac{1}{\gamma_0^2},\qquad
+\eta_2=\alpha_1-\frac{\alpha_c}{\gamma_0^2}+\frac{3\beta_0^2}{2\gamma_0^2}+\frac{1}{\gamma_0^4}
+=\alpha_1-\frac{\eta_1}{\gamma_0^2}+\frac{3\beta_0^2}{2\gamma_0^2}\ } \label{eq:eta2}
+\end{equation}
+(разложение $\beta_0/\beta=1+\delta/\gamma_0^2+(3\beta_0^2/2-1)\delta^2/\gamma_0^2+\dots$ и перемножение с $C/C_0$;
+формула проверена символьно). При $\gamma_0\to\infty$: $\eta_2\to\alpha_1$.
+
+\paragraph{Следствия.} Для медленных колебаний ($Q_s\ll1$) номер оборота $n$ можно считать непрерывным. Из
+\eqref{eq:mapd} при малых $\delta$: $\Delta\delta\simeq ZeV(\sin\varphi-\sin\varphi_s)/(\beta_0^2E_0)$, и
+\begin{equation}
+\frac{d\varphi}{dn}=-2\pi h(\eta_1\delta+\eta_2\delta^2),\qquad \frac{d\delta}{dn}=A(\sin\varphi-\sin\varphi_s),\quad
+A=\frac{ZeV}{\beta_0^2E_0},
+\end{equation}
+с гамильтонианом (по $n$)
+\begin{equation}
+K(\varphi,\delta)=-2\pi h\Big(\frac{\eta_1\delta^2}{2}+\frac{\eta_2\delta^3}{3}\Big)+A\big(\cos\varphi+\varphi\sin\varphi_s\big). \label{eq:K}
+\end{equation}
+\begin{itemize}
+\item \emph{Только $\eta_1$}: маятник. Неподвижные точки $\delta=0$, $\sin\varphi=\sin\varphi_s$; точка $\varphi_s$
+устойчива при $\eta_1\cos\varphi_s>0$, линеаризация даёт $Q_s^2=hA\eta_1\cos\varphi_s/(2\pi)$, как в разделе~6.
+Сепаратриса симметрична по $\delta\to-\delta$; для $\sin\varphi_s=0$ полувысота корзины
+$\delta_{\max}=2\sqrt{A/(\pi h|\eta_1|)}$.
+\item \emph{С $\eta_2$}: $d\varphi/dn=0$ также при $\delta_*=-\eta_1/\eta_2$. Появляется вторая цепочка неподвижных точек
+$(\varphi,\delta_*)$ с $\sin\varphi=\sin\varphi_s$, на которой эффективный коэффициент проскальзывания
+$\partial(\eta_1\delta+\eta_2\delta^2)/\partial\delta=-\eta_1$ имеет противоположный знак: устойчивая точка при
+$\delta=0$ становится неустойчивой при $\delta_*$ и наоборот (``альфа-корзины''). Кубический член в $K$ делает
+сепаратрису несимметричной по $\delta$: корзина сжата со стороны $\delta_*$ и растянута с другой.
+Пока $|\delta_*|\gg\delta_{\max}$, поправка мала, $\propto\eta_2\delta_{\max}/\eta_1$.
+\item \emph{Вблизи $\gamma_t$} ($\alpha_c=1/\gamma_t^2$, $\eta_1\to0$): $Q_s\propto\sqrt{|\eta_1|}\to0$, адиабатичность нарушается,
+$\delta_{\max}\propto|\eta_1|^{-1/2}$ растёт, и $\delta_*=-\eta_1/\eta_2\to0$ попадает внутрь корзины~---
+нелинейный член $\eta_2\delta^2$ определяет динамику (асимметрия, потери частиц при прохождении
+критической энергии). При $\eta_1=0$ остаётся $d\varphi/dn=-2\pi h\eta_2\delta^2$, и линейная фокусировка отсутствует.
+\end{itemize}
+
+\paragraph{Уравнения Вольского.} У Вольского \cite{wolski7} (L7, ур.~19--20, 26--34, 58--59) продольные переменные
+$z=s/\beta_0-ct$ и \emph{энергетическое} отклонение $\delta_W=E/(P_0c)-1/\beta_0$; длина пути и период
+\begin{gather}
+C=C_0\Big(1+\alpha_p\delta_W+\tfrac12\alpha_p^{(2)}\delta_W^2+\dots\Big),\notag\\
+T=T_0\Big(1+\eta_p\delta_W+\tfrac12\eta_p^{(2)}\delta_W^2+\dots\Big),\qquad \eta_p=\alpha_p-\frac{1}{\gamma_0^2},
+\end{gather}
+а уравнения движения при $\nu_s\ll1$ и гамильтониан
+\begin{gather}
+\frac{dz}{ds}\approx-\eta_p\,\delta_W,\qquad
+\frac{d\delta_W}{ds}\approx\frac{1}{C_0}\frac{q\hat V}{P_0c}\big[\sin(\varphi_s^W-kz)-\sin\varphi_s^W\big],\notag\\
+H_W=-\frac{\eta_p}{2}\delta_W^2-\frac{1}{kC_0}\frac{q\hat V}{P_0c}\big[\cos(\varphi_s^W-kz)-kz\sin\varphi_s^W\big].
+\end{gather}
+\emph{Эти формулы совпадают с нашими} \eqref{eq:mapd}--\eqref{eq:K} (с $s=nC_0$) после подстановки
+\begin{gather}
+z=q=\frac{l}{\beta(\delta)},\qquad \varphi_s^W=\pi-\varphi_s,\qquad q\hat V=ZeV,\notag\\
+\delta_W=P-\frac{1}{\beta_0}=\sqrt{(1+\delta)^2+\frac{1}{\beta_0^2\gamma_0^2}}-\frac{1}{\beta_0}=\frac{E-E_0}{p_0c},
+\end{gather}
+так что $\sin(\varphi_s^W-kz)=\sin(\varphi_s+kq)$, условие устойчивости Вольского $\eta_p\cos\varphi_s^W<0$ есть наше
+$\eta_1\cos\varphi_s>0$, а $\varphi=\varphi_s+kq$. Различие только в выборе импульсной переменной
+($\delta_W$~--- энергия, $\delta$~--- импульс) и в отсчёте фазы.
+
+\paragraph{Пересчёт коэффициентов $\Delta p/p\to$ отклонение энергии.} Точно
+$(1+\delta)^2=1+2\delta_W/\beta_0+\delta_W^2$, откуда
+\begin{equation}
+\delta=\frac{\delta_W}{\beta_0}-\frac{\delta_W^2}{2\beta_0^2\gamma_0^2}+O(\delta_W^3),\qquad
+d\delta_W=\beta\,d\delta .
+\end{equation}
+Подстановка в $T/T_0-1=\eta_1\delta+\eta_2\delta^2$ даёт коэффициенты по $\delta_W$:
+\begin{gather}
+\eta_p=\frac{\eta_1}{\beta_0},\qquad \tfrac12\eta_p^{(2)}=\frac{\eta_2}{\beta_0^2}-\frac{\eta_1}{2\beta_0^2\gamma_0^2},\notag\\
+\alpha_p=\frac{\alpha_c}{\beta_0},\qquad \tfrac12\alpha_p^{(2)}=\frac{\alpha_1}{\beta_0^2}-\frac{\alpha_c}{2\beta_0^2\gamma_0^2}.
+\end{gather}
+Отсюда $\eta_p=\alpha_p-1/(\beta_0\gamma_0^2)$; формула $\eta_p=\alpha_p-1/\gamma_0^2$ в \cite{wolski7} верна при $\beta_0\to1$
+(в ур.~(31)--(33) там опущен множитель $1/\beta$; при $\beta_0<1$ правильно
+$(1/\beta)\,d\beta/d\delta_W=1/(\beta_0\gamma_0^2)$ при $\delta_W=0$).
+Аналогично для $z$: $\Delta z$ за оборот $=-cT_0(T/T_0-1)=-(C_0/\beta_0)\eta_p\delta_W+\dots$, что при $\beta_0=1$
+совпадает с $dz/ds=-\eta_p\delta_W$.
 
 \section{Пересчёт из переменных Вольского}
 У Вольского \cite{wolski4,wolski7} продольная пара $(z,\delta_W)$: $z=s/\beta_0-ct=-c\,\Delta t$,
