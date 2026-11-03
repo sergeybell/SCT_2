@@ -48,35 +48,45 @@ $E=\gamma mc^2=\sqrt{p^2c^2+m^2c^4}$. Определим две продольн
 Поперечные импульсы $p_{x,y}=P_{x,y}/p_0$~--- канонические импульсы, нормированные на $p_0$.
 Удобно ввести безразмерную полную энергию как функцию $\delta$:
 \begin{equation}
-\cE(\delta)=\sqrt{(1+\delta)^2+\Big(\frac{mc}{p_0}\Big)^2}=\frac{E}{p_0c},\qquad
-\Big(\frac{mc}{p_0}\Big)^2=\frac{1}{\beta_0^2\gamma_0^2},\qquad \cE(0)=\frac{1}{\beta_0}, \label{eq:E}
+\begin{aligned}
+\cE(\delta)&=\sqrt{(1+\delta)^2+\Big(\frac{mc}{p_0}\Big)^2}=\frac{E}{p_0c},\\
+\Big(\frac{mc}{p_0}\Big)^2&=\frac{1}{\beta_0^2\gamma_0^2},\qquad \cE(0)=\frac{1}{\beta_0},
+\end{aligned} \label{eq:E}
 \end{equation}
 так что $P=\cE(\delta)$, $\beta(\delta)=v/c=pc/E=(1+\delta)/\cE(\delta)$, $\gamma=E/(mc^2)=\cE\,p_0/(mc)$.
 
 \paragraph{Вывод гамильтониана.}
 Если независимой переменной служит $s$ (прямой участок), канонические пары~--- $(x,P_x)$, $(y,P_y)$ и $(t,-E)$,
-а роль гамильтониана играет продольный канонический импульс со знаком минус ($\mathbf A$~--- векторный потенциал):
+а роль гамильтониана играет продольный канонический импульс со знаком минус ($\mathbf A$~--- векторный потенциал).
+Этот исходный гамильтониан в переменных $(x,P_x,y,P_y,t,-E)$ обозначим $H_0$:
 \begin{equation}
-\mathcal K=-\sqrt{\frac{E^2}{c^2}-m^2c^2-(P_x-ZeA_x)^2-(P_y-ZeA_y)^2}\;-\;ZeA_s .
+H_0=-\sqrt{\frac{E^2}{c^2}-m^2c^2-(P_x-ZeA_x)^2-(P_y-ZeA_y)^2}\;-\;ZeA_s . \label{eq:H0}
 \end{equation}
 Перейдём от $(t,-E)$ к паре $(q,P)$, отсчитывая время от опорной частицы и нормируя импульсы на $p_0$.
 Производящая функция второго рода
 $F_2(t,P;s)=-p_0c\,P\,\big(t-t_0(s)\big)$ даёт старый импульс $-E=\partial F_2/\partial t=-p_0cP$, новую координату
 $\partial F_2/\partial P=-p_0c\,\Delta t=p_0\,q$ и добавку к гамильтониану $\partial F_2/\partial s=p_0cP/v_0=p_0P/\beta_0$.
+Новый гамильтониан в переменных $(x,p_x,y,p_y,q,P)$ обозначим $H$: это $(H_0+\partial F_2/\partial s)/p_0$.
 Деля всё на $p_0$ (это сохраняет каноничность при одновременной нормировке импульсов), получаем
 \begin{equation}
-H(q,P)=\frac{P}{\beta_0}-\sqrt{P^2-\frac{1}{\beta_0^2\gamma_0^2}-(p_x-a_x)^2-(p_y-a_y)^2}-a_s,\quad
-a_i=\frac{Ze}{p_0}A_i . \label{eq:HqP}
+\begin{aligned}
+H(q,P)&=\frac{P}{\beta_0}-\sqrt{P^2-\frac{1}{\beta_0^2\gamma_0^2}-(p_x-a_x)^2-(p_y-a_y)^2}-a_s,\\
+a_i&=\frac{Ze}{p_0}A_i .
+\end{aligned} \label{eq:HqP}
 \end{equation}
 Остаётся заменить импульсную переменную: вместо энергии $P$ взять отклонение импульса $\delta$. Это точечное
 преобразование с производящей функцией $F_2(q,\delta)=q\,\cE(\delta)$:
 \begin{equation}
-P=\frac{\partial F_2}{\partial q}=\cE(\delta),\qquad
-l=\frac{\partial F_2}{\partial\delta}=q\,\frac{d\cE}{d\delta}=q\,\frac{1+\delta}{\cE}=q\,\beta(\delta),
-\quad l=-\beta c\,\Delta t=-v\,\Delta t . \label{eq:point}
+\begin{aligned}
+P&=\frac{\partial F_2}{\partial q}=\cE(\delta),\\
+l&=\frac{\partial F_2}{\partial\delta}=q\,\frac{d\cE}{d\delta}=q\,\frac{1+\delta}{\cE}=q\,\beta(\delta)
+=-\beta c\,\Delta t=-v\,\Delta t .
+\end{aligned} \label{eq:point}
 \end{equation}
 Так как $F_2$ не зависит от $s$, значение гамильтониана не меняется: достаточно подставить
-$P=\cE(\delta)$, $q=l/\beta(\delta)$. Поскольку $P^2-1/(\beta_0^2\gamma_0^2)=(1+\delta)^2$,
+$P=\cE(\delta)$, $q=l/\beta(\delta)$. Поэтому для гамильтониана в переменных $(l,\delta)$ сохраняем ту же букву $H$:
+это та же функция фазовой точки, лишь записанная в других переменных ($H(l,\delta)$ означает $H(q,P)$ при
+$q=l/\beta(\delta)$, $P=\cE(\delta)$). Поскольку $P^2-1/(\beta_0^2\gamma_0^2)=(1+\delta)^2$,
 \begin{equation}
 \boxed{\ H=\frac{\cE(\delta)}{\beta_0}-p_s-a_s\Big(x,y,\ \frac{l}{\beta(\delta)};s\Big)\ },\qquad
 p_s=\sqrt{(1+\delta)^2-(p_x-a_x)^2-(p_y-a_y)^2} \label{eq:Hld}
@@ -89,10 +99,10 @@ $dl/ds=\partial H/\partial\delta=\beta/\beta_0-(1+\delta)/p_s$, т.е. $dl/ds=v/
 Поле моды TM$_{010}$ цилиндрического резонатора с частотой $\omega=h\omega_0$ (здесь $h$~--- кратность,
 $\omega_0=2\pi/T_0=2\pi v_0/C_0$~--- частота обращения, $C_0$~--- длина опорной орбиты) в цилиндрических координатах
 $(r,\theta,z)$ записывается так ($k=\omega/c$, полужирным выделены поля, чтобы не путать их с энергией):
-\begin{equation}
-\mathbf E_z=\mathbf E_{\rm m}\,J_0(kr)\sin(\omega t+\varphi_0),\qquad
-\mathbf B_\theta=\frac{\mathbf E_{\rm m}}{c}\,J_1(kr)\cos(\omega t+\varphi_0).
-\end{equation}
+\begin{align}
+\mathbf E_z&=\mathbf E_{\rm m}\,J_0(kr)\sin(\omega t+\varphi_0),\\
+\mathbf B_\theta&=\frac{\mathbf E_{\rm m}}{c}\,J_1(kr)\cos(\omega t+\varphi_0).
+\end{align}
 Выберем калибровку $\Phi=0$. Калибровку можно выбирать свободно: поля и траектории от неё не зависят, а
 гамильтониан меняется лишь каноническим преобразованием. Условие $\Phi=0$ удобно потому, что в резонаторе нет
 свободных зарядов и поле целиком описывается векторным потенциалом, $\mathbf E=-\partial\mathbf A/\partial t$. Тогда
@@ -100,9 +110,12 @@ $(r,\theta,z)$ записывается так ($k=\omega/c$, полужирны
 A_z=\frac{\mathbf E_{\rm m}}{\omega}\,J_0(kr)\cos(\omega t+\varphi_0);
 \end{equation}
 действительно, $-\partial A_z/\partial t=\mathbf E_z$ и $-\partial A_z/\partial r=\mathbf B_\theta$. Подставляя
-$\omega t=\omega\Delta t+\omega s/v_0=-kq+ks/\beta_0$ в \eqref{eq:Hld},
+$\omega t=\omega\Delta t+\omega s/v_0=-kq+ks/\beta_0$ в \eqref{eq:Hld}, получаем ВЧ-часть гамильтониана $H$, которую обозначим $H_\rf$:
 \begin{equation}
-H_\rf=-a_s=-\frac{Ze\mathbf E_{\rm m}}{p_0\,\omega}\,J_0(kr)\cos\!\Big(\frac{ks}{\beta_0}-kq+\varphi_0\Big),\qquad q=\frac{l}{\beta(\delta)} .
+\begin{aligned}
+H_\rf&=-a_s=-\frac{Ze\mathbf E_{\rm m}}{p_0\,\omega}\,J_0(kr)\cos\!\Big(\frac{ks}{\beta_0}-kq+\varphi_0\Big),\\
+q&=\frac{l}{\beta(\delta)} .
+\end{aligned}
 \end{equation}
 Зависимость от $s$ через $ks/\beta_0$ описывает пролёт частицы через осциллирующее поле. Усреднение по длине
 резонатора $L=\pi/k$ (половина длины волны $\lambda=2\pi/k$) даёт эффективное напряжение $V=\mathbf E_{\rm m}LT_{\rm tr}$ с фактором пролётного времени
@@ -117,8 +130,10 @@ T_{\rm tr}=\frac{\sin(\omega L/2v_0)}{\omega L/2v_0}
 Обозначим $\varphi_s=\pi-\varphi_c$, так что $\sin(\varphi_c-kq)=\sin(\varphi_s+kq)$, и положим, что набег энергии
 распределён по длине $L$ равномерно: $dE/ds=ZeV\sin(\varphi_s+kq)/L$ ($V$ уже включает $T_{\rm tr}$). Тогда
 \begin{equation}
-\frac{dP}{ds}=-\frac{\partial H_\rf}{\partial q}=\frac{ZeV}{p_0cL}\sin(\varphi_s+kq),\qquad
-H_\rf=\frac{ZeV}{p_0c\,kL}\cos(\varphi_s+kq), \label{eq:Hrf}
+\begin{aligned}
+\frac{dP}{ds}&=-\frac{\partial H_\rf}{\partial q}=\frac{ZeV}{p_0cL}\sin(\varphi_s+kq),\\
+H_\rf&=\frac{ZeV}{p_0c\,kL}\cos(\varphi_s+kq),
+\end{aligned} \label{eq:Hrf}
 \end{equation}
 где $k=h\omega_0/c=2\pi h\beta_0/C_0$. Знак: $kq=-h\omega_0\Delta t$, т.е. частица, пришедшая
 раньше ($\Delta t<0$), имеет $q>0$ и большую фазу $\varphi=\varphi_s+kq$. В переменных \eqref{eq:ld}
@@ -132,19 +147,25 @@ $\varphi=\varphi_s+k\,l/\beta(\delta)$; поскольку $\beta$ зависи�
 
 \section{Тонкий предел}
 Отображение толстого резонатора за длину $L$ есть $\mathcal M=e^{-L:H:}$ с $H=H_d+H_\rf$, где $H_d=\cE/\beta_0-p_s$~---
-дрейф, а $:f:g=[f,g]$~--- скобка Пуассона. Обозначим
+часть $H$, описывающая дрейф, а $:f:g=[f,g]$~--- скобка Пуассона. Обозначим
 $G=L\,H_\rf=\int_0^LH_\rf\,ds=\dfrac{ZeV}{p_0ck}\cos(\varphi_s+kq)$ и устремим $L\to0$ при фиксированном
 напряжении $V$. Тогда показатель $-L:H:=-L:H_d:-:G:$: первое слагаемое пропорционально длине и исчезает
 (на нулевой длине частица не дрейфует), а второе остаётся конечным, так как при фиксированном $V$
 амплитуда $H_\rf$ растёт как $1/L$. Значит, $\mathcal M\to e^{-:G:}$~--- чистый толчок. В паре $(q,P)$ функция $G$
 зависит только от $q$, поэтому этот поток находится в замкнутом виде:
 \begin{equation}
-q'=q,\qquad P'=P+\frac{ZeV}{p_0c}\sin(\varphi_s+kq),
+\begin{aligned}
+q'&=q,\\
+P'&=P+\frac{ZeV}{p_0c}\sin(\varphi_s+kq),
+\end{aligned}
 \end{equation}
 т.е. $\Delta t$ сохраняется, а энергия получает приращение $E'=E+ZeV\sin\varphi$. Переход к $(l,\delta)$ без разложения:
 \begin{equation}
-\cE'=\cE(\delta)+\frac{ZeV}{p_0c}\sin\varphi,\qquad \delta'=\sqrt{\cE'^2-\frac{1}{\beta_0^2\gamma_0^2}}-1,\qquad
-l'=-v(\delta')\,\Delta t = l\,\frac{\beta(\delta')}{\beta(\delta)} . \label{eq:thin}
+\begin{aligned}
+\cE'&=\cE(\delta)+\frac{ZeV}{p_0c}\sin\varphi,\\
+\delta'&=\sqrt{\cE'^2-\frac{1}{\beta_0^2\gamma_0^2}}-1,\\
+l'&=-v(\delta')\,\Delta t = l\,\frac{\beta(\delta')}{\beta(\delta)} .
+\end{aligned} \label{eq:thin}
 \end{equation}
 Поперечные переменные не меняются.
 
@@ -206,7 +227,7 @@ $-\dfrac{ZeV\sin\varphi_s}{p_0cL}\,q$: опорная орбита $l=\delta=0$ 
 \end{equation}
 так что синхронная частица остаётся опорной. Переход к переменным, нормированным на $p_0(s)$, задаётся
 производящей функцией $F_2=p_0(s)\,\big[x\,p_x+y\,p_y+l\,(1+\delta)\big]$ (старые импульсы размерные, новые
-нормированы); после деления на $p_0$ к $H$ добавляется
+нормированы); после деления на $p_0$ к $H$ добавляется член, который обозначим $\Delta H$:
 \begin{equation}
 \Delta H=\frac{p_0'}{p_0}\Big[x\,p_x+y\,p_y+l\,(1+\delta)\Big]. \label{eq:dH}
 \end{equation}
@@ -222,9 +243,11 @@ $s$ (через $p_0(s)$): система \emph{неавтономна}, и от
 симплектично. Однако в нормированных переменных после резонатора опорная энергия меняется скачком (перенормировка,
 \cite{xsuite}, \S2.14, \S2.21); в наших переменных ($\Delta t$ и положение при этом не меняются)
 \begin{equation}
-l_{\rm new}=l_{\rm old},\qquad
-1+\delta_{\rm new}=(1+\delta_{\rm old})\frac{p_{0,\rm old}}{p_{0,\rm new}},\qquad
-p_{x,y,\rm new}=p_{x,y,\rm old}\frac{p_{0,\rm old}}{p_{0,\rm new}} .
+\begin{aligned}
+l_{\rm new}&=l_{\rm old},\\
+1+\delta_{\rm new}&=(1+\delta_{\rm old})\frac{p_{0,\rm old}}{p_{0,\rm new}},\\
+p_{x,y,\rm new}&=p_{x,y,\rm old}\frac{p_{0,\rm old}}{p_{0,\rm new}} .
+\end{aligned}
 \end{equation}
 Определитель этой замены в каждой плоскости равен $p_{0,\rm old}/p_{0,\rm new}<1$ (для трёх плоскостей
 $(p_{0,\rm old}/p_{0,\rm new})^3$): она не симплектична, фазовый объём в нормированных переменных сжимается~---
@@ -240,10 +263,10 @@ $(p_{0,\rm old}/p_{0,\rm new})^3$): она не симплектична, фаз
 \section{Частота синхротронных колебаний}
 Линеаризуем отображение за оборот: тонкий резонатор и кольцо, в котором $\Delta l=-\eta_1C_0\,\delta$ за оборот
 (см.~\eqref{eq:map1} и \eqref{eq:eta2}). Толчок и след матрицы за оборот равны
-\begin{equation}
-\Delta\delta=\frac{ZeV}{\beta_0^2E_0}\,\cos\varphi_s\,\frac{2\pi h}{C_0}\,l,\qquad
-\cos 2\pi Q_s=1-\frac{2\pi h\,\eta_1\,ZeV\cos\varphi_s}{2\beta_0^2E_0},
-\end{equation}
+\begin{align}
+\Delta\delta&=\frac{ZeV}{\beta_0^2E_0}\,\cos\varphi_s\,\frac{2\pi h}{C_0}\,l,\\
+\cos 2\pi Q_s&=1-\frac{2\pi h\,\eta_1\,ZeV\cos\varphi_s}{2\beta_0^2E_0},
+\end{align}
 откуда при малом $Q_s$
 \begin{equation}
 Q_s=\sqrt{\frac{h\,\eta_1\,ZeV\cos\varphi_s}{2\pi\beta_0^2E_0}},\qquad \eta_1=\alpha_c-\frac{1}{\gamma_0^2}.
@@ -254,10 +277,12 @@ Q_s=\sqrt{\frac{h\,\eta_1\,ZeV\cos\varphi_s}{2\pi\beta_0^2E_0}},\qquad \eta_1=\a
 \section{Продольные уравнения движения и отображение за оборот}
 \label{sec:eom}
 \paragraph{Гамильтониан на оси.} Рассмотрим частицу на оси ($x=p_x=y=p_y=0$, $p_s=1+\delta$) в однородном зазоре
-длины $L$. Из \eqref{eq:Hfull}
+длины $L$. Из \eqref{eq:Hfull} (это тот же гамильтониан $H$, ограниченный на ось)
 \begin{equation}
-H(l,\delta)=\frac{\cE(\delta)}{\beta_0}-(1+\delta)+\frac{ZeV}{p_0c\,kL}\cos\varphi,\qquad
-\varphi=\varphi_s+\frac{k\,l}{\beta(\delta)},\qquad k=\frac{2\pi h\beta_0}{C_0}. \label{eq:Hax}
+\begin{aligned}
+H(l,\delta)&=\frac{\cE(\delta)}{\beta_0}-(1+\delta)+\frac{ZeV}{p_0c\,kL}\cos\varphi,\\
+\varphi&=\varphi_s+\frac{k\,l}{\beta(\delta)},\qquad k=\frac{2\pi h\beta_0}{C_0}.
+\end{aligned} \label{eq:Hax}
 \end{equation}
 Уравнения Гамильтона: $dl/ds=\partial H/\partial\delta$, $d\delta/ds=-\partial H/\partial l$.
 
@@ -269,8 +294,10 @@ H(l,\delta)=\frac{\cE(\delta)}{\beta_0}-(1+\delta)+\frac{ZeV}{p_0c\,kL}\cos\varp
 ВЧ-член тоже зависит от $\delta$, но только через фазу: в $\varphi=\varphi_s+kl/\beta(\delta)$ стоит скорость частицы
 $\beta(\delta)$. Поэтому
 \[
-\frac{\partial}{\partial\delta}\cos\varphi=-\sin\varphi\,\frac{\partial\varphi}{\partial\delta},\qquad
-\frac{\partial\varphi}{\partial\delta}=-\frac{k\,l}{\beta^2}\frac{d\beta}{d\delta}.
+\begin{aligned}
+\frac{\partial}{\partial\delta}\cos\varphi&=-\sin\varphi\,\frac{\partial\varphi}{\partial\delta},\\
+\frac{\partial\varphi}{\partial\delta}&=-\frac{k\,l}{\beta^2}\frac{d\beta}{d\delta}.
+\end{aligned}
 \]
 Производная скорости по импульсу (напомним, что $\beta=(1+\delta)/\cE$):
 \[
@@ -303,13 +330,17 @@ $(\varphi,\Delta E)$, где координатой служит само зап
 
 \paragraph{Переменные $(\varphi,\Delta E)$.} Фаза прибытия и отклонение энергии
 \begin{equation}
-\varphi=\varphi_s+kq=\varphi_s+\frac{2\pi h}{C_0}\frac{\beta_0}{\beta(\delta)}\,l,\qquad
-\Delta E=E-E_0=p_0c\Big(\cE(\delta)-\frac1{\beta_0}\Big); \label{eq:trans}
+\begin{aligned}
+\varphi&=\varphi_s+kq=\varphi_s+\frac{2\pi h}{C_0}\frac{\beta_0}{\beta(\delta)}\,l,\\
+\Delta E&=E-E_0=p_0c\Big(\cE(\delta)-\frac1{\beta_0}\Big);
+\end{aligned} \label{eq:trans}
 \end{equation}
 обратно
 \begin{equation}
-\delta=\sqrt{\Big(\frac1{\beta_0}+\frac{\Delta E}{p_0c}\Big)^2-\frac1{\beta_0^2\gamma_0^2}}-1,\qquad
-l=\frac{C_0}{2\pi h}\frac{\beta(\delta)}{\beta_0}\,(\varphi-\varphi_s).
+\begin{aligned}
+\delta&=\sqrt{\Big(\frac1{\beta_0}+\frac{\Delta E}{p_0c}\Big)^2-\frac1{\beta_0^2\gamma_0^2}}-1,\\
+l&=\frac{C_0}{2\pi h}\frac{\beta(\delta)}{\beta_0}\,(\varphi-\varphi_s).
+\end{aligned}
 \end{equation}
 Пара $(\varphi,\Delta E)$~--- это $(q,P)$ с постоянными множителями и сдвигами ($\varphi-\varphi_s=kq$,
 $\Delta E=p_0c\,P-E_0$), поэтому она канонична с точностью до постоянного множителя $kp_0c$ при гамильтониане.
@@ -347,8 +378,10 @@ $\ \beta_0/\beta=1-\delta/\gamma_0^2+(1+\beta_0^2/2)\,\delta^2/\gamma_0^2+\dots$
 
 \paragraph{Отображение за оборот.} Оно составлено из тонкого толчка \eqref{eq:thin} и прохода кольца. Обозначим
 \[
-S_n=\sin\varphi_n-\sin\varphi_s,\qquad \mathcal V=\frac{ZeV}{\beta_0^2E_0},\qquad \frac{ZeV}{p_0c}=\beta_0\mathcal V,\]
-\[\varepsilon=\frac{\Delta E}{\beta_0^2E_0},\qquad \beta_n=\beta(\delta_n),\quad T_n=T(\delta_n).
+\begin{aligned}
+S_n&=\sin\varphi_n-\sin\varphi_s, & \mathcal V&=\frac{ZeV}{\beta_0^2E_0}, & \frac{ZeV}{p_0c}&=\beta_0\mathcal V,\\
+\varepsilon&=\frac{\Delta E}{\beta_0^2E_0}, & \beta_n&=\beta(\delta_n), & T_n&=T(\delta_n).
+\end{aligned}
 \]
 Член $-\sin\varphi_s$ описывает либо потери на излучение $U_0=ZeV\sin\varphi_s$ (накопитель), либо, при ускорении,
 переход к опорному импульсу $p_0(s)$ (раздел~\ref{sec:acc}). Формулы для двух наборов переменных
@@ -407,17 +440,20 @@ $\varepsilon$), но положение корня $T(\delta)=T_0$ от этог
 \frac{d\Delta E}{dt}=\frac{\omega_0}{2\pi}\,ZeV\big(\sin\varphi-\sin\varphi_s\big). \label{eq:smooth}
 \end{equation}
 Резонатор при этом <<размазан>> по кольцу: набег энергии за оборот $ZeV(\sin\varphi-\sin\varphi_s)$ делится на $T_0$.
-Эти уравнения гамильтоновы с гамильтонианом
+Эти уравнения гамильтоновы; их гамильтониан (с независимой переменной $t$ вместо $s$ и в переменных $(\varphi,\delta)$)~---
+это другая функция, чем $H$, поэтому обозначим его $\bar H$ (черта напоминает об усреднении по кольцу):
 \begin{equation}
-K(\varphi,\delta)=-h\omega_0\Big(\frac{\eta_1\delta^2}{2}+\frac{\eta_2\delta^3}{3}\Big)
+\bar H(\varphi,\delta)=-h\omega_0\Big(\frac{\eta_1\delta^2}{2}+\frac{\eta_2\delta^3}{3}\Big)
 +\frac{\omega_0\mathcal V}{2\pi}\big(\cos\varphi+\varphi\sin\varphi_s\big), \label{eq:K}
 \end{equation}
-$d\varphi/dt=\partial K/\partial\delta$, $d\delta/dt=-\partial K/\partial\varphi$. С независимой переменной $s=v_0t$ то же
+$d\varphi/dt=\partial\bar H/\partial\delta$, $d\delta/dt=-\partial\bar H/\partial\varphi$. С независимой переменной $s=v_0t$ то же
 самое в канонических $(l,\delta)$ (при $\varphi-\varphi_s\simeq2\pi h\,l/C_0$):
 \begin{equation}
-\frac{dl}{ds}=-\big(\eta_1\delta+\tilde\eta_2\delta^2\big),\qquad
-\frac{d\delta}{ds}=\frac{\mathcal V}{C_0}\Big[\sin\Big(\varphi_s+\frac{2\pi h\,l}{C_0}\Big)-\sin\varphi_s\Big],\qquad
+\begin{aligned}
+\frac{dl}{ds}&=-\big(\eta_1\delta+\tilde\eta_2\delta^2\big),\\
+\frac{d\delta}{ds}&=\frac{\mathcal V}{C_0}\Big[\sin\Big(\varphi_s+\frac{2\pi h\,l}{C_0}\Big)-\sin\varphi_s\Big],\qquad
 \tilde\eta_2=\eta_2+\frac{\eta_1}{\gamma_0^2}.
+\end{aligned}
 \end{equation}
 При счёте основным остаётся дискретное отображение за оборот, а гладкая форма удобна для анализа фазового портрета.
 В частности:
@@ -430,7 +466,7 @@ $\delta\to-\delta$; при $\sin\varphi_s=0$ полувысота бакета $
 \item \emph{С $\eta_2$}: $d\varphi/dt=0$ также при $\delta_*=-\eta_1/\eta_2$. Появляется вторая цепочка неподвижных точек
 $(\varphi,\delta_*)$ с $\sin\varphi=\sin\varphi_s$, на которой эффективный коэффициент проскальзывания
 $\partial(\eta_1\delta+\eta_2\delta^2)/\partial\delta=-\eta_1$ имеет противоположный знак: устойчивой точке при
-$\delta=0$ соответствует неустойчивая при $\delta_*$, и наоборот (<<альфа-бакеты>>). Кубический член в $K$ делает
+$\delta=0$ соответствует неустойчивая при $\delta_*$, и наоборот (<<альфа-бакеты>>). Кубический член в $\bar H$ делает
 сепаратрису несимметричной по $\delta$: бакет сжат со стороны $\delta_*$ и растянут с другой.
 Пока $|\delta_*|\gg\delta_{\max}$, поправка мала, порядка $\eta_2\delta_{\max}/\eta_1$.
 \item \emph{Вблизи $\gamma_t$} ($\alpha_c=1/\gamma_t^2$, $\eta_1\to0$): $Q_s\propto\sqrt{|\eta_1|}\to0$, адиабатичность нарушается,
@@ -460,15 +496,19 @@ $1+\delta=\sqrt{(\delta_E+1/\beta_0)^2-1/(\beta_0^2\gamma_0^2)}$, $l=\beta(\delt
 $C/C_0=1+\alpha_p\delta_E+\tfrac12\alpha_p^{(2)}\delta_E^2$, $T/T_0=1+\eta_p\delta_E+\tfrac12\eta_p^{(2)}\delta_E^2$,
 а при $\nu_s\ll1$ ($\nu_s\equiv Q_s$)
 \[
-\frac{dz}{ds}\approx-\eta_p\,\delta_E,\qquad
-\frac{d\delta_E}{ds}\approx\frac{1}{C_0}\frac{ZeV}{p_0c}\big[\sin(\varphi_s^{(z)}-kz)-\sin\varphi_s^{(z)}\big],
+\begin{aligned}
+\frac{dz}{ds}&\approx-\eta_p\,\delta_E,\\
+\frac{d\delta_E}{ds}&\approx\frac{1}{C_0}\frac{ZeV}{p_0c}\big[\sin(\varphi_s^{(z)}-kz)-\sin\varphi_s^{(z)}\big],
 \qquad \varphi_s^{(z)}=\pi-\varphi_s,
+\end{aligned}
 \]
 что при $s=nC_0$ и $\beta_0\to1$ совпадает с \eqref{eq:map1phi}. Подставляя
 $\delta=\delta_E/\beta_0-\delta_E^2/(2\beta_0^2\gamma_0^2)+O(\delta_E^3)$ в $\eta_1\delta+\eta_2\delta^2$:
 \[
-\eta_p=\frac{\eta_1}{\beta_0},\quad \tfrac12\eta_p^{(2)}=\frac{\eta_2}{\beta_0^2}-\frac{\eta_1}{2\beta_0^2\gamma_0^2},\qquad
-\alpha_p=\frac{\alpha_c}{\beta_0},\quad \tfrac12\alpha_p^{(2)}=\frac{\alpha_1}{\beta_0^2}-\frac{\alpha_c}{2\beta_0^2\gamma_0^2}.
+\begin{aligned}
+\eta_p&=\frac{\eta_1}{\beta_0}, & \tfrac12\eta_p^{(2)}&=\frac{\eta_2}{\beta_0^2}-\frac{\eta_1}{2\beta_0^2\gamma_0^2},\\
+\alpha_p&=\frac{\alpha_c}{\beta_0}, & \tfrac12\alpha_p^{(2)}&=\frac{\alpha_1}{\beta_0^2}-\frac{\alpha_c}{2\beta_0^2\gamma_0^2}.
+\end{aligned}
 \]
 \paragraph{Замечание об $\eta_p$.} Отсюда $\eta_p=\alpha_p-1/(\beta_0\gamma_0^2)$ и $\gamma_t^2=1/\alpha_c=1/(\beta_0\alpha_p)$.
 В \cite{wolski7} (ур.~34--35) стоит $\eta_p=\alpha_p-1/\gamma_0^2$, $\gamma_t^2=1/\alpha_p$~--- это верно при $\beta_0\to1$
