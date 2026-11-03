@@ -90,11 +90,11 @@ $V\sin(\varphi_s+\varphi)$ & напряжение, $\varphi_s$ --- синхро�
 \qquad
 \eta_1=\alpha_1-\frac{\alpha_0}{\gamma_s^2}+\frac{3\gamma_s^2-1}{2\gamma_s^4}.
 \end{equation}
-Всюду ниже $\eta_0\neq 0$.
+Коэффициент $\eta_0$ --- коэффициент скольжения, $\eta_1$ --- его поправка второго порядка; вместе они называются коэффициентами запаздывания. Всюду ниже $\eta_0\neq 0$.
 
 \subsection{Уравнения продольного движения}
 
-Опоздание на $\tau T_s$ сдвигает фазу ВЧ на $\omega_\rf\tau T_s=2\pi h\tau$. Резонатор меняет энергию частицы на
+Опоздание на $\tau T_s$ сдвигает фазу ВЧ на $\omega_\rf\tau T_s=2\pi h\tau$. При $k$-м прохождении резонатора энергия частицы $E_k$ меняется на
 \begin{equation}
 \label{eq:dE-gap}
 E_{k+1}-E_k=qV\sin(\varphi_s+\varphi_k)=qV\cos\varphi_s\sin\varphi_k.
@@ -132,7 +132,7 @@ E_{k+1}-E_k=qV\sin(\varphi_s+\varphi_k)=qV\cos\varphi_s\sin\varphi_k.
 \end{equation}
 Если удержать в $\tau$ член $\eta_1\delta^2$, но заменить $v_s/v$ единицей, точность двух уравнений разъедется: в первом будет второй порядок, во втором --- нет. Член $\varphi^3$ в $\sin\varphi$ рассмотрен в главе~\ref{sec:mag-phase}; здесь пока $\sin\varphi$ оставлен как есть.
 
-При $\omega_s T_s\ll 1$ синхротронный период много больше периода обращения, приращения за оборот малы, и отображение \eqref{eq:map} заменяется дифференциальными уравнениями:
+Пусть $\omega_s$ --- частота малых синхротронных колебаний (она найдена ниже, \eqref{eq:ws}). При $\omega_s T_s\ll 1$ синхротронный период много больше периода обращения, приращения за оборот малы, и отображение \eqref{eq:map} заменяется дифференциальными уравнениями:
 \begin{equation}
 \label{eq:smooth}
 \left\{
@@ -227,7 +227,7 @@ K\omega_\rf\cos\varphi_s=-\frac{\omega_s^2}{\eta_0}.
 =-\frac{\omega_s^2}{\eta_0}\Bigl(\eta_1-\frac{\eta_0}{\gamma_s^2}\Bigr)\delta^2
 -\frac{\dot\delta^2}{\gamma_s^2}.
 \end{equation}
-Решение методом Боголюбова--Митропольского (приложение~\ref{app:bm}, формула \eqref{eq:bm-sol} при $c_0=0$):
+Решение методом Боголюбова--Митропольского (приложение~\ref{app:bm}, формула \eqref{eq:bm-sol}, в которой постоянный член правой части $c_0=0$):
 \begin{equation}
 \label{eq:delta-a}
 \delta

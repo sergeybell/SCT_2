@@ -8,9 +8,9 @@
 Поворот пучка создают только электростатические дефлекторы; вне них $1/\rho=0$ и электрический потенциал равен нулю, а фокусирующие элементы магнитные. Резонатор расположен вне дефлекторов. Торцы дефлекторов перпендикулярны референсной орбите и считаются резкими: поле внутри дефлектора не зависит от $s$, снаружи равно нулю. Во всех дефлекторах один и тот же показатель поля $n$; в плоскости кольца
 \begin{equation}
 \label{eq:Ex}
-E_x=E_0\Bigl(1-n\frac{x}{\rho}+\frac{n(n+1)}{2}\frac{x^2}{\rho^2}+\mathcal{O}\bigl((x/\rho)^3\bigr)\Bigr),
+E_x=E_0\Bigl(1-n\frac{x}{\rho}+\frac{n(n+1)}{2}\frac{x^2}{\rho^2}+O\bigl((x/\rho)^3\bigr)\Bigr),
 \end{equation}
-где $E_0$ --- поле на референсной орбите, $x$ --- радиальное отклонение, $y$ --- вертикальное, $\rho$ --- радиус референсной орбиты в дефлекторе. Квадратичный член записан для поля $E_r\propto r^{-n}$, $r=\rho+x$; цилиндрическому дефлектору отвечает $n=1$, сферическому $n=2$. В дефлекторе продольный масштабный множитель $h_s=1+x/\rho$: дуга на расстоянии $x$ от референсной орбиты длиннее $\mathrm{d}s$ в $h_s$ раз.
+где $E_0$ --- поле на референсной орбите, $x$ --- радиальное отклонение, $y$ --- вертикальное, $\rho$ --- радиус референсной орбиты в дефлекторе. Коэффициент при $x^2$ взят для поля $E_r\propto r^{-n}$, $r=\rho+x$. Для цилиндрического ($n=1$) и сферического ($n=2$) дефлекторов это поле точное; у электродов другой формы с тем же $n$ коэффициент при $x^2$ может быть иным. В дефлекторе продольный масштабный множитель $h_s=1+x/\rho$: дуга на расстоянии $x$ от референсной орбиты длиннее $\mathrm{d}s$ в $h_s$ раз.
 
 Референсная частица движется по окружности радиуса $\rho$, и центростремительную силу ей сообщает поле $E_0$:
 \begin{equation}
@@ -26,7 +26,7 @@ qE_0=-\frac{p_sv_s}{\rho}.
 \begin{equation*}
 \frac{\partial\chi}{\partial x}\Big|_{y=0}
 =-\frac{qE_x}{p_sv_s}
-=\frac{1}{\rho}\Bigl(1-n\frac{x}{\rho}+\frac{n(n+1)}{2}\frac{x^2}{\rho^2}\Bigr)+\mathcal{O}(x^3),
+=\frac{1}{\rho}\Bigl(1-n\frac{x}{\rho}+\frac{n(n+1)}{2}\frac{x^2}{\rho^2}\Bigr)+O(x^3),
 \end{equation*}
 так что на референсной орбите $\chi=0$ и $\partial\chi/\partial x=1/\rho$.
 
@@ -55,7 +55,7 @@ qE_0=-\frac{p_sv_s}{\rho}.
 +\frac{n-1}{2}\frac{y^2}{\rho^2}
 +\frac{n(n+1)}{6}\frac{x^3}{\rho^3}
 +\frac{1-n^2}{2}\frac{xy^2}{\rho^3}
-+\mathcal{O}\bigl((x/\rho)^4,(y/\rho)^4\bigr).
++O\bigl((x/\rho)^4,(y/\rho)^4\bigr).
 \end{equation}
 Например, в нулевом порядке по $x$ уравнение \eqref{eq:laplace} даёт $-n/\rho^2+2c+1/\rho^2=0$ для коэффициента $c$ при $y^2$, т.\,е. $c=(n-1)/(2\rho^2)$. Для двух стандартных дефлекторов известны точные решения:
 \begin{equation}
@@ -80,7 +80,7 @@ n=2:\quad \chi=1-\frac{\rho}{\sqrt{(\rho+x)^2+y^2}},
 \gamma=\gamma_{\mathrm{out}}(\delta)-\beta_s^2\gamma_s\chi
 =\gamma_s+\beta_s^2\gamma_s(\delta-\chi)
 +\frac{\beta_s^2}{2\gamma_s}\delta^2
-+\mathcal{O}(\delta^3).
++O(\delta^3).
 \end{equation}
 Член с $\chi$ точен, так как потенциал входит в полную энергию линейно.
 
@@ -88,16 +88,16 @@ n=2:\quad \chi=1-\frac{\rho}{\sqrt{(\rho+x)^2+y^2}},
 \begin{equation}
 \label{eq:delta-loc}
 \delta_{\mathrm{loc}}
-=\delta-\chi+\frac{2\delta\chi-\chi^2}{2\gamma_s^2}+\mathcal{O}(3),
+=\delta-\chi+\frac{2\delta\chi-\chi^2}{2\gamma_s^2}+O(3),
 \end{equation}
-где $\mathcal{O}(3)$ --- члены суммарной третьей степени по $\delta$ и $\chi$. Это не новая динамическая переменная, а значение кинетического импульса в данной точке. Ряд \eqref{eq:vsv} в точке $\delta_{\mathrm{loc}}$ даёт
+где $O(3)$ --- члены суммарной третьей степени по $\delta$ и $\chi$. Это не новая динамическая переменная, а значение кинетического импульса в данной точке. Ряд \eqref{eq:vsv} в точке $\delta_{\mathrm{loc}}$ даёт
 \begin{equation}
 \label{eq:vsv-es}
 \frac{v_s}{v}
 =1-\frac{\delta-\chi}{\gamma_s^2}
 +\frac{3(\delta-\chi)^2}{2\gamma_s^2}
 -\frac{\delta^2}{2\gamma_s^4}
-+\mathcal{O}(3).
++O(3).
 \end{equation}
 На внешнем радиусе частица медленнее, чем в свободном промежутке при том же $\delta$.
 
@@ -113,10 +113,10 @@ n=2:\quad \chi=1-\frac{\rho}{\sqrt{(\rho+x)^2+y^2}},
 \begin{equation*}
 \Pi^2=(1+\delta)^2-2\,\frac{\gamma_{\mathrm{out}}(\delta)}{\gamma_s}\,\chi+\beta_s^2\chi^2,
 \end{equation*}
-а до первого порядка по $\delta$, с $\gamma_{\mathrm{out}}/\gamma_s=1+\beta_s^2\delta+\mathcal{O}(\delta^2)$,
+а до первого порядка по $\delta$, с $\gamma_{\mathrm{out}}/\gamma_s=1+\beta_s^2\delta+O(\delta^2)$,
 \begin{equation}
 \label{eq:Pi2-es}
-\Pi^2=1+2\delta-2\chi-2\beta_s^2\delta\,\chi+\beta_s^2\chi^2+\mathcal{O}(\delta^2).
+\Pi^2=1+2\delta-2\chi-2\beta_s^2\delta\,\chi+\beta_s^2\chi^2+O(\delta^2).
 \end{equation}
 В магнитном секторе $\Pi=1+\delta$, и \eqref{eq:h-es} без векторного потенциала переходит в кинетическую часть \eqref{eq:h-sector}. Уравнения Гамильтона $x'=\partial\mathcal{H}/\partial p_x$, $p_x'=-\partial\mathcal{H}/\partial x$ с \eqref{eq:h-es} и потенциалом \eqref{eq:psi} дают все уравнения орбиты этой и следующей глав.
 
@@ -133,7 +133,7 @@ n=2:\quad \chi=1-\frac{\rho}{\sqrt{(\rho+x)^2+y^2}},
 \label{eq:cmp-pv}
 \frac{pv}{p_sv_s}
 =1+\Bigl(1+\frac{1}{\gamma_s^2}\Bigr)
-\Bigl(\delta-\frac{x}{\rho}\Bigr)+\mathcal{O}(2).
+\Bigl(\delta-\frac{x}{\rho}\Bigr)+O(2).
 \end{equation}
 
 \paragraph{Уравнение для $D_1$.}
@@ -177,8 +177,8 @@ D_2''+K_1D_2=K_1D_1-\frac{K_2}{2}D_1^2.
 Непрерывен, однако, канонический импульс, а не наклон $x'=\mathrm{d}x/\mathrm{d}s$, и связь между ними по разные стороны торца разная. Из $x'=\partial\mathcal{H}/\partial p_x$ во втором порядке
 \begin{equation*}
 \begin{gathered}
-p_x=\Pi\,\frac{x'}{h_s}+\mathcal{O}(3)
-=(1+\delta)x'-\frac{2}{\rho}xx'+\mathcal{O}(3)\quad\text{внутри},
+p_x=\Pi\,\frac{x'}{h_s}+O(3)
+=(1+\delta)x'-\frac{2}{\rho}xx'+O(3)\quad\text{внутри},
 \\
 p_x=(1+\delta)x'\quad\text{снаружи}.
 \end{gathered}
@@ -214,7 +214,7 @@ x=D_1\delta+D_2\delta^2
 \begin{equation}
 \label{eq:dl-es}
 \frac{\mathrm{d}l}{\mathrm{d}s}
-=1+\frac{x}{\rho}+\frac{x'^2}{2}+\mathcal{O}(3).
+=1+\frac{x}{\rho}+\frac{x'^2}{2}+O(3).
 \end{equation}
 На орбите \eqref{eq:x-co} потенциал
 \begin{equation}
@@ -222,7 +222,7 @@ x=D_1\delta+D_2\delta^2
 \chi
 =\frac{D_1}{\rho}\,\delta
 +\Bigl[\frac{D_2}{\rho}-\frac{n}{2}\Bigl(\frac{D_1}{\rho}\Bigr)^2\Bigr]\delta^2
-+\mathcal{O}(\delta^3),
++O(\delta^3),
 \end{equation}
 и произведение \eqref{eq:dl-es} на \eqref{eq:vsv-es} равно
 \begin{equation}
@@ -243,10 +243,10 @@ x=D_1\delta+D_2\delta^2
 -\frac{4}{\gamma_s^2}\frac{D_1}{\rho}
 +\frac{3\gamma_s^2-1}{2\gamma_s^4}
 \Bigr]\delta^2
-+\mathcal{O}(\delta^3).
++O(\delta^3).
 \end{aligned}
 \end{equation}
-Коэффициент $(5-n)/2$ собирается из квадратичного члена потенциала ($-n/2$), из произведения удлинения дуги на линейное замедление ($+1$) и из квадратичного члена ряда скорости ($+3/2$). С геометрическим коэффициентом уплотнения
+Коэффициент $(5-n)/2$ собирается из квадратичного члена потенциала ($-n/2$), из произведения удлинения дуги на линейное замедление ($+1$) и из квадратичного члена ряда скорости ($+3/2$). С коэффициентом уплотнения орбиты
 \begin{equation}
 \label{eq:alpha0-es}
 \alpha_0=\Bigl\langle\frac{D_1}{\rho}\Bigr\rangle_C,
@@ -309,7 +309,7 @@ x=D_1\delta+D_2\delta^2
 \gamma_{\mathrm{eff}}
 =\gamma_s+\beta_s^2\gamma_s\,\delta_\eq
 +\frac{\beta_s^2\delta_m^2}{4\gamma_s}
-+\mathcal{O}(\delta_m^4),
++O(\delta_m^4),
 \end{equation}
 \begin{equation}
 \label{eq:dE-es}
@@ -317,7 +317,7 @@ x=D_1\delta+D_2\delta^2
 =\beta_s^2E_s\Bigl(
 \delta_\eq+\frac{\delta_m^2}{4\gamma_s^2}
 \Bigr)
-+\mathcal{O}(\delta_m^4 E_s).
++O(\delta_m^4 E_s).
 \end{equation}
 Формула \eqref{eq:dE-es} даёт сдвиг средней полной энергии; вне дефлекторов он совпадает со сдвигом кинетической. Лоренц-фактор внутри дефлектора рассмотрен в разделе~\ref{sec:es-gamma-in}.
 

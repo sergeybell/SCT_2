@@ -25,13 +25,13 @@
 =\Bigl\langle\frac{\mathrm{d}l}{\mathrm{d}s}\,\frac{v_s}{v}\Bigr\rangle_C,
 \qquad
 \frac{\mathrm{d}l}{\mathrm{d}s}
-=1+\frac{x}{\rho}+\frac{x'^2+y'^2}{2}+\mathcal{O}(3),
+=1+\frac{x}{\rho}+\frac{x'^2+y'^2}{2}+O(3),
 \end{equation}
-где $\mathcal{O}(3)$ --- члены более высоких порядков по амплитуде. То же произведение даёт и гамильтониан \eqref{eq:h-es}: время сопряжено полной энергии, и при $\delta=0$ выполнено $v_s\,\mathrm{d}t/\mathrm{d}s=-\partial\mathcal{H}/\partial\delta=(\mathrm{d}l/\mathrm{d}s)(v_s/v)$. Скорость при $\delta=0$ следует из \eqref{eq:vsv-es}:
+где $O(3)$ --- члены более высоких порядков по амплитуде. То же произведение даёт и гамильтониан \eqref{eq:h-es}: время сопряжено полной энергии, и при $\delta=0$ выполнено $v_s\,\mathrm{d}t/\mathrm{d}s=-\partial\mathcal{H}/\partial\delta=(\mathrm{d}l/\mathrm{d}s)(v_s/v)$. Скорость при $\delta=0$ следует из \eqref{eq:vsv-es}:
 \begin{equation}
 \label{eq:v-delta0}
 \frac{v_s}{v}
-=1+\frac{\chi}{\gamma_s^2}+\frac{3\chi^2}{2\gamma_s^2}+\mathcal{O}(\chi^3),
+=1+\frac{\chi}{\gamma_s^2}+\frac{3\chi^2}{2\gamma_s^2}+O(\chi^3),
 \end{equation}
 а потенциал \eqref{eq:psi} на бетатронной траектории
 \begin{equation}
@@ -40,7 +40,7 @@
 =\frac{x_\beta+x_{\mathrm{nl}}}{\rho}
 -\frac{n}{2}\Bigl(\frac{x_\beta}{\rho}\Bigr)^2
 +\frac{n-1}{2}\Bigl(\frac{y_\beta}{\rho}\Bigr)^2
-+\mathcal{O}(3).
++O(3).
 \end{equation}
 Усреднение по фазам использует
 \begin{equation}
@@ -154,7 +154,7 @@ I_x^{\mathrm{ref}}=-\gamma_x-\frac{5-n}{\gamma_s^2\rho^2}\beta_x,
 \qquad
 I_y^{\mathrm{ref}}=-\gamma_y-\frac{n-1}{\gamma_s^2\rho^2}\beta_y.
 \end{equation}
-Вклад $-2\pi(J_xI_x^{\mathrm{ref}}+J_yI_y^{\mathrm{ref}})/(4\pi)$ в каждой точке совпадает с членами наклонов и потенциала в \eqref{eq:Lambda-es-J}. Полное выражение $I$ добавляет к $I^{\mathrm{ref}}$ члены, пропорциональные $D_1$ и $D_1'$, --- вклад сдвига орбиты:
+Величина $-\tfrac12\bigl(J_xI_x^{\mathrm{ref}}+J_yI_y^{\mathrm{ref}}\bigr)$, т.\,е. вклад \eqref{eq:I0-es} в $-2\pi(J_x\xi_x+J_y\xi_y)$ на единицу длины орбиты, в каждой точке совпадает с членами наклонов и потенциала в \eqref{eq:Lambda-es-J}. Полное выражение $I$ добавляет к $I^{\mathrm{ref}}$ члены, пропорциональные $D_1$ и $D_1'$, --- вклад сдвига орбиты:
 \begin{equation}
 \label{eq:Ix-es}
 I_x=I_x^{\mathrm{ref}}
@@ -173,12 +173,12 @@ I_y=I_y^{\mathrm{ref}}
 Слагаемые $2\gamma D_1/\rho$ происходят от члена $(x/\rho)(p_x^2+p_y^2)$ в $\mathcal{H}$ и от зависимости $\Pi$ от $x$, члены с $\beta D_1$ --- от кубического потенциала, слагаемое с $\alpha_xD_1'$ --- от среднего $\langle XP_x\rangle$. Магнитный аналог --- \eqref{eq:I-sector}.
 
 \paragraph{Сдвиг центра.}
-Горизонтальное уравнение второго порядка при $\delta=0$ получается из уравнений Гамильтона с \eqref{eq:h-es}: $x'=\partial\mathcal{H}/\partial p_x$ и $p_x'=-\partial\mathcal{H}/\partial x$ раскладываются до второго порядка, $p_x$ исключается с помощью $p_x=x'-(2/\rho)xx'+\mathcal{O}(3)$, и
+Горизонтальное уравнение второго порядка при $\delta=0$ получается из уравнений Гамильтона с \eqref{eq:h-es}: $x'=\partial\mathcal{H}/\partial p_x$ и $p_x'=-\partial\mathcal{H}/\partial x$ раскладываются до второго порядка, $p_x$ исключается с помощью $p_x=x'-(2/\rho)xx'+O(3)$, и
 \begin{equation}
 \label{eq:Fx-es}
 x''+K_x x=F^x,
 \qquad
-F^x=A_{xx}x^2+A_{yy}y^2+\frac{x'^2-y'^2}{\rho}+\mathcal{O}(3),
+F^x=A_{xx}x^2+A_{yy}y^2+\frac{x'^2-y'^2}{\rho}+O(3),
 \end{equation}
 где $A_{xx}$ дан \eqref{eq:Axx-def}, а
 \begin{equation}
@@ -259,7 +259,7 @@ A_{yy}=\frac{(n-1)(n\gamma_s^2-1)}{2\gamma_s^2\rho^3}.
 \gamma_{\mathrm{eff}}
 =\gamma_s+\beta_s^2\gamma_s\,\delta_\eq
 +\frac{\beta_s^2\delta_m^2}{4\gamma_s}
-+\mathcal{O}(\delta_m^4).
++O(\delta_m^4).
 \end{equation}
 Здесь $\gamma_{\mathrm{eff}}$ --- средний лоренц-фактор вне дефлекторов.
 
