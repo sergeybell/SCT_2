@@ -1,0 +1,110 @@
+quantity,value,source
+C_m,1.17388296e+02,path_length
+Qx,2.46172015e+00,optics_along
+Qy,2.46133732e+00,optics_along
+Qx_frac,4.61720150e-01,periodic_optics mu/2pi
+Qy_frac,4.61337323e-01,periodic_optics mu/2pi
+p_over_q_p,6,"best p/q of Qx_frac, q<=100"
+p_over_q_q,13,"best p/q of Qx_frac, q<=100"
+p_over_q_err,2.36194827e-03,|q Qx_frac - p|
+Qy_same_q_err,2.61480036e-03,|q Qy_frac - round| on the horizontal q
+max_abs_f3,1.16364946e+02,max |coefficient| of f3
+max_abs_f4,7.16029704e+02,max |coefficient| of f4
+linear_Tr,1.99977976e+00,2 cos(q mu_x)
+origin_Tr,1.99977976e+00,"horizontal Tr of Rprod at x0 = 0, degree 3"
+delta_m,1.00000000e-04,regimes.linear
+aperture_m,5.00000000e-02,survival cut at the ring start
+track_turns,300,exact_track_turn
+track_ds_m,1.00000000e-01,exact_track_turn step
+n_launches,83,survival grid
+n_survived,83,exact_track_turn
+survival_fraction,1.00000000e+00,n_survived / n_launches
+nf_magnetic_ok,0,dragt_finn_nf6d of the magnetic factor
+nf_rf_ok,1,dragt_finn_nf6d of one_turn_factor_rf
+c_11,-8.58758731e+00,optional RF h4 = sum_{i<=j} c_ij J_i J_j
+c_12,6.89529180e+00,optional RF h4 = sum_{i<=j} c_ij J_i J_j
+c_13,-8.78432655e-04,optional RF h4 = sum_{i<=j} c_ij J_i J_j
+c_21,0.00000000e+00,optional RF h4 = sum_{i<=j} c_ij J_i J_j
+c_22,-4.05307227e-01,optional RF h4 = sum_{i<=j} c_ij J_i J_j
+c_23,7.81126947e-03,optional RF h4 = sum_{i<=j} c_ij J_i J_j
+c_31,0.00000000e+00,optional RF h4 = sum_{i<=j} c_ij J_i J_j
+c_32,0.00000000e+00,optional RF h4 = sum_{i<=j} c_ij J_i J_j
+c_33,1.12157000e-02,optional RF h4 = sum_{i<=j} c_ij J_i J_j
+nf_f3_before,1.39693635e+00,optional RF normal form
+nf_f3_after,2.22044605e-16,optional RF cubic residual
+nf_f4_nonres_after,5.86808380e-13,optional RF |f4 - h4|
+nf_Qs,1.06737926e-03,optional RF |mu_s|/2pi
+g2_d0.0_s1_x_m,8.77741620e-03,"Guignard first |Tr|=2 boundary, stable side"
+g2_d0.0_s1_crossed,1,"1 if |Tr| leaves (-2, 2) inside the search"
+g2_d0.0_s1_reentrant,1,1 if a later grid sample is stable again
+g2_d0.0_s1_x_largest_stable_m,1.00000000e+00,largest stable grid sample; equals the first boundary when the stable set is an interval
+g2_d0.0_s1_Tr,2.00000000e+00,horizontal trace on the stable side of the first bracket
+g2_d0.0_s-1_x_m,-8.86076355e-03,"Guignard first |Tr|=2 boundary, stable side"
+g2_d0.0_s-1_crossed,1,"1 if |Tr| leaves (-2, 2) inside the search"
+g2_d0.0_s-1_reentrant,1,1 if a later grid sample is stable again
+g2_d0.0_s-1_x_largest_stable_m,-9.50000000e-01,largest stable grid sample; equals the first boundary when the stable set is an interval
+g2_d0.0_s-1_Tr,2.00000000e+00,horizontal trace on the stable side of the first bracket
+g2_d0.0001_s1_x_m,8.81830743e-03,"Guignard first |Tr|=2 boundary, stable side"
+g2_d0.0001_s1_crossed,1,"1 if |Tr| leaves (-2, 2) inside the search"
+g2_d0.0001_s1_reentrant,1,1 if a later grid sample is stable again
+g2_d0.0001_s1_x_largest_stable_m,1.00000000e+00,largest stable grid sample; equals the first boundary when the stable set is an interval
+g2_d0.0001_s1_Tr,2.00000000e+00,horizontal trace on the stable side of the first bracket
+g2_d0.0001_s-1_x_m,-8.89977778e-03,"Guignard first |Tr|=2 boundary, stable side"
+g2_d0.0001_s-1_crossed,1,"1 if |Tr| leaves (-2, 2) inside the search"
+g2_d0.0001_s-1_reentrant,1,1 if a later grid sample is stable again
+g2_d0.0001_s-1_x_largest_stable_m,-9.50000000e-01,largest stable grid sample; equals the first boundary when the stable set is an interval
+g2_d0.0001_s-1_Tr,2.00000000e+00,horizontal trace on the stable side of the first bracket
+g2_d-0.0001_s1_x_m,8.81619390e-03,"Guignard first |Tr|=2 boundary, stable side"
+g2_d-0.0001_s1_crossed,1,"1 if |Tr| leaves (-2, 2) inside the search"
+g2_d-0.0001_s1_reentrant,1,1 if a later grid sample is stable again
+g2_d-0.0001_s1_x_largest_stable_m,1.00000000e+00,largest stable grid sample; equals the first boundary when the stable set is an interval
+g2_d-0.0001_s1_Tr,2.00000000e+00,horizontal trace on the stable side of the first bracket
+g2_d-0.0001_s-1_x_m,-8.90144837e-03,"Guignard first |Tr|=2 boundary, stable side"
+g2_d-0.0001_s-1_crossed,1,"1 if |Tr| leaves (-2, 2) inside the search"
+g2_d-0.0001_s-1_reentrant,1,1 if a later grid sample is stable again
+g2_d-0.0001_s-1_x_largest_stable_m,-9.50000000e-01,largest stable grid sample; equals the first boundary when the stable set is an interval
+g2_d-0.0001_s-1_Tr,2.00000000e+00,horizontal trace on the stable side of the first bracket
+g3_d0.0_s1_x_m,4.62486294e-01,"Guignard first |Tr|=2 boundary, stable side"
+g3_d0.0_s1_crossed,1,"1 if |Tr| leaves (-2, 2) inside the search"
+g3_d0.0_s1_reentrant,0,1 if a later grid sample is stable again
+g3_d0.0_s1_x_largest_stable_m,4.50000000e-01,largest stable grid sample; equals the first boundary when the stable set is an interval
+g3_d0.0_s1_Tr,-2.00000000e+00,horizontal trace on the stable side of the first bracket
+g3_d0.0_s-1_x_m,-4.62181900e-01,"Guignard first |Tr|=2 boundary, stable side"
+g3_d0.0_s-1_crossed,1,"1 if |Tr| leaves (-2, 2) inside the search"
+g3_d0.0_s-1_reentrant,0,1 if a later grid sample is stable again
+g3_d0.0_s-1_x_largest_stable_m,-4.50000000e-01,largest stable grid sample; equals the first boundary when the stable set is an interval
+g3_d0.0_s-1_Tr,-2.00000000e+00,horizontal trace on the stable side of the first bracket
+g3_d0.0001_s1_x_m,4.62554309e-01,"Guignard first |Tr|=2 boundary, stable side"
+g3_d0.0001_s1_crossed,1,"1 if |Tr| leaves (-2, 2) inside the search"
+g3_d0.0001_s1_reentrant,0,1 if a later grid sample is stable again
+g3_d0.0001_s1_x_largest_stable_m,4.50000000e-01,largest stable grid sample; equals the first boundary when the stable set is an interval
+g3_d0.0001_s1_Tr,-2.00000000e+00,horizontal trace on the stable side of the first bracket
+g3_d0.0001_s-1_x_m,-4.62247433e-01,"Guignard first |Tr|=2 boundary, stable side"
+g3_d0.0001_s-1_crossed,1,"1 if |Tr| leaves (-2, 2) inside the search"
+g3_d0.0001_s-1_reentrant,0,1 if a later grid sample is stable again
+g3_d0.0001_s-1_x_largest_stable_m,-4.50000000e-01,largest stable grid sample; equals the first boundary when the stable set is an interval
+g3_d0.0001_s-1_Tr,-2.00000000e+00,horizontal trace on the stable side of the first bracket
+g3_d-0.0001_s1_x_m,4.62414949e-01,"Guignard first |Tr|=2 boundary, stable side"
+g3_d-0.0001_s1_crossed,1,"1 if |Tr| leaves (-2, 2) inside the search"
+g3_d-0.0001_s1_reentrant,0,1 if a later grid sample is stable again
+g3_d-0.0001_s1_x_largest_stable_m,4.50000000e-01,largest stable grid sample; equals the first boundary when the stable set is an interval
+g3_d-0.0001_s1_Tr,-2.00000000e+00,horizontal trace on the stable side of the first bracket
+g3_d-0.0001_s-1_x_m,-4.62113036e-01,"Guignard first |Tr|=2 boundary, stable side"
+g3_d-0.0001_s-1_crossed,1,"1 if |Tr| leaves (-2, 2) inside the search"
+g3_d-0.0001_s-1_reentrant,0,1 if a later grid sample is stable again
+g3_d-0.0001_s-1_x_largest_stable_m,-4.50000000e-01,largest stable grid sample; equals the first boundary when the stable set is an interval
+g3_d-0.0001_s-1_Tr,-2.00000000e+00,horizontal trace on the stable side of the first bracket
+surv_y-0.02_d0.0_s-1_last_x_m,-2.00000000e-02,outermost exact survivor connected to x = 0
+surv_y-0.02_d0.0_s1_last_x_m,2.00000000e-02,outermost exact survivor connected to x = 0
+surv_y-0.01_d0.0_s-1_last_x_m,-2.00000000e-02,outermost exact survivor connected to x = 0
+surv_y-0.01_d0.0_s1_last_x_m,2.00000000e-02,outermost exact survivor connected to x = 0
+surv_y0.0_d-0.0001_s-1_last_x_m,-4.50000000e-02,outermost exact survivor connected to x = 0
+surv_y0.0_d-0.0001_s1_last_x_m,4.50000000e-02,outermost exact survivor connected to x = 0
+surv_y0.0_d0.0_s-1_last_x_m,-4.50000000e-02,outermost exact survivor connected to x = 0
+surv_y0.0_d0.0_s1_last_x_m,4.50000000e-02,outermost exact survivor connected to x = 0
+surv_y0.0_d0.0001_s-1_last_x_m,-4.50000000e-02,outermost exact survivor connected to x = 0
+surv_y0.0_d0.0001_s1_last_x_m,4.50000000e-02,outermost exact survivor connected to x = 0
+surv_y0.01_d0.0_s-1_last_x_m,-2.00000000e-02,outermost exact survivor connected to x = 0
+surv_y0.01_d0.0_s1_last_x_m,2.00000000e-02,outermost exact survivor connected to x = 0
+surv_y0.02_d0.0_s-1_last_x_m,-2.00000000e-02,outermost exact survivor connected to x = 0
+surv_y0.02_d0.0_s1_last_x_m,2.00000000e-02,outermost exact survivor connected to x = 0

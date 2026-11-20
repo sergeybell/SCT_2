@@ -27,6 +27,7 @@ julia --project=studies/magnetic_ring studies/magnetic_ring/scripts/03_lie_invar
 julia --project=studies/magnetic_ring studies/magnetic_ring/scripts/04_equilibrium.jl
 julia --project=studies/magnetic_ring studies/magnetic_ring/scripts/05_sextupoles.jl
 julia --project=studies/magnetic_ring studies/magnetic_ring/scripts/06_fringe.jl
+julia --project=studies/magnetic_ring studies/magnetic_ring/scripts/07_dynamic_aperture.jl
 ```
 
 ## Step 1
@@ -64,3 +65,11 @@ The example has 16 sector bends named BM and 4 drifts named OBM. BM and OBM shar
 `Qx` and `Qy` are the body tunes from `optics_along` plus the fringe shift of μ/2π. Chromaticity is `generator_chromaticity` of that factor; the normalising matrix is built from the factor's own `periodic_optics`. `η1` is `path_expansion`. The linear-regime `δ_eq` uses that η1 and ξ with the step-4/5 values of δ_m, Jx, and Jy.
 
 `exact_track_element` has no method for `EdgeMap`. The short track applies the Lie factor of `edge_map` on each edge, `exact_track_element` on each magnet, and `rf_kick` on the thin cavity. `--turns N` replaces the default length of one synchrotron period. The BELL finding is `output/06_bell_finding.md`.
+
+## Step 7
+
+`07_dynamic_aperture.jl` rebuilds the step-5 placement and sets `k2_per_m3.own`. The fringe model is `FringeModel()` (NoEdge). Tunes, resonance distances, and max `|f3|` are read from that magnetic factor. `dragt_finn_nf6d` on the magnetic factor is rejected because the longitudinal block is a shear. The optional `h4` matrix is `dragt_finn_nf6d` of `one_turn_factor_rf` at the linear-regime voltage, with BELL phase `π`. It is not an input of the aperture scan.
+
+The Guignard boundary approximates `{Q_x}` by `p/q` with `q ≤ 100`, walks the linear orbit of `F.R` from `(x0, 0, 0, 0, 0, δ)`, and multiplies the horizontal 2×2 blocks of `jacobian_of_map` of the degree-2 map and of the degree-3 map. The boundary is the first `|x0|` at which `|Tr|` leaves the open interval `(−2, 2)`. The scan is repeated at `δ = 0` and at `±δ_m`.
+
+Survival is `exact_track_turn`. A particle survives when `x` and `y` at the ring start stay finite and strictly inside 5 cm. The default is 300 turns. `LONG_DA=1` or `--long` uses 2000 turns and prints progress with flush. `07_da.svg` overlays the raw `|Tr| = 2` lines and the survival samples. A disagreement is left as it is.

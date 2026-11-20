@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="540" viewBox="0 0 1100 540">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="40" y="28" font-family="sans-serif" font-size="16">Guignard trace and exact survival, NoEdge, own sextupoles</text>
+<rect x="70.0" y="56.0" width="450.0" height="414.0" fill="none" stroke="#222"/>
+<line x1="70.00" y1="367.48" x2="520.00" y2="367.48" stroke="#666" stroke-dasharray="4 3"/>
+<text x="450.00" y="363.48" font-size="12" font-family="sans-serif">|Tr|=2</text>
+<polyline fill="none" stroke="#1f4e79" stroke-width="1.6" points="295.00,407.62 304.00,407.06 313.00,405.47 322.00,402.85 331.00,399.19 340.00,394.50 349.00,388.78 358.00,382.02 367.00,374.24 371.50,369.96 373.75,367.72 373.89,367.58 373.96,367.51 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.48 374.00,367.47 374.00,367.47 374.00,367.47 374.01,367.46 374.03,367.44 374.31,367.16 374.88,366.58 376.00,365.42 385.00,355.58 394.00,344.70 403.00,332.79 412.00,319.86 421.00,305.89 430.00,290.90 439.00,274.88 448.00,257.83 457.00,239.75 466.00,220.65 475.00,200.53 484.00,179.38 493.00,157.21 502.00,134.02 511.00,109.80 520.00,84.56"/>
+<line x1="374.00" y1="56.00" x2="374.00" y2="470.00" stroke="#1f4e79" stroke-dasharray="2 2"/>
+<polyline fill="none" stroke="#1f4e79" stroke-width="1.6" points="70.00,86.58 79.00,111.74 88.00,135.89 97.00,159.01 106.00,181.11 115.00,202.19 124.00,222.23 133.00,241.26 142.00,259.26 151.00,276.22 160.00,292.17 169.00,307.08 178.00,320.96 187.00,333.82 196.00,345.64 205.00,356.44 214.00,366.20 215.12,367.35 215.20,367.42 215.23,367.45 215.25,367.47 215.25,367.47 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.25,367.48 215.26,367.48 215.27,367.49 215.41,367.63 215.69,367.91 216.25,368.48 218.50,370.69 223.00,374.93 232.00,382.63 241.00,389.30 250.00,394.93 259.00,399.54 268.00,403.11 277.00,405.64 286.00,407.15 295.00,407.62"/>
+<line x1="215.25" y1="56.00" x2="215.25" y2="470.00" stroke="#1f4e79" stroke-dasharray="2 2"/>
+<polyline fill="none" stroke="#c45911" stroke-width="1.6" points="295.00,407.62 304.00,407.63 313.00,407.72 322.00,407.91 331.00,408.19 340.00,408.56 349.00,409.03 358.00,409.59 367.00,410.25 376.00,411.01 385.00,411.86 394.00,412.82 403.00,413.87 412.00,415.04 421.00,416.31 430.00,417.69 439.00,419.18 448.00,420.79 457.00,422.51 466.00,424.36 475.00,426.34 484.00,428.44 493.00,430.68 502.00,433.06 511.00,435.57 520.00,438.24"/>
+<polyline fill="none" stroke="#c45911" stroke-width="1.6" points="70.00,441.44 79.00,438.56 88.00,435.85 97.00,433.29 106.00,430.87 115.00,428.60 124.00,426.46 133.00,424.46 142.00,422.58 151.00,420.84 160.00,419.21 169.00,417.70 178.00,416.31 187.00,415.03 196.00,413.86 205.00,412.79 214.00,411.83 223.00,410.98 232.00,410.22 241.00,409.56 250.00,409.00 259.00,408.54 268.00,408.17 277.00,407.90 286.00,407.71 295.00,407.62"/>
+<text x="70" y="500" font-size="12" font-family="sans-serif" fill="#1f4e79">degree 2</text>
+<text x="160" y="500" font-size="12" font-family="sans-serif" fill="#c45911">degree 3</text>
+<text x="250" y="500" font-size="12" font-family="sans-serif">δ = 0, raw samples</text>
+<text x="295.00" y="506.00" font-size="12" font-family="sans-serif" text-anchor="middle">x0 [m]</text>
+<text x="24" y="263.00" font-size="12" font-family="sans-serif" transform="rotate(-90 24 263.00)">Tr of horizontal Rprod</text>
+<text x="115.00" y="486.00" font-size="11" text-anchor="middle" font-family="sans-serif">-20 mm</text>
+<text x="205.00" y="486.00" font-size="11" text-anchor="middle" font-family="sans-serif">-10 mm</text>
+<text x="295.00" y="486.00" font-size="11" text-anchor="middle" font-family="sans-serif">0 mm</text>
+<text x="385.00" y="486.00" font-size="11" text-anchor="middle" font-family="sans-serif">10 mm</text>
+<text x="475.00" y="486.00" font-size="11" text-anchor="middle" font-family="sans-serif">20 mm</text>
+<rect x="620.0" y="56.0" width="440.0" height="414.0" fill="none" stroke="#222"/>
+<text x="612.00" y="129.00" font-size="11" font-family="sans-serif" text-anchor="end">δ=-1.0e-04</text>
+<circle cx="642.00" cy="125.00" r="3.2" fill="#2e7d32"/>
+<circle cx="664.00" cy="125.00" r="3.2" fill="#2e7d32"/>
+<circle cx="686.00" cy="125.00" r="3.2" fill="#2e7d32"/>
+<circle cx="708.00" cy="125.00" r="3.2" fill="#2e7d32"/>
+<circle cx="730.00" cy="125.00" r="3.2" fill="#2e7d32"/>
+<circle cx="752.00" cy="125.00" r="3.2" fill="#2e7d32"/>
+<circle cx="774.00" cy="125.00" r="3.2" fill="#2e7d32"/>
+<circle cx="796.00" cy="125.00" r="3.2" fill="#2e7d32"/>
+<circle cx="818.00" cy="125.00" r="3.2" fill="#2e7d32"/>
+<circle cx="840.00" cy="125.00" r="3.2" fill="#2e7d32"/>
+<circle cx="862.00" cy="125.00" r="3.2" fill="#2e7d32"/>
+<circle cx="884.00" cy="125.00" r="3.2" fill="#2e7d32"/>
+<circle cx="906.00" cy="125.00" r="3.2" fill="#2e7d32"/>
+<circle cx="928.00" cy="125.00" r="3.2" fill="#2e7d32"/>
+<circle cx="950.00" cy="125.00" r="3.2" fill="#2e7d32"/>
+<circle cx="972.00" cy="125.00" r="3.2" fill="#2e7d32"/>
+<circle cx="994.00" cy="125.00" r="3.2" fill="#2e7d32"/>
+<circle cx="1016.00" cy="125.00" r="3.2" fill="#2e7d32"/>
+<circle cx="1038.00" cy="125.00" r="3.2" fill="#2e7d32"/>
+<text x="612.00" y="267.00" font-size="11" font-family="sans-serif" text-anchor="end">δ=0.0e+00</text>
+<circle cx="642.00" cy="263.00" r="3.2" fill="#2e7d32"/>
+<circle cx="664.00" cy="263.00" r="3.2" fill="#2e7d32"/>
+<circle cx="686.00" cy="263.00" r="3.2" fill="#2e7d32"/>
+<circle cx="708.00" cy="263.00" r="3.2" fill="#2e7d32"/>
+<circle cx="730.00" cy="263.00" r="3.2" fill="#2e7d32"/>
+<circle cx="752.00" cy="263.00" r="3.2" fill="#2e7d32"/>
+<circle cx="774.00" cy="263.00" r="3.2" fill="#2e7d32"/>
+<circle cx="787.20" cy="263.00" r="3.2" fill="#2e7d32"/>
+<circle cx="796.00" cy="263.00" r="3.2" fill="#2e7d32"/>
+<circle cx="800.40" cy="263.00" r="3.2" fill="#2e7d32"/>
+<circle cx="804.80" cy="263.00" r="3.2" fill="#2e7d32"/>
+<circle cx="818.00" cy="263.00" r="3.2" fill="#2e7d32"/>
+<circle cx="840.00" cy="263.00" r="3.2" fill="#2e7d32"/>
+<circle cx="862.00" cy="263.00" r="3.2" fill="#2e7d32"/>
+<circle cx="875.20" cy="263.00" r="3.2" fill="#2e7d32"/>
+<circle cx="879.60" cy="263.00" r="3.2" fill="#2e7d32"/>
+<circle cx="884.00" cy="263.00" r="3.2" fill="#2e7d32"/>
+<circle cx="892.80" cy="263.00" r="3.2" fill="#2e7d32"/>
+<circle cx="906.00" cy="263.00" r="3.2" fill="#2e7d32"/>
+<circle cx="928.00" cy="263.00" r="3.2" fill="#2e7d32"/>
+<circle cx="950.00" cy="263.00" r="3.2" fill="#2e7d32"/>
+<circle cx="972.00" cy="263.00" r="3.2" fill="#2e7d32"/>
+<circle cx="994.00" cy="263.00" r="3.2" fill="#2e7d32"/>
+<circle cx="1016.00" cy="263.00" r="3.2" fill="#2e7d32"/>
+<circle cx="1038.00" cy="263.00" r="3.2" fill="#2e7d32"/>
+<text x="612.00" y="405.00" font-size="11" font-family="sans-serif" text-anchor="end">δ=1.0e-04</text>
+<circle cx="642.00" cy="401.00" r="3.2" fill="#2e7d32"/>
+<circle cx="664.00" cy="401.00" r="3.2" fill="#2e7d32"/>
+<circle cx="686.00" cy="401.00" r="3.2" fill="#2e7d32"/>
+<circle cx="708.00" cy="401.00" r="3.2" fill="#2e7d32"/>
+<circle cx="730.00" cy="401.00" r="3.2" fill="#2e7d32"/>
+<circle cx="752.00" cy="401.00" r="3.2" fill="#2e7d32"/>
+<circle cx="774.00" cy="401.00" r="3.2" fill="#2e7d32"/>
+<circle cx="796.00" cy="401.00" r="3.2" fill="#2e7d32"/>
+<circle cx="818.00" cy="401.00" r="3.2" fill="#2e7d32"/>
+<circle cx="840.00" cy="401.00" r="3.2" fill="#2e7d32"/>
+<circle cx="862.00" cy="401.00" r="3.2" fill="#2e7d32"/>
+<circle cx="884.00" cy="401.00" r="3.2" fill="#2e7d32"/>
+<circle cx="906.00" cy="401.00" r="3.2" fill="#2e7d32"/>
+<circle cx="928.00" cy="401.00" r="3.2" fill="#2e7d32"/>
+<circle cx="950.00" cy="401.00" r="3.2" fill="#2e7d32"/>
+<circle cx="972.00" cy="401.00" r="3.2" fill="#2e7d32"/>
+<circle cx="994.00" cy="401.00" r="3.2" fill="#2e7d32"/>
+<circle cx="1016.00" cy="401.00" r="3.2" fill="#2e7d32"/>
+<circle cx="1038.00" cy="401.00" r="3.2" fill="#2e7d32"/>
+<line x1="878.62" y1="56.00" x2="878.62" y2="470.00" stroke="#1f4e79" stroke-dasharray="5 3"/>
+<line x1="801.01" y1="56.00" x2="801.01" y2="470.00" stroke="#1f4e79" stroke-dasharray="5 3"/>
+<text x="840.00" y="506.00" font-size="12" font-family="sans-serif" text-anchor="middle">x0 [m], y = 0</text>
+<text x="620" y="500" font-size="12" font-family="sans-serif" fill="#2e7d32">survived</text>
+<text x="710" y="500" font-size="12" font-family="sans-serif" fill="#c62828">lost</text>
+<text x="770" y="500" font-size="12" font-family="sans-serif">dashed lines: |Tr|=2 at δ=0</text>
+<text x="664.00" y="486.00" font-size="11" text-anchor="middle" font-family="sans-serif">-40</text>
+<text x="752.00" y="486.00" font-size="11" text-anchor="middle" font-family="sans-serif">-20</text>
+<text x="840.00" y="486.00" font-size="11" text-anchor="middle" font-family="sans-serif">0</text>
+<text x="928.00" y="486.00" font-size="11" text-anchor="middle" font-family="sans-serif">20</text>
+<text x="1016.00" y="486.00" font-size="11" text-anchor="middle" font-family="sans-serif">40</text>
+</svg>
