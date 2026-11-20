@@ -1,0 +1,12 @@
+name = "MagneticRing"
+uuid = "a990a429-d056-4492-9ffe-f6eac5960ccc"
+version = "0.1.0"
+
+[deps]
+Bell = "15ed3219-68f0-4cc9-8228-483d95d0d998"
+
+[sources]
+Bell = {path = "C:/GIT_REPOS/BELL"}
+
+[compat]
+julia = "1.10"

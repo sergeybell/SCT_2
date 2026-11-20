@@ -1,0 +1,12 @@
+name,count,type,length_m,angle_open_rad,angle_closed_rad,k1,k2
+OS2,8,Drift,0.06,,,,
+QF,16,Quadrupole,0.21,,,0.5212441755015996,
+BM,16,SBend,5.329414799999999,0.3926990753258494,0.39269908169872414,0.0,
+QD,16,Quadrupole,0.21,,,-0.5805856428570646,
+OS1,6,Drift,0.12,,,,
+SF2,4,Sextupole,0.12,,,,0.0
+SD,4,Sextupole,0.12,,,,0.0
+SF1,2,Sextupole,0.12,,,,0.0
+QF1,4,Quadrupole,0.21,,,0.5565959259588208,
+OBM,4,Drift,5.329414799999999,,,,
+QD1,4,Quadrupole,0.21,,,-0.5565959259588208,
