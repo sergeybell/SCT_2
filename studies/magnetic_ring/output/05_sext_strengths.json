@@ -1,0 +1,59 @@
+{
+  "lattice": "lattices/magnetic_2_closed.bell",
+  "step": "sextupoles",
+  "optics_ds_m": 0.02,
+  "finite_difference_dk": 1,
+  "primary": "own",
+  "primary_means": "k2 that sets xi_x = xi_y = eta1 = 0, from the in-study response. solve_A is the neighbour that sets xi_x = xi_y = alpha1 = 0.",
+  "rebuild": "Load the closed lattice, run optics_along at optics_ds_m from periodic_optics of ring_matrix, call place_sextupole_families, then set_family_strengths with k2_per_m3.own. element_index is 1-based in that placed lattice.",
+  "condition_number": 8.84452054777933,
+  "target_alpha1": -0.6781530255832544,
+  "nelder_mead": false,
+  "notes": ["beta_x max at s=23.418 m shares slot SF1 with family SXD", "beta_x max at s=82.112 m shares slot SF1 with family SXD"],
+  "sextupole_names_in_order": ["SYB", "SXB", "SYB", "SXD", "SYB", "SXB", "SYB", "SYB", "SXB", "SYB", "SXD", "SYB", "SXB", "SYB"],
+  "families": [
+    {
+      "name": "SXD",
+      "count": 2,
+      "length_m": 0.12,
+      "element_index": [17, 59],
+      "slots": ["SF1", "SF1"]
+    },
+    {
+      "name": "SXB",
+      "count": 4,
+      "length_m": 0.12,
+      "element_index": [9, 25, 51, 67],
+      "slots": ["SF2", "SF2", "SF2", "SF2"]
+    },
+    {
+      "name": "SYB",
+      "count": 8,
+      "length_m": 0.12,
+      "element_index": [5, 13, 21, 29, 47, 55, 63, 71],
+      "slots": ["OS1", "SD", "SD", "OS1", "OS1", "SD", "SD", "OS1"]
+    }
+  ],
+  "k2_per_m3": {
+    "zero": {
+      "SXD": 0,
+      "SXB": 0,
+      "SYB": 0
+    },
+    "own_linear": {
+      "SXD": 0.8176872546914123,
+      "SXB": -0.4246546771747141,
+      "SYB": -0.6112373850205145
+    },
+    "own": {
+      "SXD": 0.8176872546914123,
+      "SXB": -0.4246546771747141,
+      "SYB": -0.6112373850205145
+    },
+    "solve_A": {
+      "SXD": 0.2304141066970553,
+      "SXB": 0.2652672275077322,
+      "SYB": -0.6067262570887498
+    }
+  }
+}

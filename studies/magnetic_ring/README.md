@@ -24,6 +24,7 @@ julia --project=studies/magnetic_ring studies/magnetic_ring/scripts/02_linear_op
 julia --project=studies/magnetic_ring studies/magnetic_ring/scripts/02b_generator_chromaticity.jl
 julia --project=studies/magnetic_ring studies/magnetic_ring/scripts/03_lie_invariants.jl
 julia --project=studies/magnetic_ring studies/magnetic_ring/scripts/04_equilibrium.jl
+julia --project=studies/magnetic_ring studies/magnetic_ring/scripts/05_sextupoles.jl
 ```
 
 ## Step 1
@@ -49,3 +50,7 @@ The example has 16 sector bends named BM and 4 drifts named OBM. BM and OBM shar
 ## Step 4
 
 `04_equilibrium.jl` reads `δ_eq` for the two regimes in `output/02_rf_regimes.json`. The cavity phase in BELL is `π` (early-positive `l`); the notes' stationary phase below transition is `0`, and the reported phase is the notes' sign. A short track at `π` stays in the bucket. A control at `0` leaves it. Each physics case then has four columns: the note formula, the normal-form torus average, iteration of the degree-3 polynomial of `ring_lie_factor`, and `exact_track_element` plus `rf_kick`. The normal form is compared with chapters 1–2. The cubic-phase case compares the map and the exact track with `1 − φ̂²/32` and `Ω/ω_s = 1 − φ̂²/16`. The default track is three synchrotron periods. `--turns N` replaces that length.
+
+## Step 5
+
+`05_sextupoles.jl` places SXD, SXB, and SYB with `place_sextupole_families` on `optics_along` of the closed ring. The in-study response is a central difference of generator chromaticity and of `η1` from `path_expansion`. Its solution sets `ξx = ξy = η1 = 0`, and prints the `α1` that identity requires. `solve_A` is the neighbour: `ring_metrics` and `response` set `ξx = ξy = α1 = 0` and leave `η1`. Both settings, and `k2 = 0`, are read in the linear regime of `output/02_rf_regimes.json` with the cavity phase `π`. A short exact track gives `δ_eq` and `γ_eff` beside the formula. Strengths for later steps are `output/05_sext_strengths.json`. Shared slots and the `D > 0.5` m mask are recorded, not patched. `--turns N` replaces the track length.
