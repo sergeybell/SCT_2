@@ -1,0 +1,77 @@
+quantity,value
+series_order,4
+factor_name,-1/(2π)
+factor_value,-1.59154943e-01
+factor_accepted,true
+factor_max_rel,1.304e-10
+ratio_xi1_over_c_x,-1.59154943e-01
+ratio_xi1_over_c_y,-1.59154943e-01
+xi2_extra_factor,1
+xi2_worked,true
+stopped,false
+sextupole_index,59
+sextupole_name,SF1
+sextupole_k2,1.00000000e+00
+sextupole_L_m,1.20000000e-01
+sextupole_s0_m,8.21118072e+01
+sextupole_beta_x_m,1.93675294e+01
+sextupole_beta_y_m,4.05447112e+00
+sextupole_Dx_m,1.17016103e+01
+k2=0 symplectic_error_A,6.67123917e-21
+k2=0 symplectic_error_shear,2.03078623e-23
+k2=0 dispersion_column,8.67361738e-19
+k2=0 shear_dispersion_column,1.73472348e-18
+k2=0 longitudinal_coupling,3.80121282e-15
+k2=0 rotation_residual,1.87627691e-14
+k2=0 transverse_coupling,0.00000000e+00
+k2=0 delta_row,0.00000000e+00
+k2=0 l_on_delta,6.26487986e+01
+k2=0 max_l_f3,0.00000000e+00
+k2=0 max_l_f4,0.00000000e+00
+k2=0 c_Jx_delta,9.18309974e+00
+k2=0 c_Jy_delta,1.39831342e+01
+k2=0 q2_minus_p2_x,2.75731501e-01
+k2=0 q2_minus_p2_y,-2.56772944e-01
+k2=0 cross_x,-1.21341809e-02
+k2=0 cross_y,1.92060307e-01
+k2=0 c_Jx_delta2,-2.68750545e+01
+k2=0 c_Jy_delta2,-2.54588110e+01
+k2=0 c_Jx_delta2_plus,-2.65654545e+01
+k2=0 c_Jy_delta2_plus,-2.50448183e+01
+k2=0 c_Jx_delta2_bare_f4,-2.67202545e+01
+k2=0 c_Jy_delta2_bare_f4,-2.52518147e+01
+k2=0 homological_residual,3.50015475e-15
+k2=0 F3_max,2.28476779e+00
+k2=0 kernel_dimension,8
+k2=0 smallest_kept_singular,2.40537126e-03
+k2=0 matrix_gap,2.70006240e-13
+k2=0 dispersion_gap,0.00000000e+00
+sextupole symplectic_error_A,6.67123917e-21
+sextupole symplectic_error_shear,2.03078623e-23
+sextupole dispersion_column,8.67361738e-19
+sextupole shear_dispersion_column,1.73472348e-18
+sextupole longitudinal_coupling,3.80121282e-15
+sextupole rotation_residual,1.87627691e-14
+sextupole transverse_coupling,0.00000000e+00
+sextupole delta_row,0.00000000e+00
+sextupole l_on_delta,6.26487986e+01
+sextupole max_l_f3,0.00000000e+00
+sextupole max_l_f4,0.00000000e+00
+sextupole c_Jx_delta,-4.41482065e+00
+sextupole c_Jy_delta,1.68299725e+01
+sextupole q2_minus_p2_x,1.34913220e+01
+sextupole q2_minus_p2_y,-3.02078843e+00
+sextupole cross_x,-3.21357783e+00
+sextupole cross_y,8.72016465e-01
+sextupole c_Jx_delta2,-3.86093631e+02
+sextupole c_Jy_delta2,-2.30669702e+01
+sextupole c_Jx_delta2_plus,3.78582965e+02
+sextupole c_Jy_delta2_plus,2.09182317e+01
+sextupole c_Jx_delta2_bare_f4,-3.75533278e+00
+sextupole c_Jy_delta2_bare_f4,-1.07436925e+00
+sextupole homological_residual,3.50067197e-14
+sextupole F3_max,2.91100959e+01
+sextupole kernel_dimension,8
+sextupole smallest_kept_singular,2.40537126e-03
+sextupole matrix_gap,2.70006240e-13
+sextupole dispersion_gap,0.00000000e+00
