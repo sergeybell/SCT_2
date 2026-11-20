@@ -4,10 +4,13 @@ The goal of this project is to understand the common features of storage ring cl
 Continuation of the SCT study: the mapping method and spin coherence time (SCT) estimation.
 Current scope: magnetic lattices.
 
+Workflow: [`CONTRIBUTING.md`](CONTRIBUTING.md). Agent rules: [`AGENTS.md`](AGENTS.md).
+
 ## Layout
 
 ```text
-Julia/equilibrium_energy/  Bell application: δ_eq (depends on BELL)
+studies/magnetic_ring/   Magnetic ring δ_eq study on BELL (current)
+Julia/equilibrium_energy/  Earlier δ_eq scripts (do not patch; do not import)
 OptiM/magnetic/          OptiM lattice projects (*.opt)
 COSY/structures/<stem>/  COSY lattices: <stem>.fox (LATTICE) and <stem>_maps.fox (LATTICE + segment maps for Twiss)
 COSY/jobs/               runnable .fox: mapping, Twiss, chromaticity, spin tunes

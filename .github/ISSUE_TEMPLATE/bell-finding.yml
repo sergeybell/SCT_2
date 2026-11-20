@@ -1,0 +1,34 @@
+name: BELL finding draft
+description: Draft text for an issue to open in the BELL repository (no patch here)
+title: "docs: BELL finding — "
+labels:
+  - bell-finding
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: One-paragraph description of the gap or bug in BELL.
+    validations:
+      required: true
+  - type: textarea
+    id: reproducer
+    attributes:
+      label: Minimal reproducer
+      description: Short Julia snippet or study script path that shows the issue.
+    validations:
+      required: true
+  - type: textarea
+    id: recommendation
+    attributes:
+      label: Recommendation
+      description: What BELL should do (API shape, reading from generators, warning, etc.). Advice only — no patch in this repository.
+    validations:
+      required: true
+  - type: textarea
+    id: numbers
+    attributes:
+      label: Numbers from SCT_2
+      description: Table or key comparisons that motivate the recommendation.
+    validations:
+      required: false
