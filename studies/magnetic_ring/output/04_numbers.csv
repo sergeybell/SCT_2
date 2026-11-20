@@ -1,0 +1,230 @@
+case,column,quantity,value
+linear,nf.d,d_x,1.46580620e-01
+linear,nf.d_grid,d_x,1.46580620e-01
+linear,formula_ch12,d_x,1.46580620e-01
+linear,nf.d,d_y,2.23198761e-01
+linear,nf.d_grid,d_y,2.23198761e-01
+linear,formula_ch12,d_y,2.23198761e-01
+linear,nf.d,d_s,2.04027704e-04
+linear,nf.d_grid,d_s,2.04027704e-04
+linear,formula_ch12,d_s,2.04027704e-04
+linear,nf,Qs,1.06737926e-03
+linear,nf,sigma_delta,1.03465069e-02
+cubic,nf.d,d_x,1.46580620e-01
+cubic,nf.d_grid,d_x,1.46580620e-01
+cubic,formula_ch12,d_x,1.46580620e-01
+cubic,nf.d,d_y,2.23198761e-01
+cubic,nf.d_grid,d_y,2.23198761e-01
+cubic,formula_ch12,d_y,2.23198761e-01
+cubic,nf.d,d_s,3.40044314e-05
+cubic,nf.d_grid,d_s,3.40044314e-05
+cubic,formula_ch12,d_s,3.40044314e-05
+cubic,nf,Qs,1.77896219e-04
+cubic,nf,sigma_delta,4.22393223e-03
+A linear J=0,formula,delta_eq,9.52953345e-09
+A linear J=0,formula,delta_m_half,1.00000000e-04
+A linear J=0,formula,a1,1.00000000e-04
+A linear J=0,formula,a2,5.72370752e-09
+A linear J=0,formula,a2_cos,-5.72370752e-09
+A linear J=0,formula,a2_sin,0.00000000e+00
+A linear J=0,formula,a3,nan
+A linear J=0,formula,Q,1.06737726e-03
+A linear J=0,formula,delta2,5.00000000e-09
+A linear J=0,formula,phi_hat,5.00000000e-02
+A linear J=0,formula,rms,0.00000000e+00
+A linear J=0,formula,unc_delta_eq,0.00000000e+00
+A linear J=0,formula,unc_Q,0.00000000e+00
+A linear J=0,formula,unc_a2,0.00000000e+00
+A linear J=0,formula,gamma_eff,1.14395294e+00
+A linear J=0,formula,delta_E_over_E,2.69800573e-09
+A linear J=0,nf,delta_eq,9.52953345e-09
+A linear J=0,nf,delta_m_half,9.99955318e-05
+A linear J=0,nf,a1,9.99921876e-05
+A linear J=0,nf,a2,5.72376469e-09
+A linear J=0,nf,a2_cos,-5.72376469e-09
+A linear J=0,nf,a2_sin,3.33224424e-15
+A linear J=0,nf,a3,3.90652486e-09
+A linear J=0,nf,Q,1.06737926e-03
+A linear J=0,nf,delta2,4.99921881e-09
+A linear J=0,nf,phi_hat,nan
+A linear J=0,nf,rms,2.30653033e-20
+A linear J=0,nf,unc_delta_eq,4.21365804e-21
+A linear J=0,nf,unc_Q,0.00000000e+00
+A linear J=0,nf,unc_a2,3.19155645e-19
+A linear J=0,nf,gamma_eff,1.14395294e+00
+A linear J=0,nf,delta_E_over_E,2.69793534e-09
+A linear J=0,map,delta_eq,9.52935139e-09
+A linear J=0,map,delta_m_half,9.99965405e-05
+A linear J=0,map,a1,9.99928482e-05
+A linear J=0,map,a2,5.72338773e-09
+A linear J=0,map,a2_cos,-5.72338773e-09
+A linear J=0,map,a2_sin,-3.56797187e-15
+A linear J=0,map,a3,3.90824945e-09
+A linear J=0,map,Q,1.06721243e-03
+A linear J=0,map,delta2,4.99928487e-09
+A linear J=0,map,phi_hat,5.00035181e-02
+A linear J=0,map,rms,3.24059766e-13
+A linear J=0,map,unc_delta_eq,6.37737359e-17
+A linear J=0,map,unc_Q,0.00000000e+00
+A linear J=0,map,unc_a2,1.27241743e-16
+A linear J=0,map,gamma_eff,1.14395294e+00
+A linear J=0,map,delta_E_over_E,2.69789835e-09
+A linear J=0,exact,delta_eq,9.52817969e-09
+A linear J=0,exact,delta_m_half,9.99965410e-05
+A linear J=0,exact,a1,9.99928488e-05
+A linear J=0,exact,a2,5.72180968e-09
+A linear J=0,exact,a2_cos,-5.72180968e-09
+A linear J=0,exact,a2_sin,-1.23432190e-15
+A linear J=0,exact,a3,3.90763178e-09
+A linear J=0,exact,Q,1.06721223e-03
+A linear J=0,exact,delta2,4.99928493e-09
+A linear J=0,exact,phi_hat,5.00035074e-02
+A linear J=0,exact,rms,6.08084243e-13
+A linear J=0,exact,unc_delta_eq,6.82055006e-16
+A linear J=0,exact,unc_Q,0.00000000e+00
+A linear J=0,exact,unc_a2,8.76752607e-16
+A linear J=0,exact,gamma_eff,1.14395294e+00
+A linear J=0,exact,delta_E_over_E,2.69762202e-09
+A linear J=0,target,delta_eq_ch12,9.52953345e-09
+A linear J=0,target,delta_eq_ch3,9.52878896e-09
+A linear J=0,target,delta_eq_pendulum,9.52878888e-09
+A linear J=0,nf,d_dot_J,9.52953345e-09
+A linear J=0,nf,d_grid_dot_J,9.52953345e-09
+B linear finite J,formula,delta_eq,1.90767267e-08
+B linear finite J,formula,delta_m_half,1.00000000e-04
+B linear finite J,formula,a1,1.00000000e-04
+B linear finite J,formula,a2,5.72370752e-09
+B linear finite J,formula,a2_cos,-5.72370752e-09
+B linear finite J,formula,a2_sin,0.00000000e+00
+B linear finite J,formula,a3,nan
+B linear finite J,formula,Q,1.06737726e-03
+B linear finite J,formula,delta2,5.00000000e-09
+B linear finite J,formula,phi_hat,5.00000000e-02
+B linear finite J,formula,rms,0.00000000e+00
+B linear finite J,formula,unc_delta_eq,0.00000000e+00
+B linear finite J,formula,unc_Q,0.00000000e+00
+B linear finite J,formula,unc_a2,0.00000000e+00
+B linear finite J,formula,gamma_eff,1.14395295e+00
+B linear finite J,formula,delta_E_over_E,4.94962618e-09
+B linear finite J,nf,delta_eq,1.90767267e-08
+B linear finite J,nf,delta_m_half,9.99955313e-05
+B linear finite J,nf,a1,9.99921870e-05
+B linear finite J,nf,a2,5.72376469e-09
+B linear finite J,nf,a2_cos,-5.72376469e-09
+B linear finite J,nf,a2_sin,3.33144052e-15
+B linear finite J,nf,a3,3.90652486e-09
+B linear finite J,nf,Q,1.06737926e-03
+B linear finite J,nf,delta2,4.99921876e-09
+B linear finite J,nf,phi_hat,nan
+B linear finite J,nf,rms,4.72687716e-20
+B linear finite J,nf,unc_delta_eq,8.66885282e-22
+B linear finite J,nf,unc_Q,0.00000000e+00
+B linear finite J,nf,unc_a2,1.03291822e-18
+B linear finite J,nf,gamma_eff,1.14395295e+00
+B linear finite J,nf,delta_E_over_E,4.94955579e-09
+B linear finite J,map,delta_eq,1.90752571e-08
+B linear finite J,map,delta_m_half,9.99869934e-05
+B linear finite J,map,a1,9.99833024e-05
+B linear finite J,map,a2,5.72229984e-09
+B linear finite J,map,a2_cos,-5.72229984e-09
+B linear finite J,map,a2_sin,-3.30258688e-14
+B linear finite J,map,a3,3.90712804e-09
+B linear finite J,map,Q,1.06721247e-03
+B linear finite J,map,delta2,4.99833040e-09
+B linear finite J,map,phi_hat,4.99987657e-02
+B linear finite J,map,rms,3.83111088e-13
+B linear finite J,map,unc_delta_eq,1.39377800e-15
+B linear finite J,map,unc_Q,1.66777724e-13
+B linear finite J,map,unc_a2,5.11758225e-16
+B linear finite J,map,gamma_eff,1.14395295e+00
+B linear finite J,map,delta_E_over_E,4.94912916e-09
+B linear finite J,exact,delta_eq,1.90740626e-08
+B linear finite J,exact,delta_m_half,9.99869940e-05
+B linear finite J,exact,a1,9.99833030e-05
+B linear finite J,exact,a2,5.72072182e-09
+B linear finite J,exact,a2_cos,-5.72072182e-09
+B linear finite J,exact,a2_sin,-1.95613312e-15
+B linear finite J,exact,a3,3.90650954e-09
+B linear finite J,exact,Q,1.06721226e-03
+B linear finite J,exact,delta2,4.99833046e-09
+B linear finite J,exact,phi_hat,4.99987548e-02
+B linear finite J,exact,rms,6.40989748e-13
+B linear finite J,exact,unc_delta_eq,2.35009032e-15
+B linear finite J,exact,unc_Q,1.66777724e-13
+B linear finite J,exact,unc_a2,1.24080218e-16
+B linear finite J,exact,gamma_eff,1.14395295e+00
+B linear finite J,exact,delta_E_over_E,4.94884745e-09
+B linear finite J,target,delta_eq_ch12,1.90767267e-08
+B linear finite J,target,delta_eq_ch3,1.90759822e-08
+B linear finite J,target,delta_eq_pendulum,1.90759821e-08
+B linear finite J,nf,d_dot_J,1.90767267e-08
+B linear finite J,nf,d_grid_dot_J,1.90767267e-08
+C cubic J=0,formula,delta_eq,9.50273164e-09
+C cubic J=0,formula,delta_m_half,1.00000000e-04
+C cubic J=0,formula,a1,1.00000000e-04
+C cubic J=0,formula,a2,5.72370752e-09
+C cubic J=0,formula,a2_cos,-5.72370752e-09
+C cubic J=0,formula,a2_sin,0.00000000e+00
+C cubic J=0,formula,a3,nan
+C cubic J=0,formula,Q,1.76895543e-04
+C cubic J=0,formula,delta2,4.98593750e-09
+C cubic J=0,formula,phi_hat,3.00000000e-01
+C cubic J=0,formula,rms,0.00000000e+00
+C cubic J=0,formula,unc_delta_eq,0.00000000e+00
+C cubic J=0,formula,unc_Q,0.00000000e+00
+C cubic J=0,formula,unc_a2,0.00000000e+00
+C cubic J=0,formula,gamma_eff,1.14395294e+00
+C cubic J=0,formula,delta_E_over_E,2.69041759e-09
+C cubic J=0,nf,delta_eq,9.52953345e-09
+C cubic J=0,nf,delta_m_half,9.98593597e-05
+C cubic J=0,nf,a1,9.97187501e-05
+C cubic J=0,nf,a2,5.72370911e-09
+C cubic J=0,nf,a2_cos,-5.72370911e-09
+C cubic J=0,nf,a2_sin,2.00491843e-14
+C cubic J=0,nf,a3,1.40625275e-07
+C cubic J=0,nf,Q,1.77896219e-04
+C cubic J=0,nf,delta2,4.97192446e-09
+C cubic J=0,nf,phi_hat,nan
+C cubic J=0,nf,rms,1.47723894e-20
+C cubic J=0,nf,unc_delta_eq,5.24928817e-21
+C cubic J=0,nf,unc_Q,0.00000000e+00
+C cubic J=0,nf,unc_a2,1.26256299e-19
+C cubic J=0,nf,gamma_eff,1.14395294e+00
+C cubic J=0,nf,delta_E_over_E,2.69547584e-09
+C cubic J=0,map,delta_eq,9.54498645e-09
+C cubic J=0,map,delta_m_half,9.99962098e-05
+C cubic J=0,map,a1,9.98530635e-05
+C cubic J=0,map,a2,5.72461929e-09
+C cubic J=0,map,a2_cos,-5.72461929e-09
+C cubic J=0,map,a2_sin,8.85152255e-14
+C cubic J=0,map,a3,1.43030507e-07
+C cubic J=0,map,Q,1.76884650e-04
+C cubic J=0,map,delta2,4.98532739e-09
+C cubic J=0,map,phi_hat,3.01128529e-01
+C cubic J=0,map,rms,8.12597653e-11
+C cubic J=0,map,unc_delta_eq,1.36776944e-12
+C cubic J=0,map,unc_Q,8.33888487e-14
+C cubic J=0,map,unc_a2,2.72908706e-12
+C cubic J=0,map,gamma_eff,1.14395294e+00
+C cubic J=0,map,delta_E_over_E,2.70032803e-09
+C cubic J=0,exact,delta_eq,9.50125284e-09
+C cubic J=0,exact,delta_m_half,9.99962094e-05
+C cubic J=0,exact,a1,9.98537915e-05
+C cubic J=0,exact,a2,5.66769228e-09
+C cubic J=0,exact,a2_cos,-5.66769227e-09
+C cubic J=0,exact,a2_sin,1.96888484e-13
+C cubic J=0,exact,a3,1.42212393e-07
+C cubic J=0,exact,Q,1.76888466e-04
+C cubic J=0,exact,delta2,4.98539996e-09
+C cubic J=0,exact,phi_hat,3.01124980e-01
+C cubic J=0,exact,rms,1.44502925e-10
+C cubic J=0,exact,unc_delta_eq,2.42291458e-12
+C cubic J=0,exact,unc_Q,1.38981410e-13
+C cubic J=0,exact,unc_a2,4.83143450e-12
+C cubic J=0,exact,gamma_eff,1.14395294e+00
+C cubic J=0,exact,delta_E_over_E,2.69002039e-09
+C cubic J=0,target,delta_eq_ch12,9.52953345e-09
+C cubic J=0,target,delta_eq_ch3,9.50273164e-09
+C cubic J=0,target,delta_eq_pendulum,9.50263071e-09
+C cubic J=0,nf,d_dot_J,9.52953345e-09
+C cubic J=0,nf,d_grid_dot_J,9.52953345e-09

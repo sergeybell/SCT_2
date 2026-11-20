@@ -23,6 +23,7 @@ julia --project=studies/magnetic_ring studies/magnetic_ring/scripts/01_lattice.j
 julia --project=studies/magnetic_ring studies/magnetic_ring/scripts/02_linear_optics.jl
 julia --project=studies/magnetic_ring studies/magnetic_ring/scripts/02b_generator_chromaticity.jl
 julia --project=studies/magnetic_ring studies/magnetic_ring/scripts/03_lie_invariants.jl
+julia --project=studies/magnetic_ring studies/magnetic_ring/scripts/04_equilibrium.jl
 ```
 
 ## Step 1
@@ -44,3 +45,7 @@ The example has 16 sector bends named BM and 4 drifts named OBM. BM and OBM shar
 ## Step 3
 
 `03_lie_invariants.jl` reads `α0`, `α1`, `η0`, and `η1` from `path_expansion` of the RF-off factor and compares `η1` with `α1 − α0/γ² + (3γ² − 1)/(2γ⁴)`. Generator chromaticity, with the factor from step 2b, is placed next to `chromaticity_orders`. A thin cavity is then appended at the linear-regime voltage and harmonic, with BELL synchronous phase `π`. The one-turn factor is `ring_lie_factor` of that lattice. The 6D normal form supplies `μ`, `Q_s = |μ_s|/2π`, and the detuning matrix of `h4`. A short track uses `exact_track_element` on the magnets and `rf_kick` on the cavity, and writes normal-form actions beside the Courant–Snyder actions at the ring start. The default track is two synchrotron periods and at most 2000 turns. `--turns N` is the explicit longer run.
+
+## Step 4
+
+`04_equilibrium.jl` reads `δ_eq` for the two regimes in `output/02_rf_regimes.json`. The cavity phase in BELL is `π` (early-positive `l`); the notes' stationary phase below transition is `0`, and the reported phase is the notes' sign. A short track at `π` stays in the bucket. A control at `0` leaves it. Each physics case then has four columns: the note formula, the normal-form torus average, iteration of the degree-3 polynomial of `ring_lie_factor`, and `exact_track_element` plus `rf_kick`. The normal form is compared with chapters 1–2. The cubic-phase case compares the map and the exact track with `1 − φ̂²/32` and `Ω/ω_s = 1 − φ̂²/16`. The default track is three synchrotron periods. `--turns N` replaces that length.
