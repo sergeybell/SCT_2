@@ -1,0 +1,113 @@
+quantity,value,source
+C_m,1.17388296e+02,path_length
+gamma,1.14395294e+00,reference
+alpha0,2.30470282e-01,path_expansion
+alpha1,3.39007701e-01,path_expansion
+eta0,-5.33688628e-01,path_expansion
+eta1,1.01716073e+00,path_expansion
+eta1_formula,1.01716073e+00,alpha1 - alpha0/gamma^2 + (3*gamma^2-1)/(2*gamma^4)
+eta1_minus_eta1_formula,0.00000000e+00,path_expansion minus the note formula
+bell_eta1_formula,1.01716073e+00,path_expansion eta1_formula
+eta1_minus_bell_eta1_formula,0.00000000e+00,path_expansion identity
+note_formula_minus_bell_formula,0.00000000e+00,same expression when the velocity piece matches
+velocity_piece_minus_note_piece,0.00000000e+00,-c2 + c1^2 minus (3*gamma^2-1)/(2*gamma^4)
+matrix_gap,2.70006240e-13,max |Lie R - ring_matrix|
+xi1_x_generator,-1.46153572e+00,"generator_chromaticity, factor -1/(2*pi)"
+xi1_x_orders_1e-6,-1.46153572e+00,chromaticity_orders
+xi1_x_orders_1e-4,-1.46153752e+00,chromaticity_orders
+xi1_x_generator_minus_orders_1e-6,1.67234226e-10,generator minus orders
+xi2_x_generator,8.55459555e+00,"generator_chromaticity, factor -1/(2*pi)"
+xi2_x_orders_1e-6,8.55454596e+00,chromaticity_orders
+xi2_x_orders_1e-4,8.55473511e+00,chromaticity_orders
+xi2_x_generator_minus_orders_1e-6,4.95857707e-05,generator minus orders
+c_Jdelta_x,9.18309974e+00,coefficient of J delta
+c_Jdelta2_x,-2.68750545e+01,"coefficient of J delta^2 in f4 - 1/2[f3, F3]"
+xi1_y_generator,-2.22548493e+00,"generator_chromaticity, factor -1/(2*pi)"
+xi1_y_orders_1e-6,-2.22548493e+00,chromaticity_orders
+xi1_y_orders_1e-4,-2.22548794e+00,chromaticity_orders
+xi1_y_generator_minus_orders_1e-6,2.90293123e-10,generator minus orders
+xi2_y_generator,8.10379124e+00,"generator_chromaticity, factor -1/(2*pi)"
+xi2_y_orders_1e-6,8.10368439e+00,chromaticity_orders
+xi2_y_orders_1e-4,8.10412260e+00,chromaticity_orders
+xi2_y_generator_minus_orders_1e-6,1.06853598e-04,generator minus orders
+c_Jdelta_y,1.39831342e+01,coefficient of J delta
+c_Jdelta2_y,-2.54588110e+01,"coefficient of J delta^2 in f4 - 1/2[f3, F3]"
+voltage_MV,6.78732526e-03,regimes.linear
+harmonic,1.00000000e+00,regimes.linear
+phi_s_bell_rad,3.14159265e+00,RFCavity
+phi_s_notes_rad,0.00000000e+00,regimes.linear in the regime file
+Qs_note,1.06737726e-03,synchrotron_tune_note
+Qs_smooth,1.06737726e-03,synchrotron_tune at phi_s = pi
+Qs_json,1.06737726e-03,regimes.linear.Qs
+kick_R_gap,2.84217094e-14,"ring_lie_factor(with cavity) versus concatenate(magnetic, one kick)"
+kick_f3_gap,3.90798505e-14,"same comparison, f3"
+kick_f4_gap,6.66133815e-14,"same comparison, f4"
+Qs_one_kick,1.06737926e-03,|mu_s|/(2*pi) of the cavity lattice
+Qs_second_kick,1.50950505e-03,|mu_s|/(2*pi) after one more rf_kick_taylor
+Qs_second_over_one,1.41421621e+00,second kick over one kick
+nf_ok,1.00000000e+00,1 if dragt_finn_nf6d returned
+mu_x_rad,2.90107326e+00,dragt_finn_nf6d
+mu_y_rad,2.89866789e+00,dragt_finn_nf6d
+mu_s_rad,6.70654166e-03,dragt_finn_nf6d
+Qs_nf,1.06737926e-03,|mu_s|/(2*pi)
+Qs_nf_minus_Qs_note,2.00033939e-09,normal form minus the note tune
+Qx_nf_frac_distance,6.45206111e-13,wrapped distance of mu_x/2pi to the magnetic fractional tune
+Qy_nf_frac_distance,1.11022302e-15,wrapped distance of mu_y/2pi to the magnetic fractional tune
+Rn_residual,4.51947507e-14,|A^-1 R A - rotation|
+symp_residual,3.59145018e-15,|A^T S A - S|
+f3_before,7.36662351e-02,max |coef| of f3
+f3_after,1.77635684e-15,cubic homological residual
+f4_nonres_after,6.22141227e-14,max |f4 - h4| after F4
+c_11,-2.32364474e+00,h4 = sum_{i<=j} c_ij J_i J_j; lower triangle stored as 0
+c_12,-3.81134833e+00,h4 = sum_{i<=j} c_ij J_i J_j; lower triangle stored as 0
+c_13,-4.71742246e-03,h4 = sum_{i<=j} c_ij J_i J_j; lower triangle stored as 0
+c_21,0.00000000e+00,h4 = sum_{i<=j} c_ij J_i J_j; lower triangle stored as 0
+c_22,-3.48047667e+00,h4 = sum_{i<=j} c_ij J_i J_j; lower triangle stored as 0
+c_23,-5.53396969e-03,h4 = sum_{i<=j} c_ij J_i J_j; lower triangle stored as 0
+c_31,0.00000000e+00,h4 = sum_{i<=j} c_ij J_i J_j; lower triangle stored as 0
+c_32,0.00000000e+00,h4 = sum_{i<=j} c_ij J_i J_j; lower triangle stored as 0
+c_33,1.12162519e-02,h4 = sum_{i<=j} c_ij J_i J_j; lower triangle stored as 0
+d_1,1.46580620e-01,delta_eq = zstar_6 + d · J
+d_2,2.23198761e-01,delta_eq = zstar_6 + d · J
+d_3,2.04027704e-04,delta_eq = zstar_6 + d · J
+sigma_delta_s,1.03465069e-02,delta amplitude per sqrt(2 Js)
+sigma_l_s,9.66515199e+01,l amplitude per sqrt(2 Js)
+dh4_dJ_1,-2.20342796e-07,partial h4 / partial J at the initial actions
+dQ_1,-3.50686451e-08,"tune shift -dQ from that gradient, in tune units"
+dh4_dJ_2,-2.58483614e-07,partial h4 / partial J at the initial actions
+dQ_2,-4.11389449e-08,"tune shift -dQ from that gradient, in tune units"
+dh4_dJ_3,1.04777009e-06,partial h4 / partial J at the initial actions
+dQ_3,1.66757790e-07,"tune shift -dQ from that gradient, in tune units"
+track_turns,1.87400000e+03,exact_track_element and rf_kick
+track_ds_m,1.00000000e-01,step passed to exact_track_element
+ax_m,2.21882208e-06,horizontal betatron offset
+ay_m,2.21882208e-06,vertical betatron offset
+delta_m,1.00000000e-04,regimes.linear
+Jx_nf_mean,1.39216466e-13,turn 0 through the last turn
+Jx_nf_span,1.71615771e-15,max minus min
+Jx_nf_span_over_abs_mean,1.23272610e-02,(max-min)/|mean|
+Jx_nf_rms,3.96945244e-16,root mean square about the mean
+Jy_nf_mean,6.07161030e-13,turn 0 through the last turn
+Jy_nf_span,2.95470436e-16,max minus min
+Jy_nf_span_over_abs_mean,4.86642623e-04,(max-min)/|mean|
+Jy_nf_rms,1.04897873e-16,root mean square about the mean
+Js_nf_mean,4.67076657e-05,turn 0 through the last turn
+Js_nf_span,1.87153965e-11,max minus min
+Js_nf_span_over_abs_mean,4.00692182e-07,(max-min)/|mean|
+Js_nf_rms,6.36780880e-12,root mean square about the mean
+Jx_cs_mean,1.67708748e-13,turn 0 through the last turn
+Jx_cs_span,3.85936909e-13,max minus min
+Jx_cs_span_over_abs_mean,2.30123302e+00,(max-min)/|mean|
+Jx_cs_rms,9.12648863e-14,root mean square about the mean
+Jy_cs_mean,6.07053494e-13,turn 0 through the last turn
+Jy_cs_span,1.62847309e-16,max minus min
+Jy_cs_span_over_abs_mean,2.68258580e-04,(max-min)/|mean|
+Jy_cs_rms,4.04815983e-17,root mean square about the mean
+Jx_cs_dispersion_free_mean,1.39379666e-13,turn 0 through the last turn
+Jx_cs_dispersion_free_span,3.23259738e-14,max minus min
+Jx_cs_dispersion_free_span_over_abs_mean,2.31927473e-01,(max-min)/|mean|
+Jx_cs_dispersion_free_rms,6.96016731e-15,root mean square about the mean
+Jy_cs_dispersion_free_mean,6.07053494e-13,turn 0 through the last turn
+Jy_cs_dispersion_free_span,1.62847309e-16,max minus min
+Jy_cs_dispersion_free_span_over_abs_mean,2.68258580e-04,(max-min)/|mean|
+Jy_cs_dispersion_free_rms,4.04815983e-17,root mean square about the mean
