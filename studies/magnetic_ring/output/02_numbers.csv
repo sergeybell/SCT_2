@@ -1,0 +1,18 @@
+quantity,value,source
+C_m,1.17388296e+02,path_length
+Qx,2.46172015e+00,optics_along
+Qy,2.46133732e+00,optics_along
+Qx_frac,4.61720150e-01,periodic_optics
+Qy_frac,4.61337323e-01,periodic_optics
+alpha0,2.30470282e-01,path_expansion
+alpha1,3.39007701e-01,path_expansion
+eta0,-5.33688628e-01,path_expansion
+eta1,1.01716073e+00,path_expansion
+gamma_t,2.08301565e+00,path_expansion
+alpha0_dispersion_integral,2.30470372e-01,(1/C) int D/rho ds
+arc_cell_mu_x_mean_rad,1.57150893e+00,optics_along across arc cells
+arc_cell_mu_y_mean_rad,1.57122422e+00,optics_along across arc cells
+arc_cell_mu_x_spread_rad,1.34705489e-03,max minus min
+arc_cell_mu_y_spread_rad,6.69370316e-03,max minus min
+superperiod_mu_x_rad,7.73372194e+00,optics_along over one copy
+superperiod_mu_y_rad,7.73251925e+00,optics_along over one copy

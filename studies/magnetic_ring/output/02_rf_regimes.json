@@ -1,0 +1,132 @@
+{
+  "lattice": "lattices/magnetic_2_closed.bell",
+  "step": "linear_optics",
+  "reference": {
+    "particle": "deuteron",
+    "charge_number": 1,
+    "kinetic_MeV": 270,
+    "mass_MeV": 1875.61294257,
+    "gamma": 1.14395294139421,
+    "beta": 0.4856347288875556,
+    "energy_MeV": 2145.61294257
+  },
+  "optics": {
+    "C_m": 117.3882959999999,
+    "Qx": 2.461720149866793,
+    "Qy": 2.461337323049091,
+    "Qx_frac": 0.4617201498668012,
+    "Qy_frac": 0.4613373230490802,
+    "alpha0": 0.2304702821566718,
+    "alpha1": 0.3390077011704324,
+    "eta0": -0.5336886279416386,
+    "eta1": 1.017160726753687,
+    "gamma_t": 2.083015651758757,
+    "below_transition": true,
+    "arc_cell_mu_x_mean_rad": 1.571508930684985,
+    "arc_cell_mu_y_mean_rad": 1.571224219350049,
+    "arc_cell_mu_x_spread_rad": 0.001347054891143173,
+    "arc_cell_mu_y_spread_rad": 0.006693703157420572,
+    "arc_cell_mu_x_periodic_rad": 1.571569346261545,
+    "arc_cell_mu_y_periodic_rad": 1.571268901205347,
+    "superperiod_copies": 2,
+    "superperiod_mu_x_rad": 7.733721938015504,
+    "superperiod_mu_y_rad": 7.732519252097374,
+    "alpha0_dispersion_integral": 0.2304703715560688
+  },
+  "xi_for_lambda": {
+    "xi_x": -1.461537520126566,
+    "xi_y": -2.225487943887383,
+    "role": "Natural first chromaticity of the k2=0 Lie polynomial, used only to size Lambda. Not a chromaticity result of this step."
+  },
+  "selection_cuts": {
+    "eta_ratio_max": 0.02,
+    "lambda_ratio_max": 0.02,
+    "delta_m_max": 0.01,
+    "omega_s_Ts_max": 0.02,
+    "omega_over_betatron_max": 0.05,
+    "linear_phi_hat": 0.05,
+    "cubic_phi_hat": 0.3
+  },
+  "placeholder_action": {
+    "amplitude_m": 0.001,
+    "Jx": 2.581612713258228e-08,
+    "Jy": 2.5820256644667e-08,
+    "Lambda": 5.09523509873472e-09,
+    "beta_x_m": 19.36773852376001,
+    "beta_y_m": 19.36464098250052,
+    "xi_x": -1.461537520126566,
+    "xi_y": -2.225487943887383
+  },
+  "stationary_bucket": {
+    "sin_phi_s": 0,
+    "phi_s_rad": 0,
+    "cos_phi_s": 1,
+    "T_s": 8.062957283098086e-07,
+    "harmonic": 1,
+    "delta_m": 0.0001
+  },
+  "regimes": {
+    "linear": {
+      "name": "linear",
+      "harmonic": 1,
+      "voltage_MV": 0.00678732526132278,
+      "delta_m": 0.0001,
+      "phi_s_rad": 0,
+      "sin_phi_s": 0,
+      "cos_phi_s": 1,
+      "phi_hat": 0.05000000000000002,
+      "phi_hat_squared": 0.002500000000000002,
+      "Qs": 0.001067377255883277,
+      "omega_s_Ts": 0.006706529091383472,
+      "omega_rf_rad_s": 7792656.077132724,
+      "abs_eta1_delta_m_over_eta0": 0.0001905906690717267,
+      "abs_Lambda_over_eta0_delta_m": 9.547205677562062e-05,
+      "two_pi_frac_nu_x": 2.901073261671792,
+      "two_pi_frac_nu_y": 2.898667889835613,
+      "two_pi_nearest_nu_x": 2.901073261671792,
+      "two_pi_nearest_nu_y": 2.898667889835613,
+      "omega_s_Ts_over_two_pi_frac_nu_x": 0.002311740685762179,
+      "omega_s_Ts_over_two_pi_frac_nu_y": 0.002313659013818174,
+      "omega_s_Ts_over_two_pi_nearest_nu_x": 0.002311740685762179,
+      "omega_s_Ts_over_two_pi_nearest_nu_y": 0.002313659013818174,
+      "formula_delta_eq": 1.907673913114839e-08
+    },
+    "cubic_phase": {
+      "name": "cubic_phase",
+      "harmonic": 1,
+      "voltage_MV": 0.0001885368128145217,
+      "delta_m": 0.0001,
+      "phi_s_rad": 0,
+      "sin_phi_s": 0,
+      "cos_phi_s": 1,
+      "phi_hat": 0.3,
+      "phi_hat_squared": 0.09,
+      "Qs": 0.0001778962093138795,
+      "omega_s_Ts": 0.001117754848563912,
+      "omega_rf_rad_s": 7792656.077132724,
+      "abs_eta1_delta_m_over_eta0": 0.0001905906690717267,
+      "abs_Lambda_over_eta0_delta_m": 9.547205677562062e-05,
+      "two_pi_frac_nu_x": 2.901073261671792,
+      "two_pi_frac_nu_y": 2.898667889835613,
+      "two_pi_nearest_nu_x": 2.901073261671792,
+      "two_pi_nearest_nu_y": 2.898667889835613,
+      "omega_s_Ts_over_two_pi_frac_nu_x": 0.0003852901142936966,
+      "omega_s_Ts_over_two_pi_frac_nu_y": 0.0003856098356363624,
+      "omega_s_Ts_over_two_pi_nearest_nu_x": 0.0003852901142936966,
+      "omega_s_Ts_over_two_pi_nearest_nu_y": 0.0003856098356363624,
+      "formula_delta_eq": 1.904993731831018e-08
+    }
+  },
+  "Qs_smooth_model": [
+    {
+      "name": "linear",
+      "Qs": 0.001067377255883277,
+      "phi_s_rad": 3.141592653589793
+    },
+    {
+      "name": "cubic_phase",
+      "Qs": 0.0001778962093138795,
+      "phi_s_rad": 3.141592653589793
+    }
+  ]
+}
