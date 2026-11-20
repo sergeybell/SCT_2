@@ -1,0 +1,42 @@
+name: Study step
+description: One ordered step of a physics study (script, table, figures)
+title: "feat: "
+labels:
+  - study
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: Physics goal
+      description: What must be computed or checked, and why.
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: References
+      description: Note sections, lattice files, and BELL API entry points.
+      placeholder: |
+        - notes/equilibrium-energy-v3 sections 1–3
+        - studies/magnetic_ring/
+        - BELL examples/lattices/magnetic_2.bell
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Short run, numbers table, figures, and what must agree.
+      placeholder: |
+        - script runs with short defaults
+        - table of angles / optics / δ_eq in the PR
+        - Lie vs tracking agreement stated; disagreement reported without fitting
+    validations:
+      required: true
+  - type: textarea
+    id: bell_findings
+    attributes:
+      label: Expected BELL findings
+      description: Gaps to report as BELL issues (text only; no BELL patches).
+    validations:
+      required: false
