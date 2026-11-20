@@ -22,6 +22,7 @@ julia --project=studies/magnetic_ring -e "using Pkg; Pkg.develop(path=\"C:/GIT_R
 julia --project=studies/magnetic_ring studies/magnetic_ring/scripts/01_lattice.jl
 julia --project=studies/magnetic_ring studies/magnetic_ring/scripts/02_linear_optics.jl
 julia --project=studies/magnetic_ring studies/magnetic_ring/scripts/02b_generator_chromaticity.jl
+julia --project=studies/magnetic_ring studies/magnetic_ring/scripts/03_lie_invariants.jl
 ```
 
 ## Step 1
@@ -39,3 +40,7 @@ The example has 16 sector bends named BM and 4 drifts named OBM. BM and OBM shar
 ## Step 2b
 
 `02b_generator_chromaticity.jl` builds the normalising matrix of the RF-off one-turn factor: a symplectic dispersion shear, including the path-length row, then the Courant–Snyder matrix of each plane at the ring start. First chromaticity is the coefficient of `J δ` in the pulled cubic generator. Second chromaticity is the coefficient of `J δ²` in `f4 − ½[f3, F3]`, after the non-resonant cubic is removed. Both are compared with `chromaticity_orders` and `chromaticity_series`, and the first chromaticity is compared with the feed-down of one sextupole. The overall factor in front of the generator coefficient is the member of a fixed list that matches `chromaticity_orders` on the bare ring.
+
+## Step 3
+
+`03_lie_invariants.jl` reads `α0`, `α1`, `η0`, and `η1` from `path_expansion` of the RF-off factor and compares `η1` with `α1 − α0/γ² + (3γ² − 1)/(2γ⁴)`. Generator chromaticity, with the factor from step 2b, is placed next to `chromaticity_orders`. A thin cavity is then appended at the linear-regime voltage and harmonic, with BELL synchronous phase `π`. The one-turn factor is `ring_lie_factor` of that lattice. The 6D normal form supplies `μ`, `Q_s = |μ_s|/2π`, and the detuning matrix of `h4`. A short track uses `exact_track_element` on the magnets and `rf_kick` on the cavity, and writes normal-form actions beside the Courant–Snyder actions at the ring start. The default track is two synchrotron periods and at most 2000 turns. `--turns N` is the explicit longer run.
