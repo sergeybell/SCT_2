@@ -11,6 +11,7 @@ BELL is a path dependency at `C:/GIT_REPOS/BELL`. This study reads `examples/lat
 - `scripts/01_lattice.jl` writes the element table, the sequence, and the before/after readings.
 - `scripts/02_linear_optics.jl` reads the closed lattice: tunes, slip factor, cell phase, optics along `s`, and two stationary RF regimes.
 - `scripts/02b_generator_chromaticity.jl` reads first and second chromaticity from the RF-off Lie generators.
+- `scripts/06_fringe.jl` reads three dipole fringe models on the own sextupole solution.
 - `output/` holds the markdown reports, the csv tables, and the figures.
 
 ## Setup
@@ -25,6 +26,7 @@ julia --project=studies/magnetic_ring studies/magnetic_ring/scripts/02b_generato
 julia --project=studies/magnetic_ring studies/magnetic_ring/scripts/03_lie_invariants.jl
 julia --project=studies/magnetic_ring studies/magnetic_ring/scripts/04_equilibrium.jl
 julia --project=studies/magnetic_ring studies/magnetic_ring/scripts/05_sextupoles.jl
+julia --project=studies/magnetic_ring studies/magnetic_ring/scripts/06_fringe.jl
 ```
 
 ## Step 1
@@ -54,3 +56,11 @@ The example has 16 sector bends named BM and 4 drifts named OBM. BM and OBM shar
 ## Step 5
 
 `05_sextupoles.jl` places SXD, SXB, and SYB with `place_sextupole_families` on `optics_along` of the closed ring. The in-study response is a central difference of generator chromaticity and of `η1` from `path_expansion`. Its solution sets `ξx = ξy = η1 = 0`, and prints the `α1` that identity requires. `solve_A` is the neighbour: `ring_metrics` and `response` set `ξx = ξy = α1 = 0` and leave `η1`. Both settings, and `k2 = 0`, are read in the linear regime of `output/02_rf_regimes.json` with the cavity phase `π`. A short exact track gives `δ_eq` and `γ_eff` beside the formula. Strengths for later steps are `output/05_sext_strengths.json`. Shared slots and the `D > 0.5` m mask are recorded, not patched. `--turns N` replaces the track length.
+
+## Step 6
+
+`06_fringe.jl` rebuilds that placement and sets `k2_per_m3.own`. It does not solve the strengths again. Three dipole fringe models are read with `ring_lie_factor`: `FringeModel()` (NoEdge), `HardEdge()`, and `SoftEdge(profile = LinearRamp(0.05))`. Quadrupoles and sextupoles stay NoEdge. The ramp width 0.05 m is an assumption.
+
+`Qx` and `Qy` are the body tunes from `optics_along` plus the fringe shift of μ/2π. Chromaticity is `generator_chromaticity` of that factor; the normalising matrix is built from the factor's own `periodic_optics`. `η1` is `path_expansion`. The linear-regime `δ_eq` uses that η1 and ξ with the step-4/5 values of δ_m, Jx, and Jy.
+
+`exact_track_element` has no method for `EdgeMap`. The short track applies the Lie factor of `edge_map` on each edge, `exact_track_element` on each magnet, and `rf_kick` on the thin cavity. `--turns N` replaces the default length of one synchrotron period. The BELL finding is `output/06_bell_finding.md`.
