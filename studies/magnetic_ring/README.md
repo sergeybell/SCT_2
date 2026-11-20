@@ -13,6 +13,7 @@ BELL is a path dependency at `C:/GIT_REPOS/BELL`. This study reads `examples/lat
 - `scripts/02b_generator_chromaticity.jl` reads first and second chromaticity from the RF-off Lie generators.
 - `scripts/06_fringe.jl` reads three dipole fringe models on the own sextupole solution.
 - `output/` holds the markdown reports, the csv tables, and the figures.
+- `magnetic_ring.ipynb` walks through steps 1–7: physics preamble, script report, figures from `output/`, conclusions. `make_notebook.py` builds it; `RUN_JULIA=1` re-runs the scripts from the notebook.
 
 ## Setup
 
@@ -28,6 +29,7 @@ julia --project=studies/magnetic_ring studies/magnetic_ring/scripts/04_equilibri
 julia --project=studies/magnetic_ring studies/magnetic_ring/scripts/05_sextupoles.jl
 julia --project=studies/magnetic_ring studies/magnetic_ring/scripts/06_fringe.jl
 julia --project=studies/magnetic_ring studies/magnetic_ring/scripts/07_dynamic_aperture.jl
+cd studies/magnetic_ring && python make_notebook.py && jupyter nbconvert --to notebook --execute --inplace magnetic_ring.ipynb
 ```
 
 ## Step 1
